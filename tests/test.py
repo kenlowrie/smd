@@ -6,7 +6,7 @@ from os.path import dirname, abspath, realpath, split, join
 bin_path, whocares = split(dirname(realpath('__file__')))
 lib_path = abspath(bin_path)
 path.insert(0, lib_path)
-print("AVScript Package unittest")
+print("smd Package unittest")
 print("PYTHONPATH=")
 for item in path:
     print('  {}'.format(item))
@@ -15,7 +15,7 @@ import io
 import sys
 from unittest import TestCase, TestLoader, TextTestRunner
 
-import avscript.avscript_md
+import smd.smd
 
 
 def decode(html_string):
@@ -30,20 +30,20 @@ def decode(html_string):
     return unescape(html_string)
 
 
-class TestAVScriptClass(TestCase):
+class TestSMD(TestCase):
     def setUp(self):
-        self.avscript_md = avscript.avscript_md.AVScriptParser()
+        self.smd = smd.smd.ScriptParser()
         self.capturedOutput = io.StringIO()     # Create StringIO object
-        self.avscript_md.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
+        self.smd.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
 
     def tearDown(self):
-        self.avscript_md.stdoutput = sys.__stdout__     # Reset redirect.
-        del self.avscript_md
-        self.avscript_md = None
+        self.smd.stdoutput = sys.__stdout__     # Reset redirect.
+        del self.smd
+        self.smd = None
         del self.capturedOutput
 
     def process(self, which, checkEqual=True):
-        self.avscript_md.open_and_parse("in/{}.md".format(which))
+        self.smd.open_and_parse("in/{}.md".format(which))
         with open('run/{}.out'.format(which), 'w') as mf2:
             mf2.write(self.capturedOutput.getvalue())
 
@@ -149,5 +149,5 @@ class TestAVScriptClass(TestCase):
 
 
 if __name__ == '__main__':
-    suite3 = TestLoader().loadTestsFromTestCase(TestAVScriptClass)
+    suite3 = TestLoader().loadTestsFromTestCase(TestSMD)
     TextTestRunner(verbosity=2).run(suite3)
