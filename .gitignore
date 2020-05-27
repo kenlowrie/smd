@@ -107,5 +107,5 @@ venv.bak/
 .vscode/settings.json
 
 # project related items
-avscript/avs/defaults.json
-avscript/avs/skeleton.py
+smd/smd/defaults.json
+smd/smd/skeleton.py
