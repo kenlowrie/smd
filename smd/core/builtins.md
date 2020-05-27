@@ -18,7 +18,7 @@
 @code _id="encodeURL"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))"\
-      t="code.encodeURL(t=\"https://www.url to encode.com\")"
+      t="code.encodeURL(t=\"https://www.url.com to encode\")"
 @code _id="split_as"\
       type="exec"\
       src="from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))"\

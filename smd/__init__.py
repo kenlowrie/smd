@@ -1,7 +1,7 @@
 """
-livesmd package
+smd package
 
-Copyright 2018 Ken Lowrie
+Copyright 2020 Ken Lowrie
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,5 +18,5 @@ limitations under the License.
 __copyright__ = """Copyright 2020 Ken Lowrie"""
 __license__ = """Apache 2.0"""
 
+from . import smd
 from . import livesmd
-from . import mklivesmd

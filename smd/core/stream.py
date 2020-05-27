@@ -145,7 +145,7 @@ class StreamHandler(object):
 
         if(filename is None):
             """sys.stdin can only be opened as the first file."""
-            if(self.idx is not -1):
+            if(self.idx != -1):
                 raise FileError(2, "ERROR: sys.stdin can only be opened at start")
 
         else:

@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #pylint: disable=W1401
 """
-This script is a BBEdit-compliant Markup Previewer
+Main module for the Script Markdown Package
 
-Copyright (c) 2018 Ken Lowrie
+Copyright (c) 2020 Ken Lowrie
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ limitations under the License.
 
 ------------------------------------------------------------------------------
 
-When invoked from BBEdit, it reads from sys.stdin, which will be the current
-contents of the AV markdown document you are editing, formats it on the fly,
-writing out HTML. Using BBEdit's Preview in BBEdit Markup support, you can see
-your AV script come to life.
+When invoked from the command line w/o any parameters, it reads from sys.stdin,
+formats it on the fly and outputs HTML.
+
+//TODO: UPDATE THIS ONCE I FINALIZE THE NEW INTERFACE
 
 To quickly see how it works, copy "avscript_md.py" and "avscript_md.css":
 
@@ -63,41 +63,38 @@ from re import IGNORECASE, findall, match
 from sys import exit
 from os.path import isfile
 
-from .avs.line import Line
-from .avs.link import LinkDict
-from .avs.debug import DebugTracker, set_default_debug_register, Debug
-from .avs.regex import Regex, RegexMD, RegexMain
-from .avs.stdio import StdioWrapper
-from .avs.variable import Namespaces
-from .avs.bookmark import BookmarkList
-from .avs.markdown import Markdown
-from .avs.htmlformat import HTMLFormatter
-from .avs.exception import RegexError, LogicError, FileError
+from .core.line import Line
+from .core.link import LinkDict
+from .core.debug import DebugTracker, set_default_debug_register, Debug
+from .core.regex import Regex, RegexMD, RegexMain
+from .core.stdio import StdioWrapper
+from .core.variable import Namespaces
+from .core.bookmark import BookmarkList
+from .core.markdown import Markdown
+from .core.htmlformat import HTMLFormatter
+from .core.exception import RegexError, LogicError, FileError
 
 
-class AVScriptParser(StdioWrapper):
+class ScriptParser(StdioWrapper):
     """
     Parse a text file written in a markdown-like syntax and output HTML.
 
-    Reads a text file (or reads from sys.stdin) and outputs HTML in a format
-    suitable for Audio-Visual (AV) scripts. AV Scripts are a type of script
-    format used to describe visuals (shots) and the corresponding narrative
-    (voiceover) that would accompany the visual when made into a video.
+    Reads a text file (or reads from sys.stdin) and outputs HTML.
     """
     def __init__(self):
         """
         Initialize the required instance variables for this class.
         """
-        super(AVScriptParser, self).__init__()  # Initialize the base class(es)
+        super(ScriptParser, self).__init__()  # Initialize the base class(es)
 
         # Create the debug tracker object for this app
         self._dbgTracker = DebugTracker(output=self.oprint)
         set_default_debug_register(self._dbgTracker)
 
         # Register a tracker for this object
-        self.debug_avs = Debug('avscript')
-        self.debug_avs_line = Debug('avscript.line')
-        self.debug_avs_raw = Debug('avscript.raw')
+        self.debug_smd = Debug('smd')
+        self.debug_smd_line = Debug('smd.line')
+        self.debug_smd_raw = Debug('smd.raw')
         self.stdinput.initDebug()
 
         self._md = Markdown()           # New markdown support in separate class
@@ -112,11 +109,11 @@ class AVScriptParser(StdioWrapper):
         self._md.setStripClass(self._stripClass)
 
         #_set_ns_xface(ns_ptr)
-        exec("from .avs.utility import _set_ns_xface;_set_ns_xface(self._ns)")
+        exec("from .core.utility import _set_ns_xface;_set_ns_xface(self._ns)")
         #_set_ns_xface(ns_ptr)
-        exec("from .avs.utility import _set_line_cache;_set_line_cache(self.stdinput.cache())")
+        exec("from .core.utility import _set_line_cache;_set_line_cache(self.stdinput.cache())")
         #_init_debug()
-        exec("from .avs.utility import _init_debug;_init_debug()")
+        exec("from .core.utility import _init_debug;_init_debug()")
 
 
         self._css_class_prefix = Regex(r'\{:([\s]?.\w[^\}]*)\}(.*)')
@@ -474,9 +471,9 @@ class AVScriptParser(StdioWrapper):
 
         def handle_raw(m, lineObj):
             """Handle a raw line"""
-            from .avs.utility import HtmlUtils
+            from .core.utility import HtmlUtils
             if(m is not None):
-                self.debug_avs_raw.print('&nbsp;&nbsp;lineObj.current_line=<br />'   \
+                self.debug_smd_raw.print('&nbsp;&nbsp;lineObj.current_line=<br />'   \
                                          '{}<br />&nbsp;&nbsp;m.group(2)=<br />{}'
                                             .format(HtmlUtils.escape_html(lineObj.current_line),
                                                     HtmlUtils.escape_html(m.group(2)))
@@ -635,7 +632,7 @@ class AVScriptParser(StdioWrapper):
 
                 #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
                 # TODO: What about self.oprint()? Doesn't that need to be passed to NS?
-                self.debug_avs_line.print('handle_code: {}'.format(d))
+                self.debug_smd_line.print('handle_code: {}'.format(d))
                 self._ns.addVariable(d, ns="code")
 
             else:
@@ -679,7 +676,7 @@ class AVScriptParser(StdioWrapper):
                     if(testLine(parse_obj, self._line)):
                         m = matchLine(parse_obj, self._line)
                         #TODO: Should we HTMLESC what we're printing here?
-                        self.debug_avs_line.print('Match <strong>{}=<em>{}</em></strong>'.format(m[0],self._line._oriLine))
+                        self.debug_smd_line.print('Match <strong>{}=<em>{}</em></strong>'.format(m[0],self._line._oriLine))
                         parse_func(m, self._line)
                         matched = True
                         break
@@ -723,7 +720,7 @@ class AVScriptParser(StdioWrapper):
         return self.parse()
 
 
-def av_parse_file(args=None):
+def smd_parse_file(args=None):
     """Parse specified input file as AV Script Format text file.
 
     if args is None, uses sys.argv - via argparse
@@ -742,7 +739,7 @@ def av_parse_file(args=None):
     parser.add_argument('-f', '--filename', help='the file that you want to parse')
     args = parser.parse_args(args)
 
-    return AVScriptParser().open_and_parse(args.filename)
+    return ScriptParser().open_and_parse(args.filename)
 
 
 if __name__ == '__main__':
