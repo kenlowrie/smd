@@ -1,5 +1,5 @@
 """
-avscript package
+livesmd package
 
 Copyright 2018 Ken Lowrie
 
@@ -15,8 +15,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-__copyright__ = """Copyright 2018 Ken Lowrie"""
+__copyright__ = """Copyright 2020 Ken Lowrie"""
 __license__ = """Apache 2.0"""
 
-from . import avscript_md
-from . import mkavscript_md
+from . import livesmd
+from . import mklivesmd
