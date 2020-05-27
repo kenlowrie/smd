@@ -1,42 +1,37 @@
-# avscript_md
+# smd
 
-### A/V Script Markdown Processor
+### Script Markdown Processor
 
-Welcome to the A/V Script Markdown Processor. This document should help you get the project up and running. If you have questions, or would like to provide feedback and/or to report a bug, feel free to contact the author, Ken Lowrie, at [www.kenlowrie.com](http://www.kenlowrie.com/).
+Welcome to the Script Markdown Processor. This document should help you get the project up and running. If you have questions, or would like to provide feedback and/or to report a bug, feel free to contact the author, Ken Lowrie, at [www.kenlowrie.com](http://www.kenlowrie.com/).
 
 ### Attributions
 
-This project was inspired by John Gruber's [Markdown](https://daringfireball.net/projects/markdown/), the [Python Markdown](https://github.com/Python-Markdown/markdown) Project, and Mark Boszko's [AVScriptFormat](https://github.com/bobtiki/AVScriptFormat) BBEdit plug-in.
+This project was originally inspired by John Gruber's [Markdown](https://daringfireball.net/projects/markdown/), the [Python Markdown](https://github.com/Python-Markdown/markdown) Project, and Mark Boszko's [AVScriptFormat](https://github.com/bobtiki/AVScriptFormat) BBEdit plug-in. That resulted in [avscript](https://github.com/kenlowrie/avscript), the predecessor to **smd**.
 
 #### Installing this app on your system
 
-To install this on your system, do the following from a terminal window:
+To install this on your system, do the following from a terminal window (after cloning it to your local system):
 
-TODO: This isn't done yet. Hang tight...
-
-cp avscript_md ~/Library/Application\sSupport\BBEdit\Preview\sFilters
-cp avscript_md.css ~/Library/Application\sSupport\BBEdit\Preview\sCSS
-cp Stationery/My\sAV\sScript.md ~/Library/Application\sSupport\BBEdit\Stationery
-
-TODO: Rethink these instructions so the system can be used stand alone too.
+```
+cd root_of_cloned_repo
+pip install .
+```
 
 That's it! If you run into any problems, feel free to contact me for assistance.
 
-#### Why A/V Script Markdown Processor?
+#### Why Script Markdown Processor?
 
-As I wrote more and more scripts that relied partially on Python Markdown, along with the AVScriptFormat CSS mentioned above, I found myself wanting features, mostly to help avoid duplication amongst AV scripts, that were too difficult (for me) to implement within the existing framework. Someday when I have some time, I'd love to learn the ins and outs of Python Markdown, so I could write proper extensions to implement the features I need, while being able to rely on a proper Markdown implementation.
-
-Enter AVScript_md, mkavscript_md and avscript_md.css. These two Python scripts and the corresponding CSS file make up a BBEdit compliant Markdown-syntax-like system for creating Audio/Visual scripts from text documents. Although BBEdit isn't required to use the scripts, it is quite convenient to use their built-in markdown preview support when writing.
+I wanted a way to dynamically create pages for use in OBS Studio, and this seemed like a good starting point to leverage other code I had.
 
 #### Getting Started with the App
 
 I don't think this app requires much documentation. But again, I will write up some additional basic information after I finish fixing a few more bugs and testing it out on different devices and browsers.
 
-An example AV Script is included with the source. It's called "example.md", and it relies on an import file import/header.md.
+//TODO Need to update the userdocs.md once I get a good baseline.
 
 User documentation is available via the "userdocs.md" file, which relies on the import file import/userguideheading.md.
 
 
 #### Summary
 
-This concludes the documentation on the A/V Script Markdown (avscript_md) Processor.
+This concludes the documentation on the Script Markdown (smd) Processor.
