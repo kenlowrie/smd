@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
 """
-This module creates an HTML document suitable for printing.
+This module implements several methods for doing "live" processing on
+script markdown files that are processed by the smd package. This enables
+the automatic update/refresh of a webpage, as changes are made to the
+underlying markdown text files.
+
+//TODO: Finish the documentation for this script.
+
+creates an HTML document suitable for printing.
 
 It uses avscript_md.py, which reads an AV script written in a specialized
 Markdown-syntax, and outputs HTML format. Since avscript_md is designed to
@@ -156,12 +163,12 @@ def _mkhtml(mdfile, cssfile, outpath, open_output_file):
 
     htmlfile = open(fileobj.HTML_filename, "w")
 
-    from smd.smd import AVScriptParser
+    from smd.smd import ScriptParser
 
     message("Creating: " + fileobj.rootname)
     add_header(htmlfile, fileobj, cssfile)
 
-    avscript_obj = AVScriptParser()
+    avscript_obj = ScriptParser()
     avscript_obj.stdoutput = htmlfile
     avscript_obj.open_and_parse(mdfile)
     # avscript_obj.stdinput = open(mdfile,'r')
@@ -175,13 +182,13 @@ def _mkhtml(mdfile, cssfile, outpath, open_output_file):
     return 0
 
 
-def mkavscript_md(arguments=None):
+def livesmd(arguments=None):
     """Make an Audio-Visual Script from a text file written in a Markdown-like syntax.
 
     Creates an HTML output file from the input file.
 
     if arguments is None, uses sys.argv - via argparse
-    if no filename is specified, parses sys.stdin -- TODO: IS THIS TRUE?
+    if no filename is specified, parses sys.stdin -- //TODO: IS THIS TRUE?
 
     Exit code:
         0 -- Success
@@ -194,7 +201,7 @@ def mkavscript_md(arguments=None):
     parser = ArgumentParser(description='Create an HTML file in Audio-Visual script format from a text file.',
                             epilog='If filename is not specified, program reads from stdin.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
-    parser.add_argument('-c', '--cssfile', nargs='?', const='avscript_md.css', default='avscript_md.css', help='the CSS file you want used for the styling. Default is avscript_md.css')
+    parser.add_argument('-c', '--cssfile', nargs='?', const='smd.css', default='smd.css', help='the CSS file you want used for the styling. Default is smd.css')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to')
     parser.add_argument('-o', '--open', nargs='?', const=True, default=False, help='whether or not to open the resulting HTML output file with the default system app')
 
@@ -204,4 +211,4 @@ def mkavscript_md(arguments=None):
 
 
 if __name__ == '__main__':
-    exit(mkavscript_md())
+    exit(livesmd())
