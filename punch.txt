@@ -1,0 +1,68 @@
+Punch List Items.
+-----------------
+
+1. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
+2. Remove bookmark support, unless I can think of how it could be used (for hyperlinks within the current doc, right?)
+3. Remove all the CSS that relates to A/V scripts
+4. Remove all special code relating to A/V scripts
+5. Figure out how to implement the outer HTML Tag support
+6. Figure out how to implement the <head></head> support
+7. Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
+8. Document the @embed "filename" support.
+9. Inline links and Reference links do not work. I think it's because you have to use @link to define links... Fix the docs.
+10. Mailto links and Automatic links also do not seem to work. Fix the docs.
+11. Link aliases don't work. Fix the docs.
+12. Bookmark syntax is wrong. Fix the docs.
+13. Cover, Revision & Contact are wrong. Fix the docs.
+14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
+15. Is varv2 a think? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
+
+
+
+
+
+
+
+
+1. Finish up livesmd.py and release
+4. Move all of these things to the issues tracker in github, and get rid of this file.
+
+Bugs/Fixes Needed
+-----------------
+Look to see if I can make further improvements with speed. Cut down 40% of the calls
+to markdown by only calling _md with lines that request the "marked_down" line...
+Use python -m profile debug.py (debug.py loads and runs avscript -f ...)
+
+Need ability to display error messages on ambiguous variable names.
+@debug on="ns.add". Might need to spruce it up a bit. If you specify
+a namespace, should this be okay? Because we rely on this for image.name
+and var.name, as a way to create linked shots... 
+
+Is the raw I have implemented any good? Or should I make it so it's done
+in the namespaces module with an optional parameter, and then use @code
+macros to access any element in raw form?
+
+Remove unused code in .core module
+
+Minor annoyance when dumping debug messages, during shots, the formatting
+is getting messed up. Most likely due to somewhere we are not escaping HTML
+output (maybe markdown, but that gets sketchy, so maybe not fixable)...
+
+--------------------
+Things to test:
+
+Document:
+
+Rainy Day Fixes/Changes:
+
+Parenthesis inside a variable string doesn't parse correctly
+For now, the solution is to use html entities (&lpar; and &rpar;)
+e.g. [var.section(t="Scene 15 - Location S3:42 L:~8s (Ending Instrumental)")]
+
+Fix bug where ' inside a string [var.attr(a="this doesn’t work")]
+--workaround use &apos;
+
+Can I change the HTML formatting from before hand to on the backend, when I actually output?
+That would enable me to more readily detect unbalanced tags
+And I could format the output so it's nice and easy to read.
+
