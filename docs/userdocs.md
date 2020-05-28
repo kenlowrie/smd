@@ -1,9 +1,9 @@
-{:.blue.center}#AVScript User Manual
-[workingtitle]=AVScript Markdown Utility
-[storysummary]=This manual describes the *AVScript Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create A/V Style scripts quickly, easily and most important, efficiently. ***Enjoy!***[bb]**NOTE:**[bb]This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax.
+{:.blue.center}#Script Markdown User Manual
+[workingtitle]=Script Markdown Utility
+[storysummary]=This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create A/V Style scripts quickly, easily and most important, efficiently. ***Enjoy!***[bb]**NOTE:**[bb]This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax. //TODO test.
 
 //You will probably need to update this path to make this work
-[path]=/Users/ken/Dropbox/shared/src/script/avscript/docs/import
+[path]=/Users/ken/Dropbox/shared/src/script/smd/docs/import
 @import '[path]/userguideheading.md'
 
 [link.bm_factory(nm="inlinemd" t="Inline Markdown")]
@@ -43,8 +43,8 @@
     [link.debug.link] - **Dumping variables and links**
     [link.summary.link] - **Summary of the User Guide**
 
-## What is AVScript?
-AVScript is a Python utility that takes plain text files loosely (oh, so loosely) based on Markdown as input, and generates Audio/Video (A/V) Style scripts in HTML format. A CSS file is used to style the output, making it super easy to customize the final render to your liking.
+## What is SMD?
+SMD is a Python utility that takes plain text files loosely (oh, so loosely) based on Markdown as input, and generates Audio/Video (A/V) Style scripts in HTML format. A CSS file is used to style the output, making it super easy to customize the final render to your liking.
 
 At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.
 
@@ -230,7 +230,7 @@ And that's all good. It's concise, I only have to write *cls* in [ ] and it is w
 [Cloudy Logic]=cls
 Now, when I write [Cloudy Logic], it is wrapped with the link for *cls*. Cool!
 
-[link.divs]
+[link.div]
 {:.plain}@@@ plainTitle
 ##Divs
 You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. The complete syntax is: 
@@ -379,7 +379,7 @@ The path can be specified as either **'$/path/filename'** or **'$path/filename'*
 
 These keywords, @raw, @image and @var, can be used to incorporate more control over the output of your document. I'll provide a high level look at each of them, but probably the best way to see what type of flexibility they offer would be to review some of the samples in the "tests" directory.
 
-First things first, because these describing content dynamically using these keywords can get a bit long, you'll want to get familiar with the line continuation character '\'. The line continuation character can actually be used anywhere, but I document it here because it was this support that caused me to introduce it. Anyway, you can continue a line by ending it with the '\' character (spaces or tabs can follow, but it must be the last non-white space character on the line). When you do that, the internal file handler sees the continuation character, and reads the next line, concatenating it onto the current line. For example:
+First things first, because describing content dynamically using these keywords can get a bit long, you'll want to get familiar with the line continuation character '\'. The line continuation character can actually be used anywhere, but I document it here because it was this support that caused me to introduce it. Anyway, you can continue a line by ending it with the '\' character (spaces or tabs can follow, but it must be the last non-white space character on the line). When you do that, the internal file handler sees the continuation character, and reads the next line, concatenating it onto the current line. For example:
 
 {:.syntax}--- .
     {:.indent}@var _id="myvar"  &#92;
@@ -432,17 +432,17 @@ Here's how it works. _id="varname" is going to be how you reference any of the a
             &#91;varname._id] would be ***varname***, and [b]\
             &#91;varname._format] would be ***format string***.
 
-So that's pretty cool, but there's a bit more to the _format attribute. You can reference the attributes contained within the variable by using **{{self.}}.attrname**. Given that, if we rewrote the prior example as:
+So that's pretty cool, but there's a bit more to the _format attribute. You can reference the attributes contained within the variable by using **{{self}}.attrname**. Given that, if we rewrote the prior example as:
 
-{:.indent.bigandbold} @var _id="varname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}" 
+{:.indent.bigandbold} @var _id="fullname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}" 
 
 and then we wrote:
 
-{:.indent.bigandbold}&#91;varname]
+{:.indent.bigandbold}&#91;fullname]
 
-@var _id="varname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}"
+@var _id="fullname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}"
 
-The result would be: **[varname]**
+The result would be: **[fullname]**
 
 Using that, you can build some pretty powerful tools for automating frequently used tasks in your documents. Take a look at the film.md, image.md and varv2.md tests to get an idea of what you can do.
 
@@ -492,22 +492,22 @@ Say we want to display a storyboard in our shot AV file along with some common c
     [SP][SP][SP][SP]&lt;tr&gt;&lt;td class="item"&gt;Lens&lt;/td&gt;&lt;td&gt;**{{self.lens}}**&lt;/td&gt;&lt;/tr&gt;&#92;[b]\
     [SP][SP][SP][SP]&lt;tr&gt;&lt;td class="item"&gt;Crane&lt;/td&gt;&lt;td&gt;{{self.crane}}&lt;/td&gt;&lt;/tr&gt;&#92;[b]\
 &lt;/table&gt;[b]\
-@var _id="shotinfo" _format="- [varv2.{{self.shotid}}.desc]&lt;br /&gt;[image.{{self.shotid}}]&lt;br /&gt;[varv2.{{self.shotid}}]" shotid="NOTSET"
+@var _id="shotinfo" _format="- [var.{{self.shotid}}.desc]&lt;br /&gt;[image.{{self.shotid}}]&lt;br /&gt;[var.{{self.shotid}}]" shotid="NOTSET"
 
 And now we agree to use the convention of defining an **@image** and an **@var** variable using the same ***_id*** value, which would result in us doing something like this in our document:
 
-{:.indent.bigandbold} @var _id="shot1" desc="*Short Description shot 1*" lens="**85mm**" crane="yes" _format="[_shotinfo_]"[b]\
+{:.indent.bigandbold} @var _id="shot1" name="WS: Sky with top of trunk bottom of frame" desc="*Short Description shot 1*" lens="**85mm**" crane="yes" _format="[_shotinfo_]"[b]\
 @image _id="shot1" src="[imgpath]/shot1.jpg" style="[ss]"[b][b]\
-@var _id="shot2" desc="*Short Description shot 2*" lens="**50mm**" crane="yes" _format="[_shotinfo_]"[b]\
+@var _id="shot2" name="MS: Taking groceries from trunk" desc="*Short Description shot 2*" lens="**50mm**" crane="yes" _format="[_shotinfo_]"[b]\
 @image _id="shot2" src="[imgpath]/shot2.jpg" style="[ss]"
 And now, we can auto generate the shot and info using syntax like this:
 
 {:.indent.bigandbold} @set _id="shotinfo" shotid="shot1"[b]\
-[varv2.shotinfo][b]\
+[var.shotinfo][b]\
 And some random shot comments here.[b]\
 [b]\
 @set _id="shotinfo" shotid="shot2"[b]\
-[varv2.shotinfo][b]\
+[var.shotinfo][b]\
 Some random shot 2 comments here.
 
 And then, when we run the prior code, we'd get this:
@@ -538,21 +538,21 @@ And then, when we run the prior code, we'd get this:
     <tr><td class="item">Crane</td><td>{{self.crane}}</td></tr>\
 </table>
 
-@var _id="shotinfo" _format="- [varv2.{{self.shotid}}.desc]<br />[image.{{self.shotid}}]<br />[varv2.{{self.shotid}}]" shotid="NOTSET"
+@var _id="shotinfo" _format="- [var.{{self.shotid}}.desc]<br />[image.{{self.shotid}}]<br />[var.{{self.shotid}}]" shotid="NOTSET"
 
-@var _id="shot1" desc="*Short Description*" lens="**85mm**" crane="yes" _format="[_shotinfo_]"
+@var _id="shot1" name="WS: Sky with top of trunk bottom of frame" desc="*Short Description*" lens="**85mm**" crane="yes" _format="[_shotinfo_]"
 @image _id="shot1" src="[path]/shot1.jpg" style="[ss]"
 
-@var _id="shot2" desc="*Short Description*" lens="**50mm**" crane="yes" _format="[_shotinfo_]"
+@var _id="shot2" name="MS: Taking groceries from trunk" desc="*Short Description*" lens="**50mm**" crane="yes" _format="[_shotinfo_]"
 @image _id="shot2" src="[path]/shot2.jpg" style="[ss]"
 
 
 @set _id="shotinfo" shotid="shot1"
-[varv2.shotinfo]
+[var.shotinfo]
 And some random shot comments here.[b]\
 
 @set _id="shotinfo" shotid="shot2"
-[varv2.shotinfo]
+[var.shotinfo]
 Some random shot 2 comments here.
 
 @break
@@ -655,6 +655,8 @@ For convenience, you can list all of the defined shots in a list at the end of y
 {:.plain}@@@ plainTitle
 {:.plainTitle}##Debugging
 
+.//TODO: This is completely out of date. These tags are not supported, and debugging has been completely redone, so need to document it.
+
 There are two debugging tags that can be used in your document, and like ***///Shotlist///***, they must be on a line of their own.
 
 {:.indent}###///Links/// - dumps all the links defined so far
@@ -663,7 +665,10 @@ There are two debugging tags that can be used in your document, and like ***///S
 Here are those two tags in action for this document.
 
 ///Links///
+@dump link="."
+
 ///Variables///
+@dump basic="." var="."
 
 [link.summary]
 {:.plain}@@@ plainTitle
