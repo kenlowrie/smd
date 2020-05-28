@@ -60,7 +60,7 @@ Future - aka Wish List
 """
 
 from re import IGNORECASE, findall, match
-from sys import exit
+from sys import exit, exc_info
 from os.path import isfile
 
 from .core.line import Line
@@ -110,14 +110,14 @@ class ScriptParser(StdioWrapper):
 
         #_set_ns_xface(ns_ptr)
         exec("from .core.utility import _set_ns_xface;_set_ns_xface(self._ns)")
-        #_set_ns_xface(ns_ptr)
+        #_set_line_cache(self.stdinput.cache())
         exec("from .core.utility import _set_line_cache;_set_line_cache(self.stdinput.cache())")
         #_init_debug()
         exec("from .core.utility import _init_debug;_init_debug()")
 
 
         self._css_class_prefix = Regex(r'\{:([\s]?.\w[^\}]*)\}(.*)')
-        #TODO: Next line was attempt at allowing embedded quotes inside id="string" parameters
+        #//TODO: Next line was attempt at allowing embedded quotes inside id="string" parameters
         #self._special_parameter = Regex(r'\s([\w]+)\s*=\s*\"(.*?)(?<!\\)\"(?=[,|\s)])')
         self._special_parameter = Regex(r'\s([\w]+)\s*=\s*\"(.*?)(?<!\\)\"')
 
@@ -129,6 +129,7 @@ class ScriptParser(StdioWrapper):
             'header': RegexMain(True, False, True, r'^([#]{1,6})[ ]*', r'^([#]{1,6})[ ]*(.*)'),
             'alias': RegexMain(True, True, False, r'^\[([^\]]+)\](?=([\=](.+)))', None),
             'import': RegexMain(True, False, False, r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]', None),
+            'embed': RegexMain(True, False, False, r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]', None),
             'image': RegexMain(True, True, False, r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)', None),
             'var': RegexMain(True, True, False, r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)', None), 
             'set': RegexMain(True, True, False, r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)', None),
@@ -394,7 +395,7 @@ class ScriptParser(StdioWrapper):
         self.oprint(self._html.formatLine("</div>"))
 
     def parse(self):
-        """Parse an A/V Script File in text format and emit HTML code."""
+        """Parse a Script File in text format and emit HTML code."""
 
         """
         Following are the helper functions for the parse() method.
@@ -460,6 +461,23 @@ class ScriptParser(StdioWrapper):
                     self.iopen(m.group(1))
                 except FileError as fe:
                     self.oprint(fe.errmsg)
+
+        def handle_embed(m, lineObj):
+            """Handle an embed parse line"""
+            if(m is not None and len(m.groups()) == 1):
+                try:
+                    embed_fn = m.group(1)
+                    if not isfile(embed_fn):
+                        raise FileError(1, "ERROR: Unable to embed '{}'. File does not exist.<br />".format(embed_fn))
+
+                    with open(embed_fn) as f:
+                        self.oprint(f.read())
+                except FileError as fe:
+                    self.oprint(fe.errmsg)
+                except IOError as e:
+                    self.oprint(f"I/O error({e.errno}): {e.strerror}")
+                except:
+                    self.oprint(f"Unexpected error processing @embed file[{embed_fn}]:", exc_info()[0])
 
         def handle_break(m, lineObj):
             """Handle a break parse line"""
@@ -651,6 +669,7 @@ class ScriptParser(StdioWrapper):
             ('link', handle_link),
             ('html', handle_html),
             ('break', handle_break),
+            ('embed', handle_embed),
             ('stop', handle_stop),
             ('shotlist', handle_shotlist),
             ('alias', handle_alias),
@@ -697,31 +716,31 @@ class ScriptParser(StdioWrapper):
 
         return rc
 
-    def open_and_parse(self, avscript=None):
-        """Open an A/V Script File in text format and emit HTML code.
+    def open_and_parse(self, script=None):
+        """Open a Script Markdown file in text format and emit HTML code.
 
         Arguments:
-        avscript -- the script to parse or None to parse sys.stdin
+        script -- the script to parse or None to parse sys.stdin
         """
         # Ok, open the specified file (or sys.stdin if avscript is None)
         try:
-            if(avscript is not None):
+            if(script is not None):
                 # If the file doesn't exist, bail now.
-                if not isfile(avscript):
+                if not isfile(script):
                     return 1
 
-            self.iopen(avscript)
+            self.iopen(script)
 
         except IOError:
             return 2
 
         # Set the flags saying whether we started with stdin or a file
-        self.isetio(True if avscript is None else False)
+        self.isetio(True if script is None else False)
         return self.parse()
 
 
 def smd_parse_file(args=None):
-    """Parse specified input file as AV Script Format text file.
+    """Parse specified input file as Script Markdown text file.
 
     if args is None, uses sys.argv - via argparse
     if no filename is specified, parses sys.stdin
@@ -734,7 +753,7 @@ def smd_parse_file(args=None):
     """
     from argparse import ArgumentParser
 
-    parser = ArgumentParser(description='Parse AV Format text files into HTML format.',
+    parser = ArgumentParser(description='Parse Script Markdown text files into HTML format.',
                             epilog='If filename is not specified, program reads from stdin.')
     parser.add_argument('-f', '--filename', help='the file that you want to parse')
     args = parser.parse_args(args)
@@ -743,4 +762,4 @@ def smd_parse_file(args=None):
 
 
 if __name__ == '__main__':
-    exit(av_parse_file())
+    exit(smd_parse_file())
