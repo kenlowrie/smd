@@ -13,6 +13,7 @@ setup(name='smd',
       entry_points = {
         'console_scripts': ['smd=smd.smd:smd_parse_file',
                             'livesmd=smd.livesmd:livesmd',
+                            'ismd=smd.ismd:ismd',
         ],
       },
       include_package_data=True,
