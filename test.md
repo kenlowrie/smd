@@ -4,6 +4,35 @@
 
 [header]
 
+
+
+@debug on="ns.code"
+
+[code.equals(v1="display.print", v2="display.test", true="display.true", false="display.false")]
+
+@dump code="equals" var="display"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@stop
+
 @var _id="display0" \
     print="0"\
     test="1"\ 
