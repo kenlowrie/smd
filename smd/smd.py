@@ -512,7 +512,7 @@ class ScriptParser(StdioWrapper):
                 else:
                 
                     for key in d:
-                        if key not in ['on', 'off', 'enabled', 'toggle']:
+                        if key not in ['on', 'off', 'enabled', 'toggle', 'tags']:
                             self.oprint("<br /><strong>Unknown debug key: <em>{}</em></strong>".format(key))
                         elif key == 'on':
                             self._dbgTracker.on(d[key])
@@ -522,23 +522,14 @@ class ScriptParser(StdioWrapper):
                             self._dbgTracker.enabled(d[key])
                         elif key == 'toggle':
                             self._dbgTracker.toggle(d[key])
+                        elif key == 'tags':
+                            self._dbgTracker.dumpTags()
                         
-                    #ts_key = "timestamp"
-
-                    #if d.get(ts_key) and d.get(ts_key).lower() in ['false', 'no', 'off', '0']:
-                    #    ts_str = ""
-                    #else:
-                    #    from time import strftime
-                    #    ts_str = " ({})".format(strftime("%Y%m%d @ %H:%M:%S"))
-
-                    #divstr = self._html.formatLine("<div class=\"revision\">\n", 1)
-                    #divstr += self._html.formatLine("<p class=\"revTitle\">Revision: {0}{1}</p>\n".format(fmt("v").rstrip(), ts_str), -1)
-                    #divstr += self._html.formatLine("</div>")
             else:
                 self.oprint(lineObj.current_line)
 
 
-        # TODO: Should this be a namespace?
+        # //TODO: Should this be a namespace?
         def handle_shotlist(m, lineObj):
             """Handle a shotlist parse line."""
             self.oprint(self._html.formatLine("<div class=\"shotlist\">", 1))

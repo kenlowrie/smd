@@ -194,7 +194,8 @@ class DebugTracker(object):
 
             self._check_valid(var)
             eval('self._get_tag(var).{}()'.format(method))
-            s = 'Process({1}): {0} is now {2}<br />'.format(var, method, 'enabled' if self._get_state(var) else "disabled")
+            _fmtinfo = ['strong', 'enabled'] if self._get_state(var) else ['em', 'disabled']
+            s = '<{2}>Method({1}): {0} is now {3}</{2}><br />'.format(var, method, _fmtinfo[0], _fmtinfo[1])
             self._out('<span class="debug green">{}</span>'.format(s))
 
     def on(self, tag):
@@ -210,8 +211,10 @@ class DebugTracker(object):
         self.call(tag, 'enabled')
 
     def dumpTags(self):
-        for tag in self.debug_tags:
-            self._out("{} is {}<br />".format(tag, 'on' if self.debug_tags[tag].state else 'off'))
+        self._out('<div><h3>Registered debug tags</h3>')
+        for tag in sorted(self.debug_tags):
+            self._out('<span class="debug green"><{1}>{0}</{1}></span><br />'.format(tag, 'strong' if self.debug_tags[tag].state else 'em'))
+        self._out('</div>')
 
 
 if __name__ == '__main__':
