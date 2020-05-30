@@ -80,15 +80,16 @@ class FileName(object):
         return self._htmlfile
 
 
-def get_head(mdfile, cssFile):
+def get_head(mdfile, cssFile, title = None):
     path, name = split(mdfile)
     file, ext = splitext(name)
+    the_title = title if title is not None else file
 
     head = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>"""
-    head += file
+    head += the_title
     head += """</title>
     <meta charset="UTF-8">
     <link rel='stylesheet' href='{0}' />
@@ -110,8 +111,8 @@ def message(msgstr):
     print('{0}: {1}'.format(me.alias(), msgstr))
 
 
-def add_header(htmlfile, fileobj, cssFile):
-    htmlfile.write(get_head(fileobj.rootname, cssFile))
+def add_header(htmlfile, fileobj, cssFile, title):
+    htmlfile.write(get_head(fileobj.rootname, cssFile, title))
 
 
 def add_footer(htmlfile):
@@ -130,7 +131,7 @@ and it will do the right thing with either.
 """
 
 
-def _mkhtml(mdfile, cssfile, outpath, open_output_file):
+def _mkhtml(mdfile, cssfile, outpath, open_output_file, title=None):
     """
     Process 'mdfile'
 
@@ -166,7 +167,7 @@ def _mkhtml(mdfile, cssfile, outpath, open_output_file):
     from smd.smd import ScriptParser
 
     message("Creating: " + fileobj.rootname)
-    add_header(htmlfile, fileobj, cssfile)
+    add_header(htmlfile, fileobj, cssfile, title)
 
     avscript_obj = ScriptParser()
     avscript_obj.stdoutput = htmlfile
