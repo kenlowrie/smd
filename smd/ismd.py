@@ -1,14 +1,73 @@
 #!/usr/bin/env python3
 
+class _Error(Exception):
+    """Base exception class for this module."""
+    pass
+
+
+class MonitorError(_Error):
+    """Monitor exceptions raised by this module."""
+    def __init__(self, errmsg):
+        self.errmsg = errmsg
+
+
+class OutputMonitor():
+    def __init__(self):
+        pass
+    def create(self):
+        pass
+    def activate(self):
+        pass
+    def refresh(self):
+        pass
+    def close(self):
+        pass
+
+import tkinter as tk
+
+class Window(OutputMonitor):
+    def __init__(self, filepath=None):
+        super(Window, self).__init__()
+        print("creating output window...")
+        self.create(filepath)
+
+    def activate(self):
+        self.window.update()
+
+    def create(self, filepath=None):
+        if filepath is not None:
+            self.filepath = filepath
+            self.window = tk.Tk()
+            self.scrollbar = tk.Scrollbar(self.window)
+            self.textbox = tk.Text(self.window)
+            self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+            self.textbox.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+            self.scrollbar.config(command=self.textbox.yview)
+            self.textbox.config(yscrollcommand=self.scrollbar.set)
+            self.refresh()
+            self.activate()
+
+    def refresh(self):
+        data = "the new data: {}".format(time.asctime())
+        with open(self.filepath) as f:
+            data = f.read()
+
+        self.textbox.replace("1.0", tk.END, data)
+
+    def close(self):
+        self.window.destroy()
+
+
 from selenium import webdriver
-#from selenium.webdriver.common.keys import Keys
 
-class Browser():
+class Browser(OutputMonitor):
     def __init__(self, url=None):
+        super(Browser, self).__init__()
+        print("starting browser...")
         self.driver = webdriver.Chrome()
-        self.load(url)
+        self.create(url)
 
-    def load(self, url=None):
+    def create(self, url=None):
         if url is not None:
             self.driver.get(url)
 
@@ -17,6 +76,34 @@ class Browser():
 
     def close(self):
         self.driver.close()
+
+class Monitor():
+    def __init__(self, monitor, filepath):
+        self.monitor = None
+        self.type = monitor
+        if self.type == "browser":
+            self.monitor = Browser(f"file://{filepath}")
+        elif self.type == "window":
+            self.monitor = Window(filepath)
+        else:
+            raise MonitorError("Invalid monitor type [{}]".format(monitor))
+
+    def create(self):
+        if self.monitor is not None:
+            self.monitor.create()
+
+    def activate(self):
+        if self.monitor is not None:
+            self.monitor.activate()
+
+    def refresh(self):
+        if self.monitor is not None:
+            self.monitor.refresh()
+
+    def close(self):
+        if self.monitor is not None:
+            self.monitor.close()
+
 
 class FileEvents:
     def __init__(self):
@@ -47,15 +134,15 @@ class ScriptParser():
         self.cssFile = Path(cssFile).resolve()
         self.outDir = Path(outputDir).resolve()
         self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
-        self.compile(True)
+        self.parse(True)
 
     def parameterInfo(self):
         print(f"smdFile={self.smdFile}\ncssFile={self.cssFile}\noutputDir={self.outDir}\nhtmlFile={self.outFile}")
 
-    def compile(self,firstTime=False):
+    def parse(self,firstTime=False):
         try:
             print("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " to start ..."))
-            _mkhtml(str(self.smdFile), str(self.cssFile), str(self.outDir), False)
+            _mkhtml(str(self.smdFile), str(self.cssFile), str(self.outDir), False, title="//TODO: FIX My cool page title")
             self.lastParseOK = True
         except:
             print("Caught exception parsing the script ...")
@@ -73,9 +160,9 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler 
 
 class WatchDirectory: 
-    def __init__(self, browserWindow): 
+    def __init__(self, monitorWindow): 
         self.observer = Observer() 
-        self.bWin = browserWindow
+        self.monitor = monitorWindow
 
     def run(self, watch_dir, sp): 
         self.watchDirectory = watch_dir
@@ -86,14 +173,16 @@ class WatchDirectory:
         global gb_file_events
         try: 
             while True: 
+                self.monitor.activate()
                 time.sleep(1)
                 if gb_file_events.haveEvent():
                     print("file modified event received: {}".format(gb_file_events.popEvent())) 
-                    sp.compile()
-                    print("parse done, refreshing browser...")
-                    self.bWin.refresh()
+                    sp.parse()
+                    print(f"parse done, refreshing {self.monitor.type}...")
+                    self.monitor.refresh()
         except: 
             self.observer.stop() 
+            #traceback.print_exc()
             print("\nObserver Stopped")
 
         print("Shutting down browser observer thread...")
@@ -141,6 +230,7 @@ def ismd(arguments=None):
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
     parser.add_argument('-c', '--cssfile', nargs='?', const='smd.css', default='smd.css', help='the CSS file you want used for the styling. Default is smd.css')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to')
+    parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor you want used to display changes. Default is browser')
 
     args = parser.parse_args(None if arguments is None else arguments)
 
@@ -150,12 +240,9 @@ def ismd(arguments=None):
         print("stopping, initial parse failed...")
         return 1
 
-    print("starting browser...")
+    monitor = Monitor(args.monitor, str(sp.outFile))
 
-    # looks like they are monitoring keyboard interrupt and cleaning up, so don't call browser.close()...
-    browserWindow = Browser(f"file://{str(sp.outFile)}")
-
-    watcher = WatchDirectory(browserWindow)
+    watcher = WatchDirectory(monitor)
     watcher.run(str(sp.smdFile.parent), sp)
 
     return 0
