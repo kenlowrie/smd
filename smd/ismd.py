@@ -16,7 +16,7 @@ class OutputMonitor():
         pass
     def create(self):
         pass
-    def activate(self):
+    def update(self):
         pass
     def refresh(self):
         pass
@@ -28,48 +28,41 @@ import tkinter as tk
 class Window(OutputMonitor):
     def __init__(self, filepath=None):
         super(Window, self).__init__()
-        print("creating output window...")
-        self.create(filepath)
+        self.filepath = filepath
 
-    def activate(self):
-        self.window.update()
-
-    def create(self, filepath=None):
-        if filepath is not None:
-            self.filepath = filepath
-            self.window = tk.Tk()
-            self.scrollbar = tk.Scrollbar(self.window)
-            self.textbox = tk.Text(self.window)
-            self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-            self.textbox.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
-            self.scrollbar.config(command=self.textbox.yview)
-            self.textbox.config(yscrollcommand=self.scrollbar.set)
-            self.refresh()
-            self.activate()
+    def create(self):
+        self.window = tk.Tk()
+        self.scrollbar = tk.Scrollbar(self.window)
+        self.textbox = tk.Text(self.window)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.textbox.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+        self.scrollbar.config(command=self.textbox.yview)
+        self.textbox.config(yscrollcommand=self.scrollbar.set)
+        self.refresh()
+        self.update()
 
     def refresh(self):
-        data = "the new data: {}".format(time.asctime())
         with open(self.filepath) as f:
             data = f.read()
 
         self.textbox.replace("1.0", tk.END, data)
 
+    def update(self):
+        self.window.update()
+
     def close(self):
         self.window.destroy()
-
 
 from selenium import webdriver
 
 class Browser(OutputMonitor):
     def __init__(self, url=None):
         super(Browser, self).__init__()
-        print("starting browser...")
-        self.driver = webdriver.Chrome()
-        self.create(url)
+        self.url = url
 
-    def create(self, url=None):
-        if url is not None:
-            self.driver.get(url)
+    def create(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get(self.url)
 
     def refresh(self):
         self.driver.refresh()
@@ -83,25 +76,28 @@ class Monitor():
         self.type = monitor
         if self.type == "browser":
             self.monitor = Browser(f"file://{filepath}")
-        elif self.type == "window":
+        elif self.type == "hostgui":
             self.monitor = Window(filepath)
         else:
             raise MonitorError("Invalid monitor type [{}]".format(monitor))
 
     def create(self):
         if self.monitor is not None:
+            print(f"creating {self.type} window...")
             self.monitor.create()
 
-    def activate(self):
+    def update(self):
         if self.monitor is not None:
-            self.monitor.activate()
+            self.monitor.update()
 
     def refresh(self):
         if self.monitor is not None:
+            print(f"refreshing {self.type} window...")
             self.monitor.refresh()
 
     def close(self):
         if self.monitor is not None:
+            print(f"closing {self.type} window...")
             self.monitor.close()
 
 
@@ -141,7 +137,7 @@ class ScriptParser():
 
     def parse(self,firstTime=False):
         try:
-            print("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " to start ..."))
+            print("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " initially ..."))
             _mkhtml(str(self.smdFile), str(self.cssFile), str(self.outDir), False, title="//TODO: FIX My cool page title")
             self.lastParseOK = True
         except:
@@ -156,36 +152,43 @@ class ScriptParser():
 
 
 import time 
+import threading
 from watchdog.observers import Observer 
 from watchdog.events import FileSystemEventHandler 
 
 class WatchDirectory: 
-    def __init__(self, monitorWindow): 
+    def __init__(self, monitor, scriptParser): 
         self.observer = Observer() 
-        self.monitor = monitorWindow
+        self.sp = scriptParser
+        self.monitor = Monitor(monitor, str(self.sp.outFile))
 
-    def run(self, watch_dir, sp): 
-        self.watchDirectory = watch_dir
+    def run(self): 
+        self.monitor.create()   # make sure the monitor is up and running
+        self.watchDirectory = str(self.sp.smdFile.parent)
         event_handler = Handler()
         event_handler.mytickle = False
         self.observer.schedule(event_handler, self.watchDirectory, recursive = False) 
         self.observer.start() 
         global gb_file_events
+        threadid = threading.current_thread().native_id
         try: 
             while True: 
-                self.monitor.activate()
-                time.sleep(1)
+                self.monitor.update()
+                time.sleep(0.1)
                 if gb_file_events.haveEvent():
-                    print("file modified event received: {}".format(gb_file_events.popEvent())) 
-                    sp.parse()
-                    print(f"parse done, refreshing {self.monitor.type}...")
-                    self.monitor.refresh()
+                    curFile = gb_file_events.popEvent()
+                    if curFile == str(self.sp.smdFile):
+                        self.sp.parse()
+                        print(f"{threadid}: Parse done, refreshing {self.monitor.type}...")
+                        self.monitor.refresh()
+                    else:
+                        print(f"{threadid}: Modified file: {curFile} is not being watched; ignoring ...")
         except: 
             self.observer.stop() 
-            #traceback.print_exc()
+            traceback.print_exc()
             print("\nObserver Stopped")
 
-        print("Shutting down browser observer thread...")
+        print("Shutting down watch observer thread...")
         self.observer.join() 
 
 class Handler(FileSystemEventHandler): 
@@ -200,12 +203,9 @@ class Handler(FileSystemEventHandler):
             print("Watchdog received created event - %s." % event.src_path) 
         elif event.event_type == 'modified': 
             # Event is modified, you can process it now 
-            print("Watchdog received modified event - %s." % event.src_path)
+            print(f"{threading.current_thread().native_id}: Watchdog received modified event - {event.src_path}")
             global gb_file_events
             gb_file_events.pushEvent(event.src_path)
-            #Handler.mytickle = True
-            #gb_tickle = True
-
 
 
 
@@ -240,10 +240,8 @@ def ismd(arguments=None):
         print("stopping, initial parse failed...")
         return 1
 
-    monitor = Monitor(args.monitor, str(sp.outFile))
 
-    watcher = WatchDirectory(monitor)
-    watcher.run(str(sp.smdFile.parent), sp)
+    WatchDirectory(args.monitor, sp).run()
 
     return 0
 
