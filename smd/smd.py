@@ -68,6 +68,7 @@ from .core.link import LinkDict
 from .core.debug import DebugTracker, set_default_debug_register, Debug
 from .core.regex import Regex, RegexMD, RegexMain
 from .core.stdio import StdioWrapper
+from .core.system import SystemDefaults
 from .core.variable import Namespaces
 from .core.bookmark import BookmarkList
 from .core.markdown import Markdown
@@ -81,7 +82,7 @@ class ScriptParser(StdioWrapper):
 
     Reads a text file (or reads from sys.stdin) and outputs HTML.
     """
-    def __init__(self):
+    def __init__(self, sysDefaults=None):
         """
         Initialize the required instance variables for this class.
         """
@@ -96,6 +97,8 @@ class ScriptParser(StdioWrapper):
         self.debug_smd_line = Debug('smd.line')
         self.debug_smd_raw = Debug('smd.raw')
         self.stdinput.initDebug()
+
+        self._systemDefaults = sysDefaults if sysDefaults is not None else SystemDefaults()
 
         self._md = Markdown()           # New markdown support in separate class
 
@@ -568,6 +571,8 @@ class ScriptParser(StdioWrapper):
                 self.oprint(self._html.formatLine("<code>", 1))
                 if d.get('all') and d.get('all').lower() in ['*', '1', 'y', 'yes', 't', 'true']:
                     self._ns.dumpVars()
+                elif d.get('defaults'):     #//TODO: This is a kludge, rethink it...
+                    self._systemDefaults.dump(self.oprint)
                 else:
                     self._ns.dumpNamespaces(d)
                 self.oprint(self._html.formatLine("</code>", -1, False))
@@ -675,7 +680,7 @@ class ScriptParser(StdioWrapper):
         
         try:
             # Print the outer DIV header
-            self.oprint(self._html.formatLine("<div class=\"wrapper\">", 1))
+            #self.oprint(self._html.formatLine("<div class=\"wrapper\">", 1))
 
             # Read the file until EOF and parse each line
             while(self._readNextLine() != ''):
@@ -696,10 +701,10 @@ class ScriptParser(StdioWrapper):
                 if not matched and self._line.current_line.rstrip() and not self._reprocessLine():
                     divstr = self._line.current_line
                     # divstr += self._peekPlainText("span")
-                    self._printInExtrasDiv("<p{1}>{0}</p>".format(divstr, self._line.css_prefix))
-
+                    #self._printInExtrasDiv("<p{1}>{0}</p>".format(divstr, self._line.css_prefix))
+                    self.oprint(divstr)
             # Now close off the outer DIV from above.
-            self.oprint(self._html.formatLine("</div>", -1, False))
+            #self.oprint(self._html.formatLine("</div>", -1, False))
 
         except RegexError as regex_error:
             self.oprint("{}".format(regex_error.errmsg))
