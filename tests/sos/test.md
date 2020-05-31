@@ -1,22 +1,39 @@
-@embed "[sys.imports]/default_1920x1080o.md"
-Your stuff here
-@embed "[sys.imports]/default_1920x1080c.md]"
+//@embed "[sys.imports]/default_1920x1080o.md"
+Your stuff here... and here too! and maybe here as well! And  wright up here too. awesome! right??
+//@embed "[sys.imports]/default_1920x1080c.md"
+[b]=<br />
+[b]
+@embed "[sys.imports]/def-html.md"  # these files need to check for existence of user override and honor it...
+@embed "[sys.imports]/def-head.md"
+
+### CHECK THIS OUT!!
+
+// OR this way...
+
+@embed "[sys.imports]/def-open.md"
+
+## And then at the end
+
+@embed "[sys.imports]/def-close.md"
 
 // a very simple example
-@html _id="html" _tag="html"
-@html _id="body" _tag="body"
-@html _id="head" _tag="head"
-@html _id="title" _tag="title"
-@html _id="h1" _tag="h1"
+// @html _id="html" _tag="html"
+// @html _id="body" _tag="body"
+// @html _id="head" _tag="head"
+// @html _id="title" _tag="title"
+// @html _id="h1" _tag="h1"
 
-@@ [html.html.<]
-@@ [html.head.<][html.title.<]This is my cool title[html.title.>][html.head.>]
-@@ [html.body.<]
-@@ [html.h1.<]Hello, world![html.h1.>]
-@@ [html.body.>]
-@@ [html.html.>]
+// @@ [html.html.<]
+// @@ [html.head.<][html.title.<]This is my cool title[html.title.>][html.head.>]
+// @@ [html.body.<]
+// @@ [html.h1.<]Hello, world![html.h1.>]
+// @@ [html.body.>]
+// @@ [html.html.>]
 
-
+// I want @NS varname[=rval] [attr1=""] [attr2=""] [...]
+// @var foo=this
+// @var bar attr1="" attr2 = ""
+// @var foo=this attr1="" attr2=""
 
 
 the default startup needs to be absolutely nothing. you should have to type:
