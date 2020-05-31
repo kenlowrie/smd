@@ -183,15 +183,20 @@ class WatchDirectory:
                         self.monitor.refresh()
                     else:
                         print(f"{threadid}: Modified file: {curFile} is not being watched; ignoring ...")
+        except KeyboardInterrupt:
+            pass    # don't need to see a traceback for this
         except: 
+            traceback.print_exc()   # let's see what happened; wasn't expecting this
+        finally:
             self.observer.stop() 
-            traceback.print_exc()
             print("\nObserver Stopped")
 
         print("Shutting down watch observer thread...")
         self.observer.join() 
 
 class Handler(FileSystemEventHandler): 
+
+    #//TODO: Can I change this to use non-static handler with single method: on_modified()? like this (last example): https://www.geeksforgeeks.org/create-a-watchdog-in-python-to-look-for-filesystem-changes/
 
     @staticmethod
     def on_any_event(event): 
@@ -210,9 +215,9 @@ class Handler(FileSystemEventHandler):
 
 
 def ismd(arguments=None):
-    """Create HTML page from a text file written in Script Markdown.
-
-    Creates an HTML output file from the input file.
+    """Interactive Script Markdown Command Line Utility.
+    
+    This program creates an HTML page from a text file written in Script Markdown format, and monitors the input file for changes, refreshing the monitor window as the file is updated.
 
     if arguments is None, uses sys.argv - via argparse
 
@@ -225,12 +230,12 @@ def ismd(arguments=None):
     from argparse import ArgumentParser
     from pathlib import Path
 
-    parser = ArgumentParser(description='Create an HTML file in Audio-Visual script format from a text file.',
-                            epilog='If filename is not specified, program reads from stdin.')
+    parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
+                            epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
     parser.add_argument('-c', '--cssfile', nargs='?', const='smd.css', default='smd.css', help='the CSS file you want used for the styling. Default is smd.css')
-    parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to')
-    parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor you want used to display changes. Default is browser')
+    parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
+    parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
 
     args = parser.parse_args(None if arguments is None else arguments)
 
