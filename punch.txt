@@ -5,19 +5,27 @@ Punch List Items.
 2. Remove bookmark support, unless I can think of how it could be used (for hyperlinks within the current doc, right?)
 3. Remove all the CSS that relates to A/V scripts
 4. Remove all special code relating to A/V scripts
-5. Figure out how to implement the outer HTML Tag support
-6. Figure out how to implement the <head></head> support
-7. Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
+**5. Figure out how to implement the outer HTML Tag support
+**6. Figure out how to implement the <head></head> support
+**7. Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
 8. Document the @embed "filename" support.
 9. Inline links and Reference links do not work. I think it's because you have to use @link to define links... Fix the docs.
 10. Mailto links and Automatic links also do not seem to work. Fix the docs.
 11. Link aliases don't work. Fix the docs.
 12. Bookmark syntax is wrong. Fix the docs.
-13. Cover, Revision & Contact are wrong. Fix the docs.
+13. Cover, Revision & Contact are wrong. Fix the docs. Move all these "authoring" extensions to an appropriate .md file.
 14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
-15. Is varv2 a think? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
-
-
+15. Is varv2 a thing? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
+17. Document @debug, @debug key="re", @debug tags=""
+**18. Update the modified event to only track changes to the specific files being updated, instead of entire directory.
+**19. Use a thread to run the window mainloop, so Tk refreshes more often, like when you are dragging the scroll bar, etc. couldn't make this work, gave up for now.
+20. rework the builtins.md file. only define things that make sense globally. add something to pull in "user-builtins.md", maybe in the ~ folder, as .smd-builtins ?? cmdline switch to tell it to NOT load them, useful for testing, so we dont' introduce ambiguous variables.
+21. Review all the mindmaps, evernotes, etc., and make 1 consolidated list (here) of the things I need to be focused on.
+22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
+23. Implement the builtins.md and *-html.md loading in smd.py, then switch ismd to use smdparse instead of livesmd.
+24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
+25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
+26. Decide if the --load-default-builtins=Y|N, --load-user_bulitins=Y|N, etc., belong with smd.py, or an outer (livesmd, smdparse, ismd) script...
 
 
 
