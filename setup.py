@@ -14,6 +14,7 @@ setup(name='smd',
         'console_scripts': ['smd=smd.smd:smd_parse_file',
                             'livesmd=smd.livesmd:livesmd',
                             'ismd=smd.ismd:ismd',
+                            'smdparse=smd.smdparse:parse'
         ],
       },
       include_package_data=True,
