@@ -6,7 +6,7 @@ from .debug import *
 from .regex import *
 from .stdio import *
 from .stream import *
-from .system import *
+from .sysdef import *
 from .globals import *
 from .utility import *
 from .variable import *

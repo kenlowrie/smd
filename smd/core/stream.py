@@ -9,7 +9,6 @@ flexibility.
 """
 
 from sys import stdin
-from pathlib import Path
 from os.path import join, split, abspath, isfile
 
 from .exception import FileError, LogicError
@@ -23,43 +22,6 @@ class _OpenFile(object):
         self.file = f
         self.name = name
 
-class FileObject():
-    def __init__(self,name,path, okay2load):
-        self.filename = Path().joinpath(path,name)
-        self.okay2load = okay2load
-
-    def data(self):
-        if not self.okay2load:
-            return []
-
-        with open(self.filename) as f:
-            self.builtins = [line for line in f]
-
-        return self.builtins
-
-    def datastack(self):
-        return self.data()[::-1]
-
-class LocalUserConfigFile(FileObject):
-    def __init__(self, name, okay2load):
-        path = Path().joinpath(Path().home(), ".smd/")
-        super(LocalUserConfigFile, self).__init__(name,path,okay2load)
-
-class ConfigFile(FileObject):
-    def __init__(self, name, okay2load, user_ver=True):
-        from .globals import _getBasepath
-        super(ConfigFile, self).__init__(name,_getBasepath(),okay2load)
-        from .utility import _tls_data
-        
-        self.localuser = LocalUserConfigFile(name,okay2load) if _tls_data.sd.load_user_files and user_ver else None
-
-    def datastack(self):
-        if (self.localuser and self.localuser.filename.is_file()):
-            return self.localuser.datastack()
-
-        return super(ConfigFile,self).datastack()
-
-
 class Cache(object):
     """A class to abstract a line cache.
     
@@ -69,6 +31,7 @@ class Cache(object):
     """
     def __init__(self):
         from .utility import _tls_data
+        from .sysdef import ConfigFile, LocalUserConfigFile
 
         self._cache = []    # assume an empty cache
 

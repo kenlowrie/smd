@@ -29,33 +29,22 @@ To quickly see how it works, copy "avscript_md.py" and "avscript_md.css":
 .. code-block:: rest
 
     cp avscript_md.py ~/Library/Application\sSupport\BBEdit\Preview\sFilters
-    cp avscript_md.css ~/Library/Application\sSupport\BBEdit\Preview\sCSS
 
 .. note::
 
     Alternatively, create a symbolic link to these files in your
-    forked repository:
 
 .. code-block:: rest
 
     ln -s /yourpathrepopath/avscript_md.py ~/Library/Application\sSupport\BBEdit\Preview\sFilters/avscript_md.py
-    ln -s /yourpathrepopath/avscript_md.css ~/Library/Application\sSupport\BBEdit\Preview\sCSS/avscript_md.css
 
 And then open "docs/example.md" in BBEdit, Choose Markup|Preview in BBEdit,
 and then in the Preview: example.md window:
-
-Select "avscript_md.css" from the CSS: popdown
-Select "avscript_md.py" from the Filter: popdown
-
-BAM! You should see a nicely formatted Audio/Visual script. You'll likely see an
-error near the top about "Unable to import /.../heading.md". Don't worry, we'll
-fix that later.
 
 For now, take a look at userdocs.md (in a BBEdit preview window of course!), and
 you'll quickly get up and running with the A/V Script Markdown Processor.
 
 Future - aka Wish List
-0. Image (both inline and reference-style) would be nice too.
 
 """
 
@@ -68,7 +57,7 @@ from .core.link import LinkDict
 from .core.debug import DebugTracker, set_default_debug_register, Debug
 from .core.regex import Regex, RegexMD, RegexMain
 from .core.stdio import StdioWrapper
-from .core.system import SystemDefaults
+from .core.sysdef import SystemDefaults
 from .core.variable import Namespaces
 from .core.bookmark import BookmarkList
 from .core.markdown import Markdown
@@ -92,19 +81,14 @@ class ScriptParser(StdioWrapper):
         
         self.Defaults = sysDefaults if sysDefaults is not None else SystemDefaults()
         from threading import local
-        self._tls = local()
-        self._tls.sd = self.Defaults
 
         #_set_tls_data(tls)
-        #//TODO: Does it make sense to store the tls in this object instance? Doesn't seem so...
-        exec("from .core.utility import _set_tls_data;_set_tls_data(self._tls)")
+        # I think the reason I do this is so that later when code in my global space imports this it will work
+        # because it's already been set. //TODO: Need to verify this.
+        exec("from .core.utility import _set_tls_data;_set_tls_data(local())")
 
-        #print("{}: {}".format(name, current_thread().__dict__))
-        #tls.sd = self.Defaults
-        #print("{}: {}".format(name, current_thread().__dict__))
-        #mydata = getattr(tls,"sd",None)
-        #print("{}: {}[{}]".format(name, tls, mydata))
-        #threadLocal.sd = self.Defaults
+        from .core.utility import _tls_data
+        _tls_data.sd = self.Defaults
 
         super(ScriptParser, self).__init__()  # Initialize the base class(es)
 
@@ -735,7 +719,7 @@ class ScriptParser(StdioWrapper):
             # Now close off the outer DIV from above.
             #self.oprint(self._html.formatLine("</div>", -1, False))
             #//TODO: Should ConfigFile be in .core.cache? Not sure I like how the _tls data is being used. I need an object/class for it...
-            from .core.stream import ConfigFile
+            from .core.sysdef import ConfigFile
             closing = []
             closing += ConfigFile("import/def_bodyclose.md", self.Defaults.load_default_body).data()
             closing += ConfigFile("import/def_close.md", self.Defaults.load_default_html).data()
@@ -770,26 +754,7 @@ class ScriptParser(StdioWrapper):
         self.isetio(True if script is None else False)
         return self.parse()
 
-
-def smd_parse_file(args=None):
-    """Parse specified input file as Script Markdown text file.
-
-    if args is None, uses sys.argv - via argparse
-    if no filename is specified, parses sys.stdin
-
-    Exit code:
-        0 -- Success
-        1 -- File not found
-        2 -- IO Error processing input file
-        3 -- Invalid regex ID in main loop
-    """
-    from argparse import ArgumentParser
-
-    sysDefaults = SystemDefaults()
-
-    parser = ArgumentParser(description='Parse Script Markdown text files into HTML format.',
-                            epilog=".")
-    parser.add_argument('-f', '--filename', help='the file that you want to parse. Default is stdin if not specified')
+def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
     parser.add_argument('-ldb', '--load-default-builtins', dest='load_default_builtins', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_builtins}')
     parser.add_argument('-ndb', '--no-default-builtins', dest='load_default_builtins', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_builtins}')
     parser.add_argument('-lub', '--load-user-builtins', dest='load_user_builtins', action='store_true', help=f'load user builtins during startup. Default is: {sysDefaults.load_user_builtins}')
@@ -812,7 +777,7 @@ def smd_parse_file(args=None):
     parser.set_defaults(load_user_files=sysDefaults.load_user_files)
 
     args = parser.parse_args(args)
-    #print(args)
+
     sysDefaults.load_default_builtins = args.load_default_builtins
     sysDefaults.load_user_builtins = args.load_user_builtins
 
@@ -823,6 +788,30 @@ def smd_parse_file(args=None):
 
     # if -nu is specified, then the LocalUserConfigFile class will ignore allowing them to override the system versions
     sysDefaults.load_user_files = args.load_user_files
+
+    return args
+
+def smd_parse_file(args=None):
+    """Parse specified input file as Script Markdown text file.
+
+    if args is None, uses sys.argv - via argparse
+    if no filename is specified, parses sys.stdin
+
+    Exit code:
+        0 -- Success
+        1 -- File not found
+        2 -- IO Error processing input file
+        3 -- Invalid regex ID in main loop
+    """
+    from argparse import ArgumentParser
+
+    sysDefaults = SystemDefaults()
+
+    parser = ArgumentParser(description='Parse Script Markdown text files into HTML format.',
+                            epilog=".")
+    parser.add_argument('-f', '--filename', help='the file that you want to parse. Default is stdin if not specified')
+
+    args = smd_add_std_cmd_line_parms(parser, sysDefaults)
 
     return ScriptParser(sysDefaults).open_and_parse(args.filename)
 

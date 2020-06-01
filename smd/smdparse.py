@@ -34,6 +34,29 @@ me = context()
 def message(msgstr):
     print('{0}: {1}'.format(me.alias(), msgstr))
 
+def get_head(mdfile, cssFile, title = None):
+    path, name = split(mdfile)
+    file, ext = splitext(name)
+    the_title = title if title is not None else str(file)
+
+    head = """<head>
+    <title>"""
+    head += the_title
+    head += """</title>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='{0}' />
+</head>
+""".format(str(cssFile.name))
+
+    return [head]
+
+
+def get_tail():
+    return """
+</body>
+</html>
+"""
+
 
 
 
@@ -48,31 +71,17 @@ and it will do the right thing with either.
 
 """
 
-
-def parse_script(mdfile, cssfile, outpath, open_output_file, title=None):
-    """
-    Process 'mdfile'
-
-    Arguments:
-        mdfile -- the markdown file to process
-        cssfile -- the CSS file to use for styling. Default is avscript_md.css
-        outpath -- the location for the HTML output. Relative to mdfile path.
-        open_output_file -- Whether to open the created HTML file
-    """
-
-    
-    return 0
-
 from pathlib import Path
 import traceback
 
 class ScriptParser():
-    def __init__(self, inputFile, cssFile, outputDir):
+    def __init__(self, inputFile, cssFile, outputDir, sysDefaults):
         self.lastParseOK = False
         self.smdFile = Path(inputFile).resolve()
         self.cssFile = Path(cssFile).resolve()
         self.outDir = Path(outputDir).resolve()
         self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
+        self.sysDefs = sysDefaults
         self._copy_cssfile()
         self.parse(True)
 
@@ -95,9 +104,14 @@ class ScriptParser():
 
         from smd.smd import ScriptParser
 
+        self.sysDefs.addConfigFileData("import/def_head.md", get_head(self.smdFile,self.cssFile))
+        #self.sysDefs.addConfigFileData("import/def_head.md", get_head(self.smdFile,self.cssFile,self.smdFile))
+
+        #sd.addConfigFileData("import/def_body.md", ["<body class=\"my-cool-class\">", "<div class=\"wrapper\">"])
+
         message("Creating: " + str(self.smdFile))
         
-        avscript_obj = ScriptParser()
+        avscript_obj = ScriptParser(self.sysDefs)
         avscript_obj.stdoutput = htmlfile
         avscript_obj.open_and_parse(str(self.smdFile))
         
@@ -140,16 +154,22 @@ def parse(arguments=None):
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
     parser.add_argument('-o', '--open', nargs='?', const=True, default=False, help='whether or not to open the resulting HTML output file with the default system app')
 
-    args = parser.parse_args(None if arguments is None else arguments)
+    from smd.smd import smd_add_std_cmd_line_parms
+    from smd.core.sysdef import SystemDefaults
 
+    sysDefaults = SystemDefaults()
 
-    sp = ScriptParser(args.filename, args.cssfile, args.path)
+    args = smd_add_std_cmd_line_parms(parser, sysDefaults, None if arguments is None else arguments)
 
-    if sp.lastParseOK == False:
-        print("error during parse ...")
-        return 1
+    # //TODO: Not sure if I like this hack...
+    if not Path(args.cssfile).is_file():
+        from smd.core.globals import _getBasepath
+        new_cssfile = Path().joinpath(_getBasepath(), "css/smd.css")
+        args.cssfile = str(new_cssfile)
 
-    return 0
+    sp = ScriptParser(args.filename, args.cssfile, args.path, sysDefaults)
+
+    return 0 if sp.lastParseOK else 1
     
 
 if __name__ == '__main__':

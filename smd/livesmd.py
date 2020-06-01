@@ -131,7 +131,7 @@ and it will do the right thing with either.
 """
 
 
-def _mkhtml(mdfile, cssfile, outpath, open_output_file, title=None):
+def _mkhtml(mdfile, cssfile, outpath, open_output_file, sysDefs, title=None):
     """
     Process 'mdfile'
 
@@ -169,7 +169,7 @@ def _mkhtml(mdfile, cssfile, outpath, open_output_file, title=None):
     message("Creating: " + fileobj.rootname)
     add_header(htmlfile, fileobj, cssfile, title)
 
-    avscript_obj = ScriptParser()
+    avscript_obj = ScriptParser(sysDefs)
     avscript_obj.stdoutput = htmlfile
     avscript_obj.open_and_parse(mdfile)
     # avscript_obj.stdinput = open(mdfile,'r')

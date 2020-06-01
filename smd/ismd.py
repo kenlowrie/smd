@@ -119,37 +119,6 @@ class FileEvents:
 
 gb_file_events = FileEvents()
 
-from smd.livesmd import _mkhtml
-from pathlib import Path
-import traceback
-
-class ScriptParser():
-    def __init__(self, inputFile, cssFile, outputDir):
-        self.lastParseOK = False
-        self.smdFile = Path(inputFile).resolve()
-        self.cssFile = Path(cssFile).resolve()
-        self.outDir = Path(outputDir).resolve()
-        self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
-        self.parse(True)
-
-    def parameterInfo(self):
-        print(f"smdFile={self.smdFile}\ncssFile={self.cssFile}\noutputDir={self.outDir}\nhtmlFile={self.outFile}")
-
-    def parse(self,firstTime=False):
-        try:
-            print("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " initially ..."))
-            _mkhtml(str(self.smdFile), str(self.cssFile), str(self.outDir), False, title="//TODO: FIX My cool page title")
-            self.lastParseOK = True
-        except:
-            print("Caught exception parsing the script ...")
-            self.lastParseOK = False
-            traceback.print_exc()
-
-    def nothing(self):
-        scriptMDfile = Path(args.filename).resolve()
-        watchDirectory = Path(args.path).resolve()
-        htmlFile = Path().joinpath(watchDirectory,Path(scriptMDfile.name).with_suffix(".html"))
-
 
 import time 
 import threading
@@ -237,9 +206,27 @@ def ismd(arguments=None):
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
     parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
 
-    args = parser.parse_args(None if arguments is None else arguments)
 
-    sp = ScriptParser(args.filename, args.cssfile, args.path)
+    from smd.smd import smd_add_std_cmd_line_parms
+    from smd.core.sysdef import SystemDefaults
+
+    sysDefaults = SystemDefaults()
+
+    args = smd_add_std_cmd_line_parms(parser, sysDefaults, None if arguments is None else arguments)
+
+    # //TODO: Not sure if I like this hack...
+    if not Path(args.cssfile).is_file():
+        from smd.core.globals import _getBasepath
+        new_cssfile = Path().joinpath(_getBasepath(), "css/smd.css")
+        args.cssfile = str(new_cssfile)
+
+    from smd.smdparse import ScriptParser
+    sp = ScriptParser(args.filename, args.cssfile, args.path, sysDefaults)
+
+
+    #args = parser.parse_args(None if arguments is None else arguments)
+
+    #sp = ScriptParser(args.filename, args.cssfile, args.path)
 
     if sp.lastParseOK == False:
         print("stopping, initial parse failed...")
