@@ -2,6 +2,15 @@
 
 from .debug import Debug
 
+# This global is used to hold the thread local storage data
+# //TODO: HACK, need to address this in a better way, but need to research that...
+
+_tls_data = None
+
+def _set_tls_data(tls_data):
+    global _tls_data
+    _tls_data = tls_data
+
 # This global is used to hold the interface to Namespaces.
 _ns_xface = None
 _line_cache = None

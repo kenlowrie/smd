@@ -7,8 +7,10 @@ class SystemDefaults():
         self._load_default_html = True
         self._load_default_head = True
         self._load_default_body = True
+        self._load_user_files = True
 
     def dump(self, oprint=print):
+        #//TODO: HACK
         f0="strong"
         f1="em"
         for key,val in self.__dict__.items():
@@ -53,6 +55,14 @@ class SystemDefaults():
     @load_default_body.setter
     def load_default_body(self, value):
         self._load_default_body = value
+
+    @property
+    def load_user_files(self):
+        return self._load_user_files
+
+    @load_user_files.setter
+    def load_user_files(self, value):
+        self._load_user_files = value
 
 if __name__ == '__main__':
     print("Library module. Not directly callable.")

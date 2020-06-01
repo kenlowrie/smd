@@ -86,6 +86,26 @@ class ScriptParser(StdioWrapper):
         """
         Initialize the required instance variables for this class.
         """
+        # before we call the Constructor for StdioWrapper(), which will create a StreamHandler()
+        # object, which will instantiate the Cache(), which will process all of the defaults
+        # i.e. builtins, default_html, head, body..., I have to establish the global SystemDefaults()...
+        
+        self.Defaults = sysDefaults if sysDefaults is not None else SystemDefaults()
+        from threading import local
+        self._tls = local()
+        self._tls.sd = self.Defaults
+
+        #_set_tls_data(tls)
+        #//TODO: Does it make sense to store the tls in this object instance? Doesn't seem so...
+        exec("from .core.utility import _set_tls_data;_set_tls_data(self._tls)")
+
+        #print("{}: {}".format(name, current_thread().__dict__))
+        #tls.sd = self.Defaults
+        #print("{}: {}".format(name, current_thread().__dict__))
+        #mydata = getattr(tls,"sd",None)
+        #print("{}: {}[{}]".format(name, tls, mydata))
+        #threadLocal.sd = self.Defaults
+
         super(ScriptParser, self).__init__()  # Initialize the base class(es)
 
         # Create the debug tracker object for this app
@@ -97,8 +117,6 @@ class ScriptParser(StdioWrapper):
         self.debug_smd_line = Debug('smd.line')
         self.debug_smd_raw = Debug('smd.raw')
         self.stdinput.initDebug()
-
-        self._systemDefaults = sysDefaults if sysDefaults is not None else SystemDefaults()
 
         self._md = Markdown()           # New markdown support in separate class
 
@@ -146,6 +164,16 @@ class ScriptParser(StdioWrapper):
             'debug': RegexMain(True, True, False, r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
             'shotlist': RegexMain(True, True, False, r'^[/]{3}Shotlist[/]{3}', None),
         }
+
+    @property
+    def Defaults(self):
+        return self._systemDefaults
+
+    @Defaults.setter
+    def Defaults(self, defaultsObject):
+        if not isinstance(defaultsObject,SystemDefaults):
+            raise TypeError("Defaults must be instance of SystemDefaults")
+        self._systemDefaults = defaultsObject
 
     def _regex(self, id):
         """
@@ -571,7 +599,8 @@ class ScriptParser(StdioWrapper):
                 self.oprint(self._html.formatLine("<code>", 1))
                 if d.get('all') and d.get('all').lower() in ['*', '1', 'y', 'yes', 't', 'true']:
                     self._ns.dumpVars()
-                elif d.get('defaults'):     #//TODO: This is a kludge, rethink it...
+                elif d.get('defaults'):
+                    #//TODO: This is a kludge, rethink it...
                     self._systemDefaults.dump(self.oprint)
                 else:
                     self._ns.dumpNamespaces(d)
@@ -705,6 +734,13 @@ class ScriptParser(StdioWrapper):
                     self.oprint(divstr)
             # Now close off the outer DIV from above.
             #self.oprint(self._html.formatLine("</div>", -1, False))
+            #//TODO: Should ConfigFile be in .core.cache? Not sure I like how the _tls data is being used. I need an object/class for it...
+            from .core.stream import ConfigFile
+            closing = []
+            closing += ConfigFile("import/def_bodyclose.md", self.Defaults.load_default_body).data()
+            closing += ConfigFile("import/def_close.md", self.Defaults.load_default_html).data()
+            for c in closing:
+                self.oprint(self._html.formatLine(c, 0, False))
 
         except RegexError as regex_error:
             self.oprint("{}".format(regex_error.errmsg))
@@ -749,12 +785,46 @@ def smd_parse_file(args=None):
     """
     from argparse import ArgumentParser
 
-    parser = ArgumentParser(description='Parse Script Markdown text files into HTML format.',
-                            epilog='If filename is not specified, program reads from stdin.')
-    parser.add_argument('-f', '--filename', help='the file that you want to parse')
-    args = parser.parse_args(args)
+    sysDefaults = SystemDefaults()
 
-    return ScriptParser().open_and_parse(args.filename)
+    parser = ArgumentParser(description='Parse Script Markdown text files into HTML format.',
+                            epilog=".")
+    parser.add_argument('-f', '--filename', help='the file that you want to parse. Default is stdin if not specified')
+    parser.add_argument('-ldb', '--load-default-builtins', dest='load_default_builtins', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_builtins}')
+    parser.add_argument('-ndb', '--no-default-builtins', dest='load_default_builtins', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_builtins}')
+    parser.add_argument('-lub', '--load-user-builtins', dest='load_user_builtins', action='store_true', help=f'load user builtins during startup. Default is: {sysDefaults.load_user_builtins}')
+    parser.add_argument('-nub', '--no-user-builtins', dest='load_user_builtins', action='store_false', help=f'do not load user builtins during startup. Default is: {not sysDefaults.load_user_builtins}')
+    parser.add_argument('-html', '--load-default-html', dest='load_default_html', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_html}')
+    parser.add_argument('-nohtml', '--no-default-html', dest='load_default_html', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_html}')
+    parser.add_argument('-head', '--load-default-head', dest='load_default_head', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_head}')
+    parser.add_argument('-nohead', '--no-default-head', dest='load_default_head', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_head}')
+    parser.add_argument('-body', '--load-default-body', dest='load_default_body', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_body}')
+    parser.add_argument('-nobody', '--no-default-body', dest='load_default_body', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_body}')
+
+    parser.add_argument('-nu', '--no-user-files', dest='load_user_files', action='store_false', help=f'do not load any files from ~/.smd. Default is: {not sysDefaults.load_user_files}')
+    parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {True}')
+
+    parser.set_defaults(load_default_builtins=sysDefaults.load_default_builtins)
+    parser.set_defaults(load_user_builtins=sysDefaults.load_user_builtins)
+    parser.set_defaults(load_default_html=sysDefaults.load_default_html)
+    parser.set_defaults(load_default_head=sysDefaults.load_default_head)
+    parser.set_defaults(load_default_body=sysDefaults.load_default_body)
+    parser.set_defaults(load_user_files=sysDefaults.load_user_files)
+
+    args = parser.parse_args(args)
+    #print(args)
+    sysDefaults.load_default_builtins = args.load_default_builtins
+    sysDefaults.load_user_builtins = args.load_user_builtins
+
+    # if -nd is specified, then no matter what, all document files will be ignored
+    sysDefaults.load_default_html = args.load_default_html if args.load_document_defaults else False
+    sysDefaults.load_default_head = args.load_default_head if args.load_document_defaults else False
+    sysDefaults.load_default_body = args.load_default_body if args.load_document_defaults else False
+
+    # if -nu is specified, then the LocalUserConfigFile class will ignore allowing them to override the system versions
+    sysDefaults.load_user_files = args.load_user_files
+
+    return ScriptParser(sysDefaults).open_and_parse(args.filename)
 
 
 if __name__ == '__main__':

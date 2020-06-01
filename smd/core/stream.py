@@ -9,7 +9,8 @@ flexibility.
 """
 
 from sys import stdin
-from os.path import join, split, abspath, isfile, realpath, dirname
+from pathlib import Path
+from os.path import join, split, abspath, isfile
 
 from .exception import FileError, LogicError
 from .globals import init_globals
@@ -22,21 +23,74 @@ class _OpenFile(object):
         self.file = f
         self.name = name
 
+class FileObject():
+    def __init__(self,name,path, okay2load):
+        self.filename = Path().joinpath(path,name)
+        self.okay2load = okay2load
+
+    def data(self):
+        if not self.okay2load:
+            return []
+
+        with open(self.filename) as f:
+            self.builtins = [line for line in f]
+
+        return self.builtins
+
+    def datastack(self):
+        return self.data()[::-1]
+
+class LocalUserConfigFile(FileObject):
+    def __init__(self, name, okay2load):
+        path = Path().joinpath(Path().home(), ".smd/")
+        super(LocalUserConfigFile, self).__init__(name,path,okay2load)
+
+class ConfigFile(FileObject):
+    def __init__(self, name, okay2load, user_ver=True):
+        from .globals import _getBasepath
+        super(ConfigFile, self).__init__(name,_getBasepath(),okay2load)
+        from .utility import _tls_data
+        
+        self.localuser = LocalUserConfigFile(name,okay2load) if _tls_data.sd.load_user_files and user_ver else None
+
+    def datastack(self):
+        if (self.localuser and self.localuser.filename.is_file()):
+            return self.localuser.datastack()
+
+        return super(ConfigFile,self).datastack()
+
+
 class Cache(object):
     """A class to abstract a line cache.
     
-    Initially, this is used to process the built-ins that are part of avscript. However,
-    it can also be used to cache lines in the middle of processing normal files.
+    Initially, this is used to process the default document components and the
+    built-ins that are part of smd. However, it can also be used to cache lines 
+    in the middle of processing normal files.
     """
     def __init__(self):
-        builtins = join(abspath(dirname(realpath(__file__))), 'builtins.md')
-        with open(builtins) as f:
-            builtins = [line for line in f]
+        from .utility import _tls_data
 
-        # Reverse the list (make this a stack)
-        self._cache = builtins[::-1]
+        self._cache = []    # assume an empty cache
 
-        # add the globals onto the stack
+        # Because the cache operates as a stack, we have to read everything in reverse order, and
+        # also reverse the line order, so that when the individual lines are popped from the stack,
+        # everything will be in the correct order.
+
+        # Start with the default body, head and html document parts
+        self._cache += ConfigFile("import/def_body.md", _tls_data.sd.load_default_body).datastack()
+        self._cache += ConfigFile("import/def_head.md", _tls_data.sd.load_default_head).datastack()
+        self._cache += ConfigFile("import/def_html.md", _tls_data.sd.load_default_html).datastack()
+
+        # The builtins.md must be treated special, since we allow one or both of them to be processed
+        # during initialization. Start with the default builtins.md, and then load the user version,
+        # if it's available. This way the user builtins.md can override the system defaults.
+
+        self._cache += ConfigFile("import/builtins.md", _tls_data.sd.load_default_builtins, user_ver=False).datastack()
+        self._cache += LocalUserConfigFile("import/builtins.md", _tls_data.sd.load_user_builtins).datastack()
+
+        # finally, add the globals onto the stack, since these can be used during parsing of the other files
+        # we just cached... specifically [sys.imports], but also [sys.basepath]
+
         for line in init_globals():
             self._cache.append(line)
 
