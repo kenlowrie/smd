@@ -15,6 +15,7 @@ Priority 1 | p1
 
 @import "[sys.imports]/def_head.md" twice in a row only works the first time.
 The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
+Should I use the python logging system for better control of debug messages and console output?
 
 Need to be able to launch dual monitors (-m hostgui and -m browser)
 

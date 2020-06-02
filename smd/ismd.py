@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 
-class _Error(Exception):
-    """Base exception class for this module."""
-    pass
-
+from smd.smdutil import _Error, ConsoleMessage
 
 class MonitorError(_Error):
     """Monitor exceptions raised by this module."""
     def __init__(self, errmsg):
         self.errmsg = errmsg
 
+"""
+//TODO: Figure out if this is still needed for any use case, such as when module is imported???
+try:
+    myself = __file__
+except NameError:
+    myself = argv[0]
+"""
+
+message = ConsoleMessage(__file__)
 
 class OutputMonitor():
     def __init__(self):
@@ -83,7 +89,7 @@ class Monitor():
 
     def create(self):
         if self.monitor is not None:
-            print(f"creating {self.type} window...")
+            message.o(f"creating {self.type} window...")
             self.monitor.create()
 
     def update(self):
@@ -92,12 +98,12 @@ class Monitor():
 
     def refresh(self):
         if self.monitor is not None:
-            print(f"refreshing {self.type} window...")
+            message.o(f"refreshing {self.type} window...")
             self.monitor.refresh()
 
     def close(self):
         if self.monitor is not None:
-            print(f"closing {self.type} window...")
+            message.o(f"closing {self.type} window...")
             self.monitor.close()
 
 
@@ -139,7 +145,6 @@ class WatchDirectory:
         self.observer.schedule(event_handler, self.watchDirectory, recursive = False) 
         self.observer.start() 
         global gb_file_events
-        threadid = threading.current_thread().native_id
         try: 
             while True: 
                 self.monitor.update()
@@ -148,19 +153,19 @@ class WatchDirectory:
                     curFile = gb_file_events.popEvent()
                     if curFile == str(self.sp.smdFile):
                         self.sp.parse()
-                        print(f"{threadid}: Parse done, refreshing {self.monitor.type}...")
+                        message.o(f"Parse done, refreshing {self.monitor.type}...")
                         self.monitor.refresh()
                     else:
-                        print(f"{threadid}: Modified file: {curFile} is not being watched; ignoring ...")
+                        message.o(f"Modified file: {curFile} is not being watched; ignoring ...")
         except KeyboardInterrupt:
             pass    # don't need to see a traceback for this
         except: 
             traceback.print_exc()   # let's see what happened; wasn't expecting this
         finally:
             self.observer.stop() 
-            print("\nObserver Stopped")
+            message.o("\nObserver Stopped")
 
-        print("Shutting down watch observer thread...")
+        message.o("Shutting down watch observer thread...")
         self.observer.join() 
 
 class Handler(FileSystemEventHandler): 
@@ -174,10 +179,10 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'created': 
             # Event is created, you can process it now 
-            print("Watchdog received created event - %s." % event.src_path) 
+            message.o("Watchdog received created event - %s." % event.src_path) 
         elif event.event_type == 'modified': 
             # Event is modified, you can process it now 
-            print(f"{threading.current_thread().native_id}: Watchdog received modified event - {event.src_path}")
+            message.o(f"Watchdog received modified event - {event.src_path}")
             global gb_file_events
             gb_file_events.pushEvent(event.src_path)
 
@@ -202,8 +207,9 @@ def ismd(arguments=None):
     parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
                             epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
-    parser.add_argument('-c', '--cssfile', nargs='?', const='smd.css', default='smd.css', help='the CSS file you want used for the styling. Default is smd.css')
+    parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
+    parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
     parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
 
 
@@ -214,22 +220,12 @@ def ismd(arguments=None):
 
     args = smd_add_std_cmd_line_parms(parser, sysDefaults, None if arguments is None else arguments)
 
-    # //TODO: Not sure if I like this hack...
-    if not Path(args.cssfile).is_file():
-        from smd.core.globals import _getBasepath
-        new_cssfile = Path().joinpath(_getBasepath(), "css/smd.css")
-        args.cssfile = str(new_cssfile)
+    from smd.smdparse import ScriptParser, handle_cssfilelist_parameter, get_importfilelist
 
-    from smd.smdparse import ScriptParser
-    sp = ScriptParser(args.filename, args.cssfile, args.path, sysDefaults)
-
-
-    #args = parser.parse_args(None if arguments is None else arguments)
-
-    #sp = ScriptParser(args.filename, args.cssfile, args.path)
+    sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
 
     if sp.lastParseOK == False:
-        print("stopping, initial parse failed...")
+        message.o("stopping because the initial parse failed...")
         return 1
 
 
