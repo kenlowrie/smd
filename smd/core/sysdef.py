@@ -57,6 +57,9 @@ class ConfigFileObject():
         if self.filedata:
             return self.filedata
 
+        if not self.filename.is_file():
+            return []
+            
         # okay, if we get here, we gotta read the contents from disk
         with open(self.filename) as f:
             self.builtins = [line for line in f]
@@ -129,6 +132,7 @@ class SystemDefaults():
         self._load_default_body = True
         self._load_user_files = True
         self._configData = {}
+        self._importFiles = []
 
     # //TODO: Not sure if this is how I want to do this permanently, but works for now.
     # Basically, these two methods provide a way to "override" loading the various
@@ -145,6 +149,16 @@ class SystemDefaults():
             return self._configData[filename]
         
         return None
+
+    def addImportFiles(self, importFiles):
+        if importFiles:
+            #print("Adding import file(s) {}".format(importFiles))
+            self._importFiles.extend(importFiles)
+        
+    def getImportFiles(self):
+        #print(f"looking for [{filename}]")
+        return self._importFiles
+
 
     def dump(self, oprint=print):
         #//TODO: HACK
