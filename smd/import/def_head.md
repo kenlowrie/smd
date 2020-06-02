@@ -1,5 +1,5 @@
 <head>
-    <title>[def_title]</title>
+    <title>[defaults.doctitle]</title>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='[def_css]' />
+    <link rel='stylesheet' href='[defaults.cssfile]' />
 </head>
