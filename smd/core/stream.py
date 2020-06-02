@@ -44,12 +44,20 @@ class Cache(object):
         self._cache += ConfigFile("import/def_head.md", _tls_data.sd.load_default_head).datastack()
         self._cache += ConfigFile("import/def_html.md", _tls_data.sd.load_default_html).datastack()
 
+        # Now, if any other imports have been specified, we need to load them right after the user
+        # builtins.md, since we want to be able to have a "last chance to override" hard coded stuff.
+        additionalImports = _tls_data.sd.getImportFiles()
+        if additionalImports:
+            for importfile in additionalImports[::-1]:
+                self._cache += [f'@import "{importfile}"']
+
         # The builtins.md must be treated special, since we allow one or both of them to be processed
         # during initialization. Start with the default builtins.md, and then load the user version,
-        # if it's available. This way the user builtins.md can override the system defaults.
+        # if it's available. This way the user builtins.md can override the system defaults. In order
+        # to make this work, we need to cache() them in reverse order.
 
-        self._cache += ConfigFile("import/builtins.md", _tls_data.sd.load_default_builtins, user_ver=False).datastack()
         self._cache += LocalUserConfigFile("import/builtins.md", _tls_data.sd.load_user_builtins).datastack()
+        self._cache += ConfigFile("import/builtins.md", _tls_data.sd.load_default_builtins, user_ver=False).datastack()
 
         # finally, add the globals onto the stack, since these can be used during parsing of the other files
         # we just cached... specifically [sys.imports], but also [sys.basepath]
@@ -59,6 +67,7 @@ class Cache(object):
 
     def initDebug(self):
             self.debug = Debug('cache')
+            self.debug.off()
 
     def pushline(self, s):
         self._cache.append(s)
@@ -86,6 +95,8 @@ class Cache(object):
 
             # Return the line
             self.debug.print('Returning: <em>{}</em>'.format(HtmlUtils.escape_html(line)))
+            from .utility import _tls_data
+            _tls_data.output.write(f"{line}\n")
             return line
 
         raise LogicError("Cache().readline() failed while processing cache.")
@@ -244,6 +255,8 @@ class StreamHandler(object):
                 if (self.idx >= 0 or self._started_with_stdin):
                     return self.readline()
 
+        from .utility import _tls_data
+        _tls_data.output.write(f"{self.line}\n")
         return self.line
 
 
