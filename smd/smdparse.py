@@ -162,7 +162,7 @@ def parse(arguments=None):
 
     sysDefaults = SystemDefaults()
 
-    args = smd_add_std_cmd_line_parms(parser, sysDefaults, None if arguments is None else arguments)
+    args = smd_add_std_cmd_line_parms(parser, sysDefaults, arguments)
 
     sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
 
