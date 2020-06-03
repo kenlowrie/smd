@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
-
 from .debug import Debug
 from .utility import HtmlUtils
 from .exception import LogicError
@@ -295,47 +293,6 @@ class Namespace(VariableStore):
     @property
     def namespace(self):
         return self._namespace
-
-
-class BasicNamespace(Namespace):
-    def __init__(self, markdown, namespace_name, oprint):
-        self.debug = Debug('ns.basic')
-        super(BasicNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
-        self.dbgPrint("My NS is: {}".format(self.namespace))
-        from .regex import Regex
-        self.delayedExpansion = Regex(r'(\[{{([^}]+)}}\])')
-
-    def addVariable(self, value, name):
-        """Add a variable called 'name' to the list and set its value to 'value'."""
-        if type(value) is not str:
-            raise TypeError("BasicNamespace only supports string data type")
-
-        # If they used the delayed expansion syntax, remove it before storing value
-        from re import findall
-        matches = findall(self.delayedExpansion.regex, value)
-        for m in matches:
-            # for each delayed expansion variable, strip the {{}} from the name
-            value = value.replace(m[0],'[{}]'.format(m[1]))
-
-        super(BasicNamespace, self).addVariable(value, name)
-
-    """
-    """
-    def _stripNamespace(self, id):
-        if id.startswith(self.namespace):
-            return id[len(self.namespace):]
-
-        return id
-
-    def exists(self, name):
-        self.dbgPrint("exists({})".format(name))
-        #if name == 'class':
-        #    raise NameError("WTF, How did I get here?")
-        return super(BasicNamespace, self).exists(self._stripNamespace(name))
-
-    def getValue(self, name):
-        return super(BasicNamespace, self).getValue(self._stripNamespace(name))
-
 
 class AdvancedNamespace(Namespace):
     _variable_name_str = ["_id", "_"]
@@ -779,17 +736,15 @@ class CodeNamespace(AdvancedNamespace):
 
 
 class Namespaces(object):
-    _default = 'basic'
     _html = 'html'
     _var = 'var'
     _link = 'link'
     _image = 'image'
     _code = 'code'
-    _search_order = [_default, _var, _image, _link, _html, _code]
+    _search_order = [_var, _link, _html, _image, _code]
 
     def __init__(self, markdown, setNSxface, oprint=print):
         self._namespaces = {
-            Namespaces._default: BasicNamespace(markdown, Namespaces._default, oprint),
             Namespaces._html: HtmlNamespace(markdown, Namespaces._html, oprint),
             Namespaces._var: VarNamespace(markdown, Namespaces._var, oprint),
             Namespaces._image: ImageNamespace(markdown, Namespaces._image, oprint),
@@ -806,7 +761,7 @@ class Namespaces(object):
 
     def addVariable(self, value, name=None, ns=None):
         if ns is None:
-            ns = Namespaces._default
+            ns = Namespaces._var
 
         if ns not in self._namespaces:
             raise SyntaxError("Invalid namespace [{}]".format(ns))
@@ -919,9 +874,6 @@ class Namespaces(object):
         self.debug.print('getValue(<em>"{}"</em>, <strong>[{}]</strong>)'.format(variable_name, jit_attrs))
 
         def addJITattrs(jit_attrs, ns, var):
-            if ns == Namespaces._default:
-                # TODO: Should I print a message or something?
-                return  # For now, just return. Basic namespace doesn't support attrs...
 
             if ns != Namespaces._code:
                 # jit_attrs are sticky on everything except code
