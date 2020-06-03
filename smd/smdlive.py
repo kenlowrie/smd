@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 """
-This module implements several methods for doing "live" processing on
+This module implements an endpoint for doing "live" processing on
 script markdown files that are processed by the smd package. This enables
 the automatic update/refresh of a webpage, as changes are made to the
 underlying markdown text files.
 
 //TODO: Finish the documentation for this script.
 
-creates an HTML document suitable for printing.
+creates an HTML document suitable for serving to local/network clients.
+
 
 It uses avscript_md.py, which reads an AV script written in a specialized
 Markdown-syntax, and outputs HTML format. Since avscript_md is designed to
@@ -183,7 +184,7 @@ def _mkhtml(mdfile, cssfile, outpath, open_output_file, sysDefs, title=None):
     return 0
 
 
-def livesmd(arguments=None):
+def smdlive(arguments=None):
     """Make an Audio-Visual Script from a text file written in a Markdown-like syntax.
 
     Creates an HTML output file from the input file.
@@ -212,4 +213,4 @@ def livesmd(arguments=None):
 
 
 if __name__ == '__main__':
-    exit(livesmd())
+    exit(smdlive())

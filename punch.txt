@@ -3,50 +3,45 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-20. builtins.md collection of @imports instead of one file, so you can easily get what you want. I/P
-27. rename livesmd.py -> smdlive. This is the one that should operate an endpoint
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
-02. remove all the old peekline, ... bs from the mainloop. we need to kiss. (may require additional helper.md files be added to overcome)
-03. make the "defaults" make sense. i.e. cssfile, page title, etc.
-**04. do I need to implement a scheme to handle "-f filename.md" config_default_file that gets loaded just before the html document processing? -i/--import
-05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
-32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
-33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have...
+02. remove all the old peekline, ... bs from the mainloop. we need to kiss.
+38. build out initial version of smdlive
+51. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
 
-@import "[sys.imports]/def_head.md" twice in a row only works the first time.
-The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
-Should I use the python logging system for better control of debug messages and console output?
-
-Need to be able to launch dual monitors (-m hostgui and -m browser)
 
 Priority 2 | p2
 ---------------
-1. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
 2. Remove bookmark support, unless I can think of how it could be used (for hyperlinks within the current doc, right?)
 3. Remove all the CSS that relates to A/V scripts
 4. Remove all special code relating to A/V scripts
+14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
+22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
+24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
+25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
+30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
+32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
+33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have.34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
+35. document using this with pipenv (possibly other "popular" python environment manager(s))
+36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
+37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
+
+Priority 5 | p5
+---------------
+05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
+8. Document the @embed "filename" support.
 9. Inline links and Reference links do not work. I think it's because you have to use @link to define links... Fix the docs.
 10. Mailto links and Automatic links also do not seem to work. Fix the docs.
 11. Link aliases don't work. Fix the docs.
 12. Bookmark syntax is wrong. Fix the docs.
-13. Cover, Revision & Contact are wrong. They are simply "builtins", right? Fix the docs. Move all these "authoring" extensions to an appropriate .md file.
-14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
+13. Cover, Revision & Contact are wrong. These are "builtins". Fix the docs.
 15. Is varv2 a thing? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
-22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
-24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
-25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
-30. maybe allow multiple cssfiles on command line xface of ismd and smdparse. Add them to the "watch" list.
-31. maybe add a watchdir, watchlist or similar option(s)
-34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
-35. document using this with pipenv (possibly other "popular" python environment manager(s))
-36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
-37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
-38. 
-
-Priority 5 | p5
----------------
-8. Document the @embed "filename" support.
 17. Document @debug, @debug key="re", @debug tags=""
+31. maybe add a watchdir, watchlist or similar option(s)
+40. DOCS: @import "[sys.imports]/def_head.md" twice in a row only works the first time. Intentional. stream().open()
+41. Document all the new command line switches (smd, smdparse, ismd and smdlive)
+43. Should I use the python logging system for better control of debug messages and console output?
+44. Code review Cache, ImportCache & SystemDefaults.
+50. Clean up how ismd does the multiple monitors
 
 
 Completed
@@ -64,6 +59,16 @@ Completed
 **34. move doc.md testing code to other file. common.md and report.md
 **35. Python 3.6 or later because we use f-strings
 **36. Python 3.7 or later because it guarantees keys dictionary stays in insertion order
+**20. builtins.md collection of @imports instead of one file, so you can easily get what you want. I/P
+**03. make the "defaults" make sense. i.e. cssfile, page title, etc.
+**04. do I need to implement a scheme to handle "-f filename.md" config_default_file that gets loaded just before the html document processing? -i/--import
+**42. The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
+**27. rename livesmd.py -> smdlive. This is the one that should operate an endpoint
+**47. figure out how to do a source level debug of the code. just load debug.py into vscode, set a breakpoint, and debug it.
+**46. Need to be able to launch dual monitors (-m hostgui and -m browser)
+**60. remove the var="value" support from namespaces where it doesn't make sense. 
+**45. Should the ConfigFileObject... classes be part of the cache module?
+
 
 
 
