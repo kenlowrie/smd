@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from smd.smdutil import _Error, ConsoleMessage
+import traceback
 
 class MonitorError(_Error):
     """Monitor exceptions raised by this module."""
@@ -132,13 +133,14 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler 
 
 class WatchDirectory: 
-    def __init__(self, monitor, scriptParser): 
+    def __init__(self, monitors, scriptParser): 
         self.observer = Observer() 
         self.sp = scriptParser
-        self.monitor = Monitor(monitor, str(self.sp.outFile))
+        self.monitors = [Monitor(monitor, str(self.sp.outFile)) for monitor in monitors]
 
     def run(self): 
-        self.monitor.create()   # make sure the monitor is up and running
+        for monitor in self.monitors: monitor.create()
+        #self.monitor.create()   # make sure the monitor is up and running
         self.watchDirectory = str(self.sp.smdFile.parent)
         event_handler = Handler()
         event_handler.mytickle = False
@@ -147,14 +149,14 @@ class WatchDirectory:
         global gb_file_events
         try: 
             while True: 
-                self.monitor.update()
+                for monitor in self.monitors: monitor.update()
                 time.sleep(0.1)
                 if gb_file_events.haveEvent():
                     curFile = gb_file_events.popEvent()
                     if curFile == str(self.sp.smdFile):
                         self.sp.parse()
-                        message.o(f"Parse done, refreshing {self.monitor.type}...")
-                        self.monitor.refresh()
+                        message.o(f"Parse done, refreshing {self.monitors}...")
+                        for monitor in self.monitors: monitor.refresh()
                     else:
                         message.o(f"Modified file: {curFile} is not being watched; ignoring ...")
         except KeyboardInterrupt:
@@ -210,7 +212,7 @@ def ismd(arguments=None):
     parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
     parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
-    parser.add_argument('-m', '--monitor', nargs='?', const='browser', default='browser', help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
+    parser.add_argument('-m', '--monitor', nargs='+', default=['browser'], help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
 
 
     from smd.smd import smd_add_std_cmd_line_parms
