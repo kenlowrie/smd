@@ -1,5 +1,11 @@
 //@embed "[sys.imports]/default_1920x1080o.md"
 Your stuff here... and here too! and maybe here as well! And  wright up here too. awesome! right??
+<br /><br />
+hi!
+[defaults.cssfile]
+more cool stuff!
+<span class="bigandbold">This is something else</span>
+@stop
 //@embed "[sys.imports]/default_1920x1080c.md"
 [b]=<br />
 [b]
