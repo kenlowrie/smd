@@ -2,9 +2,11 @@
 
 from .link import *
 from .line import *
+from .cache import *
 from .debug import *
 from .regex import *
 from .stdio import *
+from .config import *
 from .stream import *
 from .sysdef import *
 from .globals import *
