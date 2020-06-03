@@ -49,8 +49,12 @@ Future - aka Wish List
 """
 
 from re import IGNORECASE, findall, match
-from sys import exit, exc_info
+from sys import exit, exc_info, version_info
 from os.path import isfile
+
+MIN_PYTHON = (3, 7, 3)
+if version_info < MIN_PYTHON:
+    exit("Python %s.%s.%s or later is required.\n" % MIN_PYTHON)
 
 from .core.line import Line
 from .core.link import LinkDict
@@ -101,6 +105,9 @@ class ScriptParser(StdioWrapper):
         self.debug_smd_line = Debug('smd.line')
         self.debug_smd_raw = Debug('smd.raw')
         self.stdinput.initDebug()
+
+        # If we want to output the raw data to a file as we go...
+        _tls_data.raw_output = open(f"{self.Defaults.raw_output_file}", "w") if self.Defaults.raw_output_file else None
 
         self._md = Markdown()           # New markdown support in separate class
 
@@ -595,11 +602,11 @@ class ScriptParser(StdioWrapper):
 
         def handle_varv2(m, lineObj):
             """Handle the @var parse line type."""
+            from .core.utility import HtmlUtils
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
-                #self._varV2.addVarV2(d.copy(), self.oprint)
+                self.debug_smd.print(HtmlUtils.escape_html(f"d={d}, {d.keys()}"))
                 self._ns.addVariable(d, ns="var")
 
             else:
@@ -610,8 +617,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
-                #self._varV2.updateVarV2(d.copy(), self.oprint)
                 #TODO: This needs to have an option for "finding namespace"
                 self._ns.updateVariable(d, ns="?")
 
@@ -623,8 +628,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
-                #self._images.addImage(d.copy(), self.oprint)
                 self._ns.addVariable(d, ns="image")
 
             else:
@@ -635,7 +638,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
                 self._ns.addVariable(d, ns="link")
 
             else:
@@ -646,7 +648,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
                 self._ns.addVariable(d, ns="html")
 
             else:
@@ -657,7 +658,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #fmt = lambda x: "{0}<br />".format(self._markdown(d.get(x))) if d.get(x) else ""
                 # TODO: What about self.oprint()? Doesn't that need to be passed to NS?
                 self.debug_smd_line.print('handle_code: {}'.format(d))
                 self._ns.addVariable(d, ns="code")
@@ -692,9 +692,6 @@ class ScriptParser(StdioWrapper):
         ]
         
         try:
-            # Print the outer DIV header
-            #self.oprint(self._html.formatLine("<div class=\"wrapper\">", 1))
-
             # Read the file until EOF and parse each line
             while(self._readNextLine() != ''):
                 # For each parse type
@@ -709,29 +706,28 @@ class ScriptParser(StdioWrapper):
                         matched = True
                         break
 
-                # if no parse type was matched, then handle this as a
-                # line that should be printed in an extras DIV...
+                # if no parse type was matched, then just write it out
                 if not matched and self._line.current_line.rstrip() and not self._reprocessLine():
                     divstr = self._line.current_line
-                    # divstr += self._peekPlainText("span")
-                    #self._printInExtrasDiv("<p{1}>{0}</p>".format(divstr, self._line.css_prefix))
                     self.oprint(divstr)
-            # Now close off the outer DIV from above.
-            #self.oprint(self._html.formatLine("</div>", -1, False))
-            #//TODO: Should ConfigFile be in .core.cache? Not sure I like how the _tls data is being used. I need an object/class for it...
-            from .core.sysdef import ConfigFile
+
+            #//TODO: Not sure I like how the _tls data is being used. I need an object/class for it...
+            from .core.config import ConfigFile
+            from .core.utility import _tls_data
             closing = []
             closing += ConfigFile("import/def_bodyclose.md", self.Defaults.load_default_body).data()
             closing += ConfigFile("import/def_close.md", self.Defaults.load_default_html).data()
             for c in closing:
                 self.oprint(self._html.formatLine(c, 0, False))
+                if _tls_data.raw_output is not None:
+                    _tls_data.raw_output.write(c)
 
         except RegexError as regex_error:
             self.oprint("{}".format(regex_error.errmsg))
             rc = 3
-
+        
         return rc
-
+    
     def open_and_parse(self, script=None):
         """Open a Script Markdown file in text format and emit HTML code.
 
@@ -767,7 +763,9 @@ def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
     parser.add_argument('-nobody', '--no-default-body', dest='load_default_body', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_body}')
 
     parser.add_argument('-nu', '--no-user-files', dest='load_user_files', action='store_false', help=f'do not load any files from ~/.smd. Default is: {not sysDefaults.load_user_files}')
-    parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {True}')
+    parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {False}')
+
+    parser.add_argument('-o', '--output-raw-data', dest="raw_output_file", nargs='?', const='smd_rawdata.out', help=f'write the raw data to output file. Default is: {sysDefaults.raw_output_file}')
 
     parser.set_defaults(load_default_builtins=sysDefaults.load_default_builtins)
     parser.set_defaults(load_user_builtins=sysDefaults.load_user_builtins)
@@ -775,11 +773,13 @@ def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
     parser.set_defaults(load_default_head=sysDefaults.load_default_head)
     parser.set_defaults(load_default_body=sysDefaults.load_default_body)
     parser.set_defaults(load_user_files=sysDefaults.load_user_files)
+    parser.set_defaults(raw_output_file=sysDefaults.raw_output_file)
 
     args = parser.parse_args(args)
 
     sysDefaults.load_default_builtins = args.load_default_builtins
     sysDefaults.load_user_builtins = args.load_user_builtins
+    sysDefaults.raw_output_file = args.raw_output_file
 
     # if -nd is specified, then no matter what, all document files will be ignored
     sysDefaults.load_default_html = args.load_default_html if args.load_document_defaults else False
