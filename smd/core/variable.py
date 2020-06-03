@@ -345,6 +345,8 @@ class AdvancedNamespace(Namespace):
 
     def __init__(self, markdown, namespace_name, oprint):
         super(AdvancedNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
+        # Individual namespaces can override this behavior @ns varname="initialvalue"
+        self._allow_brief_def = False
 
     def _missingID(self, dict, which="ADD"):
         self.oprint("{}: Dictionary is missing {}<br />{}<br />".format(which, AdvancedNamespace._variable_name_str, dict))
@@ -359,13 +361,28 @@ class AdvancedNamespace(Namespace):
         return True if AdvancedNamespace._inherit_attr in dict else False
 
     def addVariable(self, dict, name=None):
-        myID = self.getIDstring(dict)
+        self.dbgPrintDict(f'<strong>addVariable("<em>{name}</em>")</strong>',dict)
+        myID = self.getIDstring(dict)   # check for _/_id in dict i.e. variable name
         if myID is None:
-            self._missingID(dict)
-            return
-
-        varID = dict[myID]
-        del dict[myID]
+            # no variable name present
+            if self._allow_brief_def:
+                # this name space allows brief declarations: e.g. @ns var="value"
+                # Python 3.7+ guarantees insertion order of keys, so 1st attribute will be variable name
+                varID = [i for i in dict.keys()][0]
+                # if _format is in the dict, it wins; ignore "value" from 1st attribute
+                if AdvancedNamespace._default_format_attr not in dict.keys():
+                    # grab "value" and assign it to _format
+                    dict[AdvancedNamespace._default_format_attr] = dict[varID]
+                # remove the 1st attribute, we don't need it anymore
+                del dict[varID]
+            else:
+                # if no _/_id present, and ns doesn't allow brief declaration, this is error
+                self._missingID(dict)
+                raise AttributeError(f"Missing {AdvancedNamespace._variable_name_str}")
+        else:
+            # variable declaration contains either _ or _id, so use that as name and remove from dict
+            varID = dict[myID]
+            del dict[myID]
         
         if self.inheritsFrom(dict):
             rval = self.getRVal(dict[AdvancedNamespace._inherit_attr])
@@ -380,15 +397,32 @@ class AdvancedNamespace(Namespace):
 
     def updateVariable(self, dict, name=None):
         myID = self.getIDstring(dict)
+
         if myID is None:
-            self._missingID(dict, "UPDATE")
-            return
+            # see docs for addVariable(). They mostly apply here too
+            if self._allow_brief_def:
+                varID = [i for i in dict.keys()][0]
 
-        varID = dict[myID]
-        if varID not in self.vars:
-            return self.addVariable(dict)
+                # if the variable isn't defined yet, @set is same as declaration
+                if varID not in self.vars:
+                    return self.addVariable(dict)
 
-        del dict[myID]
+                # same as addVariable(). If _format not defined, use "value". If it is, ignore "value"
+                if AdvancedNamespace._default_format_attr not in dict.keys():
+                    dict[AdvancedNamespace._default_format_attr] = dict[varID]
+                del dict[varID]
+            else:
+                self._missingID(dict, "UPDATE")
+                return
+                #raise AttributeError(f"Missing {AdvancedNamespace._variable_name_str}")
+        else:
+            varID = dict[myID]
+            if varID not in self.vars:
+                return self.addVariable(dict)
+            del dict[myID]
+        
+        # Okay, we know the variable is there, so let's just update all the attribute values
+
         for item in dict:
             self.vars[varID].rval[item] = self.unescapeString(dict[item])
 
@@ -508,6 +542,8 @@ class VarNamespace(AdvancedNamespace):
         super(VarNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
         self.debug = Debug('ns.var')
         self.dbgPrint("My NS is: {}".format(self.namespace))
+        # Allow the shortened @var name="value" declaration
+        self._allow_brief_def = True
 
 
 
@@ -782,7 +818,10 @@ class Namespaces(object):
             if rc:
                 self.debugNSA.print('<strong>WARNING:</strong> Variable <strong><em>{}</em></strong> is already defined in namespace <strong><em>{}</em></strong>.'.format(varname, nspace))
 
-        self._namespaces[ns].addVariable(value, name)
+        try:
+            self._namespaces[ns].addVariable(value, name)
+        except AttributeError:
+            self.debugNSA.print(f'<strong>WARNING:</strong> Attribute error caught during {ns}.addVariable({value}, {name})')
 
     # TODO: Clean this up...
     def findNamespace(self, value):
