@@ -2,9 +2,18 @@
 [workingtitle]=Script Markdown Utility
 [storysummary]=This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create A/V Style scripts quickly, easily and most important, efficiently. ***Enjoy!***[bb]**NOTE:**[bb]This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax. //TODO test.
 
-//You will probably need to update this path to make this work
-[path]=/Users/ken/Dropbox/shared/src/script/smd/docs/import
-@import '[path]/userguideheading.md'
+
+Things to document
+@var fu="bar" i.e. short notation
+@var fu="bar" _format="wins" i.e. assignment to fu ignored if _format present
+@set fu="bar2" a1="val" i.e. you can add attrs during a set operation
+
+all the new command line switches. distinguish between smd, ismd, smdparse, smdlive
+
+
+
+@import '[sys.imports]/report.md'
+@import '$/import/userguideheading.md'
 
 [link.bm_factory(nm="inlinemd" t="Inline Markdown")]
 [link.bm_factory(nm="links" t="Links")]
