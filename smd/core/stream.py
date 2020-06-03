@@ -9,12 +9,12 @@ flexibility.
 """
 
 from sys import stdin
+#//TODO: Remove all this old crap and use pathlib.Path()
 from os.path import join, split, abspath, isfile
 
 from .exception import FileError, LogicError
-from .globals import init_globals
 from .debug import Debug
-from .utility import HtmlUtils
+from .cache import ImportCache, Cache
 
 class _OpenFile(object):
     """A simple class to keep track of files that are opened."""
@@ -22,88 +22,6 @@ class _OpenFile(object):
         self.file = f
         self.name = name
 
-class Cache(object):
-    """A class to abstract a line cache.
-    
-    Initially, this is used to process the default document components and the
-    built-ins that are part of smd. However, it can also be used to cache lines 
-    in the middle of processing normal files.
-    """
-    def __init__(self):
-        from .utility import _tls_data
-        from .sysdef import ConfigFile, LocalUserConfigFile
-
-        self._cache = []    # assume an empty cache
-
-        # Because the cache operates as a stack, we have to read everything in reverse order, and
-        # also reverse the line order, so that when the individual lines are popped from the stack,
-        # everything will be in the correct order.
-
-        # Start with the default body, head and html document parts
-        self._cache += ConfigFile("import/def_body.md", _tls_data.sd.load_default_body).datastack()
-        self._cache += ConfigFile("import/def_head.md", _tls_data.sd.load_default_head).datastack()
-        self._cache += ConfigFile("import/def_html.md", _tls_data.sd.load_default_html).datastack()
-
-        # Now, if any other imports have been specified, we need to load them right after the user
-        # builtins.md, since we want to be able to have a "last chance to override" hard coded stuff.
-        additionalImports = _tls_data.sd.getImportFiles()
-        if additionalImports:
-            for importfile in additionalImports[::-1]:
-                self._cache += [f'@import "{importfile}"']
-
-        # The builtins.md must be treated special, since we allow one or both of them to be processed
-        # during initialization. Start with the default builtins.md, and then load the user version,
-        # if it's available. This way the user builtins.md can override the system defaults. In order
-        # to make this work, we need to cache() them in reverse order.
-
-        self._cache += LocalUserConfigFile("import/builtins.md", _tls_data.sd.load_user_builtins).datastack()
-        self._cache += ConfigFile("import/builtins.md", _tls_data.sd.load_default_builtins, user_ver=False).datastack()
-
-        # finally, add the globals onto the stack, since these can be used during parsing of the other files
-        # we just cached... specifically [sys.imports], but also [sys.basepath]
-
-        for line in init_globals():
-            self._cache.append(line)
-
-    def initDebug(self):
-            self.debug = Debug('cache')
-            self.debug.off()
-
-    def pushline(self, s):
-        self._cache.append(s)
-
-    def readline(self):
-        line = ''
-        while self.gotCachedLine():
-            line += self._cache.pop().strip()
-            if line.endswith('\\'):
-                # Remove the \ and add a space
-                line = line[:-1] + ' '
-                # Only continue if there are more lines, in case they put a \ on the last line
-                if self._cache:
-                    continue
-
-            # If the line we have is blank, then it only has white space.
-            if not line.strip():
-                if self._cache:
-                    # if there's more lines, then by all means, keep reading, ignore blanks
-                    continue
-                else:
-                    # This is an odd spot. We don't want to make it difficult to add built-ins,
-                    # so we need to handle this gracefully. Let's pretend the line was a comment
-                    line = "// Blank line in the cache..."
-
-            # Return the line
-            self.debug.print('Returning: <em>{}</em>'.format(HtmlUtils.escape_html(line)))
-            from .utility import _tls_data
-            _tls_data.output.write(f"{line}\n")
-            return line
-
-        raise LogicError("Cache().readline() failed while processing cache.")
-
-    def gotCachedLine(self):
-        return self._cache      # self._builtIn < len(self._builtIns)
-        
 
 class StreamHandler(object):
     """
@@ -124,6 +42,7 @@ class StreamHandler(object):
         self._started_with_stdin = None
         self._started_with_file = None
         self._cache = Cache()
+        self._importcache = ImportCache()
 
         # Easy way to force EOF no matter what we're doing
         self._fake_eof = False
@@ -131,9 +50,14 @@ class StreamHandler(object):
     def cache(self):
         return self._cache
 
+    @property
+    def icache(self):
+        return self._importcache
+
     def initDebug(self):
             self.debug = Debug('stdinput')
             self._cache.initDebug()
+            self.icache.initDebug()
 
     @property
     def fake_eof(self):
@@ -218,7 +142,10 @@ class StreamHandler(object):
             self.debug.print("<strong><em>Forced EOF</em></strong>")
             return ''
 
-        # Process the builtIns first.
+        # Process the cached imports first.
+        if self.icache.readyForNextCachedImport(self.idx) and self.icache.gotCachedImports():
+            return f'@import "{str(self.icache.getNextCachedImport())}""'
+
         self.line = ''
         if self._cache.gotCachedLine():
             return self._cache.readline()
@@ -256,7 +183,9 @@ class StreamHandler(object):
                     return self.readline()
 
         from .utility import _tls_data
-        _tls_data.output.write(f"{self.line}\n")
+        if _tls_data.raw_output is not None:
+            _tls_data.raw_output.write(f"{self.line}")
+
         return self.line
 
 
