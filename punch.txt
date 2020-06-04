@@ -4,44 +4,40 @@ Punch List Items.
 Priority 1 | p1
 ---------------
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
-02. remove all the old peekline, ... bs from the mainloop. we need to kiss.
-38. build out initial version of smdlive
-51. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
+60. Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
+30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
+55. Is @break useful? What about @exit?
+56. See how close I can get to a clean render of Buddy's music video script markdown file...
 
-
-Priority 2 | p2
+Priority 3 | p3
 ---------------
-2. Remove bookmark support, unless I can think of how it could be used (for hyperlinks within the current doc, right?)
-3. Remove all the CSS that relates to A/V scripts
-4. Remove all special code relating to A/V scripts
+38. build out initial version of smdlive
+52. Is raw still needed? Can we deprecate that too? Or should I keep it as a way of more easily writing documentation? maybe @@some stuff@@? I'm not so sure. I think before it was just to prevent the <div class="extras">, in which case, that isn't needed, since we no longer wrap things, you can write HTML directly...
+54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
+57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+
+
+Priority 3 | p3
+---------------
+3. Split A/V specific CSS to separate file.
+4. Replace special code relating to A/V scripts with namespace variables (where possible).
 14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
 22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
-24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
 25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
-30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
 32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
 33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have.34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 35. document using this with pipenv (possibly other "popular" python environment manager(s))
 36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
-37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
+44. Code review Cache, ImportCache & SystemDefaults.
+50. Clean up how ismd does the multiple monitors
 
 Priority 5 | p5
 ---------------
 05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
-8. Document the @embed "filename" support.
-9. Inline links and Reference links do not work. I think it's because you have to use @link to define links... Fix the docs.
-10. Mailto links and Automatic links also do not seem to work. Fix the docs.
-11. Link aliases don't work. Fix the docs.
-12. Bookmark syntax is wrong. Fix the docs.
-13. Cover, Revision & Contact are wrong. These are "builtins". Fix the docs.
-15. Is varv2 a thing? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
-17. Document @debug, @debug key="re", @debug tags=""
 31. maybe add a watchdir, watchlist or similar option(s)
-40. DOCS: @import "[sys.imports]/def_head.md" twice in a row only works the first time. Intentional. stream().open()
-41. Document all the new command line switches (smd, smdparse, ismd and smdlive)
 43. Should I use the python logging system for better control of debug messages and console output?
-44. Code review Cache, ImportCache & SystemDefaults.
-50. Clean up how ismd does the multiple monitors
+53. Do a quick pass on the userdoc.md to see how badly I've broken the code. I/P. Needs work, but not as bad as I thought it might be.
+37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 
 
 Completed
@@ -68,6 +64,9 @@ Completed
 **46. Need to be able to launch dual monitors (-m hostgui and -m browser)
 **60. remove the var="value" support from namespaces where it doesn't make sense. 
 **45. Should the ConfigFileObject... classes be part of the cache module?
+**02. remove all the old peekline, ... bs from the mainloop. we need to kiss.
+**51. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
+**24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
 
 
 
