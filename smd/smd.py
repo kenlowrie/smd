@@ -135,7 +135,7 @@ class ScriptParser(StdioWrapper):
         self._regex_main = {
             # //TODO: Is NewDiv still needed?
             #                   NewDiv RawLine Prefix   Test Regex                                              Match Regex
-            'header': RegexMain(True,   False,  True,   r'^([#]{1,6})[ ]*',                                   r'^([#]{1,6})[ ]*(.*)'),
+            'header': RegexMain(True,   False,  True,   r'^([#]{1,6})[ ]*',                                  r'^([#]{1,6})[ ]*(.*)'),
             'import': RegexMain(True,   False,  False,  r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',         None),
             'embed': RegexMain(True,    False,  False,  r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
             'var': RegexMain(True,      True,   False,  r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None), 
@@ -144,11 +144,12 @@ class ScriptParser(StdioWrapper):
             'link': RegexMain(True,     True,   False,  r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
             'html': RegexMain(True,     True,   False,  r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
             'image': RegexMain(True,    True,   False,  r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',    None),
-            'dump': RegexMain(True,     True,   False,  r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None),
+            'dump': RegexMain(True,     True,   False,  r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',     None),
             'break': RegexMain(True,    True,   False,  r'^[@](break|exit)\s*$',                             None),
             'stop': RegexMain(True,     True,   False,  r'^[@](stop|quit)\s*$',                              None),
             'raw': RegexMain(True,      False,  False,  r'^@(@|raw)[ ]+(.*)',                                None),
             'debug': RegexMain(True,    True,   False,  r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',    None),
+            'defaults': RegexMain(True, True,   False,  r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
         }
 
     @property
@@ -357,6 +358,7 @@ class ScriptParser(StdioWrapper):
 
         def handle_break(m, lineObj):
             """Handle a break parse line"""
+            self.oprint('<div class="extras"><h1></h1></div>')  #//TODO: Is this needed?
             pass    # don't do anything with @break or @exit
 
         def handle_stop(m, lineObj):
@@ -375,6 +377,24 @@ class ScriptParser(StdioWrapper):
                 self.oprint(self._html.formatLine(self._md.markdown(m.group(2))))
             else:
                 self.oprint(lineObj.current_line)
+
+        def handle_defaults(m, lineObj):
+            """Handle a defaults parse line"""
+            if(m is not None):
+                d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
+
+                #//TODO: Maybe add a custom class for this?
+                self.oprint(self._html.formatLine("<div class=\"variables\">", 1))
+                self.oprint(self._html.formatLine("<code>", 1))
+                if not d:
+                    self._systemDefaults.dump(self.oprint)
+                else:
+                    # future: maybe add ability to dump specific things?
+                    pass
+                self.oprint(self._html.formatLine("</code>", -1, False))
+                self.oprint(self._html.formatLine("</div>", -1, False))
+            else:
+                self.oprint(lineObj.original_line)
 
         def handle_debug(m, lineObj):
             """Handle a debug line"""
@@ -411,11 +431,8 @@ class ScriptParser(StdioWrapper):
 
                 self.oprint(self._html.formatLine("<div class=\"variables\">", 1))
                 self.oprint(self._html.formatLine("<code>", 1))
-                if d.get('all') and d.get('all').lower() in ['*', '1', 'y', 'yes', 't', 'true']:
+                if not d:
                     self._ns.dumpVars()
-                elif d.get('defaults'):
-                    #//TODO: This is a kludge, rethink it...
-                    self._systemDefaults.dump(self.oprint)
                 else:
                     self._ns.dumpNamespaces(d)
                 self.oprint(self._html.formatLine("</code>", -1, False))
@@ -494,20 +511,21 @@ class ScriptParser(StdioWrapper):
 
         # A map linking line parse types to processor functions
         parseTypes = [
-            ('image', handle_image),
             ('var', handle_varv2),
             ('set', handle_setv2),
             ('code', handle_code),
             ('link', handle_link),
             ('html', handle_html),
-            ('break', handle_break),
+            ('header', handle_header),
+            ('import', handle_import),
             ('embed', handle_embed),
+            ('break', handle_break),
+            ('image', handle_image),
             ('stop', handle_stop),
             ('debug', handle_debug),
             ('dump', handle_dump),
-            ('header', handle_header),
-            ('raw', handle_raw),
-            ('import', handle_import),
+            ('defaults', handle_defaults),
+            ('raw', handle_raw),        #//TODO: Is this needed still?
         ]
         
         try:
