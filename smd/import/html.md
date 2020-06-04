@@ -12,3 +12,4 @@
 @html _id="th" _tag="th"
 @html _id="tr" _tag="tr"
 @html _id="td" _tag="td"
+@html _="h" _tag="h" 1="<h1>{{self.t}}</h1>" 2="<h2>{{self.t}}</h2>" 3="<h3>{{self.t}}</h3>" 4="<h4>{{self.t}}</h4>" 5="<h5>{{self.t}}</h5>" 6="<h6>{{self.t}}</h6>" _format="usage: [{{self._}}.#(t=\"your header\")]"

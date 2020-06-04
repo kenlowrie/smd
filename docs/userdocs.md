@@ -1,17 +1,12 @@
 {:.blue.center}#Script Markdown User Manual
-[workingtitle]=Script Markdown Utility
-[storysummary]=This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create A/V Style scripts quickly, easily and most important, efficiently. ***Enjoy!***[bb]**NOTE:**[bb]This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax. //TODO test.
+@var workingtitle="Script Markdown Utility"
+@var storysummary="This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. **Enjoy!**[bb]***NOTE:*** This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax."
 
+@html _="tab" _tag="span" class="indent"
+@html _="code" _tag="code"
+@var b4="[b][b][b][b]"
 
-Things to document
-@var fu="bar" i.e. short notation
-@var fu="bar" _format="wins" i.e. assignment to fu ignored if _format present
-@set fu="bar2" a1="val" i.e. you can add attrs during a set operation
-
-all the new command line switches. distinguish between smd, ismd, smdparse, smdlive
-
-
-
+@import "[sys.imports]/divs.md"
 @import '[sys.imports]/report.md'
 @import '$/import/userguideheading.md'
 
@@ -33,52 +28,104 @@ all the new command line switches. distinguish between smd, ismd, smdparse, smdl
 [link.bm_factory(nm="debug" t="Debug")]
 [link.bm_factory(nm="summary" t="Summary")]
 
-{:.toc}@@@ divTitle Table of Contents
-    [link.inlinemd.link] - **Formatting content inline**
-    [link.links.link] - **Inline and Reference Link Styles**
-    {:.indent}[link.inline_links.link] - **Creating links inline**
-    {:.indent}[link.ref_links.link] - **Creating reference links**
-    {:.indent}[link.mailto_links.link] - **Creating mailto links**
-    {:.indent}[link.auto_links.link] - **Creating automatic links**
-    [link.aliases.link] - **Text substitution aka Variables**
-    [link.div.link] - **Creating new DIV sections**
-    [link.headers.link] - **Adding Headers**
-    [link.anchors.link] - **Using Bookmarks**
-    [link.special_sections.link] - **Covers, Revisions &amp; Contact sections**
-    [link.imports.link] - **Importing files**
-    [link.advanced.link] - **Introducing @raw, @image & @var**
-    [link.predefined_classes.link] - **Using predefined CSS classes**
-    [link.shotlist.link] - **Displaying the shotlist**
-    [link.debug.link] - **Dumping variables and links**
-    [link.summary.link] - **Summary of the User Guide**
+[var.toc.with_content(t="Table of Contents" c="\
+    [link.inlinemd.link] - **Formatting content inline**[b]\
+    [link.links.link] - **Inline and Reference Link Styles**[b]\
+    [tab.<][link.inline_links.link] - **Creating links inline**[tab.>][b]\
+    [tab.<][link.ref_links.link] - **Creating reference links**[tab.>][b]\
+    [tab.<][link.mailto_links.link] - **Creating mailto links**[tab.>][b]\
+    [tab.<][link.auto_links.link] - **Creating automatic links**[tab.>][b]\
+    [link.aliases.link] - **Text substitution aka Variables**[b]\
+    [link.div.link] - **Creating new DIV sections**[b]\
+    [link.headers.link] - **Adding Headers**[b]\
+    [link.anchors.link] - **Using Bookmarks**[b]\
+    [link.special_sections.link] - **Covers, Revisions &amp; Contact sections**[b]\
+    [link.imports.link] - **Importing files**[b]\
+    [link.advanced.link] - **Introducing @raw, @image & @var**[b]\
+    [link.predefined_classes.link] - **Using predefined CSS classes**[b]\
+    [link.shotlist.link] - **Displaying the shotlist**[b]\
+    [link.debug.link] - **Dumping variables and links**[b]\
+    [link.summary.link] - **Summary of the User Guide**[b]\
+")]
+
+//TODO: What if we wrapped the entire document in an Extras Div?
+<div class="extras">
+
+
+## Things to document
+<pre style="white-space:pre-wrap">
+<code style="display:block>">
+var.code.with_content(t="Things to document", c="code ...")]
+
+@var fu=\"bar\" i.e. short notation
+@var fu=\"bar\" _format=\"wins\" i.e. assignment to fu ignored if _format present
+@set fu=\"bar2\" a1=\"val\" i.e. you can add attrs during a set operation
+@set _=\"defaults\" revision=\"0.4.2\" - that you can add an attr while keeping the rest...
+.{:.bigandbold}you can add a span prefix
+all the new command line switches. distinguish between smd, ismd, smdparse, smdlive
+defaults variable:[b] [defaults]
+@ defaults keyword - currently no parameters, but perhaps extend? @defaults [flags | raw | imports ...]
+
+8. Document the @embed "filename" support.
+9. Inline links and Reference links do not work. I think it's because you have to use @link to define links... Fix the docs.
+10. Mailto links and Automatic links also do not seem to work. Fix the docs.
+11. Link aliases don't work. Fix the docs.
+12. Bookmark syntax is wrong. Fix the docs.
+13. Cover, Revision & Contact are wrong. These are "builtins". Fix the docs.
+15. Is varv2 a thing? Fix the docs. I think it is basic. and var., where basic. refers to aliases, and var refers to @var ...
+17. Document @debug, @debug key="re", @debug tags=""
+[b]
+40. DOCS: @import "[sys.imports]/def_head.md" twice in a row only works the first time. Intentional. stream().open()
+41. Document all the new command line switches (smd, smdparse, ismd and smdlive)
+[b]
+If I put a div extras at top, then gotta watch using it inline, otherwise we get double margins, etc.
+
+</code>
+</pre>
 
 ## What is SMD?
-SMD is a Python utility that takes plain text files loosely (oh, so loosely) based on Markdown as input, and generates Audio/Video (A/V) Style scripts in HTML format. A CSS file is used to style the output, making it super easy to customize the final render to your liking.
+[var.plain(t="What is SMD?")]
+[var.dp(c="\
+    SMD is a Python utility that takes plain text files loosely {oh, so loosely} based on Markdown as input, and generates Audio/Video {A/V} Style scripts in HTML format. A CSS file is used to style the output, making it super easy to customize the final render to your liking.[bb]At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.\
+")]
 
-At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.
+[dp(c="In its simplest terms:")]
 
-In its simplest terms:
+@var ast="&#42;"
+@var obr="&#91;"
+@var lt="&lt;"
+@var gt="&gt;"
+@var at="&#64;"
+[bb]
+{:.note.indent}**Markdown** list item tags ***([ast], -, +)*** are used to identify ***visuals*** (shots), and regular paragraphs are the ***audio/narration*** that go along with the visuals.
+[bb]
+[dp(c="Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.")]
+[bb]
 
-[ast]=&#42;
-[obr]=&#91;
-[lt]=&lt;
-[gt]=&gt;
-[at]=&#64;
+## This will have to be moved to a "shots" doc
 
-{:.note}**Markdown** list item tags ***([ast], -, +)*** are used to identify ***visuals*** (shots), and regular paragraphs are the ***audio/narration*** that go along with the visuals.
+{:.bigandbold.green}Seems to me that an example that shows how you could use SMD to generate an A/V script would be useful, and would be a way for me to bring over all the film, shot, etc, markdown, put into a directory, such as import/avs or something.  Then, I could use isolate all of that into a shot-specific userguide, and leave this one for the main smd utility.[bb]Also, the formatting in the new doc looks different than the old version, need to run that down to make sure it was intentional.[bb]
 
-Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.
-*WS:Sunrise
-There's just something about a sunrise that gets the blood flowing...
-And here's some additional narration.
+[avwrapper.shot_with_desc(_s="WS:Sunrise", _d="\
+There's just something about a sunrise that gets the blood flowing...\
+And here's some additional narration.\
+")]
+// Seems like @break is essentially a way of doing a "clear:both" thru the use of a display:block element such as headers...
 @break
-{:.note.red.indent}When you want to force the document out of shot mode, use ***@break*** or ***@exit*** on an empty line. That will reset the floats which are controlling the AV formatting, and start a new section. See how the document leaves the narration mode of the prior shot, and starts this new block paragraph?
-**[at]break** [lt]--Use @break or @exit to close a shot DIV.
-You can have as much narration as required, just keep writing, even starting new regular paragraphs. When you're done, start a new visual, or add any other block element, such as links, aliases, headers, divs, etc. To add another shot, just repeat the steps above, like this:
-*CU:Coffee pot heating on wire rack of fire pit
-There's nothing like waking up to the smell of coffee percolating in the outdoors.
+//{:.extras}# --- This also works...
+
+[var.note(t="When you want to force the document out of shot mode, use ***@break*** or ***@exit*** on an empty line. That will reset the floats which are controlling the AV formatting, and start a new section. See how the document leaves the narration mode of the prior shot, and starts this new block paragraph?")]
+@break
+
+[extras(c="**[at]break** [lt]--Use @break or @exit to close a shot DIV.")]
+[extras(c="You can have as much narration as required, just keep writing, even starting new regular paragraphs. When you're done, start a new visual, or add any other block element, such as links, aliases, headers, divs, etc. To add another shot, just repeat the steps above, like this:")]
+[b4]
+[avwrapper.shot_with_desc(_s="CU:Coffee pot heating on wire rack of fire pit", _d="\
+    There's nothing like waking up to the smell of coffee percolating in the outdoors.\
+    ")]
 @exit
-If you have text you want included in the HTML document, but do not want it rendered by the browser, use the **{:.ignore}** class prefix. For example, on the next line, we'll write {:.ignore}You won't see this.
+[b4]
+If you have text you want included in the HTML document, but do not want it rendered by the browser, use the **{:.ignore}** class prefix. For example, on the next line, we'll write {:.ignore}You won't see this.[b4]
 {:.ignore}You won't see this.
 When you examine the HTML, you'll see the prior text wrapped in **[lt]p[gt]** tags, inside **[lt]div class="extras"[gt]** markup. However, it will not be rendered by the browser, unless you modify the CSS rule for the ignore class.
 Lines that begin with a double forward slash [***//***] are treated as comments, and are discarded by AVScript. They will not appear in the HTML at all. As another example, we'll write *//This will not appear in the HTML* on the next line.
@@ -90,11 +137,12 @@ If you examine the HTML output, you will not see the previous line in the output
 
 A few of the standard markdown span elements are supported, as are a couple of specialized span elements. These include:
 
-{:.indent}###[ast]; - wrap text in a single asterisk for *emphasis*
+{:.indent}###[ast] - wrap text in a single asterisk for *emphasis*
 {:.indent}###[ast][ast] - wrap text in double asterisks for bold
 {:.indent}###&#43;&#43; - wrap text in double plus signs for ++&lt;ins>++
 {:.indent}###&#126;&#126; - wrap text in double tilde for ~~&lt;del>~~
 
+[var.plain(t="my plain div")]
 Here are a few examples:
 
 When I write **[ast]text[ast]**, it becomes *text*, and when I write **[ast][ast]text[ast][ast]**, it becomes **text**
@@ -113,9 +161,9 @@ Both inline and reference style links are supported. The syntax for each style i
 {:.syntax}@@@ divTitle Link Syntax
     {:.indent2.bigandbold}Inline: &lt;&#91;*LinkID*&#93;&gt; &lt; :( &gt; &lt;***url***&gt; &#91;"*optional title*"&#93; &lt; ) &gt;
     {:.indent2.bigandbold}Reference: &lt;&#91;***LinkID***&#93;&gt; &lt; : &gt; &lt;*url*&gt; &#91;"*optional title*"&#93;
-    [SP]
+    [sp]
     {:.indent2.bigandbold}Examples:
-    [SP]
+    [sp]
     {:.indent3.bigandbold}&#91;MyLinkID&#93;:(http://url.com "title") *&lt;-- Inline Link Example - Parenthesis around URL &amp; Title*
     {:.indent3.bigandbold}&#91;MyLinkID&#93;:http://url.com "title" *&lt;-- Reference Link Example - Must be at beginning of line*
 
