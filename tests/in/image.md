@@ -2,14 +2,14 @@
 //
 
 @var _id="_path_" path="/Users/ken/Dropbox/shared/src/script/avscript/tests/in/import" _format="{{self.path}}"
-[imports]=[var._path_(path="in/import")]
+@var imports="[var._path_(path="in/import")]"
 
 @import '[sys.imports]/image.md'
 
 [IMG_SIZE_LARGE]
-[ss]=[{{var.img_def.img_st_inline_border}}]
-[trythis]={:.red.bold}Try to get this shot
-[beforeshoot]={:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION
+@var ss="[{{var.img_def.img_st_inline_border}}]"
+@var trythis="{:.red.bold}Try to get this shot"
+@var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
 @import '[sys.imports]/shot.md'
 @image _id="needshot" src="[imports]/needshot.png" style="[ss]"

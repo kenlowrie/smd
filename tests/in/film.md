@@ -1,51 +1,51 @@
 //@debug on="ns.add"
-[title]=*Title of Project*
-[artist]=Artist Name
-[thisproject]=Music Video Treatment
+title="*Title of Project*"
+artist="Artist Name"
+thisproject="Music Video Treatment"
 {:.blue.center}# [thisproject]
-[revision]=1f
+revision="1f"
 [proj_desc]=This is the proposed music video treatment for the upcoming **[artist]** single titled [title].
-[slate]=Title: [title][b]Artist: [artist][b]Directed by: Dan Director[b]Produced by: [link.prodcompany]
+@var slate="Title: [title][b]Artist: [artist][b]Directed by: Dan Director[b]Produced by: [link.prodcompany]"
 
 @var _id="_path_" path="/Users/ken/Dropbox/shared/src/script/avscript/tests/in/import" _format="{{self.path}}"
-[imports]=[var._path_(path="in/import")]
+@var imports="[var._path_(path="in/import")]"
 @import '[imports]/cls-noreviewer.md'
 @import '[sys.imports]/shortcuts.md'
 @import '[sys.imports]/film.md'
 
-[ns]=[var.tags.ns]
-[narr]=[var.tags.narr]
-[perf]=[var.tags.perf]
-[stock]=[var.tags.stock]
-[unk]=[var.tags.unk]
-[ws]=[var.fs.ws]
-[ews]=[var.fs.ews]
-[els]=[var.fs.els]
-[ms]=[var.fs.ms]
-[cu]=[var.fs.cu]
-[mcu]=[var.fs.mcu]
-[ecu]=[var.fs.ecu]
-[ra]=[var.fs.ra]
-[ha]=[var.fs.ha]
+@var ns="[var.tags.ns]"
+@var narr="[var.tags.narr]"
+@var perf="[var.tags.perf]"
+@var stock="[var.tags.stock]"
+@var unk="[var.tags.unk]"
+@var ws="[var.fs.ws]"
+@var ews="[var.fs.ews]"
+@var els="[var.fs.els]"
+@var ms="[var.fs.ms]"
+@var cu="[var.fs.cu]"
+@var mcu="[var.fs.mcu]"
+@var ecu="[var.fs.ecu]"
+@var ra="[var.fs.ra]"
+@var ha="[var.fs.ha]"
 
-[wardrobe]=[var.tags.wardrobe]
-[makeup]=[var.tags.makeup]
-[props]=[var.tags.props]
-[cast]=[var.tags.cast]
+@var wardrobe="[var.tags.wardrobe]"
+@var makeup="[var.tags.makeup]"
+@var props="[var.tags.props]"
+@var cast="[var.tags.cast]"
 
 
-[mom]={:.cast}MOM
-[daughter]={:.cast}DAUGHTER
-[son]={:.cast}SON
-[grocerybags]={:.props}Grocery Bags
-[keys]={:.props}KEYS
-[note]={:.props}The Note
-[food]={:.props}Food items
-[cap]={:.props}Baseball Cap
-[picture]={:.props}Framed Family Picture
+@var mom="{:.cast}MOM"
+@var daughter="{:.cast}DAUGHTER"
+@var son="{:.cast}SON"
+@var grocerybags="{:.props}Grocery Bags"
+@var keys="{:.props}KEYS"
+@var note="{:.props}The Note"
+@var food="{:.props}Food items"
+@var cap="{:.props}Baseball Cap"
+@var picture="{:.props}Framed Family Picture"
 
 //-------------------------------------------------------------------
-[prodnotes]={:.indent}We want to shoot between August 13th - August 17th, based on schedules. Prefer if cast can be available to shoot any day/time (weekdays, evenings or weekends), but we will work around schedules. Primary location will be NE San Antonio. 
+@var prodnotes="{:.indent}We want to shoot between August 13th - August 17th, based on schedules. Prefer if cast can be available to shoot any day/time (weekdays, evenings or weekends), but we will work around schedules. Primary location will be NE San Antonio. "
 [section_pbb(t="[title] Music Video Casting Call and Character Breakdown")]
 **Production Title:** [title][b]**Independent/Student/Studio:** Independent[b]**Production Type:** Music Video[bb]**Production Location:** NE San Antonio[bb]**Production Start Date:** 08/05/2018[b]**Production Wrap Date:** 08/20/2018[b]**Production Schedule:** August 13 - 17 (*Preferred*)[bb][prodnotes]
 
@@ -59,17 +59,17 @@
 
 Ethnicities aren't important, however, we will try to cast the [mom], [son] and [daughter] roles with actors that *could be* related.
 
-[familypix]=*Must be available to take family pictures before production begins.*
+@var familypix="*Must be available to take family pictures before production begins.*"
 [mom] (Female, 35-45) This is the lead role in the video. Mother arrives home and discovers... In the various scenes, we follow her through ... This character will be a very emotional role throughout the video. [familypix] 
 
 //several She goes from panic and alarm to anger and depression, and then to acceptance. 
 
 @import '[sys.imports]/image.md'
 [IMG_SIZE_LARGE]
-[framegrab]=*NEED FRAME GRAB FROM VIDEO HERE*
-[ss]=[{{var.img_def.img_st_inline_border}}]
-[trythis]={:.red.bold}Try to get this shot
-[beforeshoot]={:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION
+@var framegrab="*NEED FRAME GRAB FROM VIDEO HERE*"
+@var ss="[{{var.img_def.img_st_inline_border}}]"
+@var trythis="{:.red.bold}Try to get this shot"
+@var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
 @import '[sys.imports]/shot.md'
 @image _id="needshot" src="[imports]/needshot.png" style="[ss]"
@@ -105,7 +105,7 @@ Probably just use the [title] and [artist] titles on this shot.
 // -------------------------------------------------------------------
 [plain(t="Scene 99 - Random Stuff")]
 
-[stockshot]=- [{{stock}}]
+@var stockshot="- [{{stock}}]"
 
 [stockshot] Clips of moments from his life
 Various shots implying flashbacks to memories or moments of his life. *If needed*
@@ -116,16 +116,16 @@ Show his smile. Return to stock image. *If needed*
 //
 @break
 [section(t="Cast Headshots")]
-[headshots]=[imports]
-[sTAW]=Source: TAW
+@var headshots="[imports]"
+@var sTAW="Source: TAW"
 
 @image _id="actress1" src="[headshots]/actress1.jpg" style="[ss]" _name="Actor1 Name" _source="[sTAW]"
 @image _id="actress2" src="[headshots]/actress2.jpg" style="[ss]" _name="Actor2 Name" _source="[sTAW]"
 
 
 [IMG_SIZE_SMALL]
-[backup]=**BACKUP CAST MEMBER**
-[tnted]=**TNT SENT**
+@var backup="**BACKUP CAST MEMBER**"
+@var tnted="**TNT SENT**"
 
 ## For the part of [daughter]
 [image.actress1] [actress1._name] - [actress1._source]
