@@ -15,6 +15,7 @@ Priority 3 | p3
 52. Is raw still needed? Can we deprecate that too? Or should I keep it as a way of more easily writing documentation? maybe @@some stuff@@? I'm not so sure. I think before it was just to prevent the <div class="extras">, in which case, that isn't needed, since we no longer wrap things, you can write HTML directly...
 54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
 57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+63. Can i put debugtracker in the TLS? Clean up init, and when classes can register, etc.
 
 
 Priority 3 | p3
