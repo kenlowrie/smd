@@ -1,2 +1,4 @@
-@dump defaults="1"
-@dump all="t"
+@import "foo.bar"
+@embed "peek.md"
+@embed "peek.md"
+@import "single.md"
