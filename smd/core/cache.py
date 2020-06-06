@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from .debug import Debug
+from .constants import Constants
 
 class ImportCache(object):
     def __init__(self):
@@ -9,17 +10,17 @@ class ImportCache(object):
         
         self._importCache = []
         self._importInsertionIdx = -100
-        self._tls = getTLS()
+        self._sysDefaults = getTLS().getObjectFromTLS(Constants.sysDefaults)
 
         # Start with the default body, head and html document parts, i.e. the last things to read
-        #fuck = self._tls.tls_data.sysDefaults
-        self._importCache += ConfigFile("import/def_body.md", self._tls.sysDefaults.load_default_body).filenameAsList()
-        self._importCache += ConfigFile("import/def_head.md", self._tls.sysDefaults.load_default_head).filenameAsList()
-        self._importCache += ConfigFile("import/def_html.md", self._tls.sysDefaults.load_default_html).filenameAsList()
+        #fuck = self._sysDefaultstls_data.sysDefaults
+        self._importCache += ConfigFile("import/def_body.md", self._sysDefaults.load_default_body).filenameAsList()
+        self._importCache += ConfigFile("import/def_head.md", self._sysDefaults.load_default_head).filenameAsList()
+        self._importCache += ConfigFile("import/def_html.md", self._sysDefaults.load_default_html).filenameAsList()
 
         # Now, if any other imports have been specified, we need to load them right after the user
         # builtins.md, since we want to be able to have a "last chance to override" hard coded stuff.
-        additionalImports = self._tls.sysDefaults.getImportFiles()
+        additionalImports = self._sysDefaults.getImportFiles()
         if additionalImports:
             for importfile in additionalImports[::-1]:
                 self._importCache += [importfile]
@@ -29,8 +30,8 @@ class ImportCache(object):
         # if it's available. This way the user builtins.md can override the system defaults. In order
         # to make this work, we need to cache() them in reverse order.
 
-        self._importCache += LocalUserConfigFile("import/builtins.md", self._tls.sysDefaults.load_user_builtins).filenameAsList()
-        self._importCache += ConfigFile("import/builtins.md", self._tls.sysDefaults.load_default_builtins, user_ver=False).filenameAsList()
+        self._importCache += LocalUserConfigFile("import/builtins.md", self._sysDefaults.load_user_builtins).filenameAsList()
+        self._importCache += ConfigFile("import/builtins.md", self._sysDefaults.load_default_builtins, user_ver=False).filenameAsList()
 
     @property
     def iCache(self):
@@ -73,6 +74,11 @@ class Cache(object):
         for line in init_globals():
             self._cache.append(line)
 
+    @property
+    def rawOutput(self):
+        from .thread import getTLS
+        return getTLS().getObjectFromTLS(Constants.rawOutput)
+
     def initDebug(self):
             self.debug = Debug('cache')
             self.debug.off()
@@ -104,15 +110,8 @@ class Cache(object):
             # Return the line
             from .utility import HtmlUtils
             self.debug.print('Returning: <em>{}</em>'.format(HtmlUtils.escape_html(line)))
-            #from .utility import _tls_data
-            #if _tls_data.raw_output is not None:
-            #    _tls_data.raw_output.write(f"{line}")
-            from .thread import getTLS
-            tls = getTLS()
-            #//TODO: This if fucking wrong...
-            #raw_out = self.tls.getObjectFromTLS('raw_output')
-            #if raw_out:
-            #    raw_out.write(f"{line}")
+            if self.rawOutput:
+                self.rawOutput.write(f"{line}")
 
             return line
 

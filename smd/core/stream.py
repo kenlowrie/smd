@@ -43,9 +43,11 @@ class StreamHandler(object):
         self._started_with_file = None
         self._cache = Cache()
         self._importcache = ImportCache()
-        #from .utility import _tls_data
         from .thread import getTLS
-        self._tls = getTLS()              #//TODO: Should this be passed in from main class?
+        tls = getTLS()
+        self._fileTracker = tls.getObjectFromTLS(Constants.fileTracker)
+        self._rawOutput = tls.getObjectFromTLS(Constants.rawOutput)
+
         # Easy way to force EOF no matter what we're doing
         self._fake_eof = False
 
@@ -63,13 +65,12 @@ class StreamHandler(object):
 
     @property
     def fileTracker(self):
-        #//TODO: Should I be calling the getObjectFromTLS method here?
-        return self._tls.getObjectFromTLS(Constants.fileTracker)    # The FileTrack() instance
-        
+        return self._fileTracker    # The FileTrack() instance
+    
     @property
     def rawOutput(self):
-        return self._tls.getObjectFromTLS(Constants.rawOutput)
-        
+        return self._rawOutput
+
     @property
     def fake_eof(self):
         return self._fake_eof

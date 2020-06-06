@@ -5,11 +5,16 @@ from .debug import Debug
 #/TODO: Wonder if I can put the debug register in the tls store too? That would be much cleaner...
 
 # Global that tells which way to access the TLS.
-# If True, the tls stored as current_thread.__dict__[ThreadLocalStorage.tls_smd_core]
-# If False, the tls stored in gb_tls_object global variable
+#   If True, the tls stored as current_thread.__dict__[ThreadLocalStorage.tls_smd_core]
+#   If False, the tls stored in gb_tls_object global variable
+#
+# For now, I've decided to just store the ThreadLocalStorage instance into current_thread['tls_smd_core'].
+# Seems cleaner and less convoluted, but might have to rethink if I find out why current_thread.local() is preferred.
+#
 #use_dict_instance = True
 
-# This global is used to hold the thread local storage data
+# This global is used to hold the thread local storage data; or the old way, it held current_thread.local()
+# Leave for now, remove before release if it never comes back... #//TODO: 
 #gb_tls_object = None
 
 class ThreadLocalStorage(object):
@@ -19,12 +24,13 @@ class ThreadLocalStorage(object):
         # Store reference to threading.local instance in here
         # Allow the caller to pass in a reference to an already allocated
         # local store (not sure if this will be useful, we will see)
-        from threading import local
-        #//TODO: This isn't used, so I should remove it...
+        #//TODO: This isn't used, so remove before release v1.0
+        #from threading import local
         #self._local_instance = _local_in if _local_in is not None else local()
 
         # And now store a reference to this object in the local instance object
         #self._local_instance.tls_smd_core = self
+        pass
     
     @property
     def tls(self):
@@ -78,6 +84,10 @@ def initTLS(reset_if_initialized=True):
         if not reset_if_initialized:
             raise AssertionError("ThreadLocalStorage is already initialized.")
         else:
+            # Alternative implementation might be to put a reset method on the class.
+            # Then consumers of the ScriptParser() class could decide when it's okay to
+            # reset the TLS (like after they extract fileTracker, etc.)
+            #//TODO: Replace with debug print
             print(f"Resetting TLS...")
             keys = [i for i in tls.__dict__.keys()]
             for key in keys:
@@ -85,32 +95,16 @@ def initTLS(reset_if_initialized=True):
 
             return tls
 
-    #global use_dict_instance
-    #if use_dict_instance:
-    #    pass
-    #else:
-    #    pass
-
-    #//TODO: For now, let's store it both ways for testing...
-    #global gb_tls_object
-    #gb_tls_object = ThreadLocalStorage()
-
     #//TODO: go ahead and store this for now, we can test it out as we go. better than the global variable solution...
     from threading import current_thread
-    #current_thread.__dict__[ThreadLocalStorage.tls_smd_core] = gb_tls_object
     newtls = ThreadLocalStorage()
     current_thread.__dict__[ThreadLocalStorage.tls_smd_core] = newtls
 
     return newtls
 
 def getTLS():
-    #global use_dict_instance
-    #if use_dict_instance:
     from threading import current_thread
     return current_thread.__dict__[ThreadLocalStorage.tls_smd_core] if hasattr(current_thread, ThreadLocalStorage.tls_smd_core) else None
-
-    #global gb_tls_object
-    #return gb_tls_object
 
 
 if __name__ == '__main__':

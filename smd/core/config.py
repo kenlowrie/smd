@@ -105,8 +105,6 @@ class ConfigFile(ConfigFileObject):
     def __init__(self, name, okay2load, user_ver=True):
         from .globals import _getBasepath
         super(ConfigFile, self).__init__(name,_getBasepath(),okay2load)
-        #//TODO: remove old crap
-        #from .utility import _tls_data
         
         # load_user_files by default is True, but can be set to False,
         # which will prevent any user-specific files from being loaded
