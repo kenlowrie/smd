@@ -47,6 +47,7 @@ class StreamHandler(object):
         tls = getTLS()
         self._fileTracker = tls.getObjectFromTLS(Constants.fileTracker)
         self._rawOutput = tls.getObjectFromTLS(Constants.rawOutput)
+        self.debug = Debug('stdinput')
 
         # Easy way to force EOF no matter what we're doing
         self._fake_eof = False
@@ -57,11 +58,6 @@ class StreamHandler(object):
     @property
     def icache(self):
         return self._importcache
-
-    def initDebug(self):
-            self.debug = Debug('stdinput')
-            self._cache.initDebug()
-            self.icache.initDebug()
 
     @property
     def fileTracker(self):

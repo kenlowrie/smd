@@ -1,48 +1,20 @@
 #!/usr/bin/env python
 
-def default_debug_register(obj):
-    # A default register in case someone tries to instantiate a Debug() object
-    # before a DebugTracker() is up and running and the registration API exposed
-    raise NotImplementedError("You need to define a default debug register first")
-
-# When a Debug() object is instantiated, it registers itself with the DebugTracker
-# via this interface.
-gb_debug_register_tag = default_debug_register
-# The suspend interface is initialized when the debug_register is done. This API
-# provides a way for any Debug() instance to suspend/resume output.
-gb_debug_suspend_xface = None
-
-def set_default_debug_register(func):
-    if not isinstance(func, DebugTracker):
-        raise NameError("set_default_debug_register requires a DebugTracker object")
-
-    global gb_debug_register_tag, gb_debug_suspend_xface
-    gb_debug_register_tag = func.debug_register_xface
-    gb_debug_suspend_xface = func.debug_suspend_xface
-
-def default_debug_print(s):
-    # We have a default handler for printing in case we are called too early...
-    raise NotImplementedError("You need to define a default debug print handler")
-
-# This is the API that prints debug messages. Debug() objects call their print() method
-# Which uses this entry point to serialize the messages through a common output function,
-# enabling us to control output globally.
-
-gb_debug_print = default_debug_print
-
+from .constants import Constants
+from .thread import getTLS
 
 class Debug(object):
     def __init__(self, classtag, initial_state=False):
         self._state = initial_state
         self._tag = '{}.{}'.format(classtag,id(self))
-        global gb_debug_register_tag
-        gb_debug_register_tag(self)
+        self._tls = getTLS()
+        self._dbgTrack = self._tls.getObjectFromTLS(Constants.debugTracker)
+        self._dbgXface = self._dbgTrack.xfaces
+        self._dbgXface.register_xface(self)
 
     def global_suspend(self, suspend):
         # used to globally suspend debug messages
-        global gb_debug_suspend_xface
-        gb_debug_suspend_xface(suspend)
-
+        self._dbgXface.suspend_xface(suspend)
 
     @property
     def state(self):
@@ -78,8 +50,7 @@ class Debug(object):
 
     def print_msg(self, msg, context=None):
         s = '{:>20}: {}{}<br />\n'.format(self._tag, '{}'.format('' if context is None else '({})'.format(context)), msg)
-        global gb_debug_print
-        gb_debug_print('<span class="debug">{}</span>'.format(s))
+        self._dbgXface.oprint('<span class="debug">{}</span>'.format(s))
 
     def print(self, msg, context=None):
         if not self.state:
@@ -87,21 +58,46 @@ class Debug(object):
 
         self.print_msg(msg, context)
 
+class DebugTrackerXface(object):
+    def __init__(self, reg_xface, suspend_xface, oprint):
+        self._register_xface = reg_xface
+        self._suspend_xface = suspend_xface
+        self._oprint = oprint
+    
+    @property
+    def register_xface(self):
+        return self._register_xface
+    
+    @property
+    def suspend_xface(self):
+        return self._suspend_xface
+    
+    @property
+    def oprint(self):
+        return self._oprint
+
 class DebugTracker(object):
     def __init__(self, output=None):
         self.suspendCounter=0
         self._debug_tags = {}
         self._msg_cache = []
-        global gb_debug_register_tag
-        gb_debug_register_tag = self.debug_register_xface
-
-        global gb_debug_print
-        gb_debug_print = self.print
+        self._sys_debug = None
+        self._interfaces = DebugTrackerXface(self.debug_register_xface, self.debug_suspend_xface, self.print)
 
         # This is the output method. print() by default, unless passed in
-        self._out = output
-        
-        self.sys_debug = Debug('_SYSTEM')    # Define our own tracker to format...
+        self._out = output if output is not None else print
+
+    @property
+    def sys_debug(self):
+        return self._sys_debug
+
+    @sys_debug.setter
+    def sys_debug(self, dbgObj):
+        self._sys_debug = dbgObj
+
+    @property
+    def xfaces(self):
+        return self._interfaces
 
     def print(self, s):
         if self.suspendCounter == 0:

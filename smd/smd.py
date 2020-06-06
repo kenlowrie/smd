@@ -58,7 +58,7 @@ if version_info < MIN_PYTHON:
 
 from .core.line import Line
 from .core.link import LinkDict
-from .core.debug import DebugTracker, set_default_debug_register, Debug
+from .core.debug import DebugTracker, Debug
 from .core.regex import Regex, RegexMD, RegexMain
 from .core.stdio import StdioWrapper
 from .core.ftrack import FileTrack
@@ -81,10 +81,16 @@ class ScriptParser(StdioWrapper):
     def __init__(self, sysDefaults=None, fileTracker=None):
         """
         Initialize the required instance variables for this class.
+
+        #//TODO: Decide whether sysDefaults, fileTracker, etc. can be passed in...
         """
         # before we do anything else, we need to make sure that our thread local storage is set up.
         #self._tls = initTLS().tls_data
         self._tls = initTLS()
+
+        # Create the debug tracker object for this app
+        self.tlsDebugTracker = DebugTracker(output=self.oprint)
+        self.tlsDebugTracker.sys_debug = Debug('_SYSTEM')
 
         # before we call the Constructor for StdioWrapper(), which will create a StreamHandler()
         # object, which will instantiate the Cache(), which will process all of the defaults
@@ -109,15 +115,10 @@ class ScriptParser(StdioWrapper):
 
         super(ScriptParser, self).__init__()  # Initialize the base class(es)
 
-        # Create the debug tracker object for this app
-        self._dbgTracker = DebugTracker(output=self.oprint)
-        set_default_debug_register(self._dbgTracker)
-
         # Register a tracker for this object
         self.debug_smd = Debug('smd')
         self.debug_smd_line = Debug('smd.line')
         self.debug_smd_raw = Debug('smd.raw')
-        self.stdinput.initDebug()
 
         self._md = Markdown()           # New markdown support in separate class
 
@@ -173,6 +174,20 @@ class ScriptParser(StdioWrapper):
     def tls(self, tls_object):
         self._tls = tls_object
     
+    @property
+    def tlsDebugTracker(self):
+        return self.tls.getObjectFromTLS(Constants.debugTracker)
+    
+    @tlsDebugTracker.setter
+    def tlsDebugTracker(self, dbgTrk):
+        if self.tlsDebugTracker is not None:
+            raise AssertionError("DebugTracker already initialized in TLS")
+        elif dbgTrk and not isinstance(dbgTrk, DebugTracker):
+            raise TypeError("debugTracker must be of type .debug.DebugTracker")
+
+        # all is good, store the object in the TLS
+        self.tls.addObjectToTLS(Constants.debugTracker, dbgTrk if dbgTrk else DebugTracker())
+
     @property
     def tlsSysDefaults(self):
         return self.tls.getObjectFromTLS(Constants.sysDefaults)
@@ -464,22 +479,22 @@ class ScriptParser(StdioWrapper):
 
                 if not d:
                     self.oprint("<br />Toggling Debug Mode<br />")
-                    self._dbgTracker.toggle('.')
+                    self.tlsDebugTracker.toggle('.')
                 else:
                 
                     for key in d:
                         if key not in ['on', 'off', 'enabled', 'toggle', 'tags']:
                             self.oprint("<br /><strong>Unknown debug key: <em>{}</em></strong>".format(key))
                         elif key == 'on':
-                            self._dbgTracker.on(d[key])
+                            self.tlsDebugTracker.on(d[key])
                         elif key == 'off':
-                            self._dbgTracker.off(d[key])
+                            self.tlsDebugTracker.off(d[key])
                         elif key == 'enabled':
-                            self._dbgTracker.enabled(d[key])
+                            self.tlsDebugTracker.enabled(d[key])
                         elif key == 'toggle':
-                            self._dbgTracker.toggle(d[key])
+                            self.tlsDebugTracker.toggle(d[key])
                         elif key == 'tags':
-                            self._dbgTracker.dumpTags()
+                            self.tlsDebugTracker.dumpTags()
                         
             else:
                 self.oprint(lineObj.current_line)

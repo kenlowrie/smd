@@ -8,6 +8,8 @@ class ImportCache(object):
         from .thread import getTLS
         from .config import ConfigFile, LocalUserConfigFile
         
+        self._debug = Debug('cache.import')
+
         self._importCache = []
         self._importInsertionIdx = -100
         self._sysDefaults = getTLS().getObjectFromTLS(Constants.sysDefaults)
@@ -41,9 +43,6 @@ class ImportCache(object):
     def iCache(self,filename):
         iCache += [filename] if filename is not None else []
 
-    def initDebug(self):
-        self._debug = Debug('cache.i')
-
     def readyForNextCachedImport(self, index):
         if self._importInsertionIdx == -100: self._importInsertionIdx = index
 
@@ -64,6 +63,8 @@ class Cache(object):
     in the middle of processing normal files.
     """
     def __init__(self):
+        self.debug = Debug('cache')
+
         self._cache = []    # assume an empty cache
 
         # finally, add the globals onto the stack, since these can be used during parsing of the other files
@@ -78,10 +79,6 @@ class Cache(object):
     def rawOutput(self):
         from .thread import getTLS
         return getTLS().getObjectFromTLS(Constants.rawOutput)
-
-    def initDebug(self):
-            self.debug = Debug('cache')
-            self.debug.off()
 
     def pushline(self, s):
         self._cache.append(s)

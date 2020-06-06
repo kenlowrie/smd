@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-from .debug import Debug
-
-#/TODO: Wonder if I can put the debug register in the tls store too? That would be much cleaner...
-
 # Global that tells which way to access the TLS.
 #   If True, the tls stored as current_thread.__dict__[ThreadLocalStorage.tls_smd_core]
 #   If False, the tls stored in gb_tls_object global variable
@@ -48,6 +44,7 @@ class ThreadLocalStorage(object):
         if hasattr(self, objName): 
             raise AttributeError(f"TLS already has {objName} attribute")
 
+        self.debug.print(f"Removing {objName} from TLS")
         exec(f"self.{objName} = objInstance")
     
     def removeObjectFromTLS(self, objName):
