@@ -41,9 +41,11 @@ class ConfigFileObject():
     def __init__(self,name,path, okay2load):
         self._filename = Path().joinpath(path,name)
         self.okay2load = okay2load
-        from .utility import _tls_data
+        from .thread import getTLS
+
+        self._tls = getTLS()
         # filedata will be either None (if not present, or the data)
-        self.filedata = _tls_data.sd.getConfigFileData(name)
+        self.filedata = self._tls.sysDefaults.getConfigFileData(name)
 
     def filename(self):
         return self._filename if self.okay2load and self._filename.is_file() else None
@@ -103,14 +105,15 @@ class ConfigFile(ConfigFileObject):
     def __init__(self, name, okay2load, user_ver=True):
         from .globals import _getBasepath
         super(ConfigFile, self).__init__(name,_getBasepath(),okay2load)
-        from .utility import _tls_data
+        #//TODO: remove old crap
+        #from .utility import _tls_data
         
         # load_user_files by default is True, but can be set to False,
         # which will prevent any user-specific files from being loaded
         # also, user_ver is by default True, but can be overridden to
         # provide another way of preventing the object from giving
         # precedence to the user specifc configuration file.
-        self.localuser = LocalUserConfigFile(name,okay2load) if _tls_data.sd.load_user_files and user_ver else None
+        self.localuser = LocalUserConfigFile(name,okay2load) if self._tls.sysDefaults.load_user_files and user_ver else None
 
     def filename(self):
         if (self.localuser and self.localuser.filename()):

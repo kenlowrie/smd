@@ -15,6 +15,7 @@ from os.path import join, split, abspath, isfile
 from .exception import FileError, LogicError
 from .debug import Debug
 from .cache import ImportCache, Cache
+from .constants import Constants
 
 class _OpenFile(object):
     """A simple class to keep track of files that are opened."""
@@ -38,12 +39,13 @@ class StreamHandler(object):
         self.filestack = []
         self.idx = -1
         self.line = ''
-        self.imported = []
         self._started_with_stdin = None
         self._started_with_file = None
         self._cache = Cache()
         self._importcache = ImportCache()
-
+        #from .utility import _tls_data
+        from .thread import getTLS
+        self._tls = getTLS()              #//TODO: Should this be passed in from main class?
         # Easy way to force EOF no matter what we're doing
         self._fake_eof = False
 
@@ -59,6 +61,15 @@ class StreamHandler(object):
             self._cache.initDebug()
             self.icache.initDebug()
 
+    @property
+    def fileTracker(self):
+        #//TODO: Should I be calling the getObjectFromTLS method here?
+        return self._tls.getObjectFromTLS(Constants.fileTracker)    # The FileTrack() instance
+        
+    @property
+    def rawOutput(self):
+        return self._tls.getObjectFromTLS(Constants.rawOutput)
+        
     @property
     def fake_eof(self):
         return self._fake_eof
@@ -113,12 +124,12 @@ class StreamHandler(object):
             if isfile(filename):
                 name = abspath(filename)
                 # Check if we've already imported this file
-                if name in self.imported:
+                if self.fileTracker.alreadySeen(filename):
                     self.debug.print('File <strong><em>{}</em></strong> has already been imported'.format(name))
                     return
                 file = open(filename, "r")
                 self.push(file, name)
-                self.imported.append(name)
+                self.fileTracker.seen = name
 
             else:
                 raise FileError(1, "ERROR: Unable to import '{}'. File does not exist.<br />".format(filename))
@@ -182,9 +193,8 @@ class StreamHandler(object):
                 if (self.idx >= 0 or self._started_with_stdin):
                     return self.readline()
 
-        from .utility import _tls_data
-        if _tls_data.raw_output is not None:
-            _tls_data.raw_output.write(f"{self.line}")
+        if self.rawOutput:
+            self.rawOutput.write(f"{self.line}")
 
         return self.line
 

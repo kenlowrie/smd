@@ -36,6 +36,7 @@ def get_head(mdfile, cssFileList, title = None):
 
 from pathlib import Path
 import traceback
+from smd.core.ftrack import FileTrack
 
 class ScriptParser():
     def __init__(self, inputFile, cssFileList, importFileList, outputDir, sysDefaults):
@@ -43,9 +44,14 @@ class ScriptParser():
         self.smdFile = Path(inputFile).resolve()
         self.cssFileList = [Path(item).resolve() for item in cssFileList] # Path(cssFile).resolve() if cssFile is not None else cssFile
         self.outDir = Path(outputDir).resolve()
+        if not self.outDir.is_dir(): self.outDir.mkdir()
         self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
         self.importFileList = importFileList
         self.sysDefs = sysDefaults
+        self.fileTracker = FileTrack()
+        self.fileTracker.seen = self.smdFile
+        for filename in self.cssFileList + self.importFileList if self.importFileList else []:
+            self.fileTracker.seen = filename
         self._copy_cssfiles()
         self.parse(True)
 
@@ -55,8 +61,6 @@ class ScriptParser():
                 message.o("Can't find [{}], ignoring ...".format(file))
                 continue
 
-            if not self.outDir.is_dir():
-                self.outDir.mkdir()
             from shutil import copy2
             try:
                 copy2(file, self.outDir)

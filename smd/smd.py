@@ -61,10 +61,13 @@ from .core.link import LinkDict
 from .core.debug import DebugTracker, set_default_debug_register, Debug
 from .core.regex import Regex, RegexMD, RegexMain
 from .core.stdio import StdioWrapper
+from .core.ftrack import FileTrack
 from .core.sysdef import SystemDefaults
+from .core.thread import initTLS, getTLS
 from .core.variable import Namespaces
 from .core.bookmark import BookmarkList
 from .core.markdown import Markdown
+from .core.constants import Constants
 from .core.htmlformat import HTMLFormatter
 from .core.exception import RegexError, LogicError, FileError
 
@@ -75,24 +78,60 @@ class ScriptParser(StdioWrapper):
 
     Reads a text file (or reads from sys.stdin) and outputs HTML.
     """
-    def __init__(self, sysDefaults=None):
+    def __init__(self, sysDefaults=None, fileTracker=None):
         """
         Initialize the required instance variables for this class.
         """
+        # before we do anything else, we need to make sure that our thread local storage is set up.
+        #self._tls = initTLS().tls_data
+        self._tls = initTLS()
+
         # before we call the Constructor for StdioWrapper(), which will create a StreamHandler()
         # object, which will instantiate the Cache(), which will process all of the defaults
         # i.e. builtins, default_html, head, body..., I have to establish the global SystemDefaults()...
-        
-        self.Defaults = sysDefaults if sysDefaults is not None else SystemDefaults()
-        from threading import local
 
+        # if the SystemDefaults() object is not already stored in the TLS data, we need to do that now.
+        try:
+            self.tlsSysDefaults = sysDefaults
+        except AssertionError:
+            pass    # ignore the error if it's already set up
+
+        #if self.tls.getObjectFromTLS(Constants.sysDefaults) is None:
+        #    # if we remove the ability to pass it in during construction, then this should just be
+        #    # set to an empty instance...
+        #    self.tls.addObjectToTLS(Constants.sysDefaults, sysDefaults if sysDefaults is not None else SystemDefaults())
+
+        #//TODO: Should I check to make sure the object is of the correct instance?
+        #self.Defaults = sysDefaults if sysDefaults is not None else SystemDefaults()
+
+        #----//TODO: Remove this once the new TLS code is working
         #_set_tls_data(tls)
         # I think the reason I do this is so that later when code in my global space imports this it will work
         # because it's already been set. //TODO: Need to verify this.
-        exec("from .core.utility import _set_tls_data;_set_tls_data(local())")
 
-        from .core.utility import _tls_data
-        _tls_data.sd = self.Defaults
+        #from threading import local
+        #exec("from .core.utility import _set_tls_data;_set_tls_data(local())")
+        #from .core.utility import _tls_data
+
+        #from threading import current_thread
+        #current_thread.__dict__['_tls_data'] = _tls_data
+
+        #_tls_data.sd = self.Defaults
+
+        #----//TODO: Remove this once the new TLS code is working
+        #from .core.ftrack import FileTrack
+        #_tls_data.ft = fileTracker if fileTracker is not None and isinstance(fileTracker, FileTrack) else FileTrack()
+        #self._fileTracker = _tls_data.ft
+
+        try:
+            self.tlsFileTracker = fileTracker
+        except AssertionError:
+            pass    # ignore if someone already initialized.
+
+        #if self.tls.fileTracker is None:
+        #    self.tls.fileTracker = fileTracker if fileTracker is not None else FileTrack()
+
+        # Okay, safe to call the base class constructor now
 
         super(ScriptParser, self).__init__()  # Initialize the base class(es)
 
@@ -107,7 +146,14 @@ class ScriptParser(StdioWrapper):
         self.stdinput.initDebug()
 
         # If we want to output the raw data to a file as we go...
-        _tls_data.raw_output = open(f"{self.Defaults.raw_output_file}", "w") if self.Defaults.raw_output_file else None
+        #//TODO: Clean this up too.
+
+        #self.tls.addObjectToTLS(Constants.rawOutput, open(f"{self.tlsSysDefaults.raw_output_file}", "w") if self.tlsSysDefaults.raw_output_file else None)
+        self.tlsRawOutputFileInit()
+        
+        #_tls_data.raw_output = open(f"{self.Defaults.raw_output_file}", "w") if self.Defaults.raw_output_file else None
+        #//TODO: This if fucking wrong...
+        #self.tls.addObjectToTLS('raw_output', open(f"{self.tls.sysDefaults.raw_output_file}", "w") if self.tls.sysDefaults.raw_output_file else None)
 
         self._md = Markdown()           # New markdown support in separate class
 
@@ -153,6 +199,63 @@ class ScriptParser(StdioWrapper):
         }
 
     @property
+    def tls(self):
+        return self._tls
+    
+    @tls.setter
+    def tls(self, tls_object):
+        self._tls = tls_object
+    
+    @property
+    def tlsSysDefaults(self):
+        return self.tls.getObjectFromTLS(Constants.sysDefaults)
+    
+    @tlsSysDefaults.setter
+    def tlsSysDefaults(self, sd):
+        if self.tlsSysDefaults is not None:
+            raise AssertionError("SystemDefaults already initialized in TLS")
+        elif sd and not isinstance(sd, SystemDefaults):
+            raise TypeError("sysDefaults must be of type .sysdef.SystemDefaults")
+
+        # if nothing passed in, then set to an empty instance...
+        self.tls.addObjectToTLS(Constants.sysDefaults, sd if sd else SystemDefaults())
+
+    @property
+    def tlsFileTracker(self):
+        return self.tls.getObjectFromTLS(Constants.fileTracker)
+    
+    @tlsFileTracker.setter
+    def tlsFileTracker(self, ft):
+        if self.tlsFileTracker is not None:
+            raise AssertionError("FileTracker already initialized in TLS")
+        elif ft and not isinstance(ft, FileTrack):
+            raise TypeError("fileTracker must be of type .ftrack.FileTrack")
+
+        # if nothing passed in, then set to an empty instance...
+        self.tls.addObjectToTLS(Constants.fileTracker, ft if ft else FileTrack())
+    
+    @property
+    def tlsRawOutputFile(self):
+        return self.tls.getObjectFromTLS(Constants.rawOutput)
+    
+    def tlsRawOutputFileInit(self):
+        # if -o was passed (we will have a filename)
+        if self.tlsSysDefaults.raw_output_file:
+            if self.tlsRawOutputFile is not None:
+                raise AssertionError("Raw output file is already open")
+
+            self.tls.addObjectToTLS(Constants.rawOutput, open(self.tlsSysDefaults.raw_output_file, "w"))
+
+
+    def tlsRawOutputFileDeinit(self):
+        # if -o was passed (we will have a filename)
+        if self.tlsRawOutputFile:
+            self.tlsRawOutputFile.close()
+            self.tls.removeObjectFromTLS(Constants.rawOutput)
+        
+
+    """
+    @property
     def Defaults(self):
         return self._systemDefaults
 
@@ -161,7 +264,7 @@ class ScriptParser(StdioWrapper):
         if not isinstance(defaultsObject,SystemDefaults):
             raise TypeError("Defaults must be instance of SystemDefaults")
         self._systemDefaults = defaultsObject
-
+    """
     def _regex(self, id):
         """
         Returns the RegexMain object for a specific parse type.
@@ -346,6 +449,8 @@ class ScriptParser(StdioWrapper):
                     embed_fn = m.group(1)
                     if not isfile(embed_fn):
                         raise FileError(1, "ERROR: Unable to embed '{}'. File does not exist.<br />".format(embed_fn))
+
+                    self.tls.fileTracker.seen = embed_fn
 
                     with open(embed_fn) as f:
                         self.oprint(f.read())
@@ -551,15 +656,19 @@ class ScriptParser(StdioWrapper):
 
             #//TODO: Not sure I like how the _tls data is being used. I need an object/class for it...
             from .core.config import ConfigFile
-            from .core.utility import _tls_data
+            #from .core.utility import _tls_data
             closing = []
-            closing += ConfigFile("import/def_bodyclose.md", self.Defaults.load_default_body).data()
-            closing += ConfigFile("import/def_close.md", self.Defaults.load_default_html).data()
+            closing += ConfigFile("import/def_bodyclose.md", self.tls.sysDefaults.load_default_body).data()
+            closing += ConfigFile("import/def_close.md", self.tls.sysDefaults.load_default_html).data()
             for c in closing:
                 self.oprint(self._html.formatLine(c, 0, False))
-                if _tls_data.raw_output is not None:
-                    _tls_data.raw_output.write(c)
+                if self.tlsRawOutputFile is not None:
+                    self.tlsRawOutputFile.write(c)
+            #//TODO: Do I need to track this better?
+            self.tlsRawOutputFileDeinit()
 
+            self.tls.fileTracker.dump()
+            
         except RegexError as regex_error:
             self.oprint("{}".format(regex_error.errmsg))
             rc = 3
