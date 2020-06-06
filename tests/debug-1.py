@@ -7,16 +7,19 @@ bin_path, whocares = split(dirname(realpath('__file__')))
 lib_path = join(abspath(bin_path),'avscript')
 path.insert(0, lib_path)
 """
+from pathlib import Path
+from os import chdir
 
-import avscript.avs.defaults as defaults
+parent = Path(__file__).parent
+chdir(Path().joinpath(parent,'sos'))
 
-#from avscript_md import av_parse_file
+import smd
 
-mydefs = defaults.Defaults()
-mydefs.setDefault('import2', 'some cool value for import 2')
-mydefs.dumpDefaults()
-print( f"{mydefs.getDefault('import2')}")
-mydefs.getDefault('import2')
-mydefs.removeDefault('import2')
-mydefs.setDefault('imports', '/Users/ken/Dropbox/filestor/docs/script_templates')
-mydefs.dumpDefaults()
+#from smd import smd_parse_file
+
+
+#smd.smd.smd_parse_file(['-f', 'clean.md', '-nd', '-ndb'])
+smd.smdparse.parse(['-f', 'peek.md', '-c', '-o'])
+
+
+print("nothing to see here.")
