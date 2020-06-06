@@ -1,16 +1,27 @@
 #!/usr/bin/env python
 
+from smd.core.thread import initTLS, getTLS
+from smd.core.debug import DebugTracker, Debug
+from smd.core.constants import Constants
+
+tls = initTLS()
+
+# Create the debug tracker object for this app
+tls.addObjectToTLS(Constants.debugTracker, DebugTracker())
+tlsDebugTracker = tls.getObjectFromTLS(Constants.debugTracker)
+tlsDebugTracker.sys_debug = Debug('_SYSTEM')
+
 
 from sys import path
 from os.path import dirname, abspath, realpath, split, join
 bin_path, whocares = split(dirname(realpath('__file__')))
-lib_path = join(abspath(bin_path),'avscript')
+lib_path = join(abspath(bin_path),'smd')
 path.insert(0, lib_path)
 from sys import exit
 
-from avs.variable import *
+from smd.core.variable import *
 
-from avs.markdown import Markdown
+from smd.core.markdown import Markdown
 
 def assertEqual(a, b):
     assert a == b
@@ -61,6 +72,7 @@ def gvTestMD(varname, value):
     mdExpr(varname)
     mdAE(value, varname)
 
+"""
 msg('Adding to default name space')
 sep(28)
 ns.addVariable('value', name='varname')
@@ -75,7 +87,7 @@ ns.addVariable('[{{varname}}]', name='v1n')
 gvTest('v1v', '[value]')
 
 gvTest('v1n', '[varname]', 'value')
-
+"""
 sep()
 msg("Adding variable by same name to each namespace")
 
@@ -98,8 +110,8 @@ try:
 except TypeError as te:
     msg("ERROR: {}".format(te))
 
-msg('adding "v0.class" to basic name space')
-ns.addVariable("basic attr", name="v0.class")
+#msg('adding "v0.class" to basic name space')
+#ns.addVariable("basic attr", name="v0.class")
 
 msg('adding "v0" to var name space')
 ns.addVariable(md1, ns='var')
@@ -112,8 +124,8 @@ ns.addVariable(md4, ns='link')
 msg('adding "v0" to code name space')
 ns.addVariable(md5, ns='code')
 
-gvTest('v0.class', 'basic attr')
-gvTest('basic.v0.class', 'basic attr')
+#gvTest('v0.class', 'basic attr')
+#gvTest('basic.v0.class', 'basic attr')
 
 gvTest('v0.name', 'var dict 1')
 gvTest('html.v0.name', 'html dict 1')
@@ -145,14 +157,14 @@ ns.addVariable(var0, ns="var")
 gvTest('var0', ' style="{{self.other}}" other="yes!"')
 gvTest('var0._public_attrs_', ' style="{{self.other}}" other="yes!"')
 gvTest('var0._private_attrs_', ' _format="{{self._public_attrs_}}"')
-gvTest('var0._all_attrs_', ' _format="{{self._public_attrs_}}" style="{{self.other}}" other="yes!"')
+#gvTest('var0._all_attrs_', ' _format="{{self._public_attrs_}}" style="{{self.other}}" other="yes!"')
 gvTest('var0.style', 'yes!')
 gvTest('var0.other', 'yes!')
 
 gvTest('var.var0', ' style="{{self.other}}" other="yes!"')
 gvTest('var.var0._public_attrs_', ' style="{{self.other}}" other="yes!"')
 gvTest('var.var0._private_attrs_', ' _format="{{self._public_attrs_}}"')
-gvTest('var.var0._all_attrs_', ' _format="{{self._public_attrs_}}" style="{{self.other}}" other="yes!"')
+#gvTest('var.var0._all_attrs_', ' _format="{{self._public_attrs_}}" style="{{self.other}}" other="yes!"')
 gvTest('var.var0.style', 'yes!')
 gvTest('var.var0.other', 'yes!')
 
@@ -268,13 +280,13 @@ lnk0 = {'_id': 'cls',
 
 ns.addVariable(lnk0, ns="link")
 
-gvTest('cls',' _tag="a" _format="{{self._all_attrs_}}" class="myclass"')
+#gvTest('cls',' _tag="a" _format="{{self._all_attrs_}}" class="myclass"')
 gvTest('cls.<','<a class="myclass">')
 gvTest('cls.>','</a>')
 gvTest('cls.class','myclass')
 gvTest('cls._tag', 'a')
 
-gvTest('link.cls',' _tag="a" _format="{{self._all_attrs_}}" class="myclass"')
+#gvTest('link.cls',' _tag="a" _format="{{self._all_attrs_}}" class="myclass"')
 gvTest('link.cls.<','<a class="myclass">')
 gvTest('link.cls.>','</a>')
 gvTest('link.cls.class','myclass')
@@ -295,11 +307,11 @@ gvTest('link.cls.style', 'my cool style')
 gvTest('link.cls._newfmt', 'my cool style')
 
 #[alt]=Google image
-ns.addVariable('Google image', 'alt-text')
+ns.addVariable('Google image', 'alt_text')
 gvTest('alt-text', 'Google image')
 img25 = {"_id": "img25", 
          "src":"google.png", 
-         "alt":"[alt-text]", 
+         "alt":"[alt_text]", 
          "_tag": "img"}
 ns.addVariable(img25, ns='image')
 
@@ -335,7 +347,7 @@ gvTest('link.link25', '<a href="https://google.com"></a>')
 
 gvTest('link.link25._public_attrs_', ' href="https://google.com"')
 gvTest('link.link25._private_attrs_', ' _tag="a" _text1="{{self.<}}my link text{{self.>}}" _text2="{{image.img25}}" _text3="<img src="google.png" alt="Google image"/>" _text4="{{self.<}}{{image.img25}}{{self.>}}" _text5="{{self._text6}}" _text6="{{self._text4}}" _[="[" _]="]" _var="self." _t5="_text5" _t6="{{self._var}}{{self._t5}}" _wow="{{{{self._t6}}}}" _asurl="&lt;{{self.href}}&gt;" _format="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"')
-gvTest('link.link25._all_attrs_', ' _tag="a" _text1="{{self.<}}my link text{{self.>}}" _text2="{{image.img25}}" _text3="<img src="google.png" alt="Google image"/>" _text4="{{self.<}}{{image.img25}}{{self.>}}" _text5="{{self._text6}}" _text6="{{self._text4}}" _[="[" _]="]" _var="self." _t5="_text5" _t6="{{self._var}}{{self._t5}}" _wow="{{{{self._t6}}}}" _asurl="&lt;{{self.href}}&gt;" href="https://google.com" _format="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"')
+#gvTest('link.link25._all_attrs_', ' _tag="a" _text1="{{self.<}}my link text{{self.>}}" _text2="{{image.img25}}" _text3="<img src="google.png" alt="Google image"/>" _text4="{{self.<}}{{image.img25}}{{self.>}}" _text5="{{self._text6}}" _text6="{{self._text4}}" _[="[" _]="]" _var="self." _t5="_text5" _t6="{{self._var}}{{self._t5}}" _wow="{{{{self._t6}}}}" _asurl="&lt;{{self.href}}&gt;" href="https://google.com" _format="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"')
 gvTest('link.link25._text1', '<a href="https://google.com">my link text</a>')
 gvTest('link.link25._text2', '<img src="google.png" alt="Google image"/>')
 gvTest('link.link25._text3', '<img src="google.png" alt="Google image"/>')
