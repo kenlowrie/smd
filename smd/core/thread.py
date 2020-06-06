@@ -44,7 +44,6 @@ class ThreadLocalStorage(object):
         if hasattr(self, objName): 
             raise AttributeError(f"TLS already has {objName} attribute")
 
-        self.debug.print(f"Removing {objName} from TLS")
         exec(f"self.{objName} = objInstance")
     
     def removeObjectFromTLS(self, objName):
