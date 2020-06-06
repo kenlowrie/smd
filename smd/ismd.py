@@ -206,6 +206,7 @@ def ismd(arguments=None):
     from argparse import ArgumentParser
     from pathlib import Path
 
+    #//TODO: Can any of these "common" args be moved to smdparse and shared?
     parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
                             epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
@@ -228,6 +229,7 @@ def ismd(arguments=None):
 
     if sp.lastParseOK == False:
         message.o("stopping because the initial parse failed...")
+        #//TODO: Need a command line switch to ignore this failure
         return 1
 
 

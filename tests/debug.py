@@ -17,7 +17,18 @@ import smd
 
 #from smd import smd_parse_file
 
+if False:
+    from threading import current_thread, local
+
+    current = current_thread
+    mytlsdict = current_thread.__dict__
+    tls = local()
+
+
 #smd.smd.smd_parse_file(['-f', 'clean.md', '-nd', '-ndb'])
-smd.smd.smd_parse_file(['-nd', '-ndb'])
+smd.smd.smd_parse_file(['-nd', '-ndb', '-o'])
+
+
+print("nothing to see here.")
 
 #avscript.avscript_md.av_parse_file(['-f', '/Users/ken/Dropbox/clp/projects/2018/buddyvargas/video/forgiveme/forgiveme-musicvideo.md'])

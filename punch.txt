@@ -5,9 +5,9 @@ Priority 1 | p1
 ---------------
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 60. Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
-30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
 55. Is @break useful? What about @exit?
 56. See how close I can get to a clean render of Buddy's music video script markdown file...
+61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 
 Priority 3 | p3
 ---------------
@@ -30,6 +30,7 @@ Priority 3 | p3
 36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
 44. Code review Cache, ImportCache & SystemDefaults.
 50. Clean up how ismd does the multiple monitors
+62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
 
 Priority 5 | p5
 ---------------
@@ -67,6 +68,7 @@ Completed
 **02. remove all the old peekline, ... bs from the mainloop. we need to kiss.
 **51. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
 **24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
+**30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
 
 
 
