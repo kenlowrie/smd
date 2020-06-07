@@ -84,7 +84,7 @@ def initTLS(reset_if_initialized=True):
             # Then consumers of the ScriptParser() class could decide when it's okay to
             # reset the TLS (like after they extract fileTracker, etc.)
             #//TODO: Replace with debug print
-            print(f"Resetting TLS...")
+            #print(f"Resetting TLS...")
             keys = [i for i in tls.__dict__.keys()]
             for key in keys:
                 del tls.__dict__[key]
