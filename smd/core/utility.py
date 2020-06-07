@@ -6,20 +6,21 @@ from .debug import Debug
 _ns_xface = None
 _line_cache = None
 
-def _default_debug_handler(msg):
-    pass
+#def _default_debug_handler(msg):
+#    pass
 
-# Called during avscript initialization to save the interface to Namespaces
+# Called during smd initialization to save the interface to Namespaces
 def _set_ns_xface(ns_ptr):
     global _ns_xface
     _ns_xface = ns_ptr
 
-# Called during avscript initialization to save the interface to Namespaces
+# Called during smd initialization to save the interface to the line cache
 def _set_line_cache(line_cache_ptr):
     global _line_cache
     _line_cache = line_cache_ptr
 
-# Called during avscript initialization to save the interface to Namespaces
+# Called during smd initialization to instantiate the Debug object
+#//TODO: Is this used, needed, and when is it really called?
 def _init_debug():
     global _debug
     _debug = Debug('utility')
