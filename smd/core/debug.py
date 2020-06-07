@@ -81,19 +81,19 @@ class DebugTracker(object):
         self.suspendCounter=0
         self._debug_tags = {}
         self._msg_cache = []
-        self._sys_debug = None
+        self._debug = None
         self._interfaces = DebugTrackerXface(self.debug_register_xface, self.debug_suspend_xface, self.print)
 
         # This is the output method. print() by default, unless passed in
         self._out = output if output is not None else print
 
     @property
-    def sys_debug(self):
-        return self._sys_debug
+    def debug(self):
+        return self._debug
 
-    @sys_debug.setter
-    def sys_debug(self, dbgObj):
-        self._sys_debug = dbgObj
+    @debug.setter
+    def debug(self, dbgObj):
+        self._debug = dbgObj
 
     @property
     def xfaces(self):

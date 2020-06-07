@@ -90,8 +90,8 @@ class ScriptParser(StdioWrapper):
 
         # Create the debug tracker object for this app
         self.tlsDebugTracker = DebugTracker(output=self.oprint)
-        self.tlsDebugTracker.sys_debug = Debug('_SYSTEM')
-
+        self.tlsDebugTracker.debug = Debug('_SYSTEM')
+        
         # before we call the Constructor for StdioWrapper(), which will create a StreamHandler()
         # object, which will instantiate the Cache(), which will process all of the defaults
         # i.e. builtins, default_html, head, body..., I have to establish the global SystemDefaults()...
@@ -133,6 +133,10 @@ class ScriptParser(StdioWrapper):
 
         # I think the reason I do the following has to do with the namespace used by exec & eval.
         # I need to figure out the reason though. //TODO: Need to verify this.
+
+        #//TODO: Need to store these in the TLS, right? eliminate this weirdnness
+        # unless it's rquired to get the vars inside the .core.utility namespace for
+        # the eval/exec/compile stuff that's part of the runtime to work...
 
         #_set_ns_xface(ns_ptr)
         exec("from .core.utility import _set_ns_xface;_set_ns_xface(self._ns)")
