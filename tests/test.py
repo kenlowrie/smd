@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+from pathlib import Path
+from os import chdir
+
+print("FILE={}".format(__file__))
+parent = Path(__file__).parent
+chdir(parent)
 
 from sys import path
 from os.path import dirname, abspath, realpath, split, join
@@ -32,7 +38,13 @@ def decode(html_string):
 
 class TestSMD(TestCase):
     def setUp(self):
-        self.smd = smd.smd.ScriptParser()
+        from smd.core.sysdef import SystemDefaults
+        sysDefaults = SystemDefaults()
+        sysDefaults.load_default_html = False
+        sysDefaults.load_default_head = False
+        sysDefaults.load_default_body = False
+        sysDefaults.load_user_files = False
+        self.smd = smd.smd.ScriptParser(sysDefaults)
         self.capturedOutput = io.StringIO()     # Create StringIO object
         self.smd.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
 
