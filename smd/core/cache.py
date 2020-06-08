@@ -32,7 +32,10 @@ class ImportCache(object):
         # if it's available. This way the user builtins.md can override the system defaults. In order
         # to make this work, we need to cache() them in reverse order.
 
-        self._importCache += LocalUserConfigFile("import/builtins.md", self._sysDefaults.load_user_builtins).filenameAsList()
+        # there are two flags that can override whether or not we load user builtins, so account for both
+        loadUserBuiltins = self._sysDefaults.load_user_builtins and self._sysDefaults.load_user_files
+
+        self._importCache += LocalUserConfigFile("import/builtins.md", loadUserBuiltins).filenameAsList()
         self._importCache += ConfigFile("import/builtins.md", self._sysDefaults.load_default_builtins, user_ver=False).filenameAsList()
 
     @property
