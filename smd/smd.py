@@ -642,9 +642,6 @@ class ScriptParser(StdioWrapper):
             # Ultimately might want the caller to decide when to close, but for now, this works for what I need.
             self.tlsRawOutputFileDeinit()
 
-            #//TODO: Remove this; it's for testing the file tracker.
-            self.tls.fileTracker.dump()
-            
         except RegexError as regex_error:
             self.oprint("{}".format(regex_error.errmsg))
             rc = 3

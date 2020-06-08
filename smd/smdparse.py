@@ -13,7 +13,7 @@ usage:
 
 from smd.smdutil import ConsoleMessage
 
-message = ConsoleMessage(__file__)
+message = ConsoleMessage(__file__).o
 
 # Override the default (def_html.md) markdown that smd uses, and provide our custom version.
 # def_html.md, def_body.md, def_bodyclose.md and def_close.md are all okay as-is.
@@ -36,38 +36,33 @@ def get_head(mdfile, cssFileList, title = None):
 
 from pathlib import Path
 import traceback
-from smd.core.ftrack import FileTrack
+#from smd.core.ftrack import FileTrack
 
 class ScriptParser():
     def __init__(self, inputFile, cssFileList, importFileList, outputDir, sysDefaults):
         self.lastParseOK = False
         self.smdFile = Path(inputFile).resolve()
-        self.cssFileList = [Path(item).resolve() for item in cssFileList] # Path(cssFile).resolve() if cssFile is not None else cssFile
+        self.cssFileList = [Path(item).resolve() for item in cssFileList]
         self.outDir = Path(outputDir).resolve()
         if not self.outDir.is_dir(): self.outDir.mkdir()
         self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
         self.importFileList = importFileList
         self.sysDefs = sysDefaults
-        self.fileTracker = FileTrack()
-        self.fileTracker.seen = self.smdFile
-        for filename in self.cssFileList + self.importFileList if self.importFileList else []:
-            self.fileTracker.seen = filename
+        self.filesParsed = []
         self._copy_cssfiles()
         self.parse(True)
 
     def _copy_cssfiles(self):
         for file in self.cssFileList:
             if not file.is_file():
-                message.o("Can't find [{}], ignoring ...".format(file))
+                message("Can't find [{}], ignoring ...".format(file))
                 continue
-
             from shutil import copy2
             try:
                 copy2(file, self.outDir)
             except OSError as why:
-                message.o("Error copying CSS file: {}".format(str(why)))
- 
-
+                message("Error copying CSS file: {}".format(str(why)))
+    
     def _parse_script(self):
         htmlfile = open(self.outFile, "w")
 
@@ -76,33 +71,37 @@ class ScriptParser():
         self.sysDefs.addConfigFileData("import/def_head.md", get_head(self.smdFile,self.cssFileList))
         self.sysDefs.addImportFiles(self.importFileList)
 
-        message.o("Creating: " + str(self.outFile))
+        message("Creating: " + str(self.outFile))
         
         smdscript_obj = ScriptParser(self.sysDefs)
         smdscript_obj.stdoutput = htmlfile
         smdscript_obj.open_and_parse(str(self.smdFile))
+        self.filesParsed = smdscript_obj.tlsFileTracker.seen
         
         htmlfile.close()
 
     def dump(self):
-        message.o("Dumping the ScriptParser Instance variables.")
-        message.o(f"lastParseOK={self.lastParseOK}")
-        message.o(f"smdFile={self.smdFile}")
-        message.o(f"cssFileList={self.cssFileList}")
-        message.o(f"outputDir={self.outDir}")
-        message.o(f"htmlFile={self.outFile}")
-        message.o(f"sysDefs (SystemDefaults Instance):")
-        self.sysDefs.dump(message.o)
+        message("Dumping the ScriptParser Instance variables.")
+        message(f"lastParseOK={self.lastParseOK}")
+        message(f"smdFile={self.smdFile}")
+        message(f"cssFileList={self.cssFileList}")
+        message(f"outputDir={self.outDir}")
+        message(f"htmlFile={self.outFile}")
+        message(f"sysDefs (SystemDefaults Instance):")
+        self.sysDefs.dump(message)
 
     def parse(self,firstTime=False):
         try:
-            message.o("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " initially ..."))
+            message("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " initially ..."))
             self._parse_script()
             self.lastParseOK = True
         except:
-            message.o("Caught exception parsing the script ...")
+            message("Caught exception parsing the script ...")
             self.lastParseOK = False
             traceback.print_exc()
+    
+    def getFilesParsed(self):
+        return self.filesParsed
 
 
 def handle_cssfilelist_parameter(cssfilelist):

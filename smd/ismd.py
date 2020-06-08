@@ -8,15 +8,7 @@ class MonitorError(_Error):
     def __init__(self, errmsg):
         self.errmsg = errmsg
 
-"""
-//TODO: Figure out if this is still needed for any use case, such as when module is imported???
-try:
-    myself = __file__
-except NameError:
-    myself = argv[0]
-"""
-
-message = ConsoleMessage(__file__)
+message = ConsoleMessage(__file__).o
 
 class OutputMonitor():
     def __init__(self):
@@ -90,7 +82,7 @@ class Monitor():
 
     def create(self):
         if self.monitor is not None:
-            message.o(f"creating {self.type} window...")
+            message(f"creating {self.type} window...")
             self.monitor.create()
 
     def update(self):
@@ -99,95 +91,43 @@ class Monitor():
 
     def refresh(self):
         if self.monitor is not None:
-            message.o(f"refreshing {self.type} window...")
+            message(f"refreshing {self.type} window...")
             self.monitor.refresh()
 
     def close(self):
         if self.monitor is not None:
-            message.o(f"closing {self.type} window...")
+            message(f"closing {self.type} window...")
             self.monitor.close()
 
 
-class FileEvents:
-    def __init__(self):
-        self._cache = []
+from smd.smdutil import watcher
 
-    def haveEvent(self):
-        return self._cache
-
-    def pushEvent(self,pathstr):
-        self._cache.append(pathstr)
-
-    def popEvent(self):
-        if self.haveEvent():
-            return self._cache.pop()
-
-        return None
-
-gb_file_events = FileEvents()
-
-
-import time 
-import threading
-from watchdog.observers import Observer 
-from watchdog.events import FileSystemEventHandler 
-
-class WatchDirectory: 
+class iSMDLoop(object):
     def __init__(self, monitors, scriptParser): 
-        self.observer = Observer() 
         self.sp = scriptParser
+        self.watcher = watcher()
         self.monitors = [Monitor(monitor, str(self.sp.outFile)) for monitor in monitors]
+        self.watcher.begin(self.sp.getFilesParsed())
 
     def run(self): 
+        from time import sleep
         for monitor in self.monitors: monitor.create()
-        #self.monitor.create()   # make sure the monitor is up and running
-        self.watchDirectory = str(self.sp.smdFile.parent)
-        event_handler = Handler()
-        event_handler.mytickle = False
-        self.observer.schedule(event_handler, self.watchDirectory, recursive = False) 
-        self.observer.start() 
-        global gb_file_events
         try: 
             while True: 
                 for monitor in self.monitors: monitor.update()
-                time.sleep(0.1)
-                if gb_file_events.haveEvent():
-                    curFile = gb_file_events.popEvent()
-                    if curFile == str(self.sp.smdFile):
-                        self.sp.parse()
-                        message.o(f"Parse done, refreshing {self.monitors}...")
-                        for monitor in self.monitors: monitor.refresh()
-                    else:
-                        message.o(f"Modified file: {curFile} is not being watched; ignoring ...")
+                sleep(0.1)
+                if self.watcher.look():
+                    curFile = self.watcher.get()
+                    self.sp.parse()
+                    message(f"Parse done, refreshing {self.monitors}...")
+                    for monitor in self.monitors: monitor.refresh()
+                    self.watcher.reset(self.sp.getFilesParsed())
         except KeyboardInterrupt:
             pass    # don't need to see a traceback for this
         except: 
             traceback.print_exc()   # let's see what happened; wasn't expecting this
         finally:
-            self.observer.stop() 
-            message.o("\nObserver Stopped")
-
-        message.o("Shutting down watch observer thread...")
-        self.observer.join() 
-
-class Handler(FileSystemEventHandler): 
-
-    #//TODO: Can I change this to use non-static handler with single method: on_modified()? like this (last example): https://www.geeksforgeeks.org/create-a-watchdog-in-python-to-look-for-filesystem-changes/
-
-    @staticmethod
-    def on_any_event(event): 
-        if event.is_directory: 
-            return None
-
-        elif event.event_type == 'created': 
-            # Event is created, you can process it now 
-            message.o("Watchdog received created event - %s." % event.src_path) 
-        elif event.event_type == 'modified': 
-            # Event is modified, you can process it now 
-            message.o(f"Watchdog received modified event - {event.src_path}")
-            global gb_file_events
-            gb_file_events.pushEvent(event.src_path)
-
+            self.watcher.end()
 
 
 def ismd(arguments=None):
@@ -228,12 +168,12 @@ def ismd(arguments=None):
     sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
 
     if sp.lastParseOK == False:
-        message.o("stopping because the initial parse failed...")
+        message("stopping because the initial parse failed...")
         #//TODO: Need a command line switch to ignore this failure
         return 1
 
 
-    WatchDirectory(args.monitor, sp).run()
+    iSMDLoop(args.monitor, sp).run()
 
     return 0
 
