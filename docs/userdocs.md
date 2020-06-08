@@ -86,7 +86,7 @@ If I put a div extras at top, then gotta watch using it inline, otherwise we get
 ## What is SMD?
 [var.plain(t="What is SMD?")]
 [var.dp(c="\
-    SMD is a Python utility that takes plain text files loosely {oh, so loosely} based on Markdown as input, and generates Audio/Video {A/V} Style scripts in HTML format. A CSS file is used to style the output, making it super easy to customize the final render to your liking.[bb]At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.\
+    SMD is a Python command line utility that takes plain text files loosely {oh, so loosely} based on Markdown as input, and generates an HTML document. A CSS file is used to style the output, making it super easy to customize the final render to your liking.[bb]At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.\
 ")]
 
 [dp(c="In its simplest terms:")]

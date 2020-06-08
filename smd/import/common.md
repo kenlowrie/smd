@@ -1,3 +1,6 @@
 @var b="<br />"
 @var bb="{{b}}{{b}}"
 @var sp="&nbsp;"
+@var hash1="# [code.repeat.run(t=\"-\", c=\"42\")]"
+@var hash2="## [code.repeat.run(t=\"-\", c=\"42\")]"
+@var hash3="### [code.repeat.run(t=\"-\", c=\"42\")]"
