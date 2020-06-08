@@ -1,57 +1,134 @@
-[link.bm_factory(nm="divs" t="Divs")]
-[link.divs]
-{:.plain}@@@ plainTitle
-##Divs
-You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. The complete syntax is: 
+@import "[sys.imports]/common.md"
+@import "[sys.imports]/code.md"
+@import "[sys.imports]/divs.md"
 
-###&#91;{:.class}&lt;***---*** | ***@@@***&gt; &lt;***title_className | .***&gt; &#91;optional title&#93;
+//@dump
+[hash1]
+### Testing built-ins from sys.imports/divs.md
 
-The class prefix is optional, but handy if you want your DIV to be styled in a unique way. You can list one or more classes in dotted notation. E.g.: **{:.myclass}** or **{:.myclass1.myclass2}**. Then an optional class for the title, or '.' to indicate no title class, and finally, the optional title. Let's take a look at an example:
+#### Testing var.section")]
+[var.section]
+[var.section()]
+[var.section(t="default format section header")]
+[var.section.with_content]
+[var.section.with_content()]
+[var.section.with_content(t=".with_content title")]
+[var.section.with_content(t="")]
+[var.section.with_content(c="with content, empty title")]
+[var.section.with_content(t=".with_content title" c="and content too")]
 
-When I write ***{:.section}@@@ divTitle This is my new DIV section*** at the start of a new line, I get this:
-{:.section}--- divTitle This is my new DIV section
+[hash2]
+##### Testing without the namespace prefix var.
+[section]
+[section()]
+[section(t="default format section header")]
+[section.with_content]
+[section.with_content()]
+[section.with_content(t=".with_content title")]
+[section.with_content(t="")]
+[section.with_content(c="with content, empty title")]
+[section.with_content(t=".with_content title" c="and content too")]
 
-If I indent subsequent lines immediately following the DIV declaration, they become part of the DIV as a regular paragraph. For example, I'll add four (4) indented lines immediately after the previous DIV declaration and I get this:
+[hash1]
+#### Testing var.section_pbb
+[var.section_pbb]
+[var.section_pbb.with_content]
+[var.section_pbb(t="section_pbb title")]
+[var.section_pbb.with_content(c="section_pbb content", t="section_pbb title2")]
 
-{:.section}--- divTitle This is my new DIV section
-    This is line 1
-    This is line 2
-    This is line 3
-    This is line 4
+[hash2]
+##### Testing without the namespace prefix var.
 
-There are a several built-in CSS classes that are defined in the accompanying **avscript_md.css** file, and you can add your own to get new DIVs formatted to your liking.
+[hash1]
+#### Testing var.plain
 
-[link.bm_factory(nm="headers" t="Headers")]
-[link.headers]
-{:.plain}@@@ plainTitle
-##Headers
+[var.plain]
+[var.plain.with_content]
+[var.plain(t="plain non default title")]
+[var.plain.with_content]
+[var.plain.with_content(c="plain non default comment")]
 
-Just like in standard Markdown, you can use the # symbol at the beginning of a line to designate an HTML &lt;H1&gt; element. ## symbols designate an &lt;H2&gt; element, and so on, up to ###### for &lt;H6&gt;. Here are examples of each.
-{:.indent}### # H1
-{:.indent}### ## H2
-{:.indent}### ### H3
-{:.indent}### #### H4
-{:.indent}### ##### H5
-{:.indent}### ###### H6
-And this is how they will look in the document when it's formatted:
-# H1
-## H2
-### H3
-#### H4
-##### H5
-######H6
+[hash2]
+##### Testing without the namespace prefix var.
+[plain]
+[plain.with_content]
+[plain(t="plain non default title")]
+[plain.with_content]
+[plain.with_content(c="plain non default comment")]
 
-You may want to style the headers to your liking in the avscript_md.css file.
+[hash1]
+#### Testing var.code
 
-[link.bm_factory(nm="anchors" t="Bookmarks")]
-[link.anchors]
-##Bookmarks
-You can also define bookmarks in your document, and then reference them with links using the following syntax:
+[var.code]
+[var.code.with_content]
+[var.code(t="code non default title")]
+[var.code.with_content]
+[var.code.with_content(c="code non default comment")]
 
-{:.indent}###@&#43;&#91;bookmark name&#93; - Define local bookmark
-{:.indent}###@&#58;&#91;bookmark name&#93; - Create hyperlink to bookmark
+[hash2]
+##### Testing without the namespace prefix var.
 
-This is useful for creating things like a table of contents (TOC) for your document, or anywhere that you want to provide a hyperlink to a different part of your doc. These do not have to be defined in any particular order. That is, you can create the hyperlink before the bookmark has been defined.
+[code]
+[code.with_content]
+[code(t="code non default title")]
+[code.with_content]
+[code.with_content(c="code non default comment")]
 
-For an example of bookmarks, just take a look at how this user guide defined and uses its own TOC.
+[hash1]
+#### Testing var.toc
+[var.toc]
+[var.toc.with_content]
+[var.toc(t="toc non default title")]
+[var.toc.with_content]
+[var.toc.with_content(c="toc non default comment")]
 
+
+[hash2]
+##### Testing without the namespace prefix var.
+[toc]
+[toc.with_content]
+[toc(t="toc non default title")]
+[toc.with_content]
+[toc.with_content(c="toc non default comment")]
+
+[hash1]
+#### Testing var.review
+[var.review]
+[var.review.with_content]
+[var.review(t="review non default title")]
+[var.review.with_content]
+[var.review.with_content(c="review non default comment")]
+
+[hash2]
+##### Testing without the namespace prefix var.
+[review]
+[review.with_content]
+[review(t="review non default title")]
+[review.with_content]
+[review.with_content(c="review non default comment")]
+
+[hash1]
+#### Testing var.note
+[var.note]
+[var.note.with_content]
+[var.note(t="note non default title")]
+[var.note.with_content]
+[var.note.with_content(c="note non default comment")]
+
+[hash2]
+##### Testing without the namespace prefix var.
+[note]
+[note.with_content]
+[note(t="note non default title")]
+[note.with_content]
+[note.with_content(c="note non default comment")]
+
+[hash1]
+#### Testing var.extras and var.divxp
+[var.extras]
+[var.extras(c="your comment inside an extras div")]
+
+[var.divxp]
+[var.divxp(c="your content inside a p tag inside a div")]
+
+@stop
