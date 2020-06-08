@@ -2,7 +2,7 @@
 @import "[sys.imports]/code.md"
 @import "[sys.imports]/divs.md"
 
-//@dump
+@dump var="." html="." link="." image="."
 [hash1]
 ### Testing built-ins from sys.imports/divs.md
 
@@ -131,4 +131,5 @@
 [var.divxp]
 [var.divxp(c="your content inside a p tag inside a div")]
 
+@dump var="." html="." link="." image="."
 @stop
