@@ -37,6 +37,7 @@ class watchlist(object):
         self.lock.release()
     
     def exists(self, name):
+        # This should be atomic, so no need to lock the data structure.
         return True if name in self.files else False
 
     def addItem(self, filename):
@@ -54,43 +55,7 @@ class watchlist(object):
                 msg(f"\t{i}")
         finally:
             self.release()
-"""
-from watchdog.events import FileSystemEventHandler
 
-class watchdir(FileSystemEventHandler):
-    def __init__(self, observer, fullpath):
-        super(watchdir, self).__init__()  # Initialize the base class(es)
-
-        self.directory = fullpath.parent
-        self.observer = observer            # The observer we can use to schedule with
-        self.watcher = None                 # So we don't unschedule if we never scheduled
-        self.files = watchlist(fullpath.name)
-        self.q = SimpleQueue()
-    
-    def addItem(self, filespec):
-        self.files.addItem(filespec.name)
-
-    def start(self):
-        msg(f"Scheduling watcher for [{self.directory}]")
-        self.watcher = self.observer.schedule(self, str(self.directory), recursive = False)
-
-    def stop(self):
-        if self.watcher is not None:
-            msg(f"UnScheduling watcher for [{self.directory}]")
-            self.observer.unschedule(self.watcher)
-
-    def on_modified(self, event):
-        if event.is_directory: return None
-
-        self.q.put(event.src_path)
-
-    def look(self):
-        if self.q.qsize():
-            msg(f"Modified: {self.q.get()}")
-
-    def dump(self):
-        self.files.dump()
-"""
 from watchdog.events import FileSystemEventHandler
 
 class watcher(FileSystemEventHandler):
