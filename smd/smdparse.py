@@ -20,7 +20,6 @@ message = ConsoleMessage(__file__).o
 def get_head(mdfile, cssFileList, title = None):
     the_title = title if title is not None else str(mdfile.name)
 
-    #stylesheets = [file.name for file in cssFileList]
     stylesheets = [f'\n    <link rel="stylesheet" href="{file.name}" />' for file in cssFileList]
 
     head = """<head>
@@ -36,7 +35,7 @@ def get_head(mdfile, cssFileList, title = None):
 
 from pathlib import Path
 import traceback
-#from smd.core.ftrack import FileTrack
+from smd.core.ftrack import FileTrack
 
 class ScriptParser():
     def __init__(self, inputFile, cssFileList, importFileList, outputDir, sysDefaults):
@@ -48,9 +47,7 @@ class ScriptParser():
         self.outFile = Path().joinpath(self.outDir, Path(self.smdFile.name).with_suffix(".html"))
         self.importFileList = importFileList
         self.sysDefs = sysDefaults
-        self.filesParsed = []
-        self._copy_cssfiles()
-        self.parse(True)
+        self.parse(firstTime=True)
 
     def _copy_cssfiles(self):
         for file in self.cssFileList:
@@ -59,6 +56,7 @@ class ScriptParser():
                 continue
             from shutil import copy2
             try:
+                message("Copying CSS file: {}".format(file))
                 copy2(file, self.outDir)
             except OSError as why:
                 message("Error copying CSS file: {}".format(str(why)))
@@ -73,10 +71,9 @@ class ScriptParser():
 
         message("Creating: " + str(self.outFile))
         
-        smdscript_obj = ScriptParser(self.sysDefs)
+        smdscript_obj = ScriptParser(self.sysDefs, self.fileTracker)
         smdscript_obj.stdoutput = htmlfile
         smdscript_obj.open_and_parse(str(self.smdFile))
-        self.filesParsed = smdscript_obj.tlsFileTracker.seen
         
         htmlfile.close()
 
@@ -90,8 +87,13 @@ class ScriptParser():
         message(f"sysDefs (SystemDefaults Instance):")
         self.sysDefs.dump(message)
 
-    def parse(self,firstTime=False):
+    def parse(self,firstTime=False, copyCSSfiles=False):
+        message("Instantiating file tracker...")
+        self.fileTracker = FileTrack()  # need a fresh instance each time we parse
+        for file in self.cssFileList:
+                self.fileTracker.seen = file
         try:
+            if firstTime or copyCSSfiles: self._copy_cssfiles()
             message("Parsing {}{}".format(self.smdFile,"" if firstTime == False else " initially ..."))
             self._parse_script()
             self.lastParseOK = True
@@ -101,7 +103,7 @@ class ScriptParser():
             traceback.print_exc()
     
     def getFilesParsed(self):
-        return self.filesParsed
+        return self.fileTracker.seen
 
 
 def handle_cssfilelist_parameter(cssfilelist):
@@ -113,7 +115,7 @@ def handle_cssfilelist_parameter(cssfilelist):
     """
     # if -c/--cssfile was specified but no arg passed, use the built-in default css.
     # if -c/--cssfile is not specified, args.cssfilelist = None
-    # if -c/--cssfile specified w/o filename, then args.cssfilelist == []
+    # if -c/--cssfile specified with one or more filenames, then args.cssfilelist == [file1 [,file2]]
     if cssfilelist is not None and len(cssfilelist) == 0:
         from smd.core.globals import _getBasepath
         new_cssfile = Path().joinpath(_getBasepath(), "css/smd.css")

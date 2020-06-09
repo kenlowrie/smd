@@ -109,17 +109,21 @@ class iSMDLoop(object):
         self.monitors = [Monitor(monitor, str(self.sp.outFile)) for monitor in monitors]
         self.watcher.begin(self.sp.getFilesParsed())
 
+    def getMonitorTypes(self):
+        return [i.type for i in self.monitors]
+
     def run(self): 
         from time import sleep
+        from pathlib import Path
         for monitor in self.monitors: monitor.create()
         try: 
             while True: 
                 for monitor in self.monitors: monitor.update()
                 sleep(0.1)
                 if self.watcher.look():
-                    curFile = self.watcher.get()
-                    self.sp.parse()
-                    message(f"Parse done, refreshing {self.monitors}...")
+                    curFile = Path(self.watcher.get())
+                    self.sp.parse(copyCSSfiles=True if curFile.suffix.lower() == '.css' else False)
+                    message(f"Parse done, refreshing {self.getMonitorTypes()}...")
                     for monitor in self.monitors: monitor.refresh()
                     self.watcher.reset(self.sp.getFilesParsed())
         except KeyboardInterrupt:

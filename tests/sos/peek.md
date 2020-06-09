@@ -6,10 +6,12 @@
 @import "[sys.imports]/divs.md"
 [var.plain(t="hello, world!!!")]
 
-@var cl3.com="foo"
+@var cl3.com="foobar"
+@var cl42="fubar"
 
 [cloudylogic.com]
 [cloudylogic2com]
 [cl3.com]
+{:.green}[cl42]
 
 @dump var="c"
