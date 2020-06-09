@@ -152,7 +152,7 @@ class StreamHandler(object):
 
         # Process the cached imports first.
         if self.icache.readyForNextCachedImport(self.idx) and self.icache.gotCachedImports():
-            return f'@import "{str(self.icache.getNextCachedImport())}""'
+            return f'@import "{str(self.icache.getNextCachedImport())}"'
 
         self.line = ''
         if self._cache.gotCachedLine():
