@@ -108,6 +108,9 @@ class watcher(FileSystemEventHandler):
             self.msg(f"Got notification of change to {spec.name} in directory {spec.parent} --> {event.src_path}")
 
     def begin(self, filelist):
+        # hang on to the filelist so .reset() can efficiently determine a course of action
+        self.filelist = filelist
+
         # first, create all the watchdir() for each unique directory
         for item in filelist:
             self._addWatchItem(item)
@@ -117,6 +120,11 @@ class watcher(FileSystemEventHandler):
             self._start(dir)
     
     def reset(self, filelist):
+        # if the filelist didn't change (true most of the time) ignore the reset
+        if set(self.filelist) == set(filelist):
+            self.msg("reset: no change to filelist, ignoring reset...")
+            return
+        
         # get list of directories being monitored
         self.msg("reset: shutting down directory observers...")
         self.observer.unschedule_all()
