@@ -3,18 +3,26 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
+38. build out initial version of smdlive
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
-55. Is @break useful? What about @exit?
+70. little by little, work through the current automated tests and bring them back online synchronized to the new version.
+71. figure out which things need to be tested via bash/zsh script, and start building them out
+72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
+73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
 56. See how close I can get to a clean render of Buddy's music video script markdown file...
 61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 
-Priority 3 | p3
+Priority 2 | p2
 ---------------
-38. build out initial version of smdlive
 52. Is raw still needed? Can we deprecate that too? Or should I keep it as a way of more easily writing documentation? maybe @@some stuff@@? I'm not so sure. I think before it was just to prevent the <div class="extras">, in which case, that isn't needed, since we no longer wrap things, you can write HTML directly...
 54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
 57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
+76. Can i define an htmlraw formatter that html_escaped the c="content"? can't i do this with @code already? [code.escape(t="html key, etc")] works, but it will still expand if you use [var]. Might need to add a scanner token that says @! whatever you type here is echoed verbatim...
+77. Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
+55. Is @break/@exit useful? In the current state of SMD, they aren't useful except as a shortcut way to do a <div class="extras"><h1></h1></div>. So unless I figure out how to do open-ended shots again, then they can likely be removed. 
+
 
 
 Priority 3 | p3
@@ -31,6 +39,7 @@ Priority 3 | p3
 36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
 44. Code review Cache, ImportCache & SystemDefaults.
 50. Clean up how ismd does the multiple monitors
+78. maybe have an pause/resume method on the watcher class i could engage while parsing...
 
 Priority 5 | p5
 ---------------
@@ -39,6 +48,7 @@ Priority 5 | p5
 53. Do a quick pass on the userdoc.md to see how badly I've broken the code. I/P. Needs work, but not as bad as I thought it might be.
 37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
+4. Move all of these things to the issues tracker in github, and get rid of this file.
 
 
 Completed
@@ -72,13 +82,13 @@ Completed
 **63. Can i put debugtracker in the TLS? Clean up init, and when classes can register, etc.
 **60. Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
 **64. -nu with ~/.smb/builtins.md still loads the user builtin. fix this.
+**74. I should do a quick test in the watcher.refresh(). if no changes, don't stop/restart, just maybe "flush" pending changes... 
+**79. Probably need @watch "filename" that adds something to the seen list for monitoring. for javascript.js, additional files.css, etc.
 
 
 
 
 
-1. Finish up livesmd.py and release
-4. Move all of these things to the issues tracker in github, and get rid of this file.
 
 Bugs/Fixes Needed
 -----------------
@@ -103,9 +113,6 @@ output (maybe markdown, but that gets sketchy, so maybe not fixable)...
 
 --------------------
 Things to test:
-
-Document:
-
 Rainy Day Fixes/Changes:
 
 Parenthesis inside a variable string doesn't parse correctly
