@@ -1,6 +1,13 @@
 #!/usr/bin/env python
 
 class SystemDefaults():
+    DefaultBuiltinsName = 'import/builtins.md'
+    DefaultHtmlName = 'import/def_html.md'
+    DefaultHeadName = 'import/def_head.md'
+    DefaultBodyName = 'import/def_body.md'
+    DefaultBodyCloseName = 'import/def_bodyclose.md'
+    DefaultHtmlCloseName = 'import/def_close.md'
+
     def __init__(self):
         self._load_default_builtins = True
         self._load_user_builtins = True

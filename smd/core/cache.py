@@ -6,6 +6,7 @@ from .constants import Constants
 class ImportCache(object):
     def __init__(self):
         from .thread import getTLS
+        from .sysdef import SystemDefaults
         from .config import ConfigFile, LocalUserConfigFile
         
         self._debug = Debug('cache.import')
@@ -16,9 +17,9 @@ class ImportCache(object):
 
         # Start with the default body, head and html document parts, i.e. the last things to read
         #fuck = self._sysDefaultstls_data.sysDefaults
-        self._importCache += ConfigFile("import/def_body.md", self._sysDefaults.load_default_body).filenameAsList()
-        self._importCache += ConfigFile("import/def_head.md", self._sysDefaults.load_default_head).filenameAsList()
-        self._importCache += ConfigFile("import/def_html.md", self._sysDefaults.load_default_html).filenameAsList()
+        self._importCache += ConfigFile(SystemDefaults.DefaultBodyName, self._sysDefaults.load_default_body).filenameAsList()
+        self._importCache += ConfigFile(SystemDefaults.DefaultHeadName, self._sysDefaults.load_default_head).filenameAsList()
+        self._importCache += ConfigFile(SystemDefaults.DefaultHtmlName, self._sysDefaults.load_default_html).filenameAsList()
 
         # Now, if any other imports have been specified, we need to load them right after the user
         # builtins.md, since we want to be able to have a "last chance to override" hard coded stuff.
@@ -35,8 +36,8 @@ class ImportCache(object):
         # there are two flags that can override whether or not we load user builtins, so account for both
         loadUserBuiltins = self._sysDefaults.load_user_builtins and self._sysDefaults.load_user_files
 
-        self._importCache += LocalUserConfigFile("import/builtins.md", loadUserBuiltins).filenameAsList()
-        self._importCache += ConfigFile("import/builtins.md", self._sysDefaults.load_default_builtins, user_ver=False).filenameAsList()
+        self._importCache += LocalUserConfigFile(SystemDefaults.DefaultBuiltinsName, loadUserBuiltins).filenameAsList()
+        self._importCache += ConfigFile(SystemDefaults.DefaultBuiltinsName, self._sysDefaults.load_default_builtins, user_ver=False).filenameAsList()
 
     @property
     def iCache(self):

@@ -479,7 +479,7 @@ class ScriptParser(StdioWrapper):
                 self.oprint(self._html.formatLine("<div class=\"variables\">", 1))
                 self.oprint(self._html.formatLine("<code>", 1))
                 if not d:
-                    self._systemDefaults.dump(self.oprint)
+                    self.tls.sysDefaults.dump(self.oprint)
                 else:
                     # future: maybe add ability to dump specific things?
                     pass
@@ -644,8 +644,8 @@ class ScriptParser(StdioWrapper):
 
             from .core.config import ConfigFile
             closing = []
-            closing += ConfigFile("import/def_bodyclose.md", self.tls.sysDefaults.load_default_body).data()
-            closing += ConfigFile("import/def_close.md", self.tls.sysDefaults.load_default_html).data()
+            closing += ConfigFile(SystemDefaults.DefaultBodyCloseName, self.tls.sysDefaults.load_default_body).data()
+            closing += ConfigFile(SystemDefaults.DefaultHtmlCloseName, self.tls.sysDefaults.load_default_html).data()
             for c in closing:
                 self.oprint(self._html.formatLine(c, 0, False))
                 if self.tlsRawOutputFile is not None:
@@ -689,12 +689,13 @@ def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
     parser.add_argument('-ndb', '--no-default-builtins', dest='load_default_builtins', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_builtins}')
     parser.add_argument('-lub', '--load-user-builtins', dest='load_user_builtins', action='store_true', help=f'load user builtins during startup. Default is: {sysDefaults.load_user_builtins}')
     parser.add_argument('-nub', '--no-user-builtins', dest='load_user_builtins', action='store_false', help=f'do not load user builtins during startup. Default is: {not sysDefaults.load_user_builtins}')
-    parser.add_argument('-html', '--load-default-html', dest='load_default_html', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_html}')
-    parser.add_argument('-nohtml', '--no-default-html', dest='load_default_html', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_html}')
-    parser.add_argument('-head', '--load-default-head', dest='load_default_head', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_head}')
-    parser.add_argument('-nohead', '--no-default-head', dest='load_default_head', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_head}')
-    parser.add_argument('-body', '--load-default-body', dest='load_default_body', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_body}')
-    parser.add_argument('-nobody', '--no-default-body', dest='load_default_body', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_body}')
+    parser.add_argument('-html', '--load-default-html', dest='load_default_html', action='store_true', help=f'load default html during startup. Default is: {sysDefaults.load_default_html}')
+    parser.add_argument('-nohtml', '--no-default-html', dest='load_default_html', action='store_false', help=f'do not load default html during startup. Default is: {not sysDefaults.load_default_html}')
+    parser.add_argument('-head', '--load-default-head', dest='load_default_head', action='store_true', help=f'load default head during startup. Default is: {sysDefaults.load_default_head}')
+    parser.add_argument('-nohead', '--no-default-head', dest='load_default_head', action='store_false', help=f'do not load default head during startup. Default is: {not sysDefaults.load_default_head}')
+    parser.add_argument('-body', '--load-default-body', dest='load_default_body', action='store_true', help=f'load default body during startup. Default is: {sysDefaults.load_default_body}')
+    parser.add_argument('-nobody', '--no-default-body', dest='load_default_body', action='store_false', help=f'do not load default body during startup. Default is: {not sysDefaults.load_default_body}')
+
 
     parser.add_argument('-nu', '--no-user-files', dest='load_user_files', action='store_false', help=f'do not load any files from ~/.smd. Default is: {not sysDefaults.load_user_files}')
     parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {False}')
