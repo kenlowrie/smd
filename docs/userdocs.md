@@ -8,6 +8,7 @@
 
 @import "[sys.imports]/divs.md"
 @import '[sys.imports]/report.md'
+@import '[sys.imports]/avs/avs.md'
 @import '$/import/userguideheading.md'
 
 [link.bm_factory(nm="inlinemd" t="Inline Markdown")]
@@ -79,6 +80,8 @@ defaults variable:[b] [defaults]
 41. Document all the new command line switches (smd, smdparse, ismd and smdlive)
 [b]
 If I put a div extras at top, then gotta watch using it inline, otherwise we get double margins, etc.
+Document @defaults, @watch "filename"
+The custom file data logic in cache.py no longer works due to how stream.py handles imports.
 
 </code>
 </pre>
@@ -110,6 +113,8 @@ If I put a div extras at top, then gotta watch using it inline, otherwise we get
 There's just something about a sunrise that gets the blood flowing...\
 And here's some additional narration.\
 ")]
+@break
+and here is some additional notes.
 // Seems like @break is essentially a way of doing a "clear:both" thru the use of a display:block element such as headers...
 @break
 //{:.extras}# --- This also works...
@@ -596,6 +601,8 @@ And then, when we run the prior code, we'd get this:
 </table>
 
 @var _id="shotinfo" _format="- [var.{{self.shotid}}.desc]<br />[image.{{self.shotid}}]<br />[var.{{self.shotid}}]" shotid="NOTSET"
+
+@var path="../import"
 
 @var _id="shot1" name="WS: Sky with top of trunk bottom of frame" desc="*Short Description*" lens="**85mm**" crane="yes" _format="[_shotinfo_]"
 @image _id="shot1" src="[path]/shot1.jpg" style="[ss]"
