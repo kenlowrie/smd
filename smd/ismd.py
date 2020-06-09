@@ -77,38 +77,44 @@ class Endpoint(OutputMonitor):
         super(Endpoint, self).__init__()
         from pathlib import Path
         self.filename = Path(filename).resolve()
-        self.endpoint = f"/smd/<path:path>"
+        
+        #//TODO: Need some additional use cases to figure out the best way for these to work
+        
+        # Set the endpoint to /smd/filename.stem e.g. /smd/userdocs
+        self.endpoint = f"/smd/{self.filename.stem}/<path:path>"
+
+        # Default dir is ./html, so we want to walk up to the parent of html, because in
+        # my initial testing, I see myself doing relative imports, and at least initially,
+        # when I do ../import/somefile, the [path] parsed out loses context...
+        self.root = f"{self.filename.parent.parent}"
 
     def create(self):
-        self.refresh()              # go ahead and load up self.filedata
+        # Gotta run the bottle app on its own thread cause it sleeps until ctrl-c
         self.thread = Thread(target=self.bottle_thread, name=f"BottleThread({id(self)})")
-        self.thread.daemon = True   #//TODO: Only way the Ctrl-C allows code to shutdown... Research further
+        #//TODO: Only way the Ctrl-C allows code to shutdown... Research further
+        self.thread.daemon = True   
         self.thread.start()
 
     def refresh(self):
+        # no need to do anything here, the webserver will serve the right page when needed
         pass
-        #with open(self.filename) as f:
-        #    self.filedata = f.read()
 
     def close(self):
-        message("closing the endpoint")
+        message("Closing the bottle app endpoint")
         self.app.close()    # shutdown the endpoint
-        message("waiting for bottle thread to finish")
-        #self.thread.join()  # block until the bottle thread stops running (no good for daemon thread)
+        # no need to thread.join() because we are a daemon thread
     
     def bottle_thread(self):
         message(f"Creating endpoint app on bottle with url: {self.endpoint}")
         self.app = Bottle()
         self.app.route(self.endpoint, 'GET', self.getContent)
-        message("Starting web server...")
+        message("Starting the web server...")
         self.app.run()
-        message(f"finishing bottle thread...")
+        message(f"Bottle thread returned, exiting now...")
 
     def getContent(self, path):
         message(f"path={path}");
-        #static_file({self.filename.name}, root={self.filename.parent}")
-        return static_file(str(path), root=str(self.filename.parent.parent))
-        #return self.filedata
+        return static_file(str(path), root=str(self.root))
 
 class Monitor():
     Browser = 'browser'
