@@ -156,6 +156,7 @@ class ScriptParser(StdioWrapper):
             'header': RegexMain(True,   False,  True,   r'^([#]{1,6})[ ]*',                                  r'^([#]{1,6})[ ]*(.*)'),
             'import': RegexMain(True,   False,  False,  r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',         None),
             'embed': RegexMain(True,    False,  False,  r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
+            'watch': RegexMain(True,    False,  False,  r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
             'var': RegexMain(True,      True,   False,  r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None), 
             'set': RegexMain(True,      True,   False,  r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None),
             'code': RegexMain(True,     True,   False,  r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
@@ -408,6 +409,18 @@ class ScriptParser(StdioWrapper):
             else:
                 self.oprint(lineObj.current_line)
 
+        def handle_watch(m, lineObj):
+            """Handle a watch parse line"""
+            if(m is not None and len(m.groups()) == 1):
+                try:
+                    watch_fn = m.group(1)
+                    if not isfile(watch_fn):
+                        self.oprint(f"Watch file [{watch_fn}] does not exist. Not adding to watch list")
+                    else:
+                        self.tls.fileTracker.seen = watch_fn
+                except FileError as fe:
+                    self.oprint(fe.errmsg)
+
         def handle_import(m, lineObj):
             """Handle an import parse line"""
             if(m is not None and len(m.groups()) == 1):
@@ -598,6 +611,7 @@ class ScriptParser(StdioWrapper):
             ('header', handle_header),
             ('import', handle_import),
             ('embed', handle_embed),
+            ('watch', handle_watch),
             ('break', handle_break),
             ('image', handle_image),
             ('stop', handle_stop),
