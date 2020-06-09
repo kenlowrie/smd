@@ -69,14 +69,61 @@ class Browser(OutputMonitor):
     def close(self):
         self.driver.close()
 
+from bottle import Bottle, static_file
+from threading import Thread, Lock, current_thread
+
+class Endpoint(OutputMonitor):
+    def __init__(self, filename=None):
+        super(Endpoint, self).__init__()
+        from pathlib import Path
+        self.filename = Path(filename).resolve()
+        self.endpoint = f"/smd/<path:path>"
+
+    def create(self):
+        self.refresh()              # go ahead and load up self.filedata
+        self.thread = Thread(target=self.bottle_thread, name=f"BottleThread({id(self)})")
+        self.thread.daemon = True   #//TODO: Only way the Ctrl-C allows code to shutdown... Research further
+        self.thread.start()
+
+    def refresh(self):
+        pass
+        #with open(self.filename) as f:
+        #    self.filedata = f.read()
+
+    def close(self):
+        message("closing the endpoint")
+        self.app.close()    # shutdown the endpoint
+        message("waiting for bottle thread to finish")
+        #self.thread.join()  # block until the bottle thread stops running (no good for daemon thread)
+    
+    def bottle_thread(self):
+        message(f"Creating endpoint app on bottle with url: {self.endpoint}")
+        self.app = Bottle()
+        self.app.route(self.endpoint, 'GET', self.getContent)
+        message("Starting web server...")
+        self.app.run()
+        message(f"finishing bottle thread...")
+
+    def getContent(self, path):
+        message(f"path={path}");
+        #static_file({self.filename.name}, root={self.filename.parent}")
+        return static_file(str(path), root=str(self.filename.parent.parent))
+        #return self.filedata
+
 class Monitor():
+    Browser = 'browser'
+    HostGUI = 'hostgui'
+    Endpoint = 'endpoint'
+
     def __init__(self, monitor, filepath):
         self.monitor = None
         self.type = monitor
-        if self.type == "browser":
+        if self.type == Monitor.Browser:
             self.monitor = Browser(f"file://{filepath}")
-        elif self.type == "hostgui":
+        elif self.type == Monitor.HostGUI:
             self.monitor = Window(filepath)
+        elif self.type == Monitor.Endpoint:
+            self.monitor = Endpoint(filepath)
         else:
             raise MonitorError("Invalid monitor type [{}]".format(monitor))
 
@@ -127,7 +174,9 @@ class iSMDLoop(object):
                     for monitor in self.monitors: monitor.refresh()
                     self.watcher.reset(self.sp.getFilesParsed())
         except KeyboardInterrupt:
-            pass    # don't need to see a traceback for this
+            for monitor in self.monitors:
+                if monitor.type == Monitor.Endpoint:
+                    monitor.close()
         except: 
             traceback.print_exc()   # let's see what happened; wasn't expecting this
         finally:
@@ -157,9 +206,8 @@ def ismd(arguments=None):
     parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
     parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
-    parser.add_argument('-m', '--monitor', nargs='+', default=['browser'], help='the monitor [browser, hostgui] you want used to display changes. Default is browser')
-
-
+    parser.add_argument('-m', '--monitor', nargs='+', default=[Monitor.Browser], help=f'the monitor [{Monitor.Browser}, {Monitor.HostGUI}, {Monitor.Endpoint}] you want used to display changes. Default is {Monitor.Browser}')
+    
     from smd.smd import smd_add_std_cmd_line_parms
     from smd.core.sysdef import SystemDefaults
 
