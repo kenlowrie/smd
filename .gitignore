@@ -112,3 +112,4 @@ smd/smd/skeleton.py
 smd/junkyard.py
 rainyday.md
 smd_rawdata.out
+tests/cmdline/run/*
