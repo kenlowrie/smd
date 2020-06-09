@@ -113,7 +113,7 @@ class Endpoint(OutputMonitor):
         message(f"Bottle thread returned, exiting now...")
 
     def getContent(self, path):
-        message(f"path={path}");
+        #message(f"path={path}");
         return static_file(str(path), root=str(self.root))
 
 class Monitor():
