@@ -12,10 +12,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your code title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your code content<br />
 <br />
-<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
-&nbsp;&nbsp;<strong>cssfile=</strong>[sys.basepath]/css/smd.css<br />
-&nbsp;&nbsp;<strong>_nop=</strong><br />
-<br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 <br />
@@ -223,27 +219,6 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
-&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
@@ -369,10 +344,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>code non default title<br />
 &nbsp;&nbsp;<strong>c=</strong>code non default comment<br />
-<br />
-<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
-&nbsp;&nbsp;<strong>cssfile=</strong>[sys.basepath]/css/smd.css<br />
-&nbsp;&nbsp;<strong>_nop=</strong><br />
 <br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>c=</strong>your content inside a p tag inside a div<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -581,27 +552,6 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
-&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
