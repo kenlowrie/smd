@@ -44,6 +44,7 @@ class TestSMD(TestCase):
         sysDefaults.load_default_head = False
         sysDefaults.load_default_body = False
         sysDefaults.load_user_files = False
+        sysDefaults.load_default_builtins = False
         self.smd = smd.smd.ScriptParser(sysDefaults)
         self.capturedOutput = io.StringIO()     # Create StringIO object
         self.smd.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
