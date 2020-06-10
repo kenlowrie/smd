@@ -36,11 +36,13 @@ def get_head(mdfile, cssFileList, title = None):
 from pathlib import Path
 import traceback
 from smd.core.ftrack import FileTrack
+from smd.core.exception import FileError
 
 class ScriptParser():
     def __init__(self, inputFile, cssFileList, importFileList, outputDir, sysDefaults):
         self.lastParseOK = False
         self.smdFile = Path(inputFile).resolve()
+        if not self.smdFile.is_file(): raise FileError(1, f"{self.smdFile} does not exist")
         self.cssFileList = [Path(item).resolve() for item in cssFileList]
         self.outDir = Path(outputDir).resolve()
         if not self.outDir.is_dir(): self.outDir.mkdir()
@@ -169,7 +171,11 @@ def parse(arguments=None):
 
     args = smd_add_std_cmd_line_parms(parser, sysDefaults, arguments)
 
-    sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
+    try:
+        sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
+    except FileError as fe:
+        message(f"FileError exception: {fe.errno} - {fe.errmsg}", False)
+        return 1
 
     if args.debug: sp.dump()
 

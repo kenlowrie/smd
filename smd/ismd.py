@@ -223,7 +223,12 @@ def ismd(arguments=None):
 
     from smd.smdparse import ScriptParser, handle_cssfilelist_parameter, get_importfilelist
 
-    sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
+    from smd.core.exception import FileError
+    try:
+        sp = ScriptParser(args.filename, handle_cssfilelist_parameter(args.cssfilelist), get_importfilelist(args), args.path, sysDefaults)
+    except FileError as fe:
+        message(f"FileError exception: {fe.errno} - {fe.errmsg}", False)
+        return 1
 
     if sp.lastParseOK == False:
         message("stopping because the initial parse failed...")

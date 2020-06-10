@@ -748,6 +748,9 @@ def smd_parse_file(args=None):
 
     args = smd_add_std_cmd_line_parms(parser, sysDefaults, args)
 
+    if args.filename and not isfile(args.filename):
+        return 1
+
     return ScriptParser(sysDefaults).open_and_parse(args.filename)
 
 
