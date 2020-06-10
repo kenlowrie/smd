@@ -23,6 +23,8 @@
           with_content="{{html._div_section_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._p_section_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
           t="This is your section title" \
           c=""
+
+//TODO: Are all of these @@ (raw) prefixes needed?
 @var _id="section_pbb" \
           _inherit="section" \ 
           _format="@@ {{html._div_section_pbb_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._div_section_.>}}" \

@@ -1,5 +1,6 @@
 @import "$/defaults.md"
 // Create var.revision()
+//TODO: if @@ goes away, what's the difference between plain and inline_plain?
 @html _id="revision-div" class="revision" _inherit="div"
 @html _id="revision-p" class="revTitle" _inherit="p"
 @var _id="revision" \
