@@ -1,213 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
 <div class="wrapper">
-    <div class="extras">
-        <h3>Table of Contents</h3>
-    </div>
-    <div class="extras">
-        <p><a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong></p>
-    </div>
-    <div class="extras">
-        <p><a href="#links">Links</a> - <strong>Inline and Reference Link Styles</strong></p>
-    </div>
-    <div class="extras">
-        <p><a href="#inline_links">Inline Links</a> - <strong>Creating links inline</strong></p>
-    </div>
-    <div class="extras">
-        <p><a href="#ref_links">Reference Links</a> - <strong>Creating reference links</strong></p>
-    </div>
-    <div class="extras">
-        <p><a href="#auto_links">Automatic Links</a> - <strong>Creating automatic links</strong></p>
-    </div>
-    <a id="inlinemd"></a>
-    <div class="extras">
-        <p><em>emphasis</em></p>
-    </div>
-    <div class="extras">
-        <p><strong>strong</strong></p>
-    </div>
-    <div class="extras">
-        <p><em><strong>emphasis and strong</strong></em></p>
-    </div>
-    <div class="extras">
-        <p><ins>this is added</ins></p>
-    </div>
-    <div class="extras">
-        <p><del>this is deleted</del></p>
-    </div>
-    <div class="extras">
-        <p><em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em></p>
-    </div>
-    <div class="extras">
-        <p>not at start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em></p>
-    </div>
-    <div class="extras">
-        <p>not or start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em> or end</p>
-    </div>
-    <div class="extras">
-        <p><ins>this is added</ins> and <del>this is deleted</del></p>
-    </div>
-    <div class="extras">
-        <p>n o s <ins>this is added</ins> and <del>this is deleted</del></p>
-    </div>
-    <div class="extras">
-        <p>nos <ins>this is added</ins> and <del>this is deleted</del> or end</p>
-    </div>
-    <div class="extras">
-        <p><em>emphasis and <strong>strong</strong> and <ins>new stuff</ins> and <del>old stuff</del></em></p>
-    </div>
-    <div class="extras">
-        <p><em>emphasis and <strong>strong</strong> and <del>old <ins>new stuff inside</ins> stuff</del> and <del>old stuff</del></em></p>
-    </div>
-    <div class="extras">
-        <h1>h1</h1>
-    </div>
-    <div class="extras">
-        <h2>h2</h2>
-    </div>
-    <div class="extras">
-        <h3>h3</h3>
-    </div>
-    <div class="extras">
-        <h4>h4</h4>
-    </div>
-    <div class="extras">
-        <h5>h5</h5>
-    </div>
-    <div class="extras">
-        <h6>h6</h6>
-    </div>
-    <div class="extras">
-        <h1>h1</h1>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <div class="extras">
-        <h2>h2</h2>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <div class="extras">
-        <h3>h3</h3>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <div class="extras">
-        <h4>h4</h4>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <div class="extras">
-        <h5>h5</h5>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <div class="extras">
-        <h6>h6</h6>
-    </div>
-    <div class="extras">
-        <p>words</p>
-    </div>
-    <a id="links"></a>
-    <div class="extras">
-        <h2>Links</h2>
-    </div>
-    <div class="extras">
-        <p>This is a section about links</p>
-    </div>
-    <a id="inline_links"></a>
-    <div class="extras">
-        <h3>Inline Style:</h3>
-    </div>
-    <div class="extras">
-        <p>The next paragraph has inline links defined: This is <strong>&#91;an example]:(http://example.com/ "Inline Link Sample")</strong> of an inline link. <strong>&#91;This inline link]:(http://example.net/)</strong> has no title attribute.</p>
-    </div>
-    <div class="extras">
-        <p>This is <a href="http://example.com" title="Inline Link Sample">an example</a> of an inline link. <a href="http://example.net">This inline link</a> has no title attribute.</p>
-    </div>
-    <div class="extras">
-        <p>Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: <a href="http://example.com" title="Inline Link Sample">an example</a>.</p>
-    </div>
-    <a id="ref_links"></a>
-    <div class="extras">
-        <h3>Reference Style:</h3>
-    </div>
-    <div class="extras">
-        <p>Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.</p>
-    </div>
-    <div class="extras">
-        <p>The reference link style <strong>must</strong> be placed at the beginning of a line. Unlike true Markdown, reference links <em>must</em> be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.</p>
-    </div>
-    <div class="extras">
-        <h4 class="indent">@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"</h4>
-    </div>
-    <div class="extras">
-        <p>If I write &#91;Google], it is wrapped like so: <a href="https://google.com" title="Google Search Page">Google</a>.</p>
-    </div>
-    <div class="extras">
-        <p>Now, I can go ahead and write <strong>&#91;inline 2]</strong>, like this: [inline 2], and it's a valid link!</p>
-    </div>
-    <a id="auto_links"></a>
-    <div class="extras">
-        <h3>Automatic links</h3>
-    </div>
-    <div class="extras">
-        <p>The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with <em><strong>&lt; &gt;</strong></em> like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an <strong>A</strong> tag whose <strong>HREF</strong> attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute <em>_asurl</em>, which returns the href styled appropriately. For example: <a href="https://google.com" title="Google Search Page">https://google.com</a></p>
-    </div>
-    <div class="extras">
-        <p>&nbsp;</p>
-    </div>
-    <div class="variables">
-        <code>
+<h1>------------------------------------------</h1>
+<h3>Testing markdown</h3>
+<h3>Table of Contents</h3>
+<a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong>
+<div class="extras"><h1></h1></div>
+<a href="#links">Links</a> - <strong>Inline and Reference Link Styles</strong><br />
+<a href="#inline_links">Inline Links</a> - <strong>Creating links inline</strong><br />
+<a href="#ref_links">Reference Links</a> - <strong>Creating reference links</strong><br />
+<a href="#auto_links">Automatic Links</a> - <strong>Creating automatic links</strong><br />
+<a id="inlinemd"></a><br />
+<em>emphasis</em><br />
+<strong>strong</strong><br />
+<em><strong>emphasis and strong</strong></em><br />
+<ins>this is added</ins><br />
+<del>this is deleted</del><br />
+<em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br />
+not at start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br />
+not or start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em> or end<br />
+<ins>this is added</ins> and <del>this is deleted</del><br />
+n o s <ins>this is added</ins> and <del>this is deleted</del><br />
+nos <ins>this is added</ins> and <del>this is deleted</del> or end<br />
+<em>emphasis and <strong>strong</strong> and <ins>new stuff</ins> and <del>old stuff</del></em><br />
+<em>emphasis and <strong>strong</strong> and <del>old <ins>new stuff inside</ins> stuff</del> and <del>old stuff</del></em><br />
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+<h1>h1</h1>
+words
+<h2>h2</h2>
+words
+<h3>h3</h3>
+words
+<h4>h4</h4>
+words
+<h5>h5</h5>
+words
+<h6>h6</h6>
+words
+<a id="links"></a>
+<h2>Links</h2>
+This is a section about links
+<a id="inline_links"></a>
+<h3>Inline Style:</h3>
+The next paragraph has inline links defined: This is <strong>&#91;an example]:(http://example.com/ "Inline Link Sample")</strong> of an inline link. <strong>&#91;This inline link]:(http://example.net/)</strong> has no title attribute.
+This is <a href="http://example.com" title="Inline Link Sample">an example</a> of an inline link. <a href="http://example.net">This inline link</a> has no title attribute.
+Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: <a href="http://example.com" title="Inline Link Sample">an example</a>.
+<a id="ref_links"></a>
+<h3>Reference Style:</h3>
+Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.
+The reference link style <strong>must</strong> be placed at the beginning of a line. Unlike true Markdown, reference links <em>must</em> be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.
+<h4 class="indent">@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"</h4>
+If I write &#91;Google], it is wrapped like so: <a href="https://google.com" title="Google Search Page">Google</a>.
+Now, I can go ahead and write <strong>&#91;inline 2]</strong>, like this: [inline 2], and it's a valid link! <em><strong>//TODO: What? This is wrong.</strong></em>
+<a id="auto_links"></a>
+<h3>Automatic links</h3>
+The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with <em><strong>&lt; &gt;</strong></em> like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an <strong>A</strong> tag whose <strong>HREF</strong> attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute <em>_asurl</em>, which returns the href styled appropriately. For example: <a href="https://google.com" title="Google Search Page">https://google.com</a>
+&nbsp;
+<div class="variables">
+    <code>
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
-<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
-&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
-&nbsp;&nbsp;<strong>cn=</strong>{{defaults.cn}}<br />
-&nbsp;&nbsp;<strong>ph=</strong>{{defaults.ph}}<br />
-&nbsp;&nbsp;<strong>em=</strong>{{defaults.em}}<br />
-&nbsp;&nbsp;<strong>c1=</strong>{{defaults.c1}}<br />
-&nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
-&nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
-<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
-&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
-&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
-&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
-<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"  _inherit="cover_template"  t1=""  t2="{{self.usage}}"  t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
-<br />
-<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
-&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
-&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
-&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
-&nbsp;&nbsp;<strong>t1=</strong>Title<br />
-&nbsp;&nbsp;<strong>t2=</strong>author<br />
-&nbsp;&nbsp;<strong>t3=</strong>logline<br />
-<br />
-<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>title=</strong>[title]<br />
-&nbsp;&nbsp;<strong>author=</strong>[author]<br />
-&nbsp;&nbsp;<strong>logline=</strong>[logline]<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
 &nbsp;&nbsp;<strong>_nop=</strong><br />
 <br />
-<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
-&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
-&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
@@ -272,7 +151,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"  _text="{{self.t}}"<br />
+<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
 <strong>ref_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
@@ -299,6 +178,8 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-        </code>
-    </div>
+    </code>
 </div>
+</div>
+</body>
+</html>

@@ -133,4 +133,26 @@
 
 @var extras="{{html._div_extras_.<}}{{self.c}}{{html.div.>}}" c="default content"
 
-@var divxp="{{html._div_extras_.<}}{{html.p.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" c="default content"
+@var divxp="{{self.open}}{{self.c}}{{self.close}}" c="default content" open="{{html._div_extras_.<}}{{html.p.<}}" close="{{html.p.>}}{{html.div.>}}"
+
+@html _id="_div_syntax_" \
+      _inherit="div" \
+      class="syntax"
+@html _id="_p_syntax_" \
+      _inherit="p" \
+      class="divTitle"
+@html _id="_p_syntax_content_" \
+      _inherit="p" \
+      style="font-size:1.2em" 
+ 
+@var _id="syntax" \
+          _format="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}" \
+          with_content="{{self.wc_open}}{{self.c}}{{self.wc_close}}" \
+          open="" \
+          close=""\
+          wc_open="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._p_syntax_content_.<}}"\
+          wc_close="{{html.p.>}}{{html.div.>}}"\
+          wc_p="{{html._p_syntax_content_.<}}{{self.c}}{{html.p.>}}"\
+          wc_p_open="{{html._p_syntax_content_.<}}"\
+          t="This is your syntax title" \
+          c="This is your syntax content"

@@ -1,3 +1,11 @@
+@import "[sys.imports]/builtins.md"
+@import "[sys.imports]/divs.md"
+@import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+[hash1]
 // variables
 [link.bm_factory(nm="aliases" t="Aliases aka Variables")]
 [link.aliases]
@@ -72,4 +80,6 @@ Remember, variable definitions and reference link definitions must be declared o
 [varName]=varValue is okay.
 But [varName]=varValue is not...
 
-@dump basic="." var="." link="."
+@dump var="." html="." link="." image="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

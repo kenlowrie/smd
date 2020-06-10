@@ -1,3 +1,11 @@
+@import "[sys.imports]/builtins.md"
+@import "[sys.imports]/divs.md"
+@import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+[hash1]
 {:.red.center}### avscript tester doc
 {:.blue.plain}--- plainTitle Transitions
     This test document is used to test the transitions from A/V sections
@@ -68,3 +76,6 @@ Description
 [link.myanchor]
 [link.myanchor.link]
 
+@dump var="." html="." link="." image="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

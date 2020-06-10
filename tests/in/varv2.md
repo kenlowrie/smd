@@ -1,3 +1,11 @@
+@import "[sys.imports]/builtins.md"
+@import "[sys.imports]/divs.md"
+@import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+[hash1]
 // Test script for varv2 support
 @var _noid="noid"
 @var id="alsonoid"
@@ -32,3 +40,5 @@ ATTR1 should be "New Value":
 [id2]
 
 @dump var="id"
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

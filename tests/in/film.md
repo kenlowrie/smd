@@ -1,17 +1,27 @@
-//@debug on="ns.add"
-title="*Title of Project*"
-artist="Artist Name"
-thisproject="Music Video Treatment"
+@import '[sys.imports]/builtins.md'
+@import "[sys.imports]/divs.md"
+@import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+
+//@dump var="." html="." link="." image="."
+[hash1]
+### Testing film related items
+
+@var title="*Title of Project*"
+@var artist="Artist Name"
+@var thisproject="Music Video Treatment"
 {:.blue.center}# [thisproject]
-revision="1f"
-[proj_desc]=This is the proposed music video treatment for the upcoming **[artist]** single titled [title].
+@var filmver="1f"
+@var proj_desc="This is the proposed music video treatment for the upcoming **[artist]** single titled [title]."
 @var slate="Title: [title][b]Artist: [artist][b]Directed by: Dan Director[b]Produced by: [link.prodcompany]"
 
-@var _id="_path_" path="/Users/ken/Dropbox/shared/src/script/avscript/tests/in/import" _format="{{self.path}}"
-@var imports="[var._path_(path="in/import")]"
-@import '[imports]/cls-noreviewer.md'
-@import '[sys.imports]/shortcuts.md'
-@import '[sys.imports]/film.md'
+@var imports="../in/import"
+@import '$/import/cls-noreviewer.md'
+@import '[sys.imports]/avs/shortcuts.md'
+@import '[sys.imports]/avs/film.md'
 
 @var ns="[var.tags.ns]"
 @var narr="[var.tags.narr]"
@@ -45,33 +55,33 @@ revision="1f"
 @var picture="{:.props}Framed Family Picture"
 
 //-------------------------------------------------------------------
-@var prodnotes="{:.indent}We want to shoot between August 13th - August 17th, based on schedules. Prefer if cast can be available to shoot any day/time (weekdays, evenings or weekends), but we will work around schedules. Primary location will be NE San Antonio. "
+@var prodnotes="{:.indent}We want to shoot between August 13th - August 17th, based on schedules. Prefer if cast can be available to shoot any day/time (weekdays, evenings or weekends), but we will work around schedules. Primary location will be NE San Antonio."
 [section_pbb(t="[title] Music Video Casting Call and Character Breakdown")]
 **Production Title:** [title][b]**Independent/Student/Studio:** Independent[b]**Production Type:** Music Video[bb]**Production Location:** NE San Antonio[bb]**Production Start Date:** 08/05/2018[b]**Production Wrap Date:** 08/20/2018[b]**Production Schedule:** August 13 - 17 (*Preferred*)[bb][prodnotes]
-
+[bb]
 **Producer(s):/Director(s):** [Cloudy Logic Studios]
-
+[bb]
 **Synopsis:** "[title]" will be a combination narrative and performance video. The song is about ...
 
 [plain(t="Character Breakdowns:")]
 
 ***All parts are non-speaking, and we are in search of actors that are able to emote well, especially for the role of [mom].***
-
+[bb]
 Ethnicities aren't important, however, we will try to cast the [mom], [son] and [daughter] roles with actors that *could be* related.
-
+[bb]
 @var familypix="*Must be available to take family pictures before production begins.*"
 [mom] (Female, 35-45) This is the lead role in the video. Mother arrives home and discovers... In the various scenes, we follow her through ... This character will be a very emotional role throughout the video. [familypix] 
 
 //several She goes from panic and alarm to anger and depression, and then to acceptance. 
 
-@import '[sys.imports]/image.md'
+@import '[sys.imports]/avs/image.md'
 [IMG_SIZE_LARGE]
 @var framegrab="*NEED FRAME GRAB FROM VIDEO HERE*"
 @var ss="[{{var.img_def.img_st_inline_border}}]"
 @var trythis="{:.red.bold}Try to get this shot"
 @var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
-@import '[sys.imports]/shot.md'
+@import '[sys.imports]/avs/shot.md'
 @image _id="needshot" src="[imports]/needshot.png" style="[ss]"
 
 // -------------------------------------------------------------------
@@ -146,5 +156,6 @@ Originally, production was planned for August 2018, but it has been delayed unti
 
 **NOTE:** Actual shoot days will be scheduled according to cast availability
 
-@dump basic="." images="." var="." link="."
-///Shotlist///
+@dump image="." var="." link="." html="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

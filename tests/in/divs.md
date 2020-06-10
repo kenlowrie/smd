@@ -1,6 +1,10 @@
-@import "[sys.imports]/common.md"
+@import "[sys.imports]/builtins.md"
 @import "[sys.imports]/code.md"
 @import "[sys.imports]/divs.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
 
 @dump var="." html="." link="." image="."
 [hash1]
@@ -132,4 +136,5 @@
 [var.divxp(c="your content inside a p tag inside a div")]
 
 @dump var="." html="." link="." image="."
-@stop
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

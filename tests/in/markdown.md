@@ -1,3 +1,13 @@
+@import "[sys.imports]/builtins.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+
+//@dump var="." html="." link="." image="."
+[hash1]
+### Testing markdown
+
 ###Table of Contents
 [link.bm_factory(nm="inlinemd", t="Inline Markdown")]
 [link.bm_factory(nm="links", t="Links")]
@@ -6,33 +16,34 @@
 [link.bm_factory(nm="auto_links", t="Automatic Links")]
 
 [link.inlinemd.link] - **Formatting content inline**
-[link.links.link] - **Inline and Reference Link Styles**
-[link.inline_links.link] - **Creating links inline**
-[link.ref_links.link] - **Creating reference links**
-[link.auto_links.link] - **Creating automatic links**
+@break
+[link.links.link] - **Inline and Reference Link Styles**[b]
+[link.inline_links.link] - **Creating links inline**[b]
+[link.ref_links.link] - **Creating reference links**[b]
+[link.auto_links.link] - **Creating automatic links**[b]
 
 // markdown tests
-[link.inlinemd]
-*emphasis*
-**strong**
-***emphasis and strong***
-++this is added++
-~~this is deleted~~
+[link.inlinemd][b]
+*emphasis*[b]
+**strong**[b]
+***emphasis and strong***[b]
+++this is added++[b]
+~~this is deleted~~[b]
 // blank lines
 
     
     
 // multiple markdowns
-*emphasis* and regular and **strong** and regular and ***both***
-not at start *emphasis* and regular and **strong** and regular and ***both***
-not or start *emphasis* and regular and **strong** and regular and ***both*** or end
-++this is added++ and ~~this is deleted~~
-n o s ++this is added++ and ~~this is deleted~~
-nos ++this is added++ and ~~this is deleted~~ or end
+*emphasis* and regular and **strong** and regular and ***both***[b]
+not at start *emphasis* and regular and **strong** and regular and ***both***[b]
+not or start *emphasis* and regular and **strong** and regular and ***both*** or end[b]
+++this is added++ and ~~this is deleted~~[b]
+n o s ++this is added++ and ~~this is deleted~~[b]
+nos ++this is added++ and ~~this is deleted~~ or end[b]
 
 // nested
-*emphasis and **strong** and ++new stuff++ and ~~old stuff~~*
-*emphasis and **strong** and ~~old ++new stuff inside++ stuff~~ and ~~old stuff~~*
+*emphasis and **strong** and ++new stuff++ and ~~old stuff~~*[b]
+*emphasis and **strong** and ~~old ++new stuff inside++ stuff~~ and ~~old stuff~~*[b]
 
 // headers
 # h1
@@ -62,6 +73,7 @@ This is a section about links
 [link.inline_links]
 ###Inline Style:
 
+//TODO: Need to update this section, no longer true about inline links and reference links
 The next paragraph has inline links defined: This is **&#91;an example]:(http://example.com/ "Inline Link Sample")** of an inline link. **&#91;This inline link]:(http://example.net/)** has no title attribute.
 
 @link _="sample1" _inherit="_template_" title="Inline Link Sample" href="http://example.com"
@@ -82,7 +94,7 @@ The reference link style **must** be placed at the beginning of a line. Unlike t
 
 If I write &#91;Google], it is wrapped like so: [Google].
 
-Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it's a valid link!
+Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it's a valid link! ***//TODO: What? This is wrong.***
 [link.auto_links]
 ###Automatic links
 The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with ***&lt; &gt;*** like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an **A** tag whose **HREF** attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute *_asurl*, which returns the href styled appropriately. For example: [link.Google._asurl]
@@ -90,3 +102,5 @@ The final type of link format is automatic links. Automatic links are created by
 &nbsp;
 
 @dump var="." link="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

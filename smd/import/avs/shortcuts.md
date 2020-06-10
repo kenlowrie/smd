@@ -1,7 +1,7 @@
 // Define some useful variables for substitutions
 
 // First get the basic divs
-@import '$/divs.md'
+@import '[sys.imports]/divs.md'
 
 // Define a var for underscoring text
 @html _id="uline" \

@@ -14,7 +14,7 @@
 
 // Some useful defaults for _i_width
 
-[IMG_SIZE_THUMB]=[{{var.img_def._null_(_i_width="20%")}}]
-[IMG_SIZE_SMALL]=[{{var.img_def._null_(_i_width="40%")}}]
-[IMG_SIZE_MEDIUM]=[{{var.img_def._null_(_i_width="70%")}}]
-[IMG_SIZE_LARGE]=[{{var.img_def._null_(_i_width="90%")}}]
+@var IMG_SIZE_THUMB="[{{var.img_def._null_(_i_width=\"20%\")}}]"
+@var IMG_SIZE_SMALL="[{{var.img_def._null_(_i_width=\"40%\")}}]"
+@var IMG_SIZE_MEDIUM="[{{var.img_def._null_(_i_width=\"70%\")}}]"
+@var IMG_SIZE_LARGE="[{{var.img_def._null_(_i_width=\"90%\")}}]"

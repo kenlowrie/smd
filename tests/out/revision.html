@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<h1>------------------------------------------</h1>
+<h3>Testing var.revision ... again</h3>
+<div class="revision"><p class="revTitle">Revision: <em><strong>1a</strong></em> (20200610 @ 10:49:58) </p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>1.0</strong></em> (20200610 @ 10:49:58) </p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>28f</strong></em> (20200610 @ 10:49:58) </p></div>
+<div class="variables">
+    <code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>v=</strong>28f<br />
+<br />
+    </code>
+</div>
+</div>
+</body>
+</html>

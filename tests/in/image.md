@@ -1,17 +1,24 @@
-//This is the test file for @image (and maybe @raw)
-//
+@import "[sys.imports]/builtins.md"
+@import "[sys.imports]/divs.md"
 
-@var _id="_path_" path="/Users/ken/Dropbox/shared/src/script/avscript/tests/in/import" _format="{{self.path}}"
-@var imports="[var._path_(path="in/import")]"
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
 
-@import '[sys.imports]/image.md'
+//@dump var="." html="." link="." image="."
+### Testing Images in Shots support from avs/image.md
+[hash1]
+
+@var imports="../in/import"
+
+@import '[sys.imports]/avs/image.md'
 
 [IMG_SIZE_LARGE]
 @var ss="[{{var.img_def.img_st_inline_border}}]"
 @var trythis="{:.red.bold}Try to get this shot"
 @var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
-@import '[sys.imports]/shot.md'
+@import '[sys.imports]/avs/shot.md'
 @image _id="needshot" src="[imports]/needshot.png" style="[ss]"
 
 [shot_factory(nm="shot1")]
@@ -118,4 +125,7 @@ shot2a._format=[shot2a._format]
 [var.shot2a.lens]
 [var.shot2a._format]
 
-@dump var=".*shot" image="."
+//@dump var=".*shot" image="."
+@dump var="." html="." link="." image="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

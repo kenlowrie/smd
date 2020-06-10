@@ -1,3 +1,11 @@
+@import "[sys.imports]/builtins.md"
+@import "[sys.imports]/divs.md"
+@import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
+[hash1]
 {:.red}# Script Series
 @link _="domain" _inherit="_template_" _text="https://yourdomain.com" href="https://yourdomain.com"
 @link _="me" _inherit="_template_" _text="me" href="email@yourdomain.com"
@@ -6,17 +14,20 @@
 [var.cover(title="Title of Script" author="Script Author" logline="Script summary goes here and can be as long as needed. Let is wrap around if you have softwrap, or just go on forever.")]
 [var.revision.plain(v="1a")]
 [var.contact(cn="Contact Name" ph="Phone" em="[me]" c1="Copyright (c) 2018 by YOURNAME." c2="All Rights Reserved." c3="Don't steal my script")]
-{:.review}---    noteTitle       Notes to Reviewers
-    Please send [me] any and all [feedback], preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. ++additions are marked like this++ ~~deletions are marked like this~~
+[var.review.with_content(t="Notes to Reviewers", c="\
+    Please send [me] any and all [feedback], preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. ++additions are marked like this++ ~~deletions are marked like this~~\
+")]
 
-{: .pbb.plain }--- divTitle Film Pitch for Potential Client
-    ClientName:
-    The overall purpose of this demo is to show the type of production value that we will bring to your project, focusing primarily on ...
+[var.plain.with_content(t="Film Pitch for Potential Client" c="\
+    ClientName:[bb]\
+    The overall purpose of this demo is to show the type of production value that we will bring to your project, focusing primarily on ...\
+")]
 
 @link _="article" _inherit="_template_" _text="Link to Article" href="https://domain.com/article_link/"
 
-{:.section}@@@ divTitle
-    AV Script
+[var.section.with_content(t="" c="\
+    AV Script\
+")]
 
 {: .red }- PART 1: Description for part 1
     PART 1A
@@ -78,4 +89,6 @@ xyz
 
 def
 
-///Shotlist///
+@dump var="revision"
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"

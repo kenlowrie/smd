@@ -1,35 +1,16 @@
-@import "[sys.imports]/common.md"
-@import "[sys.imports]/code.md"
+@import "[sys.imports]/builtins.md"
 @import "[sys.imports]/divs.md"
 @import "[sys.imports]/report.md"
+
+@import "[sys.imports]/def_html.md"
+@import "[sys.imports]/def_head.md"
+@import "[sys.imports]/def_body.md"
 
 @var lpar="&lpar;"
 @var rpar="&rpar;"
 @var obkt="&#91;"
 
-@html _id="_div_syntax_" \
-      _inherit="div" \
-      class="syntax"
-@html _id="_p_syntax_" \
-      _inherit="p" \
-      class="divTitle"
-@html _id="_p_syntax_content_" \
-      _inherit="p" \
-      style="font-size:1.2em" 
- 
-@var _id="syntax" \
-          _format="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}" \
-          with_content="{{self.wc_open}}{{self.c}}{{self.wc_close}}" \
-          open="" \
-          close=""\
-          wc_open="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._p_syntax_content_.<}}"\
-          wc_close="{{html.p.>}}{{html.div.>}}"\
-          wc_p="{{html._p_syntax_content_.<}}{{self.c}}{{html.p.>}}"\
-          wc_p_open="{{html._p_syntax_content_.<}}"\
-          t="This is your syntax title" \
-          c="This is your syntax content"
-
-@dump var="." html="." link="." image="."
+//@dump var="." html="." link="." image="."
 [hash1]
 ##Cover, Revision & Contact Sections
 
@@ -217,3 +198,6 @@ To see these tags in action, take a look at the userguideheading.md document in 
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 
 @dump var="." html="." link="." image="."
+@import "[sys.imports]/def_bodyclose.md"
+@import "[sys.imports]/def_close.md"
+
