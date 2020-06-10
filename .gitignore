@@ -111,3 +111,4 @@ smd/smd/defaults.json
 smd/smd/skeleton.py
 rainyday.md
 smd_rawdata.out
+.vscode/launch.json
