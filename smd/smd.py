@@ -685,23 +685,33 @@ class ScriptParser(StdioWrapper):
         return self.parse()
 
 def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
-    parser.add_argument('-ldb', '--load-default-builtins', dest='load_default_builtins', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_builtins}')
-    parser.add_argument('-ndb', '--no-default-builtins', dest='load_default_builtins', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_builtins}')
-    parser.add_argument('-lub', '--load-user-builtins', dest='load_user_builtins', action='store_true', help=f'load user builtins during startup. Default is: {sysDefaults.load_user_builtins}')
-    parser.add_argument('-nub', '--no-user-builtins', dest='load_user_builtins', action='store_false', help=f'do not load user builtins during startup. Default is: {not sysDefaults.load_user_builtins}')
-    parser.add_argument('-html', '--load-default-html', dest='load_default_html', action='store_true', help=f'load default html during startup. Default is: {sysDefaults.load_default_html}')
+    group0 = parser.add_mutually_exclusive_group()
+    group0.add_argument('-ldb', '--load-default-builtins', dest='load_default_builtins', action='store_true', help=f'load default builtins during startup. Default is: {sysDefaults.load_default_builtins}')
+    group0.add_argument('-ndb', '--no-default-builtins', dest='load_default_builtins', action='store_false', help=f'do not load default builtins during startup. Default is: {not sysDefaults.load_default_builtins}')
+
+    # 'user builtins', 'flags controlling the user specific builtins.md file'
+    group1 = parser.add_mutually_exclusive_group()
+    group1.add_argument('-lub', '--load-user-builtins', dest='load_user_builtins', action='store_true', help=f'load user builtins during startup. Default is: {sysDefaults.load_user_builtins}')
+    group1.add_argument('-nub', '--no-user-builtins', dest='load_user_builtins', action='store_false', help=f'do not load user builtins during startup. Default is: {not sysDefaults.load_user_builtins}')
+
+    # These flags control whether the HTML Document defaults are loaded during initialization.
+    parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {False}')
     parser.add_argument('-nohtml', '--no-default-html', dest='load_default_html', action='store_false', help=f'do not load default html during startup. Default is: {not sysDefaults.load_default_html}')
-    parser.add_argument('-head', '--load-default-head', dest='load_default_head', action='store_true', help=f'load default head during startup. Default is: {sysDefaults.load_default_head}')
     parser.add_argument('-nohead', '--no-default-head', dest='load_default_head', action='store_false', help=f'do not load default head during startup. Default is: {not sysDefaults.load_default_head}')
-    parser.add_argument('-body', '--load-default-body', dest='load_default_body', action='store_true', help=f'load default body during startup. Default is: {sysDefaults.load_default_body}')
     parser.add_argument('-nobody', '--no-default-body', dest='load_default_body', action='store_false', help=f'do not load default body during startup. Default is: {not sysDefaults.load_default_body}')
 
+    parser.add_argument('-html', '--set-html-name', dest='html_name', help=f'set filename of document html markdown. Default is: {sysDefaults.html_name}')
+    parser.add_argument('-head', '--set-head-name', dest='head_name', help=f'set filename of document head markdown. Default is: {sysDefaults.head_name}')
+    parser.add_argument('-body', '--set-body-name', dest='body_name', help=f'set filename of document body markdown. Default is: {sysDefaults.body_name}')
+    parser.add_argument('-bodyclose', '--set-bodyclose-name', dest='bodyclose_name', help=f'set filename of document body close markdown. Default is: {sysDefaults.bodyclose_name}')
+    parser.add_argument('-close', '--set-close-name', dest='close_name', help=f'set filename of document close markdown. Default is: {sysDefaults.close_name}')
 
+    # No user files means disallow searching ~/.smd/import for any of the default markdown files
     parser.add_argument('-nu', '--no-user-files', dest='load_user_files', action='store_false', help=f'do not load any files from ~/.smd. Default is: {not sysDefaults.load_user_files}')
-    parser.add_argument('-nd', '--no-document-defaults', dest='load_document_defaults', action='store_false', help=f'do not load any document defaults during startup. Default is: {False}')
 
     parser.add_argument('-o', '--output-raw-data', dest="raw_output_file", nargs='?', const='smd_rawdata.out', help=f'write the raw data to output file. Default is: {sysDefaults.raw_output_file}')
 
+    # okay, set the defaults in the parser to the systemDefaults
     parser.set_defaults(load_default_builtins=sysDefaults.load_default_builtins)
     parser.set_defaults(load_user_builtins=sysDefaults.load_user_builtins)
     parser.set_defaults(load_default_html=sysDefaults.load_default_html)
@@ -709,12 +719,24 @@ def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
     parser.set_defaults(load_default_body=sysDefaults.load_default_body)
     parser.set_defaults(load_user_files=sysDefaults.load_user_files)
     parser.set_defaults(raw_output_file=sysDefaults.raw_output_file)
+    parser.set_defaults(html_name=sysDefaults.html_name)
+    parser.set_defaults(head_name=sysDefaults.head_name)
+    parser.set_defaults(body_name=sysDefaults.body_name)
+    parser.set_defaults(bodyclose_name=sysDefaults.bodyclose_name)
+    parser.set_defaults(close_name=sysDefaults.close_name)
 
+    # parse the arguments
     args = parser.parse_args(args)
 
+    # transfer the argument values from the args over to the systemDefaults object
     sysDefaults.load_default_builtins = args.load_default_builtins
     sysDefaults.load_user_builtins = args.load_user_builtins
     sysDefaults.raw_output_file = args.raw_output_file
+    sysDefaults.html_name = args.html_name
+    sysDefaults.head_name = args.head_name
+    sysDefaults.body_name = args.body_name
+    sysDefaults.bodyclose_name = args.bodyclose_name
+    sysDefaults.close_name = args.close_name
 
     # if -nd is specified, then no matter what, all document files will be ignored
     sysDefaults.load_default_html = args.load_default_html if args.load_document_defaults else False

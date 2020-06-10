@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body class="myclass">
+<div class="wrapper">
+<div class="variables">
+    <code>
+<strong>_load_default_builtins</strong>: <em>True</em><br />
+<strong>_load_user_builtins</strong>: <em>True</em><br />
+<strong>_load_default_html</strong>: <em>True</em><br />
+<strong>_load_default_head</strong>: <em>True</em><br />
+<strong>_load_default_body</strong>: <em>True</em><br />
+<strong>_html_name</strong>: <em>None</em><br />
+<strong>_head_name</strong>: <em>None</em><br />
+<strong>_body_name</strong>: <em>None</em><br />
+<strong>_bodyclose_name</strong>: <em>None</em><br />
+<strong>_close_name</strong>: <em>None</em><br />
+<strong>_load_user_files</strong>: <em>True</em><br />
+<strong>_raw_output_file</strong>: <em>smd_rawdata.out</em><br />
+<strong>_configData</strong>: <em>{}</em><br />
+<strong>_importFiles</strong>: <em>[]</em><br />
+    </code>
+</div>
+<div class="variables">
+    <code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
+&nbsp;&nbsp;<strong>_nop=</strong><br />
+<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>kenldefaults=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
+<br />
+<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
+&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
+&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
+&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
+&nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
+&nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
+&nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
+&nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
+&nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+<br />
+<strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>td=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>th=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+    </code>
+</div>
+  </div>
+
+</body>
+
+</html>
+

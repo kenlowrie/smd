@@ -1,0 +1,66 @@
+usage: smdparse [-h] -f FILENAME [-c [CSSFILELIST [CSSFILELIST ...]]]
+                [-i [IMPORTFILELIST [IMPORTFILELIST ...]]] [-d [PATH]] [-dbg]
+                [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead]
+                [-nobody] [-html HTML_NAME] [-head HEAD_NAME]
+                [-body BODY_NAME] [-bodyclose BODYCLOSE_NAME]
+                [-close CLOSE_NAME] [-nu] [-o [RAW_OUTPUT_FILE]]
+
+Generate HTML file from a text file in Script Markdown format.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILENAME, --filename FILENAME
+                        the file that you want to parse
+  -c [CSSFILELIST [CSSFILELIST ...]], --cssfile [CSSFILELIST [CSSFILELIST ...]]
+                        the CSS file you want used for the styling. Default is
+                        smd.css
+  -i [IMPORTFILELIST [IMPORTFILELIST ...]], --import [IMPORTFILELIST [IMPORTFILELIST ...]]
+                        list of file(s) to import after builtins.md loaded.
+                        Default is None
+  -d [PATH], --path [PATH]
+                        the directory that you want the HTML file written to.
+                        Default is ./html
+  -dbg, --debug         display additional debug information. Default is:
+                        False
+  -ldb, --load-default-builtins
+                        load default builtins during startup. Default is: True
+  -ndb, --no-default-builtins
+                        do not load default builtins during startup. Default
+                        is: False
+  -lub, --load-user-builtins
+                        load user builtins during startup. Default is: True
+  -nub, --no-user-builtins
+                        do not load user builtins during startup. Default is:
+                        False
+  -nd, --no-document-defaults
+                        do not load any document defaults during startup.
+                        Default is: False
+  -nohtml, --no-default-html
+                        do not load default html during startup. Default is:
+                        False
+  -nohead, --no-default-head
+                        do not load default head during startup. Default is:
+                        False
+  -nobody, --no-default-body
+                        do not load default body during startup. Default is:
+                        False
+  -html HTML_NAME, --set-html-name HTML_NAME
+                        set filename of document html markdown. Default is:
+                        None
+  -head HEAD_NAME, --set-head-name HEAD_NAME
+                        set filename of document head markdown. Default is:
+                        None
+  -body BODY_NAME, --set-body-name BODY_NAME
+                        set filename of document body markdown. Default is:
+                        None
+  -bodyclose BODYCLOSE_NAME, --set-bodyclose-name BODYCLOSE_NAME
+                        set filename of document body close markdown. Default
+                        is: None
+  -close CLOSE_NAME, --set-close-name CLOSE_NAME
+                        set filename of document close markdown. Default is:
+                        None
+  -nu, --no-user-files  do not load any files from ~/.smd. Default is: False
+  -o [RAW_OUTPUT_FILE], --output-raw-data [RAW_OUTPUT_FILE]
+                        write the raw data to output file. Default is: None
+
+This utility exits after parsing the input file.

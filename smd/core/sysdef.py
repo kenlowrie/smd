@@ -14,6 +14,11 @@ class SystemDefaults():
         self._load_default_html = True
         self._load_default_head = True
         self._load_default_body = True
+        self._html_name = None
+        self._head_name = None
+        self._body_name = None
+        self._bodyclose_name = None
+        self._close_name = None
         self._load_user_files = True
         self._raw_output_file = None
         self._configData = {}
@@ -108,6 +113,46 @@ class SystemDefaults():
     @raw_output_file.setter
     def raw_output_file(self, value):
         self._raw_output_file = value
+
+    @property
+    def html_name(self):
+        return self._html_name
+
+    @html_name.setter
+    def html_name(self, value):
+        self._html_name = value
+
+    @property
+    def head_name(self):
+        return self._head_name
+
+    @head_name.setter
+    def head_name(self, value):
+        self._head_name = value
+
+    @property
+    def body_name(self):
+        return self._body_name
+
+    @body_name.setter
+    def body_name(self, value):
+        self._body_name = value
+
+    @property
+    def bodyclose_name(self):
+        return self._bodyclose_name
+
+    @bodyclose_name.setter
+    def bodyclose_name(self, value):
+        self._bodyclose_name = value
+
+    @property
+    def close_name(self):
+        return self._close_name
+
+    @close_name.setter
+    def close_name(self, value):
+        self._close_name = value
 
 if __name__ == '__main__':
     print("Library module. Not directly callable.")
