@@ -136,6 +136,16 @@ class ConfigFile(ConfigFileObject):
         # Return the system default version instead
         return super(ConfigFile,self).datastack()
 
+class SpecificConfigFile(ConfigFileObject):
+    def __init__(self, filename, okay2load):
+        tempname = Path(filename).resolve()
+        super(SpecificConfigFile, self).__init__(tempname.name, tempname.parent, okay2load)
+    
+    def filename(self):
+        # we need to override this method so we don't check to see if the file exists, otherwise
+        # it will fail silently, and they specified a specific filename on the command line...
+        return self._filename if self.okay2load else None
+
 
 if __name__ == '__main__':
     print("Library module. Not directly callable.")

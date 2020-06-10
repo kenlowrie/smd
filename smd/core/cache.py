@@ -7,7 +7,7 @@ class ImportCache(object):
     def __init__(self):
         from .thread import getTLS
         from .sysdef import SystemDefaults
-        from .config import ConfigFile, LocalUserConfigFile
+        from .config import ConfigFile, LocalUserConfigFile, SpecificConfigFile
         
         self._debug = Debug('cache.import')
 
@@ -16,10 +16,24 @@ class ImportCache(object):
         self._sysDefaults = getTLS().getObjectFromTLS(Constants.sysDefaults)
 
         # Start with the default body, head and html document parts, i.e. the last things to read
-        #fuck = self._sysDefaultstls_data.sysDefaults
-        self._importCache += ConfigFile(SystemDefaults.DefaultBodyName, self._sysDefaults.load_default_body).filenameAsList()
-        self._importCache += ConfigFile(SystemDefaults.DefaultHeadName, self._sysDefaults.load_default_head).filenameAsList()
-        self._importCache += ConfigFile(SystemDefaults.DefaultHtmlName, self._sysDefaults.load_default_html).filenameAsList()
+        if self._sysDefaults.body_name:
+            # if -body filename.md specified on command line, it always wins
+            self._importCache += SpecificConfigFile(self._sysDefaults.body_name, self._sysDefaults.load_default_body).filenameAsList()
+        else:
+            # load correct file based on system rules
+            self._importCache += ConfigFile(SystemDefaults.DefaultBodyName, self._sysDefaults.load_default_body).filenameAsList()
+
+        # same rules for head. If command line overrides system default, use it.
+        if self._sysDefaults.head_name:
+            self._importCache += SpecificConfigFile(self._sysDefaults.head_name, self._sysDefaults.load_default_head).filenameAsList()
+        else:
+            self._importCache += ConfigFile(SystemDefaults.DefaultHeadName, self._sysDefaults.load_default_head).filenameAsList()
+
+        # same rules for html. If command line overrides system default, use it.
+        if self._sysDefaults.html_name:
+            self._importCache += SpecificConfigFile(self._sysDefaults.html_name, self._sysDefaults.load_default_html).filenameAsList()
+        else:
+            self._importCache += ConfigFile(SystemDefaults.DefaultHtmlName, self._sysDefaults.load_default_html).filenameAsList()
 
         # Now, if any other imports have been specified, we need to load them right after the user
         # builtins.md, since we want to be able to have a "last chance to override" hard coded stuff.

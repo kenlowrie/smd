@@ -642,10 +642,28 @@ class ScriptParser(StdioWrapper):
                     span = f'<span{self._line.css_prefix}>{{}}</span>' if self._line.css_prefix else '{}'
                     self.oprint(span.format(self._line.current_line))
 
-            from .core.config import ConfigFile
+            from .core.config import ConfigFile, SpecificConfigFile
             closing = []
-            closing += ConfigFile(SystemDefaults.DefaultBodyCloseName, self.tls.sysDefaults.load_default_body).data()
-            closing += ConfigFile(SystemDefaults.DefaultHtmlCloseName, self.tls.sysDefaults.load_default_html).data()
+
+            from pathlib import Path
+            if self.tlsSysDefaults.bodyclose_name:
+                # if -bodyclose filename.md specified on command line, it always wins
+                if not Path(self.tlsSysDefaults.bodyclose_name).is_file():
+                    closing += [f"ERROR: Filename {self.tlsSysDefaults.bodyclose_name} does not exist!"]
+                else:
+                    closing += SpecificConfigFile(self.tlsSysDefaults.bodyclose_name, self.tlsSysDefaults.load_default_body).data()
+            else:
+                closing += ConfigFile(SystemDefaults.DefaultBodyCloseName, self.tlsSysDefaults.load_default_body).data()
+
+            if self.tlsSysDefaults.close_name:
+                # if -close filename.md specified on command line, it always wins
+                if not Path(self.tlsSysDefaults.close_name).is_file():
+                    closing += [f"ERROR: Filename {self.tlsSysDefaults.close_name} does not exist!"]
+                else:
+                    closing += SpecificConfigFile(self.tlsSysDefaults.close_name, self.tlsSysDefaults.load_default_html).data()
+            else:
+                closing += ConfigFile(SystemDefaults.DefaultHtmlCloseName, self.tlsSysDefaults.load_default_html).data()
+
             for c in closing:
                 self.oprint(self._html.formatLine(c, 0, False))
                 if self.tlsRawOutputFile is not None:
@@ -745,6 +763,16 @@ def smd_add_std_cmd_line_parms(parser, sysDefaults, args=None):
 
     # if -nu is specified, then the LocalUserConfigFile class will ignore allowing them to override the system versions
     sysDefaults.load_user_files = args.load_user_files
+
+    # a few last minute checks to avoid potential confusion
+    if sysDefaults.load_default_html is False and (sysDefaults.html_name or sysDefaults.close_name):
+        parser.error("you can't say -nohtml and then specify -html or -close")
+
+    if sysDefaults.load_default_body is False and (sysDefaults.body_name or sysDefaults.bodyclose_name):
+        parser.error("you can't say -nobody and then specify -body or -bodyclose")
+
+    if sysDefaults.load_default_head is False and sysDefaults.head_name:
+        parser.error("you can't say -nohead and then specify -head")
 
     return args
 

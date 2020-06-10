@@ -124,19 +124,31 @@ cmdline_tests = [
     commandLine("test04b",     "defdump.md",          "-ndb -ldb"),
     commandLine("test04c",     "defdump.md",          "-nd -nu"),
     
+    commandLine("test05a",     "docovrd.md",          "-head fu.bar -nohead"),
+    commandLine("test05b",     "docovrd.md",          "-html fu.bar -nohtml"),
+    commandLine("test05c",     "docovrd.md",          "-close fu.bar -nohtml"),
+    commandLine("test05d",     "docovrd.md",          "-body fu.bar -nobody"),
+    commandLine("test05e",     "docovrd.md",          "-bodyclose fu.bar -nobody"),
+    commandLine("test05f",     "docovrd.md",          "-html in/html_oride.md"),
+    commandLine("test05g",     "docovrd.md",          "-head in/head_oride.md"),
+    commandLine("test05h",     "docovrd.md",          "-body in/body_oride.md"),
+    commandLine("test05i",     "docovrd.md",          "-bodyclose in/bodyclose_oride.md"),
+    commandLine("test05j",     "docovrd.md",          "-close in/close_oride.md"),
+    commandLine("test05k",     "docovrd.md",          "-html in/html_oride.md -head in/head_oride.md -body in/body_oride.md -bodyclose in/bodyclose_oride.md -close in/close_oride.md"),
 ]
 ignore=[
 
-    commandLine("test04d",     "defdump.md",          "-head"),
-    commandLine("test04e",     "defdump.md",          "-body"),
-    commandLine("test04f",     "defdump.md",          "-nohtml"),
-    commandLine("test04g",     "defdump.md",          "-nohead"),
-    commandLine("test04h",     "defdump.md",          "-nobody"),
-    commandLine("test04i",     "defdump.md",          "-ldb"),
-    commandLine("test04j",     "defdump.md",          "-ndb"),
-    commandLine("test04k",     "defdump.md",          "-lub"),
-    commandLine("test04l",     "defdump.md",          "-nub"),
-    commandLine("test04m",     "defdump.md",          "-o"),
+    commandLine("test05a",     "docovrd.md",          "-head fu.bar -nohead"),
+    commandLine("test05b",     "docovrd.md",          "-html fu.bar -nohtml"),
+    commandLine("test05c",     "docovrd.md",          "-close fu.bar -nohtml"),
+    commandLine("test05d",     "docovrd.md",          "-body fu.bar -nobody"),
+    commandLine("test05e",     "docovrd.md",          "-bodyclose fu.bar -nobody"),
+    commandLine("test05f",     "docovrd.md",          "-html in/html_oride.md"),
+    commandLine("test05g",     "docovrd.md",          "-head in/head_oride.md"),
+    commandLine("test05h",     "docovrd.md",          "-body in/body_oride.md"),
+    commandLine("test05i",     "docovrd.md",          "-bodyclose in/bodyclose_oride.md"),
+    commandLine("test05j",     "docovrd.md",          "-close in/close_oride.md"),
+    commandLine("test05k",     "docovrd.md",          "-html in/html_oride.md -head in/head_oride.md -body in/body_oride.md -bodyclose in/bodyclose.md -close in/close_oride.md"),
 
 
 ]
