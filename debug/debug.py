@@ -11,7 +11,7 @@ from pathlib import Path
 from os import chdir
 
 parent = Path(__file__).parent
-chdir(Path().joinpath(parent,'sos'))
+chdir(Path().joinpath(parent,'../tests/sos'))
 
 import smd
 
@@ -26,7 +26,8 @@ if False:
 
 
 #smd.smd.smd_parse_file(['-f', 'clean.md', '-nd', '-ndb'])
-smd.smd.smd_parse_file(['-nd', '-ndb', '-o'])
+#smd.smd.smd_parse_file(['-nd', '-ndb', '-o'])
+smd.smd.smd_parse_file()
 
 
 print("nothing to see here.")
