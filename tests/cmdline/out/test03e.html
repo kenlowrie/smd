@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>default page title</title>
+<!DOCTYPE html><!-- START def_html.md-FROM-local-imports-->
+<html lang="en" class="cmdline-tester-FROM-local-imports">
+<!-- END def_html.md-FROM-local-imports-->
+<head><!-- START def_head.md-FROM-local-imports-->
+<title>[cmdline-tester-FROM-local-imports]</title>
 <meta charset="UTF-8">
-<link rel='stylesheet' href='smd.css' />
-</head>
+<link rel='stylesheet' href='my-really-cool-FROM-local-imports-cssfile.css' />
+</head><!-- END def_head.md-FROM-local-imports-->
 ERROR: Unable to import '/Users/ken/Dropbox/shared/src/script/smd/tests/cmdline/bodydoc.md'. File does not exist.<br />
 <div class="variables">
     <code>
@@ -33,6 +34,8 @@ NAMESPACE: var<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
+<strong>cmdline_testing=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>from the cmdline testing builtins.md<br />
+<br />
 <strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
 &nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
 &nbsp;&nbsp;<strong>_nop=</strong><br />
@@ -42,8 +45,6 @@ NAMESPACE: var<br />
 <strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
 <br />
 <strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
-<br />
-<strong>kenldefaults=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
@@ -133,9 +134,16 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
     </code>
 </div>
-  </div>
+    <!-- START def_bodyclose.md-FROM-local-imports-->
+
+  </div><!-- my div end FROM-local-imports-->
 
 </body>
 
-</html>
+<!-- END def_bodyclose.md-FROM-local-imports-->
+<!-- START def_close.md-FROM-local-imports-->
+
+<!-- my html end FROM-local-imports -->
+
+</html><!-- END def_close.md-FROM-local-imports-->
 

@@ -3,9 +3,90 @@ from pathlib import Path
 from os import system
 from os import chdir
 
-parent = Path(__file__).parent
+
+class UserSMDPathError(Exception):
+    """Path exceptions raised by this module."""
+    def __init__(self, errno, errmsg):
+        self.errno = errno
+        self.errmsg = errmsg
+
+
+cwd = Path(__file__).parent.resolve()
 #chdir(Path().joinpath(parent,'sos'))
-chdir(parent)
+chdir(cwd)
+print(f"Current working directory: {Path().cwd()}")
+
+class userImports(object):
+    smdDir = '.smd'
+    smdTestDir = 'cmdline-test-dir'
+    smdDirSave = smdTestDir + '-backup'
+    def __init__(self):
+        self.cmdlineTestDir = cwd
+        self.userSMDdir = Path().joinpath(Path().home(), userImports.smdDir)
+        self.userSMDsaveDir = Path().joinpath(self.userSMDdir.parent, self.userSMDdir.name + userImports.smdDirSave)
+        self.hadUserSMDdir = self.userSMDdir.is_dir()
+        self.copiedTestDir = False
+        #print(f"userSMDdir = {self.userSMDdir}")
+        #print(f"userSMDsaveDir = {self.userSMDsaveDir}")
+        #print(f"cmdlineTestDir = {self.cmdlineTestDir}")
+
+    def saveUserDir(self):
+        if self.userSMDsaveDir.is_dir():
+            print(f"User save directory {self.userSMDsaveDir} already exists. Ignoring save request.")
+            return
+
+        if self.hadUserSMDdir:
+            print(f"Saving existing user directory: {self.userSMDdir}")
+            try:
+                self.userSMDdir.rename(self.userSMDsaveDir)
+            except Exception as ex:
+                print(f"exception {ex.args} during rename")
+                raise UserSMDPathError(1, "error attempting to save local user folder")
+
+        self.transferTestingUserDirectory()
+
+
+    def transferTestingUserDirectory(self):
+        userTestSrcDir = Path().joinpath(self.cmdlineTestDir, userImports.smdTestDir)
+        if not userTestSrcDir.is_dir():
+            print(f"User test source directory {userTestSrcDir} does not exist. Cannot continue.")
+            return
+
+        print(f"Copydir {userTestSrcDir} to {self.userSMDdir} ...")
+        from shutil import copytree
+        try:
+            copytree(userTestSrcDir, self.userSMDdir)
+        except Exception as ex:
+                print(f"exception {ex.args} during copytree")
+                raise UserSMDPathError(2, "error attempting to transfer testing directory")
+            
+        self.copiedTestDir = True
+
+    def restoreUserDir(self):
+        if self.copiedTestDir:
+            print(f"Removing the test directory that we copied ...")
+            if not self.userSMDdir.is_dir():
+                print(f"User directory {self.userSMDdir} does not exist. Ignoring removing request.")
+            else:
+                print(f"Removing current user directory {self.userSMDdir}.")
+                from shutil import rmtree
+                try:
+                    rmtree(self.userSMDdir)
+                except Exception as ex:
+                    print(f"exception {ex.args} during rmtree")
+                    raise UserSMDPathError(3, "error attempting to remove local testing folder")
+
+        if not self.userSMDsaveDir.is_dir():
+            print(f"User save directory {self.userSMDsaveDir} does not exist. Ignoring restore request.")
+        else:
+            print(f"Restoring original user directory.")
+            try:
+                self.userSMDsaveDir.rename(self.userSMDdir)
+            except Exception as ex:
+                print(f"exception {ex.args} during restore original user directory")
+                raise UserSMDPathError(4, "error attempting to restore local user folder")
+
+            print(f"Rename {self.userSMDsaveDir} to {self.userSMDdir} ...")
 
 class commandLine(object):
     def __init__(self, name, inputfile, flags, dcl=None, input_as=None):
@@ -115,14 +196,17 @@ cmdline_tests = [
     commandLine("test03g",     "defdump.md",          "-nohead"),
     commandLine("test03h",     "defdump.md",          "-nobody"),
     commandLine("test03i",     "defdump.md",          "-ldb"),
+    commandLine("test03ia",    "defdump.md",          "-ldb -nub"),
     commandLine("test03j",     "defdump.md",          "-ndb"),
     commandLine("test03k",     "defdump.md",          "-lub"),
+    commandLine("test03ka",    "defdump.md",          "-lub -ndb"),
     commandLine("test03l",     "defdump.md",          "-nub"),
     commandLine("test03m",     "defdump.md",          "-o"),
 
     commandLine("test04a",     "defdump.md",         "-nub -lub"),
     commandLine("test04b",     "defdump.md",          "-ndb -ldb"),
     commandLine("test04c",     "defdump.md",          "-nd -nu"),
+    commandLine("test04d",     "defdump.md",          "-nu"),
     
     commandLine("test05a",     "docovrd.md",          "-head fu.bar -nohead"),
     commandLine("test05b",     "docovrd.md",          "-html fu.bar -nohtml"),
@@ -152,14 +236,29 @@ ignore=[
 
 
 ]
+from sys import argv
+which = cmdline_tests if len(argv) == 1 else [x for x in cmdline_tests if x.name.startswith(argv[1])]
+#print(which)
+#exit()
 
-which = cmdline_tests[0:]
+print(f"Saving local user state")
+userDir = userImports()
+userDir.saveUserDir()
+
+#which = cmdline_tests[0:]
 for test in which:
     test.runTest()
 
+errors = 0
 for test in which:
     if test.drc != 0:
+        errors+=1
         test.dumpDiff()
+
+print(f"All tests are PASSING!" if errors == 0 else f"{errors} test{'s' if errors == 1 else ''} have FAILED.")
+print(f"Restoring local user state")
+userDir.restoreUserDir()
+print("all done...")
 
 
 exit()
