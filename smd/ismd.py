@@ -210,6 +210,7 @@ def ismd(arguments=None):
                             epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
     parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
+    parser.add_argument('-sph', '--smdparse-head-name', dest="head_file_name", default="smdparse_head.md", help='the filename to use for the head HTML markdown. Default is smdparse_head.md')
     parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
     parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
     parser.add_argument('-m', '--monitor', nargs='+', default=[Monitor.Browser], help=f'the monitor [{Monitor.Browser}, {Monitor.HostGUI}, {Monitor.Endpoint}] you want used to display changes. Default is {Monitor.Browser}')
@@ -222,6 +223,8 @@ def ismd(arguments=None):
     args = smd_add_std_cmd_line_parms(parser, sysDefaults, arguments)
 
     from smd.smdparse import ScriptParser, handle_cssfilelist_parameter, get_importfilelist
+
+    sysDefaults.head_name = Path().joinpath(args.path, args.head_file_name).resolve()
 
     from smd.core.exception import FileError
     try:

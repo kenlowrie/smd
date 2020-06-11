@@ -89,13 +89,14 @@ class userImports(object):
             print(f"Rename {self.userSMDsaveDir} to {self.userSMDdir} ...")
 
 class commandLine(object):
-    def __init__(self, name, inputfile, flags, dcl=None, input_as=None):
+    def __init__(self, name, inputfile, flags, dcl=None, input_as=None, other_files=None):
         self.dcl = "smd" if dcl is None else dcl
         self.input_as = "-f " if input_as is None else input_as
         self.input = Path().joinpath('in', inputfile)
         self.output = Path().joinpath('run', name).with_suffix(".html")
         self.diffo = self.output.with_suffix('.diff')
         self.html = Path().joinpath('out', Path(name).with_suffix(".html"))
+        self.other_files = other_files
         self.flags = flags
         self.name = name
 
@@ -104,6 +105,10 @@ class commandLine(object):
 
     def diffCmdLine(self):
         return f"diff {self.html} {self.output} >{self.diffo}"
+    
+    def diffOtherFiles(self):
+        for file in self.other_files:
+            self.drc += system(f"diff run/{file} out/{file} >>{self.diffo}")
 
     def dumpDiff(self):
         print(f"{'*'*60}\n{self.name}")
@@ -114,6 +119,9 @@ class commandLine(object):
         self.rc = system(self.cmdLine())
         #print(f"-->{self.diffCmdLine()}")
         self.drc = system(self.diffCmdLine())
+        if self.other_files:
+            self.diffOtherFiles()
+
         print(f"{self.name}: {'PASS' if self.drc == 0 else 'FAIL'}: Input File: '{self.input}' : Flags: [{self.flags}]")
 
 cmdline_tests = [
@@ -129,6 +137,7 @@ cmdline_tests = [
     commandLine("test00j",     "notexist.md",         "-f",    dcl="smdparse"),
     commandLine("test00k",     "notexist.md",         "-f",   dcl="ismd"),
     commandLine("test00l",     "notexist.md",         "-f"),
+    commandLine("test00m",     "notexist.md",         "-sph",   dcl="smdparse"),
 
     commandLine("test01",      "empty.md",         "", input_as="<"),
     commandLine("test01a",     "empty.md",         "-nu", input_as="<"),
@@ -219,6 +228,9 @@ cmdline_tests = [
     commandLine("test05i",     "docovrd.md",          "-bodyclose in/bodyclose_oride.md"),
     commandLine("test05j",     "docovrd.md",          "-close in/close_oride.md"),
     commandLine("test05k",     "docovrd.md",          "-html in/html_oride.md -head in/head_oride.md -body in/body_oride.md -bodyclose in/bodyclose_oride.md -close in/close_oride.md"),
+
+    commandLine("test06a",     "defdump.md",          "-notid -nu -d run/html.test06a", dcl="smdparse", other_files=['html.test06a/defdump.html', 'html.test06a/smdparse_head.md']),
+    commandLine("test06b",     "defdump.md",          "-notid -nu -d run/html.test06b -sph override_head.md", dcl="smdparse", other_files=['html.test06b/defdump.html', 'html.test06b/override_head.md']),
 ]
 ignore=[
 

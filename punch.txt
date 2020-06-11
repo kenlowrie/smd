@@ -3,7 +3,6 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 70. little by little, work through the current automated tests and bring them back online synchronized to the new version.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
@@ -92,6 +91,7 @@ Completed
 **50. Clean up how ismd does the multiple monitors
 **88. Shore up the @wrap support so it is smarter about what it accepts as a parameter.
 **57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+**84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
 
 
 

@@ -9,10 +9,19 @@ class ConsoleMessage(object):
         import kenl380.pylib as pylib
 
         self.me = pylib.context(whoami)
+        self._usetid = True
+
+    @property
+    def usetid(self):
+        return self._usetid
     
+    @usetid.setter
+    def usetid(self,value):
+        self._usetid = value
+
     def o(self,msg,usetid=True):
         from threading import current_thread
-        threadid = current_thread().native_id if usetid else ""
+        threadid = current_thread().native_id if usetid and self.usetid else ""
         print(f"{self.me.alias()}({threadid}): {msg}")
 
 consoleMessage = ConsoleMessage(__file__).o

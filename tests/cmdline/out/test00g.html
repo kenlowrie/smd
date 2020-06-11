@@ -1,6 +1,7 @@
 usage: smdparse [-h] -f FILENAME [-c [CSSFILELIST [CSSFILELIST ...]]]
+                [-sph HEAD_FILE_NAME]
                 [-i [IMPORTFILELIST [IMPORTFILELIST ...]]] [-d [PATH]] [-dbg]
-                [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead]
+                [-notid] [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead]
                 [-nobody] [-html HTML_NAME] [-head HEAD_NAME]
                 [-body BODY_NAME] [-bodyclose BODYCLOSE_NAME]
                 [-close CLOSE_NAME] [-nu] [-o [RAW_OUTPUT_FILE]]
@@ -14,6 +15,9 @@ optional arguments:
   -c [CSSFILELIST [CSSFILELIST ...]], --cssfile [CSSFILELIST [CSSFILELIST ...]]
                         the CSS file you want used for the styling. Default is
                         smd.css
+  -sph HEAD_FILE_NAME, --smdparse-head-name HEAD_FILE_NAME
+                        the filename to use for the head HTML markdown.
+                        Default is smdparse_head.md
   -i [IMPORTFILELIST [IMPORTFILELIST ...]], --import [IMPORTFILELIST [IMPORTFILELIST ...]]
                         list of file(s) to import after builtins.md loaded.
                         Default is None
@@ -22,6 +26,9 @@ optional arguments:
                         Default is ./html
   -dbg, --debug         display additional debug information. Default is:
                         False
+  -notid, --no-tid-in-output
+                        do not display the thread id in the output messages.
+                        Default is: False
   -ldb, --load-default-builtins
                         load default builtins during startup. Default is: True
   -ndb, --no-default-builtins
