@@ -126,6 +126,7 @@ class ScriptParser(StdioWrapper):
         self._html = HTMLFormatter()    # format HTML output (indent for readability)
         self._lineInCache = False       # if we have a line in the cache
         self._shotListQ = BookmarkList()    # shot list link Q
+        self._wrapper = []              # queue of wrapper tags
 
         self._ns = Namespaces(self._md.markdown, self._md.setNSxface, oprint=self.oprint)
         #TODO: Clean this up. _stripClass needs to be handled better than this...
@@ -167,6 +168,7 @@ class ScriptParser(StdioWrapper):
             'break': RegexMain(True,    True,   False,  r'^[@](break|exit)\s*$',                             None),
             'stop': RegexMain(True,     True,   False,  r'^[@](stop|quit)\s*$',                              None),
             'raw': RegexMain(True,      False,  False,  r'^@(@|raw)[ ]+(.*)',                                None),
+            'wrap': RegexMain(True,     False,  False,  r'^@(wrap|parw)[ ]?(.*)',                            None),
             'debug': RegexMain(True,    True,   False,  r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',    None),
             'defaults': RegexMain(True, True,   False,  r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
         }
@@ -240,6 +242,10 @@ class ScriptParser(StdioWrapper):
             self.tlsRawOutputFile.close()
             self.tls.removeObjectFromTLS(Constants.rawOutput)
 
+    @property
+    def wrapper(self):
+        return self._wrapper
+        
     def _regex(self, id):
         """
         Returns the RegexMain object for a specific parse type.
@@ -470,6 +476,60 @@ class ScriptParser(StdioWrapper):
             else:
                 self.oprint(lineObj.current_line)
 
+        def handle_wrap(m, lineObj):
+            """Handle a wrap line"""
+
+            class wrapTag(object):
+                def __init__(self,tag, ns_parseVariableName, markdown, oprint):
+                    self._start = None
+                    self._end = None
+                    self._ns, self._name, self._attr = ns_parseVariableName(tag)
+                    if self._ns != 'html':
+                        #//TODO: Decide if these messages should be debug messages or not.
+                        oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.")
+                        return
+                    if self._attr is not None:
+                        oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}")
+
+                    ns_name = f"html.{self._name}"
+                    self._start = markdown(f"[{ns_name}.<]")
+                    self._end = markdown(f"[{ns_name}.>]")
+
+                @property
+                def start(self):
+                    return self._start
+
+                @property
+                def end(self):
+                    return self._end
+
+
+            from .core.utility import HtmlUtils
+            if(m is not None):
+                self.debug_smd_raw.print('&nbsp;&nbsp;lineObj.current_line=<br />'   \
+                                         '{}<br />&nbsp;&nbsp;m.group(2)=<br />{}'
+                                            .format(HtmlUtils.escape_html(lineObj.current_line),
+                                                    HtmlUtils.escape_html(m.group(2)))
+                )
+                if( m.group(1) == 'wrap'):
+                    tag = wrapTag(self._md.markdown(m.group(2)), self._ns.parseVariableName, self._md.markdown, self.oprint)
+                    if tag.start is not None and tag.end is not None:
+                        self.wrapper.append(tag)
+                    else:
+                        self.debug_smd.print(f"WARNING: wrapTag object instance is not valid")
+                else:
+                    if not hasattr(self, 'wrapper'):
+                        self.oprint('WARNING: no wrapper has been set')
+                    elif not self.wrapper:
+                        self.oprint('WARNING: wrapper stack is empty')
+                    elif m.group(2) == '':
+                        self.wrapper.pop()
+                    else:           #//TODO: I should be able to specify how many or all|*
+                        while self.wrapper:
+                            self.wrapper.pop()
+            else:
+                self.oprint(lineObj.current_line)
+
         def handle_defaults(m, lineObj):
             """Handle a defaults parse line"""
             if(m is not None):
@@ -618,6 +678,7 @@ class ScriptParser(StdioWrapper):
             ('debug', handle_debug),
             ('dump', handle_dump),
             ('defaults', handle_defaults),
+            ('wrap', handle_wrap),
             ('raw', handle_raw),        #//TODO: Is this needed still?
         ]
         
@@ -640,7 +701,13 @@ class ScriptParser(StdioWrapper):
                 if not matched and self._line.current_line.rstrip() and not self._reprocessLine():
                     # If the line has a class prefix, then write it out inside a span
                     span = f'<span{self._line.css_prefix}>{{}}</span>' if self._line.css_prefix else '{}'
-                    self.oprint(span.format(self._line.current_line))
+                    formatted_line = span.format(self._line.current_line)
+                    # if we have a wrapper tag in play
+                    if self.wrapper:
+                        tag = self.wrapper[-1]
+                        self.oprint(f'{tag.start}{formatted_line}{tag.end}')
+                    else:
+                        self.oprint(formatted_line)
 
             from .core.config import ConfigFile, SpecificConfigFile
             closing = []

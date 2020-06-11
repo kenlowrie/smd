@@ -82,6 +82,8 @@ defaults variable:[b] [defaults]
 If I put a div extras at top, then gotta watch using it inline, otherwise we get double margins, etc.
 Document @defaults, @watch "filename"
 The custom file data logic in cache.py no longer works due to how stream.py handles imports.
+The anatomy of a complex variable definition. Passing parameters, self, why _ is important. How link and html work. How code works.
+Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possibly xfer to shared markdown files.
 
 </code>
 </pre>
