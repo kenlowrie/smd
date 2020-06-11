@@ -730,9 +730,11 @@ class ScriptParser(StdioWrapper):
                 closing += ConfigFile(SystemDefaults.DefaultHtmlCloseName, self.tlsSysDefaults.load_default_html).data()
 
             for c in closing:
-                self.oprint(c)
                 if self.tlsRawOutputFile is not None:
                     self.tlsRawOutputFile.write(c)
+                c = c.strip()
+                if c is None: continue
+                self.oprint(self._md.markdown(c))
 
             #//TODO: Do I need to track this better? 
             # Need to close it so it's available to view if a consumer doesn't delete the TLS right away...

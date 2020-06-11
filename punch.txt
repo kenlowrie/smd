@@ -7,7 +7,6 @@ Priority 1 | p1
 70. little by little, work through the current automated tests and bring them back online synchronized to the new version.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
 61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
-65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 85. Make a single shell script that runs both/all of the command line tests ...
 
 Priority 2 | p2
@@ -17,7 +16,6 @@ Priority 2 | p2
 55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
 56. See how close I can get to a clean render of Buddy's music video script markdown file...
-89. Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
 
 
 Priority 3 | p3
@@ -41,6 +39,7 @@ Priority 5 | p5
 53. Do a quick pass on the userdoc.md to see how badly I've broken the code. I/P. Needs work, but not as bad as I thought it might be.
 37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
+65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 4. Move all of these things to the issues tracker in github, and get rid of this file.
 
 
@@ -92,6 +91,7 @@ Completed
 **88. Shore up the @wrap support so it is smarter about what it accepts as a parameter.
 **57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
 **84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
+**89. Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
 
 
 
