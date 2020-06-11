@@ -9,50 +9,103 @@
 <div class="wrapper">
 <h1>------------------------------------------</h1>
 <h3 class="red center">avscript tester doc</h3>
-<span class="blue plain">--- plainTitle Transitions</span>
-This test document is used to test the transitions from A/V sections
-- Shot
-Description
-- Shot
-Description
-<span class="plain">--- plainTitle This should be a new section</span>
-- Shot
-Description
-<span class="green plain">@@@ plainTitle This should be a new section</span>
-- Shot
-Description
-[variable]=VALUE
-- Shot - [variable] <-- should be the word VALUE
-Description
-- Shot
-Description
-- Shot - <a href="https://www.cloudylogic.com">cls</a> <-- should be a link to www.cloudylogic.com
-Shot 2 - <a href="https://www.cloudylogic.com">cls</a>
-<span class="red">Shot 3 - <a href="https://www.cloudylogic.com">cls</a></span>
-Shot 4 - <a href="https://www.cloudylogic.com">cls</a> - Working good..
-Description
-- Shot - <a href="https://www.google.com">Google</a> <-- Should be link to google.com
-Description
-- Shot - <a href="https://www.amazon.com" title="amazon website">amazon</a> <-- Should be link to amazon.com with title "amazon website"
-Description
-- Shot - <a href="https://www.amazon.com" title="Amazon website">Amazon</a> <-- Should be link to amazon.com with title "Amazon website"
-Description
-- Shot
-Description
+<div class="plain"><p class="plainTitle"><span class="blue">Transitions</span></p><p style="font-size:1.2em"><span class="blue">This test document is used to test the transitions from A/V sections</span></p></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="plain"><p class="plainTitle">This should be a new section</p></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="plain"><p class="plainTitle"><span class="green">This should be a new section</span></p></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot - VALUE <-- should be the word VALUE</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot - <a href="https://www.cloudylogic.com">cls</a> <-- should be a link to www.cloudylogic.com</li>
+<li>Shot 2 - <a href="https://www.cloudylogic.com">cls</a></li>
+<li><span class="red">Shot 3 - <a href="https://www.cloudylogic.com">cls</a></span></li>
+<li>Shot 4 - <a href="https://www.cloudylogic.com">cls</a> - Working good..</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot - <a href="https://www.google.com">Google</a> <-- Should be link to google.com</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot - <a href="https://www.amazon.com" title="amazon website">amazon</a> <-- Should be link to amazon.com with title "amazon website"</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot - <a href="https://www.amazon.com" title="Amazon website">Amazon</a> <-- Should be link to amazon.com with title "Amazon website"</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <div class="extras"><h1></h1></div>
 <div class="cover"><h3>A</h3><p>B</p><p class="coverSummary">C</p></div>
-- Shot
-Description
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <div class="extras"><h1></h1></div>
 <div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">D<br />E<br />F<br /></td><td class="right nowrap" style="border:none">A<br />B<br />C<br /></td></tr></table></div>
-- Shot
-Description
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <div class="variables">
 <code>
-basic is not a valid namespace to dump<br />
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
 <strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>A<br />
 &nbsp;&nbsp;<strong>author=</strong>B<br />
 &nbsp;&nbsp;<strong>logline=</strong>C<br />
@@ -73,10 +126,16 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t2=</strong>author<br />
 &nbsp;&nbsp;<strong>t3=</strong>logline<br />
 <br />
+<strong>variable=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>VALUE<br />
+<br />
 </code>
 </div>
-- Shot
-Description
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -118,22 +177,37 @@ NAMESPACE: link<br />
 <br />
 </code>
 </div>
-- Shot
-Description
-///Shotlist///
-- Shot
-Description
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <h1>Header</h1>
-- Shot
-Description
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+</div>
+<div class="extras"><h1></h1></div>
 <h2 class="red">Header2a</h2>
-- Shot
-Description
-<span class="red">$$revision$$:<<1 This should not be a new div, class prefixes are not allowed here.>></span>
-<span class="blue">$$cover$$:<<.NOT>>:<<.HERE>>:<<.EITHER>></span>
-<span class="green">$$contact$$:<<.NOT>>:<<.HERE>>:<<.EITHER>>:<<1>>:<<2>>:<<3>></span>
-<span class="red">[variable]=NO NOT HERE EITHER</span>
-<span class="blue">[link]:not_in_links_either_</span>
+<div class="av"><ul>
+<li>Shot</li>
+</ul>
+<p>Description</p>
+<p><span class="red">$$revision$$:<<1 This should not be a new div, class prefixes are not allowed here.>></span></p>
+<p><span class="blue">$$cover$$:<<.NOT>>:<<.HERE>>:<<.EITHER>></span></p>
+<p><span class="green">$$contact$$:<<.NOT>>:<<.HERE>>:<<.EITHER>>:<<1>>:<<2>>:<<3>></span></p>
+<p><span class="red">[variable]=NO NOT HERE EITHER</span></p>
+<p><span class="blue">[link]:not_in_links_either_</span></p>
+</div>
+<div class="extras"><h1></h1></div>
 <div class="extras"><h1></h1></div>
 <a id="myanchor"></a>
 <a href="#myanchor"><em>This is my text</em></a>
@@ -142,6 +216,22 @@ Description
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
+<strong>avwrapper=</strong><br />&nbsp;&nbsp;<strong>start=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}{{html.li.&lt;}}<br />
+&nbsp;&nbsp;<strong>endul=</strong>{{html.li.&gt;}}{{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>enddiv=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
+&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
+<br />
+<strong>avwrapper2=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
+&nbsp;&nbsp;<strong>end_shots=</strong>{{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
+&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
+&nbsp;&nbsp;<strong>b1=</strong>[code.pushlines(t="{{var.avwrapper2.begin}}\n@wrap li")]<br />
+&nbsp;&nbsp;<strong>t1=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n@wrap p")]<br />
+&nbsp;&nbsp;<strong>e1=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end}}\n@break")]<br />
+&nbsp;&nbsp;<strong>e2=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break")]<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
@@ -207,8 +297,8 @@ NAMESPACE: var<br />
 <br />
 <strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._div_plain_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._p_plain_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your plain title<br />
-&nbsp;&nbsp;<strong>c=</strong>This is your plain content<br />
+&nbsp;&nbsp;<strong>t=</strong>{:.green}This should be a new section<br />
+&nbsp;&nbsp;<strong>c=</strong>{:.blue}This test document is used to test the transitions from A/V sections<br />
 <br />
 <strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._div_review_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._p_review_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -253,6 +343,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
+<br />
+<strong>variable=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>VALUE<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
