@@ -3,26 +3,22 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-38. build out initial version of smdlive
+84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 70. little by little, work through the current automated tests and bring them back online synchronized to the new version.
-71. figure out which things need to be tested via bash/zsh script, and start building them out
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
-73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
-56. See how close I can get to a clean render of Buddy's music video script markdown file...
 61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
+85. Make a single shell script that runs both/all of the command line tests ...
 
 Priority 2 | p2
 ---------------
-52. Is raw still needed? Can we deprecate that too? Or should I keep it as a way of more easily writing documentation? maybe @@some stuff@@? I'm not so sure. I think before it was just to prevent the <div class="extras">, in which case, that isn't needed, since we no longer wrap things, you can write HTML directly...
-54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
-57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+52. Is raw still needed? Can we deprecate that too?
 75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
-76. Can i define an htmlraw formatter that html_escaped the c="content"? can't i do this with @code already? [code.escape(t="html key, etc")] works, but it will still expand if you use [var]. Might need to add a scanner token that says @! whatever you type here is echoed verbatim...
-77. Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
-55. Is @break/@exit useful? In the current state of SMD, they aren't useful except as a shortcut way to do a <div class="extras"><h1></h1></div>. So unless I figure out how to do open-ended shots again, then they can likely be removed. 
-
+55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
+73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
+56. See how close I can get to a clean render of Buddy's music video script markdown file...
+89. Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
 
 
 Priority 3 | p3
@@ -31,15 +27,13 @@ Priority 3 | p3
 4. Replace special code relating to A/V scripts with namespace variables (where possible).
 14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
 22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
-25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
 32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
 33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have.
 34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 35. document using this with pipenv (possibly other "popular" python environment manager(s))
 36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
 44. Code review Cache, ImportCache & SystemDefaults.
-50. Clean up how ismd does the multiple monitors
-78. maybe have an pause/resume method on the watcher class i could engage while parsing...
+78. maybe add a pause/resume method on the watcher class i could engage while parsing...
 
 Priority 5 | p5
 ---------------
@@ -84,6 +78,20 @@ Completed
 **64. -nu with ~/.smb/builtins.md still loads the user builtin. fix this.
 **74. I should do a quick test in the watcher.refresh(). if no changes, don't stop/restart, just maybe "flush" pending changes... 
 **79. Probably need @watch "filename" that adds something to the seen list for monitoring. for javascript.js, additional files.css, etc.
+**38. build out initial version of smdlive
+**81. ismd -f non-existant-file -c -ndb ... doesn't fail when file doesn't exist...
+**71. figure out which things need to be tested via bash/zsh script, and start building them out
+**83. Need to use -f filename with the cmdline.py testing utility, not all via redirection...
+**80. ConfigFileData - Need a way to override any of the "builtin" document markdown files with something specific.
+**54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
+**82. if you ismd -f foo.md -c -ndb ... then the head is always wrong when it loads, because it loads before you can set [defaults.cssfile]. Is this a bug? I'm not sure... NAB
+**86. Add tests to validate the user builtins and docs of the smd utility. xfer .smd-cmdline-files to user area.
+**87. Fix current cmdline tests so they behave consistently if user has local ~/.smd files (rename to .smd-cmdline-test and then back at test conclusion.)
+**77. Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
+**25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
+**50. Clean up how ismd does the multiple monitors
+**88. Shore up the @wrap support so it is smarter about what it accepts as a parameter.
+**57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
 
 
 
