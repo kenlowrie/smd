@@ -68,7 +68,6 @@ from .core.variable import Namespaces
 from .core.bookmark import BookmarkList
 from .core.markdown import Markdown
 from .core.constants import Constants
-from .core.htmlformat import HTMLFormatter
 from .core.exception import RegexError, LogicError, FileError
 
 
@@ -123,7 +122,6 @@ class ScriptParser(StdioWrapper):
         self._md = Markdown()           # New markdown support in separate class
 
         self._line = Line(md_func=self._md.markdown)
-        self._html = HTMLFormatter()    # format HTML output (indent for readability)
         self._lineInCache = False       # if we have a line in the cache
         self._shotListQ = BookmarkList()    # shot list link Q
         self._wrapper = []              # queue of wrapper tags
@@ -351,7 +349,7 @@ class ScriptParser(StdioWrapper):
         Returns:
             HTML <a> element as string: <a id="GENERATED UNIQUE_ID">linktext</a>
         """
-        return self._html.formatLine("<a id=\"{0}\"></a>\n".format(self._shotListQ.addBookmark(linktext)))
+        return "<a id=\"{0}\"></a>\n".format(self._shotListQ.addBookmark(linktext))
 
     def _stripClass(self, line):
         """
@@ -472,7 +470,7 @@ class ScriptParser(StdioWrapper):
                                             .format(HtmlUtils.escape_html(lineObj.current_line),
                                                     HtmlUtils.escape_html(m.group(2)))
                 )
-                self.oprint(self._html.formatLine(self._md.markdown(m.group(2))))
+                self.oprint(self._md.markdown(m.group(2)))
             else:
                 self.oprint(lineObj.current_line)
 
@@ -536,15 +534,15 @@ class ScriptParser(StdioWrapper):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
                 #//TODO: Maybe add a custom class for this?
-                self.oprint(self._html.formatLine("<div class=\"variables\">", 1))
-                self.oprint(self._html.formatLine("<code>", 1))
+                self.oprint("<div class=\"variables\">")
+                self.oprint("<code>")
                 if not d:
                     self.tls.sysDefaults.dump(self.oprint)
                 else:
                     # future: maybe add ability to dump specific things?
                     pass
-                self.oprint(self._html.formatLine("</code>", -1, False))
-                self.oprint(self._html.formatLine("</div>", -1, False))
+                self.oprint("</code>")
+                self.oprint("</div>")
             else:
                 self.oprint(lineObj.original_line)
 
@@ -581,14 +579,14 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                self.oprint(self._html.formatLine("<div class=\"variables\">", 1))
-                self.oprint(self._html.formatLine("<code>", 1))
+                self.oprint("<div class=\"variables\">")
+                self.oprint("<code>")
                 if not d:
                     self._ns.dumpVars()
                 else:
                     self._ns.dumpNamespaces(d)
-                self.oprint(self._html.formatLine("</code>", -1, False))
-                self.oprint(self._html.formatLine("</div>", -1, False))
+                self.oprint("</code>")
+                self.oprint("</div>")
             else:
                 self.oprint(lineObj.original_line)
 
@@ -732,7 +730,7 @@ class ScriptParser(StdioWrapper):
                 closing += ConfigFile(SystemDefaults.DefaultHtmlCloseName, self.tlsSysDefaults.load_default_html).data()
 
             for c in closing:
-                self.oprint(self._html.formatLine(c, 0, False))
+                self.oprint(c)
                 if self.tlsRawOutputFile is not None:
                     self.tlsRawOutputFile.write(c)
 
