@@ -1,14 +1,6 @@
-@import '[sys.imports]/builtins.md'
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-
-//@dump var="." html="." link="." image="."
-[hash1]
-### Testing film related items
+[var.testdoc.begin(title="film.md" desc="Testing film related items")]
 
 @var title="*Title of Project*"
 @var artist="Artist Name"
@@ -145,16 +137,18 @@ Show his smile. Return to stock image. *If needed*
 Originally, production was planned for August 2018, but it has been delayed until September due to scheduling conflicts of both cast and crew. We are anticipating two to three (1/2) days for production as follows:
 
 [var.scene.with_content(t="Scene 3 EXT" \
-    c="Cast: [mom], [daughter], [son]\Info: One (1) production day, evening shoot, *call time **5pm**, wrap time **8pm***.")]
+    c="Cast: [mom], [daughter], [son][bb]Info: One (1) production day, evening shoot, *call time **5pm**, wrap time **8pm***.")]
 
 [var.scene.with_content(t="Scene 1 EXT & Scene 2 INT" \
-    c="Cast: [mom], [daughter][b]Info: 1/2 Production day, *call time **8a**, wrap time **12pm** (noon)*")]
+    c="Cast: [mom], [daughter][bb]Info: 1/2 Production day, *call time **8a**, wrap time **12pm** (noon)*")]
 
 [var.scene.with_content("Scene 4 INT & Scene 5 EXT" \
-    c="Cast: [mom][b]Info: 1/2 Production day, *call time **3p**, wrap time **8p***. This could be scheduled the same day as Scenes 1 and 2 if the actor is available and prefers this option (longer day)" \
+    c="Cast: [mom][bb]Info: 1/2 Production day, *call time **3p**, wrap time **8p***. This could be scheduled the same day as Scenes 1 and 2 if the actor is available and prefers this option (longer day)" \
 )]
 
 **NOTE:** Actual shoot days will be scheduled according to cast availability
+
+[var.testdoc.end]
 
 @dump image="." var="." link="." html="."
 @import "[sys.imports]/def_bodyclose.md"

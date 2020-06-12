@@ -1,11 +1,7 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-[hash1]
+[var.testavdoc.begin(title="script1.md" desc="Testing the AV Script support")]
+
 {:.red}# Script Series
 @link _="domain" _inherit="_template_" _text="https://yourdomain.com" href="https://yourdomain.com"
 @link _="me" _inherit="_template_" _text="me" href="email@yourdomain.com"
@@ -168,6 +164,8 @@ xyz
 
 def
 @parw
+
+[var.testavdoc.end]
 
 @dump var="revision"
 @import "[sys.imports]/def_bodyclose.md"

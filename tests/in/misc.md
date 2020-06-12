@@ -1,13 +1,8 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
+[var.testdoc.begin(title="misc.md" desc="Testing miscellaneous stuff")]
 
-//@dump var="." html="." link="." image="."
-[hash1]
-### Testing miscellaneous stuff
+@parw
 
 //Add tests here that don't fit elsewhere (or I'm too lazy to look)
 //
@@ -56,6 +51,7 @@ So, if you declared this: &#91;mynewvar]={:.bigandbold.red}My new big bold value
 [var.syntax.wc_close]
 
 [bb]
+[var.divxp.open]
 For this project, only billing options 1 and 2 will be offered.
 
 [var.plain(t="Retainer")]
@@ -66,12 +62,15 @@ If you decide to hire [Cloudy Logic Studios] for this project, no retainer will 
 
 Once the project is underway, we will invoice periodically as various milestones are met. These milestones will be set and agreed upon by both parties prior to commencement. They will be something like this:
 
+//TODO: Fix this horrible formatting of this upper part (down to summary section)
 [ol]
-[var.li(i="Rough cut *- might be in stages*")]
-[var.li(i="Picture lock *- no changes to timeline after this*")]
-[var.li(i="Color grade complete *- possible after audio mixing*")]
-[var.li(i="Audio mixing complete *- possible before color grade*")]
-[var.li(i="Film completion")]
+@wrap html.li
+Rough cut *- might be in stages*
+Picture lock *- no changes to timeline after this*
+Color grade complete *- possible after audio mixing*
+Audio mixing complete *- possible before color grade*
+Film completion
+@parw
 [ol.close]
 
 If the project is being billed per runtime minute, the milestone invoices will be billed in fractional estimates of the minimum runtime up until picture lock, at which time remaining invoices will be billed based on the actual total runtime.
@@ -82,12 +81,15 @@ Usually, work on the next milestone will not commence until the invoice for the 
 
 Finally, keep in mind that final media will not be released until all invoices are paid in full.
 
+[var.divxp.close]
+
 [var.plain(t="Summary")]
 
 [var.divxp.open]
 If you would like to move forward with the project, here are the [UL(t="**next steps**")]:
 [var.divxp.close]
 
+// The manual way to do this ...
 [ol]
 [var.li(i="Choose a billing option")]
 [var.li(i="Iron out milestones")]
@@ -117,6 +119,9 @@ Upon final acceptance of video, an invoice will be generated outlining the final
 [dblbrk]
 ### Signatures
 [var.divxp.close]
+
+@wrap p
+[var.testdoc.end]
 
 @dump var="." html="." link="." image="."
 @import "[sys.imports]/def_bodyclose.md"

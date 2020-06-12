@@ -1,14 +1,10 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-[hash1]
-{:.red.center}### avscript tester doc
+[var.testavdoc.begin(title="transitions.md" desc="Testing transitions between shots in AV scripts")]
 
 [var.plain.with_content(t="{:.blue}Transitions", c="{:.blue}This test document is used to test the transitions from A/V sections")]
+
+//TODO: Update this to use the newer avshot support
 
 @import "[sys.imports]/avs/avs.md"
 
@@ -162,6 +158,8 @@ Description
 [link.bm_factory(nm="myanchor" t="*This is my text*")]
 [link.myanchor]
 [link.myanchor.link]
+
+[var.testavdoc.end]
 
 @dump var="." html="." link="." image="."
 @import "[sys.imports]/def_bodyclose.md"

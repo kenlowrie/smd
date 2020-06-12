@@ -24,3 +24,21 @@
           e1="[code.pushlines(t=\"@parw\n{{var.avwrapper2.end}}\n@break\")]"\
           e2="[code.pushlines(t=\"@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break\")]"\
 
+// avshot
+// [var.avshot(v="WS: Info here", a="vo info")]
+// [var.avshot.visual]
+// [var.avshot.audio]
+// [var.avshot.end]
+// [var.avshot.noaudio]
+
+@var _id="avshot" \
+          start="{{html._div_av_.<}}{{html.ul.<}}" \
+          trans="{{html.ul.>}}" \
+          end_shot="{{html.div.>}}" \
+          shot_only="{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}"\
+          shot_with_desc="{{self.start}}{{self._s}}{{self.endul}}{{html.p.<}}{{self._d}}{{html.p.>}}{{self.enddiv}}"\
+          visual="[code.pushlines(t=\"{{var.avshot.start}}\n@wrap li\")]"\
+          audio="[code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n@wrap p\")]"\
+          end="[code.pushlines(t=\"@parw\n{{var.avshot.end_shot}}\n@break\")]"\
+          noaudio="[code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break\")]"\
+

@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>------------------------------------------</h1>
-<h2>Cover, Revision & Contact Sections</h2>
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: specials.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing Cover, Revision and Contact section types</h3>
 There are three (3) predefined section types that can be defined within your document to add commonly used information in script files. They are defined in <em>sys.imports/report.md</em>:
 <h3 class="indent">@var.cover - To add a cover section</h3>
 <h3 class="indent">@var.revision - To add a revision section</h3>
@@ -254,6 +254,16 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>specials.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing Cover, Revision and Contact section types<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
+&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+<br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
@@ -405,6 +415,10 @@ NAMESPACE: html<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
 &nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
@@ -413,6 +427,14 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
 &nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+<br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

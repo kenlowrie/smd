@@ -1,20 +1,11 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-[hash1]
+[var.testdoc.begin(title="variables.md" desc="testing @var and @link")]
+
 // variables
 [link.bm_factory(nm="aliases" t="Aliases aka Variables")]
 [link.aliases]
 
-@html _id="myp" _tag="p" style="font-size:1.2em"
-
-[html._div_plain_.<]
-@wrap myp
-[var.plain(t="Variables")]
 ## Variables
 
 Variables, which is essentially text substitution, is supported using a similar syntax to reference links. **@var variable="value"**. Take the following example:
@@ -88,7 +79,7 @@ Remember, variable definitions and reference link definitions must be declared o
 @var varName="varValue is okay."
 But [varName]=varValue is not...
 
-[html._div_plain_.>]
+[var.testdoc.end]
 @dump var="." html="." link="." image="."
 @import "[sys.imports]/def_bodyclose.md"
 @import "[sys.imports]/def_close.md"

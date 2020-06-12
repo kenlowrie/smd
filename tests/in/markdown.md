@@ -1,12 +1,6 @@
-@import "[sys.imports]/builtins.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-
-//@dump var="." html="." link="." image="."
-[hash1]
-### Testing markdown
+[var.testdoc.begin(title="markdown.md" desc="Testing markdown")]
 
 ###Table of Contents
 [link.bm_factory(nm="inlinemd", t="Inline Markdown")]
@@ -100,6 +94,8 @@ Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it'
 The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with ***&lt; &gt;*** like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an **A** tag whose **HREF** attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute *_asurl*, which returns the href styled appropriately. For example: [link.Google._asurl]
 
 &nbsp;
+
+[var.testdoc.end]
 
 @dump var="." link="."
 @import "[sys.imports]/def_bodyclose.md"

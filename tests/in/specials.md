@@ -1,18 +1,10 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
+[var.testavdoc.begin(title="specials.md" desc="Testing Cover, Revision and Contact section types")]
 
 @var lpar="&lpar;"
 @var rpar="&rpar;"
 @var obkt="&#91;"
-
-//@dump var="." html="." link="." image="."
-[hash1]
-##Cover, Revision & Contact Sections
 
 There are three (3) predefined section types that can be defined within your document to add commonly used information in script files. They are defined in *sys.imports/report.md*:
 
@@ -196,6 +188,8 @@ To see these tags in action, take a look at the userguideheading.md document in 
 [var.contact.inline(cn="Contact Name" ph="210-555-1212" em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name" ph="210-555-1212"   c2="Copyright Line 2c" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
+
+[var.testavdoc.end]
 
 @dump var="." html="." link="." image="."
 @import "[sys.imports]/def_bodyclose.md"

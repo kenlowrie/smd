@@ -7,10 +7,10 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>------------------------------------------</h1>
-<a id="aliases"></a>
 <div class="plain">
-<div class="plain"><p class="plainTitle">Variables</p></div>
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: variables.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: testing @var and @link</h3>
+<a id="aliases"></a>
 <h2>Variables</h2>
 <p style="font-size:1.2em">Variables, which is essentially text substitution, is supported using a similar syntax to reference links. <strong>@var variable="value"</strong>. Take the following example:</p>
 <h3 class="indent">@var name="Ken Lowrie"</h3>
@@ -47,7 +47,7 @@
 <p style="font-size:1.2em">You can send [feedback]. Or you can just email [me]. Or go to my cls. But don't do that if [Cloudy Logic]:(cls) is not defined. Finally, <a href="https://www.cloudylogic.com" title="This is a link title...">One with Title</a></p>
 <p style="font-size:1.2em">Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p>
 <p style="font-size:1.2em">But [varName]=varValue is not...</p>
-<p style="font-size:1.2em"></div></p>
+</div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -169,6 +169,16 @@ NAMESPACE: var<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
+&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>variables.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>testing @var and @link<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -327,6 +337,10 @@ NAMESPACE: html<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
 &nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
@@ -336,6 +350,14 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
 <br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -343,10 +365,6 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>myp=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
@@ -482,6 +500,6 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 </code>
 </div>
-<p style="font-size:1.2em"></div></p>
-<p style="font-size:1.2em"></body></p>
-<p style="font-size:1.2em"></html></p>
+</div>
+</body>
+</html>

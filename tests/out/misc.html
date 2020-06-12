@@ -7,8 +7,9 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>------------------------------------------</h1>
-<h3>Testing miscellaneous stuff</h3>
+<div class="plain">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: misc.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing miscellaneous stuff</h3>
 Example: <span class="red">This text will be RED</span>
 <div class="syntax"><p class="divTitle">Variable Decorators</p><p style="font-size:1.2em">
 <br />
@@ -30,22 +31,24 @@ So, if you declared this: &#91;mynewvar]={:.bigandbold.red}My new big bold value
 </p>
 </p></div>
 <br /><br />
+<div class="extras"><p>
 For this project, only billing options 1 and 2 will be offered.
 <div class="plain"><p class="plainTitle">Retainer</p></div>
 If you decide to hire [Cloudy Logic Studios] for this project, no retainer will be required.
 <div class="plain"><p class="plainTitle">Invoicing</p></div>
 Once the project is underway, we will invoice periodically as various milestones are met. These milestones will be set and agreed upon by both parties prior to commencement. They will be something like this:
 <div class="extras"><ol style="margin-left:2em">
-<li style="font-size:1.3em">Rough cut <em>- might be in stages</em></li>
-<li style="font-size:1.3em">Picture lock <em>- no changes to timeline after this</em></li>
-<li style="font-size:1.3em">Color grade complete <em>- possible after audio mixing</em></li>
-<li style="font-size:1.3em">Audio mixing complete <em>- possible before color grade</em></li>
-<li style="font-size:1.3em">Film completion</li>
+<li>Rough cut <em>- might be in stages</em></li>
+<li>Picture lock <em>- no changes to timeline after this</em></li>
+<li>Color grade complete <em>- possible after audio mixing</em></li>
+<li>Audio mixing complete <em>- possible before color grade</em></li>
+<li>Film completion</li>
 </ol></div>
 If the project is being billed per runtime minute, the milestone invoices will be billed in fractional estimates of the minimum runtime up until picture lock, at which time remaining invoices will be billed based on the actual total runtime.
 If the project is being billed per hour, then invoices at each milestone will reflect the total based on hours invested to achieve the milestone.
 Usually, work on the next milestone will not commence until the invoice for the prior milestone has been paid.
 Finally, keep in mind that final media will not be released until all invoices are paid in full.
+</p></div>
 <div class="plain"><p class="plainTitle">Summary</p></div>
 <div class="extras"><p>
 If you would like to move forward with the project, here are the <span style="text-decoration:underline"><strong>next steps</strong></span>:
@@ -68,6 +71,7 @@ Upon final acceptance of video, an invoice will be generated outlining the final
 <br /><br />
 <h3>Signatures</h3>
 </p></div>
+</div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -90,6 +94,37 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your code title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your code content<br />
+<br />
+<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>cn=</strong>{{defaults.cn}}<br />
+&nbsp;&nbsp;<strong>ph=</strong>{{defaults.ph}}<br />
+&nbsp;&nbsp;<strong>em=</strong>{{defaults.em}}<br />
+&nbsp;&nbsp;<strong>c1=</strong>{{defaults.c1}}<br />
+&nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
+&nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
+<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+<br />
+<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+<br />
+<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>t1=</strong>Title<br />
+&nbsp;&nbsp;<strong>t2=</strong>author<br />
+&nbsp;&nbsp;<strong>t3=</strong>logline<br />
 <br />
 <strong>dblbrk=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[break][break]<br />
 <br />
@@ -142,6 +177,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your review title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your review content<br />
 <br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
+<br />
 <strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
@@ -171,6 +214,16 @@ NAMESPACE: var<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
+&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>misc.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing miscellaneous stuff<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Production Estimate<br />
 <br />
@@ -302,7 +355,33 @@ NAMESPACE: html<br />
 <strong>code=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>contact-div=</strong><br />&nbsp;&nbsp;<strong>class=</strong>contact<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
+<strong>contact-td-left=</strong><br />&nbsp;&nbsp;<strong>class=</strong>left nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-td-right=</strong><br />&nbsp;&nbsp;<strong>class=</strong>right nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
@@ -313,6 +392,14 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
 &nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+<br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -328,6 +415,14 @@ NAMESPACE: html<br />
 <br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>revision<br />
+<br />
+<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>revTitle<br />
 <br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

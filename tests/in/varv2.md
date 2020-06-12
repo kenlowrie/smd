@@ -1,16 +1,13 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
-@import "[sys.imports]/report.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-[hash1]
-// Test script for varv2 support
+[var.testdoc.begin(title="varv2.md" desc="testing @var and @set keywords")]
+
 @var _noid="noid"
 @var id="alsonoid"
 @var _id="id0" attr1="attribute 1"
 @var _="id1" attr1="attribute 1"
+[_noid]
+[id]
 [id0]
 [id0.attr1]
 [var.id0]
@@ -20,11 +17,12 @@ id0._id=[id0._id][b]id0._=[id0._]
 [var.]
 [var.nothing]
 @dump var="id"  
+
 @set foo="bar"
 @set _id="id1" attr1="New Value"
 ATTR1 should be "New Value":
 [id1]
-# ------------------------
+[hash3]
 @set _id="id1" foo="bar"
 [id1]
 @set _id="id1" foo="nubar" bar="oldfu"
@@ -38,6 +36,8 @@ ATTR1 should be "New Value":
                11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20" 21="x21"
 
 [id2]
+
+[testdoc.end]
 
 @dump var="id"
 @import "[sys.imports]/def_bodyclose.md"

@@ -1,19 +1,13 @@
-@import "[sys.imports]/builtins.md"
-@import "[sys.imports]/divs.md"
+@import "$/testsetup.md"
 
-@import "[sys.imports]/def_html.md"
-@import "[sys.imports]/def_head.md"
-@import "[sys.imports]/def_body.md"
-
-//@dump var="." html="." link="." image="."
-### Testing Images in Shots support from avs/image.md
-[hash1]
+[var.testdoc.begin(title="image.md" desc="Testing Images in Shots support from avs/image.md")]
 
 @var imports="../in/import"
 
 @import '[sys.imports]/avs/image.md'
+@import '[sys.imports]/avs/avs.md'
 
-[IMG_SIZE_LARGE]
+[IMG_SIZE_LARGE] //TODO: This doesn't work. Fix it.
 @var ss="[{{var.img_def.img_st_inline_border}}]"
 @var trythis="{:.red.bold}Try to get this shot"
 @var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
@@ -26,8 +20,13 @@
 [img_factory(nm="shot1" s="[imports]/shot1.jpg")]
 
 //Can be used inside a shot like this
-- WS:a shot
-    [image.shot1]
+[var.avshot.visual]
+WS:a shot
+[image.shot1]
+[var.avshot.audio]
+Use it inside an AV shot
+[var.avshot.end]
+
 [var.shot1]
 //Or can be used outside a shot like this
 @break
@@ -125,7 +124,8 @@ shot2a._format=[shot2a._format]
 [var.shot2a.lens]
 [var.shot2a._format]
 
-//@dump var=".*shot" image="."
+[var.testdoc.end]
+
 @dump var="." html="." link="." image="."
 @import "[sys.imports]/def_bodyclose.md"
 @import "[sys.imports]/def_close.md"

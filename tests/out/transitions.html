@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="wrapper">
-<h1>------------------------------------------</h1>
-<h3 class="red center">avscript tester doc</h3>
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: transitions.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing transitions between shots in AV scripts</h3>
 <div class="plain"><p class="plainTitle"><span class="blue">Transitions</span></p><p style="font-size:1.2em"><span class="blue">This test document is used to test the transitions from A/V sections</span></p></div>
 <div class="av"><ul>
 <li>Shot</li>
@@ -216,6 +216,16 @@ NAMESPACE: link<br />
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
+<strong>avshot=</strong><br />&nbsp;&nbsp;<strong>start=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
+&nbsp;&nbsp;<strong>trans=</strong>{{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>end_shot=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
+&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
+&nbsp;&nbsp;<strong>visual=</strong>[code.pushlines(t="{{var.avshot.start}}\n@wrap li")]<br />
+&nbsp;&nbsp;<strong>audio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n@wrap p")]<br />
+&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{var.avshot.end_shot}}\n@break")]<br />
+&nbsp;&nbsp;<strong>noaudio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break")]<br />
+<br />
 <strong>avwrapper=</strong><br />&nbsp;&nbsp;<strong>start=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}{{html.li.&lt;}}<br />
 &nbsp;&nbsp;<strong>endul=</strong>{{html.li.&gt;}}{{html.ul.&gt;}}<br />
 &nbsp;&nbsp;<strong>enddiv=</strong>{{html.div.&gt;}}<br />
@@ -338,6 +348,16 @@ NAMESPACE: var<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>transitions.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing transitions between shots in AV scripts<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
+&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -492,6 +512,10 @@ NAMESPACE: html<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
 &nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
@@ -500,6 +524,14 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
 &nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+<br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
