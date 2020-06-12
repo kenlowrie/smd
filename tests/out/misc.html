@@ -11,15 +11,15 @@
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: misc.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing miscellaneous stuff</h3>
 Example: <span class="red">This text will be RED</span>
-<div class="syntax"><p class="divTitle">Variable Decorators</p><p style="font-size:1.2em">
+<div class="syntax"><p class="divTitle">Variable Decorators</p>
 <br />
 <span class="bigandbold indent">&#91;variable]={:.class}value</span>
 <br /><br />
 So, if you declared this: &#91;mynewvar]={:.bigandbold.red}My new big bold value, and then put &#91;mynewvar], you'd get this:<br /><br />
 <span class="bigandbold red">My new big bold value</span>
-</p></div>
+</div>
 <div class="plain"><p class="plainTitle">Production Estimate</p></div>
-<div class="syntax"><p class="divTitle">Specifics when choosing TRT option</p><p style="font-size:1.2em">
+<div class="syntax"><p class="divTitle">Specifics when choosing TRT option</p>
 <br />
 <span class="indent2">This rate applies to editing normal footage (video, photos, audio). As an example, the demo film that we produced would have all fit under this rate, with one exception (green screen footage that was keyed for ending). However, if we are given footage that requires <em>specialized attention</em>, a different rate will apply on a per clip basis.<br /><br /></span>
 <span class="indent2">Some examples that require specialized attention are: Footage that is shot on green screen and must be keyed. Footage that is shaky and must be stabilized. Footage shot with incorrect color temperature. Any media (video/photos) that requires rotoscoping. Audio that must be cleaned up.</span>
@@ -29,7 +29,7 @@ So, if you declared this: &#91;mynewvar]={:.bigandbold.red}My new big bold value
 <br /><br />
 2. <span style="text-decoration:underline"><strong>Per project</strong></span>. An estimate for the entire project requires a completed script in AV format, with all details ironed out, including exact clips to be used, footage to be shot, etc. Given those requirements, it is not feasible to provide this option for consideration at this time.
 </p>
-</p></div>
+</div>
 <br /><br />
 <div class="extras"><p>
 For this project, only billing options 1 and 2 will be offered.
@@ -153,8 +153,8 @@ NAMESPACE: var<br />
 <br />
 <strong>mynewvar=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.bigandbold.red}My new big bold value<br />
 <br />
-<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>{:.bigandbold}**NOTE**: Final media is *not delivered* until all outstanding invoices have been paid in full.<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
 <br />
@@ -185,8 +185,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
 &nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
 <br />
-<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
 &nbsp;&nbsp;<strong>c=</strong><br />
 <br />
@@ -201,14 +201,18 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{self.wc_open}}{{self.c}}{{self.wc_close}}<br />
-&nbsp;&nbsp;<strong>open=</strong><br />
-&nbsp;&nbsp;<strong>close=</strong><br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p_open=</strong>{{html._p_syntax_content_.&lt;}}<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>Specifics when choosing TRT option<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
 <br />

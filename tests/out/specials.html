@@ -15,26 +15,23 @@ There are three (3) predefined section types that can be defined within your doc
 <h3 class="indent">@var.contact - To add a contact section</h3>
 The details for each type of section are as follows:
 <div class="plain"><p class="plainTitle">@var.cover</p></div>
-<div class="syntax"><p class="divTitle">Cover Title Syntax</p><p style="font-size:1.2em"><br />     var.cover&lpar;title="your title", author="author name", logline="logline or short description"&rpar; <br /><br />     Each element is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says "author", doesn't mean you have to put the author name there. You could instead write "Roses are Red", and that would be just fine...<br /><br />     var.cover.inline&lpar;title="your title", author="author name", logline="logline or short description"&rpar; <br /><br /></p></div>
-<div class="plain"><p class="plainTitle">@var.revision</p></div>
-<div class="syntax"><p class="divTitle">Revision Syntax</p><p style="font-size:1.2em">
-<p style="font-size:1.2em"><br />     &#91;var.revision&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.plain&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.inline&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.inline_plain&lpar;v="1.0"&rpar;]<br />     <br />Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. &#91;var.revision.plain]</p>
-</p></div>
-<br /><br />
-<div class="plain"><p class="plainTitle">@var.contact</p></div>
-<div class="syntax"><p class="divTitle">Contact Syntax</p><p style="font-size:1.2em">
-<p style="font-size:1.2em">
-<br />
-var.contact&lpar;cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3"<br /><br />
-Each element is optional, and the elements can appear in any order. By default, the system looks in the var.defaults variable for the definitions of cn, ph, em, c1, c2 & c3. As such, you can conveniently set them using a single call:
-</span>
-<br /><br />
-&nbsp;<strong>@set _id="defaults"\<br />      <span style="padding-left:3em">cn="Ken Lowrie"</span><br />     <span style="padding-left:3em">ph="<em>512-555-1234</em>"</span><br />     <span style="padding-left:3em">em="[me@mycompany.com]"</span><br />     <span style="padding-left:3em">c1="Copyright © 2020 My Company, LLC."</span><br />     <span style="padding-left:3em">c2="All Rights Reserved."</span><br />     <span style="padding-left:3em">c3="[www.cloudylogic.com]"</span><br /></strong>
-<br />
-To see these tags in action, take a look at the userguideheading.md document in the import folder of this user guide.
-</p>
-</p></div>
 <h1>------------------------------------------</h1>
+<div class="syntax"><p class="divTitle">Cover Title Syntax</p>     var.cover&lpar;title="your title", author="author name", logline="logline or short description"&rpar; <br /><br />     Each element is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says "author", doesn't mean you have to put the author name there. You could instead write "Roses are Red", and that would be just fine...<br /><br />     var.cover.inline&lpar;title="your title", author="author name", logline="logline or short description"&rpar; <br /><br /></div>
+<div class="plain"><p class="plainTitle">@var.revision</p></div>
+<div class="syntax"><p class="divTitle">Revision Syntax</p>
+<p style="font-size:1.2em">     &#91;var.revision&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.plain&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.inline&lpar;v="1.0"&rpar;]<br />     &#91;var.revision.inline_plain&lpar;v="1.0"&rpar;]<br />     <br />Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. &#91;var.revision.plain]</p>
+</div>
+<div class="plain"><p class="plainTitle">@var.contact</p></div>
+<div class="syntax"><p class="divTitle">Contact Syntax</p>
+<p style="font-size:1.2em">
+var.contact&lpar;cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3"<br /><br />
+Each element is optional, and the elements can appear in any order. By default, the system looks in the var.defaults variable for the definitions of cn, ph, em, c1, c2 & c3. As such, you can conveniently set them using a single call:<br /><br />
+&nbsp;<strong>@set _id="defaults"\<br />      <span style="padding-left:3em">cn="Ken Lowrie"</span><br />     <span style="padding-left:3em">ph="<em>512-555-1234</em>"</span><br />     <span style="padding-left:3em">em="[me@mycompany.com]"</span><br />     <span style="padding-left:3em">c1="Copyright © 2020 My Company, LLC."</span><br />     <span style="padding-left:3em">c2="All Rights Reserved."</span><br />     <span style="padding-left:3em">c3="[www.cloudylogic.com]"</span><br /></strong>
+<br />To see these tags in action, take a look at the userguideheading.md document in the import folder of this user guide.
+</p>
+</div>
+<h1>------------------------------------------</h1>
+<h3>var.cover.inline versions</h3>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">[defaults.logline]</p></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
@@ -43,6 +40,7 @@ To see these tags in action, take a look at the userguideheading.md document in 
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
 <div class="cover"><h3></h3><p>Script Author</p><p class="coverSummary"></p></div>
+<h3>var.cover (@@) versions</h3>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary"></p></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Logline</p></div>
@@ -199,8 +197,8 @@ NAMESPACE: var<br />
 <br />
 <strong>lpar=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;lpar;<br />
 <br />
-<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your note title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
 <br />
@@ -228,8 +226,8 @@ NAMESPACE: var<br />
 <br />
 <strong>rpar=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;rpar;<br />
 <br />
-<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
 &nbsp;&nbsp;<strong>c=</strong><br />
 <br />
@@ -240,16 +238,20 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{self.wc_open}}{{self.c}}{{self.wc_close}}<br />
-&nbsp;&nbsp;<strong>open=</strong><br />
-&nbsp;&nbsp;<strong>close=</strong><br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p_open=</strong>{{html._p_syntax_content_.&lt;}}<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>Contact Syntax<br />
-&nbsp;&nbsp;<strong>c=</strong>[b]     [obkt]var.revision[rev_parms]][b]     [obkt]var.revision.plain[rev_parms]][b]     [obkt]var.revision.inline[rev_parms]][b]     [obkt]var.revision.inline_plain[rev_parms]][b]     [b]Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [obkt]var.revision.plain]<br />
+&nbsp;&nbsp;<strong>c=</strong>     [obkt]var.revision[rev_parms]][b]     [obkt]var.revision.plain[rev_parms]][b]     [obkt]var.revision.inline[rev_parms]][b]     [obkt]var.revision.inline_plain[rev_parms]][b]     [b]Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [obkt]var.revision.plain]<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />

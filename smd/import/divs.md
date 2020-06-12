@@ -1,6 +1,13 @@
 // Variables that abstract the different types of DIVs
 @import "[sys.imports]/html.md"
 
+//TODO:
+//    The case for @raw | @@. When you use them in emitted lines (or inline), any @wrap tag will NOT be applied.
+//    This seems like the best case, otherwise the behaviour of the predefined code will not work as expected,
+//    when used in the context of something else. If you really need this behavior, it can be overridden by
+//    using inline HTML. e.g. <htmlcode>your code</htmlcode> or [html.tag.<]your code[html.tag.>]
+//    This is worked around in some builtins using the .inline attribute to hold the code, and then _format="@@ {{self.inline}}"
+
 @html _id="_div_extras_" \
       _inherit="div" \
       class="extras"
@@ -19,12 +26,11 @@
       style="font-size:1.2em" 
  
 @var _id="section" \
-          _format="{{html._div_section_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._div_section_.>}}" \
-          with_content="{{html._div_section_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._p_section_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
+          _format="@@ {{html._div_section_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._div_section_.>}}" \
+          with_content="@@ {{html._div_section_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._p_section_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
           t="This is your section title" \
           c=""
 
-//TODO: Are all of these @@ (raw) prefixes needed?
 @var _id="section_pbb" \
           _inherit="section" \ 
           _format="@@ {{html._div_section_pbb_.<}}{{html._p_section_.<}}{{self.t}}{{html._p_section_.>}}{{html._div_section_.>}}" \
@@ -126,8 +132,8 @@
       style="font-size:1.2em" 
  
 @var _id="note" \
-          _format="{{html._div_note_.<}}{{html._p_note_.<}}{{self.t}}{{html._p_note_.>}}{{html._div_note_.>}}" \
-          with_content="{{html._div_note_.<}}{{html._p_note_.<}}{{self.t}}{{html._p_note_.>}}{{html._p_note_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
+          _format="@@ {{html._div_note_.<}}{{html._p_note_.<}}{{self.t}}{{html._p_note_.>}}{{html._div_note_.>}}" \
+          with_content="@@ {{html._div_note_.<}}{{html._p_note_.<}}{{self.t}}{{html._p_note_.>}}{{html._p_note_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
           t="This is your note title" \
           c="This is your note content"
 
@@ -146,13 +152,17 @@
       style="font-size:1.2em" 
  
 @var _id="syntax" \
-          _format="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}" \
-          with_content="{{self.wc_open}}{{self.c}}{{self.wc_close}}" \
-          open="" \
-          close=""\
-          wc_open="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._p_syntax_content_.<}}"\
-          wc_close="{{html.p.>}}{{html.div.>}}"\
-          wc_p="{{html._p_syntax_content_.<}}{{self.c}}{{html.p.>}}"\
-          wc_p_open="{{html._p_syntax_content_.<}}"\
+          _format="@@  {{self.inline}}"\
+          inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}"\
+          with_content="@@ {{self.wc_inline}}" \
+          wc_inline="{{self.open_inline}}{{self.c}}{{self.close_inline}}"\
+          wc_open="@@ {{self.open_inline}}" \
+          wc_close="@@ {{self.close_inline}}"\
+          open_inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}"\
+          close_inline="{{html.div.>}}"\
+          wc_p="@@ {{self.wc_p_inline}}"\
+          wc_p_open="@@ {{self.wc_p_open_inline}}"\
+          wc_p_inline="{{html._p_syntax_content_.<}}{{self.c}}{{html.p.>}}"\
+          wc_p_open_inline="{{html._p_syntax_content_.<}}"\
           t="This is your syntax title" \
           c="This is your syntax content"

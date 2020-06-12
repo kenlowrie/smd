@@ -11,12 +11,12 @@
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: image.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing Images in Shots support from avs/image.md</h3>
 <p style="font-size:1.2em">[] //TODO: This doesn't work. Fix it.</p>
-<p style="font-size:1.2em"><div class="av"><ul></p>
+<div class="av"><ul>
 <li>WS:a shot</li>
 <li><img src="../in/import/shot1.jpg" style="[margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;]"/></li>
-<p style="font-size:1.2em"></ul></p>
+</ul>
 <p>Use it inside an AV shot</p>
-<p style="font-size:1.2em"></div></p>
+</div>
 <div class="extras"><h1></h1></div>
 <p style="font-size:1.2em"><table class="shotinfo"><tr>                <td class="center" colspan="2"><em><strong>Shot Information</strong></em></td>              </tr>              <tr>                <th style="padding:5px;width:20%;font-size:1.3em" class="item">Item</th>                <th style="padding:5px;width:75%;font-size:1.3em" class="item">Description</th>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Scene</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><em><strong></strong></em></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Shot</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item">shot1</td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Desc</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><em><em>Short Description Here</em></em></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Lens</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><strong>85mm</strong></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">f-stop</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><strong>f/2.8</strong></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">ISO</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><strong>320</strong></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Height</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item"><strong>36in</strong></td>              </tr>              <tr>                <td style="padding:5px;width:20%;font-size:1.3em" class="item">Crane</td>                <td style="padding:5px;width:75%;font-size:1.3em" class="item">yes</td>              </tr></table></p>
 <div class="extras"><h1></h1></div>
@@ -126,25 +126,27 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_n_row_=</strong>{{html.tr.&lt;}}                {{html._td_2span_.&lt;}}{{self.notes}}{{html.td.&gt;}}              {{html.tr.&gt;}}<br />
 &nbsp;&nbsp;<strong>_n_row2_=</strong>{{html.tr.&lt;}}                {{html._td_2spanA_.&lt;}}{{self.notes}}{{html.td.&gt;}}              {{html.tr.&gt;}}<br />
 <br />
-<strong>avshot=</strong><br />&nbsp;&nbsp;<strong>start=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
-&nbsp;&nbsp;<strong>trans=</strong>{{html.ul.&gt;}}<br />
-&nbsp;&nbsp;<strong>end_shot=</strong>{{html.div.&gt;}}<br />
+<strong>avshot=</strong><br />&nbsp;&nbsp;<strong>start=</strong>@@ {{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
+&nbsp;&nbsp;<strong>trans=</strong>@@ {{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>end_shot=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>visual=</strong>[code.pushlines(t="{{var.avshot.start}}\n@wrap li")]<br />
 &nbsp;&nbsp;<strong>audio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n@wrap p")]<br />
 &nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{var.avshot.end_shot}}\n@break")]<br />
 &nbsp;&nbsp;<strong>noaudio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break")]<br />
+&nbsp;&nbsp;<strong>_s=</strong>Your Shot Here<br />
+&nbsp;&nbsp;<strong>_d=</strong>Your Shot Description here<br />
 <br />
-<strong>avwrapper=</strong><br />&nbsp;&nbsp;<strong>start=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}{{html.li.&lt;}}<br />
-&nbsp;&nbsp;<strong>endul=</strong>{{html.li.&gt;}}{{html.ul.&gt;}}<br />
-&nbsp;&nbsp;<strong>enddiv=</strong>{{html.div.&gt;}}<br />
+<strong>avwrapper=</strong><br />&nbsp;&nbsp;<strong>start=</strong>@@ {{html._div_av_.&lt;}}{{html.ul.&lt;}}{{html.li.&lt;}}<br />
+&nbsp;&nbsp;<strong>endul=</strong>@@ {{html.li.&gt;}}{{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>enddiv=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
 <br />
-<strong>avwrapper2=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
-&nbsp;&nbsp;<strong>end_shots=</strong>{{html.ul.&gt;}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{html.div.&gt;}}<br />
+<strong>avwrapper2=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>@@ {{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
+&nbsp;&nbsp;<strong>end_shots=</strong>@@ {{html.ul.&gt;}}<br />
+&nbsp;&nbsp;<strong>end=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>b1=</strong>[code.pushlines(t="{{var.avwrapper2.begin}}\n@wrap li")]<br />
@@ -273,8 +275,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>s=</strong>{{var._shot_defs_.scene}}<br />
 &nbsp;&nbsp;<strong>shotid=</strong>shot0<br />
 <br />
-<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your note title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
 <br />
@@ -296,8 +298,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
 &nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
 <br />
-<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
 &nbsp;&nbsp;<strong>c=</strong><br />
 <br />
@@ -483,14 +485,18 @@ NAMESPACE: var<br />
 <br />
 <strong>ss=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[{{var.img_def.img_st_inline_border}}]<br />
 <br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{self.wc_open}}{{self.c}}{{self.wc_close}}<br />
-&nbsp;&nbsp;<strong>open=</strong><br />
-&nbsp;&nbsp;<strong>close=</strong><br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p_open=</strong>{{html._p_syntax_content_.&lt;}}<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your syntax title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
 <br />

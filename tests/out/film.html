@@ -38,7 +38,7 @@
 <p style="font-size:1.2em"><p class="note">Make sure <span class="cast">MOM</span> is already moving when she comes into frame.</p></p>
 <div class="extras"><h1></h1></div>
 <div class="extras"><h1></h1></div>
-<p style="font-size:1.2em"><div class="section"><p class="divTitle"><span class="bigandbold blue">Narrative -</span> continues - Location S:15 L:~14s-</p></div></p>
+<div class="section"><p class="divTitle"><span class="bigandbold blue">Narrative -</span> continues - Location S:15 L:~14s-</p></div>
 <div class="lyrics"><p class="lyrics italic"><span class="bigandbold">Song Lyrics</span><br /><br />I'm sorry momma<br />that you're reading this<br />I always wanted to make you smile<br />so I must go on with this</p></div>
 <div class="extras"><h1></h1></div>
 <div class="plain"><p class="plainTitle">Scene 99 - Random Stuff</p></div>
@@ -47,7 +47,7 @@
 <p style="font-size:1.2em">- [<span class="bigandbold red">Stock -</span>] Possibly one w/<span class="cast">MOM</span> comforting son</p>
 <p style="font-size:1.2em">Show his smile. Return to stock image. <em>If needed</em></p>
 <div class="extras"><h1></h1></div>
-<p style="font-size:1.2em"><div class="section"><p class="divTitle">Cast Headshots</p></div></p>
+<div class="section"><p class="divTitle">Cast Headshots</p></div>
 <p style="font-size:1.2em">[]</p>
 <h2>For the part of <span class="cast">DAUGHTER</span></h2>
 <p style="font-size:1.2em"><img src="../in/import/actress1.jpg" style="[margin-left:auto;margin-right:auto;width:40%;border:1px solid;padding:1em;]"/> Actor1 Name - Source: TAW</p>
@@ -389,8 +389,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>Scene 1 EXT &amp; Scene 2 INT<br />
 &nbsp;&nbsp;<strong>c=</strong>Cast: [mom][bb]Info: 1/2 Production day, *call time **3p**, wrap time **8p***. This could be scheduled the same day as Scenes 1 and 2 if the actor is available and prefers this option (longer day)<br />
 <br />
-<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>Cast Headshots<br />
 &nbsp;&nbsp;<strong>c=</strong><br />
 <br />
@@ -490,14 +490,18 @@ NAMESPACE: var<br />
 <br />
 <strong>stockshot=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>- [{{stock}}]<br />
 <br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>{{self.wc_open}}{{self.c}}{{self.wc_close}}<br />
-&nbsp;&nbsp;<strong>open=</strong><br />
-&nbsp;&nbsp;<strong>close=</strong><br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p_open=</strong>{{html._p_syntax_content_.&lt;}}<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your syntax title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
 <br />
