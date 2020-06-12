@@ -24,7 +24,6 @@ class SystemDefaults():
         self._configData = {}
         self._importFiles = []
 
-    # //TODO: Not sure if this is how I want to do this permanently, but works for now.
     # Basically, these two methods provide a way to "override" loading the various
     # configuration files from disk, and instead allow them to be passed in
 
@@ -51,7 +50,6 @@ class SystemDefaults():
 
 
     def dump(self, oprint=print):
-        #//TODO: HACK
         f0="strong"
         f1="em"
         from .utility import HtmlUtils

@@ -26,6 +26,10 @@ class LogicError(_Error):
     def __init__(self, errmsg):
         self.errmsg = errmsg
 
+class ObjectNotFoundError(_Error):
+    """Logic exceptions raised by this module."""
+    def __init__(self, errmsg):
+        self.errmsg = errmsg
 
 class NestingError(_Error):
     """Regex exceptions raised by this module."""

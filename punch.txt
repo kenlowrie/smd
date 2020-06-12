@@ -4,43 +4,40 @@ Punch List Items.
 Priority 1 | p1
 ---------------
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
-70. little by little, work through the current automated tests and bring them back online synchronized to the new version.
+70. continue improving the automated tests and get coverage for all new functionality.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
 61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 85. Make a single shell script that runs both/all of the command line tests ...
 
 Priority 2 | p2
 ---------------
-52. Is raw still needed? Can we deprecate that too?
-75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
+35. document using this with pipenv (possibly other "popular" python environment manager(s))
+36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
 55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
 56. See how close I can get to a clean render of Buddy's music video script markdown file...
+3. Split A/V specific CSS to separate file. Realize this will complicate using smd since it requires a different cssfile(s)...
 
 
 Priority 3 | p3
 ---------------
-3. Split A/V specific CSS to separate file.
-4. Replace special code relating to A/V scripts with namespace variables (where possible).
-14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level?
 22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
 32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
 33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have.
 34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
-35. document using this with pipenv (possibly other "popular" python environment manager(s))
-36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
 44. Code review Cache, ImportCache & SystemDefaults.
 78. maybe add a pause/resume method on the watcher class i could engage while parsing...
+90. Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
 
 Priority 5 | p5
 ---------------
-05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
 43. Should I use the python logging system for better control of debug messages and console output?
-53. Do a quick pass on the userdoc.md to see how badly I've broken the code. I/P. Needs work, but not as bad as I thought it might be.
+53. Start rewriting userdoc.md so it conforms to smd.
 37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
 65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 4. Move all of these things to the issues tracker in github, and get rid of this file.
+75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
 
 
 Completed
@@ -92,6 +89,10 @@ Completed
 **57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
 **84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
 **89. Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
+**4. Replace special code relating to A/V scripts with namespace variables (where possible).
+**52. Is raw still needed? Yes. It is needed to circumvent @wrap tags from mucking up formatting of specialized macros
+**05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
+**14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level? --cwd? or just make cwd be where we look...
 
 
 

@@ -9,8 +9,7 @@ flexibility.
 """
 
 from sys import stdin
-#//TODO: Remove all this old crap and use pathlib.Path()
-from os.path import join, split, abspath, isfile
+from pathlib import Path
 
 from .exception import FileError, LogicError
 from .debug import Debug
@@ -110,22 +109,35 @@ class StreamHandler(object):
 
         else:
             # If name is prefixed with '$', prefix the filename with the path of
-            # CURRENT open file. This is not supported on the 1st open...
+            # CURRENT open file. If this is the first file to be opened, or if
+            # the current file being read is stdin, the Path().cwd() is used.
             if(filename[0] == '$'):
-                # Make sure this isn't the first file we are opening
-                if(self.idx >= 0 and self.filestack[self.idx].name is not None):
+                def fixname(fn):
+                    # allow both '$path/file.md' and '$/path/file.md'
                     from os import sep
-                    path, whocares = split(abspath(self.filestack[self.idx].name))
-                    filename = join(path, filename[1:] if filename[1] != sep else filename[2:])
+                    return fn[1:] if fn[1] != sep else fn[2:]
+
+                self.debug.print(f"self.idx is [{self.idx}]")
+                if self.idx >= 0: self.debug.print(f"self.filestack[self.idx].name is {self.filestack[self.idx].name}")
+                # Make sure we have an open file, otherwise use Path().cwd() as the path
+                if self.idx < 0:
+                    cwd = Path().cwd()
+                    self.debug.print(f"No open file, using current directory for '$': {cwd}")
+                    filename = Path(filename).joinpath(cwd, fixname(filename))
+                elif self.idx >= 0:
+                    path = Path(self.filestack[self.idx].name).resolve()
+                    filename = path.joinpath(path.parent, fixname(filename))
+
             # Make sure the specified file exists, and then open it
-            if isfile(filename):
-                name = abspath(filename)
+            name = Path(filename).resolve()
+            self.debug.print(f"Attempting to open: {filename} using {name}")
+            if name.is_file():
                 # Check if we've already imported this file
-                if self.fileTracker.alreadySeen(filename):
+                if self.fileTracker.alreadySeen(str(name)):
                     self.debug.print('File <strong><em>{}</em></strong> has already been imported'.format(name))
                     return
-                file = open(filename, "r")
-                self.push(file, name)
+                file = open(name, "r")
+                self.push(file, str(name))
                 self.fileTracker.seen = name
 
             else:

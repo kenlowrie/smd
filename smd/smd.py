@@ -24,27 +24,24 @@ formats it on the fly and outputs HTML.
 
 //TODO: UPDATE THIS ONCE I FINALIZE THE NEW INTERFACE
 
-To quickly see how it works, copy "avscript_md.py" and "avscript_md.css":
+To quickly see how it works, pip install from the top level directory
 
 .. code-block:: rest
 
-    cp avscript_md.py ~/Library/Application\sSupport\BBEdit\Preview\sFilters
+    cd smd
+    pip install .
+    smd
 
 .. note::
 
-    Alternatively, create a symbolic link to these files in your
+    Alternatively, use smdparse to translate the userdocs (pip install is still required)
 
 .. code-block:: rest
 
-    ln -s /yourpathrepopath/avscript_md.py ~/Library/Application\sSupport\BBEdit\Preview\sFilters/avscript_md.py
+    cd smd/docs
+    smdparse -f userdocs.md -c
 
-And then open "docs/example.md" in BBEdit, Choose Markup|Preview in BBEdit,
-and then in the Preview: example.md window:
-
-For now, take a look at userdocs.md (in a BBEdit preview window of course!), and
-you'll quickly get up and running with the A/V Script Markdown Processor.
-
-Future - aka Wish List
+//TODO: Talk about ismd here, but must note requirements (pip install should install what is needed)
 
 """
 
@@ -81,7 +78,6 @@ class ScriptParser(StdioWrapper):
         """
         Initialize the required instance variables for this class.
 
-        #//TODO: Decide whether sysDefaults, fileTracker, etc. can be passed in...
         """
         # before we do anything else, we need to make sure that our thread local storage is set up.
         #self._tls = initTLS().tls_data
@@ -141,8 +137,6 @@ class ScriptParser(StdioWrapper):
         exec("from .core.utility import _set_ns_xface;_set_ns_xface(self._ns)")
         #_set_line_cache(self.stdinput.cache())
         exec("from .core.utility import _set_line_cache;_set_line_cache(self.stdinput.cache())")
-        #_init_debug()
-        exec("from .core.utility import _init_debug;_init_debug()")
 
 
         self._css_class_prefix = Regex(r'\{:([\s]?.\w[^\}]*)\}(.*)')
@@ -150,25 +144,24 @@ class ScriptParser(StdioWrapper):
 
         # Dictionary of each line type that we can process
         self._regex_main = {
-            # //TODO: Is NewDiv still needed?
-            #                   NewDiv RawLine Prefix   Test Regex                                              Match Regex
-            'header': RegexMain(True,   False,  True,   r'^([#]{1,6})[ ]*',                                  r'^([#]{1,6})[ ]*(.*)'),
-            'import': RegexMain(True,   False,  False,  r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',         None),
-            'embed': RegexMain(True,    False,  False,  r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
-            'watch': RegexMain(True,    False,  False,  r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
-            'var': RegexMain(True,      True,   False,  r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None), 
-            'set': RegexMain(True,      True,   False,  r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None),
-            'code': RegexMain(True,     True,   False,  r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'link': RegexMain(True,     True,   False,  r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'html': RegexMain(True,     True,   False,  r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'image': RegexMain(True,    True,   False,  r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',    None),
-            'dump': RegexMain(True,     True,   False,  r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',     None),
-            'break': RegexMain(True,    True,   False,  r'^[@](break|exit)\s*$',                             None),
-            'stop': RegexMain(True,     True,   False,  r'^[@](stop|quit)\s*$',                              None),
-            'raw': RegexMain(True,      False,  False,  r'^@(@|raw)[ ]+(.*)',                                None),
-            'wrap': RegexMain(True,     False,  False,  r'^@(wrap|parw)[ ]?(.*)',                            None),
-            'debug': RegexMain(True,    True,   False,  r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',    None),
-            'defaults': RegexMain(True, True,   False,  r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
+            #                     RawLine Prefix   Test Regex                                           Match Regex
+            'header': RegexMain(   False,  True,   r'^([#]{1,6})[ ]*',                                  r'^([#]{1,6})[ ]*(.*)'),
+            'import': RegexMain(   False,  False,  r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',         None),
+            'embed': RegexMain(    False,  False,  r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
+            'watch': RegexMain(    False,  False,  r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
+            'var': RegexMain(      True,   False,  r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None), 
+            'set': RegexMain(      True,   False,  r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None),
+            'code': RegexMain(     True,   False,  r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
+            'link': RegexMain(     True,   False,  r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
+            'html': RegexMain(     True,   False,  r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
+            'image': RegexMain(    True,   False,  r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',    None),
+            'dump': RegexMain(     True,   False,  r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',     None),
+            'break': RegexMain(    True,   False,  r'^[@](break|exit)\s*$',                             None),
+            'stop': RegexMain(     True,   False,  r'^[@](stop|quit)\s*$',                              None),
+            'raw': RegexMain(      False,  False,  r'^@(@|raw)[ ]+(.*)',                                None),
+            'wrap': RegexMain(     False,  False,  r'^@(wrap|parw)[ ]?(.*)',                            None),
+            'debug': RegexMain(    True,   False,  r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',    None),
+            'defaults': RegexMain( True,   False,  r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
         }
 
     @property
@@ -291,7 +284,7 @@ class ScriptParser(StdioWrapper):
             self._unreadLine()
             return True
         
-        #//TODO: Should we trap this failure? What does it mean?
+        # The original_line and the current_line are the same, so no need to reprocess it...
         return False
 
     def _setLineAttrs(self, line):
@@ -454,7 +447,7 @@ class ScriptParser(StdioWrapper):
 
         def handle_break(m, lineObj):
             """Handle a break parse line"""
-            self.oprint('<div class="extras"><h1></h1></div>')  #//TODO: Is this needed?
+            self.oprint('<div class="extras"><h1></h1></div>')  #//TODO: Is this needed? Still being used in scripts, but is it really needed, or can we workaround it?
             pass    # don't do anything with @break or @exit
 
         def handle_stop(m, lineObj):
@@ -483,7 +476,6 @@ class ScriptParser(StdioWrapper):
                     self._end = None
                     self._ns, self._name, self._attr = ns_parseVariableName(tag)
                     if self._ns != 'html':
-                        #//TODO: Decide if these messages should be debug messages or not.
                         oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.")
                         return
                     if self._attr is not None:
@@ -533,7 +525,7 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #//TODO: Maybe add a custom class for this?
+                #//TODO: Maybe add a custom css class for this?
                 self.oprint("<div class=\"variables\">")
                 self.oprint("<code>")
                 if not d:
@@ -648,7 +640,6 @@ class ScriptParser(StdioWrapper):
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                # TODO: What about self.oprint()? Doesn't that need to be passed to NS?
                 self.debug_smd_line.print('handle_code: {}'.format(d))
                 self._ns.addVariable(d, ns="code")
 
@@ -677,7 +668,7 @@ class ScriptParser(StdioWrapper):
             ('dump', handle_dump),
             ('defaults', handle_defaults),
             ('wrap', handle_wrap),
-            ('raw', handle_raw),        #//TODO: Is this needed still?
+            ('raw', handle_raw),    #//TODO: If I move this up, the tests fail... weird.
         ]
         
         try:
@@ -736,7 +727,6 @@ class ScriptParser(StdioWrapper):
                 if c is None: continue
                 self.oprint(self._md.markdown(c))
 
-            #//TODO: Do I need to track this better? 
             # Need to close it so it's available to view if a consumer doesn't delete the TLS right away...
             # Ultimately might want the caller to decide when to close, but for now, this works for what I need.
             self.tlsRawOutputFileDeinit()

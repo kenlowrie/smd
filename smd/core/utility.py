@@ -6,9 +6,6 @@ from .debug import Debug
 _ns_xface = None
 _line_cache = None
 
-#def _default_debug_handler(msg):
-#    pass
-
 # Called during smd initialization to save the interface to Namespaces
 def _set_ns_xface(ns_ptr):
     global _ns_xface
@@ -18,24 +15,6 @@ def _set_ns_xface(ns_ptr):
 def _set_line_cache(line_cache_ptr):
     global _line_cache
     _line_cache = line_cache_ptr
-
-# Called during smd initialization to instantiate the Debug object
-#//TODO: Is this used, needed, and when is it really called?
-def _init_debug():
-    global _debug
-    _debug = Debug('utility')
-
-
-class _default_debug(object):
-    def print(self, msg):
-        pass
-
-_debug = _default_debug()
-
-def _get_ns_value(v):
-    global _ns_xface
-    return _ns_xface.getValue(v)
-
 
 
 class HtmlUtils():

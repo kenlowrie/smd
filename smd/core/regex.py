@@ -49,11 +49,10 @@ class RegexMD(Regex):
 
 class RegexMain(object):
     """This class holds the regular expressions used for the main parsing loop."""
-    def __init__(self, starts_new_div, uses_raw_line, allows_class_prefix, test_str, match_str, test_flags=0, match_flags=0):
+    def __init__(self, uses_raw_line, allows_class_prefix, test_str, match_str, test_flags=0, match_flags=0):
         """Constructor for the RegexMain class.
 
         Arguments:
-        starts_new_div -- signals whether this regex will stop the peekplaintext() from processing new lines
         uses_raw_line -- signals whether this regex should be applied to the raw line or the marked_down line
         allows_class_prefix -- signals whether this regex can be prefixed with a class override
         test_str -- this is the regex string used to detect if the line is a match
@@ -63,7 +62,6 @@ class RegexMain(object):
         """
         self.test_str = Regex(test_str, test_flags)
         self.match_str = None if not match_str else Regex(match_str, match_flags)
-        self.starts_new_div = starts_new_div
         self.uses_raw_line = uses_raw_line
         self.allows_class_prefix = allows_class_prefix
 

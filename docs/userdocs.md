@@ -84,6 +84,7 @@ Document @defaults, @watch "filename"
 The custom file data logic in cache.py no longer works due to how stream.py handles imports.
 The anatomy of a complex variable definition. Passing parameters, self, why _ is important. How link and html work. How code works.
 Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possibly xfer to shared markdown files.
+Explain how @import '$' works when no files open i.e. reading from stdin
 
 </code>
 </pre>

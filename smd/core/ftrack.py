@@ -1,25 +1,7 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
-
-#//TODO: This class probably isn't needed any longer.
-class FileName(object):
-    def __init__(self,name):
-        self._name = Path(name).resolve()
-    
-    @property
-    def name(self):
-        return str(self._name)
-    
-    @name.setter
-    def name(self, name):
-        self._name = name
-    
-    def parent(self):
-        return str(self._name.parent)
-    
-    def basename(self):
-        return str(self._name.name)
+from .debug import Debug
 
 class FileTrack(object):
     """A class to keep track of files that are opened."""
@@ -36,29 +18,21 @@ class FileTrack(object):
         if candidate not in self.seen:
             self.seen.append(candidate)
         else:
-            #//TODO: Add a debug statement here?
-            pass
+            # cannot instantiate the debug instance during startup; no guarantee TLS is there yet.  
+            # let's check it now ...
+            from .thread import getTLS
+            if getTLS() is not None:
+                # add the debug object if not already there
+                if not hasattr(self, 'debug'): self.debug = Debug('ftrack')
+                self.debug.print(f"cannot add candidate {candidate} to seen list; already accounted for.")
 
     def alreadySeen(self,name):
         return Path(name).resolve() in self.seen
 
-    #//TODO: This seems no longer needed
-    def seenAsFileNameList(self):
-        return [FileName(fn) for fn in self._seen]
-
-    def dump(self):
-        #//TODO: All of these prints need to go through the output module...
-        print("Files seen during parsing:")
+    def dump(self, oprint):
+        oprint("Files seen during parsing:")
         for fn in self.seen:
-            print(f"\tFullname: {fn.resolve()}")
-
-    def dump1(self):
-        for fn in self.seen:
-            print(f"Rootname: {fn.name}\n\tDirectory: {fn.parent}\n\tFullname: {fn.resolve()}")
-
-    def dump2(self):
-        for fn in self.seenAsFileNameList():
-            print(f"Rootname: {fn.basename()}\n\tDirectory: {fn.parent()}\n\tFullname: {fn.name}")
+            oprint(f"\tFullname: {fn.resolve()}")
 
 
 if __name__ == '__main__':

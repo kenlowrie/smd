@@ -1,4 +1,3 @@
-#//TODO: Do I need this class?
 class ConfigData(object):
     def __init__(self, okay2load):
         self.okay2load = okay2load
@@ -18,7 +17,6 @@ class ConfigData(object):
 
 
 #------------
-        # //TODO: Should this be a namespace?
         def handle_shotlist(m, lineObj):
             # """Handle a shotlist parse line."""
             self.oprint(self._html.formatLine("<div class=\"shotlist\">", 1))
@@ -43,7 +41,6 @@ class ConfigData(object):
             """Handle the alias parse line type"""
             if(m is not None and len(m.groups()) == 3):
                 #self._variables.addVar(m.group(1), self._markdown(m.group(3)))
-                #TODO: Should m.group(3) be self._md.markdown(m.group(3))?
                 self._ns.addVariable(self._md.markdown(m.group(3)), name=m.group(1), ns="basic")
             else:
                 self.oprint(lineObj.original_line)
@@ -226,11 +223,28 @@ class BasicNamespace(Namespace):
 # ------------
 
             if ns == Namespaces._default:
-                # TODO: Should I print a message or something?
                 return  # For now, just return. Basic namespace doesn't support attrs...
 
 
 # ------------
+class FileName(object):
+    def __init__(self,name):
+        self._name = Path(name).resolve()
+    
+    @property
+    def name(self):
+        return str(self._name)
+    
+    @name.setter
+    def name(self, name):
+        self._name = name
+    
+    def parent(self):
+        return str(self._name.parent)
+    
+    def basename(self):
+        return str(self._name.name)
+
 
 
 # ------------
