@@ -29,6 +29,10 @@ wt1.alsoworks = [wt1.alsoworks]
 #### --->wt1.alsoworks
 @wrap [wt1.alsoworks]
 ----------#3a> wt1.alsoworks line wrap test
+@@:---------:#4a> raw lines should never be wrapped[b]
+@@ :---------:#4b> raw lines should never be wrapped[b]
+@raw:---------:#4c> raw lines should never be wrapped[b]
+@raw     :---------:#4d> raw lines should never be wrapped[b]
 #### --->popping stack back 1 level p class=myclass2
 @parw
 ----------#2b> wt1.works line wrap test
