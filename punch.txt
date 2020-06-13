@@ -6,7 +6,6 @@ Priority 1 | p1
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 70. continue improving the automated tests and get coverage for all new functionality.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
-61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 85. Make a single shell script that runs both/all of the command line tests ...
 
 Priority 2 | p2
@@ -28,6 +27,7 @@ Priority 3 | p3
 44. Code review Cache, ImportCache & SystemDefaults.
 78. maybe add a pause/resume method on the watcher class i could engage while parsing...
 90. Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
+61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
 
 Priority 5 | p5
 ---------------
@@ -38,6 +38,7 @@ Priority 5 | p5
 65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 4. Move all of these things to the issues tracker in github, and get rid of this file.
 75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
+91. How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
 
 
 Completed
