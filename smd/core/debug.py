@@ -110,7 +110,7 @@ class DebugTracker(object):
         # This prevents spurious messages from being output when
         # debug tracking is not currently enabled.
         if self.debug_active():
-            self.sys_debug.print_msg(s)
+            self.debug.print_msg(s)
 
     @property
     def debug_tags(self):
