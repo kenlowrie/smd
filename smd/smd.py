@@ -144,24 +144,24 @@ class ScriptParser(StdioWrapper):
 
         # Dictionary of each line type that we can process
         self._regex_main = {
-            #                     RawLine Prefix   Test Regex                                           Match Regex
-            'header': RegexMain(   False,  True,   r'^([#]{1,6})[ ]*',                                  r'^([#]{1,6})[ ]*(.*)'),
-            'import': RegexMain(   False,  False,  r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',         None),
-            'embed': RegexMain(    False,  False,  r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
-            'watch': RegexMain(    False,  False,  r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]',          None),
-            'var': RegexMain(      True,   False,  r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None), 
-            'set': RegexMain(      True,   False,  r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',      None),
-            'code': RegexMain(     True,   False,  r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'link': RegexMain(     True,   False,  r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'html': RegexMain(     True,   False,  r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',     None), 
-            'image': RegexMain(    True,   False,  r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)',    None),
-            'dump': RegexMain(     True,   False,  r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',     None),
-            'break': RegexMain(    True,   False,  r'^[@](break|exit)\s*$',                             None),
-            'stop': RegexMain(     True,   False,  r'^[@](stop|quit)\s*$',                              None),
-            'raw': RegexMain(      False,  False,  r'^@(@|raw)[ ]+(.*)',                                None),
-            'wrap': RegexMain(     False,  False,  r'^@(wrap|parw)[ ]?(.*)',                            None),
-            'debug': RegexMain(    True,   False,  r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)',    None),
-            'defaults': RegexMain( True,   False,  r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)', None),
+            #                     RawLine Prefix   Test Regex               Match Regex
+            'header': RegexMain(   False,  True,   r'^([#]{1,6})[ ]*',      r'^([#]{1,6})[ ]*(.*)'),
+            'import': RegexMain(   False,  False,  r'^[@]import[ ]*',       r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
+            'embed': RegexMain(    False,  False,  r'^[@]embed[ ]*',        r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
+            'watch': RegexMain(    False,  False,  r'^[@]watch[ ]*',        r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
+            'var': RegexMain(      True,   False,  r'^@var[ ]*',            r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'set': RegexMain(      True,   False,  r'^@set[ ]*',            r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
+            'code': RegexMain(     True,   False,  r'^@code[ ]*',           r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'link': RegexMain(     True,   False,  r'^@link[ ]*',           r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'html': RegexMain(     True,   False,  r'^@html[ ]*',           r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'image': RegexMain(    True,   False,  r'^@image[ ]*',          r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
+            'dump': RegexMain(     True,   False,  r'^@dump[ ]*',           r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
+            'break': RegexMain(    True,   False,  r'^[@](break|exit)[ ]*', r'^[@](break|exit)\s*$'),
+            'stop': RegexMain(     True,   False,  r'^[@](stop|quit)[ ]*',  r'^[@](stop|quit)\s*$'),
+            'raw': RegexMain(      False,  False,  r'^@(@|raw)[ ]*',        r'^@(@|raw)[ ]*(.*)'),
+            'wrap': RegexMain(     False,  False,  r'^@(wrap|parw)[ ]*',    r'^@(wrap|parw)[ ]*(.*)'),
+            'debug': RegexMain(    True,   False,  r'^@debug[ ]*',          r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
+            'defaults': RegexMain( True,   False,  r'^@defaults[ ]*',       r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
         }
 
     @property
@@ -476,10 +476,10 @@ class ScriptParser(StdioWrapper):
                     self._end = None
                     self._ns, self._name, self._attr = ns_parseVariableName(tag)
                     if self._ns != 'html':
-                        oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.")
+                        oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.<br />")
                         return
                     if self._attr is not None:
-                        oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}")
+                        oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}<br />")
 
                     ns_name = f"html.{self._name}"
                     self._start = markdown(f"[{ns_name}.<]")
@@ -502,16 +502,17 @@ class ScriptParser(StdioWrapper):
                                                     HtmlUtils.escape_html(m.group(2)))
                 )
                 if( m.group(1) == 'wrap'):
-                    tag = wrapTag(self._md.markdown(m.group(2)), self._ns.parseVariableName, self._md.markdown, self.oprint)
+                    #//TODO: Seems like this markdown call is not needed.
+                    tag = wrapTag(m.group(2), self._ns.parseVariableName, self._md.markdown, self.oprint)
                     if tag.start is not None and tag.end is not None:
                         self.wrapper.append(tag)
                     else:
-                        self.debug_smd.print(f"WARNING: wrapTag object instance is not valid")
+                        self.debug_smd.print(f"WARNING: wrapTag object instance is not valid<br />")
                 else:
                     if not hasattr(self, 'wrapper'):
-                        self.oprint('WARNING: no wrapper has been set')
+                        self.oprint('WARNING: no wrapper has been set<br />')
                     elif not self.wrapper:
-                        self.oprint('WARNING: wrapper stack is empty')
+                        self.oprint('WARNING: wrapper stack is empty<br />')
                     elif m.group(2) == '':
                         self.wrapper.pop()
                     else:           #//TODO: I should be able to specify how many or all|*
@@ -651,24 +652,27 @@ class ScriptParser(StdioWrapper):
         rc = 0
 
         # A map linking line parse types to processor functions
+        # IMPORTANT: The order of these is important in that all parse types that require
+        # a RawLine must be checked first, or you risk something being evaluated in Markdown()
+        # that should not be.
         parseTypes = [
             ('var', handle_varv2),
             ('set', handle_setv2),
             ('code', handle_code),
             ('link', handle_link),
             ('html', handle_html),
-            ('header', handle_header),
-            ('import', handle_import),
-            ('embed', handle_embed),
-            ('watch', handle_watch),
-            ('break', handle_break),
             ('image', handle_image),
+            ('break', handle_break),
             ('stop', handle_stop),
             ('debug', handle_debug),
             ('dump', handle_dump),
             ('defaults', handle_defaults),
+            ('raw', handle_raw),
             ('wrap', handle_wrap),
-            ('raw', handle_raw),    #//TODO: If I move this up, the tests fail... weird.
+            ('header', handle_header),
+            ('import', handle_import),
+            ('embed', handle_embed),
+            ('watch', handle_watch),
         ]
         
         try:
@@ -680,6 +684,10 @@ class ScriptParser(StdioWrapper):
                     parse_obj = self._regex_main[key]
                     if(testLine(parse_obj, self._line)):
                         m = matchLine(parse_obj, self._line)
+                        if m is None:
+                            # This is because we detected a valid keyword tag, but there is some type of 
+                            # syntax or parsing issue. Just break and let it be printed ...
+                            break
                         #TODO: Should we HTMLESC what we're printing here?
                         self.debug_smd_line.print('Match <strong>{}=<em>{}</em></strong>'.format(m[0],self._line._oriLine))
                         parse_func(m, self._line)
