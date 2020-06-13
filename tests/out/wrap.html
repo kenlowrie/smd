@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<div class="plain">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: wrap.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @wrap and @parw functionality</h3>
+<h2>------------------------------------------</h2>
+<p style="font-size:1.2em">----------#TS> Wrapper from the testsetup.begin call in effect out here</p>
+<h3>Test group 1 - Specifying the html tag inside an @var variable attribute</h3>
+<p>----------#0a> Put a plain p wrapper in effect</p>
+<h4>start wrap via indirection</h4>
+<p>wt1 = html.wt1</p>
+<p>wt1.works = html.wt2</p>
+<p>wt1.alsoworks = html.wt3</p>
+<h3>------------------------------------------</h3>
+<h3>--->wt1</h3>
+<p class="myclass1">----------#1a> wt1 line wrap test</p>
+<h4>--->wt1.works</h4>
+<p class="myclass2">----------#2a> wt1.works line wrap test</p>
+<h4>--->wt1.alsoworks</h4>
+<p class="myclass3">----------#3a> wt1.alsoworks line wrap test</p>
+<h4>--->popping stack back 1 level p class=myclass2</h4>
+<p class="myclass2">----------#2b> wt1.works line wrap test</p>
+<h4>--->popping stack back 1 level p class=myclass1</h4>
+<p class="myclass1">----------#1b> wt1 line wrap test</p>
+<p>----------#0b> back to plain p wrapper</p>
+<h3>stop wrap via indirection</h3>
+<h4>start tests that will fail because raw html is being passed in</h4>
+<p>wt2 = <p class="myclass1"></p></p>
+<p>wt2.works = <p class="myclass2"></p></p>
+<p>wt2.alsoworks = <p class="myclass3"></p></p>
+<h3>------------------------------------------</h3>
+ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
+ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
+ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
+<h4>start tests that will fail because a non html namespace is being used</h4>
+<h3>------------------------------------------</h3>
+ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
+ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
+ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
+<h4>and now just some random testing ...</h4>
+<p>-------------->This should be the plain p wrapper still</p>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
+<li><ol></li>
+<li>apple</li>
+<li>orange</li>
+<li>banana</ol></li>
+<p>This will generate an error<br /></p>
+ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
+<p class="myclass1">And this is just a bunch of other random content, wrapped in the p class=myclass1 tag</p>
+<p>And now back to the plain p tag</p>
+<p style="font-size:1.2em">And now back to the testsetup default wrapper tag.</p>
+And now we've cleared all stacked tags, so the next line will generate a warning...
+WARNING: wrapper stack is empty<br />
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>wt1=</strong><br />&nbsp;&nbsp;<strong>works=</strong>html.wt2<br />
+&nbsp;&nbsp;<strong>alsoworks=</strong>html.wt3<br />
+&nbsp;&nbsp;<strong>_format=</strong>html.wt1<br />
+<br />
+<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>fails=</strong>[html.wt2]<br />
+&nbsp;&nbsp;<strong>alsofails=</strong>{{html.wt3}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>[html.wt1]<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>wt1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>myclass1<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>myclass2<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>wt3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>myclass3<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+</code>
+</div>

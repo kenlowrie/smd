@@ -77,6 +77,9 @@ class TestSMD(TestCase):
     def test_varv2(self):
         self.process('varv2')
 
+    def test_wrap(self):
+        self.process('wrap')
+
     def test_misc(self):
         self.process('misc')
 
