@@ -233,12 +233,12 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong><br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
-&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>divs.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>builtin DIVs from sys.imports/divs.md<br />

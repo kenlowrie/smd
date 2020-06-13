@@ -131,10 +131,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>end_shot=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
-&nbsp;&nbsp;<strong>visual=</strong>[code.pushlines(t="{{var.avshot.start}}\n@wrap li")]<br />
-&nbsp;&nbsp;<strong>audio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n@wrap p")]<br />
-&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{var.avshot.end_shot}}\n@break")]<br />
-&nbsp;&nbsp;<strong>noaudio=</strong>[code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break")]<br />
+&nbsp;&nbsp;<strong>visual=</strong>{{code.pushlines(t="{{var.avshot.start}}\n@wrap li")}}<br />
+&nbsp;&nbsp;<strong>audio=</strong>{{code.pushlines(t="@parw\n{{var.avshot.trans}}\n@wrap p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{var.avshot.end_shot}}\n@break")}}<br />
+&nbsp;&nbsp;<strong>noaudio=</strong>{{code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break")}}<br />
 &nbsp;&nbsp;<strong>_s=</strong>Your Shot Here<br />
 &nbsp;&nbsp;<strong>_d=</strong>Your Shot Description here<br />
 <br />
@@ -149,10 +149,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>end=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
-&nbsp;&nbsp;<strong>b1=</strong>[code.pushlines(t="{{var.avwrapper2.begin}}\n@wrap li")]<br />
-&nbsp;&nbsp;<strong>t1=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n@wrap p")]<br />
-&nbsp;&nbsp;<strong>e1=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end}}\n@break")]<br />
-&nbsp;&nbsp;<strong>e2=</strong>[code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break")]<br />
+&nbsp;&nbsp;<strong>b1=</strong>{{code.pushlines(t="{{var.avwrapper2.begin}}\n@wrap li")}}<br />
+&nbsp;&nbsp;<strong>t1=</strong>{{code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n@wrap p")}}<br />
+&nbsp;&nbsp;<strong>e1=</strong>{{code.pushlines(t="@parw\n{{var.avwrapper2.end}}\n@break")}}<br />
+&nbsp;&nbsp;<strong>e2=</strong>{{code.pushlines(t="@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break")}}<br />
 <br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
@@ -203,17 +203,17 @@ NAMESPACE: var<br />
 <strong>display=</strong><br />&nbsp;&nbsp;<strong>print=</strong>0<br />
 &nbsp;&nbsp;<strong>test=</strong>1<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.equals(v1="self.print", v2="self.test", true="self.true", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true=</strong>[code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push")]<br />
-&nbsp;&nbsp;<strong>push=</strong>[code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_left}}")]<br />
+&nbsp;&nbsp;<strong>true=</strong>{{code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push")}}<br />
+&nbsp;&nbsp;<strong>push=</strong>{{code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_left}}")}}<br />
 &nbsp;&nbsp;<strong>layout2=</strong>{{code.equals(v1="self.print", v2="self.test", true="self.true2", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true2=</strong>[code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push2")]<br />
-&nbsp;&nbsp;<strong>push2=</strong>[code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_split}}")]<br />
+&nbsp;&nbsp;<strong>true2=</strong>{{code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push2")}}<br />
+&nbsp;&nbsp;<strong>push2=</strong>{{code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_split}}")}}<br />
 &nbsp;&nbsp;<strong>layout3=</strong>{{code.equals(v1="self.print", v2="self.test", true="self.true3", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true3=</strong>[code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push3")]<br />
-&nbsp;&nbsp;<strong>push3=</strong>[code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_only}}")]<br />
+&nbsp;&nbsp;<strong>true3=</strong>{{code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push3")}}<br />
+&nbsp;&nbsp;<strong>push3=</strong>{{code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_only}}")}}<br />
 &nbsp;&nbsp;<strong>layout4=</strong>{{code.equals(v1="self.print", v2="self.test", true="self.true4", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true4=</strong>[code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push4")]<br />
-&nbsp;&nbsp;<strong>push4=</strong>[code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_s2}}")]<br />
+&nbsp;&nbsp;<strong>true4=</strong>{{code.replace(var="$.shotid", val="var.display.shotid", str="var.display.push4")}}<br />
+&nbsp;&nbsp;<strong>push4=</strong>{{code.pushlines(shotid="$.shotid" t="{{var.shot_emitter.shot_s2}}")}}<br />
 &nbsp;&nbsp;<strong>false=</strong><br />
 <br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
@@ -503,12 +503,12 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")]<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong><br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>[code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")]<br />
-&nbsp;&nbsp;<strong>end=</strong>[code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")]<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>image.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing Images in Shots support from avs/image.md<br />

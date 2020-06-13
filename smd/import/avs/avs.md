@@ -19,10 +19,10 @@
           end="@@ {{html.div.>}}" \
           shot_only="{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}"\
           shot_with_desc="{{self.start}}{{self._s}}{{self.endul}}{{html.p.<}}{{self._d}}{{html.p.>}}{{self.enddiv}}"\
-          b1="[code.pushlines(t=\"{{var.avwrapper2.begin}}\n@wrap li\")]"\
-          t1="[code.pushlines(t=\"@parw\n{{var.avwrapper2.end_shots}}\n@wrap p\")]"\
-          e1="[code.pushlines(t=\"@parw\n{{var.avwrapper2.end}}\n@break\")]"\
-          e2="[code.pushlines(t=\"@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break\")]"\
+          b1="{{code.pushlines(t=\"{{var.avwrapper2.begin}}\n@wrap li\")}}"\
+          t1="{{code.pushlines(t=\"@parw\n{{var.avwrapper2.end_shots}}\n@wrap p\")}}"\
+          e1="{{code.pushlines(t=\"@parw\n{{var.avwrapper2.end}}\n@break\")}}"\
+          e2="{{code.pushlines(t=\"@parw\n{{var.avwrapper2.end_shots}}\n{{var.avwrapper2.end}}\n@break\")}}"\
 
 // avshot
 // [var.avshot(v="WS: Info here", a="vo info")]
@@ -37,10 +37,10 @@
           end_shot="@@ {{html.div.>}}" \
           shot_only="{{self.start}}{{self._s}}{{self.endul}}{{self.enddiv}}"\
           shot_with_desc="{{self.start}}{{self._s}}{{self.endul}}{{html.p.<}}{{self._d}}{{html.p.>}}{{self.enddiv}}"\
-          visual="[code.pushlines(t=\"{{var.avshot.start}}\n@wrap li\")]"\
-          audio="[code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n@wrap p\")]"\
-          end="[code.pushlines(t=\"@parw\n{{var.avshot.end_shot}}\n@break\")]"\
-          noaudio="[code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break\")]"\
+          visual="{{code.pushlines(t=\"{{var.avshot.start}}\n@wrap li\")}}"\
+          audio="{{code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n@wrap p\")}}"\
+          end="{{code.pushlines(t=\"@parw\n{{var.avshot.end_shot}}\n@break\")}}"\
+          noaudio="{{code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break\")}}"\
           _s="Your Shot Here"\
           _d="Your Shot Description here"
 

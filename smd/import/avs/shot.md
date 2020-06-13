@@ -163,15 +163,15 @@
     print="0"\
     test="1"\ 
     _format="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true\", false=\"self.false\")}}"\
-    true="[code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push\")]"\
-    push="[code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_left}}\")]"\
+    true="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push\")}}"\
+    push="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_left}}\")}}"\
     layout2="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true2\", false=\"self.false\")}}"\
-    true2="[code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push2\")]"\
-    push2="[code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_split}}\")]"\
+    true2="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push2\")}}"\
+    push2="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_split}}\")}}"\
     layout3="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true3\", false=\"self.false\")}}"\
-    true3="[code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push3\")]"\
-    push3="[code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_only}}\")]"\
+    true3="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push3\")}}"\
+    push3="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_only}}\")}}"\
     layout4="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true4\", false=\"self.false\")}}"\
-    true4="[code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push4\")]"\
-    push4="[code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_s2}}\")]"\
+    true4="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push4\")}}"\
+    push4="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_s2}}\")}}"\
     false=""
