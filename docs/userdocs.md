@@ -85,17 +85,29 @@ The custom file data logic in cache.py no longer works due to how stream.py hand
 The anatomy of a complex variable definition. Passing parameters, self, why _ is important. How link and html work. How code works.
 Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possibly xfer to shared markdown files.
 Explain how @import '$' works when no files open i.e. reading from stdin
+Document @dump sysdef="." tracked="." and @debug.
 
 </code>
 </pre>
 
-## What is SMD?
+//TODO: Move this to code.md if it's useful...
+
+@code _id="encode_smd"\
+      type="exec"\
+      src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
+      t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
+
+@@[code.encode_smd(t="@dump sysdef=\".\"")][b]
+
+{:.bigandbold}If this is inline, *[code.encode_smd(t="@var name=\"value\" _format=\"# {{self.name}}\"")]*
+
+# What is SMD?
 [var.plain(t="What is SMD?")]
-[var.dp(c="\
+[var.divxp(c="\
     SMD is a Python command line utility that takes plain text files loosely {oh, so loosely} based on Markdown as input, and generates an HTML document. A CSS file is used to style the output, making it super easy to customize the final render to your liking.[bb]At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.\
 ")]
 
-[dp(c="In its simplest terms:")]
+[divxp(c="In its simplest terms:")]
 
 @var ast="&#42;"
 @var obr="&#91;"
