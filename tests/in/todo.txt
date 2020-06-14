@@ -1,15 +1,19 @@
 help track how to reorg the test scripts to make sure everything is covered.
 
+debug - dump.md DONE
 divs - divs.md DONE (This is all the special divs. e.g. section, plain, note, code, review, syntax ...)
+dump - dump.md DONE
+header  - markdown.md DONE (and it's used in pretty much every script)
+mailto - mailto.md DONE (tests the encoded email addresses when a mailto: address is used.)
 markdown - markdown.md DONE
+raw - wrap.md DONE (used in lots of things)
+revision - revision.md DONE (this specifically handles the revision with embedded date/time)
+stop/quit - stop.md/quit.md DONE
 wrap - wrap.md DONE
 
+image - image.md
 
-
-revision - revision.md DONE (this specifically handles the revision with embedded date/time)
-mailto: - mailto.md DONE (tests the encoded email addresses when a mailto: address is used.)
-
-header  - markdown, most all scripts
+break/exit - 
 
 import  - import.md
 embed   - import.md
@@ -20,27 +24,12 @@ set - variables.md
 
 code - code.md
 
-link - script1, ???
+link - links.md
+
 html - script1, specials?, transitions?
-
-image - image.md
-
-dump
-- add filetracker="" and sysdefaults=""
-- modify the debug and dump to remove objectids/threadids so they can be tested. [code.objects], debug[name.objectid]
-- this needs to be configurable, because it's useful to have the ids, right?
-
-debug - maybe in dump?
-defaults - this can go away if I move this logic to @dump
-
-break/exit
-stop/quit
-
-raw - wrap.md, others???
 
 ## existing scripts - review and figure out what goes where, and what is covered.
 
-varv2 - move this code to variables and remove this
 film - ???
 image - ???
 misc
@@ -48,6 +37,3 @@ script1
 specials
 transitions
 
-
-
-[code.pushlines(t="@parw\n{{html._div_plain_.>}}\n@dump {{dump_ns_list}}\n@import \"{{sys.imports}}/def_bodyclose.md\"\n@import \"{{sys.imports}}/def_close.md\"")]

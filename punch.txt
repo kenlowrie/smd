@@ -7,6 +7,8 @@ Priority 1 | p1
 70. continue improving the automated tests and get coverage for all new functionality.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
 85. Make a single shell script that runs both/all of the command line tests ...
+94. Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
+95. What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
 
 Priority 2 | p2
 ---------------
@@ -21,8 +23,8 @@ Priority 2 | p2
 Priority 3 | p3
 ---------------
 22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
-32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging.
-33. --developer mode should automatically run a bunch of commands that dump the environment, etc., so you can see what you have.
+32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
+33. --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
 34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 44. Code review Cache, ImportCache & SystemDefaults.
 78. maybe add a pause/resume method on the watcher class i could engage while parsing...
@@ -35,7 +37,6 @@ Priority 5 | p5
 53. Start rewriting userdoc.md so it conforms to smd.
 37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
-65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 4. Move all of these things to the issues tracker in github, and get rid of this file.
 75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
 91. How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
@@ -94,6 +95,9 @@ Completed
 **52. Is raw still needed? Yes. It is needed to circumvent @wrap tags from mucking up formatting of specialized macros
 **05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
 **14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level? --cwd? or just make cwd be where we look...
+**65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
+**92. Need a way to dump the filetracker.seen files. Where does it belong? @dump filetracker="pattern"
+**93. Shouldn't @dump sysdefaults="pattern" also be there? And get rid of @defaults?
 
 
 
