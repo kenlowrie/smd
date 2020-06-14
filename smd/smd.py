@@ -569,6 +569,12 @@ class ScriptParser(StdioWrapper):
 
         def handle_dump(m, lineObj):
             """Handle the dump parse line type."""
+            # Check to see if the dump parameters are embedded in macro of some type.
+            # If so, then rematch using the current_line instead of original_line
+            if lineObj.original_line.strip() != lineObj.current_line:
+                matcher = self._regex_main['dump'].match_regex()
+                m = match(matcher, lineObj.current_line)
+
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
