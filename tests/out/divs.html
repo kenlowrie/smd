@@ -116,6 +116,48 @@
 <p style="font-size:1.2em"><div class="extras">your comment inside an extras div</div></p>
 <p style="font-size:1.2em"><div class="extras"><p>default content</p></div></p>
 <p style="font-size:1.2em"><div class="extras"><p>your content inside a p tag inside a div</p></div></p>
+<h1>------------------------------------------</h1>
+<h3>Testing var.specials</h3>
+<div class="syntax"><p class="divTitle">This is your syntax title</p></div>
+<div class="syntax"><p class="divTitle">This is your syntax title</p></div>
+<p style="font-size:1.2em"><div class="syntax"><p class="divTitle">This is your syntax title</p></div></p>
+<p style="font-size:1.2em">[var.syntax()] <-- Intentional error, calling section with empty paramter list</p>
+<p style="font-size:1.2em">[syntax()] <-- Intentional error, calling section with empty paramter list</p>
+<div class="syntax"><p class="divTitle">My new title</p></div>
+<div class="syntax"><p class="divTitle">My new title</p></div>
+<div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
+<div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
+<p style="font-size:1.2em"><div class="syntax"><p class="divTitle">syntax.wc_inline</p>This is your syntax content</div></p>
+<div class="syntax"><p class="divTitle">RESET TITLE</p>RESET CONTENT</div>
+<div class="syntax"><p class="divTitle">RESET TITLE</p>Just some new content</div>
+<div class="syntax"><p class="divTitle">And now the title too</p>Just some new content</div>
+<div class="syntax"><p class="divTitle">RESET TITLE</p>
+</div>
+<div class="syntax"><p class="divTitle">syntax.wc_open</p>
+<p style="font-size:1.2em">Some content here</p>
+<p style="font-size:1.2em">And some additional</p>
+<p style="font-size:1.2em">And one last thing</p>
+</div>
+<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p</p>
+<p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p>
+</div>
+<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_inline</p>
+<p style="font-size:1.2em"><p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p></p>
+</div>
+<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open</p>
+<p style="font-size:1.2em">
+Some content here<br />
+And some additional<br />
+And one last thing<br />
+</p>
+</div>
+<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open_inline</p>
+<p style="font-size:1.2em"><p style="font-size:1.2em"></p>
+<p style="font-size:1.2em">Some content here<br /></p>
+<p style="font-size:1.2em">And some additional<br /></p>
+<p style="font-size:1.2em">And one last thing<br /></p>
+</p>
+</div>
 </div>
 <div class="variables">
 <code>
@@ -125,6 +167,8 @@ NAMESPACE: var<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
 <br />
 <strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._div_code_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />
@@ -170,6 +214,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
 &nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
+<br />
+<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
+<br />
+<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>your comment inside an extras div<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
@@ -227,18 +275,18 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your syntax title<br />
-&nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
+&nbsp;&nbsp;<strong>t=</strong>syntax.wc_open and syntax.wc_p_open_inline<br />
+&nbsp;&nbsp;<strong>c=</strong>RESET CONTENT<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
 <strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>divs.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>builtin DIVs from sys.imports/divs.md<br />

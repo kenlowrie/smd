@@ -166,6 +166,8 @@ NAMESPACE: var<br />
 <br />
 <strong>beforeshoot=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION<br />
 <br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
 <strong>cap=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.props}Baseball Cap<br />
 <br />
 <strong>cast=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.tags.cast]<br />
@@ -238,6 +240,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
 &nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
+<br />
+<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
+<br />
+<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>image="." var="." link="." html="."<br />
 <br />
 <strong>ecu=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.fs.ecu]<br />
 <br />
@@ -343,10 +349,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>**Shot Notes:**[bb]***{{self._public_keys_}}***<br />
 <br />
 <strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.tags.ns]<br />
-<br />
-<strong>ol1_close=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html.ol1.&gt;}}{{html._div_extras_.&gt;}}<br />
-<br />
-<strong>ol1_open=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_extras_.&lt;}}{{html.ol1.&lt;}}<br />
 <br />
 <strong>pcphone=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>555.867.5309<br />
 <br />
@@ -520,11 +522,11 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>**Shot Tags:**[bb]***{{self._public_keys_}}***<br />
 <br />
 <strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong><br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>film.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing film related items<br />
@@ -870,6 +872,8 @@ NAMESPACE: html<br />
 <br />
 <strong>ol1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@ {{_div_extras_.&lt;}}{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}{{_div_extras_.&gt;}}<br />
 &nbsp;&nbsp;<strong>style=</strong>margin-left:2em<br />
 <br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
