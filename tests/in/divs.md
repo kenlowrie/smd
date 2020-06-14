@@ -129,8 +129,73 @@
 [var.divxp]
 [var.divxp(c="your content inside a p tag inside a div")]
 
-[testdoc.end]
+[hash1]
+### Testing var.specials
 
-@dump var="." html="." link="." image="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"
+[var.syntax]
+[syntax]
+[syntax.inline]
+
+[var.syntax()] <-- Intentional error, calling section with empty paramter list
+[syntax()] <-- Intentional error, calling section with empty paramter list
+
+[var.syntax(t="My new title")]
+[syntax]
+
+[var.syntax.with_content]
+[syntax.with_content]
+[syntax.wc_inline(t="syntax.wc_inline")]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[syntax.with_content]
+
+[var.syntax.with_content(c="Just some new content")]
+[var.syntax.with_content(t="And now the title too")]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open]
+[var.syntax.wc_close]
+
+[var.syntax.wc_open(t="syntax.wc_open")]
+Some content here
+And some additional
+And one last thing
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p")]
+[var.syntax.wc_p(c="\
+    Some content here[b]\
+    And some additional[b]\
+    And one last thing[b]\
+    ")]
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_inline")]
+[var.syntax.wc_p_inline(c="\
+    Some content here[b]\
+    And some additional[b]\
+    And one last thing[b]\
+    ")]
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_open")]
+[var.syntax.wc_p_open]
+@@Some content here[b]
+@@And some additional[b]
+@@And one last thing[b]
+@@[html.p.>]
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_open_inline")]
+[var.syntax.wc_p_open_inline]
+Some content here[b]
+And some additional[b]
+And one last thing[b]
+@@[html.p.>]
+[var.syntax.wc_close]
+
+[testdoc.end]
