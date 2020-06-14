@@ -1,2 +1,1 @@
-@defaults
-@dump var="." link="." html="." image="."
+@dump var="." link="." html="." image="." sysdef="." tracked="." code="."

@@ -6,7 +6,7 @@ from .thread import getTLS
 class Debug(object):
     def __init__(self, classtag, initial_state=False):
         self._state = initial_state
-        self._tag = '{}.{}'.format(classtag,id(self))
+        self._tag = '{}'.format(classtag)
         self._tls = getTLS()
         self._dbgTrack = self._tls.getObjectFromTLS(Constants.debugTracker)
         self._dbgXface = self._dbgTrack.xfaces

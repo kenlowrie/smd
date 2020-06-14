@@ -1,2 +1,2 @@
 # Testing switches that overide the default document markdown files
-@defaults
+@dump sysdef="."

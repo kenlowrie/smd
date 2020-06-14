@@ -29,10 +29,19 @@ class FileTrack(object):
     def alreadySeen(self,name):
         return Path(name).resolve() in self.seen
 
-    def dump(self, oprint):
-        oprint("Files seen during parsing:")
-        for fn in self.seen:
-            oprint(f"\tFullname: {fn.resolve()}")
+    def dump(self, which=None, oprint=None):
+        """Dumps the system defaults that match the pattern."""
+        which = which if which is not None else '.*'
+        oprint = oprint if oprint is not None else print
+        from .utility import HtmlUtils
+        oprint("{1}<br />\nFiles seen during parsing: {0}<br />\n{1}<br />".format(HtmlUtils.escape_html(which),'-'*40))
+        from .regex import RegexSafe
+        reObj = RegexSafe(which)
+        for file in self.seen:
+            if reObj.is_match(str(file)) is None:
+                continue
+
+            oprint("&nbsp;&nbsp;<em>{0}</em><br />".format(HtmlUtils.escape_html(file)))
 
 
 if __name__ == '__main__':

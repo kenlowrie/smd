@@ -161,7 +161,6 @@ class ScriptParser(StdioWrapper):
             'raw': RegexMain(      False,  False,  r'^@(@|raw)[ ]*',        r'^@(@|raw)[ ]*(.*)'),
             'wrap': RegexMain(     False,  False,  r'^@(wrap|parw)[ ]*',    r'^@(wrap|parw)[ ]*(.*)'),
             'debug': RegexMain(    True,   False,  r'^@debug[ ]*',          r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
-            'defaults': RegexMain( True,   False,  r'^@defaults[ ]*',       r'^(@defaults(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
         }
 
     @property
@@ -521,24 +520,6 @@ class ScriptParser(StdioWrapper):
             else:
                 self.oprint(lineObj.current_line)
 
-        def handle_defaults(m, lineObj):
-            """Handle a defaults parse line"""
-            if(m is not None):
-                d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
-
-                #//TODO: Maybe add a custom css class for this?
-                self.oprint("<div class=\"variables\">")
-                self.oprint("<code>")
-                if not d:
-                    self.tls.sysDefaults.dump(self.oprint)
-                else:
-                    # future: maybe add ability to dump specific things?
-                    pass
-                self.oprint("</code>")
-                self.oprint("</div>")
-            else:
-                self.oprint(lineObj.original_line)
-
         def handle_debug(m, lineObj):
             """Handle a debug line"""
 
@@ -581,9 +562,20 @@ class ScriptParser(StdioWrapper):
                 self.oprint("<div class=\"variables\">")
                 self.oprint("<code>")
                 if not d:
+                    self.tlsSysDefaults.dump(which=None, oprint=self.oprint)
+                    self.tlsFileTracker.dump(which=None, oprint=self.oprint)
                     self._ns.dumpVars()
                 else:
-                    self._ns.dumpNamespaces(d)
+                    if 'sysdef' in d:
+                        self.tlsSysDefaults.dump(d['sysdef'], self.oprint)
+                        del d['sysdef']
+                    
+                    if 'tracked' in d:
+                        self.tlsFileTracker.dump(d['tracked'], self.oprint)
+                        del d['tracked']
+                    
+                    if d is not None:
+                        self._ns.dumpNamespaces(d)
                 self.oprint("</code>")
                 self.oprint("</div>")
             else:
@@ -672,7 +664,6 @@ class ScriptParser(StdioWrapper):
             ('stop', handle_stop),
             ('debug', handle_debug),
             ('dump', handle_dump),
-            ('defaults', handle_defaults),
             ('raw', handle_raw),
             ('wrap', handle_wrap),
             ('header', handle_header),

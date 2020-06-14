@@ -48,13 +48,20 @@ class SystemDefaults():
         #print(f"looking for [{filename}]")
         return self._importFiles
 
-
-    def dump(self, oprint=print):
-        f0="strong"
-        f1="em"
+    def dump(self, which=None, oprint=None):
+        """Dumps the system defaults that match the pattern."""
+        which = which if which is not None else '.*'
+        oprint = oprint if oprint is not None else print
         from .utility import HtmlUtils
-        for key,val in self.__dict__.items():
-            oprint(f"<{f0}>{key}</{f0}>: <{f1}>{HtmlUtils.escape_html(val)}</{f1}><br />")
+        oprint("{1}<br />\nSystem Defaults: {0}<br />\n{1}<br />".format(HtmlUtils.escape_html(which),'-'*40))
+        from .regex import RegexSafe
+        reObj = RegexSafe(which)
+        for default in self.__dict__.keys():
+            if reObj.is_match(default) is None:
+                continue
+
+            oprint("&nbsp;&nbsp;<strong>{0}=</strong>{1}<br />".format(default,  
+                                                                       HtmlUtils.escape_html(self.__dict__[default])))
 
     @property
     def load_default_builtins(self):

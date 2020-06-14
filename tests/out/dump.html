@@ -12,9 +12,1146 @@
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @dump and @debug functionality</h3>
 <div class="plain"><p class="plainTitle">Testing @dump keyword and options</p></div>
 <h1>Testing @dump</h1>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/dump.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/testsetup.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/defaults.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/common.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/code.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/link.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/divs.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/report.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .*/def_<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: .<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_load_default_builtins=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_user_builtins=</strong>True<br />
+&nbsp;&nbsp;<strong>_load_default_html=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_head=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_body=</strong>False<br />
+&nbsp;&nbsp;<strong>_html_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_head_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_body_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_bodyclose_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_close_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_load_user_files=</strong>False<br />
+&nbsp;&nbsp;<strong>_raw_output_file=</strong>None<br />
+&nbsp;&nbsp;<strong>_configData=</strong>{}<br />
+&nbsp;&nbsp;<strong>_importFiles=</strong>[]<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: _load<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_load_default_builtins=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_user_builtins=</strong>True<br />
+&nbsp;&nbsp;<strong>_load_default_html=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_head=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_body=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_user_files=</strong>False<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: _config<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_configData=</strong>{}<br />
+----------------------------------------<br />
+Files seen during parsing: .*/builtins.md<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: _config<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_configData=</strong>{}<br />
+----------------------------------------<br />
+Files seen during parsing: .*/builtins.md<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+<strong>pushline=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="line to push onto input stream")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+<br />
+<strong>pushlines=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+<strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="variable whose value will be pushed onto input stream")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: .*<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_load_default_builtins=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_user_builtins=</strong>True<br />
+&nbsp;&nbsp;<strong>_load_default_html=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_head=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_body=</strong>False<br />
+&nbsp;&nbsp;<strong>_html_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_head_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_body_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_bodyclose_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_close_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_load_user_files=</strong>False<br />
+&nbsp;&nbsp;<strong>_raw_output_file=</strong>None<br />
+&nbsp;&nbsp;<strong>_configData=</strong>{}<br />
+&nbsp;&nbsp;<strong>_importFiles=</strong>[]<br />
+----------------------------------------<br />
+Files seen during parsing: .*<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/dump.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/testsetup.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/defaults.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/common.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/code.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/link.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/divs.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/report.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._div_code_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your code title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your code content<br />
+<br />
+<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>cn=</strong>{{defaults.cn}}<br />
+&nbsp;&nbsp;<strong>ph=</strong>{{defaults.ph}}<br />
+&nbsp;&nbsp;<strong>em=</strong>{{defaults.em}}<br />
+&nbsp;&nbsp;<strong>c1=</strong>{{defaults.c1}}<br />
+&nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
+&nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
+<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+<br />
+<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+<br />
+<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>t1=</strong>Title<br />
+&nbsp;&nbsp;<strong>t2=</strong>author<br />
+&nbsp;&nbsp;<strong>t3=</strong>logline<br />
+<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
+&nbsp;&nbsp;<strong>_nop=</strong><br />
+<br />
+<strong>divxp=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
+<br />
+<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
+<br />
+<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
+<br />
+<strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
+<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your note title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
+<br />
+<strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._div_plain_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._p_plain_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>Testing @dump keyword and options<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your plain content<br />
+<br />
+<strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._div_review_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._p_review_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your review title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your review content<br />
+<br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
+<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
+&nbsp;&nbsp;<strong>c=</strong><br />
+<br />
+<strong>section_pbb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_pbb_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_pbb_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
+&nbsp;&nbsp;<strong>c=</strong><br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
+<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your syntax title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
+<br />
+<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
+&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>dump.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing @dump and @debug functionality<br />
+<br />
+<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
+&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>_code_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
+<br />
+<strong>_code_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_div_av_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>av<br />
+<br />
+<strong>_div_code_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>_div_extras_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_div_note_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_div_note_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>pba extras<br />
+<br />
+<strong>_div_plain_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>plain<br />
+<br />
+<strong>_div_plain_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>plain pbb<br />
+<br />
+<strong>_div_review_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>review<br />
+<br />
+<strong>_div_review_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>review pba<br />
+<br />
+<strong>_div_section_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>section<br />
+<br />
+<strong>_div_section_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>section pbb<br />
+<br />
+<strong>_div_syntax_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>syntax<br />
+<br />
+<strong>_div_toc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>toc<br />
+<br />
+<strong>_div_toc_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>toc pbb<br />
+<br />
+<strong>_p_note_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>note red indent<br />
+<br />
+<strong>_p_note_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_p_plain_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>plainTitle<br />
+<br />
+<strong>_p_plain_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_p_review_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_p_review_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_p_section_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_p_section_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_p_syntax_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_p_syntax_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_p_toc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_p_toc_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-div=</strong><br />&nbsp;&nbsp;<strong>class=</strong>contact<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
+<strong>contact-td-left=</strong><br />&nbsp;&nbsp;<strong>class=</strong>left nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-td-right=</strong><br />&nbsp;&nbsp;<strong>class=</strong>right nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
+<strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
+&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
+&nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
+&nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
+&nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
+&nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
+&nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+<br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>revision<br />
+<br />
+<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>revTitle<br />
+<br />
+<strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>td=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>th=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+<strong>append=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
+&nbsp;&nbsp;<strong>_var_=</strong>_ns.var.attr_<br />
+&nbsp;&nbsp;<strong>_txtvar_=</strong>_ns.txtvar.attr_<br />
+&nbsp;&nbsp;<strong>_help_=</strong>Usage: &lt;strong&gt;{{self._}}(_var_=&lt;em&gt;&amp;quot;ns.var.attr&amp;quot;&lt;/em&gt;, _txtvar_=&lt;em&gt;&amp;quot;ns.var.attr with text to add&amp;quot;&lt;/em&gt;)&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
+<br />
+<strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.last}}<br />
+&nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+<br />
+<strong>encodeURL=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
+&nbsp;&nbsp;<strong>t=</strong>code.encodeURL(t="https://www.url.com to encode")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
+<br />
+<strong>equals=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
+&nbsp;&nbsp;<strong>v1=</strong>_ns.var.attr_<br />
+&nbsp;&nbsp;<strong>v2=</strong>_ns.txtvar.attr_<br />
+&nbsp;&nbsp;<strong>true=</strong>_ns.var.true_<br />
+&nbsp;&nbsp;<strong>false=</strong>_ns.var.false_<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
+<br />
+<strong>esc_html=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+&nbsp;&nbsp;<strong>url=</strong>Usage: code.esc_html.run(url="text to escape")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+<br />
+<strong>escape=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: code.escape.run(t="text to escape")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
+<br />
+<strong>escape2=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
+&nbsp;&nbsp;<strong>__t=</strong>Usage: code.escape.run(t="text to escape")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
+<br />
+<strong>get=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>v=</strong>variable_name<br />
+&nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v="variable_name")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+<br />
+<strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>v=</strong>default<br />
+&nbsp;&nbsp;<strong>default=</strong>undefined variable<br />
+&nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v=&amp;quot;variable_name&amp;quot;, default=&amp;quot;default value&amp;quot;)<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+<br />
+<strong>ln_alias=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+&nbsp;&nbsp;<strong>nm=</strong>link.?<br />
+&nbsp;&nbsp;<strong>attr=</strong>_attr_name<br />
+&nbsp;&nbsp;<strong>lt=</strong>NEW_LINK_TEXT_HERE<br />
+&nbsp;&nbsp;<strong>_help_=</strong>&lt;strong&gt;&lt;em&gt;usage:&lt;/em&gt;                 {{self._}}&lt;/strong&gt;(&lt;em&gt;nm=&lt;/em&gt;&amp;quot;link.name_to_add_alias&amp;quot;,                 &lt;em&gt;attr=&lt;/em&gt;&amp;quot;attr_name&amp;quot;,                 &lt;em&gt;lt=&lt;/em&gt;&amp;quot;new link text&amp;quot;)<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+<br />
+<strong>pushline=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="line to push onto input stream")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+<br />
+<strong>pushlines=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+<strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="variable whose value will be pushed onto input stream")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+<br />
+<strong>repeat=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('{}'.format('$.t'*$.c))<br />
+&nbsp;&nbsp;<strong>t=</strong>repeat_str <br />
+&nbsp;&nbsp;<strong>c=</strong>2<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('$.t'*$.c))<br />
+<br />
+<strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
+&nbsp;&nbsp;<strong>var=</strong>varname_to_replace<br />
+&nbsp;&nbsp;<strong>val=</strong>value_to_insert<br />
+&nbsp;&nbsp;<strong>str=</strong>string to operate on<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
+<br />
+<strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="var._public_attrs_")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
+<br />
+</code>
+</div>
 <h1>Testing @debug</h1>
 <div class="plain"><p class="plainTitle">Testing @debug keyword and options</p></div>
+<br />Toggling Debug Mode<br />
+<span class="debug green"><strong>Method(toggle): _SYSTEM is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): bookmarks is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): cache is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): cache.import is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): markdown is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.add is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.code is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.html is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.image is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.link is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.var is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd.line is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd.raw is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): stdinput is now enabled</strong><br /></span>
+<span class="debug">            smd.line: Match <strong>@debug=<em>@debug
+</em></strong><br />
+</span>
+<br />Toggling Debug Mode<br />
+<span class="debug green"><em>Method(toggle): _SYSTEM is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): bookmarks is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): cache is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): cache.import is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): markdown is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.add is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.code is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.html is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.image is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.link is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): ns.var is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): smd is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): smd.line is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): smd.raw is now disabled</em><br /></span>
+<span class="debug green"><em>Method(toggle): stdinput is now disabled</em><br /></span>
+<span class="debug green"><strong>Method(on): _SYSTEM is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): bookmarks is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): cache is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): cache.import is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): markdown is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.add is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.code is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.html is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.image is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.link is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): ns.var is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): smd is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): smd.line is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): smd.raw is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(on): stdinput is now enabled</strong><br /></span>
+<span class="debug">            smd.line: Match <strong>@debug off="."=<em>@debug off="."
+</em></strong><br />
+</span>
+<span class="debug green"><em>Method(off): _SYSTEM is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): bookmarks is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): cache is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): cache.import is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): markdown is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.add is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.code is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.html is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.image is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.link is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): ns.var is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): smd is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): smd.line is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): smd.raw is now disabled</em><br /></span>
+<span class="debug green"><em>Method(off): stdinput is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): _SYSTEM is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): bookmarks is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): cache is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): cache.import is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): markdown is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.add is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.code is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.html is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.image is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.link is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): ns.var is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): smd is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): smd.line is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): smd.raw is now disabled</em><br /></span>
+<span class="debug green"><em>Method(enabled): stdinput is now disabled</em><br /></span>
+<span class="debug green"><strong>Method(toggle): _SYSTEM is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): bookmarks is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): cache is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): cache.import is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): markdown is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.add is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.code is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.html is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.image is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.link is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): ns.var is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd.line is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): smd.raw is now enabled</strong><br /></span>
+<span class="debug green"><strong>Method(toggle): stdinput is now enabled</strong><br /></span>
+<span class="debug">            smd.line: Match <strong>@debug tags="."=<em>@debug tags="."
+</em></strong><br />
+</span>
+<div><h3>Registered debug tags</h3>
+<span class="debug green"><strong>_SYSTEM</strong></span><br />
+<span class="debug green"><strong>bookmarks</strong></span><br />
+<span class="debug green"><strong>cache</strong></span><br />
+<span class="debug green"><strong>cache.import</strong></span><br />
+<span class="debug green"><strong>markdown</strong></span><br />
+<span class="debug green"><strong>ns</strong></span><br />
+<span class="debug green"><strong>ns.add</strong></span><br />
+<span class="debug green"><strong>ns.code</strong></span><br />
+<span class="debug green"><strong>ns.html</strong></span><br />
+<span class="debug green"><strong>ns.image</strong></span><br />
+<span class="debug green"><strong>ns.link</strong></span><br />
+<span class="debug green"><strong>ns.var</strong></span><br />
+<span class="debug green"><strong>smd</strong></span><br />
+<span class="debug green"><strong>smd.line</strong></span><br />
+<span class="debug green"><strong>smd.raw</strong></span><br />
+<span class="debug green"><strong>stdinput</strong></span><br />
 </div>
+<span class="debug">            markdown: markdown([var.testdoc.end])<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[var.testdoc.end]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>var.testdoc.end</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[var.testdoc.end]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>testdoc.end</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"var.testdoc.end"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>testdoc.end</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown({{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}})<br />
+</span>
+<span class="debug">              ns.var: MD1: <strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}</strong><br />
+</span>
+<span class="debug">              ns.var: RS1: <em>[code.pushlines(t="@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+</span>
+<span class="debug">            markdown: markdown([code.pushlines(t="@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")])<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines(t="@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>code.pushlines</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+</span>
+<span class="debug">             ns.code: <strong>exists("<em>pushlines</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"code.pushlines"</em>, <strong>[{'t': '@parw\\n[html._div_plain_.>]\\n@dump [dump_ns_list]\\n[doc_closure]\\n[body_closure]'}]</strong>)<br />
+</span>
+<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)<strong>getValue(<em>pushlines, pushlines, None</em>)</strong><br />
+</span>
+<span class="debug">             ns.code: <strong>exists("<em>pushlines</em>")</strong><br />
+</span>
+<span class="debug">             ns.code: <strong><span class="green">You asked for: <em>pushlines</em></span></strong><br />
+</span>
+<span class="debug">             ns.code: Saving these values:<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>type</strong>: exec<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>src</strong>: from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")<br />
+</span>
+<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)<strong>src=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')</em><br />
+</span>
+<span class="debug">             ns.code: Parameters:<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+</span>
+<span class="debug">             ns.code: Replacing: <strong>t</strong> with <em>@parw\n[html._div_plain_.>]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">             ns.code: <strong>getValue("<em>pushlines.src</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}'))<br />
+</span>
+<span class="debug">             ns.code: MD1: <strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')</strong><br />
+</span>
+<span class="debug">             ns.code: RS1: <em>from .utility import CodeHelpers;CodeHelpers.pushlines('[self.t]')</em><br />
+</span>
+<span class="debug">            markdown: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]'))<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines.t]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>code.pushlines.t</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]')</em><br />
+</span>
+<span class="debug">             ns.code: <strong>exists("<em>pushlines.t</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"code.pushlines.t"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)<strong>getValue(<em>pushlines.t, pushlines, t</em>)</strong><br />
+</span>
+<span class="debug">             ns.code: <strong>getValue("<em>pushlines.t</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown(@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[html._div_plain_.&gt;]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>html._div_plain_.&gt;</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">             ns.html: <strong>exists("<em>_div_plain_.></em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"html._div_plain_.>"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">             ns.html: getValue("_div_plain_.>","_div_plain_",">")<br />
+</span>
+<span class="debug">            markdown: markdown(&lt;/[self._tag]&gt;)<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[self._tag]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>self._tag</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>&lt;/[self._tag]&gt;</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>self._tag</em>")</strong><br />
+</span>
+<span class="debug">             ns.link: <strong>exists("<em>self._tag</em>")</strong><br />
+</span>
+<span class="debug">             ns.html: <strong>exists("<em>self._tag</em>")</strong><br />
+</span>
+<span class="debug">            ns.image: <strong>exists("<em>self._tag</em>")</strong><br />
+</span>
+<span class="debug">             ns.code: <strong>exists("<em>self._tag</em>")</strong><br />
+</span>
+<span class="debug">             ns.html: Replace self.html._div_plain_ in </[self._tag]> and markdown<br />
+</span>
+<span class="debug">            markdown: markdown(&lt;/[html._div_plain_._tag]&gt;)<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[html._div_plain_._tag]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>html._div_plain_._tag</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>&lt;/[html._div_plain_._tag]&gt;</em><br />
+</span>
+<span class="debug">             ns.html: <strong>exists("<em>_div_plain_._tag</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"html._div_plain_._tag"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">             ns.html: getValue("_div_plain_._tag","_div_plain_","_tag")<br />
+</span>
+<span class="debug">             ns.html: <strong>getValue("<em>_div_plain_._tag</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown(div)<br />
+</span>
+<span class="debug">             ns.html: MD1: <strong>div</strong><br />
+</span>
+<span class="debug">             ns.html: RS1: <em>div</em><br />
+</span>
+<span class="debug">            markdown: markdown(div)<br />
+</span>
+<span class="debug">             ns.html: MD2: fmt_str(self.-&gt;html._div_plain_):<strong>div</strong><br />
+</span>
+<span class="debug">             ns.html: RS2: <em>div</em><br />
+</span>
+<span class="debug">            markdown: markdown(div)<br />
+</span>
+<span class="debug">            markdown: markdown(&lt;/div&gt;)<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n&lt;/div&gt;\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"dump_ns_list"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>var="." html="." link="." image="."</em>") as value for <strong>dump_ns_list</strong><br />
+</span>
+<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">              ns.var: MD3: <strong>var="." html="." link="." image="."</strong><br />
+</span>
+<span class="debug">              ns.var: RS3: <em>var="." html="." link="." image="."</em><br />
+</span>
+<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.dump_ns_list):<strong>var="." html="." link="." image="."</strong><br />
+</span>
+<span class="debug">              ns.var: RS4: <em>var="." html="." link="." image="."</em><br />
+</span>
+<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[doc_closure]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"doc_closure"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_close.md"</em>") as value for <strong>doc_closure</strong><br />
+</span>
+<span class="debug">            markdown: markdown(@import "{{sys.imports}}/def_close.md")<br />
+</span>
+<span class="debug">              ns.var: MD3: <strong>@import "{{sys.imports}}/def_close.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3: <em>@import "[sys.imports]/def_close.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "[sys.imports]/def_close.md")<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_close.md"</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD1: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.doc_closure):<strong>@import "[sys.imports]/def_close.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS4: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[body_closure]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"body_closure"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_bodyclose.md"</em>") as value for <strong>body_closure</strong><br />
+</span>
+<span class="debug">            markdown: markdown(@import "{{sys.imports}}/def_bodyclose.md")<br />
+</span>
+<span class="debug">              ns.var: MD3: <strong>@import "{{sys.imports}}/def_bodyclose.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3: <em>@import "[sys.imports]/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "[sys.imports]/def_bodyclose.md")<br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+</span>
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD1: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.body_closure):<strong>@import "[sys.imports]/def_bodyclose.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS4: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
+<span class="debug">             ns.code: MD1: <strong>@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</strong><br />
+</span>
+<span class="debug">             ns.code: RS1: <em>@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
+<span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</strong><br />
+</span>
+<span class="debug">             ns.code: RS2: <em>@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
+<span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>from .utility import CodeHelpers;CodeHelpers.pushlines('[self.t]')</strong><br />
+</span>
+<span class="debug">             ns.code: RS2: <em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+</span>
+<span class="debug">             ns.code: (src)=<em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n</div>\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+</span>
+<span class="debug">             ns.code: [dict]=<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>type</strong>: exec<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>src</strong>: from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>_code</strong>: &lt;code object&gt;<br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>last</strong>: <br />
+</span>
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>_params_</strong>: {}<br />
+</span>
+<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)Compiling <strong>src=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+</span>
+<span class="debug">             ns.code: About to compile: <strong>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n&lt;/div&gt;\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</strong><br />
+</span>
+<span class="debug">             _SYSTEM: Debug output has been suspended.<br />
+</span>
+<span class="debug">             _SYSTEM: Debug output will be resumed.<br />
+</span>
+<span class="debug">             ns.code: Restore: <strong>type</strong> with <em>exec</em><br />
+</span>
+<span class="debug">             ns.code: Restore: <strong>src</strong> with <em>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')</em><br />
+</span>
+<span class="debug">             ns.code: Restore: <strong>t</strong> with <em>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")</em><br />
+</span>
+<span class="debug">            markdown: markdown()<br />
+</span>
+<span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.testdoc):<strong>[code.pushlines(t="@parw\n[html._div_plain_.&gt;]\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</strong><br />
+</span>
+<span class="debug">              ns.var: RS2: <em></em><br />
+</span>
+<span class="debug">            markdown: markdown()<br />
+</span>
+<span class="debug">               cache: Returning: <em>@parw</em><br />
+</span>
+<span class="debug">            markdown: markdown(@parw)<br />
+</span>
+<span class="debug">            smd.line: Match <strong>@parw=<em>@parw</em></strong><br />
+</span>
+<span class="debug">             smd.raw: &nbsp;&nbsp;lineObj.current_line=<br />@parw<br />&nbsp;&nbsp;m.group(2)=<br /><br />
+</span>
+<span class="debug">               cache: Returning: <em>&lt;/div&gt;</em><br />
+</span>
+<span class="debug">            markdown: markdown(&lt;/div&gt;)<br />
+</span>
+</div>
+<span class="debug">               cache: Returning: <em>@dump var="." html="." link="." image="."</em><br />
+</span>
+<span class="debug">            smd.line: Match <strong>@dump var="." html="." link="." image="."=<em>@dump var="." html="." link="." image="."</em></strong><br />
+</span>
+<span class="debug">            markdown: markdown(@dump var="." html="." link="." image=".")<br />
+</span>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -392,6 +1529,28 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 </code>
 </div>
+<span class="debug">               cache: Returning: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
+</span>
+<span class="debug">            smd.line: Match <strong>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"=<em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em></strong><br />
+</span>
+<span class="debug">            stdinput: Attempting to open: /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md using /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md<br />
+</span>
+<span class="debug">               cache: Returning: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
+<span class="debug">            smd.line: Match <strong>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"=<em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em></strong><br />
+</span>
+<span class="debug">            stdinput: Attempting to open: /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md using /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md<br />
+</span>
+<span class="debug">            markdown: markdown(&lt;/div&gt;)<br />
+</span>
 </div>
+<span class="debug">            markdown: markdown(&lt;/body&gt;)<br />
+</span>
 </body>
+<span class="debug">            markdown: markdown(&lt;/html&gt;)<br />
+</span>
 </html>

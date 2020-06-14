@@ -106,8 +106,12 @@ class VariableStore(object):
 
     def dbgPrintDict(self, msg, d):
         self.dbgPrint(msg)
+        from types import CodeType
         for i in d:
-            self.dbgPrint("&nbsp;&nbsp;<strong>{}</strong>: {}".format(i, HtmlUtils.escape_html(d[i])))
+            if isinstance(d[i], (CodeType)):
+                self.dbgPrint("&nbsp;&nbsp;<strong>{}</strong>: {}".format(i, HtmlUtils.escape_html('<code object>')))
+            else:
+                self.dbgPrint("&nbsp;&nbsp;<strong>{}</strong>: {}".format(i, HtmlUtils.escape_html(d[i])))
 
     def _markdown(self, s):
         markdown = self._md_ptr
@@ -486,12 +490,16 @@ class AdvancedNamespace(Namespace):
         from .regex import RegexSafe
         reObj = RegexSafe(which)
         
+        from types import CodeType
         for var in sorted(self.vars):
             if reObj.is_match(var) is None:
                 continue
             dict_str = '<br />'
             for d_item in self.vars[var].rval:
-                dict_str += '&nbsp;&nbsp;<strong>{}=</strong>{}<br />\n'.format(d_item, HtmlUtils.escape_html(self.vars[var].rval[d_item]))
+                if isinstance(self.vars[var].rval[d_item], (CodeType)):
+                    dict_str += '&nbsp;&nbsp;<strong>{}=</strong><em>{}</em><br />\n'.format(d_item, HtmlUtils.escape_html('<code object>'))
+                else:
+                    dict_str += '&nbsp;&nbsp;<strong>{}=</strong>{}<br />\n'.format(d_item, HtmlUtils.escape_html(self.vars[var].rval[d_item]))
             self.oprint("{2}<strong>{0}=</strong>{1}<br />".format(var, dict_str, indent))
 
 class VarNamespace(AdvancedNamespace):
