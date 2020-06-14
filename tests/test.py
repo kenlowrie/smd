@@ -74,8 +74,17 @@ class TestSMD(TestCase):
     def test_film(self):
         self.process('film')
 
-    def test_varv2(self):
-        self.process('varv2')
+    def test_quit(self):
+        self.process('quit')
+
+    def test_stop(self):
+        self.process('stop')
+
+    def test_links(self):
+        self.process('links')
+
+    def test_dump(self):
+        self.process('dump')
 
     def test_wrap(self):
         self.process('wrap')
