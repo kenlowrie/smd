@@ -122,7 +122,3 @@ Upon final acceptance of video, an invoice will be generated outlining the final
 
 @wrap p
 [var.testdoc.end]
-
-@dump var="." html="." link="." image="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"

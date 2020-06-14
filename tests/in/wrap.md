@@ -98,11 +98,5 @@ And now back to the testsetup default wrapper tag.
 
 And now we've cleared all stacked tags, so the next line will generate a warning...
 
+@set dump_ns_list="var=\"wt\" html=\"wt\""
 [var.testdoc.end]
-
-@dump var="wt" html="wt"
-
-//shotdetail4="@@ {{var.$.shotid._notes2_}}"
-//push4="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_s2}}\")}}"
-
-//[code.pushlines()]

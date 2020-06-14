@@ -125,7 +125,3 @@ shot2a._format=[shot2a._format]
 [var.shot2a._format]
 
 [var.testdoc.end]
-
-@dump var="." html="." link="." image="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"

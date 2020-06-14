@@ -188,8 +188,3 @@ The details for each type of section are as follows:
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 
 [var.testavdoc.end]
-
-@dump var="." html="." link="." image="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"
-

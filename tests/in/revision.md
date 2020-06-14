@@ -6,7 +6,5 @@
 [var.revision(v="1.0")]
 [var.revision(v="28f")]
 
+@set dump_ns_list="var=\"revision\""
 [var.testdoc.end]
-@dump var="revision"
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"

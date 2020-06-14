@@ -165,8 +165,5 @@ xyz
 def
 @parw
 
+@set dump_ns_list="var=\"revision\""
 [var.testavdoc.end]
-
-@dump var="revision"
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"

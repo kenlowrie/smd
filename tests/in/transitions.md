@@ -160,7 +160,3 @@ Description
 [link.myanchor.link]
 
 [var.testavdoc.end]
-
-@dump var="." html="." link="." image="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"

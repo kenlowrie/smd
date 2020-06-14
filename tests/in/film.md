@@ -148,8 +148,5 @@ Originally, production was planned for August 2018, but it has been delayed unti
 
 **NOTE:** Actual shoot days will be scheduled according to cast availability
 
+@var dump_ns_list="image=\".\" var=\".\" link=\".\" html=\".\""
 [var.testdoc.end]
-
-@dump image="." var="." link="." html="."
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"
