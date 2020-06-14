@@ -1,7 +1,6 @@
 // Variables that abstract the different types of DIVs
 @import "[sys.imports]/html.md"
 
-//TODO:
 //    The case for @raw | @@. When you use them in emitted lines (or inline), any @wrap tag will NOT be applied.
 //    This seems like the best case, otherwise the behaviour of the predefined code will not work as expected,
 //    when used in the context of something else. If you really need this behavior, it can be overridden by
@@ -77,7 +76,7 @@
       _inherit="div" \
       class="av"
  
-//TODO: Review this file. Lot's of goodies that will help with the docs. Also, what's this avwrapper?
+//TODO: Review this file. Lot's of goodies that will help with the docs.
 
 @html _id="_div_toc_" \
       _inherit="div" \
