@@ -37,8 +37,5 @@ ATTR1 should be "New Value":
 
 [id2]
 
+@set dump_ns_list="var=\"id\""
 [testdoc.end]
-
-@dump var="id"
-@import "[sys.imports]/def_bodyclose.md"
-@import "[sys.imports]/def_close.md"
