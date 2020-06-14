@@ -13,13 +13,12 @@
 
 // Define a set of vars for letting me make an ordered list
 // This is special, because you have to open the OL, add all the LI and then close the OL
-@html _id="ol1" \
+//TODO: It would be useful to add these _open/_close attrs to other things in here...
+@html _="ol1" \
       _inherit="ol" \
-      style="margin-left:2em"
-@var _id="ol1_open" \
-     _format="@@ {{html._div_extras_.<}}{{html.ol1.<}}"
-@var _id="ol1_close" \
-     _format="@@ {{html.ol1.>}}{{html._div_extras_.>}}"
+      _open="@@ {{_div_extras_.<}}{{self.<}}" \
+      _close="@@{{self.>}}{{_div_extras_.>}}" \
+      style="margin-left:2em" 
 
 @html _id="li1" \
       _inherit="li" \
