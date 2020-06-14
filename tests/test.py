@@ -86,6 +86,9 @@ class TestSMD(TestCase):
     def test_dump(self):
         self.process('dump')
 
+    def test_code(self):
+        self.process('code')
+
     def test_wrap(self):
         self.process('wrap')
 
