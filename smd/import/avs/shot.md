@@ -139,9 +139,9 @@
       s="path_to_image"\
       st="[ss]"
 
-@var _id="shotinfo2" _format="- [var.{{self.shotid}}.desc][b][image.{{self.shotid}}][b][var.{{self.shotid}}]" shotid="NOTSET"
+@var _id="shotinfo2" _format="[var.{{self.shotid}}.desc][b][image.{{self.shotid}}][b][var.{{self.shotid}}]" shotid="NOTSET"
 @var _id="needshot" \
-     _format="- [var.{{self.shotid}}.desc][image.needshot]<br />[var.{{self.shotid}}]" shotid="NOTSET"
+     _format="[var.{{self.shotid}}.desc][image.needshot]<br />[var.{{self.shotid}}]" shotid="NOTSET"
 
 @var _id="shot_formatter" \
         imagestyle="@set _=\"image.$.shotid\" style=\"{{ss}}\""\

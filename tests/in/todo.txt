@@ -4,6 +4,7 @@ debug - dump.md DONE
 divs - divs.md DONE (This is all the special divs. e.g. section, plain, note, code, review, syntax ...)
 dump - dump.md DONE
 header  - markdown.md DONE (and it's used in pretty much every script)
+image - image.md DONE
 mailto - mailto.md DONE (tests the encoded email addresses when a mailto: address is used.)
 markdown - markdown.md DONE
 raw - wrap.md DONE (used in lots of things)
@@ -11,9 +12,7 @@ revision - revision.md DONE (this specifically handles the revision with embedde
 stop/quit - stop.md/quit.md DONE
 wrap - wrap.md DONE
 
-image - image.md
-
-break/exit - 
+break/exit - Upon completion of all the test script conversion and a user manual sweep, see if these are still used/required.
 
 import  - import.md
 embed   - import.md
@@ -31,9 +30,9 @@ html - script1, specials?, transitions?
 ## existing scripts - review and figure out what goes where, and what is covered.
 
 film - ???
-image - ???
 misc
 script1
 specials
 transitions
 
+image - review and see what can be cleaned up with the kludges and macro usage throughout.

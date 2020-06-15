@@ -29,7 +29,7 @@
 // [var.avshot.visual]
 // [var.avshot.audio]
 // [var.avshot.end]
-// [var.avshot.noaudio]
+// [var.avshot.noaudio] 
 
 @var _id="avshot" \
           start="@@ {{html._div_av_.<}}{{html.ul.<}}" \
@@ -39,8 +39,8 @@
           shot_with_desc="{{self.start}}{{self._s}}{{self.endul}}{{html.p.<}}{{self._d}}{{html.p.>}}{{self.enddiv}}"\
           visual="{{code.pushlines(t=\"{{var.avshot.start}}\n@wrap li\")}}"\
           audio="{{code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n@wrap p\")}}"\
-          end="{{code.pushlines(t=\"@parw\n{{var.avshot.end_shot}}\n@break\")}}"\
-          noaudio="{{code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break\")}}"\
+          end="{{code.pushlines(t=\"@parw\n{{var.avshot.end_shot}}\")}}"\
+          noaudio="{{code.pushlines(t=\"@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\")}}"\
           _s="Your Shot Here"\
           _d="Your Shot Description here"
 
