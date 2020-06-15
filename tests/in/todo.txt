@@ -1,5 +1,6 @@
 help track how to reorg the test scripts to make sure everything is covered.
 
+break/exit - Upon completion of all the test script conversion and a user manual sweep, see if these are still used/required.
 debug - dump.md DONE
 divs - divs.md DONE (This is all the special divs. e.g. section, plain, note, code, review, syntax ...)
 dump - dump.md DONE
@@ -12,7 +13,8 @@ revision - revision.md DONE (this specifically handles the revision with embedde
 stop/quit - stop.md/quit.md DONE
 wrap - wrap.md DONE
 
-break/exit - Upon completion of all the test script conversion and a user manual sweep, see if these are still used/required.
+film - do side by side like image...
+
 
 import  - import.md
 embed   - import.md
@@ -22,17 +24,17 @@ var - variables.md
 set - variables.md
 
 code - code.md
-
 link - links.md
-
 html - script1, specials?, transitions?
 
 ## existing scripts - review and figure out what goes where, and what is covered.
 
-film - ???
 misc
 script1
 specials
 transitions
+
+Final reviews after completing the test script rewrites ...
+-----------------------------------------------------------
 
 image - review and see what can be cleaned up with the kludges and macro usage throughout.

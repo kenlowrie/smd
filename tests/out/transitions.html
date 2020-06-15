@@ -225,8 +225,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>shot_with_desc=</strong>{{self.start}}{{self._s}}{{self.endul}}{{html.p.&lt;}}{{self._d}}{{html.p.&gt;}}{{self.enddiv}}<br />
 &nbsp;&nbsp;<strong>visual=</strong>{{code.pushlines(t="{{var.avshot.start}}\n@wrap li")}}<br />
 &nbsp;&nbsp;<strong>audio=</strong>{{code.pushlines(t="@parw\n{{var.avshot.trans}}\n@wrap p")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{var.avshot.end_shot}}\n@break")}}<br />
-&nbsp;&nbsp;<strong>noaudio=</strong>{{code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}\n@break")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{var.avshot.end_shot}}")}}<br />
+&nbsp;&nbsp;<strong>noaudio=</strong>{{code.pushlines(t="@parw\n{{var.avshot.trans}}\n{{var.avshot.end_shot}}")}}<br />
 &nbsp;&nbsp;<strong>_s=</strong>Your Shot Here<br />
 &nbsp;&nbsp;<strong>_d=</strong>Your Shot Description here<br />
 <br />

@@ -7,14 +7,11 @@ Priority 1 | p1
 70. continue improving the automated tests and get coverage for all new functionality.
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
 85. Make a single shell script that runs both/all of the command line tests ...
-94. Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
-95. What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
 
 Priority 2 | p2
 ---------------
 35. document using this with pipenv (possibly other "popular" python environment manager(s))
 36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
-55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
 56. See how close I can get to a clean render of Buddy's music video script markdown file...
 3. Split A/V specific CSS to separate file. Realize this will complicate using smd since it requires a different cssfile(s)...
@@ -30,6 +27,7 @@ Priority 3 | p3
 78. maybe add a pause/resume method on the watcher class i could engage while parsing...
 90. Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
 61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
+55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 
 Priority 5 | p5
 ---------------
@@ -98,6 +96,8 @@ Completed
 **65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
 **92. Need a way to dump the filetracker.seen files. Where does it belong? @dump filetracker="pattern"
 **93. Shouldn't @dump sysdefaults="pattern" also be there? And get rid of @defaults?
+**94. Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
+**95. What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
 
 
 

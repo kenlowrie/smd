@@ -86,6 +86,7 @@ The anatomy of a complex variable definition. Passing parameters, self, why _ is
 Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possibly xfer to shared markdown files.
 Explain how @import '$' works when no files open i.e. reading from stdin
 Document @dump sysdef="." tracked="." and @debug.
+Document code.encode_smd
 
 </code>
 </pre>
