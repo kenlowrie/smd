@@ -1,2 +1,2 @@
 ### Testing import with '$filename'
-This will just echo this line.
+This file was imported with @import "$filename"

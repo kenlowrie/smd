@@ -15,31 +15,106 @@
 <div class="revision"><p class="revTitle">Revision: <em><strong><em><strong>0.38a</strong></em></strong></em></p></div>
 <div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2020 by <a href="https://yourcompanydomain.com">Your Company Name</a>, LLC.<br />All Rights Reserved.<br /><a href="https://yourcompanydomain.com">yourcompanydomain.com</a><br /></td><td class="right nowrap" style="border:none">John Smith<br /><em>210-555-1212</em><br />johnsmith@yourcompanydomain.com<br /></td></tr></table></div>
 <div class="review"><p class="divTitle">Notes to Reviewer</p><p style="font-size:1.2em">    Please send John Smith any and all feedback, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. Within different versions of this proposal, <ins>additions are marked like this</ins> and <del>deletions are marked like this</del></p></div>
-<p style="font-size:1.2em">And here's my test: testing123 and finally [testing][123]</p>
+<div class="plain"><p class="plainTitle">Test @import with relative $ path</p></div>
 <h3>Testing import with '$filename'</h3>
-<p style="font-size:1.2em">This will just echo this line.</p>
+<p style="font-size:1.2em">This file was imported with @import "$filename"</p>
 <h3>Testing import with '$/filename'</h3>
-<p style="font-size:1.2em">This will just echo this line.<br /></p>
-<p style="font-size:1.2em">And that's it.</p>
+<p style="font-size:1.2em">This file was imported with @import "$/filename"</p>
+ERROR: Unable to import 'this file doesn't exist'. File does not exist.<br />
 <div class="plain"><p class="plainTitle"><span class="blue">Testing @embed</span></p></div>
+ERROR: Unable to embed "this file doesn't exist". File does not exist.<br />
+<div class="extras"><p>
+&#64;import "in/import/test_embed.md - 1st Time as &#64;import"<br />
+</p></div>
+### Testing import with '$filename'
+This file was imported with @import "$filename"
+
+<p style="font-size:1.2em"><br/></p>
+### Testing import with '$/filename'
+This file was imported with @import "$/filename"
+
+<p style="font-size:1.2em">The reasoning behind @importing it first is because you can only @import once, but you can @embed as many times as you want. However, once you @embed, it shows up on the list of "seen" files by the tracker, so @import will fail. I am not sure if I want to change that behavior, since technically, @embed code would not likely be a candidate for @importing anyway...</p>
+<h3>1st @embed of in/import/test_embed.md</h3>
+&#64;embed "in/import/test_embed.md - 1st Time"<br />
+@embed 'in/import/echo.md'
+<br/>
+@embed 'in/import/echo2.md'
+
+<h3>2nd @embed of in/import/test_embed.md</h3>
+&#64;embed "in/import/test_embed.md - 2nd Time"<br />
+@embed 'in/import/echo.md'
+<br/>
+@embed 'in/import/echo2.md'
+
 <div class="plain"><p class="plainTitle"><span class="blue">Testing @watch</span></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/testsetup.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/defaults.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/common.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/code.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/link.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/divs.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/report.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/test_import.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/test_import2.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/echo.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/echo2.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/test_embed.md</em><br />
+</code>
+</div>
+WARNING: Watch file "this file doesn't exist" does not exist. Not adding to watch list
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .*/test_embed.md<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/test_embed.md</em><br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .*/test_embed.md<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/import/test_embed.md</em><br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .*/stop.md<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+Files seen during parsing: .*/stop.md<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/in/stop.md</em><br />
+</code>
+</div>
 </div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
-<strong>a=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>testing<br />
-<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
-<br />
-<strong>bx=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>123<br />
-<br />
-<strong>c=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[{{a}}][{{bx}}]<br />
 <br />
 <strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._div_code_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />

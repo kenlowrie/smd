@@ -411,7 +411,7 @@ class ScriptParser(StdioWrapper):
                 try:
                     watch_fn = m.group(1)
                     if not isfile(watch_fn):
-                        self.oprint(f"Watch file [{watch_fn}] does not exist. Not adding to watch list")
+                        self.oprint(f"WARNING: Watch file \"{watch_fn}\" does not exist. Not adding to watch list")
                     else:
                         self.tls.fileTracker.seen = watch_fn
                 except FileError as fe:
@@ -431,7 +431,7 @@ class ScriptParser(StdioWrapper):
                 try:
                     embed_fn = m.group(1)
                     if not isfile(embed_fn):
-                        raise FileError(1, "ERROR: Unable to embed '{}'. File does not exist.<br />".format(embed_fn))
+                        raise FileError(1, "ERROR: Unable to embed \"{}\". File does not exist.<br />".format(embed_fn))
 
                     self.tls.fileTracker.seen = embed_fn
 
