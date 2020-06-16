@@ -2,7 +2,15 @@
 
 [var.testavdoc.begin(title="script1.md" desc="Testing the AV Script support")]
 
+//TODO: Remove these kludges when I enhance @wrap ...
+@wrap _div_extras_
+
+@var _="wrap_kludge" c="default content" _format="<p>{{self.c}}</p>"
+@var divx_kludge="@@[html._div_extras_.<]" close="@@[html._div_extras_.>]"
+
+[divx_kludge]
 {:.red}# Script Series
+[divx_kludge.close]
 @link _="domain" _inherit="_template_" _text="https://yourdomain.com" href="https://yourdomain.com"
 @link _="me" _inherit="_template_" _text="me" href="email@yourdomain.com"
 @link _="feedback" _inherit="me" _text="feedback" href="DELETE_ME_mailto:email@yourdomain.com?subject=Your%20Film%20Title%20Feedback"
@@ -29,141 +37,141 @@
 
 @import "[sys.imports]/avs/avs.md"
 
-[var.avwrapper2.begin]
-@wrap li
-
+[var.avshot.visual]
 {:.red}PART 1: Description for part 1
 PART 1A
 {:.blue}PART 1B
-
-@parw
-[var.avwrapper2.end_shots]
-@wrap p
+[var.avshot.audio]
 
 [link.article]
 
 notes for the first part.
 and some other notes.
 And a few more.
+[var.avshot.end]
 
-@parw
-[var.avwrapper2.end]
-@break
-
-[var.avwrapper2.begin]
-@wrap li
-
+[var.avshot.visual]
 WS:Couple watching TV
+[var.avshot.noaudio]
+
+[var.avshot.visual]
 CU:Couple looking concerned
-
-@parw
-[var.avwrapper2.end_shots]
-@wrap p
+[var.avshot.audio]
 The narrative for the shots on the left would go here.
-@parw
-[var.avwrapper2.end]
-@break
+[var.avshot.end]
 
-[var.avwrapper2.begin]
-@wrap li
-MS:Paranoid guy looking thru blinds[b]If you indent a line following a shot, then that text becomes part of the prior shot, allowing you to put a little more description if you need it.
-@parw
-[var.avwrapper2.end_shots]
-@wrap p
+[var.avshot.visual]
+MS:Paranoid guy looking thru blinds
+If you indent a line following a shot, then that text becomes part of the prior shot, allowing you to put a little more description if you need it.
+[var.avshot.audio]
 {:.ignore}Indent by itself to put a blank line between the shot and desc
-@parw
-[var.avwrapper2.end]
-@break
+[var.avshot.end]
 
-[var.avwrapper2.begin]
-@wrap li
+[var.avshot.visual]
 ECU:Perspective looking thru peephole.
+[var.avshot.noaudio]
+
+[var.avshot.visual]
 CU:Locking door
-@parw
-[var.avwrapper2.end_shots]
-@wrap p
+[var.avshot.audio]
 More narrative here that goes with the shot on the left...
-@parw
-[var.avwrapper2.end]
-@break
+[var.avshot.end]
 
 
 
 
 @link _="article2" _inherit="_template_"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 PART 2: The middle section
-[var.avwrapper2.t1]
+[var.avshot.audio]
 This is a description for this section
 [link.article2(_text="Link to Article" href="https://domain.com/another_article_link")] <-- That should have been turned into a link
-[var.avwrapper2.e1]
-[var.avwrapper2.b1]
+[var.avshot.end]
+
+[var.avshot.visual]
 {:.red}MS/CU:Clips of people angry
     You can add more information about a shot by indenting the line that follows the definition. New shots are not started if you indent, however, so don't do that. :)
-[var.avwrapper2.t1]
+[var.avshot.audio]
 The narration for the Clips of people angry would be here...
-[var.avwrapper2.e1]
-[var.avwrapper2.b1]
+[var.avshot.end]
+
+[var.avshot.visual]
 WS:violence
 This begins a new shot, because we used the shot delimiter at the beginning of the line.
 {:.green}You can, however, prefix each new indented line with a different class for formatting...
-[var.avwrapper2.t1]
+[var.avshot.audio]
 CGI Websites and blogs
 {:.blue}CGI Use PIP to fill the screen
 Words, words, words, blah, blah, blah
-[var.avwrapper2.e1]
-[var.section(t="section heading goes here...")]
-[var.avwrapper2.b1]
-CGI:
-[var.avwrapper2.t1]
-CGI Text is here
-[var.avwrapper2.e1]
+[var.avshot.end]
 
+[var.section(t="section heading goes here...")]
+[var.avshot.visual]
+CGI:
+[var.avshot.audio]
+CGI Text is here
+[var.avshot.end]
+
+[divx_kludge]
 {:.pba}### Random heading
+[divx_kludge.close]
+@parw
 <div class="extras">
 <p class="question right">
-//[var.divxp(c="{: .question .right}I wonder if we should maybe add that line from the unused section about \"...\"")]
+//@@[var.divxp(c="{: .question .right}I wonder if we should maybe add that line from the unused section about \"...\"")]
 I wonder if we should maybe add that line from the unused section about "..."
 </p></div>
-[var.avwrapper2.b1]
+
+[var.avshot.visual]
 F2B:fin
-[var.avwrapper2.t1]
+[var.avshot.audio]
 {: .question .left}fin. credits.
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 {: .ignore}Anything with a .ignore class won't be displayed when the page is rendered by a browser, but is still part of the actual HTML document.
-[var.avwrapper2.b1]
+[var.avshot.visual]
 WS:Stock clips of TV shows that ...
-[var.avwrapper2.t1]
+[var.avshot.audio]
 {:.blue}So many programs on television today ...
 We should ***practice tolerance*** and ...
 {:.green}It’s also crucial for people to *...* and **...**.
 {:.red}We are past due for ...
-[var.avwrapper2.e1]
-[var.avwrapper2.b1]
+[var.avshot.end]
+
+[var.avshot.visual]
 TS1
-[var.avwrapper2.e2]
-[var.avwrapper2.b1]
+[var.avshot.noaudio]
+
+[var.avshot.visual]
 TS2
-[var.avwrapper2.e2]
-[var.avwrapper2.b1]
+[var.avshot.noaudio]
+
+[var.avshot.visual]
 TS3 
-[var.avwrapper2.t1]
+[var.avshot.audio]
+
 footage
 
 bar
-[var.avwrapper2.e1]
+[var.avshot.end]
 
+[divx_kludge]
 ## heading
+[divx_kludge.close]
 
+[divx_kludge]
 ##    heading with leading spaces
+[divx_kludge.close]
 
-@wrap _div_extras_
+[divx_kludge]
+@wrap p
 xyz
 
 def
 @parw
+[divx_kludge.close]
 
 @set dump_ns_list="var=\"revision\""
+
 [var.testavdoc.end]

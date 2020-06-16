@@ -4,147 +4,145 @@
 
 [var.plain.with_content(t="{:.blue}Transitions", c="{:.blue}This test document is used to test the transitions from A/V sections")]
 
-//TODO: Update this to use the newer avshot support
-
 @import "[sys.imports]/avs/avs.md"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 [var.plain(t="This should be a new section")]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 [var.plain(t="{:.green}This should be a new section")]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @var variable="VALUE"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot - [variable] <-- should be the word VALUE
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @link _="cls" _inherit="_template_" href="https://www.cloudylogic.com" _text="{{self._}}"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot - [cls] <-- should be a link to www.cloudylogic.com
 Shot 2 - [cls]
 {:.red}Shot 3 - [cls]
 Shot 4 - [cls] - Working good..
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @link _="Google" _inherit="_template_" href="https://www.google.com" _text="{{self._}}"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot - [Google] <-- Should be link to google.com
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 @link _="amazon" _inherit="_template_" title="amazon website" href="https://www.amazon.com" _text="{{self._}}"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot - [amazon] <-- Should be link to amazon.com with title "amazon website"
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @link _="Amazon" _inherit="_template_" title="Amazon website" href="https://www.amazon.com" _text="{{self._}}"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot - [Amazon] <-- Should be link to amazon.com with title "Amazon website"
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 //$$revision$$:<<1b>>
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @break
 [var.cover(title="A" author="B" logline="C")]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 @break
 
 [var.contact(c1="D" c2="E"  c3="F"  cn = "A"  ph  =  "B"    em   ="C")]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @dump var="b|v|cover"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @dump link="A|G|a|c"
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 # Header
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 {:.red}##Header2a
 
-[var.avwrapper2.b1]
+[var.avshot.visual]
 Shot
-[var.avwrapper2.t1]
+[var.avshot.audio]
 Description
 
 {:.red}$$revision$$:<<1 This should not be a new div, class prefixes are not allowed here.>>
@@ -152,7 +150,7 @@ Description
 {:.green}$$contact$$:<<.NOT>>:<<.HERE>>:<<.EITHER>>:<<1>>:<<2>>:<<3>>
 {:.red}[variable]=NO NOT HERE EITHER
 {:.blue}[link]:not_in_links_either_
-[var.avwrapper2.e1]
+[var.avshot.end]
 
 @break
 [link.bm_factory(nm="myanchor" t="*This is my text*")]
