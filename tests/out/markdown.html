@@ -44,8 +44,6 @@
 <div class="extras"><h2>header with leading tab &lpar;which my editor converts to spaces&rpar;</h2></div>
 <div class="extras"><p>header markdown must be first thing on the line. # This will not be a header.</p></div>
 header markdown must be first thing on the line. # This will not be a header, even if you use @raw...
-WARNING: wrapper stack is empty<br />
-</div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -168,14 +166,14 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>markdown.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing markdown<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
@@ -184,6 +182,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>t=</strong>## header with leading tab &amp;lpar;which my editor converts to spaces&amp;rpar;<br />
 <br />

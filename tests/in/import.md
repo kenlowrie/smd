@@ -1,7 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="import.md" desc="Testing @import and @embed and @watch")]
-@wrap html.divx, p
+[var.testdoc.begin(title="import.md" desc="Testing @import and @embed and @watch")]
 
 {:.blue}#Testing @import
 
@@ -58,6 +57,5 @@ This next file doesn't exist. Should get a warning from @watch...
 @watch "in/stop.md"
 @dump tracked=".*/stop.md"
 
-@parw *
 @set dump_ns_list="var=\".*\" link=\"c|d\""
-[var.testavdoc.end]
+[var.testdoc.end]

@@ -6,7 +6,5 @@
 
 [plain(t="Testing adding new @code builtins")]
 
-//TODO: Make the formatter for @dump code= remove the objectIDs from output with a parameter...
-//@set dump_ns_list="code=\".\""
-
+@set dump_ns_list="code=\".\""
 [var.testdoc.end]

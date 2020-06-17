@@ -1,10 +1,7 @@
 @import "$/testsetup.md"
-//TODO: move this to testsetup.md
-@set _="wrap_h" hash2="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash2}}\n@parw 1\")}}"
 
+[var.testdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
 
-[var.testavdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
-@wrap html.divx, p
 [wrap_h.hash1]
 
 [wrap_h(t="### Testing var.section")]
@@ -202,4 +199,4 @@ And one last thing[b]
 @@[html.p.>]
 [var.syntax.wc_close]
 
-[testavdoc.end]
+[testdoc.end]

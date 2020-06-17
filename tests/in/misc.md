@@ -1,6 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="misc.md" desc="Testing miscellaneous stuff")]
+[var.testdoc_nw.begin(title="misc.md" desc="Testing miscellaneous stuff")]
 
 @var var="{:.red}This text will be RED"
 [var.divxp(c="Example: [var]")]
@@ -123,4 +123,4 @@ Upon final acceptance of video, an invoice will be generated outlining the final
 ### Signatures
 [var.divxp.close]
 
-[var.testavdoc.end]
+[var.testdoc_nw.end]

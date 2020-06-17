@@ -1,6 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="transitions.md" desc="Testing transitions between shots in AV scripts")]
+[var.testdoc_nw.begin(title="transitions.md" desc="Testing transitions between shots in AV scripts")]
 
 [var.plain.with_content(t="{:.blue}Transitions", c="{:.blue}This test document is used to test the transitions from A/V sections")]
 
@@ -157,4 +157,4 @@ Description
 [link.myanchor]
 [link.myanchor.link]
 
-[var.testavdoc.end]
+[var.testdoc_nw.end]

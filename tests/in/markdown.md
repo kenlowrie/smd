@@ -1,7 +1,7 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="markdown.md" desc="Testing markdown")]
-@wrap html.divx, p
+[var.testdoc.begin(title="markdown.md" desc="Testing markdown")]
+
 // markdown tests
 *emphasis*[b]
 **strong**[b]
@@ -53,6 +53,5 @@ words
 header markdown must be first thing on the line. # This will not be a header.
 @@header markdown must be first thing on the line. # This will not be a header, even if you use @raw...
 
-@parw *
 @set dump_ns_list="var=\".\""
 [var.testdoc.end]

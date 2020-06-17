@@ -1,6 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="script1.md" desc="Testing the AV Script support")]
+[var.testdoc_nw.begin(title="script1.md" desc="Testing the AV Script support")]
 
 //TODO: Remove these kludges when I enhance @wrap ...
 @wrap _div_extras_
@@ -174,4 +174,4 @@ def
 
 @set dump_ns_list="var=\"revision\""
 
-[var.testavdoc.end]
+[var.testdoc_nw.end]

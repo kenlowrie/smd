@@ -1,12 +1,11 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="wrap.md" desc="Testing @wrap and @parw functionality")]
+[var.testdoc.begin(title="wrap.md" desc="Testing @wrap and @parw functionality")]
 
 @html _id="wt1" _tag="span" class="myclass1" style="color:red"
 @html _id="wt2" _tag="span" class="myclass2" style="color:blue"
 @html _id="wt3" _tag="span" class="myclass3" style="color:green"
 
-@wrap html.divx, p
 [wrap_h(t="[hash2]")]
 ----------#TS> Put html.divx,p wrapper in effect for document
 
@@ -124,5 +123,6 @@ And now I've cleared everything once again.[bb]
 
 [wrap_h(t="### And this is the end of the @wrap test.")]
 
+Going to get one more warning about the wrapper stack being empty, cause I flushed it above...
 @set dump_ns_list="var=\"wt\" html=\"wt\""
-[var.testavdoc.end]
+[var.testdoc.end]

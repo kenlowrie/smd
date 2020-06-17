@@ -285,14 +285,14 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>dump.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing @dump and @debug functionality<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
@@ -301,6 +301,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>t=</strong># Testing @dump<br />
 <br />
@@ -477,10 +479,6 @@ NAMESPACE: html<br />
 <strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
@@ -790,44 +788,37 @@ NAMESPACE: code<br />
 <span class="debug green"><strong>smd.raw</strong></span><br />
 <span class="debug green"><strong>stdinput</strong></span><br />
 </div>
-<span class="debug">            markdown: markdown(@parw *)<br />
+<span class="debug">            markdown: markdown([var.testdoc.end])<br />
 </span>
-<span class="debug">            smd.line: Match <strong>@parw *=<em>@parw *
-</em></strong><br />
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[var.testdoc.end]</em><br />
 </span>
-<span class="debug">             smd.raw: &nbsp;&nbsp;lineObj.current_line=<br />@parw *<br />&nbsp;&nbsp;m.group(2)=<br />*<br />
+<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>var.testdoc.end</em><br />
 </span>
-<span class="debug">            markdown: markdown([var.testavdoc.end])<br />
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[var.testdoc.end]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[var.testavdoc.end]</em><br />
+<span class="debug">              ns.var: <strong>exists("<em>testdoc.end</em>")</strong><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>var.testavdoc.end</em><br />
+<span class="debug">                  ns: getValue(<em>"var.testdoc.end"</em>, <strong>[None]</strong>)<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[var.testavdoc.end]</em><br />
+<span class="debug">              ns.var: <strong>getValue("<em>testdoc.end</em>")</strong><br />
 </span>
-<span class="debug">              ns.var: <strong>exists("<em>testavdoc.end</em>")</strong><br />
+<span class="debug">            markdown: markdown({{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}})<br />
 </span>
-<span class="debug">                  ns: getValue(<em>"var.testavdoc.end"</em>, <strong>[None]</strong>)<br />
+<span class="debug">              ns.var: MD1: <strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}</strong><br />
 </span>
-<span class="debug">              ns.var: <strong>getValue("<em>testavdoc.end</em>")</strong><br />
+<span class="debug">              ns.var: RS1: <em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
-<span class="debug">            markdown: markdown({{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}})<br />
+<span class="debug">            markdown: markdown([code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")])<br />
 </span>
-<span class="debug">              ns.var: MD1: <strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}</strong><br />
-</span>
-<span class="debug">              ns.var: RS1: <em>[code.pushlines(t="@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
-</span>
-<span class="debug">            markdown: markdown([code.pushlines(t="@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")])<br />
-</span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines(t="@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
 <span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>code.pushlines</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
 <span class="debug">             ns.code: <strong>exists("<em>pushlines</em>")</strong><br />
 </span>
-<span class="debug">                  ns: getValue(<em>"code.pushlines"</em>, <strong>[{'t': '@dump [dump_ns_list]\\n[doc_closure]\\n[body_closure]'}]</strong>)<br />
+<span class="debug">                  ns: getValue(<em>"code.pushlines"</em>, <strong>[{'t': '@parw\\n@dump [dump_ns_list]\\n[doc_closure]\\n[body_closure]'}]</strong>)<br />
 </span>
 <span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)<strong>getValue(<em>pushlines, pushlines, None</em>)</strong><br />
 </span>
@@ -847,9 +838,9 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: Parameters:<br />
 </span>
-<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
 </span>
-<span class="debug">             ns.code: Replacing: <strong>t</strong> with <em>@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">             ns.code: Replacing: <strong>t</strong> with <em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.src</em>")</strong><br />
 </span>
@@ -875,13 +866,13 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.t</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown(@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
+<span class="debug">            markdown: markdown(@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
 </span>
 <span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
 </span>
 <span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
 </span>
@@ -913,7 +904,7 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
 </span>
@@ -973,7 +964,7 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
+<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
 </span>
@@ -1029,23 +1020,23 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
-<span class="debug">             ns.code: MD1: <strong>@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</strong><br />
+<span class="debug">             ns.code: MD1: <strong>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</strong><br />
 </span>
-<span class="debug">             ns.code: RS1: <em>@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+<span class="debug">             ns.code: RS1: <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
-<span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</strong><br />
+<span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</strong><br />
 </span>
-<span class="debug">             ns.code: RS2: <em>@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+<span class="debug">             ns.code: RS2: <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
 <span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>from .utility import CodeHelpers;CodeHelpers.pushlines('[self.t]')</strong><br />
 </span>
-<span class="debug">             ns.code: RS2: <em>from .utility import CodeHelpers;CodeHelpers.pushlines('@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+<span class="debug">             ns.code: RS2: <em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
 </span>
-<span class="debug">             ns.code: (src)=<em>from .utility import CodeHelpers;CodeHelpers.pushlines('@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+<span class="debug">             ns.code: (src)=<em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
 </span>
 <span class="debug">             ns.code: [dict]=<br />
 </span>
@@ -1053,7 +1044,7 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>src</strong>: from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
 </span>
-<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>_code</strong>: &lt;code object&gt;<br />
 </span>
@@ -1061,9 +1052,9 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>_params_</strong>: {}<br />
 </span>
-<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)Compiling <strong>src=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
+<span class="debug">             ns.code: (<strong><em><span class="blue">@code</span></em></strong>)Compiling <strong>src=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</em><br />
 </span>
-<span class="debug">             ns.code: About to compile: <strong>from .utility import CodeHelpers;CodeHelpers.pushlines('@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</strong><br />
+<span class="debug">             ns.code: About to compile: <strong>from .utility import CodeHelpers;CodeHelpers.pushlines('@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"')</strong><br />
 </span>
 <span class="debug">             _SYSTEM: Debug output has been suspended.<br />
 </span>
@@ -1077,11 +1068,19 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            markdown: markdown()<br />
 </span>
-<span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.testavdoc):<strong>[code.pushlines(t="@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</strong><br />
+<span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.testdoc):<strong>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</strong><br />
 </span>
 <span class="debug">              ns.var: RS2: <em></em><br />
 </span>
 <span class="debug">            markdown: markdown()<br />
+</span>
+<span class="debug">               cache: Returning: <em>@parw</em><br />
+</span>
+<span class="debug">            markdown: markdown(@parw)<br />
+</span>
+<span class="debug">            smd.line: Match <strong>@parw=<em>@parw</em></strong><br />
+</span>
+<span class="debug">             smd.raw: &nbsp;&nbsp;lineObj.current_line=<br />@parw<br />&nbsp;&nbsp;m.group(2)=<br /><br />
 </span>
 <span class="debug">               cache: Returning: <em>@dump var="." html="." link="." image="."</em><br />
 </span>
@@ -1211,14 +1210,14 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>dump.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing @dump and @debug functionality<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
@@ -1227,6 +1226,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>t=</strong># Testing @debug<br />
 <br />
@@ -1379,10 +1380,6 @@ NAMESPACE: html<br />
 <strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />

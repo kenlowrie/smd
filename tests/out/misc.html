@@ -230,15 +230,15 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>misc.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing miscellaneous stuff<br />
-<br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Production Estimate<br />
 <br />
@@ -250,6 +250,8 @@ NAMESPACE: var<br />
 <strong>var=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.red}This text will be RED<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 <br />
 ----------------------------------------<br />
@@ -401,10 +403,6 @@ NAMESPACE: html<br />
 <strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />

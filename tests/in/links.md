@@ -1,7 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="links.md" desc="Testing the @link namespace")]
-@wrap html.divx, p
+[var.testdoc.begin(title="links.md" desc="Testing the @link namespace")]
 
 
 [wrap_h(t="###Table of Contents")]
@@ -133,7 +132,5 @@ You can send [feedback]. Or you can just email [me]. Or go to my [domain]. But d
 
 Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:
 
-
-@parw *
 @set dump_ns_list="var=\".\" link=\".\""
-[var.testavdoc.end]
+[var.testdoc.end]

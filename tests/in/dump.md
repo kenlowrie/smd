@@ -1,7 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="dump.md" desc="Testing @dump and @debug functionality")]
-@wrap html.divx, p
+[var.testdoc.begin(title="dump.md" desc="Testing @dump and @debug functionality")]
 
 [plain(t="Testing @dump keyword and options")]
 
@@ -32,6 +31,4 @@
 @debug toggle="."
 @debug tags="."
 
-@parw *
-
-[var.testavdoc.end]
+[var.testdoc.end]

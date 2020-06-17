@@ -1,7 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="quit.md" desc="Testing @quit keyword")]
-@wrap html.divx, p
+[var.testdoc.begin(title="quit.md" desc="Testing @quit keyword")]
 
 [plain(t="Testing @quit keyword")]
 
@@ -15,4 +14,4 @@ We will include an import with the @quit keyword in, to make sure all files are 
 
 If this appears in out, Houston we have a problem.
 
-[var.testavdoc.end]
+[var.testdoc.end]

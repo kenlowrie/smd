@@ -1,6 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="image.md" desc="Testing Images in Shots support from avs/image.md")]
+[var.testdoc_nw.begin(title="image.md" desc="Testing Images in Shots support from avs/image.md")]
 
 @var imports="../in/import"
 
@@ -84,13 +84,6 @@ Single Shot Sequence
     [image.shot3a]
     [image.shot3b]
 [var.avshot.noaudio]
-
-//TODO: Move this to divs.md, but will cause lots of failures during testing.
-//TODO: Is it a bug that _div_extras_ doesn't output as raw? Shouldn't it?
-//TODO: Need a way to have multiple tags. either @wrap tag1, tag2 (clean) or ability to specify opentag and closetag on html (this wouldn't work because of classes and other attrs...)
-//@html _="divxp" _tag="div><p" _format="<div class=\"extras\"><p>{{self.c}}"
-
-//@wrap html.divx, html.p
 
 @wrap _div_extras_
 
@@ -185,4 +178,4 @@ var.shotinfo2.shotid=[var.shotinfo2.shotid]
 [wrap_kludge(c="[var.shot2a._format]")]
 @parw
 
-[var.testavdoc.end]
+[var.testdoc_nw.end]

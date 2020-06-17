@@ -204,14 +204,14 @@ NAMESPACE: var<br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 <br />
-<strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>links.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing the @link namespace<br />
 <br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
@@ -222,6 +222,8 @@ NAMESPACE: var<br />
 <strong>whoami=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Ken Lowrie<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>t=</strong>#### Aliases<br />
 <br />

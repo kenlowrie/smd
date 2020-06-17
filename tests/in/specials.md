@@ -1,6 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="specials.md" desc="Testing Cover, Revision and Contact section types")]
+[var.testdoc_nw.begin(title="specials.md" desc="Testing Cover, Revision and Contact section types")]
 
 @var lpar="&lpar;"
 @var rpar="&rpar;"
@@ -187,4 +187,4 @@ The details for each type of section are as follows:
 [var.contact.inline(cn="Contact Name" ph="210-555-1212"   c2="Copyright Line 2c" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 
-[var.testavdoc.end]
+[var.testdoc_nw.end]

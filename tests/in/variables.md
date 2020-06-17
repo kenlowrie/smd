@@ -1,7 +1,6 @@
 @import "$/testsetup.md"
 
-[var.testavdoc.begin(title="variables.md" desc="Testing the @var namespace")]
-@wrap html.divx, p
+[var.testdoc.begin(title="variables.md" desc="Testing the @var namespace")]
 
 Variables provide a convenient means for text substitution. The syntax for defining a variable is: **@var variable="value"**. Take the following example:
 [wrap_h(t="####<span class=\"indent\">@var name=\"Ken Lowrie\"</span>")]
@@ -74,6 +73,5 @@ ATTR1 should be "New Value":
 @parw
 @@[html.divx.>]
 
-@parw
 @set dump_ns_list="var=\"id\""
-[testavdoc.end]
+[testdoc.end]

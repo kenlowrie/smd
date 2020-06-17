@@ -1,6 +1,5 @@
 @import "$/testsetup.md"
-[var.testavdoc.begin(title="stop.md" desc="Testing @stop keyword")]
-@wrap html.divx, p
+[var.testdoc.begin(title="stop.md" desc="Testing @stop keyword")]
 
 [plain(t="Testing @stop keyword")]
 
@@ -14,4 +13,4 @@ We will include an import with the @stop keyword in, to make sure all files are 
 
 If this appears in out, Houston we have a problem.
 @parw *
-[var.testavdoc.end]
+[var.testdoc.end]
