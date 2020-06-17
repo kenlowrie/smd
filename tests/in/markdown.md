@@ -1,7 +1,7 @@
 @import "$/testsetup.md"
 
-[var.testdoc.begin(title="markdown.md" desc="Testing markdown")]
-
+[var.testavdoc.begin(title="markdown.md" desc="Testing markdown")]
+@wrap html.divx, p
 // markdown tests
 *emphasis*[b]
 **strong**[b]
@@ -25,31 +25,34 @@ nos ++this is added++ and ~~this is deleted~~ or end[b]
 *emphasis and **strong** and ~~old ++new stuff inside++ stuff~~ and ~~old stuff~~*[b]
 
 // headers
+@wrap html.divx
 # h1
 ## h2
 ### h3
 #### h4
 ##### h5
 ###### h6
+@parw
 
-#h1
+[wrap_h(t="#h1")]
 words
-##h2
+[wrap_h(t="##h2")]
 words
-###h3
+[wrap_h(t="###h3")]
 words
-####h4
+[wrap_h(t="####h4")]
 words
-#####h5
+[wrap_h(t="#####h5")]
 words
-######h6
+[wrap_h(t="######h6")]
 words
 
- # header with leading space
-    ## header with leading tab (which my editor converts to spaces)
+[wrap_h(t="# header with leading space")]
+[wrap_h(t="## header with leading tab &lpar;which my editor converts to spaces&rpar;")]
 
 header markdown must be first thing on the line. # This will not be a header.
 @@header markdown must be first thing on the line. # This will not be a header, even if you use @raw...
 
+@parw *
 @set dump_ns_list="var=\".\""
 [var.testdoc.end]

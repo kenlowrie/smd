@@ -1,10 +1,13 @@
 @import "$/testsetup.md"
+//TODO: move this to testsetup.md
+@set _="wrap_h" hash2="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash2}}\n@parw 1\")}}"
 
-[var.testdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
 
-[hash1]
+[var.testavdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
+@wrap html.divx, p
+[wrap_h.hash1]
 
-### Testing var.section
+[wrap_h(t="### Testing var.section")]
 [var.section]
 [var.section()] <-- Intentional error, calling section with empty paramter list
 [var.section(t="default format section header")]
@@ -15,8 +18,8 @@
 [var.section.with_content(c="with content, empty title")]
 [var.section.with_content(t=".with_content title" c="and content too")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 [section]
 [section()] <-- Intentional error, calling section with empty paramter list
 [section(t="default format section header")]
@@ -27,18 +30,18 @@
 [section.with_content(c="with content, empty title")]
 [section.with_content(t=".with_content title" c="and content too")]
 
-[hash1]
-### Testing var.section_pbb
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.section_pbb")]
 [var.section_pbb]
 [var.section_pbb.with_content]
 [var.section_pbb(t="section_pbb title")]
 [var.section_pbb.with_content(c="section_pbb content", t="section_pbb title2")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 
-[hash1]
-### Testing var.plain
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.plain")]
 
 [var.plain]
 [var.plain.with_content]
@@ -46,16 +49,16 @@
 [var.plain.with_content]
 [var.plain.with_content(c="plain non default comment")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 [plain]
 [plain.with_content]
 [plain(t="plain non default title")]
 [plain.with_content]
 [plain.with_content(c="plain non default comment")]
 
-[hash1]
-### Testing var.code
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.code")]
 
 [var.code]
 [var.code.with_content]
@@ -63,8 +66,8 @@
 [var.code.with_content]
 [var.code.with_content(c="code non default comment")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 
 [code]
 [code.with_content]
@@ -72,8 +75,8 @@
 [code.with_content]
 [code.with_content(c="code non default comment")]
 
-[hash1]
-### Testing var.toc
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.toc")]
 [var.toc]
 [var.toc.with_content]
 [var.toc(t="toc non default title")]
@@ -81,56 +84,57 @@
 [var.toc.with_content(c="toc non default comment")]
 
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 [toc]
 [toc.with_content]
 [toc(t="toc non default title")]
 [toc.with_content]
 [toc.with_content(c="toc non default comment")]
 
-[hash1]
-### Testing var.review
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.review")]
 [var.review]
 [var.review.with_content]
 [var.review(t="review non default title")]
 [var.review.with_content]
 [var.review.with_content(c="review non default comment")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 [review]
 [review.with_content]
 [review(t="review non default title")]
 [review.with_content]
 [review.with_content(c="review non default comment")]
 
-[hash1]
-### Testing var.note
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.note")]
 [var.note]
 [var.note.with_content]
 [var.note(t="note non default title")]
 [var.note.with_content]
 [var.note.with_content(c="note non default comment")]
 
-[hash2]
-### Testing without the namespace prefix var.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 [note]
 [note.with_content]
 [note(t="note non default title")]
 [note.with_content]
 [note.with_content(c="note non default comment")]
 
-[hash1]
-### Testing var.extras and var.divxp
-[var.extras]
-[var.extras(c="your comment inside an extras div")]
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.extras and var.divxp")]
+//TODO: Should these emit the raw prefix by default? Look where they are used. if always with @@, then fix it!
+@@[var.extras]
+@@[var.extras(c="your comment inside an extras div")]
 
-[var.divxp]
-[var.divxp(c="your content inside a p tag inside a div")]
+@@[var.divxp]
+@@[var.divxp(c="your content inside a p tag inside a div")]
 
-[hash1]
-### Testing var.specials
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.specials")]
 
 [var.syntax]
 [syntax]
@@ -198,4 +202,4 @@ And one last thing[b]
 @@[html.p.>]
 [var.syntax.wc_close]
 
-[testdoc.end]
+[testavdoc.end]

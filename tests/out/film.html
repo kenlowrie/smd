@@ -50,12 +50,12 @@
 </div>
 <div class="section"><p class="divTitle">Cast Headshots</p></div>
 <div class="extras">
-<h2>For the part of <span class="cast">DAUGHTER</span></h2>
+<div class="extras"><h2>For the part of <span class="cast">DAUGHTER</span></h2></div>
 </div>
 <div class="extras"><p><img src="../in/import/actress1.jpg" style="margin-left:auto;margin-right:auto;width:40%;border:1px solid;padding:1em;"/> Actor1 Name - Source: TAW</p></div>
 <div class="extras"><p><img src="../in/import/actress2.jpg" style="margin-left:auto;margin-right:auto;width:40%;border:1px solid;padding:1em;"/> Actor2 Name - Source: TAW</p></div>
 <div class="extras">
-<h2 class="pbb">Proposed shooting schedule</h2>
+<div class="extras"><h2 class="pbb">Proposed shooting schedule</h2></div>
 </div>
 <div class="extras"><p>Originally, production was planned for August 2018, but it has been delayed until September due to scheduling conflicts of both cast and crew. We are anticipating two to three &lpar;1/2&rpar; days for production as follows:</p></div>
 <div class="scene"><p class="divTitle">Scene 3 EXT</p><p style="font-size:1.2em">Cast: <span class="cast">MOM</span>, <span class="cast">DAUGHTER</span>, <span class="cast">SON</span><br /><br />Info: One (1) production day, evening shoot, <em>call time <strong>5pm</strong>, wrap time <strong>8pm</strong></em>.</p></div>
@@ -589,6 +589,9 @@ NAMESPACE: var<br />
 <br />
 <strong>wardrobe=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.tags.wardrobe]<br />
 <br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+<br />
 <strong>wrap_kludge=</strong><br />&nbsp;&nbsp;<strong>c=</strong>Originally, production was planned for August 2018, but it has been delayed until September due to scheduling conflicts of both cast and crew. We are anticipating two to three [lp]1/2[rp] days for production as follows:<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;p&gt;{{self.c}}&lt;/p&gt;<br />
 <br />
@@ -873,6 +876,10 @@ NAMESPACE: html<br />
 <br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
 <strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />

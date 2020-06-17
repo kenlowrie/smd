@@ -7,142 +7,141 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="plain">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: divs.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: builtin DIVs from sys.imports/divs.md</h3>
-<h1>------------------------------------------</h1>
-<h3>Testing var.section</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.section</h3></div>
 <div class="section"><p class="divTitle">This is your section title</p></div>
-<p style="font-size:1.2em">[var.section()] <-- Intentional error, calling section with empty paramter list</p>
+<div class="extras"><p>[var.section()] <-- Intentional error, calling section with empty paramter list</p></div>
 <div class="section"><p class="divTitle">default format section header</p></div>
 <div class="section"><p class="divTitle">default format section header</p><p style="font-size:1.2em"></p></div>
-<p style="font-size:1.2em">[var.section.with_content()]</p>
+<div class="extras"><p>[var.section.with_content()]</p></div>
 <div class="section"><p class="divTitle">.with_content title</p><p style="font-size:1.2em"></p></div>
 <div class="section"><p class="divTitle"></p><p style="font-size:1.2em"></p></div>
 <div class="section"><p class="divTitle"></p><p style="font-size:1.2em">with content, empty title</p></div>
 <div class="section"><p class="divTitle">.with_content title</p><p style="font-size:1.2em">and content too</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="section"><p class="divTitle">.with_content title</p></div>
-<p style="font-size:1.2em">[section()] <-- Intentional error, calling section with empty paramter list</p>
+<div class="extras"><p>[section()] <-- Intentional error, calling section with empty paramter list</p></div>
 <div class="section"><p class="divTitle">default format section header</p></div>
 <div class="section"><p class="divTitle">default format section header</p><p style="font-size:1.2em">and content too</p></div>
-<p style="font-size:1.2em">[section.with_content()] <-- Intentional error, calling section with empty paramter list</p>
+<div class="extras"><p>[section.with_content()] <-- Intentional error, calling section with empty paramter list</p></div>
 <div class="section"><p class="divTitle">.with_content title</p><p style="font-size:1.2em">and content too</p></div>
 <div class="section"><p class="divTitle"></p><p style="font-size:1.2em">and content too</p></div>
 <div class="section"><p class="divTitle"></p><p style="font-size:1.2em">with content, empty title</p></div>
 <div class="section"><p class="divTitle">.with_content title</p><p style="font-size:1.2em">and content too</p></div>
-<h1>------------------------------------------</h1>
-<h3>Testing var.section_pbb</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.section_pbb</h3></div>
 <div class="section pbb"><p class="divTitle">This is your section title</p></div>
 <div class="section pbb"><p class="divTitle">This is your section title</p><p style="font-size:1.2em"></p></div>
 <div class="section pbb"><p class="divTitle">section_pbb title</p></div>
 <div class="section pbb"><p class="divTitle">section_pbb title2</p><p style="font-size:1.2em">section_pbb content</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
-<h1>------------------------------------------</h1>
-<h3>Testing var.plain</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.plain</h3></div>
 <div class="plain"><p class="plainTitle">This is your plain title</p></div>
 <div class="plain"><p class="plainTitle">This is your plain title</p><p style="font-size:1.2em">This is your plain content</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p><p style="font-size:1.2em">This is your plain content</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p><p style="font-size:1.2em">plain non default comment</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="plain"><p class="plainTitle">plain non default title</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p><p style="font-size:1.2em">plain non default comment</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p><p style="font-size:1.2em">plain non default comment</p></div>
 <div class="plain"><p class="plainTitle">plain non default title</p><p style="font-size:1.2em">plain non default comment</p></div>
-<h1>------------------------------------------</h1>
-<h3>Testing var.code</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.code</h3></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">This is your code title</code></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">This is your code title</code><code style="font-size:1.2em">This is your code content</code></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">code non default title</code></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">code non default title</code><code style="font-size:1.2em">This is your code content</code></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">code non default title</code><code style="font-size:1.2em">code non default comment</code></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">code non default title</code></div>
-<p style="font-size:1.2em">[code.with_content]</p>
+<div class="extras"><p>[code.with_content]</p></div>
 <div class="code"><code style="font-size:1.4em;font-weight:bold">code non default title</code></div>
-<p style="font-size:1.2em">[code.with_content]</p>
-<p style="font-size:1.2em">[code.with_content(c="code non default comment")]</p>
-<h1>------------------------------------------</h1>
-<h3>Testing var.toc</h3>
+<div class="extras"><p>[code.with_content]</p></div>
+<div class="extras"><p>[code.with_content(c="code non default comment")]</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.toc</h3></div>
 <div class="toc"><p class="divTitle">This is your toc title</p></div>
 <div class="toc"><p class="divTitle">This is your toc title</p><p style="font-size:1.2em">This is your toc content</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p><p style="font-size:1.2em">This is your toc content</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p><p style="font-size:1.2em">toc non default comment</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="toc"><p class="divTitle">toc non default title</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p><p style="font-size:1.2em">toc non default comment</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p><p style="font-size:1.2em">toc non default comment</p></div>
 <div class="toc"><p class="divTitle">toc non default title</p><p style="font-size:1.2em">toc non default comment</p></div>
-<h1>------------------------------------------</h1>
-<h3>Testing var.review</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.review</h3></div>
 <div class="review"><p class="divTitle">This is your review title</p></div>
 <div class="review"><p class="divTitle">This is your review title</p><p style="font-size:1.2em">This is your review content</p></div>
 <div class="review"><p class="divTitle">review non default title</p></div>
 <div class="review"><p class="divTitle">review non default title</p><p style="font-size:1.2em">This is your review content</p></div>
 <div class="review"><p class="divTitle">review non default title</p><p style="font-size:1.2em">review non default comment</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="review"><p class="divTitle">review non default title</p></div>
 <div class="review"><p class="divTitle">review non default title</p><p style="font-size:1.2em">review non default comment</p></div>
 <div class="review"><p class="divTitle">review non default title</p></div>
 <div class="review"><p class="divTitle">review non default title</p><p style="font-size:1.2em">review non default comment</p></div>
 <div class="review"><p class="divTitle">review non default title</p><p style="font-size:1.2em">review non default comment</p></div>
-<h1>------------------------------------------</h1>
-<h3>Testing var.note</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.note</h3></div>
 <div class="extras"><p class="note red indent">This is your note title</p></div>
 <div class="extras"><p class="note red indent">This is your note title</p><p style="font-size:1.2em">This is your note content</p></div>
 <div class="extras"><p class="note red indent">note non default title</p></div>
 <div class="extras"><p class="note red indent">note non default title</p><p style="font-size:1.2em">This is your note content</p></div>
 <div class="extras"><p class="note red indent">note non default title</p><p style="font-size:1.2em">note non default comment</p></div>
-<h2>------------------------------------------</h2>
-<h3>Testing without the namespace prefix var.</h3>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
 <div class="extras"><p class="note red indent">note non default title</p></div>
 <div class="extras"><p class="note red indent">note non default title</p><p style="font-size:1.2em">note non default comment</p></div>
 <div class="extras"><p class="note red indent">note non default title</p></div>
 <div class="extras"><p class="note red indent">note non default title</p><p style="font-size:1.2em">note non default comment</p></div>
 <div class="extras"><p class="note red indent">note non default title</p><p style="font-size:1.2em">note non default comment</p></div>
-<h1>------------------------------------------</h1>
-<h3>Testing var.extras and var.divxp</h3>
-<p style="font-size:1.2em"><div class="extras">default content</div></p>
-<p style="font-size:1.2em"><div class="extras">your comment inside an extras div</div></p>
-<p style="font-size:1.2em"><div class="extras"><p>default content</p></div></p>
-<p style="font-size:1.2em"><div class="extras"><p>your content inside a p tag inside a div</p></div></p>
-<h1>------------------------------------------</h1>
-<h3>Testing var.specials</h3>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.extras and var.divxp</h3></div>
+<div class="extras">default content</div>
+<div class="extras">your comment inside an extras div</div>
+<div class="extras"><p>default content</p></div>
+<div class="extras"><p>your content inside a p tag inside a div</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.specials</h3></div>
 <div class="syntax"><p class="divTitle">This is your syntax title</p></div>
 <div class="syntax"><p class="divTitle">This is your syntax title</p></div>
-<p style="font-size:1.2em"><div class="syntax"><p class="divTitle">This is your syntax title</p></div></p>
-<p style="font-size:1.2em">[var.syntax()] <-- Intentional error, calling section with empty paramter list</p>
-<p style="font-size:1.2em">[syntax()] <-- Intentional error, calling section with empty paramter list</p>
+<div class="extras"><p><div class="syntax"><p class="divTitle">This is your syntax title</p></div></p></div>
+<div class="extras"><p>[var.syntax()] <-- Intentional error, calling section with empty paramter list</p></div>
+<div class="extras"><p>[syntax()] <-- Intentional error, calling section with empty paramter list</p></div>
 <div class="syntax"><p class="divTitle">My new title</p></div>
 <div class="syntax"><p class="divTitle">My new title</p></div>
 <div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
 <div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
-<p style="font-size:1.2em"><div class="syntax"><p class="divTitle">syntax.wc_inline</p>This is your syntax content</div></p>
+<div class="extras"><p><div class="syntax"><p class="divTitle">syntax.wc_inline</p>This is your syntax content</div></p></div>
 <div class="syntax"><p class="divTitle">RESET TITLE</p>RESET CONTENT</div>
 <div class="syntax"><p class="divTitle">RESET TITLE</p>Just some new content</div>
 <div class="syntax"><p class="divTitle">And now the title too</p>Just some new content</div>
 <div class="syntax"><p class="divTitle">RESET TITLE</p>
 </div>
 <div class="syntax"><p class="divTitle">syntax.wc_open</p>
-<p style="font-size:1.2em">Some content here</p>
-<p style="font-size:1.2em">And some additional</p>
-<p style="font-size:1.2em">And one last thing</p>
+<div class="extras"><p>Some content here</p></div>
+<div class="extras"><p>And some additional</p></div>
+<div class="extras"><p>And one last thing</p></div>
 </div>
 <div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p</p>
 <p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p>
 </div>
 <div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_inline</p>
-<p style="font-size:1.2em"><p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p></p>
+<div class="extras"><p><p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p></p></div>
 </div>
 <div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open</p>
 <p style="font-size:1.2em">
@@ -152,12 +151,11 @@ And one last thing<br />
 </p>
 </div>
 <div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open_inline</p>
-<p style="font-size:1.2em"><p style="font-size:1.2em"></p>
-<p style="font-size:1.2em">Some content here<br /></p>
-<p style="font-size:1.2em">And some additional<br /></p>
-<p style="font-size:1.2em">And one last thing<br /></p>
+<div class="extras"><p><p style="font-size:1.2em"></p></div>
+<div class="extras"><p>Some content here<br /></p></div>
+<div class="extras"><p>And some additional<br /></p></div>
+<div class="extras"><p>And one last thing<br /></p></div>
 </p>
-</div>
 </div>
 <div class="variables">
 <code>
@@ -284,17 +282,22 @@ NAMESPACE: var<br />
 <strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>divs.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>builtin DIVs from sys.imports/divs.md<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
-&nbsp;&nbsp;<strong>title=</strong>divs.md<br />
-&nbsp;&nbsp;<strong>desc=</strong>builtin DIVs from sys.imports/divs.md<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>toc non default title<br />
 &nbsp;&nbsp;<strong>c=</strong>toc non default comment<br />
+<br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>t=</strong>### Testing var.specials<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
@@ -442,6 +445,10 @@ NAMESPACE: html<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
 <strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -536,6 +543,6 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 </code>
 </div>
-</div>
-</body>
-</html>
+<div class="extras"><p></div></p></div>
+<div class="extras"><p></body></p></div>
+<div class="extras"><p></html></p></div>

@@ -7,64 +7,77 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="plain">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: wrap.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @wrap and @parw functionality</h3>
-<h2>------------------------------------------</h2>
-<p style="font-size:1.2em">----------#TS> Wrapper from the testsetup.begin call in effect out here</p>
-<h3>Test group 1 - Specifying the html tag inside an @var variable attribute</h3>
-<p>----------#0a> Put a plain p wrapper in effect</p>
-<h4>start wrap via indirection</h4>
-<p>wt1 = html.wt1</p>
-<p>wt1.works = html.wt2</p>
-<p>wt1.alsoworks = html.wt3</p>
-<h3>------------------------------------------</h3>
-<h3>--->wt1</h3>
-<p class="myclass1">----------#1a> wt1 line wrap test</p>
-<h4>--->wt1.works</h4>
-<p class="myclass2">----------#2a> wt1.works line wrap test</p>
-<h4>--->wt1.alsoworks</h4>
-<p class="myclass3">----------#3a> wt1.alsoworks line wrap test</p>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>----------#TS> Put html.divx,p wrapper in effect for document</p></div>
+<div class="extras"><h3>Test group 1 - Specifying the html tag inside an @var variable attribute</h3></div>
+<div class="extras"><p>----------#0a> Use the primary document wrapper to begin</p></div>
+<div class="extras"><h4>start wrap via indirection</h4></div>
+<div class="extras"><p>wt1 = html.wt1</p></div>
+<div class="extras"><p>wt1.works = html.wt2</p></div>
+<div class="extras"><p>wt1.alsoworks = html.wt3</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h3>--->wt1</h3></div>
+<span class="myclass1" style="color:red">----------#1a> wt1 line wrap test</span>
+<div class="extras"><h4>--->wt1.works</h4></div>
+<span class="myclass2" style="color:blue">----------#2a> wt1.works line wrap test</span>
+<div class="extras"><h4>--->wt1.alsoworks</h4></div>
+<span class="myclass3" style="color:green">----------#3a> wt1.alsoworks line wrap test</span>
+<div class="extras"><h1></h1></div>
 :---------:#4a> raw lines should never be wrapped<br />
 :---------:#4b> raw lines should never be wrapped<br />
 :---------:#4c> raw lines should never be wrapped<br />
 :---------:#4d> raw lines should never be wrapped<br />
-<h4>--->popping stack back 1 level p class=myclass2</h4>
-<p class="myclass2">----------#2b> wt1.works line wrap test</p>
-<h4>--->popping stack back 1 level p class=myclass1</h4>
-<p class="myclass1">----------#1b> wt1 line wrap test</p>
-<p>----------#0b> back to plain p wrapper</p>
-<h3>stop wrap via indirection</h3>
-<h4>start tests that will fail because raw html is being passed in</h4>
-<p>wt2 = <p class="myclass1"></p></p>
-<p>wt2.works = <p class="myclass2"></p></p>
-<p>wt2.alsoworks = <p class="myclass3"></p></p>
-<h3>------------------------------------------</h3>
+<div class="extras"><h4>--->popping stack back 1 level p class=myclass2</h4></div>
+<span class="myclass2" style="color:blue">----------#2b> wt1.works line wrap test</span>
+<div class="extras"><h4>--->popping stack back 1 level p class=myclass1</h4></div>
+<span class="myclass1" style="color:red">----------#1b> wt1 line wrap test</span>
+<div class="extras"><p>----------#0b> back to starting html.divx, p</p></div>
+<div class="extras"><h3>stop wrap via indirection</h3></div>
+<div class="extras"><h4>start tests that will fail because raw html is being passed in</h4></div>
+<div class="extras"><p>wt2 = <span class="myclass1" style="color:red"></span></p></div>
+<div class="extras"><p>wt2.works = <span class="myclass2" style="color:blue"></span></p></div>
+<div class="extras"><p>wt2.alsoworks = <span class="myclass3" style="color:green"></span></p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
 ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
 ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
 ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
-<h4>start tests that will fail because a non html namespace is being used</h4>
-<h3>------------------------------------------</h3>
+<div class="extras"><h4>start tests that will fail because a non html namespace is being used</h4></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
 ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
 ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
 ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
-<h4>and now just some random testing ...</h4>
-<p>-------------->This should be the plain p wrapper still</p>
+<div class="extras"><h4>and now just some random testing ...</h4></div>
+<div class="extras"><p>-------------->This should be the starting divx, p wrapper still</p></div>
 <li>item 1</li>
 <li>item 2</li>
-<li>item 3</li>
-<li><ol></li>
+<li>item 3<ol></li>
 <li>apple</li>
 <li>orange</li>
 <li>banana</ol></li>
-<p>This will generate an error<br /></p>
+<div class="extras"><p>This will generate an error<br /></p></div>
 ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
-<p class="myclass1">And this is just a bunch of other random content, wrapped in the p class=myclass1 tag</p>
-<p>And now back to the plain p tag</p>
-<p style="font-size:1.2em">And now back to the testsetup default wrapper tag.</p>
-And now we've cleared all stacked tags, so the next line will generate a warning...
+<div class="extras"><p>This will work, and be red<br /></p></div>
+<span class="myclass1" style="color:red">And this is just a bunch of other random content, wrapped in the p class=myclass1 tag</span>
+<div class="extras"><p>And now back to the default html.divx, p tag</p></div>
+And now we will test the special behavior of @wrap.<br /><br />
+<div class="extras"><p><span class="myclass2" style="color:blue">Default wrap is now the blue one</span></p></div>
+this should have no decoration
+<div class="extras"><p><span class="myclass2" style="color:blue">back to previous (blue)</span></p></div>
+Now I've cleared everything<br /><br />
+<div class="extras"><p><span class="myclass3" style="color:green">Now I'm using the html.divx,p,html.wt3 (green) wrap</span></p></div>
+Once again, nothing.
+Still nothing, after trying a negative number with @parw<br /><br />
+Back to empty @wrap q, passed count of 25<br /><br />
+Going to pop on empty stack, will issue warning<br /><br />
 WARNING: wrapper stack is empty<br />
-</div>
+<div class="extras"><p><span class="myclass1" style="color:red">Going red.</span></p></div>
+<div class="extras"><p><span class="myclass1" style="color:red">Another red line.</span></p></div>
+<div class="extras"><p><span class="myclass2" style="color:blue">And now blue</span></p></div>
+<div class="extras"><p><span class="myclass3" style="color:green">And now green</span></p></div>
+And now I've cleared everything once again.<br /><br />
+<div class="extras"><h3>And this is the end of the @wrap test.</h3></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -81,16 +94,19 @@ NAMESPACE: var<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
-<strong>wt1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<strong>wt1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass1<br />
+&nbsp;&nbsp;<strong>style=</strong>color:red<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass2<br />
+&nbsp;&nbsp;<strong>style=</strong>color:blue<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>wt3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<strong>wt3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass3<br />
+&nbsp;&nbsp;<strong>style=</strong>color:green<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 </code>

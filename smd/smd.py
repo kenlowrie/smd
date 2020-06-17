@@ -401,7 +401,13 @@ class ScriptParser(StdioWrapper):
             """Handle a header parse line"""
             if(m is not None and len(m.groups()) > 1):
                 hnum = len(m.group(1))
-                self.oprint("<h{0}{2}>{1}</h{0}>".format(hnum, m.group(2).strip(), lineObj.css_prefix))
+                header = "<h{0}{2}>{1}</h{0}>".format(hnum, m.group(2).strip(), lineObj.css_prefix)
+                # if we have a wrapper tag in play
+                if self.wrapper:
+                    tag = self.wrapper[-1]
+                    self.oprint(f'{tag.start}{header}{tag.end}')
+                else:
+                    self.oprint(header)
             else:
                 self.oprint(lineObj.current_line)
 
@@ -470,19 +476,34 @@ class ScriptParser(StdioWrapper):
             """Handle a wrap line"""
 
             class wrapTag(object):
-                def __init__(self,tag, ns_parseVariableName, markdown, oprint):
+                def __init__(self,tags, ns_parseVariableName, markdown, oprint):
+                    # add ability to push a null or nop onto the stack, to temporarily disable @wrap output
+                    if tags.lower() in ['null', 'nop']:
+                        self._start = self._end = ''
+                        return
+
                     self._start = None
                     self._end = None
-                    self._ns, self._name, self._attr = ns_parseVariableName(tag)
-                    if self._ns != 'html':
-                        oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.<br />")
-                        return
-                    if self._attr is not None:
-                        oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}<br />")
+                    tag_names = []
+                    # in case they've listed multiples, split them at the ','
+                    for tag in tags.split(','):
+                        self._ns, self._name, self._attr = ns_parseVariableName(tag.strip())
+                        if self._ns != 'html':
+                            oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.<br />")
+                            return
+                        if self._attr is not None:
+                            oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}<br />")
 
-                    ns_name = f"html.{self._name}"
-                    self._start = markdown(f"[{ns_name}.<]")
-                    self._end = markdown(f"[{ns_name}.>]")
+                        tag_names.append(f"html.{self._name}")
+                    self._start = ''
+                    self._end = ''
+                    # For the opening, do them in order, picking up tag.< for each
+                    for tag in tag_names:
+                        self._start += markdown(f"[{tag}.<]")
+                    
+                    # For the ending, do them in reverse order, picking up tag.> for each
+                    for tag in tag_names[::-1]:
+                        self._end += markdown(f"[{tag}.>]")
 
                 @property
                 def start(self):
@@ -514,9 +535,17 @@ class ScriptParser(StdioWrapper):
                         self.oprint('WARNING: wrapper stack is empty<br />')
                     elif m.group(2) == '':
                         self.wrapper.pop()
-                    else:           #//TODO: I should be able to specify how many or all|*
-                        while self.wrapper:
-                            self.wrapper.pop()
+                    else:
+                        parameter = m.group(2)
+                        if parameter in ['*', 'all']:
+                            while self.wrapper:
+                                self.wrapper.pop()
+                        elif parameter.isnumeric():
+                            count = int(parameter)
+                            while self.wrapper and count > 0:
+                                self.wrapper.pop()
+                                count -= 1
+
             else:
                 self.oprint(lineObj.current_line)
 

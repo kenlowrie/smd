@@ -7,32 +7,32 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="plain">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: variables.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing the @var namespace</h3>
-<p style="font-size:1.2em">Variables provide a convenient means for text substitution. The syntax for defining a variable is: <strong>@var variable="value"</strong>. Take the following example:</p>
-<h3 class="indent">@var name="Ken Lowrie"</h3>
-<p style="font-size:1.2em">Now, anywhere I write &#91;name], it will be replaced with "Ken Lowrie". Let's do that now: Ken Lowrie &lt;-- Should be Ken Lowrie.</p>
-<p style="font-size:1.2em">If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now.</p>
-<p style="font-size:1.2em">And now, <em>Ken Lowrie</em> &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.</p>
-<p style="font-size:1.2em">Here is my <a href="https://mydomain.com?a=123%20456">jitlinkvar</a></p>
-<p style="font-size:1.2em">Here is my <a href="https://mydomain.com?=123%20456]">jitlinkvar2</a></p>
+<div class="extras"><p>Variables provide a convenient means for text substitution. The syntax for defining a variable is: <strong>@var variable="value"</strong>. Take the following example:</p></div>
+<div class="extras"><h4><span class="indent">@var name="Ken Lowrie"</span></h4></div>
+<div class="extras"><p>Now, anywhere I write &#91;name], it will be replaced with "Ken Lowrie". Let's do that now: Ken Lowrie &lt;-- Should be Ken Lowrie.</p></div>
+<div class="extras"><p>If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now.</p></div>
+<div class="extras"><p>And now, <em>Ken Lowrie</em> &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.</p></div>
+<div class="extras"><p>Here is my <a href="https://mydomain.com?a=123%20456">jitlinkvar</a></p></div>
+<div class="extras"><p>Here is my <a href="https://mydomain.com?=123%20456]">jitlinkvar2</a></p></div>
 <div class="plain"><p class="plainTitle"><span class="blue">Variables</span></p></div>
-<p style="font-size:1.2em">We can define variables using the syntax: <em><strong>[name]=value</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p>
-<p style="font-size:1.2em">Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p>
-<p style="font-size:1.2em">Here are a couple more examples:</p>
-<p style="font-size:1.2em">Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p>
-<p style="font-size:1.2em">But @var varName="varValue" is not, because this line begins with "But " ...</p>
-<p style="font-size:1.2em">noid</p>
-<p style="font-size:1.2em">alsonoid</p>
-<p style="font-size:1.2em">attr1="attribute 1"<br /></p>
-<p style="font-size:1.2em">attribute 1</p>
-<p style="font-size:1.2em">attr1="attribute 1"<br /></p>
-<p style="font-size:1.2em">attribute 1</p>
-<p style="font-size:1.2em">id0._id=id0<br />id0._=id0</p>
-<p style="font-size:1.2em">[var]</p>
-<p style="font-size:1.2em">[var.]</p>
-<p style="font-size:1.2em">[var.nothing]</p>
+<div class="extras"><p>We can define variables using the syntax: <em><strong>[name]=value</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p></div>
+<div class="extras"><p>Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p></div>
+<div class="extras">
+<p>Here are a couple more examples:</p>
+<p>Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p>
+<p>But @var varName="varValue" is not, because this line begins with "But " ...</p>
+<p>noid</p>
+<p>alsonoid</p>
+<p>attr1="attribute 1"<br /></p>
+<p>attribute 1</p>
+<p>attr1="attribute 1"<br /></p>
+<p>attribute 1</p>
+<p>id0._id=id0<br />id0._=id0</p>
+<p>[var]</p>
+<p>[var.]</p>
+<p>[var.nothing]</p>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -47,17 +47,17 @@ NAMESPACE: var<br />
 </code>
 </div>
 <div class="plain"><p class="plainTitle"><span class="blue">Changing attribute values in a variable using @set</span></p></div>
-<p style="font-size:1.2em">ATTR1 should be "New Value":</p>
-<p style="font-size:1.2em">attr1="New Value"<br /></p>
-<h3>------------------------------------------</h3>
-<p style="font-size:1.2em">attr1="New Value"<br />
+<p>ATTR1 should be "New Value":</p>
+<p>attr1="New Value"<br /></p>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<p>attr1="New Value"<br />
  foo="bar"<br /></p>
-<p style="font-size:1.2em">attr1="New Value"<br />
+<p>attr1="New Value"<br />
  bar="oldfu"<br />
  foo="nubar"<br /></p>
-<p style="font-size:1.2em">bar="oldfu"<br />
+<p>bar="oldfu"<br />
  foo="nubar"<br /></p>
-<p style="font-size:1.2em">1="1"<br />
+<p>1="1"<br />
  10="10"<br />
  11="11"<br />
  12="12"<br />
@@ -78,7 +78,7 @@ NAMESPACE: var<br />
  7="7"<br />
  8="8"<br />
  9="9"<br /></p>
-<p style="font-size:1.2em">1="x1"<br />
+<p>1="x1"<br />
  10="x10"<br />
  11="x11"<br />
  12="x12"<br />

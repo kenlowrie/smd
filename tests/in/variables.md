@@ -1,9 +1,10 @@
 @import "$/testsetup.md"
 
-[var.testdoc.begin(title="variables.md" desc="Testing the @var namespace")]
+[var.testavdoc.begin(title="variables.md" desc="Testing the @var namespace")]
+@wrap html.divx, p
 
 Variables provide a convenient means for text substitution. The syntax for defining a variable is: **@var variable="value"**. Take the following example:
-{:.indent}###@var name="Ken Lowrie"
+[wrap_h(t="####<span class=\"indent\">@var name=\"Ken Lowrie\"</span>")]
 @var name="Ken Lowrie"
 Now, anywhere I write &#91;name], it will be replaced with "Ken Lowrie". Let's do that now: [name] &lt;-- Should be Ken Lowrie.
 
@@ -25,6 +26,8 @@ We can define variables using the syntax: ***[name]=value***. Here's an example.
 @var whoami="Ken Lowrie"
 Now, whenever I write whoami inside square brackets **[ ]**, it will replace it with *Ken Lowrie*. Let's try that now. Hello, my name is *[whoami]*. That's pretty straightforward...
 
+@@[html.divx.<]
+@wrap p
 Here are a couple more examples:
 
 Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:
@@ -54,7 +57,7 @@ id0._id=[id0._id][b]id0._=[id0._]
 @set _id="id1" attr1="New Value"
 ATTR1 should be "New Value":
 [id1]
-[hash3]
+[wrap_h(t="[hash3]")]
 @set _id="id1" foo="bar"
 [id1]
 @set _id="id1" foo="nubar" bar="oldfu"
@@ -68,6 +71,9 @@ ATTR1 should be "New Value":
                11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20" 21="x21"
 
 [id2]
+@parw
+@@[html.divx.>]
 
+@parw
 @set dump_ns_list="var=\"id\""
-[testdoc.end]
+[testavdoc.end]

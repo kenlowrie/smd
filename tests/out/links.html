@@ -7,74 +7,71 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="plain">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: links.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing the @link namespace</h3>
-<h3>Table of Contents</h3>
-<p style="font-size:1.2em"><a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong></p>
-<div class="extras"><h1></h1></div>
-<p style="font-size:1.2em"><a href="#links">Links</a> - <strong>Inline and Reference Link Styles</strong><br /></p>
-<p style="font-size:1.2em"><a href="#inline_links">Inline Links</a> - <strong>Creating links inline</strong><br /></p>
-<p style="font-size:1.2em"><a href="#ref_links">Reference Links</a> - <strong>Creating reference links</strong><br /></p>
-<p style="font-size:1.2em"><a href="#auto_links">Automatic Links</a> - <strong>Creating automatic links</strong><br /></p>
+<div class="extras"><h3>Table of Contents</h3></div>
+<div class="extras"><p><a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong></p></div>
+<div class="extras"><p><a href="#links">Links</a> - <strong>Inline and Reference Link Styles</strong><br /></p></div>
+<div class="extras"><p><a href="#inline_links">Inline Links</a> - <strong>Creating links inline</strong><br /></p></div>
+<div class="extras"><p><a href="#ref_links">Reference Links</a> - <strong>Creating reference links</strong><br /></p></div>
+<div class="extras"><p><a href="#auto_links">Automatic Links</a> - <strong>Creating automatic links</strong><br /></p></div>
 <a id="inlinemd"></a><br />
 <a id="links"></a>
-<h2>Links</h2>
-<p style="font-size:1.2em">This is a section about links</p>
+<div class="extras"><h2>Links</h2></div>
+<div class="extras"><p>This is a section about links</p></div>
 <a id="inline_links"></a>
-<h3>Inline Style:</h3>
-<p style="font-size:1.2em">The next paragraph has inline links defined: This is <strong>&#91;an example]:(http://example.com/ "Inline Link Sample")</strong> of an inline link. <strong>&#91;This inline link]:(http://example.net/)</strong> has no title attribute.</p>
-<p style="font-size:1.2em">This is <a href="http://example.com" title="Inline Link Sample">an example</a> of an inline link. <a href="http://example.net">This inline link</a> has no title attribute.</p>
-<p style="font-size:1.2em">Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: <a href="http://example.com" title="Inline Link Sample">an example</a>.</p>
+<div class="extras"><h3>Inline Style:</h3></div>
+<div class="extras"><p>The next paragraph has inline links defined: This is <strong>&#91;an example]:(http://example.com/ "Inline Link Sample")</strong> of an inline link. <strong>&#91;This inline link]:(http://example.net/)</strong> has no title attribute.</p></div>
+<div class="extras"><p>This is <a href="http://example.com" title="Inline Link Sample">an example</a> of an inline link. <a href="http://example.net">This inline link</a> has no title attribute.</p></div>
+<div class="extras"><p>Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: <a href="http://example.com" title="Inline Link Sample">an example</a>.</p></div>
 <a id="ref_links"></a>
-<h3>Reference Style:</h3>
-<p style="font-size:1.2em">Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.</p>
-<p style="font-size:1.2em">The reference link style <strong>must</strong> be placed at the beginning of a line. Unlike true Markdown, reference links <em>must</em> be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.</p>
-<h4 class="indent">@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"</h4>
-<p style="font-size:1.2em">If I write &#91;Google], it is wrapped like so: <a href="https://google.com" title="Google Search Page">Google</a>.</p>
-<p style="font-size:1.2em">Now, I can go ahead and write <strong>&#91;inline 2]</strong>, like this: [inline 2], and it's a valid link! <em><strong>//TODO: What? This is wrong.</strong></em></p>
+<div class="extras"><h3>Reference Style:</h3></div>
+<div class="extras"><p>Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.</p></div>
+<div class="extras"><p>The reference link style <strong>must</strong> be placed at the beginning of a line. Unlike true Markdown, reference links <em>must</em> be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.</p></div>
+<div class="extras"><p><h4 class="indent">@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"</h4></p></div>
+<div class="extras"><p>If I write &#91;Google], it is wrapped like so: <a href="https://google.com" title="Google Search Page">Google</a>.</p></div>
+<div class="extras"><p>Now, I can go ahead and write <strong>&#91;inline 2]</strong>, like this: [inline 2], and it's a valid link! <em><strong>//TODO: What? This is wrong.</strong></em></p></div>
 <a id="auto_links"></a>
-<h3>Automatic links</h3>
-<p style="font-size:1.2em">The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with <em><strong>&lt; &gt;</strong></em> like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an <strong>A</strong> tag whose <strong>HREF</strong> attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute <em>_asurl</em>, which returns the href styled appropriately. For example: <a href="https://google.com" title="Google Search Page">https://google.com</a></p>
-<p style="font-size:1.2em">&nbsp;</p>
-<h1>copied from variables.md</h1>
+<div class="extras"><h3>Automatic links</h3></div>
+<div class="extras"><p>The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with <em><strong>&lt; &gt;</strong></em> like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an <strong>A</strong> tag whose <strong>HREF</strong> attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute <em>_asurl</em>, which returns the href styled appropriately. For example: <a href="https://google.com" title="Google Search Page">https://google.com</a></p></div>
+<div class="extras"><p>&nbsp;</p></div>
+<div class="extras"><h1>copied from variables.md</h1></div>
 <a id="aliases"></a>
-<h2>Variables</h2>
-<p style="font-size:1.2em">Variables, which is essentially text substitution, is supported using a similar syntax to reference links. <strong>@var variable="value"</strong>. Take the following example:</p>
-<h3 class="indent">@var name="Ken Lowrie"</h3>
-<p style="font-size:1.2em">Now, anywhere I write &#91;my name], it will be replaced with "Ken Lowrie". Let's do that now: Ken Lowrie &lt;-- Should be Ken Lowrie.</p>
-<p style="font-size:1.2em">If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now.</p>
-<p style="font-size:1.2em">And now, <em>Ken Lowrie</em> &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.</p>
-<h2>Link aliases</h2>
-<p style="font-size:1.2em">Building on that, we can create aliases for inline links. Say I define a reference link like this:</p>
-<h3 class="indent">&#91;cls]:https://cloudylogic.com</h3>
-<p style="font-size:1.2em">Now, when I write <strong>&#91;cls]</strong>, it is replaced with a link to https://cloudylogic.com. For example: <a href="https://cloudylogic.com">cls</a>.</p>
-<p style="font-size:1.2em">And that's all good. It's concise, I only have to write <em>cls</em> in [ ] and it is wrapped with an HTML link. Saves a lot of typing and potential mistakes. But what if I want to have other, more descriptive names for that URL? Good news, we can do that using a special form of aliases: [Descriptive Text]=[id], where <em>id</em> is the name of a previously described reference link. Let me go ahead and create an alias for the <em>cls</em> link so the descriptive name is Cloudy Logic. THIS TEXT IS ALL WRONG. DOESN'T WORK THIS WAY ANYMORE...</p>
-<h3 class="indent">&#91;Cloudy Logic]=cls</h3>
-<p style="font-size:1.2em">Now, when I write <a href="https://cloudylogic.com">Cloudy Logic</a>, it is wrapped with the link for <em>cls</em>. Cool!</p>
-<p style="font-size:1.2em">Here is my <a href="https://mydomain.com?a=123%20456">jitlinkvar</a></p>
-<p style="font-size:1.2em">Here is my <a href="https://mydomain.com?=123%20456]">jitlinkvar2</a></p>
-<h3 class="red center">avscript tester doc</h3>
+<div class="extras"><h2>Variables</h2></div>
+<div class="extras"><p>Variables, which is essentially text substitution, is supported using a similar syntax to reference links. <strong>@var variable="value"</strong>. Take the following example:</p></div>
+<div class="extras"><p><h3 class="indent">@var name="Ken Lowrie"</h3></p></div>
+<div class="extras"><p>Now, anywhere I write &#91;my name], it will be replaced with "Ken Lowrie". Let's do that now: Ken Lowrie &lt;-- Should be Ken Lowrie.</p></div>
+<div class="extras"><p>If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now.</p></div>
+<div class="extras"><p>And now, <em>Ken Lowrie</em> &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.</p></div>
+<div class="extras"><h2>Link aliases</h2></div>
+<div class="extras"><p>Building on that, we can create aliases for inline links. Say I define a reference link like this:</p></div>
+<div class="extras"><p><h3 class="indent">&#91;cls]:https://cloudylogic.com</h3></p></div>
+<div class="extras"><p>Now, when I write <strong>&#91;cls]</strong>, it is replaced with a link to https://cloudylogic.com. For example: <a href="https://cloudylogic.com">cls</a>.</p></div>
+<div class="extras"><p>And that's all good. It's concise, I only have to write <em>cls</em> in [ ] and it is wrapped with an HTML link. Saves a lot of typing and potential mistakes. But what if I want to have other, more descriptive names for that URL? Good news, we can do that using a special form of aliases: [Descriptive Text]=[id], where <em>id</em> is the name of a previously described reference link. Let me go ahead and create an alias for the <em>cls</em> link so the descriptive name is Cloudy Logic. THIS TEXT IS ALL WRONG. DOESN'T WORK THIS WAY ANYMORE...</p></div>
+<div class="extras"><p><h3 class="indent">&#91;Cloudy Logic]=cls</h3></p></div>
+<div class="extras"><p>Now, when I write <a href="https://cloudylogic.com">Cloudy Logic</a>, it is wrapped with the link for <em>cls</em>. Cool!</p></div>
+<div class="extras"><p>Here is my <a href="https://mydomain.com?a=123%20456">jitlinkvar</a></p></div>
+<div class="extras"><p>Here is my <a href="https://mydomain.com?=123%20456]">jitlinkvar2</a></p></div>
+<div class="extras"><p><h3 class="red center">avscript tester doc</h3></p></div>
 <div class="cover"><h3>User Manual</h3><p>Ken Lowrie</p><p class="coverSummary">This is a user manual for the AVScript utility.</p></div>
 <div class="plain"><p class="plainTitle"><span class="blue">Variables</span></p></div>
-<p style="font-size:1.2em">We can define variables using the syntax: <em><strong>[name]=value</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p>
-<p style="font-size:1.2em">Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p>
+<div class="extras"><p>We can define variables using the syntax: <em><strong>[name]=value</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p></div>
+<div class="extras"><p>Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p></div>
 <div class="plain"><p class="plainTitle">Links</p></div>
-<p style="font-size:1.2em">We can also define hyperlinks using a similar syntax: [linkID]:linkurl. Let's go ahead and define a few links now...</p>
-<p style="font-size:1.2em">I've defined two new links, one called <em>cls</em> which is a standard HTTPS link for my website, and another called <em>me</em>, which is a mailto: link that will compose a new email to myself. I use these just like variables, just write the ID inside square brackets.</p>
-<p style="font-size:1.2em">Visit my domain <a href="https://cloudylogic.com">cls</a> or send [me] an email. If you click on either <em>cls</em> or <em>me</em>, they should behave accordingly.</p>
-<h4>Aliases</h4>
-<p style="font-size:1.2em">So far so good. Typing <a href="https://cloudylogic.com">cls</a> is certainly better than typing out the entire URL, but it's not very descriptive... Sometimes, maybe I want to have more text, or even the URL as the hyperlink. In those cases, you can create variables whose value matches the name of a linkID, and when you use that variable, it will wrap the variable name with the link tag. Kind of like creating an alias for the link description.</p>
-<p style="font-size:1.2em">So let's try that. The next line is <em><strong>defining the variable</strong></em> called "My Email Address" and setting its value to "me".</p>
-<p style="font-size:1.2em">By defining a variable's value such that the value is a valid linkID, when you use the variable's name in the document, it will be wrapped in the linkIDs hyperlink. So now when I write [me], it is more friendly than [me], even though they evaluate to the same link.</p>
-<p style="font-size:1.2em">You can create more than one "alias" to the same underlying link. The new variable design requires that you add a new format string and specific private variable to support that. Here's an example of it:</p>
-<p style="font-size:1.2em">In the previous 2 lines, I created two new variables and set both of their values to the linkID called <em>cls</em>. So now when I write <a href="https://cloudylogic.com">My Production Website</a> and <a href="https://cloudylogic.com">Cloudy Logic Studios, LLC</a>, both of them are links to my website.</p>
-<p style="font-size:1.2em">Most of the time, you'll just add normal links with the regular link syntax, but sometimes it's cool to have these other options.</p>
-<p style="font-size:1.2em">Here are a couple more examples:</p>
-<p style="font-size:1.2em"><a href="https://wordpress.org/news/2018/05/the-month-in-wordpress-april-2018/">Link to Article</a> <-- That should have been turned into a link</p>
-<p style="font-size:1.2em">You can send [feedback]. Or you can just email [me]. Or go to my cls. But don't do that if [Cloudy Logic]:(cls) is not defined. Finally, <a href="https://www.cloudylogic.com" title="This is a link title...">One with Title</a></p>
-<p style="font-size:1.2em">Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p>
-</div>
+<div class="extras"><p>We can also define hyperlinks using a similar syntax: [linkID]:linkurl. Let's go ahead and define a few links now...</p></div>
+<div class="extras"><p>I've defined two new links, one called <em>cls</em> which is a standard HTTPS link for my website, and another called <em>me</em>, which is a mailto: link that will compose a new email to myself. I use these just like variables, just write the ID inside square brackets.</p></div>
+<div class="extras"><p>Visit my domain <a href="https://cloudylogic.com">cls</a> or send [me] an email. If you click on either <em>cls</em> or <em>me</em>, they should behave accordingly.</p></div>
+<div class="extras"><h4>Aliases</h4></div>
+<div class="extras"><p>So far so good. Typing <a href="https://cloudylogic.com">cls</a> is certainly better than typing out the entire URL, but it's not very descriptive... Sometimes, maybe I want to have more text, or even the URL as the hyperlink. In those cases, you can create variables whose value matches the name of a linkID, and when you use that variable, it will wrap the variable name with the link tag. Kind of like creating an alias for the link description.</p></div>
+<div class="extras"><p>So let's try that. The next line is <em><strong>defining the variable</strong></em> called "My Email Address" and setting its value to "me".</p></div>
+<div class="extras"><p>By defining a variable's value such that the value is a valid linkID, when you use the variable's name in the document, it will be wrapped in the linkIDs hyperlink. So now when I write [me], it is more friendly than [me], even though they evaluate to the same link.</p></div>
+<div class="extras"><p>You can create more than one "alias" to the same underlying link. The new variable design requires that you add a new format string and specific private variable to support that. Here's an example of it:</p></div>
+<div class="extras"><p>In the previous 2 lines, I created two new variables and set both of their values to the linkID called <em>cls</em>. So now when I write <a href="https://cloudylogic.com">My Production Website</a> and <a href="https://cloudylogic.com">Cloudy Logic Studios, LLC</a>, both of them are links to my website.</p></div>
+<div class="extras"><p>Most of the time, you'll just add normal links with the regular link syntax, but sometimes it's cool to have these other options.</p></div>
+<div class="extras"><p>Here are a couple more examples:</p></div>
+<div class="extras"><p><a href="https://wordpress.org/news/2018/05/the-month-in-wordpress-april-2018/">Link to Article</a> <-- That should have been turned into a link</p></div>
+<div class="extras"><p>You can send [feedback]. Or you can just email [me]. Or go to my cls. But don't do that if [Cloudy Logic]:(cls) is not defined. Finally, <a href="https://www.cloudylogic.com" title="This is a link title...">One with Title</a></p></div>
+<div class="extras"><p>Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -210,12 +207,12 @@ NAMESPACE: var<br />
 <strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>links.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing the @link namespace<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
-&nbsp;&nbsp;<strong>title=</strong>links.md<br />
-&nbsp;&nbsp;<strong>desc=</strong>Testing the @link namespace<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -223,6 +220,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
 <strong>whoami=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Ken Lowrie<br />
+<br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>t=</strong>#### Aliases<br />
 <br />
 <strong>xyz=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>?={{abc}}%20{{def}}]<br />
 <br />

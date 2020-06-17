@@ -249,6 +249,9 @@ NAMESPACE: var<br />
 <br />
 <strong>var=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.red}This text will be RED<br />
 <br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
@@ -394,6 +397,10 @@ NAMESPACE: html<br />
 <br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
 <strong>docwrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />

@@ -7,44 +7,44 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="plain">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: markdown.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing markdown</h3>
-<p style="font-size:1.2em"><em>emphasis</em><br /></p>
-<p style="font-size:1.2em"><strong>strong</strong><br /></p>
-<p style="font-size:1.2em"><em><strong>emphasis and strong</strong></em><br /></p>
-<p style="font-size:1.2em"><ins>this is added</ins><br /></p>
-<p style="font-size:1.2em"><del>this is deleted</del><br /></p>
-<p style="font-size:1.2em"><em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br /></p>
-<p style="font-size:1.2em">not at start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br /></p>
-<p style="font-size:1.2em">not or start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em> or end<br /></p>
-<p style="font-size:1.2em"><ins>this is added</ins> and <del>this is deleted</del><br /></p>
-<p style="font-size:1.2em">n o s <ins>this is added</ins> and <del>this is deleted</del><br /></p>
-<p style="font-size:1.2em">nos <ins>this is added</ins> and <del>this is deleted</del> or end<br /></p>
-<p style="font-size:1.2em"><em>emphasis and <strong>strong</strong> and <ins>new stuff</ins> and <del>old stuff</del></em><br /></p>
-<p style="font-size:1.2em"><em>emphasis and <strong>strong</strong> and <del>old <ins>new stuff inside</ins> stuff</del> and <del>old stuff</del></em><br /></p>
-<h1>h1</h1>
-<h2>h2</h2>
-<h3>h3</h3>
-<h4>h4</h4>
-<h5>h5</h5>
-<h6>h6</h6>
-<h1>h1</h1>
-<p style="font-size:1.2em">words</p>
-<h2>h2</h2>
-<p style="font-size:1.2em">words</p>
-<h3>h3</h3>
-<p style="font-size:1.2em">words</p>
-<h4>h4</h4>
-<p style="font-size:1.2em">words</p>
-<h5>h5</h5>
-<p style="font-size:1.2em">words</p>
-<h6>h6</h6>
-<p style="font-size:1.2em">words</p>
-<h1>header with leading space</h1>
-<h2>header with leading tab (which my editor converts to spaces)</h2>
-<p style="font-size:1.2em">header markdown must be first thing on the line. # This will not be a header.</p>
+<div class="extras"><p><em>emphasis</em><br /></p></div>
+<div class="extras"><p><strong>strong</strong><br /></p></div>
+<div class="extras"><p><em><strong>emphasis and strong</strong></em><br /></p></div>
+<div class="extras"><p><ins>this is added</ins><br /></p></div>
+<div class="extras"><p><del>this is deleted</del><br /></p></div>
+<div class="extras"><p><em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br /></p></div>
+<div class="extras"><p>not at start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em><br /></p></div>
+<div class="extras"><p>not or start <em>emphasis</em> and regular and <strong>strong</strong> and regular and <em><strong>both</strong></em> or end<br /></p></div>
+<div class="extras"><p><ins>this is added</ins> and <del>this is deleted</del><br /></p></div>
+<div class="extras"><p>n o s <ins>this is added</ins> and <del>this is deleted</del><br /></p></div>
+<div class="extras"><p>nos <ins>this is added</ins> and <del>this is deleted</del> or end<br /></p></div>
+<div class="extras"><p><em>emphasis and <strong>strong</strong> and <ins>new stuff</ins> and <del>old stuff</del></em><br /></p></div>
+<div class="extras"><p><em>emphasis and <strong>strong</strong> and <del>old <ins>new stuff inside</ins> stuff</del> and <del>old stuff</del></em><br /></p></div>
+<div class="extras"><h1>h1</h1></div>
+<div class="extras"><h2>h2</h2></div>
+<div class="extras"><h3>h3</h3></div>
+<div class="extras"><h4>h4</h4></div>
+<div class="extras"><h5>h5</h5></div>
+<div class="extras"><h6>h6</h6></div>
+<div class="extras"><h1>h1</h1></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h2>h2</h2></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h3>h3</h3></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h4>h4</h4></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h5>h5</h5></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h6>h6</h6></div>
+<div class="extras"><p>words</p></div>
+<div class="extras"><h1>header with leading space</h1></div>
+<div class="extras"><h2>header with leading tab &lpar;which my editor converts to spaces&rpar;</h2></div>
+<div class="extras"><p>header markdown must be first thing on the line. # This will not be a header.</p></div>
 header markdown must be first thing on the line. # This will not be a header, even if you use @raw...
+WARNING: wrapper stack is empty<br />
 </div>
 <div class="variables">
 <code>
@@ -171,17 +171,21 @@ NAMESPACE: var<br />
 <strong>testavdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testavdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testavdoc.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>markdown.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing markdown<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html._div_plain_.&lt;}}\n{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap docwrap")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{html._div_plain_.&gt;}}\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
 &nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
-&nbsp;&nbsp;<strong>title=</strong>markdown.md<br />
-&nbsp;&nbsp;<strong>desc=</strong>Testing markdown<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
+<br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>t=</strong>## header with leading tab &amp;lpar;which my editor converts to spaces&amp;rpar;<br />
 <br />
 </code>
 </div>

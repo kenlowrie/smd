@@ -1,10 +1,10 @@
 @import "$/testsetup.md"
 
-[var.testdoc.begin(title="links.md" desc="Testing the @link namespace")]
+[var.testavdoc.begin(title="links.md" desc="Testing the @link namespace")]
+@wrap html.divx, p
 
 
-
-###Table of Contents
+[wrap_h(t="###Table of Contents")]
 [link.bm_factory(nm="inlinemd", t="Inline Markdown")]
 [link.bm_factory(nm="links", t="Links")]
 [link.bm_factory(nm="inline_links", t="Inline Links")]
@@ -12,7 +12,6 @@
 [link.bm_factory(nm="auto_links", t="Automatic Links")]
 
 [link.inlinemd.link] - **Formatting content inline**
-@break
 [link.links.link] - **Inline and Reference Link Styles**[b]
 [link.inline_links.link] - **Creating links inline**[b]
 [link.ref_links.link] - **Creating reference links**[b]
@@ -23,10 +22,10 @@
 
 // links
 [link.links]
-##Links
+[wrap_h(t="##Links")]
 This is a section about links
 [link.inline_links]
-###Inline Style:
+[wrap_h(t="###Inline Style:")]
 
 //TODO: Need to update this section, no longer true about inline links and reference links
 The next paragraph has inline links defined: This is **&#91;an example]:(http://example.com/ "Inline Link Sample")** of an inline link. **&#91;This inline link]:(http://example.net/)** has no title attribute.
@@ -39,7 +38,7 @@ This is [link.sample1(_text="an example")] of an inline link. [link.sample2(_tex
 Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: [link.sample1].
 
 [link.ref_links]
-###Reference Style:
+[wrap_h(t="###Reference Style:")]
 Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.
 
 The reference link style **must** be placed at the beginning of a line. Unlike true Markdown, reference links *must* be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.
@@ -51,20 +50,20 @@ If I write &#91;Google], it is wrapped like so: [Google].
 
 Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it's a valid link! ***//TODO: What? This is wrong.***
 [link.auto_links]
-###Automatic links
+[wrap_h(t="###Automatic links")]
 The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with ***&lt; &gt;*** like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an **A** tag whose **HREF** attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute *_asurl*, which returns the href styled appropriately. For example: [link.Google._asurl]
 
 &nbsp;
 
 
-# copied from variables.md
+[wrap_h(t="# copied from variables.md")]
 
 
 // variables
 [link.bm_factory(nm="aliases" t="Aliases aka Variables")]
 [link.aliases]
 
-## Variables
+[wrap_h(t="## Variables")]
 
 Variables, which is essentially text substitution, is supported using a similar syntax to reference links. **@var variable="value"**. Take the following example:
 {:.indent}###@var name="Ken Lowrie"
@@ -74,7 +73,7 @@ Now, anywhere I write &#91;my name], it will be replaced with "Ken Lowrie". Let'
 If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now. 
 @set name="*Ken Lowrie*"
 And now, [name] &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.
-## Link aliases
+[wrap_h(t="## Link aliases")]
 
 //TODO: This link format text is wrong. Fix the description/syntax in the docs. Inline, it's correct.
 Building on that, we can create aliases for inline links. Say I define a reference link like this: 
@@ -109,7 +108,7 @@ I've defined two new links, one called *cls* which is a standard HTTPS link for 
 
 Visit my domain [cls] or send [me] an email. If you click on either *cls* or *me*, they should behave accordingly.
 
-#### Aliases
+[wrap_h(t="#### Aliases")]
 
 So far so good. Typing [cls] is certainly better than typing out the entire URL, but it's not very descriptive... Sometimes, maybe I want to have more text, or even the URL as the hyperlink. In those cases, you can create variables whose value matches the name of a linkID, and when you use that variable, it will wrap the variable name with the link tag. Kind of like creating an alias for the link description.
 So let's try that. The next line is ***defining the variable*** called "My Email Address" and setting its value to "me". 
@@ -135,6 +134,6 @@ You can send [feedback]. Or you can just email [me]. Or go to my [domain]. But d
 Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:
 
 
-
+@parw *
 @set dump_ns_list="var=\".\" link=\".\""
-[var.testdoc.end]
+[var.testavdoc.end]

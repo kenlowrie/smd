@@ -1,10 +1,11 @@
 @import "$/testsetup.md"
 
-[var.testdoc.begin(title="dump.md" desc="Testing @dump and @debug functionality")]
+[var.testavdoc.begin(title="dump.md" desc="Testing @dump and @debug functionality")]
+@wrap html.divx, p
 
 [plain(t="Testing @dump keyword and options")]
 
-# Testing @dump
+[wrap_h(t="# Testing @dump")]
 
 @dump tracked="."
 @dump tracked=".*/def_"
@@ -19,7 +20,7 @@
 
 @dump
 
-# Testing @debug
+[wrap_h(t="# Testing @debug")]
 
 [plain(t="Testing @debug keyword and options")]
 
@@ -31,4 +32,6 @@
 @debug toggle="."
 @debug tags="."
 
-[var.testdoc.end]
+@parw *
+
+[var.testavdoc.end]

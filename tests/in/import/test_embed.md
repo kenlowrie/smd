@@ -1,3 +1,3 @@
 @embed 'in/import/echo.md'
-<br/>
+@@<br />
 @embed 'in/import/echo2.md'
