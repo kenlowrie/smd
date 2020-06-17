@@ -6,6 +6,9 @@ Priority 1 | p1
 01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
 85. Make a single shell script that runs both/all of the command line tests ...
+97. Is there a need for a [sys.wrap.open] and [sys.wrap.close]? Are there other [sys.] things that might be needed? enough for a namespace? otherwise just need a way to get them. Wait, can't i do that by writing something in utility.codewrappers() or something? If so, add it, I see this as useful...
+103. make @wrap search html namespace first, instead of var (or others)
+105.
 
 Priority 2 | p2
 ---------------
@@ -37,6 +40,8 @@ Priority 5 | p5
 4. Move all of these things to the issues tracker in github, and get rid of this file.
 75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
 91. How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
+101. Might be cool if there was an html python pretty printer on pypi I could build into hostgui
+
 
 
 Completed
@@ -98,6 +103,12 @@ Completed
 **94. Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
 **95. What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
 **70. continue improving the automated tests and get coverage for all new functionality.
+**99. @wrap nop and null - add tests to wrap.md
+**100. @parw *|all @parw -3 | 0 | 1 | 25 - add tests.
+**96. Add @wrap nop | null | tag1 [, tag2 [...]] support
+**98. Should handle_header() handle @wrap lines? Code added, need to review closely.
+**102. set background and foreground colors for the hostgui window.
+**104. Implement @parw [* | all | #]
 
 
 

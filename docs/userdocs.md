@@ -87,6 +87,11 @@ Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possib
 Explain how @import '$' works when no files open i.e. reading from stdin
 Document @dump sysdef="." tracked="." and @debug.
 Document code.encode_smd
+96. Add @wrap tag1 [, tag2 [...]] support
+98. Should handle_header() handle @wrap lines? Code added, need to review closely.
+99. @wrap nop and null - add tests to wrap.md
+100. @parw *|all @parw -3 | 0 | 1 | 25 - add tests.
+
 
 </code>
 </pre>
