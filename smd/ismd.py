@@ -31,12 +31,14 @@ class Window(OutputMonitor):
 
     def create(self):
         self.window = tk.Tk()
+        self.window.title(self.filepath)
+        self.window.geometry("1200x800")
         self.scrollbar = tk.Scrollbar(self.window)
         self.textbox = tk.Text(self.window)
         self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.textbox.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
         self.scrollbar.config(command=self.textbox.yview)
-        self.textbox.config(yscrollcommand=self.scrollbar.set)
+        self.textbox.config(yscrollcommand=self.scrollbar.set, bg="white", fg="black")
         self.refresh()
         self.update()
 
