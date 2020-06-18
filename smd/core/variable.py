@@ -842,6 +842,13 @@ class Namespaces(object):
         # newname [[ns].name]
         pass
 
+    def existsInNamespace(self, variable_name, namespace):
+        ns, name = self._splitNamespace(variable_name)
+        if ns != namespace:
+            return False
+
+        return True if self._namespaces[namespace].exists(variable_name) else False
+
     def exists2(self, value, variable_name):
         if variable_name is not None:
             # this is a basic variable
@@ -950,6 +957,42 @@ class Namespaces(object):
                 return (ns, cv[0], None)
 
         raise LogicError("This really can't happen happened.")
+
+    def parseVariableNameInNamespace(self, variable_name, namespace):
+        just_no = (None, None, None)
+        # split as many times as possible
+        cv = variable_name.split('.')
+        if len(cv) > 3:
+            # If we have more than 3 components, it's not valid
+            return just_no
+
+        if len(cv) == 3 and cv[0] != namespace:
+            # syntactically correct, but in wrong namespace.
+            # return the fully qualified parts back to the caller, let them sort it out
+            return (cv[0], cv[1], cv[2])
+
+        elif len(cv) == 2:
+            if cv[0] == namespace:
+                # namespace is correct, but is the variable defined?
+                if self._namespaces[namespace].exists(cv[1]):
+                    # yes, it's defined, return the parts
+                    return (cv[0], cv[1], None)
+
+                return just_no
+
+            # cv[0] must be the variable name and cv[1] the attribute. Is it defined?
+            if self._namespaces[namespace].exists(variable_name):
+                # yes, it's defined, and in the right namespace.
+                return (namespace, cv[0], cv[1])
+
+            return just_no
+
+        # we have only 1 part, assume it's the variable name. Does it exist in the specified namespace?
+        if self._namespaces[namespace].exists(cv[0]):
+            # yes, it's there, return the parts
+            return (namespace, cv[0], None)
+
+        return just_no
 
     def isAttribute(self, variable_name, return_elements=False):
         left, right = self._splitNamespace(variable_name)

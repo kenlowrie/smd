@@ -19,35 +19,32 @@
 <div class="extras"><p>wt1.alsoworks = html.wt3</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h3>--->wt1</h3></div>
-<span class="myclass1" style="color:red">----------#1a> wt1 line wrap test</span>
+<span class="myclass1" style="color:red;font-size:1.3em">----------#1a> wt1 line wrap test if this is <strong>RED</strong></span>
 <div class="extras"><h4>--->wt1.works</h4></div>
-<span class="myclass2" style="color:blue">----------#2a> wt1.works line wrap test</span>
+<span class="myclass2" style="color:blue;font-size:1.3em">----------#2a> wt1.works line wrap test if this is <strong>BLUE</strong></span>
 <div class="extras"><h4>--->wt1.alsoworks</h4></div>
-<span class="myclass3" style="color:green">----------#3a> wt1.alsoworks line wrap test</span>
+<span class="myclass3" style="color:green;font-size:1.3em">----------#3a> wt1.alsoworks line wrap test if this is <strong>GREEN</strong></span>
 <div class="extras"><h1></h1></div>
 :---------:#4a> raw lines should never be wrapped<br />
 :---------:#4b> raw lines should never be wrapped<br />
 :---------:#4c> raw lines should never be wrapped<br />
 :---------:#4d> raw lines should never be wrapped<br />
 <div class="extras"><h4>--->popping stack back 1 level p class=myclass2</h4></div>
-<span class="myclass2" style="color:blue">----------#2b> wt1.works line wrap test</span>
+<span class="myclass2" style="color:blue;font-size:1.3em">----------#2b> wt1.works line wrap test</span>
 <div class="extras"><h4>--->popping stack back 1 level p class=myclass1</h4></div>
-<span class="myclass1" style="color:red">----------#1b> wt1 line wrap test</span>
+<span class="myclass1" style="color:red;font-size:1.3em">----------#1b> wt1 line wrap test</span>
 <div class="extras"><p>----------#0b> back to starting html.divx, p</p></div>
-<div class="extras"><h3>stop wrap via indirection</h3></div>
+<div class="extras"><h3>end wrap via indirection</h3></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
 <div class="extras"><h4>start tests that will fail because raw html is being passed in</h4></div>
-<div class="extras"><p>wt2 = <span class="myclass1" style="color:red"></span></p></div>
-<div class="extras"><p>wt2.works = <span class="myclass2" style="color:blue"></span></p></div>
-<div class="extras"><p>wt2.alsoworks = <span class="myclass3" style="color:green"></span></p></div>
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.&lt;span class="myclass1" style="color:red;font-size:1.3em"&gt;&lt;/span&gt;</em>]<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.&lt;span class="myclass2" style="color:blue;font-size:1.3em"&gt;&lt;/span&gt;</em>]<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.&lt;span class="myclass3" style="color:green;font-size:1.3em"&gt;&lt;/span&gt;</em>]<br />
 <div class="extras"><h3>------------------------------------------</h3></div>
-ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
-ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
-ERROR: @wrap tags must be in the html namespace, not the [None] namespace.<br />
 <div class="extras"><h4>start tests that will fail because a non html namespace is being used</h4></div>
-<div class="extras"><h3>------------------------------------------</h3></div>
-ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
-ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
-ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.bb</em>]<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.wt2.fails</em>]<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.wt2.alsofails</em>]<br />
 <div class="extras"><h4>and now just some random testing ...</h4></div>
 <div class="extras"><p>-------------->This should be the starting divx, p wrapper still</p></div>
 <li>item 1</li>
@@ -57,28 +54,46 @@ ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
 <li>orange</li>
 <li>banana</ol></li>
 <div class="extras"><p>This will generate an error<br /></p></div>
-ERROR: @wrap tags must be in the html namespace, not the [var] namespace.<br />
-<div class="extras"><p>This will work, and be red<br /></p></div>
-<span class="myclass1" style="color:red">And this is just a bunch of other random content, wrapped in the p class=myclass1 tag</span>
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.var.wt1</em>]<br />
+<div class="extras"><p>This will still be the default @wrap format</p></div>
+<span class="myclass1" style="color:red;font-size:1.3em">This will work, and be red<br /><br /></span>
+<span class="myclass1" style="color:red;font-size:1.3em">Also wrapped in the span class=myclass1 tag<br /></span>
 <div class="extras"><p>And now back to the default html.divx, p tag</p></div>
-And now we will test the special behavior of @wrap.<br /><br />
-<div class="extras"><p><span class="myclass2" style="color:blue">Default wrap is now the blue one</span></p></div>
+And now we will test the special behavior of @wrap.<br />
+<div class="extras"><p><span class="myclass2" style="color:blue;font-size:1.3em">Default wrap is now the blue one</span></p></div>
 this should have no decoration
-<div class="extras"><p><span class="myclass2" style="color:blue">back to previous (blue)</span></p></div>
-Now I've cleared everything<br /><br />
-<div class="extras"><p><span class="myclass3" style="color:green">Now I'm using the html.divx,p,html.wt3 (green) wrap</span></p></div>
-Once again, nothing.
+<div class="extras"><p><span class="myclass2" style="color:blue;font-size:1.3em">back to previous (blue)</span></p></div>
+Now I've cleared everything<br />
+<div class="extras"><p><span class="myclass3" style="color:green;font-size:1.3em">Now I'm using the html.divx,p,html.wt3 (green) wrap</span></p></div>
+Once again, nothing.<br /><br />
+Now I'm going to pass an invalid parameter to @parw<br />
+WARNING: unknown option <em>-1</em> passed to @parw<br />
 Still nothing, after trying a negative number with @parw<br /><br />
+And now, let's pass 25 to @parw, but there's only 2 items on the stack...<br />
+WARNING: only 2 items found on the stack<br />
 Back to empty @wrap q, passed count of 25<br /><br />
 Going to pop on empty stack, will issue warning<br /><br />
 WARNING: wrapper stack is empty<br />
-<div class="extras"><p><span class="myclass1" style="color:red">Going red.</span></p></div>
-<div class="extras"><p><span class="myclass1" style="color:red">Another red line.</span></p></div>
-<div class="extras"><p><span class="myclass2" style="color:blue">And now blue</span></p></div>
-<div class="extras"><p><span class="myclass3" style="color:green">And now green</span></p></div>
+<div class="extras"><p><span class="myclass1" style="color:red;font-size:1.3em">Going red.</span></p></div>
+<div class="extras"><p><span class="myclass1" style="color:red;font-size:1.3em">Another red line.</span></p></div>
+<div class="extras"><p><span class="myclass2" style="color:blue;font-size:1.3em">And now blue</span></p></div>
+<div class="extras"><p><span class="myclass3" style="color:green;font-size:1.3em">And now green</span></p></div>
 And now I've cleared everything once again.<br /><br />
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h4>Finally, let&apos;s check all the edge conditions for parameter passing in one place</h4></div>
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.var.uniq1</em>]<br />
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.var.uniq1.attr_issue</em>]<br />
+<div class="extras"><p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">This is a test</p></div>
+WARNING: @wrap tags cannot specify an attribute. Tag: [<em>html.uniq1.attr_issue</em>]. Removed [attr_issue].<br />
+<p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">And this will be a regular p, but will float right with a thin top border.</p>
+<div class="extras"><p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">And now we're back to the divx, uniq1</p></div>
+<div class="extras"><p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">Similar, but using hard coded namespace.</p></div>
+WARNING: @wrap tags cannot specify an attribute. Tag: [<em>html.uniq1.attr_issue</em>]. Removed [attr_issue].<br />
+<p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">Again with the float right thing cause of attribute error.</p>
+<div class="extras"><p class="plainTitle" style="color:purple;font-size:1.3em" attr_issue="this will fail">back to plain purple.</p></div>
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.foo.bar.a</em>]<br />
 <div class="extras"><h3>And this is the end of the @wrap test.</h3></div>
-Going to get one more warning about the wrapper stack being empty, cause I flushed it above...
+Going to get one more warning about the wrapper stack being empty, cause I flushed it above...<br />
 WARNING: wrapper stack is empty<br />
 <div class="variables">
 <code>
@@ -98,17 +113,17 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>wt1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass1<br />
-&nbsp;&nbsp;<strong>style=</strong>color:red<br />
+&nbsp;&nbsp;<strong>style=</strong>color:red;[var.fs_attr]<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>wt2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass2<br />
-&nbsp;&nbsp;<strong>style=</strong>color:blue<br />
+&nbsp;&nbsp;<strong>style=</strong>color:blue;[var.fs_attr]<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>wt3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass3<br />
-&nbsp;&nbsp;<strong>style=</strong>color:green<br />
+&nbsp;&nbsp;<strong>style=</strong>color:green;[var.fs_attr]<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 </code>

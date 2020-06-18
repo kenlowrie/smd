@@ -476,7 +476,7 @@ class ScriptParser(StdioWrapper):
             """Handle a wrap line"""
 
             class wrapTag(object):
-                def __init__(self,tags, ns_parseVariableName, markdown, oprint):
+                def __init__(self,tags, ns_parseVariableNameInNamespace, markdown, oprint):
                     # add ability to push a null or nop onto the stack, to temporarily disable @wrap output
                     if tags.lower() in ['null', 'nop']:
                         self._start = self._end = ''
@@ -485,16 +485,25 @@ class ScriptParser(StdioWrapper):
                     self._start = None
                     self._end = None
                     tag_names = []
+                    html_ns = 'html'
+                    ns_parseVariableNameInNamespace
+                    from .core.utility import HtmlUtils
                     # in case they've listed multiples, split them at the ','
                     for tag in tags.split(','):
-                        self._ns, self._name, self._attr = ns_parseVariableName(tag.strip())
-                        if self._ns != 'html':
-                            oprint(f"ERROR: @wrap tags must be in the html namespace, not the [{self._ns}] namespace.<br />")
+                        stripped_tag = tag.strip()
+                        if not stripped_tag.startswith(f"{html_ns}."):
+                            # if they didn't specify a namespace, force it to html. Even if they specified a valid NS, we don't care.
+                            stripped_tag = f"{html_ns}." + stripped_tag
+
+                        self._ns, self._name, self._attr = ns_parseVariableNameInNamespace(stripped_tag)
+                        if self._ns != html_ns:
+                            oprint(f"ERROR: @wrap tags must <em><strong>exist</strong></em> in the {html_ns} namespace. Tag: [<em>{HtmlUtils.escape_html(stripped_tag)}</em>]<br />")
                             return
                         if self._attr is not None:
-                            oprint(f"WARNING: @wrap tags cannot specify an attribute. {self._attr}<br />")
+                            oprint(f"WARNING: @wrap tags cannot specify an attribute. Tag: [<em>{HtmlUtils.escape_html(stripped_tag)}</em>]. Removed [{self._attr}].<br />")
 
-                        tag_names.append(f"html.{self._name}")
+                        tag_names.append(f"{html_ns}.{self._name}")
+                    # we successively parsed all the tags, now let's build the start and end tag strings and save them.
                     self._start = ''
                     self._end = ''
                     # For the opening, do them in order, picking up tag.< for each
@@ -522,29 +531,41 @@ class ScriptParser(StdioWrapper):
                                                     HtmlUtils.escape_html(m.group(2)))
                 )
                 if( m.group(1) == 'wrap'):
-                    #//TODO: Seems like this markdown call is not needed.
+                    # Parse the tag(s) and construct the object instance
                     tag = wrapTag(m.group(2), self._ns.parseVariableName, self._md.markdown, self.oprint)
                     if tag.start is not None and tag.end is not None:
+                        # Append the new wrap tag to our stack
                         self.wrapper.append(tag)
                     else:
+                        # This is a debug only message indicating the instance wasn't valid for some reason
                         self.debug_smd.print(f"WARNING: wrapTag object instance is not valid<br />")
                 else:
+                    # handling the @parw (pop() top most stack item from wrapper queue)
                     if not hasattr(self, 'wrapper'):
-                        self.oprint('WARNING: no wrapper has been set<br />')
+                        raise AssertionError("No wrapper list is set in our instance")
                     elif not self.wrapper:
+                        # @parw invoked with empty stack
                         self.oprint('WARNING: wrapper stack is empty<br />')
                     elif m.group(2) == '':
+                        # @parw invoked with no parameters
                         self.wrapper.pop()
                     else:
+                        # parse the parms: [*|all|#]
                         parameter = m.group(2)
                         if parameter in ['*', 'all']:
+                            # empty the stack
                             while self.wrapper:
                                 self.wrapper.pop()
                         elif parameter.isnumeric():
+                            # pop specified number of items from stack
                             count = int(parameter)
                             while self.wrapper and count > 0:
                                 self.wrapper.pop()
                                 count -= 1
+                            if count != 0:
+                                self.oprint(f'WARNING: only {int(parameter)-count} items found on the stack<br />')
+                        else:
+                            self.oprint(f'WARNING: unknown option <em>{parameter}</em> passed to @parw<br />')
 
             else:
                 self.oprint(lineObj.current_line)
