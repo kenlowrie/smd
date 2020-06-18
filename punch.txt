@@ -3,112 +3,112 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-01. document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
-72. figure out which things need to be tested using stand alone python scripts and start building/adding them.
-85. Make a single shell script that runs both/all of the command line tests ...
-97. Is there a need for a [sys.wrap.open] and [sys.wrap.close]? Are there other [sys.] things that might be needed? enough for a namespace? otherwise just need a way to get them. Wait, can't i do that by writing something in utility.codewrappers() or something? If so, add it, I see this as useful...
-103. make @wrap search html namespace first, instead of var (or others)
-105.
+document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 
 Priority 2 | p2
 ---------------
-35. document using this with pipenv (possibly other "popular" python environment manager(s))
-36. create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
-73. consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
-3. Split A/V specific CSS to separate file. Realize this will complicate using smd since it requires a different cssfile(s)...
+document using this with pipenv (possibly other "popular" python environment manager(s))
+create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
+consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
+Split A/V specific CSS to separate file. Realize this will complicate using smd since it requires a different cssfile(s)...
+figure out which things need to be tested using stand alone python scripts and start building/adding them.
+Make a single shell script that runs both/all of the command line tests ...
+Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
 
 
 Priority 3 | p3
 ---------------
-22. SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
-32. add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
-33. --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
-34. release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
-44. Code review Cache, ImportCache & SystemDefaults.
-78. maybe add a pause/resume method on the watcher class i could engage while parsing...
-90. Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
-61. Make a pass at cleaning up //TODO, or at least listing them here or in docs
-55. Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
-56. See how close I can get to a clean render of Buddy's music video script markdown file...
+SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
+add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
+--developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
+release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
+Code review Cache, ImportCache & SystemDefaults.
+maybe add a pause/resume method on the watcher class i could engage while parsing...
+Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
+Make a pass at cleaning up //TODO, or at least listing them here or in docs
+Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
+See how close I can get to a clean render of Buddy's music video script markdown file...
 
 Priority 5 | p5
 ---------------
-43. Should I use the python logging system for better control of debug messages and console output?
-53. Start rewriting userdoc.md so it conforms to smd.
-37. how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
-62. Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
-4. Move all of these things to the issues tracker in github, and get rid of this file.
-75. Currently no way to get the .css file(s) into the tests area. Does this even make sense?
-91. How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
-101. Might be cool if there was an html python pretty printer on pypi I could build into hostgui
+Should I use the python logging system for better control of debug messages and console output?
+Start rewriting userdoc.md so it conforms to smd.
+how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
+Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
+Move all of these things to the issues tracker in github, and get rid of this file.
+Currently no way to get the .css file(s) into the tests area. Does this even make sense?
+How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
+Might be cool if there was an html python pretty printer on pypi I could build into hostgui
 
 
 
 Completed
 ---------
-**5. Figure out how to implement the outer HTML Tag support
-**6. Figure out how to implement the <head></head> support
-**7. Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
-**18. Update the modified event to only track changes to the specific files being updated, instead of entire directory.
-**19. Use a thread to run the window mainloop, so Tk refreshes more often, like when you are dragging the scroll bar, etc. couldn't make this work, gave up for now.
-**21. Review all the mindmaps, evernotes, etc., and make 1 consolidated list (here) of the things I need to be focused on.
-**23. Implement the builtins.md and *-html.md loading in smd.py, then switch ismd to use smdparse instead of livesmd.
-**26. Decide if the --load-default-builtins=Y|N, --load-user_bulitins=Y|N, etc., belong with smd.py, or an outer (livesmd, smdparse, ismd) script...
-**28. add something to pull in "user-builtins.md", maybe in the ~ folder, as .smd-builtins
-**29. cmdline switch to tell it to NOT load them, useful for testing, so we dont' introduce ambiguous variables.
-**34. move doc.md testing code to other file. common.md and report.md
-**35. Python 3.6 or later because we use f-strings
-**36. Python 3.7 or later because it guarantees keys dictionary stays in insertion order
-**20. builtins.md collection of @imports instead of one file, so you can easily get what you want. I/P
-**03. make the "defaults" make sense. i.e. cssfile, page title, etc.
-**04. do I need to implement a scheme to handle "-f filename.md" config_default_file that gets loaded just before the html document processing? -i/--import
-**42. The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
-**27. rename livesmd.py -> smdlive. This is the one that should operate an endpoint
-**47. figure out how to do a source level debug of the code. just load debug.py into vscode, set a breakpoint, and debug it.
-**46. Need to be able to launch dual monitors (-m hostgui and -m browser)
-**60. remove the var="value" support from namespaces where it doesn't make sense. 
-**45. Should the ConfigFileObject... classes be part of the cache module?
-**02. remove all the old peekline, ... bs from the mainloop. we need to kiss.
-**51. Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
-**24. @dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
-**30. if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
-**63. Can i put debugtracker in the TLS? Clean up init, and when classes can register, etc.
-**60. Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
-**64. -nu with ~/.smb/builtins.md still loads the user builtin. fix this.
-**74. I should do a quick test in the watcher.refresh(). if no changes, don't stop/restart, just maybe "flush" pending changes... 
-**79. Probably need @watch "filename" that adds something to the seen list for monitoring. for javascript.js, additional files.css, etc.
-**38. build out initial version of smdlive
-**81. ismd -f non-existant-file -c -ndb ... doesn't fail when file doesn't exist...
-**71. figure out which things need to be tested via bash/zsh script, and start building them out
-**83. Need to use -f filename with the cmdline.py testing utility, not all via redirection...
-**80. ConfigFileData - Need a way to override any of the "builtin" document markdown files with something specific.
-**54. Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
-**82. if you ismd -f foo.md -c -ndb ... then the head is always wrong when it loads, because it loads before you can set [defaults.cssfile]. Is this a bug? I'm not sure... NAB
-**86. Add tests to validate the user builtins and docs of the smd utility. xfer .smd-cmdline-files to user area.
-**87. Fix current cmdline tests so they behave consistently if user has local ~/.smd files (rename to .smd-cmdline-test and then back at test conclusion.)
-**77. Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
-**25. in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
-**50. Clean up how ismd does the multiple monitors
-**88. Shore up the @wrap support so it is smarter about what it accepts as a parameter.
-**57. Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
-**84. Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
-**89. Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
-**4. Replace special code relating to A/V scripts with namespace variables (where possible).
-**52. Is raw still needed? Yes. It is needed to circumvent @wrap tags from mucking up formatting of specialized macros
-**05. might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
-**14. Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level? --cwd? or just make cwd be where we look...
-**65. Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
-**92. Need a way to dump the filetracker.seen files. Where does it belong? @dump filetracker="pattern"
-**93. Shouldn't @dump sysdefaults="pattern" also be there? And get rid of @defaults?
-**94. Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
-**95. What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
-**70. continue improving the automated tests and get coverage for all new functionality.
-**99. @wrap nop and null - add tests to wrap.md
-**100. @parw *|all @parw -3 | 0 | 1 | 25 - add tests.
-**96. Add @wrap nop | null | tag1 [, tag2 [...]] support
-**98. Should handle_header() handle @wrap lines? Code added, need to review closely.
-**102. set background and foreground colors for the hostgui window.
-**104. Implement @parw [* | all | #]
+Figure out how to implement the outer HTML Tag support
+Figure out how to implement the <head></head> support
+Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
+Update the modified event to only track changes to the specific files being updated, instead of entire directory.
+Use a thread to run the window mainloop, so Tk refreshes more often, like when you are dragging the scroll bar, etc. couldn't make this work, gave up for now.
+Review all the mindmaps, evernotes, etc., and make 1 consolidated list (here) of the things I need to be focused on.
+Implement the builtins.md and *-html.md loading in smd.py, then switch ismd to use smdparse instead of livesmd.
+Decide if the --load-default-builtins=Y|N, --load-user_bulitins=Y|N, etc., belong with smd.py, or an outer (livesmd, smdparse, ismd) script...
+add something to pull in "user-builtins.md", maybe in the ~ folder, as .smd-builtins
+cmdline switch to tell it to NOT load them, useful for testing, so we dont' introduce ambiguous variables.
+move doc.md testing code to other file. common.md and report.md
+Python 3.6 or later because we use f-strings
+Python 3.7 or later because it guarantees keys dictionary stays in insertion order
+builtins.md collection of @imports instead of one file, so you can easily get what you want. I/P
+make the "defaults" make sense. i.e. cssfile, page title, etc.
+do I need to implement a scheme to handle "-f filename.md" config_default_file that gets loaded just before the html document processing? -i/--import
+The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
+rename livesmd.py -> smdlive. This is the one that should operate an endpoint
+figure out how to do a source level debug of the code. just load debug.py into vscode, set a breakpoint, and debug it.
+Need to be able to launch dual monitors (-m hostgui and -m browser)
+remove the var="value" support from namespaces where it doesn't make sense. 
+Should the ConfigFileObject... classes be part of the cache module?
+remove all the old peekline, ... bs from the mainloop. we need to kiss.
+Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
+@dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
+if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
+Can i put debugtracker in the TLS? Clean up init, and when classes can register, etc.
+Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
+-nu with ~/.smb/builtins.md still loads the user builtin. fix this.
+I should do a quick test in the watcher.refresh(). if no changes, don't stop/restart, just maybe "flush" pending changes... 
+Probably need @watch "filename" that adds something to the seen list for monitoring. for javascript.js, additional files.css, etc.
+build out initial version of smdlive
+ismd -f non-existant-file -c -ndb ... doesn't fail when file doesn't exist...
+figure out which things need to be tested via bash/zsh script, and start building them out
+Need to use -f filename with the cmdline.py testing utility, not all via redirection...
+ConfigFileData - Need a way to override any of the "builtin" document markdown files with something specific.
+Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
+if you ismd -f foo.md -c -ndb ... then the head is always wrong when it loads, because it loads before you can set [defaults.cssfile]. Is this a bug? I'm not sure... NAB
+Add tests to validate the user builtins and docs of the smd utility. xfer .smd-cmdline-files to user area.
+Fix current cmdline tests so they behave consistently if user has local ~/.smd files (rename to .smd-cmdline-test and then back at test conclusion.)
+Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
+in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
+Clean up how ismd does the multiple monitors
+Shore up the @wrap support so it is smarter about what it accepts as a parameter.
+Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
+Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
+Replace special code relating to A/V scripts with namespace variables (where possible).
+Is raw still needed? Yes. It is needed to circumvent @wrap tags from mucking up formatting of specialized macros
+might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
+Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level? --cwd? or just make cwd be where we look...
+Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
+Need a way to dump the filetracker.seen files. Where does it belong? @dump filetracker="pattern"
+Shouldn't @dump sysdefaults="pattern" also be there? And get rid of @defaults?
+Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
+What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
+continue improving the automated tests and get coverage for all new functionality.
+@wrap nop and null - add tests to wrap.md
+@parw *|all @parw -3 | 0 | 1 | 25 - add tests.
+Add @wrap nop | null | tag1 [, tag2 [...]] support
+Should handle_header() handle @wrap lines? Code added, need to review closely.
+set background and foreground colors for the hostgui window.
+Implement @parw [* | all | #]
+make @wrap search html namespace first, instead of var (or others)
+Added [code.wrap_stack] to get access to the current wrap tag open and close strings for more flexible formatting options.
 
 
 
