@@ -241,5 +241,12 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 <br />
+<strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+&nbsp;&nbsp;<strong>w=</strong>*<br />
+&nbsp;&nbsp;<strong>encode=</strong>False<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+<br />
 </code>
 </div>

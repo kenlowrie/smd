@@ -10,6 +10,22 @@
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: code.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @code namespace</h3>
 <div class="plain"><p class="plainTitle">Testing @code builtin functions</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+Testing code.wrap_stack
+<div class="extras"><p>
+Initially, the wrap_stack should be empty: ""
+</p></div>
+<div class="extras"><p>And now we are changing it to the more traditional "@wrap divx, p": "&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;"</p></div>
+<div class="extras"><p>Next up, we will turn off @wrap, and see that we are clear.</p></div>
+This should not be wrapped.
+<div class="extras"><p>
+And this should be wrapped, even though we said it was raw, because previously, we emitted the open tag via code.wrap_stack(w="<")...
+</p></div>
+<div class="extras"><p>And now we are back to normal, as we emitted the close tag via code.wrap_stack(w=">")</p></div>
+<div class="extras"><p></p></div>
+<div class="extras"><p>There should be an empty div before this because we emitted the entire wrap tag sequence with code.wrap_stack(w="*")</p></div>
+<div class="extras"><p>This concludes the testing of code.wrap_stack</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
 <div class="plain"><p class="plainTitle">Testing adding new @code builtins</p></div>
 <div class="variables">
 <code>
@@ -112,7 +128,8 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>t=</strong>repeat_str <br />
 &nbsp;&nbsp;<strong>c=</strong>2<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('$.t'*$.c))<br />
+&nbsp;&nbsp;<strong>last=</strong>------------------------------------------<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'t': '-', 'c': '42'}<br />
 <br />
 <strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
@@ -128,8 +145,16 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 <br />
+<strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+&nbsp;&nbsp;<strong>w=</strong>*<br />
+&nbsp;&nbsp;<strong>encode=</strong>True<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>last=</strong>&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
 </code>
 </div>
-</div>
-</body>
-</html>
+<div class="extras"><p></div></p></div>
+<div class="extras"><p></body></p></div>
+<div class="extras"><p></html></p></div>

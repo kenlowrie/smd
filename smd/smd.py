@@ -122,6 +122,9 @@ class ScriptParser(StdioWrapper):
         self._shotListQ = BookmarkList()    # shot list link Q
         self._wrapper = []              # queue of wrapper tags
 
+        # add a custom TLS object that holds the reference to the wrap stack, so we can access it from the .core.utility module.
+        self.tls.addObjectToTLS('wrapstack', self._wrapper)
+
         self._ns = Namespaces(self._md.markdown, self._md.setNSxface, oprint=self.oprint)
         #TODO: Clean this up. _stripClass needs to be handled better than this...
         self._md.setStripClass(self._stripClass)

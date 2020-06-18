@@ -98,6 +98,31 @@ class HtmlUtils():
 class CodeHelpers():
 
     @staticmethod
+    def wrap_stack(item=None, encode=False):
+        from .thread import getTLS
+        tls = getTLS()
+        if tls is not None:
+            stack = tls.getObjectFromTLS('wrapstack')
+            if stack is not None:
+                if len(stack) > 0:
+                    tag = stack[-1]
+                    if item == '<':
+                        rs = f"{tag.start}"
+                    elif item == '>':
+                        rs = f"{tag.end}"
+                    else:
+                        # anything else just return the entire tag
+                        rs = f"{tag.start}{tag.end}"
+                    # now format as specified
+                    print(rs if not encode else HtmlUtils.escape_html(rs))
+                else:
+                    print("")   # return an empty string if stack is empty
+            else:
+                print("ERROR: Did not find wrap stack in TLS")
+        else:
+            print("ERROR: Failed trying to obtain the TLS")
+
+    @staticmethod
     def b(i):
         return '{{' if i == 0 else '}}'
 

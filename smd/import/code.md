@@ -80,3 +80,9 @@
       var="varname_to_replace"\
       val="value_to_insert"\
       str="string to operate on"
+
+@code _id="wrap_stack"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})"\
+      w="*"\
+      encode="False"
