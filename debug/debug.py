@@ -27,7 +27,8 @@ if False:
 
 #smd.smd.smd_parse_file(['-f', 'clean.md', '-nd', '-ndb'])
 #smd.smd.smd_parse_file(['-nd', '-ndb', '-o'])
-smd.smd.smd_parse_file(['-nohtml', '-nobody', '-head', 'in/wrap.md'])
+#smd.smd.smd_parse_file(['-nohtml', '-nobody', '-head', 'in/wrap.md'])
+smd.smd.smd_parse_file(['-nd'])
 
 
 print("nothing to see here.")
