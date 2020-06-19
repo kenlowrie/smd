@@ -4,7 +4,7 @@
 // because it generates different output every time the script runs
 @link _="producer" _inherit="_template_" href="__REMOVETHIS__mailto:joe@prodcompany.com"
 @var producer="Producer"
-@var _="Joe Producer" _format="Joe Producer"
+@var JoeProducer="Joe Producer"
 @var FancyJoe="{:.bigandbold}Joe Producer"
 @var pcphone="555.867.5309"
 @var sigjoe="[FancyJoe]<br />Producer<br />[Production Company]<br />[pcphone]<br />[joe@prodcompany.com]"
