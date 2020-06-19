@@ -71,6 +71,9 @@ class TestSMD(TestCase):
     def test_variables(self):
         self.process('variables')
 
+    def test_var(self):
+        self.process('var')
+
     def test_film(self):
         self.process('film')
 
@@ -100,6 +103,9 @@ class TestSMD(TestCase):
 
     def test_image(self):
         self.process('image')
+
+    def test_images(self):
+        self.process('images')
 
     def test_divs(self):
         self.process('divs')
