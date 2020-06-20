@@ -796,13 +796,13 @@ NAMESPACE: code<br />
 <span class="debug green"><strong>smd.raw</strong></span><br />
 <span class="debug green"><strong>stdinput</strong></span><br />
 </div>
-<span class="debug">            markdown: markdown([var.testdoc.end])<br />
+<span class="debug">            markdown: 1: markdown([var.testdoc.end])<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[var.testdoc.end]</em><br />
+<span class="debug">            markdown: 1: mdvars(<strong>m[0])=</strong><em>[var.testdoc.end]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>var.testdoc.end</em><br />
+<span class="debug">            markdown: 1: mdvars(<strong>m[1])=</strong><em>var.testdoc.end</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[var.testdoc.end]</em><br />
+<span class="debug">            markdown: 1: mdvars(<strong>s)=</strong><em>[var.testdoc.end]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>testdoc.end</em>")</strong><br />
 </span>
@@ -810,19 +810,19 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: <strong>getValue("<em>testdoc.end</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown({{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}})<br />
+<span class="debug">            markdown: 2: markdown({{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}})<br />
 </span>
 <span class="debug">              ns.var: MD1: <strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}</strong><br />
 </span>
 <span class="debug">              ns.var: RS1: <em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
-<span class="debug">            markdown: markdown([code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")])<br />
+<span class="debug">            markdown: 2: markdown([code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")])<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+<span class="debug">            markdown: 2: mdvars(<strong>m[0])=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>code.pushlines</em><br />
+<span class="debug">            markdown: 2: mdvars(<strong>m[1])=</strong><em>code.pushlines</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
+<span class="debug">            markdown: 2: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
 <span class="debug">             ns.code: <strong>exists("<em>pushlines</em>")</strong><br />
 </span>
@@ -852,19 +852,19 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.src</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}'))<br />
+<span class="debug">            markdown: 3: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}'))<br />
 </span>
 <span class="debug">             ns.code: MD1: <strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')</strong><br />
 </span>
 <span class="debug">             ns.code: RS1: <em>from .utility import CodeHelpers;CodeHelpers.pushlines('[self.t]')</em><br />
 </span>
-<span class="debug">            markdown: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]'))<br />
+<span class="debug">            markdown: 3: markdown(from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]'))<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[code.pushlines.t]</em><br />
+<span class="debug">            markdown: 3: mdvars(<strong>m[0])=</strong><em>[code.pushlines.t]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>code.pushlines.t</em><br />
+<span class="debug">            markdown: 3: mdvars(<strong>m[1])=</strong><em>code.pushlines.t</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]')</em><br />
+<span class="debug">            markdown: 3: mdvars(<strong>s)=</strong><em>from .utility import CodeHelpers;CodeHelpers.pushlines('[code.pushlines.t]')</em><br />
 </span>
 <span class="debug">             ns.code: <strong>exists("<em>pushlines.t</em>")</strong><br />
 </span>
@@ -874,13 +874,13 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.t</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown(@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
+<span class="debug">            markdown: 4: markdown(@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
 </span>
@@ -894,25 +894,25 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: Returning _format("<em>var="." html="." link="." image="."</em>") as value for <strong>dump_ns_list</strong><br />
 </span>
-<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
 </span>
 <span class="debug">              ns.var: MD3: <strong>var="." html="." link="." image="."</strong><br />
 </span>
 <span class="debug">              ns.var: RS3: <em>var="." html="." link="." image="."</em><br />
 </span>
-<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
 </span>
 <span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.dump_ns_list):<strong>var="." html="." link="." image="."</strong><br />
 </span>
 <span class="debug">              ns.var: RS4: <em>var="." html="." link="." image="."</em><br />
 </span>
-<span class="debug">            markdown: markdown(var="." html="." link="." image=".")<br />
+<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[doc_closure]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[doc_closure]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
 </span>
@@ -926,19 +926,19 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_close.md"</em>") as value for <strong>doc_closure</strong><br />
 </span>
-<span class="debug">            markdown: markdown(@import "{{sys.imports}}/def_close.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "{{sys.imports}}/def_close.md")<br />
 </span>
 <span class="debug">              ns.var: MD3: <strong>@import "{{sys.imports}}/def_close.md"</strong><br />
 </span>
 <span class="debug">              ns.var: RS3: <em>@import "[sys.imports]/def_close.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "[sys.imports]/def_close.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "[sys.imports]/def_close.md")<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_close.md"</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_close.md"</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
 </span>
@@ -948,31 +948,31 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD1: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
 </span>
 <span class="debug">              ns.var: RS1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
 </span>
 <span class="debug">              ns.var: RS2: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.doc_closure):<strong>@import "[sys.imports]/def_close.md"</strong><br />
 </span>
 <span class="debug">              ns.var: RS4: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[body_closure]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[body_closure]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
+<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
 </span>
@@ -986,19 +986,19 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_bodyclose.md"</em>") as value for <strong>body_closure</strong><br />
 </span>
-<span class="debug">            markdown: markdown(@import "{{sys.imports}}/def_bodyclose.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "{{sys.imports}}/def_bodyclose.md")<br />
 </span>
 <span class="debug">              ns.var: MD3: <strong>@import "{{sys.imports}}/def_bodyclose.md"</strong><br />
 </span>
 <span class="debug">              ns.var: RS3: <em>@import "[sys.imports]/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "[sys.imports]/def_bodyclose.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "[sys.imports]/def_bodyclose.md")<br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
 </span>
-<span class="debug">            markdown: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_bodyclose.md"</em><br />
+<span class="debug">            markdown: 5: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_bodyclose.md"</em><br />
 </span>
 <span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
 </span>
@@ -1008,37 +1008,37 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD1: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
 </span>
 <span class="debug">              ns.var: RS1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
 </span>
 <span class="debug">              ns.var: RS2: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
 </span>
-<span class="debug">            markdown: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
 </span>
 <span class="debug">              ns.var: MD4: fmt_str(self.-&gt;var.body_closure):<strong>@import "[sys.imports]/def_bodyclose.md"</strong><br />
 </span>
 <span class="debug">              ns.var: RS4: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: 5: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
 <span class="debug">             ns.code: MD1: <strong>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</strong><br />
 </span>
 <span class="debug">             ns.code: RS1: <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: 4: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
 <span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</strong><br />
 </span>
 <span class="debug">             ns.code: RS2: <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: 4: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
 <span class="debug">             ns.code: MD2: fmt_str(self.-&gt;code.pushlines):<strong>from .utility import CodeHelpers;CodeHelpers.pushlines('[self.t]')</strong><br />
 </span>
@@ -1074,17 +1074,17 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: Restore: <strong>t</strong> with <em>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")</em><br />
 </span>
-<span class="debug">            markdown: markdown()<br />
+<span class="debug">            markdown: 3: markdown()<br />
 </span>
 <span class="debug">              ns.var: MD2: fmt_str(self.-&gt;var.testdoc):<strong>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</strong><br />
 </span>
 <span class="debug">              ns.var: RS2: <em></em><br />
 </span>
-<span class="debug">            markdown: markdown()<br />
+<span class="debug">            markdown: 2: markdown()<br />
 </span>
 <span class="debug">               cache: Returning: <em>@parw</em><br />
 </span>
-<span class="debug">            markdown: markdown(@parw)<br />
+<span class="debug">            markdown: 1: markdown(@parw)<br />
 </span>
 <span class="debug">            smd.line: Match <strong>@parw=<em>@parw</em></strong><br />
 </span>
@@ -1094,7 +1094,7 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            smd.line: Match <strong>@dump var="." html="." link="." image="."=<em>@dump var="." html="." link="." image="."</em></strong><br />
 </span>
-<span class="debug">            markdown: markdown(@dump var="." html="." link="." image=".")<br />
+<span class="debug">            markdown: 1: markdown(@dump var="." html="." link="." image=".")<br />
 </span>
 <div class="variables">
 <code>
@@ -1481,7 +1481,7 @@ NAMESPACE: image<br />
 </div>
 <span class="debug">               cache: Returning: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
+<span class="debug">            markdown: 1: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
 </span>
 <span class="debug">            smd.line: Match <strong>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"=<em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em></strong><br />
 </span>
@@ -1489,18 +1489,18 @@ NAMESPACE: image<br />
 </span>
 <span class="debug">               cache: Returning: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
-<span class="debug">            markdown: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+<span class="debug">            markdown: 1: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
 <span class="debug">            smd.line: Match <strong>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"=<em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em></strong><br />
 </span>
 <span class="debug">            stdinput: Attempting to open: /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md using /Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md<br />
 </span>
-<span class="debug">            markdown: markdown(&lt;/div&gt;)<br />
+<span class="debug">            markdown: 1: markdown(&lt;/div&gt;)<br />
 </span>
 </div>
-<span class="debug">            markdown: markdown(&lt;/body&gt;)<br />
+<span class="debug">            markdown: 1: markdown(&lt;/body&gt;)<br />
 </span>
 </body>
-<span class="debug">            markdown: markdown(&lt;/html&gt;)<br />
+<span class="debug">            markdown: 1: markdown(&lt;/html&gt;)<br />
 </span>
 </html>
