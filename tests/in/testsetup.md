@@ -30,15 +30,11 @@
 @var _id="testdoc"\
     begin="{{code.pushlines(t=\"{{html.h2sh.<}}Script: {{var.testdoc.title}}{{html.h2sh.>}}\n{{html.h3sh.<}}Purpose: {{var.testdoc.desc}}{{html.h3sh.>}}\n@wrap html.divx, p\")}}"\
     end="{{code.pushlines(t=\"@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}\")}}"\
-    x="##{{self.title}}\
-    y="###{{self.desc}}\
     title="name of script"\
     desc="purpose of script"
 
 @var _id="testdoc_nw"\
     begin="{{code.pushlines(t=\"{{html.h2sh.<}}Script: {{var.testdoc_nw.title}}{{html.h2sh.>}}\n{{html.h3sh.<}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.>}}\")}}"\
     end="{{code.pushlines(t=\"@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}\")}}"\
-    x="##{{self.title}}\
-    y="###{{self.desc}}\
     title="name of script"\
     desc="purpose of script"

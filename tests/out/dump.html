@@ -287,13 +287,13 @@ NAMESPACE: var<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>dump.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing @dump and @debug functionality<br />
 <br />
 <strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>name of script<br />
+&nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
@@ -687,7 +687,8 @@ NAMESPACE: code<br />
 <span class="debug green"><strong>Method(toggle): smd.line is now enabled</strong><br /></span>
 <span class="debug green"><strong>Method(toggle): smd.raw is now enabled</strong><br /></span>
 <span class="debug green"><strong>Method(toggle): stdinput is now enabled</strong><br /></span>
-<span class="debug">            smd.line: Match <strong>@debug=<em>@debug
+<span class="debug">            smd.line: Match <strong>@debug
+=<em>@debug
 </em></strong><br />
 </span>
 <br />Toggling Debug Mode<br />
@@ -1219,13 +1220,13 @@ NAMESPACE: var<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
 &nbsp;&nbsp;<strong>title=</strong>dump.md<br />
 &nbsp;&nbsp;<strong>desc=</strong>Testing @dump and @debug functionality<br />
 <br />
 <strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>x=</strong>##{{self.title}}    y=<br />
+&nbsp;&nbsp;<strong>title=</strong>name of script<br />
+&nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
