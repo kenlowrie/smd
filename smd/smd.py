@@ -152,18 +152,18 @@ class ScriptParser(StdioWrapper):
             'import': RegexMain(   False,  False,  r'^[@]import[ ]*',       r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
             'embed': RegexMain(    False,  False,  r'^[@]embed[ ]*',        r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
             'watch': RegexMain(    False,  False,  r'^[@]watch[ ]*',        r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
-            'var': RegexMain(      True,   False,  r'^@var[ ]*',            r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
-            'set': RegexMain(      True,   False,  r'^@set[ ]*',            r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
-            'code': RegexMain(     True,   False,  r'^@code[ ]*',           r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
-            'link': RegexMain(     True,   False,  r'^@link[ ]*',           r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
-            'html': RegexMain(     True,   False,  r'^@html[ ]*',           r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
-            'image': RegexMain(    True,   False,  r'^@image[ ]*',          r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
-            'dump': RegexMain(     True,   False,  r'^@dump[ ]*',           r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
+            'var': RegexMain(      True,   False,  r'^@var[ ]*',            r'^(@var(\s*.*))'),  # r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'set': RegexMain(      True,   False,  r'^@set[ ]*',            r'^(@set(\s*.*))'),  # r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
+            'code': RegexMain(     True,   False,  r'^@code[ ]*',           r'^(@code(\s*.*))'),  # r'^(@code(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'link': RegexMain(     True,   False,  r'^@link[ ]*',           r'^(@link(\s*.*))'),  # r'^(@link(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'html': RegexMain(     True,   False,  r'^@html[ ]*',           r'^(@html(\s*.*))'),  # r'^(@html(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
+            'image': RegexMain(    True,   False,  r'^@image[ ]*',          r'^(@image(\s*.*))'),  # r'^(@image(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
+            'dump': RegexMain(     True,   False,  r'^@dump[ ]*',           r'^(@dump(\s*.*))'),    # r'^(@dump(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
             'break': RegexMain(    True,   False,  r'^[@](break|exit)[ ]*', r'^[@](break|exit)\s*$'),
             'stop': RegexMain(     True,   False,  r'^[@](stop|quit)[ ]*',  r'^[@](stop|quit)\s*$'),
             'raw': RegexMain(      False,  False,  r'^@(@|raw)[ ]*',        r'^@(@|raw)[ ]*(.*)'),
             'wrap': RegexMain(     False,  False,  r'^@(wrap|parw)[ ]*',    r'^@(wrap|parw)[ ]*(.*)'),
-            'debug': RegexMain(    True,   False,  r'^@debug[ ]*',          r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
+            'debug': RegexMain(    True,   False,  r'^@debug[ ]*',          r'^(@debug(\s*.*))'),  # r'^(@debug(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")*)'),
         }
 
     @property
@@ -649,10 +649,15 @@ class ScriptParser(StdioWrapper):
         def handle_setv2(m, lineObj):
             """Handle the @set parse line type."""
             if(m is not None):
-                d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
+                d = {self._md.markdown(l[0]): l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
 
-                #TODO: This needs to have an option for "finding namespace"
-                self._ns.updateVariable(d, ns="?")
+                nskey = '_ns'
+                namespace = '?'
+                if nskey in d:
+                    #self.oprint(f"dict-->{d}")
+                    namespace = self._md.markdown(d[nskey])
+                    del d[nskey]
+                self._ns.updateVariable(d, ns=namespace)
 
             else:
                 self.oprint(lineObj.original_line)
