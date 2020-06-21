@@ -33,7 +33,7 @@ class HtmlUtils():
             # If we weren't passed a string, convert it to a string before we escape it.
             s = str(s)
 
-        return s.replace("&", "&amp;").replace("[", "&#91;").replace("*", "&#42;").replace("@", "&#64;")
+        return s.replace("[", "&#91;").replace("*", "&#42;").replace("@", "&#64;")
 
     @staticmethod
     def str_to_html_entity_mix(string):
