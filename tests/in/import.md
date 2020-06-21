@@ -14,11 +14,6 @@
 @import '$/import/test_import2.md'
 
 @import '[sys.imports]/code.md'
-//TODO: Remove this when it's added to code.md
-@code _id="encode_smd"\
-      type="exec"\
-      src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
-      t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
 
 @import "this file doesn't exist"
 

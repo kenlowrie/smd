@@ -7,3 +7,4 @@
 
 @code _="echo" type="eval" src="print('$.e')" e="hello, world"
 
+//[code.encode_smd(t="[echo(e=\"hello, world\"&rpar;]")]

@@ -2,14 +2,6 @@
 
 [var.testdoc.begin(title="var.md" desc="Testing @var and @set namespaces")]
 
-//TODO: move this to code.md!
-@code _id="encode_smd"\
-      type="exec"\
-      src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
-      t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
-
-//[code.encode_smd(t="[echo(e=\"hello, world\"&rpar;]")]
-
 @var ns="var"
 
 @import "$/nsbasic.md"

@@ -96,13 +96,6 @@ Document code.encode_smd
 </code>
 </pre>
 
-//TODO: Move this to code.md if it's useful...
-
-@code _id="encode_smd"\
-      type="exec"\
-      src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
-      t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
-
 @@[code.encode_smd(t="@dump sysdef=\".\"")][b]
 
 {:.bigandbold}If this is inline, *[code.encode_smd(t="@var name=\"value\" _format=\"# {{self.name}}\"")]*

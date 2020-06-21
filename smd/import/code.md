@@ -86,3 +86,9 @@
       src="from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})"\
       w="*"\
       encode="False"
+
+@code _id="encode_smd"\
+      type="exec"\
+      src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
+      t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
+
