@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: var.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @var and @set namespaces</h3>
+<div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@var</strong></em> namespace</p></div>
+<div class="extras"><p>&#91;&#91;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&#91;&#91;ns].a2] --></p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --></p></div>
+<div class="extras"><p>&#91;&#91;ns]._a4] --> [var._a4]</p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+<div class="extras"><p>&#91;&#91;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --> a3_rval</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+<br />
+</code>
+</div>
+WARNING: Use of reserved attribute name _private_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _public_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _private_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _public_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _public_keys_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _private_keys_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _all_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _all_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _null_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name _rval is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>public</strong></em> =  public="yes" not_private="yes"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  public=\"yes\" not_private=\"yes\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" public="yes" not_private="yes"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" public=\"yes\" not_private=\"yes\"</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = public, not_private,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval,</p></div>
+<div class="extras"><p><em><strong>null</strong></em> =</p></div>
+<div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legimate variable = [_a4._rval]</p></div>
+<div class="extras"><p>invalid-attribute.not_private = YES</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
+<div class="extras"><p>Test @var with no parameters</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+<div class="extras"><p>&#91;&#91;ns].c1] = 1</p></div>
+<div class="extras"><p>&#91;&#91;ns].c2] = 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>9<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>&#91;c1] = 1</p></div>
+<div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
+<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
+&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+</code>
+</div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p><h3>Create new variable using @set</h3></p></div>
+<div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="var" _="d0" _format="d0_rval"</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>And change its default value</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @var d0</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newly added attribute<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now add the attribute extraattr to @var d0, and change newattr = fubar</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>newattr=</strong>fubar<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
+<div class="extras"><p>Changing d0.newattr="newval"</p></div>
+<div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
+<div class="extras"><p>can we remove an attribute?</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>ATTR1 should be "New Value":</p></div>
+<div class="extras"><p>attr1="New Value"<br /></p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
+<div class="extras"><p>attr1="New Value"<br />
+ foo="bar"<br /></p></div>
+<div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
+<div class="extras"><p>attr1="New Value"<br />
+ bar="oldfu"<br />
+ foo="nubar"<br /></p></div>
+<div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
+<div class="extras"><p>bar="oldfu"<br />
+ foo="nubar"<br /></p></div>
+<div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
+<div class="extras"><p>01="1"<br />
+ 02="2"<br />
+ 03="3"<br />
+ 04="4"<br />
+ 05="5"<br />
+ 06="6"<br />
+ 07="7"<br />
+ 08="8"<br />
+ 09="9"<br />
+ 10="10"<br />
+ 11="11"<br />
+ 12="12"<br />
+ 13="13"<br />
+ 14="14"<br />
+ 15="15"<br />
+ 16="16"<br />
+ 17="17"<br />
+ 18="18"<br />
+ 19="19"<br />
+ 20="20"<br />
+ 21="21"<br />
+ 22="22"<br />
+ 23="23"<br />
+ 24="24"<br />
+ 25="25"<br /></p></div>
+<div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
+<div class="extras"><p>01="x1"<br />
+ 02="x2"<br />
+ 03="x3"<br />
+ 04="x4"<br />
+ 05="x5"<br />
+ 06="x6"<br />
+ 07="x7"<br />
+ 08="x8"<br />
+ 09="x9"<br />
+ 10="x10"<br />
+ 11="x11"<br />
+ 12="x12"<br />
+ 13="x13"<br />
+ 14="x14"<br />
+ 15="x15"<br />
+ 16="x16"<br />
+ 17="x17"<br />
+ 18="x18"<br />
+ 19="x19"<br />
+ 20="x20"<br />
+ 21="21"<br />
+ 22="22"<br />
+ 23="23"<br />
+ 24="24"<br />
+ 25="25"<br /></p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="plain"><p class="plainTitle">Specific Namespace testing for <em><strong>@var</strong></em> namespace</p></div>
+<div class="extras"><p>&#91;a1] --> a1_rval</p></div>
+<div class="extras"><p>&#91;_a4] --> a4_rval</p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+<div class="extras"><p>&#91;a2] --> a2_rval</p></div>
+<div class="extras"><p>&#91;a3] --> a3_rval</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>This next one will work, sort of, because another attribute will become the new "1st attribute", hence the var has a name. Probably not what you wanted though...</p></div>
+<div class="extras"><p><span class="blue">&nbsp;@var $="syntax" b_unexpected="attribute ends up becoming the name of the variable..."</span></p></div>
+<div class="extras"><p><em><strong>&#91;b_unexpected]</strong></em> = <strong>attribute ends up becoming the name of the variable...</strong></p></div>
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+<br />
+<strong>b_unexpected=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>attribute ends up becoming the name of the variable...<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+<div class="extras"><p>&#91;c1] = 1</p></div>
+<div class="extras"><p>&#91;c2] = 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[c0.a]<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>a=</strong>9<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[c0.a]<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>&#91;c1] = 8</p></div>
+<div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[c0.a]<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="plain"><p class="plainTitle"><span class="blue">Variables</span></p></div>
+<div class="extras"><p>We can define variables using the syntax: <em><strong>@var name="value"</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p></div>
+<div class="extras"><p>Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p></div>
+<div class="extras"><p><h4>Starting with using @set to change compiled code in @code macros</h4></p></div>
+<div class="extras"><p>I expect to get <strong>smd_markdown_here</strong>, but instead I get <em>&nbsp;&#91;var.ENC.c]</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.encode_smd(t="&amp;nbsp;{{self.c}}")}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>So put [] around self.c to get <strong>smd_markdown_here</strong>, but instead I get <em>&nbsp;&#91;var.ENC.c]</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;[self.c]")]<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>So finally, I put the [] around the code.encode_smd, and {{}} around self.c, and I get <em>&nbsp;[smd_markdown_here]</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;{{self.c}}")]<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>&nbsp;[smd_markdown_here]</strong></em></p></div>
+<div class="plain"><p class="plainTitle">Specific Testing of @set namespace with @var variables</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;{{self.c}}")]<br />
+<br />
+<strong>_a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+<br />
+<strong>b_unexpected=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>attribute ends up becoming the name of the variable...<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[c0.a]<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._div_code_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_code_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}{{self.c}}{{html.code.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your code title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your code content<br />
+<br />
+<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>cn=</strong>{{defaults.cn}}<br />
+&nbsp;&nbsp;<strong>ph=</strong>{{defaults.ph}}<br />
+&nbsp;&nbsp;<strong>em=</strong>{{defaults.em}}<br />
+&nbsp;&nbsp;<strong>c1=</strong>{{defaults.c1}}<br />
+&nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
+&nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
+<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+<br />
+<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+<br />
+<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>t1=</strong>Title<br />
+&nbsp;&nbsp;<strong>t2=</strong>author<br />
+&nbsp;&nbsp;<strong>t3=</strong>logline<br />
+<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newval<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
+&nbsp;&nbsp;<strong>_nop=</strong><br />
+<br />
+<strong>divxp=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
+<br />
+<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
+<br />
+<strong>dump=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>dump [ns]<br />
+<br />
+<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="."<br />
+<br />
+<strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
+<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>YES<br />
+<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your note title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
+<br />
+<strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var<br />
+<br />
+<strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._div_plain_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._p_plain_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>Specific Testing of @set namespace with @var variables<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your plain content<br />
+<br />
+<strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._div_review_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._p_review_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your review title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your review content<br />
+<br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
+<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
+&nbsp;&nbsp;<strong>c=</strong><br />
+<br />
+<strong>section_pbb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_section_pbb_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._div_section_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_section_pbb_.&lt;}}{{html._p_section_.&lt;}}{{self.t}}{{html._p_section_.&gt;}}{{html._p_section_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your section title<br />
+&nbsp;&nbsp;<strong>c=</strong><br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
+<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
+&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
+&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your syntax title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your syntax content<br />
+<br />
+<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
+&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>title=</strong>var.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing @var and @set namespaces<br />
+<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>title=</strong>name of script<br />
+&nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
+<br />
+<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
+<br />
+<strong>whoami=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Ken Lowrie<br />
+<br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>t=</strong>{:.blue}&lt;h4&gt;Testing creating variables with delayed expansion of other variables&lt;/h4&gt;<br />
+<br />
+</code>
+</div>
+</div>
+</body>
+</html>
