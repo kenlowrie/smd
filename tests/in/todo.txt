@@ -15,15 +15,14 @@ misc - misc.md DONE (this needs to be reworked once I have final macros in place
 raw - wrap.md DONE (used in lots of things)
 revision - revision.md DONE (this specifically handles the revision with embedded date/time)
 script1 - script.md DONE (will need some additional cleanup once the avs macros are finalized, and @wrap tag1, tag2 is in place)
+set - var.md DONE
 specials - specials.md DONE (essentially the test for revision(), cover() and contact())
 stop/quit - stop.md/quit.md DONE
 transitions - transitions.md DONE (this was a dedicated way of testing @break before, but no longer applicable. now it's just another avshot tester.)
 watch   - import.md DONE
+var - var.md DONE
 wrap - wrap.md DONE
 
-
-var - variables.md
-set - variables.md
 
 code - code.md
 link - links.md
@@ -37,4 +36,4 @@ image - review and see what can be cleaned up with the kludges and macro usage t
 import - when the encode_smd macro is added to code.md, remove the redefine in here.
 script1 - cleanup with @wrap tag1, tag2 and avs.md cleanup...
 misc - this is essentially a "letter" type HTML document, but it is too complicated and inconsistent.
-divs - move the additional var declr over to test setup?
+variables.md - once everything in here is covered elsewhere, delete this one...

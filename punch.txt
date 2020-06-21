@@ -3,7 +3,9 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
+finish writing tests for @var/@set, @html, @link, @image and @code.
 document the key elements (@var, @html, @link, @code, @image, etc.) -- use the "tests/in" files to make it "current".
+
 
 Priority 2 | p2
 ---------------
@@ -14,6 +16,7 @@ Split A/V specific CSS to separate file. Realize this will complicate using smd 
 figure out which things need to be tested using stand alone python scripts and start building/adding them.
 Make a single shell script that runs both/all of the command line tests ...
 Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
+Make all global variables go away. Should be able to do this using addObjectToTLS, like I did with tls['wrapstack']
 
 
 Priority 3 | p3
@@ -24,22 +27,20 @@ add --developer mode that enables certain flags (like debug=on), and some other 
 release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 Code review Cache, ImportCache & SystemDefaults.
 maybe add a pause/resume method on the watcher class i could engage while parsing...
-Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it.
 Make a pass at cleaning up //TODO, or at least listing them here or in docs
 Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 See how close I can get to a clean render of Buddy's music video script markdown file...
+Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
+
 
 Priority 5 | p5
 ---------------
 Should I use the python logging system for better control of debug messages and console output?
 Start rewriting userdoc.md so it conforms to smd.
-how about a "vscode" plug-in/extension that would display in either HTML or "browser" mode. Is that possible? Priority?
 Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
 Move all of these things to the issues tracker in github, and get rid of this file.
-Currently no way to get the .css file(s) into the tests area. Does this even make sense?
-How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes?
+How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes? tried: \s([\w]+)\s*=\s*[\"\'](.*?)(?<!\\)[\"\'] on special_ and the match regex. fails miserably.
 Might be cool if there was an html python pretty printer on pypi I could build into hostgui
-
 
 
 Completed
@@ -109,6 +110,7 @@ set background and foreground colors for the hostgui window.
 Implement @parw [* | all | #]
 make @wrap search html namespace first, instead of var (or others)
 Added [code.wrap_stack] to get access to the current wrap tag open and close strings for more flexible formatting options.
+Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it. Thought about it, answer is no.
 
 
 
