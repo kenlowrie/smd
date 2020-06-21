@@ -107,9 +107,10 @@ class Markdown(object):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(params)}
                 return d
 
-            self.debug.print("mdvars(<strong>m[0])=</strong><em>{}</em>".format(HtmlUtils.escape_html(m[0])))
-            self.debug.print("mdvars(<strong>m[1])=</strong><em>{}</em>".format(HtmlUtils.escape_html(m[1])))
-            self.debug.print("mdvars(<strong>s)=</strong><em>{}</em>".format(HtmlUtils.escape_html(s)))
+            self.debug.print("{}: mdvars(<strong>m[0])=</strong><em>{}</em>".format(self._current_nesting_level, HtmlUtils.escape_html(m[0])))
+            self.debug.print("{}: mdvars(<strong>m[1])=</strong><em>{}</em>".format(self._current_nesting_level, HtmlUtils.escape_html(m[1])))
+            self.debug.print("{}: mdvars(<strong>s)=</strong><em>{}</em>".format(self._current_nesting_level, HtmlUtils.escape_html(s)))
+            #if m[3]: self.debug.print("params=<em>{}</em>".format(HtmlUtils.escape_html(m[3])))
             jit_attrs = None if not m[3] else makeJitAttrs(m[3])
             if self._namespaces.exists(m[1]):
                 # Substitute the variable name with the value
@@ -144,8 +145,9 @@ class Markdown(object):
         ]
 
         self._inc_nesting_level()
-        self.debug.print("markdown({})".format(HtmlUtils.escape_html(s)))
+        self.debug.print("{}: markdown({})".format(self._current_nesting_level, HtmlUtils.escape_html(s)))
         # For each type of markdown
+        #TODO: Maybe some day we parse the namespace markdown lexically to handle the nesting
         for key, md_func in markdownTypes:
             md_obj = self._regex_markdown[key]
             matches = findall(md_obj.regex, s)    # find all the matches
