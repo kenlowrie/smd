@@ -42,6 +42,8 @@ class Variable(object):
             return {key: value for (key,value) in self.rval.items() if key[0] == Variable.prefix}
         elif which == Variable.public:
             return {key: value for (key,value) in self.rval.items() if key[0] != Variable.prefix}
+        elif which == Variable.all:
+            return {key: value for (key,value) in self.rval.items()}
         else:
             raise NameError("Invalid attr type requested {}".format(which))
 
@@ -293,6 +295,8 @@ class Namespace(VariableStore):
     def __init__(self, markdown, namespace_name, oprint):
         super(Namespace, self).__init__(markdown, oprint)  # Initialize the base class(es)
         self._namespace = '{}.'.format(namespace_name)
+        from .regex import RegexSafe
+        self._name_regex = RegexSafe(r'^[a-zA-Z_][-\w]*$')
 
     @property
     def namespace(self):
@@ -311,6 +315,29 @@ class AdvancedNamespace(Namespace):
 
     def _missingID(self, dict, which="ADD"):
         self.oprint("{}: Dictionary is missing {}<br />{}<br />".format(which, AdvancedNamespace._variable_name_str, dict))
+    
+    def _validateName(self, varID, which="ADD"):
+        #//TODO: This is interesting. It works (limited testing), and enables you to do variable expansion on the variable name. Is this useful?
+        #mdVarID = self._markdown(varID)
+        #if mdVarID != varID:
+        #    varID = mdVarID
+        if not self._name_regex.is_match(varID):
+            self.oprint(f"{which}: Invalid character used in variable name \"{varID}\". Must conform to regular expression \"{self._name_regex.regex.pattern}\"<br />")
+            raise SyntaxError(f"Invalid character used in variable name during {which}")
+
+        if varID in ['_', '_id']:
+            self.oprint(f"{which}: Cannot use reserved attribute name \"{varID}\" as variable name<br />")
+            raise AttributeError(f"Attempt to use reserved attribute name as variable name during {which}")
+
+        self.dbgPrint(f"{'Adding' if which == 'ADD' else 'Updating'} variable with name {varID} values {dict}")
+
+    def _validateAttrs(self, dict):
+        for key in dict.keys():
+            #//TODO: Figure out why I have to add [Variable.rvalue] manually. If I add it to _special_attributes, then you will
+            # get a logic exception thrown when you attempt to access it, e.g. [variable._rval]. Need to understand why that is,
+            # and whether to add it to the case in getSpecial, or just what is going on with it...
+            if key in self._special_attributes + [Variable.rvalue]:
+                self.oprint(f"WARNING: Use of reserved attribute name {key} is ambiguous within a variable declaration and will likely lead to unexpected results.<br />")
 
     def getIDstring(self, dict):
         for id in AdvancedNamespace._variable_name_str:
@@ -322,6 +349,10 @@ class AdvancedNamespace(Namespace):
         return True if AdvancedNamespace._inherit_attr in dict else False
 
     def addVariable(self, dict, name=None):
+        if len(dict) == 0:
+            self.oprint("ERROR: addVariable called with empty dictionary.<br />")
+            raise SyntaxError("addVariable called with an empty dictionary.")
+    
         self.dbgPrintDict(f'<strong>addVariable("<em>{name}</em>")</strong>',dict)
         myID = self.getIDstring(dict)   # check for _/_id in dict i.e. variable name
         if myID is None:
@@ -353,10 +384,18 @@ class AdvancedNamespace(Namespace):
                     tempDict[item] = dict[item]
             dict = tempDict
 
+        self._validateName(varID)
+        self._validateAttrs(dict)
         super(AdvancedNamespace, self).addVariable(self.unescapeStringQuotes(dict), varID)
         return varID
 
     def updateVariable(self, dict, name=None):
+        #//TODO: Should I add this as a private method so we only have one place to update?
+        if len(dict) == 0:
+            self.oprint("ERROR: updateVariable called with empty dictionary.<br />")
+            raise SyntaxError("updateVariable called with an empty dictionary.")
+    
+        self.dbgPrintDict(f'<strong>updateVariable("<em>{name}</em>")</strong>',dict)
         myID = self.getIDstring(dict)
 
         if myID is None:
@@ -785,6 +824,8 @@ class Namespaces(object):
             self._namespaces[ns].addVariable(value, name)
         except AttributeError:
             self.debugNSA.print(f'<strong>WARNING:</strong> Attribute error caught during {ns}.addVariable({value}, {name})')
+        except SyntaxError:
+            self.debugNSA.print(f'<strong>WARNING:</strong> Syntax error caught during {ns}.addVariable({value}, {name})')
 
     # TODO: Clean this up...
     def findNamespace(self, value):
@@ -816,7 +857,12 @@ class Namespaces(object):
         if ns not in self._namespaces:
             raise SyntaxError("Invalid namespace [{}]".format(ns))
 
-        self._namespaces[ns].updateVariable(value, name)
+        try:
+            self._namespaces[ns].updateVariable(value, name)
+        except AttributeError:
+            self.debugNSA.print(f'<strong>WARNING:</strong> Attribute error caught during {ns}.updateVariable({value}, {name})')
+        except SyntaxError:
+            self.debugNSA.print(f'<strong>WARNING:</strong> Syntax error caught during {ns}.updateVariable({value}, {name})')
 
     def _splitNamespace(self, variable_name):
         compoundVar = variable_name.split('.',1)     # split at '.' if present, might be looking to get dict element
