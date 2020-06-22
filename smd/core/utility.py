@@ -16,6 +16,9 @@ def _set_line_cache(line_cache_ptr):
     global _line_cache
     _line_cache = line_cache_ptr
 
+def _get_ns_value(v):
+    global _ns_xface
+    return _ns_xface.getValue(v)
 
 class HtmlUtils():
 
