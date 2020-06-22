@@ -143,6 +143,7 @@
 @var _id="needshot" \
      _format="[var.{{self.shotid}}.desc][image.needshot]<br />[var.{{self.shotid}}]" shotid="NOTSET"
 
+//TODO: @set now requires _ns="namespace", and _="variablename" ... For these to work, must fix...
 @var _id="shot_formatter" \
         imagestyle="@set _=\"image.$.shotid\" style=\"{{ss}}\""\
         pagebreak="{{html._div_plain_pbb_.<}}{{html._div_plain_pbb_.>}}"\
