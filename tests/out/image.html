@@ -9,6 +9,380 @@
 <div class="wrapper">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: image.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @image namespace</h3>
+<div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
+<div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@image</strong></em> namespace</p></div>
+<div class="extras"><p>&#91;&#91;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&#91;&#91;ns].a2] --> <img/></p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --> <img/></p></div>
+<div class="extras"><p>&#91;&#91;ns]._a4] --> [image._a4]</p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+<div class="extras"><p>&#91;&#91;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --> a3_rval</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+WARNING: Use of reserved attribute name <em>_private_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<{{self._tag}}{{self._public_attrs_}}/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _format=\"<{{self._tag}}{{self._public_attrs_}}/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<{{self._tag}}{{self._public_attrs_}}/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _format=\"<{{self._tag}}{{self._public_attrs_}}/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _format, _tag,</p></div>
+<div class="extras"><p><em><strong>null</strong></em> =</p></div>
+<div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>run</strong></em> = code.var.run</p></div>
+<div class="extras"><p><em><strong>_code</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_params_</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legimate variable = [_a4._rval]</p></div>
+<div class="extras"><p>invalid-attribute.not_private = YES</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
+<div class="extras"><p>Test @image with no parameters</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+<div class="extras"><p>&#91;&#91;ns].c1] = 1</p></div>
+<div class="extras"><p>&#91;&#91;ns].c2] = 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>9<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>&#91;c1] = 1</p></div>
+<div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
+<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
+&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+</code>
+</div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p><h3>Create new variable using @set</h3></p></div>
+<div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="image" _="d0" _format="d0_rval"</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>And change its default value</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @image d0</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newly added attribute<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now add the attribute extraattr to @image d0, and change newattr = fubar</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>newattr=</strong>fubar<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
+<div class="extras"><p>Changing d0.newattr="newval"</p></div>
+<div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
+<div class="extras"><p>can we remove an attribute?</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>ATTR1 should be "New Value":</p></div>
+<div class="extras"><p><img attr1="New Value"/></p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
+<div class="extras"><p><img attr1="New Value" foo="bar"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>foo=</strong>bar<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
+<div class="extras"><p><img attr1="New Value" foo="nubar" bar="oldfu"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
+<div class="extras"><p><img foo="nubar" bar="oldfu"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
+<div class="extras"><p><img 01="1" 02="2" 03="3" 04="4" 05="5" 06="6" 07="7" 08="8" 09="9" 10="10" 11="11" 12="12" 13="13" 14="14" 15="15" 16="16" 17="17" 18="18" 19="19" 20="20" 21="21" 22="22" 23="23" 24="24" 25="25"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
+<div class="extras"><p><img 01="x1" 02="x2" 03="x3" 04="x4" 05="x5" 06="x6" 07="x7" 08="x8" 09="x9" 10="x10" 11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20" 21="21" 22="22" 23="23" 24="24" 25="25"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
 <div class="plain"><p class="plainTitle">Testing @image builtin functions</p></div>
 <div class="plain"><p class="plainTitle">Testing adding new @image builtins</p></div>
 <div class="variables">
@@ -16,6 +390,99 @@
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
+&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newval<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>YES<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
 </code>
 </div>
 </div>

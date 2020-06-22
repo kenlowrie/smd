@@ -9,6 +9,255 @@
 <div class="wrapper">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: code.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @code namespace</h3>
+<div class="extras"><p>We are testing the <em><strong>@code</strong></em> namespace</p></div>
+<div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@code</strong></em> namespace</p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p>&#91;&#91;ns].a1] --> [code.a1]</p></div>
+<div class="extras"><p>&#91;&#91;ns].a2] --> [code.a2]</p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --> [code.a3]</p></div>
+<div class="extras"><p>&#91;&#91;ns]._a4] --> [code._a4]</p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p>&#91;&#91;ns].a2] --> [code.a2]</p></div>
+<div class="extras"><p>&#91;&#91;ns].a3] --> [code.a3]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+WARNING: Use of reserved attribute name <em>_private_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_code</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_params_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_last</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>run</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('required for code')<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> = cannot print, has instance data</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> = cannot print, has instance data</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> = cannot print, has instance data</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> = cannot print, has instance data</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last,</p></div>
+<div class="extras"><p><em><strong>null</strong></em> =</p></div>
+<div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>run</strong></em> = required for code</p></div>
+<div class="extras"><p><em><strong>_code</strong></em> = invalid-attribute._code is instance data and is not printable</p></div>
+<div class="extras"><p><em><strong>_params_</strong></em> = invalid-attribute._params_ is instance data and is not printable</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = required for code</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legimate variable = [_a4._rval]</p></div>
+<div class="extras"><p>invalid-attribute.not_private = yes</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
+<div class="extras"><p>Test @code with no parameters</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty</p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p>&#91;&#91;ns].c1] = [code.c1]</p></div>
+<div class="extras"><p>&#91;&#91;ns].c2] = [code.c2]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p>&#91;c1] = [c1]</p></div>
+<div class="extras"><p>&#91;c2] = [c2]</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
+<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p><h3>Create new variable using @set</h3></p></div>
+<div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="code" _="d0" _format="d0_rval"</strong></p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>And change its default value</strong></p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @code d0</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now add the attribute extraattr to @code d0, and change newattr = fubar</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
+<div class="extras"><p>Changing d0.newattr="newval"</p></div>
+<div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
+<div class="extras"><p>can we remove an attribute?</p></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p>ATTR1 should be "New Value":</p></div>
+<div class="extras"><p>[id1]</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
+<div class="extras"><p>[id1]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
+<div class="extras"><p>bar="oldfu"<br />
+ foo="nubar"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
+<div class="extras"><p>[code.id2]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
+<div class="extras"><p>[code.id2]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
+<div class="extras"><p>[code.id2]</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+</code>
+</div>
+TODO: Need to add some code specific testing pulling cases from the nsbasic.md, because much of that doesn't test due to missing src and type attributes.
 <div class="plain"><p class="plainTitle">Testing @code builtin functions</p></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 Testing code.wrap_stack
@@ -38,26 +287,27 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_txtvar_=</strong>_ns.txtvar.attr_<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: &lt;strong&gt;{{self._}}(_var_=&lt;em&gt;&amp;quot;ns.var.attr&amp;quot;&lt;/em&gt;, _txtvar_=&lt;em&gt;&amp;quot;ns.var.attr with text to add&amp;quot;&lt;/em&gt;)&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
 <br />
 <strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.last}}<br />
 &nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 <br />
 <strong>encodeURL=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>code.encodeURL(t="https://www.url.com to encode")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
 <br />
 <strong>encode_smd=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: code.encode_smd.run(t="smd markdown to encode")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;nbsp;{{self.c}}<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'t': '&amp;nbsp;{{self.c}}'}<br />
 <br />
 <strong>equals=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
@@ -66,32 +316,33 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>true=</strong>_ns.var.true_<br />
 &nbsp;&nbsp;<strong>false=</strong>_ns.var.false_<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'v1': 'var.in_code_namespace.code', 'v2': 'var.in_code_namespace.namespace', 'true': 'var.in_code_namespace.true', 'false': 'var.in_code_namespace.false'}<br />
 <br />
 <strong>esc_html=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>src=</strong>print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
 &nbsp;&nbsp;<strong>url=</strong>Usage: code.esc_html.run(url="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
 <br />
 <strong>escape=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: code.escape.run(t="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
 <br />
 <strong>escape2=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
 &nbsp;&nbsp;<strong>__t=</strong>Usage: code.escape.run(t="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
 <br />
 <strong>get=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v="variable_name")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 <br />
 <strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
@@ -99,7 +350,26 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>default=</strong>undefined variable<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v=&amp;quot;variable_name&amp;quot;, default=&amp;quot;default value&amp;quot;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+&nbsp;&nbsp;<strong>_last=</strong>required for code<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
 <br />
 <strong>ln_alias=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
@@ -108,33 +378,34 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>lt=</strong>NEW_LINK_TEXT_HERE<br />
 &nbsp;&nbsp;<strong>_help_=</strong>&lt;strong&gt;&lt;em&gt;usage:&lt;/em&gt;                 {{self._}}&lt;/strong&gt;(&lt;em&gt;nm=&lt;/em&gt;&amp;quot;link.name_to_add_alias&amp;quot;,                 &lt;em&gt;attr=&lt;/em&gt;&amp;quot;attr_name&amp;quot;,                 &lt;em&gt;lt=&lt;/em&gt;&amp;quot;new link text&amp;quot;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
 <br />
 <strong>pushline=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="line to push onto input stream")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>pushlines=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong><br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="variable whose value will be pushed onto input stream")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
 <br />
 <strong>repeat=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>src=</strong>print('{}'.format('$.t'*$.c))<br />
 &nbsp;&nbsp;<strong>t=</strong>repeat_str <br />
 &nbsp;&nbsp;<strong>c=</strong>2<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>------------------------------------------<br />
+&nbsp;&nbsp;<strong>_last=</strong>------------------------------------------<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{'t': '-', 'c': '42'}<br />
 <br />
 <strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -143,24 +414,24 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>val=</strong>value_to_insert<br />
 &nbsp;&nbsp;<strong>str=</strong>string to operate on<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
 <br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="var._public_attrs_")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 <br />
 <strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
 &nbsp;&nbsp;<strong>w=</strong>*<br />
 &nbsp;&nbsp;<strong>encode=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </code>
 </div>
-<div class="extras"><p></div></p></div>
-<div class="extras"><p></body></p></div>
-<div class="extras"><p></html></p></div>
+</div>
+</body>
+</html>

@@ -9,6 +9,7 @@
 <div class="wrapper">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: var.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @var and @set namespaces</h3>
+<div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
 <div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@var</strong></em> namespace</p></div>
 <div class="extras"><p>&#91;&#91;ns].a1] --> a1_rval</p></div>
 <div class="extras"><p>&#91;&#91;ns].a2] --></p></div>
@@ -32,16 +33,16 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-WARNING: Use of reserved attribute name _private_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _public_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _private_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _public_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _public_keys_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _private_keys_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _all_attrs_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _all_attrs_esc_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _null_ is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name _rval is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -57,21 +58,31 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
 &nbsp;&nbsp;<strong>_null_=</strong>no<br />
 &nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
 &nbsp;&nbsp;<strong>public=</strong>yes<br />
 &nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
 <br />
 </code>
 </div>
-<div class="extras"><p><em><strong>public</strong></em> =  public="yes" not_private="yes"</p></div>
-<div class="extras"><p><em><strong>public_esc</strong></em> =  public=\"yes\" not_private=\"yes\"</p></div>
-<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no"</p></div>
-<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\"</p></div>
-<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" public="yes" not_private="yes"</p></div>
-<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" public=\"yes\" not_private=\"yes\"</p></div>
-<div class="extras"><p><em><strong>public_keys</strong></em> = public, not_private,</p></div>
-<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval,</p></div>
+<div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last,</p></div>
 <div class="extras"><p><em><strong>null</strong></em> =</p></div>
 <div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>run</strong></em> = code.var.run</p></div>
+<div class="extras"><p><em><strong>_code</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_params_</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
 <div class="extras"><p><em><strong>_rval</strong></em> on legimate variable = [_a4._rval]</p></div>
 <div class="extras"><p>invalid-attribute.not_private = YES</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
@@ -242,13 +253,44 @@ NAMESPACE: var<br />
 <div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
 <div class="extras"><p>attr1="New Value"<br />
  foo="bar"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>foo=</strong>bar<br />
+<br />
+</code>
+</div>
 <div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
 <div class="extras"><p>attr1="New Value"<br />
  bar="oldfu"<br />
  foo="nubar"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+</code>
+</div>
 <div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
 <div class="extras"><p>bar="oldfu"<br />
  foo="nubar"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+</code>
+</div>
 <div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
 <div class="extras"><p>01="1"<br />
  02="2"<br />
@@ -275,6 +317,39 @@ NAMESPACE: var<br />
  23="23"<br />
  24="24"<br />
  25="25"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+<br />
+</code>
+</div>
 <div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
 <div class="extras"><p>01="x1"<br />
  02="x2"<br />
@@ -301,6 +376,39 @@ NAMESPACE: var<br />
  23="23"<br />
  24="24"<br />
  25="25"<br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+<br />
+</code>
+</div>
 <div class="extras"><h1>------------------------------------------</h1></div>
 <div class="plain"><p class="plainTitle">Specific Namespace testing for <em><strong>@var</strong></em> namespace</p></div>
 <div class="extras"><p>&#91;a1] --> a1_rval</p></div>
@@ -576,6 +684,12 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>24=</strong>24<br />
 &nbsp;&nbsp;<strong>25=</strong>25<br />
 <br />
+<strong>in_code_namespace=</strong><br />&nbsp;&nbsp;<strong>code=</strong>code<br />
+&nbsp;&nbsp;<strong>namespace=</strong>[ns]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.equals(v1="self.code", v2="self.namespace", true="self.true", false="self.false")}}<br />
+&nbsp;&nbsp;<strong>true=</strong>***all_attrs_esc*** = cannot print, has instance data<br />
+&nbsp;&nbsp;<strong>false=</strong>***all_attrs_esc*** = [invalid-attribute._all_attrs_esc_]<br />
+<br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
@@ -586,8 +700,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
 &nbsp;&nbsp;<strong>_null_=</strong>no<br />
 &nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
 &nbsp;&nbsp;<strong>public=</strong>yes<br />
 &nbsp;&nbsp;<strong>not_private=</strong>YES<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
 <br />
 <strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />

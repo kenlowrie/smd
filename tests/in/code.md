@@ -2,6 +2,17 @@
 
 [var.testdoc_nw.begin(title="code.md" desc="Testing @code namespace")]
 
+@var ns="code"
+
+
+//TODO: What is _raw attribute for? Look at all the _element_partials. Need to make sure everything is covered in testing...
+
+@wrap divx,p
+@import "$/nsbasic.md"
+@parw
+
+TODO: Need to add some code specific testing pulling cases from the nsbasic.md, because much of that doesn't test due to missing src and type attributes.
+
 [plain(t="Testing @code builtin functions")]
 
 [wrap_h.hash2]
@@ -13,6 +24,7 @@ Testing code.wrap_stack
 [divxp.open]
 Initially, the wrap_stack should be empty: "[code.wrap_stack]"
 [divxp.close]
+
 @wrap divx, p
 And now we are changing it to the more traditional "@wrap divx, p": "[code.wrap_stack]"
 
@@ -35,6 +47,8 @@ This concludes the testing of code.wrap_stack
 [wrap_h.hash2]
 
 [plain(t="Testing adding new @code builtins")]
+
+@parw
 
 @set dump_ns_list="code=\".\""
 [var.testdoc_nw.end]

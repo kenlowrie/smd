@@ -6,6 +6,16 @@
 //@set _ns="code" _id="equals" true="{{code.pushline(\"@stop\")}}, false="Testing namespace {{ns}}")]}}
 //[code.equals(v1="[var.ns._format]", v2="")]
 
+@var _id="in_code_namespace" \
+    code="code"\
+    namespace="[ns]"\ 
+    _format="{{code.equals(v1=\"self.code\", v2=\"self.namespace\", true=\"self.true\", false=\"self.false\")}}"\
+    true="in code namespace"\
+    false=""
+
+[var.in_code_namespace(true="We are testing the <em><strong>@code</strong></em> namespace" false="We are not testing the <em><strong>@code</strong></em> namespace")]
+
+
 @var dump="dump [ns]"
 
 [plain(t="Generic Namespace testing for ***@[ns]*** namespace")]
@@ -29,18 +39,22 @@ Setting default rvalue for a2 and a3
 
 // attempt to add all the reserved attributes
 //TODO: should I account for _ns in the reserved list? It is now an option to @SET, but stripped out before creating the variable
-@[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" public="yes" not_private="yes"
+@[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"
 @[dump] = "invalid"
 ***public*** = [invalid-attribute._public_attrs_]
 ***public_esc*** = [invalid-attribute._public_attrs_esc_]
-***private*** = [invalid-attribute._private_attrs_]
-***private_esc*** = [invalid-attribute._private_attrs_esc_]
-***all_attrs*** = [invalid-attribute._all_attrs_]
-***all_attrs_esc*** = [invalid-attribute._all_attrs_esc_]
+[var.in_code_namespace(true="***private*** = cannot print, has instance data" false="***private*** = [invalid-attribute._private_attrs_]")]
+[var.in_code_namespace(true="***private_esc*** = cannot print, has instance data" false="***private_esc*** = [invalid-attribute._private_attrs_esc_]")]
+[var.in_code_namespace(true="***all_attrs*** = cannot print, has instance data" false="***all_attrs*** = [invalid-attribute._all_attrs_]")]
+[var.in_code_namespace(true="***all_attrs_esc*** = cannot print, has instance data" false="***all_attrs_esc*** = [invalid-attribute._all_attrs_esc_]")]
 ***public_keys*** = [invalid-attribute._public_keys_]
 ***private_keys*** = [invalid-attribute._private_keys_]
 ***null*** = [invalid-attribute._null_]
 ***rvalue*** = [invalid-attribute._rval]
+***run*** = [invalid-attribute.run]
+***_code*** = [invalid-attribute._code]
+***_params_*** = [invalid-attribute._params_]
+***_last*** = [invalid-attribute._last]
 ***_rval*** on legimate variable = [_a4._rval]
 
 [invalid-attribute._null_(not_private="YES")]
@@ -142,30 +156,40 @@ Which now causes d0.extraattr to have a new value = **[d0.extraattr]**
 //TODO:
 can we remove an attribute?
 
+//@debug on="ns.image"
 //TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...
-@set _id="id1" attr1="New Value"
+//TODO: Unless it is @image (@code?), in which case you get different results...
+@set _ns="[ns]" _id="id1" attr1="New Value"
 @[dump] = "^id1$"
 ATTR1 should be "New Value":
 [id1]
 
 [wrap_h(t="[hash3]")]
-@set _id="id1" foo="bar"
+@set _ns="[ns]" _id="id1" foo="bar"
 **Added foo attribute to id1. Now id1 has values**
 [id1]
-@set _id="id1" foo="nubar" bar="oldfu"
+@[dump] = "^id1$"
+
+@set _ns-"[ns]" _id="id1" foo="nubar" bar="oldfu"
 **Added bar attribute to id1. Now id1 is**
 [id1]
+@[dump] = "^id1$"
+
 @set _ns="[ns]" _id="id2" foo="nubar" bar="oldfu"
 **Created id2 with same attributes as id1 except ATTR1. *id2* =**
-[id2]
+[[ns].id2]
+@[dump] = "^id2$"
+
 @[ns] _="id2" 01="1" 02="2" 03="3" 04="4" 05="5" 06="6" 07="7" 08="8" 09="9" 10="10"\
              11="11" 12="12" 13="13" 14="14" 15="15" 16="16" 17="17" 18="18" 19="19" 20="20" 21="21" 22="22" 23="23" 24="24" 25="25"
 **Added 25 new attributes to id2. It now equals**
-[id2]
+[[ns].id2]
+@[dump] = "^id2$"
+
 @set _ns="[ns]" _id="id2" 01="x1" 02="x2" 03="x3" 04="x4" 05="x5" 06="x6" 07="x7" 08="x8" 09="x9" 10="x10"\
                           11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20"
 
 **Changed some of the new attributes so their value has an *x* in front. It now equals**
-[id2]
-
+[[ns].id2]
+@[dump] = "^id2$"
 
