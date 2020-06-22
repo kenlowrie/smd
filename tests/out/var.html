@@ -645,6 +645,10 @@ NAMESPACE: var<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="."<br />
 <br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@[ns] _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline.(line="line to evaluate")<br />
+<br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
 <br />
@@ -687,8 +691,8 @@ NAMESPACE: var<br />
 <strong>in_code_namespace=</strong><br />&nbsp;&nbsp;<strong>code=</strong>code<br />
 &nbsp;&nbsp;<strong>namespace=</strong>[ns]<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.equals(v1="self.code", v2="self.namespace", true="self.true", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true=</strong>***all_attrs_esc*** = cannot print, has instance data<br />
-&nbsp;&nbsp;<strong>false=</strong>***all_attrs_esc*** = [invalid-attribute._all_attrs_esc_]<br />
+&nbsp;&nbsp;<strong>true=</strong>@[ns] _="c2" _format="{{c0.a}}" src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>false=</strong>@[ns] _="c2" _format="{{c0.a}}"<br />
 <br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />

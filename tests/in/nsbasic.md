@@ -64,8 +64,8 @@ invalid-attribute.not_private = [invalid-attribute.not_private]
 [wrap_h(t="{:.blue}<h4>Testing creating names with invalid characters</h4>")]
 
 Test @[ns] with no parameters
-@var
-[code.pushline(t="@var")]
+@[ns]
+[code.pushline(t="@[ns]")]
 
 These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty
 @[ns] @="syntax"
@@ -76,21 +76,44 @@ These first ones will fail in AdvancedNamespace().addVariable() because the dict
 
 These next ones will have the namespace parser  catch the errors and fail the variable creation.
 
-@[ns] _="1" _format="1_rval"
-@[ns] _id="@"
-@[ns] _="a b" _format="syntax"
+[var.in_code_namespace(true="@[ns] _=\"1\" _format=\"1_rval\" src=\"test\" type=\"eval\"" false="@[ns] _=\"1\" _format=\"1_rval\"")]
+[var.in_code_namespace(true="@[ns] _=\"@\" src=\"test\" type=\"eval\"" false="@[ns] _=\"@\"")]
+[var.in_code_namespace(true="@[ns] _=\"a b\" _format=\"syntax\" src=\"test\" type=\"eval\"" false="@[ns] _=\"a b\" _format=\"syntax\"")]
+
+//@[ns] _="1" _format="1_rval"
+//@[ns] _id="@"
+//@[ns] _="a b" _format="syntax"
 
 // Should I force attribute names to conform to the variable naming convention? start with [a-zA-Z_] and then only contain [-\w]?
 
-@[ns] _="b1" _format="mix of attrs" 123attr="nope"
+@var expr="usage: var.testline.(line=\"line to evaluate\")" \
+     line="the line for non-code namespaces" \
+     code="{{self.line}} src=\"print()\" type=\"eval\""
+
+// This is another way I was trying to simplify and not have to specify the test line twice, but you get side affects
+// because if you put variables in the expression, they expand when the macro runs due to the indirection, so not quite there...
+[var.expr._null_(line="@[ns] _=\"b1\" _format=\"mix of attrs\" 123attr=\"nope\"")]
+[var.in_code_namespace(true="[var.expr.code]" false="[var.expr.line]")]
+
 @[dump] = "b"
 
 [wrap_h.hash3]
 [wrap_h(t="{:.blue}<h4>Testing creating variables with delayed expansion of other variables</h4>")]
 
-@[ns] _="c0" _format="constants" a="1" b="2" c="3"
-@[ns] _="c1" _format="[c0.a]"
-@[ns] _="c2" _format="{{c0.a}}"
+// These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,
+// because when [var.expr.code] or [var.expr.line] is evaluated, they are expanded at the time, and that changes behavior
+//[var.expr._null_(line="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\"")]
+//[var.in_code_namespace(true="[var.expr.code]" false="[var.expr.line]")]
+
+//[var.expr._null_(line="@[ns] _=\"c1\" _format=\"[c0.a]\"")]
+//[var.in_code_namespace(true="[var.expr.code]" false="[var.expr.line]")]
+
+//[var.expr._null_(line="@[ns] _=\"c2\" _format=\"{{c0.a}}\"")]
+//[var.in_code_namespace(true="[var.expr.code]" false="[var.expr.line]")]
+
+[var.in_code_namespace(true="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\"")]
+[var.in_code_namespace(true="@[ns] _=\"c1\" _format=\"[c0.a]\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c1\" _format=\"[c0.a]\"")]
+[var.in_code_namespace(true="@[ns] _=\"c2\" _format=\"{{c0.a}}\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c2\" _format=\"{{c0.a}}\"")]
 
 [encode_smd(t="[[ns].c1]")] = [[ns].c1]
 [encode_smd(t="[[ns].c2]")] = [[ns].c2]
@@ -111,7 +134,7 @@ These next ones will have the namespace parser  catch the errors and fail the va
 [wrap_h.hash3]
 [wrap_h(t="{:.blue}<h4>Testing creating variables with references to instance variables</h4>")]
 
-@set _="c2" attr1="*attribute 1*" attr2="**attribute 2**" attr3="{{self.attr1}}--{{self.attr2}}" attr4="[self.attr2]--[self.attr1]"
+@set _ns="[ns]" _="c2" attr1="*attribute 1*" attr2="**attribute 2**" attr3="{{self.attr1}}--{{self.attr2}}" attr4="[self.attr2]--[self.attr1]"
 [encode_smd(t="[c2.attr1]")] = [c2.attr1]
 [encode_smd(t="[c2.attr2]")] = [c2.attr2]
 [encode_smd(t="[c2.attr3]")] = [c2.attr3]
