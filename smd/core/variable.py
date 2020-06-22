@@ -305,7 +305,7 @@ class Namespace(VariableStore):
 class AdvancedNamespace(Namespace):
     _variable_name_str = ["_id", "_"]
     _default_format_attr = '_format'
-    _raw_format_attr = '_raw'
+    _raw_format_attr = '_raw'               #//TODO: What is this _raw attr used for? I don't think it is. remove it??
     _inherit_attr = '_inherit'
 
     def __init__(self, markdown, namespace_name, oprint):
@@ -336,8 +336,9 @@ class AdvancedNamespace(Namespace):
             #//TODO: Figure out why I have to add [Variable.rvalue] manually. If I add it to _special_attributes, then you will
             # get a logic exception thrown when you attempt to access it, e.g. [variable._rval]. Need to understand why that is,
             # and whether to add it to the case in getSpecial, or just what is going on with it...
-            if key in self._special_attributes + [Variable.rvalue]:
-                self.oprint(f"WARNING: Use of reserved attribute name {key} is ambiguous within a variable declaration and will likely lead to unexpected results.<br />")
+            #if key in self._special_attributes + [Variable.rvalue]:
+            if self._isSpecial(key) or key in [Variable.rvalue]:
+                self.oprint(f"WARNING: Use of reserved attribute name <em>{key}</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />")
 
     def getIDstring(self, dict):
         for id in AdvancedNamespace._variable_name_str:
@@ -631,12 +632,14 @@ class LinkNamespace(HtmlNamespace):
             super(LinkNamespace, self).addAttribute(var_name,'_tag','a')
 
 class CodeNamespace(AdvancedNamespace):
-    _run = 'run'
-    _params_ = '_params_'
-    _defaults_ = '_defaults_'
+    _run_ = 'run'           # .run attribute. Optional. i.e. [code.varname] === [code.varname.run]
+    _code_ = '_code'        # The private attribute that stores the compiled code
+    _params_ = '_params_'   # This stores the just-in-time (jit) attrs being passed to an invocation of a code macro
+    _last_ = '_last'
+    #_defaults_ = '_defaults_'
     _code_str = '<strong><em><span class="blue">@code</span></em></strong>'
     #_locals_ = '_locals_'
-    _element_partials = [_run]
+    _element_partials = [_run_, _code_, _params_, _last_]
 
     def __init__(self, markdown, namespace_name, oprint):
         super(CodeNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
@@ -674,7 +677,7 @@ class CodeNamespace(AdvancedNamespace):
         self.debug.global_suspend(True)
         with stdoutIO() as s:
             try:
-                exec(dict['_code']) if dict['type'] == 'exec' else eval(dict['_code'])
+                exec(dict[CodeNamespace._code_]) if dict['type'] == 'exec' else eval(dict[CodeNamespace._code_])
             except Exception as e:
                 exceptionMessage = "{}".format(str(e))
         self.debug.global_suspend(False)
@@ -683,6 +686,14 @@ class CodeNamespace(AdvancedNamespace):
         return s.getvalue().rstrip()
 
     def addVariable(self, dict, name=None):
+        if 'src' not in dict or 'type' not in dict:
+            self.oprint("@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />") 
+            raise SyntaxError("@code namespace requires src= and type= attributes")
+
+        if dict['type'] not in ['exec', 'eval']:
+            self.oprint("@code namespace <em>type=</em> must be <strong>&lt;exec or eval&gt;</strong><br />")
+            raise SyntaxError('@code namespace type= must be either "exec" or "eval"')
+
         var_name = super(CodeNamespace, self).addVariable(dict)
 
         """
@@ -690,14 +701,6 @@ class CodeNamespace(AdvancedNamespace):
         [code.ref.eval] - returns eval(_code)
         """
         dict = super(CodeNamespace, self).getRVal(var_name)
-        if 'src' not in dict or 'type' not in dict:
-            self.oprint('@code namespace requires src= and type= attributes')
-            return
-
-        if dict['type'] not in ['exec', 'eval']:
-            self.oprint('@code namespace type= must be either "exec" or "eval"')
-            return
-
         # TODO: Fix this so it doesn't compile here or getvalue.
         #       That should be done inside ExecutePython
         #       And that is only needed during execution, not during ADD
@@ -705,8 +708,8 @@ class CodeNamespace(AdvancedNamespace):
         # Compile a string for now, it isn't needed until the variable is expanded.
         src = 'print("<strong>raw src=</strong>{}")'.format(dict['src'].replace('"','\\"'))
         self.dbgPrint("Compiling CODE(av) src={}".format(src))
-        dict['_code'] = self.compileSource(src, dict['type'])
-        dict['last'] = self.executePython(dict)
+        dict[CodeNamespace._code_] = self.compileSource(src, dict['type'])
+        dict[CodeNamespace._last_] = self.executePython(dict)
         
 
     # When you have special attributes for your class, you have to define your own
@@ -734,13 +737,13 @@ class CodeNamespace(AdvancedNamespace):
 
         id0, el0 = self._parseVariable(id)
         self.dbgPrint("<strong>getValue(<em>{}, {}, {}</em>)</strong>".format(id,id0,el0), CodeNamespace._code_str)
-        if el0 is None or el0 == CodeNamespace._run:
+        if el0 is None or el0 == CodeNamespace._run_:
             # Get the dictionary (not a copy, the actual dictionary, so if you change it, your changing it. Got it? Good.)
             dict = super(CodeNamespace, self).getRVal(id0)
 
             # TODO: Don't hard code what's be skipped over
             # Build a dictionary of the attrs that need to be restored after we process this getValue()
-            restoreValues = {key: value for (key, value) in dict.items() if key not in ['_code', 'last', '_params_']}
+            restoreValues = {key: value for (key, value) in dict.items() if key not in [CodeNamespace._code_, CodeNamespace._last_, CodeNamespace._params_]}
             self.dbgPrintDict("Saving these values:", restoreValues)
 
             self.dbgPrint("<strong>src=</strong><em>{}</em>".format(dict['src']), CodeNamespace._code_str)
@@ -761,15 +764,15 @@ class CodeNamespace(AdvancedNamespace):
 
             # TODO: Is this working right? If new attrs are added, they'll be sticky. Is that okay?
             # Now build a dictionary of the attrs that need substitution (if present) in the src code
-            replaceValues = {key: value for (key, value) in dict.items() if key not in ['_code', '_params_']}
+            replaceValues = {key: value for (key, value) in dict.items() if key not in [CodeNamespace._code_, CodeNamespace._params_]}
 
             # Now translate $.attr to values from the replaceValues dictionary
             src = xlat_parameters(src, replaceValues)
 
             # Finally, compile it and execute it
             self.dbgPrint("Compiling <strong>src=</strong><em>{}</em>".format(HtmlUtils.escape_html(src)), CodeNamespace._code_str)
-            dict['_code'] = self.compileSource(src, dict['type'])
-            dict['last'] = self.executePython(dict)
+            dict[CodeNamespace._code_] = self.compileSource(src, dict['type'])
+            dict[CodeNamespace._last_] = self.executePython(dict)
 
             # And now, put back the attributes as they were on entrance. This is a requirement for @code vars.
             # The only way to change an attribute is to use @set (TODO: test that theory)
@@ -777,7 +780,11 @@ class CodeNamespace(AdvancedNamespace):
                 self.dbgPrint("Restore: <strong>{}</strong> with <em>{}</em>".format(key, HtmlUtils.escape_html(restoreValues[key])))
                 dict[key] = restoreValues[key]
 
-            return dict['last']
+            return dict[CodeNamespace._last_]
+
+        if el0 in [CodeNamespace._code_, CodeNamespace._params_]:
+            # Trying to return these will crash the markdown processor. Just bail and say we can't do it.
+            return f'{id0}.{el0} is instance data and is not printable'
 
         return super(CodeNamespace, self).getValue(id)
 
