@@ -2,6 +2,16 @@
 
 [var.testdoc.begin(title="links.md" desc="Testing the @link namespace")]
 
+@var ns="link"
+
+@import "$/nsbasic.md"
+
+
+[plain(t="Testing @link builtin functions")]
+
+[plain(t="Testing adding new @link builtins")]
+
+[plain(t="Testing generic @link support")]
 
 [wrap_h(t="###Table of Contents")]
 [link.bm_factory(nm="inlinemd", t="Inline Markdown")]

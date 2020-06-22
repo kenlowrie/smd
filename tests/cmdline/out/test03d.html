@@ -146,26 +146,26 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_txtvar_=</strong>_ns.txtvar.attr_<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: &lt;strong&gt;{{self._}}(_var_=&lt;em&gt;&amp;quot;ns.var.attr&amp;quot;&lt;/em&gt;, _txtvar_=&lt;em&gt;&amp;quot;ns.var.attr with text to add&amp;quot;&lt;/em&gt;)&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
 <br />
 <strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.last}}<br />
 &nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 <br />
 <strong>encodeURL=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>code.encodeURL(t="https://www.url.com to encode")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('$.t'))<br />
 <br />
 <strong>encode_smd=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: code.encode_smd.run(t="smd markdown to encode")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
 <br />
 <strong>equals=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
@@ -174,32 +174,32 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>true=</strong>_ns.var.true_<br />
 &nbsp;&nbsp;<strong>false=</strong>_ns.var.false_<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.equals('$.v1', '$.v2', '$.true', '$.false')<br />
 <br />
 <strong>esc_html=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>src=</strong>print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
 &nbsp;&nbsp;<strong>url=</strong>Usage: code.esc_html.run(url="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('$.url'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
 <br />
 <strong>escape=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: code.escape.run(t="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.t'))<br />
 <br />
 <strong>escape2=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
 &nbsp;&nbsp;<strong>__t=</strong>Usage: code.escape.run(t="text to escape")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('$.__t'))<br />
 <br />
 <strong>get=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v="variable_name")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 <br />
 <strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
@@ -207,7 +207,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>default=</strong>undefined variable<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v=&amp;quot;variable_name&amp;quot;, default=&amp;quot;default value&amp;quot;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
 <br />
 <strong>ln_alias=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
@@ -216,32 +216,32 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>lt=</strong>NEW_LINK_TEXT_HERE<br />
 &nbsp;&nbsp;<strong>_help_=</strong>&lt;strong&gt;&lt;em&gt;usage:&lt;/em&gt;                 {{self._}}&lt;/strong&gt;(&lt;em&gt;nm=&lt;/em&gt;&amp;quot;link.name_to_add_alias&amp;quot;,                 &lt;em&gt;attr=&lt;/em&gt;&amp;quot;attr_name&amp;quot;,                 &lt;em&gt;lt=&lt;/em&gt;&amp;quot;new link text&amp;quot;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('$.nm',       '$.attr', '$.lt', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
 <br />
 <strong>pushline=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="line to push onto input stream")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
 <br />
 <strong>pushlines=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="lines to push onto input stream. separate lines with \\n ")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
 <br />
 <strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="variable whose value will be pushed onto input stream")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.t}}')<br />
 <br />
 <strong>repeat=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>src=</strong>print('{}'.format('$.t'*$.c))<br />
 &nbsp;&nbsp;<strong>t=</strong>repeat_str <br />
 &nbsp;&nbsp;<strong>c=</strong>2<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('$.t'*$.c))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('$.t'*$.c))<br />
 <br />
 <strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
@@ -249,20 +249,20 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>val=</strong>value_to_insert<br />
 &nbsp;&nbsp;<strong>str=</strong>string to operate on<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
 <br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="var._public_attrs_")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 <br />
 <strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
 &nbsp;&nbsp;<strong>w=</strong>*<br />
 &nbsp;&nbsp;<strong>encode=</strong>False<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
 <br />
 </code>
 </div>
