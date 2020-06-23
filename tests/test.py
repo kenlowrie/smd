@@ -83,8 +83,8 @@ class TestSMD(TestCase):
     def test_stop(self):
         self.process('stop')
 
-    def test_links(self):
-        self.process('links')
+    def test_link(self):
+        self.process('link')
 
     def test_dump(self):
         self.process('dump')
