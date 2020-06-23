@@ -9,6 +9,7 @@ film - film.md DONE
 header  - markdown.md DONE (and it's used in pretty much every script)
 image - image.md DONE
 import  - import.md DONE
+link - link.md DONE
 mailto - mailto.md DONE (tests the encoded email addresses when a mailto: address is used.)
 markdown - markdown.md DONE
 misc - misc.md DONE (this needs to be reworked once I have final macros in place)
@@ -25,7 +26,6 @@ wrap - wrap.md DONE
 
 
 code - code.md
-link - links.md
 html - html.md
 
 

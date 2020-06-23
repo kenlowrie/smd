@@ -152,6 +152,22 @@ NAMESPACE: html<br />
 </div>
 <div class="extras"><p>&#91;c1] = 1</p></div>
 <div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<br />
+</code>
+</div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
 <div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
@@ -163,11 +179,10 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
-<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
 &nbsp;&nbsp;<strong>a=</strong>8<br />
 &nbsp;&nbsp;<strong>b=</strong>2<br />
 &nbsp;&nbsp;<strong>c=</strong>3<br />
-&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
 <br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 <br />
@@ -496,11 +511,10 @@ NAMESPACE: html<br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
 &nbsp;&nbsp;<strong>a=</strong>8<br />
 &nbsp;&nbsp;<strong>b=</strong>2<br />
 &nbsp;&nbsp;<strong>c=</strong>3<br />
-&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
 <br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 <br />

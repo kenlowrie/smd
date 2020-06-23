@@ -124,12 +124,13 @@ These next ones will have the namespace parser  catch the errors and fail the va
 
 @[dump] = "c[0-9]{1,2}"
 
-@set _ns="[ns]" _="c0" a="8" _fmt="Constants"
+@set _ns="[ns]" _="c0" a="8" _format="Constants"
 
 //TODO: not the behaviour I expected. Thought c1 would have still been 1. Looks like delayed expansion my be the default behavior...
 [encode_smd(t="[c1]")] = [c1]
 [encode_smd(t="[c2]")] = [c2]
 
+@[dump] = "c[0-9]{1,2}"
 
 [wrap_h.hash3]
 [wrap_h(t="{:.blue}<h4>Testing creating variables with references to instance variables</h4>")]

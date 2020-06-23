@@ -171,6 +171,25 @@ NAMESPACE: link<br />
 </div>
 <div class="extras"><p>&#91;c1] = 1</p></div>
 <div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
 <div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
@@ -182,12 +201,11 @@ NAMESPACE: link<br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
 &nbsp;&nbsp;<strong>a=</strong>8<br />
 &nbsp;&nbsp;<strong>b=</strong>2<br />
 &nbsp;&nbsp;<strong>c=</strong>3<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
 <br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
@@ -394,71 +412,147 @@ NAMESPACE: link<br />
 </code>
 </div>
 <div class="plain"><p class="plainTitle">Testing @link builtin functions</p></div>
-<div class="plain"><p class="plainTitle">Testing adding new @link builtins</p></div>
-<div class="plain"><p class="plainTitle">Testing generic @link support</p></div>
-<div class="extras"><h3>Table of Contents</h3></div>
-<div class="extras"><p><a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong></p></div>
-<div class="extras"><p><a href="#links">Links</a> - <strong>Inline and Reference Link Styles</strong><br /></p></div>
-<div class="extras"><p><a href="#inline_links">Inline Links</a> - <strong>Creating links inline</strong><br /></p></div>
-<div class="extras"><p><a href="#ref_links">Reference Links</a> - <strong>Creating reference links</strong><br /></p></div>
-<div class="extras"><p><a href="#auto_links">Automatic Links</a> - <strong>Creating automatic links</strong><br /></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>inlinemd=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Inline Markdown<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="toc"><p class="divTitle">Table of Contents</p><p style="font-size:1.2em">    <a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong><br />    <a href="#links">Links</a> - <strong>Link Styles</strong><br />    <a href="#hyperlinks">Hyper Links</a> - <strong>Creating hyperlinks</strong><br />    <a href="#bookmarks">Bookmark Links</a> - <strong>Creating bookmarks</strong><br /></p></div>
 <a id="inlinemd"></a><br />
+
+<div class="extras"><h3>Inline Markdown</h3></div>
+<div class="extras"><p>Inline markdown consists of five different types of markdown:</p></div>
+<ol>
+<li style="font-size:1.3em;margin-left:2em">Variables - These are smd namespace variables accessed with this type of markdown: <strong>&#91;variable]</strong></li>
+<li style="font-size:1.3em;margin-left:2em">Strong - Double &ast; placed around content will apply the &lt;strong&gt; tag: <strong>&#42;&#42;content&#42;&#42;</strong></li>
+<li style="font-size:1.3em;margin-left:2em">Emphasis - Single &ast; placed around content will apply the &lt;em&gt; tag: <em>&#42;content&#42;</em></li>
+<li style="font-size:1.3em;margin-left:2em">Insertion - Double &plus; placed around content will apply the &lt;ins&gt; tag: <ins>&plus;&plus;content&plus;&plus;</ins></li>
+<li style="font-size:1.3em;margin-left:2em">Deletion - Double &sim; placed around content will apply the &lt;del&gt; tag: <del>&sim;&sim;content&sim;&sim;</del></li>
+</ol>
 <a id="links"></a>
-<div class="extras"><h2>Links</h2></div>
-<div class="extras"><p>This is a section about links</p></div>
-<a id="inline_links"></a>
-<div class="extras"><h3>Inline Style:</h3></div>
-<div class="extras"><p>The next paragraph has inline links defined: This is <strong>&#91;an example]:(http://example.com/ "Inline Link Sample")</strong> of an inline link. <strong>&#91;This inline link]:(http://example.net/)</strong> has no title attribute.</p></div>
-<div class="extras"><p>This is <a href="http://example.com" title="Inline Link Sample">an example</a> of an inline link. <a href="http://example.net">This inline link</a> has no title attribute.</p></div>
-<div class="extras"><p>Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: <a href="http://example.com" title="Inline Link Sample">an example</a>.</p></div>
-<a id="ref_links"></a>
-<div class="extras"><h3>Reference Style:</h3></div>
-<div class="extras"><p>Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.</p></div>
-<div class="extras"><p>The reference link style <strong>must</strong> be placed at the beginning of a line. Unlike true Markdown, reference links <em>must</em> be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.</p></div>
-<div class="extras"><p><h4 class="indent">@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"</h4></p></div>
-<div class="extras"><p>If I write &#91;Google], it is wrapped like so: <a href="https://google.com" title="Google Search Page">Google</a>.</p></div>
-<div class="extras"><p>Now, I can go ahead and write <strong>&#91;inline 2]</strong>, like this: [inline 2], and it's a valid link! <em><strong>//TODO: What? This is wrong.</strong></em></p></div>
-<a id="auto_links"></a>
-<div class="extras"><h3>Automatic links</h3></div>
-<div class="extras"><p>The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with <em><strong>&lt; &gt;</strong></em> like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an <strong>A</strong> tag whose <strong>HREF</strong> attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute <em>_asurl</em>, which returns the href styled appropriately. For example: <a href="https://google.com" title="Google Search Page">https://google.com</a></p></div>
-<div class="extras"><p>&nbsp;</p></div>
-<div class="extras"><h1>copied from variables.md</h1></div>
-<a id="aliases"></a>
-<div class="extras"><h2>Variables</h2></div>
-<div class="extras"><p>Variables, which is essentially text substitution, is supported using a similar syntax to reference links. <strong>@var variable="value"</strong>. Take the following example:</p></div>
-<div class="extras"><p><h3 class="indent">@var name="Ken Lowrie"</h3></p></div>
-<div class="extras"><p>Now, anywhere I write &#91;my name], it will be replaced with "Ken Lowrie". Let's do that now: Ken Lowrie &lt;-- Should be Ken Lowrie.</p></div>
-<div class="extras"><p>If I instead write: &#91;name]=[&#42;Ken Lowrie*], then everywhere I write &#91;name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now.</p></div>
-<div class="extras"><p>And now, <em>Ken Lowrie</em> &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.</p></div>
-<div class="extras"><h2>Link aliases</h2></div>
-<div class="extras"><p>Building on that, we can create aliases for inline links. Say I define a reference link like this:</p></div>
-<div class="extras"><p><h3 class="indent">&#91;cls]:https://cloudylogic.com</h3></p></div>
-<div class="extras"><p>Now, when I write <strong>&#91;cls]</strong>, it is replaced with a link to https://cloudylogic.com. For example: <a href="https://cloudylogic.com">cls</a>.</p></div>
-<div class="extras"><p>And that's all good. It's concise, I only have to write <em>cls</em> in [ ] and it is wrapped with an HTML link. Saves a lot of typing and potential mistakes. But what if I want to have other, more descriptive names for that URL? Good news, we can do that using a special form of aliases: [Descriptive Text]=[id], where <em>id</em> is the name of a previously described reference link. Let me go ahead and create an alias for the <em>cls</em> link so the descriptive name is Cloudy Logic. THIS TEXT IS ALL WRONG. DOESN'T WORK THIS WAY ANYMORE...</p></div>
-<div class="extras"><p><h3 class="indent">&#91;Cloudy Logic]=cls</h3></p></div>
-<div class="extras"><p>Now, when I write <a href="https://cloudylogic.com">Cloudy Logic</a>, it is wrapped with the link for <em>cls</em>. Cool!</p></div>
-<div class="extras"><p>Here is my <a href="https://mydomain.com?a=123%20456">jitlinkvar</a></p></div>
-<div class="extras"><p>Here is my <a href="https://mydomain.com?=123%20456]">jitlinkvar2</a></p></div>
-<div class="extras"><p><h3 class="red center">avscript tester doc</h3></p></div>
-<div class="cover"><h3>User Manual</h3><p>Ken Lowrie</p><p class="coverSummary">This is a user manual for the AVScript utility.</p></div>
-<div class="plain"><p class="plainTitle"><span class="blue">Variables</span></p></div>
-<div class="extras"><p>We can define variables using the syntax: <em><strong>[name]=value</strong></em>. Here's an example. The next line will define the variable <em>whoami</em> and set it to <em>Ken Lowrie</em>.</p></div>
-<div class="extras"><p>Now, whenever I write whoami inside square brackets <strong>[ ]</strong>, it will replace it with <em>Ken Lowrie</em>. Let's try that now. Hello, my name is <em>Ken Lowrie</em>. That's pretty straightforward...</p></div>
-<div class="plain"><p class="plainTitle">Links</p></div>
-<div class="extras"><p>We can also define hyperlinks using a similar syntax: [linkID]:linkurl. Let's go ahead and define a few links now...</p></div>
-<div class="extras"><p>I've defined two new links, one called <em>cls</em> which is a standard HTTPS link for my website, and another called <em>me</em>, which is a mailto: link that will compose a new email to myself. I use these just like variables, just write the ID inside square brackets.</p></div>
-<div class="extras"><p>Visit my domain <a href="https://cloudylogic.com">cls</a> or send [me] an email. If you click on either <em>cls</em> or <em>me</em>, they should behave accordingly.</p></div>
-<div class="extras"><h4>Aliases</h4></div>
-<div class="extras"><p>So far so good. Typing <a href="https://cloudylogic.com">cls</a> is certainly better than typing out the entire URL, but it's not very descriptive... Sometimes, maybe I want to have more text, or even the URL as the hyperlink. In those cases, you can create variables whose value matches the name of a linkID, and when you use that variable, it will wrap the variable name with the link tag. Kind of like creating an alias for the link description.</p></div>
-<div class="extras"><p>So let's try that. The next line is <em><strong>defining the variable</strong></em> called "My Email Address" and setting its value to "me".</p></div>
-<div class="extras"><p>By defining a variable's value such that the value is a valid linkID, when you use the variable's name in the document, it will be wrapped in the linkIDs hyperlink. So now when I write [me], it is more friendly than [me], even though they evaluate to the same link.</p></div>
-<div class="extras"><p>You can create more than one "alias" to the same underlying link. The new variable design requires that you add a new format string and specific private variable to support that. Here's an example of it:</p></div>
-<div class="extras"><p>In the previous 2 lines, I created two new variables and set both of their values to the linkID called <em>cls</em>. So now when I write <a href="https://cloudylogic.com">My Production Website</a> and <a href="https://cloudylogic.com">Cloudy Logic Studios, LLC</a>, both of them are links to my website.</p></div>
-<div class="extras"><p>Most of the time, you'll just add normal links with the regular link syntax, but sometimes it's cool to have these other options.</p></div>
-<div class="extras"><p>Here are a couple more examples:</p></div>
-<div class="extras"><p><a href="https://wordpress.org/news/2018/05/the-month-in-wordpress-april-2018/">Link to Article</a> <-- That should have been turned into a link</p></div>
-<div class="extras"><p>You can send [feedback]. Or you can just email [me]. Or go to my cls. But don't do that if [Cloudy Logic]:(cls) is not defined. Finally, <a href="https://www.cloudylogic.com" title="This is a link title...">One with Title</a></p></div>
-<div class="extras"><p>Remember, variable definitions and reference link definitions must be declared on a line by themself. If you put more stuff, it will just process the first one. If it isn't at the beginning of the line, it'll be ignored. For example:</p></div>
+<div class="extras"><h3>Links</h3></div>
+<div class="extras"><p>There are two different styles of links built-in to smd which map to standard HTML links:</p></div>
+<ol>
+<li style="font-size:1.3em;margin-left:2em">Hyperlinks - Links created using the HTML <strong>a</strong> tag with the <strong>href</strong> attribute. e.g. <em>&lt;a href="url"&gt;content&lt;/a&gt;</em></li>
+<li style="font-size:1.3em;margin-left:2em">Bookmarks - Links created using the HTML <strong>a</strong> tag with the <strong>id</strong> attribute. <em>&lt;a id="bookmark_name"&gt;&lt;/a&gt;</em></li>
+</ol>
+<div class="extras"><p>As you can see, these links are both based on the HTML <strong>a</strong> attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the <em><strong>sys.imports/link.md</strong></em> file.</p></div>
+<a id="hyperlinks"></a>
+<div class="extras"><h3>Creating Hyperlinks</h3></div>
+<div class="extras"><p>Hyperlinks are created using the @link namespace in smd, while specifying the attributes desired to describe the link. The @link namespace is a subclass of @html, and therefore it shares all the same characteristics, such as the &lt; attribute to emit the open tag HTML and &gt; to emit the close tag HTML. For more information on the @html namespace, refer to the user manual.</p></div>
+<div class="extras"><p>You can create a variable in the @link namespace using the following syntax:</p></div>
+<div class="extras"><h3 class="indent">&#64;link _="name" href="http://example.com"</h3></div>
+<div class="extras"><p>If you then specify <strong>&#91;link.name]</strong>, the parser will emit <strong>&lt;a href="http://example.com"&gt;&lt;/a&gt;</strong>. Such a simple example isn't very useful, however, since we need the ability to insert content between the anchor tag. This can be accomplished by using the special attributes &lt; and &gt;, as follows:</p></div>
+<div class="extras"><h3 class="indent">&#91;link.name.<]content here&#91;link.name.>]</h3></div>
+<div class="extras"><p>Now, the parser emits: <strong>&lt;a href="http://example.com"&gt;content here&lt;/a&gt;</strong>, which is a bit more useful, but seemingly rather complex to to use in practice. In light of this, two special built-ins are provided in order to ease the creation and usage of hyperlinks. The first is a link template, <strong>link._template_</strong>, which can be inherited during creation of new links, and the second is a factory, <strong>link.ln_factory</strong>, which can be used to easily create a hyperlink with minimal input, and which has several useful attributes that can be used during rendering. Let's take a look at each of these now.</p></div>
+<div class="extras"><p>Going back to our original example, if we add <strong>_inherit="_template_"</strong> to the definition e.g.:</p></div>
+<div class="extras"><h3 class="indent">&#64;link _="name" href="http://example.com" _inherit="_template_"</h3></div>
+<div class="extras"><p>We now have several new attributes available to use. For example, if we write <strong>&#91;link.name._asurl]</strong>, the parser emits <a href="http://example.com">http://example.com</a>. If we use just the variable name like we did before e.g. <strong>&#91;link.name]</strong>, we get this: <a href="http://example.com">Usage: link.name(_text="Text to Link")</a>. As you can see, the default text for the link is actually a usage statement, requesting that we add the <strong>_text=</strong> parameter like so: <strong>&#91;link.name&lpar;_text="my web site"&rpar;]</strong>, which then yields: <a href="http://example.com">my web site</a>.</p></div>
+<div class="extras"><p>If you want to use different content with the same link, then specifying the <strong>_text=</strong> parameter provides a convenient way to do that. For example, if I change the parameter to <strong>_text="My Really Cool Website"</strong>, I will get: <a href="http://example.com">My Really Cool Website</a>.</p></div>
+<div class="extras"><p>There is one side effect to overriding the default values for attributes on variables in all namespaces except the @code namespace. When a default attribute is overridden in a call, it changes the default value of that attribute for subsequent calls! For example, if I write <strong>&#91;link.name]</strong>, I will get the last value for _text, i.e.: <a href="http://example.com">My Really Cool Website</a>.</p></div>
+<div class="extras"><p class="note red indent">Keep that in mind as it affects parameter passing in all of the namespaces except @code; in @code, default values for parameters can only be overridden when the variable is defined with @var or updated with @set. Anything passed via a call will be persisted for that one call, and then revert to the original value.</p></div>
+<div class="extras"><p>You can also set the initial value for <strong>_text</strong> when the link variable is initially defined. For example, if we write:</p></div>
+<div class="extras"><h3 class="indent">&#64;link _="name" href="http://example.com" _inherit="_template_" _text="my default title"</h3></div>
+<div class="extras"><p>And I then write <strong>&#91;link.name]</strong>, I will get the new default value for _text, i.e.: <a href="http://example.com">my default title</a>, without having to specify <strong>_text</strong> on the initial usage of the link.</p></div>
+<div class="plain"><p class="plainTitle">Using the link factory to create hyperlinks</p></div>
+<div class="extras"><p>Before we leave the section on hyperlinks, let's a have a look at a better shorthand for creating links, the built-in link factory <strong>ln_factory</strong>. This built-in allows you to easily create a new link with minimal parameters:</p></div>
+<div class="extras"><h3 class="indent">&#91;ln_factory(nm="sample" hr="http://example.com" t="my default title"]</h3></div>
+<div class="extras"><p>And now, if I write <strong>&#91;sample]</strong>, I will get: <a href="http://example.com">my default title</a>. Notice how in this example, we left off the namespace <strong>link.</strong>. Namespaces allow identifiers to be reused, and the value of a duplicated identifier in different namespaces will be unique. However, it's always a good idea to specify the namespace except in the most simple of documents, to avoid weird errors down the road. Thus, if I write <strong>&#91;link.sample]</strong>, I will get the value as before: <a href="http://example.com">my default title</a>.</p></div>
+<div class="extras"><p>Of course, <strong>ln_factory</strong> inherits from <strong>link._template</strong>, and as such, it inherits things like <strong>_asurl</strong>: <a href="http://example.com">http://example.com</a>.</p></div>
+<div class="extras"><p>One other feature of the <strong>link._template_</strong> is the <strong>_qlink</strong> and <strong>_qtext</strong> attributes. These allow you to specify alternative link text to the same <strong>href</strong>. For example, if I add <strong>_qtext="alternative link text"</strong> when the variable is declared, and then write <strong>&#91;link.sample._qlink]</strong>, I will get: <a href="http://example.com">alternative link text</a>.</p></div>
+<div class="extras"><p>You can also specify the <strong>_qtext</strong> using the special <strong>_null_</strong> syntax:  <strong>&#91;link.sample._null_&lpar;_qtext="alt2 link text"&rpar;]</strong>. Doing so then cause <strong>_qlink</strong> to emit: <a href="http://example.com">alt2 link text</a>.</p></div>
+<div class="extras"><p>As in the @html namespace, any valid HTML attribute can be specified when creating link variables. Like @html, attributes that begin with an underscore <em><strong>_</strong></em> are considered <em>private</em> and attributes that begin with a letter are considered <em>public</em>. When HTML tags are emitted as part of variable expansion, all public attributes are written as part of the opening tag. Let's show an example.</p></div>
+<div class="extras"><p>If we add <strong>title="my link title here"</strong> when we define the link variable <strong>link.sample</strong> we were just using, and then emit the code using any of the emitters <strong>(link.sample, link.sample._asurl, link.sample._qlink)</strong>, the HTML code includes a <strong>title=</strong> attribute every time the anchor opening tag is written.</p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here">my default title</a></p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here">http://example.com</a></p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here">alt2 link text</a></p></div>
+<div class="extras"><p>If you hover over any of the preceding links, the browser will show "my link title here" after a couple of seconds. Using this feature, you can add custom CSS styling via <strong>style=</strong> along with other valid HTML attributes. As one last example, we will add <strong>style="font-size:3em"</strong> to the link.sample variable, and then emit the same 3 links as before:</p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">my default title</a></p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">http://example.com</a></p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">alt2 link text</a></p></div>
+<div class="extras"><p>This should give you a pretty good idea of how you can use hyperlinks in your smd documents, and so this wraps up the section on creating them using the built-ins provided in <em><strong>sys.imports/link.md</strong></em>.</p></div>
+<a id="bookmarks"></a>
+<div class="extras"><h3>Creating Bookmarks</h3></div>
+<div class="extras"><p>Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the <em><strong>ID</strong></em> and the actual reference to the ID, which is done by writing <em><strong>#ID</strong></em>. Within smd, bookmarks are implemented with the @link namespace, and are usually created using the Bookmark factory, <strong>bm_factory</strong>, which is a built-in link variable. <strong>bm_factory</strong> uses the <strong>bm_template</strong> variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.</p></div>
+<div class="extras"><p class="note red indent"><em><strong>NOTE</strong></em>: Because the <strong>bm_template</strong> isn't useful outside the context of the <strong>bm_factory</strong>, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.</p></div>
+<div class="extras"><p>Similar to it's counterpart <strong>ln_factory</strong>, has the following syntax:</p></div>
+<div class="extras"><h3 class="indent">&#91;bm_factory(nm="bookmark1" t="my bookmark text"]</h3></div>
+<div class="extras"><p>The <strong>bm_factory</strong> does not need the <strong>hr=</strong> parameter, however, because the href is constructed using only the bookmark name, since it refers to a location within the current document.</p></div>
+<div class="extras"><p>Once the bookmark is created using the syntax above, hyperlinks within the current document are created by using the <strong>.link</strong> attribute, and the anchor location is emitted using simply the variable name. Let's look at an example.</p></div>
+<div class="extras"><p>Within your document, use the <strong>&#91;link.bookmark1]</strong> to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: <strong>&#91;link.bookmark1.link]</strong>, as I have done right here: <a href="#bookmark1">my bookmark text</a>. &lt;-- Click on that link and see that it takes you to the location below.</p></div>
+<div class="extras"><p>I'm going to dump the various @link variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>bookmark1=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>my bookmark text<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>name=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>_inherit=</strong>_template_<br />
+<br />
+<strong>sample=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>alt2 link text<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>title=</strong>my link title here<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:3em<br />
+<br />
+</code>
+</div>
+<a id="bookmark1"></a>
+<div class="extras"><h3>This is where I dropped the anchor for <strong>bookmark1</strong></h3></div>
+<div class="extras"><p>That's about all there is to using the smd built-ins for creating HTML bookmarks within a document.</p></div>
+<div class="plain"><p class="plainTitle">Testing adding new @link builtins</p></div>
+<div class="extras"><p>This seems unnecessary at this time.</p></div>
+<div class="plain"><p class="plainTitle">Testing generic @link support</p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">Google home page</a></p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">https://google.com</a></p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">SETMETOLINKTEXT</a></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -466,10 +560,6 @@ NAMESPACE: var<br />
 ----------------------------------------<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="[ns]" _="d0" _format="d0_rval"<br />
 &nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;{{self.c}}")]<br />
-<br />
-<strong>MyEmailAddress=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{me}}<br />
-<br />
-<strong>abc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>123<br />
 <br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
@@ -493,9 +583,9 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
 &nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
 <br />
-<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>User Manual<br />
-&nbsp;&nbsp;<strong>author=</strong>Ken Lowrie<br />
-&nbsp;&nbsp;<strong>logline=</strong>This is a user manual for the AVScript utility.<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
@@ -513,8 +603,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t2=</strong>author<br />
 &nbsp;&nbsp;<strong>t3=</strong>logline<br />
 <br />
-<strong>def=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>456<br />
-<br />
 <strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
 &nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
 &nbsp;&nbsp;<strong>_nop=</strong><br />
@@ -525,8 +613,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
 <br />
 <strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
-<br />
-<strong>domain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>cls<br />
 <br />
 <strong>dump=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>dump [ns]<br />
 <br />
@@ -551,18 +637,16 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>true=</strong>@[ns] _="c2" _format="{{c0.a}}" src="print()" type="eval"<br />
 &nbsp;&nbsp;<strong>false=</strong>@[ns] _="c2" _format="{{c0.a}}"<br />
 <br />
-<strong>name=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>*Ken Lowrie*<br />
-<br />
 <strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._div_note_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_note_.&lt;}}{{html._p_note_.&lt;}}{{self.t}}{{html._p_note_.&gt;}}{{html._p_note_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your note title<br />
+&nbsp;&nbsp;<strong>t=</strong>***NOTE***: Because the **bm_template** isn't useful outside the context of the **bm_factory**, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your note content<br />
 <br />
 <strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>link<br />
 <br />
 <strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._div_plain_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_plain_.&lt;}}{{html._p_plain_.&lt;}}{{self.t}}{{html._p_plain_.&gt;}}{{html._p_plain_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>Links<br />
+&nbsp;&nbsp;<strong>t=</strong>Testing generic @link support<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your plain content<br />
 <br />
 <strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_review_.&lt;}}{{html._p_review_.&lt;}}{{self.t}}{{html._p_review_.&gt;}}{{html._div_review_.&gt;}}<br />
@@ -620,31 +704,18 @@ NAMESPACE: var<br />
 <br />
 <strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
-&nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
-<br />
-<strong>whoami=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Ken Lowrie<br />
+&nbsp;&nbsp;<strong>t=</strong>Table of Contents<br />
+&nbsp;&nbsp;<strong>c=</strong>    [link.inlinemd.link] - **Formatting content inline**[b]    [link.links.link] - **Link Styles**[b]    [link.hyperlinks.link] - **Creating hyperlinks**[b]    [link.bookmarks.link] - **Creating bookmarks**[b]<br />
 <br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>t=</strong>#### Aliases<br />
-<br />
-<strong>xyz=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>?={{abc}}%20{{def}}]<br />
+&nbsp;&nbsp;<strong>t=</strong>### This is where I dropped the anchor for **bookmark1**<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>Google=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://google.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>title=</strong>Google Search Page<br />
-<br />
 <strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
 &nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
@@ -665,44 +736,14 @@ NAMESPACE: link<br />
 <strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>aliases=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Aliases aka Variables<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>article1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Link to Article<br />
-&nbsp;&nbsp;<strong>href=</strong>https://wordpress.org/news/2018/05/the-month-in-wordpress-april-2018/<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>article2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Link to Article2<br />
-&nbsp;&nbsp;<strong>href=</strong>https://domain.com/another_article_link<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>auto_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Automatic Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
 &nbsp;&nbsp;<strong>123attr=</strong>nope<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
 <strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>nm=</strong>aliases<br />
-&nbsp;&nbsp;<strong>t=</strong>Aliases aka Variables<br />
+&nbsp;&nbsp;<strong>nm=</strong>bookmark1<br />
+&nbsp;&nbsp;<strong>t=</strong>my bookmark text<br />
 <br />
 <strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
@@ -711,12 +752,25 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+<strong>bookmark1=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>my bookmark text<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
 &nbsp;&nbsp;<strong>a=</strong>8<br />
 &nbsp;&nbsp;<strong>b=</strong>2<br />
 &nbsp;&nbsp;<strong>c=</strong>3<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>_fmt=</strong>Constants<br />
 <br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
@@ -728,26 +782,27 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
-<strong>cls=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>cls<br />
-&nbsp;&nbsp;<strong>href=</strong>https://cloudylogic.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>Cloudy Logic Studios, LLC<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>cls2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Cloudy Logic<br />
-&nbsp;&nbsp;<strong>href=</strong>https://cloudylogic.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>newattr=</strong>newval<br />
 &nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+<strong>google=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Google home page<br />
+&nbsp;&nbsp;<strong>href=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>target=</strong>_blank<br />
+&nbsp;&nbsp;<strong>title=</strong>click on me to search on google.com<br />
+<br />
+<strong>hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
 <strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -783,13 +838,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>inline_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Inline Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>inlinemd=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
@@ -818,22 +866,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>jitlinkvar=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://mydomain.com?a=[abc]%20[def]<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>jitlinkvar2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://mydomain.com[xyz]<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
@@ -843,42 +875,28 @@ NAMESPACE: link<br />
 <br />
 <strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>nm=</strong>article1<br />
-&nbsp;&nbsp;<strong>hr=</strong>https://wordpress.org/news/2018/05/the-month-in-wordpress-april-2018/<br />
-&nbsp;&nbsp;<strong>t=</strong>Link to Article<br />
+&nbsp;&nbsp;<strong>nm=</strong>google<br />
+&nbsp;&nbsp;<strong>hr=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>t=</strong>Google home page<br />
 <br />
-<strong>ref_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>link=</strong>&lt;a href="#{{self.id}}"&gt;{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Reference Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>sample1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>an example<br />
+<strong>name=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
 &nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
 &nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>title=</strong>Inline Link Sample<br />
+&nbsp;&nbsp;<strong>_inherit=</strong>_template_<br />
 <br />
-<strong>sample2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>This inline link<br />
-&nbsp;&nbsp;<strong>href=</strong>http://example.net<br />
+<strong>sample=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
 &nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>alt2 link text<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>withtitle=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>One with Title<br />
-&nbsp;&nbsp;<strong>href=</strong>https://www.cloudylogic.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>title=</strong>This is a link title...<br />
+&nbsp;&nbsp;<strong>title=</strong>my link title here<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:3em<br />
 <br />
 </code>
 </div>
