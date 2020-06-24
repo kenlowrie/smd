@@ -145,11 +145,11 @@ Shot
 [var.avshot.audio]
 Description
 
-{:.red}$$revision$$:<<1 This should not be a new div, class prefixes are not allowed here.>>
-{:.blue}$$cover$$:<<.NOT>>:<<.HERE>>:<<.EITHER>>
-{:.green}$$contact$$:<<.NOT>>:<<.HERE>>:<<.EITHER>>:<<1>>:<<2>>:<<3>>
+{:.red}$$revision$$:1 This should not be a new div, class prefixes are not allowed here.
+{:.blue}$$cover$$:.NOT:.HERE:.EITHER
+{:.green}$$contact$$:.NOT:.HERE:.EITHER:1:2:3
 {:.red}[variable]=NO NOT HERE EITHER
-{:.blue}[link]:not_in_links_either_
+{:.blue}[var.link]:not_in_links_either_
 [var.avshot.end]
 
 @break

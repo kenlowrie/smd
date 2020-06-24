@@ -54,8 +54,6 @@
           t="This is your plain title" \
           c="This is your plain content"
 
-@html _id="code" _tag="code"
-
 @html _id="_div_code_" \
       _tag="div" \
       class="code"
@@ -92,8 +90,14 @@
       style="font-size:1.2em" 
  
 @var _id="toc" \
-          _format="@@ {{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._div_toc_.>}}" \
-          with_content="@@ {{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._p_toc_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
+          _format="@@ {{self.inline}}" \
+          inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._div_toc_.>}}"\
+          with_content="@@ {{self.wc_inline}}" \
+          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+          wc_open="@@ {{self.wc_open_inline}}"\
+          wc_close="@@ {{self.wc_close_inline}}"\
+          wc_open_inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._p_toc_content_.<}}"\
+          wc_close_inline="{{html.p.>}}{{html.div.>}}"\
           t="This is your toc title" \
           c="This is your toc content"
 
@@ -150,6 +154,7 @@
       _inherit="p" \
       style="font-size:1.2em" 
  
+//TODO: This could be streamlined like TOC
 @var _id="syntax" \
           _format="@@  {{self.inline}}"\
           inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}"\

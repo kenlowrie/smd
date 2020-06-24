@@ -1,21 +1,13 @@
 {:.blue.center}#Script Markdown User Manual
 @var workingtitle="Script Markdown Utility"
-@var storysummary="This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. **Enjoy!**[bb]***NOTE:*** This manual was originally written in the first version of avscript, and as such, there are likely things that may not be as efficient as they could/should be. Be sure to take a look at the test code (../tests/in/*.md) to see examples of the latest syntax."
-
-@html _="tab" _tag="span" class="indent"
-@html _="code" _tag="code"
-@var b4="[b][b][b][b]"
+@var storysummary="This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. **Enjoy!**[bb]***NOTE:*** Additional samples that might be worth reviewing are those in the unit test code located here: ***(../tests/in/&ast;.md)***. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers."
 
 @import "[sys.imports]/divs.md"
 @import '[sys.imports]/report.md'
+@import '[sys.imports]/helpers.md'
 @import '[sys.imports]/avs/avs.md'
 @import '$/import/userguideheading.md'
 
-[link.bm_factory(nm="inlinemd" t="Inline Markdown")]
-[link.bm_factory(nm="links" t="Links")]
-[link.bm_factory(nm="inline_links" t="Inline Links")]
-[link.bm_factory(nm="ref_links" t="Reference Links")]
-[link.bm_factory(nm="auto_links" t="Automatic Links")]
 [link.bm_factory(nm="mailto_links" t="mailto Links")]
 [link.bm_factory(nm="aliases" t="Aliases")]
 [link.bm_factory(nm="div" t="DIV")]
@@ -29,39 +21,37 @@
 [link.bm_factory(nm="debug" t="Debug")]
 [link.bm_factory(nm="summary" t="Summary")]
 
-[var.toc.with_content(t="Table of Contents" c="\
-    [link.inlinemd.link] - **Formatting content inline**[b]\
-    [link.links.link] - **Inline and Reference Link Styles**[b]\
-    [tab.<][link.inline_links.link] - **Creating links inline**[tab.>][b]\
-    [tab.<][link.ref_links.link] - **Creating reference links**[tab.>][b]\
-    [tab.<][link.mailto_links.link] - **Creating mailto links**[tab.>][b]\
-    [tab.<][link.auto_links.link] - **Creating automatic links**[tab.>][b]\
-    [link.aliases.link] - **Text substitution aka Variables**[b]\
-    [link.div.link] - **Creating new DIV sections**[b]\
-    [link.headers.link] - **Adding Headers**[b]\
-    [link.anchors.link] - **Using Bookmarks**[b]\
-    [link.special_sections.link] - **Covers, Revisions &amp; Contact sections**[b]\
-    [link.imports.link] - **Importing files**[b]\
-    [link.advanced.link] - **Introducing @raw, @image & @var**[b]\
-    [link.predefined_classes.link] - **Using predefined CSS classes**[b]\
-    [link.shotlist.link] - **Displaying the shotlist**[b]\
-    [link.debug.link] - **Dumping variables and links**[b]\
-    [link.summary.link] - **Summary of the User Guide**[b]\
-")]
+@wrap nop
+[var.toc.wc_open(t="Table of Contents - SMD User Guide[bb]")]
+@import "$/section/intro-inc.md"
+@import "$/section/link-inc.md"
+    [link.aliases.link] - **Text substitution aka Variables**[b]
+    [link.div.link] - **Creating new DIV sections**[b]
+    [link.headers.link] - **Adding Headers**[b]
+    [link.anchors.link] - **Using Bookmarks**[b]
+    [link.special_sections.link] - **Covers, Revisions &amp; Contact sections**[b]
+    [link.imports.link] - **Importing files**[b]
+    [link.advanced.link] - **Introducing @raw, @image & @var**[b]
+    [link.predefined_classes.link] - **Using predefined CSS classes**[b]
+    [link.shotlist.link] - **Displaying the shotlist**[b]
+    [link.debug.link] - **Dumping variables and links**[b]
+    [link.summary.link] - **Summary of the User Guide**[b]
+[var.toc.wc_close]
+@parw
 
 //TODO: What if we wrapped the entire document in an Extras Div?
-<div class="extras">
 
+@wrap divx
 
 ## Things to document
 <pre style="white-space:pre-wrap">
 <code style="display:block>">
 var.code.with_content(t="Things to document", c="code ...")]
 
-@var fu=\"bar\" i.e. short notation
-@var fu=\"bar\" _format=\"wins\" i.e. assignment to fu ignored if _format present
-@set fu=\"bar2\" a1=\"val\" i.e. you can add attrs during a set operation
-@set _=\"defaults\" revision=\"0.4.2\" - that you can add an attr while keeping the rest...
+.@var fu=\"bar\" i.e. short notation
+.@var fu=\"bar\" _format=\"wins\" i.e. assignment to fu ignored if _format present
+.@set fu=\"bar2\" a1=\"val\" i.e. you can add attrs during a set operation
+.@set _=\"defaults\" revision=\"0.4.2\" - that you can add an attr while keeping the rest...
 .{:.bigandbold}you can add a span prefix
 all the new command line switches. distinguish between smd, ismd, smdparse, smdlive
 defaults variable:[b] [defaults]
@@ -91,135 +81,29 @@ Document code.encode_smd
 98. Should handle_header() handle @wrap lines? Code added, need to review closely.
 99. @wrap nop and null - add tests to wrap.md
 100. @parw *|all @parw -3 | 0 | 1 | 25 - add tests.
-
-
-</code>
-</pre>
+mailto: hyperlinks must be discussed here, we cannot do that in the unittest for link.md because output changes between runs.
 
 @@[code.encode_smd(t="@dump sysdef=\".\"")][b]
 
 {:.bigandbold}If this is inline, *[code.encode_smd(t="@var name=\"value\" _format=\"# {{self.name}}\"")]*
 
-# What is SMD?
-[var.plain(t="What is SMD?")]
-[var.divxp(c="\
-    SMD is a Python command line utility that takes plain text files loosely {oh, so loosely} based on Markdown as input, and generates an HTML document. A CSS file is used to style the output, making it super easy to customize the final render to your liking.[bb]At least that's how it started out. It's grown quite a bit since the early days, and this document will attempt to provide an in-depth overview of most of the capabilities of the package.\
-")]
 
-[divxp(c="In its simplest terms:")]
+</code>
+</pre>
 
-@var ast="&#42;"
-@var obr="&#91;"
-@var lt="&lt;"
-@var gt="&gt;"
-@var at="&#64;"
-[bb]
-{:.note.indent}**Markdown** list item tags ***([ast], -, +)*** are used to identify ***visuals*** (shots), and regular paragraphs are the ***audio/narration*** that go along with the visuals.
-[bb]
-[dp(c="Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.")]
-[bb]
+@parw
+@wrap divx, p
 
-## This will have to be moved to a "shots" doc
+@import "$/section/intro-doc.md"
 
-{:.bigandbold.green}Seems to me that an example that shows how you could use SMD to generate an A/V script would be useful, and would be a way for me to bring over all the film, shot, etc, markdown, put into a directory, such as import/avs or something.  Then, I could use isolate all of that into a shot-specific userguide, and leave this one for the main smd utility.[bb]Also, the formatting in the new doc looks different than the old version, need to run that down to make sure it was intentional.[bb]
+@import "$/section/link-doc.md"
 
-[avwrapper.shot_with_desc(_s="WS:Sunrise", _d="\
-There's just something about a sunrise that gets the blood flowing...\
-And here's some additional narration.\
-")]
-@break
-and here is some additional notes.
-// Seems like @break is essentially a way of doing a "clear:both" thru the use of a display:block element such as headers...
-@break
-//{:.extras}# --- This also works...
 
-[var.note(t="When you want to force the document out of shot mode, use ***@break*** or ***@exit*** on an empty line. That will reset the floats which are controlling the AV formatting, and start a new section. See how the document leaves the narration mode of the prior shot, and starts this new block paragraph?")]
-@break
 
-[extras(c="**[at]break** [lt]--Use @break or @exit to close a shot DIV.")]
-[extras(c="You can have as much narration as required, just keep writing, even starting new regular paragraphs. When you're done, start a new visual, or add any other block element, such as links, aliases, headers, divs, etc. To add another shot, just repeat the steps above, like this:")]
-[b4]
-[avwrapper.shot_with_desc(_s="CU:Coffee pot heating on wire rack of fire pit", _d="\
-    There's nothing like waking up to the smell of coffee percolating in the outdoors.\
-    ")]
-@exit
-[b4]
-If you have text you want included in the HTML document, but do not want it rendered by the browser, use the **{:.ignore}** class prefix. For example, on the next line, we'll write {:.ignore}You won't see this.[b4]
-{:.ignore}You won't see this.
-When you examine the HTML, you'll see the prior text wrapped in **[lt]p[gt]** tags, inside **[lt]div class="extras"[gt]** markup. However, it will not be rendered by the browser, unless you modify the CSS rule for the ignore class.
-Lines that begin with a double forward slash [***//***] are treated as comments, and are discarded by AVScript. They will not appear in the HTML at all. As another example, we'll write *//This will not appear in the HTML* on the next line.
-//This will not appear in the HTML
-If you examine the HTML output, you will not see the previous line in the output.
 
-[link.inlinemd]
-###Inline Markdown
 
-A few of the standard markdown span elements are supported, as are a couple of specialized span elements. These include:
 
-{:.indent}###[ast] - wrap text in a single asterisk for *emphasis*
-{:.indent}###[ast][ast] - wrap text in double asterisks for bold
-{:.indent}###&#43;&#43; - wrap text in double plus signs for ++&lt;ins>++
-{:.indent}###&#126;&#126; - wrap text in double tilde for ~~&lt;del>~~
 
-[var.plain(t="my plain div")]
-Here are a few examples:
-
-When I write **[ast]text[ast]**, it becomes *text*, and when I write **[ast][ast]text[ast][ast]**, it becomes **text**
-
-You can stack them too, so that **[ast][ast][ast]text[ast][ast][ast]** becomes ***text***
-
-When you want to wrap text with [lt]ins[gt], use the double plus signs like this: ++Stuff that's been added++. Similarly, when you want to wrap text with [lt]del[gt] tags, do it like this: ~~Stuff that's been removed~~.
-
-That's a brief look at using AVScript's built-in span element support. Now, let's take a look at support for links, the remaining span element.
-
-[link.links]
-###Links
-
-Both inline and reference style links are supported. The syntax for each style is:
-
-{:.syntax}@@@ divTitle Link Syntax
-    {:.indent2.bigandbold}Inline: &lt;&#91;*LinkID*&#93;&gt; &lt; :( &gt; &lt;***url***&gt; &#91;"*optional title*"&#93; &lt; ) &gt;
-    {:.indent2.bigandbold}Reference: &lt;&#91;***LinkID***&#93;&gt; &lt; : &gt; &lt;*url*&gt; &#91;"*optional title*"&#93;
-    [sp]
-    {:.indent2.bigandbold}Examples:
-    [sp]
-    {:.indent3.bigandbold}&#91;MyLinkID&#93;:(http://url.com "title") *&lt;-- Inline Link Example - Parenthesis around URL &amp; Title*
-    {:.indent3.bigandbold}&#91;MyLinkID&#93;:http://url.com "title" *&lt;-- Reference Link Example - Must be at beginning of line*
-
-[link.inline_links]
-###Inline Style:
-
-The next paragraph has the following inline links defined within it: This is **&#91;an example]:(http://example.com/ "Inline Link Sample")** of an inline link. **&#91;This inline link]:(http://example.net/)** has no title attribute.
-
-This is [an example]:(http://example.com/ "Inline Link Sample") of an inline link. [This inline link]:(http://example.net/) has no title attribute.
-
-Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: [an example].
-
-[link.ref_links]
-###Reference Style:
-Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.
-
-The reference link style must be placed at the beginning of a line. Unlike true Markdown, reference links *must* be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.
-
-{:.indent}###[Google]:https://google.com "Google Search Page"
-[Google]:https://google.com "Google Search Page"
-
-Now, when I write &#91;Google], it is wrapped with a link tag like so: [Google].
-
-###Inline links at the start of a new line
-You can also use the inline link format at the start of a line, as in the following example for **[inline 1]**.
-{:.indent}###&#91;inline 1]:(https://cloudylogic.com "inline link title") 
-[inline 1]:(https://cloudylogic.com "inline link title")
-Now, when we write &#91;inline 1], it has been defined just like a normal reference link, like this: [inline 1]
-When you use the inline link syntax at the start of a line, however, everything following the closing parenthesis is ignored. For example, if we write:
-{:.indent}###**&#91;inline 2]:(https://cloudylogic.com) - you won't see any of this text...**
-Then the inline link isn't expanded inline as normal, and any text following the closing parenthesis is ignored.
-
-{:.note.red.width90}If you look at the source document immediately following this note,  you'll see the inline definition of **inline 2**, but it isn't displayed like normal inline links, it is only defined for use later.
-
-[inline 2]:(https://cloudylogic.com)-you won't see any of this text...
-
-Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it's a valid link!
 [link.mailto_links]
 ###mailto links
 You can create mailto: links in your document too, which enables users to click on a link to automatically compose an email addressed to the specified email address. AVScript will encode the entire mailto: link URL using a mix of decimal and hexadecimal HTML entities as a deterrent to spam bots that mine email addresses from HTML documents. Here's the syntax for a *mailto:* link:
@@ -236,33 +120,14 @@ You can create mailto: links in your document too, which enables users to click 
 
 I've defined the previous examples inline in the user docs, so now we can use them by embedding the link id within square brackets, like so: [email_me]. Or using the second form, send me [feedback].
 
-[link.auto_links]
-###Automatic links
-The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with ***&lt; &gt;*** like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an **A** tag whose **HREF** attribute is the URL.
-{:.note}**NOTE: **I'm still on the fence as to whether support for automatic links will remain in AVScript, so don't get too comfortable with them just yet...
-
-[link.aliases]
-{:.plain}@@@ plainTitle
-## Aliases or Variables
-
-Aliases (aka Variables), which is essentially text substitution, is supported using a similar syntax to reference links. **[variable]=value**. Take the following example:
-{:.indent}###[my name]=Ken Lowrie
-[my name]=Ken Lowrie
-Now, anywhere I write &#91;my name], it will be replaced with "Ken Lowrie". Let's do that now: [my name] &lt;-- Should be Ken Lowrie.
-
-If I instead write: &#91;my name]=[&#42;Ken Lowrie*], then everywhere I write &#91;my name], it will be replaced with &lt;em>Ken Lowrie&lt;/em>. Okay, let's go ahead and do that now. 
-[my name]=*Ken Lowrie*
-And now, [my name] &lt;-- should be Ken Lowrie wrapped with &lt;em> tags.
-
-You can also specify a class prefix when defining a variable, using the following syntax:
-
 {:.syntax}--- divTitle Variable Decorators
     [SP]
     {:.bigandbold.indent}&#91;variable]={:.class}value
 
-So, if you declared this: &#91;mynewvar]={:.bigandbold.red}My new big bold value, and then put &#91;mynewvar], you'd get this:
-[mynewvar]={:.bigandbold.red}My new big bold value
-[mynewvar]
+So, if you declared this: [encode_smd(t="@var mynewvar=\"{:.bigandbold.red}My new big bold value\"")], and then write &#91;mynewvar], you'd get this:
+@var mynewvar="{:.bigandbold.red}My new big bold value"
+[mynewvar] &lt;-- At the start of the line
+And it can also be used inline: [mynewvar]
 
 ### Delayed Expansion
 

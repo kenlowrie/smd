@@ -3,7 +3,7 @@
 // [workingtitle] and [storysummary] need to be defined *before* you include
 // this template.
 @link _id="cls" _inherit="_template_" _text="Cloudy Logic Studios" href="https://cloudylogic.com"
-@var _id="cloudylogic.com" _format="{{link.cls._qlink(_qtext=\"cloudylogic.com\")}}"
+@var _id="cloudylogic" _format="{{link.cls._qlink(_qtext=\"cloudylogic.com\")}}"
 @link _id="me" _inherit="_template_" _text="me@mydomain.com" href="mailto:you@yourdomain.com"
 @link _id="fbemailaddr" _inherit="_template_" _text="Ken Lowrie" href="mailto:me@mydomain.com?subject=[workingtitle]%20Feedback"
 [var.cover(title="[workingtitle]" author="**This guide is NOT Confidential**" logline="[storysummary]")]

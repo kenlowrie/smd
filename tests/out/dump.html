@@ -26,6 +26,7 @@ Files seen during parsing: .<br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/divs.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/report.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/helpers.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
@@ -162,12 +163,37 @@ Files seen during parsing: .*<br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/divs.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/report.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/helpers.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_html.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_head.md</em><br />
 &nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_body.md</em><br />
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
+<strong>ENT=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
+&nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
+&nbsp;&nbsp;<strong>rb=</strong>&amp;rsqb;<br />
+&nbsp;&nbsp;<strong>lcb=</strong>&amp;lcub;<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>&amp;rcub;<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>lt=</strong>&amp;lt;<br />
+&nbsp;&nbsp;<strong>gt=</strong>&amp;gt;<br />
+&nbsp;&nbsp;<strong>at=</strong>&amp;commat;<br />
+&nbsp;&nbsp;<strong>lp=</strong>&amp;lpar;<br />
+&nbsp;&nbsp;<strong>rp=</strong>&amp;rpar;<br />
+&nbsp;&nbsp;<strong>plus=</strong>&amp;plus;<br />
+&nbsp;&nbsp;<strong>ins=</strong>[self.plus][self.plus]<br />
+&nbsp;&nbsp;<strong>minus=</strong>&amp;minus;<br />
+&nbsp;&nbsp;<strong>tilde=</strong>&amp;sim;<br />
+&nbsp;&nbsp;<strong>del=</strong>[self.tilde][self.tilde]<br />
+&nbsp;&nbsp;<strong>sp=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>sp2=</strong>[self.sp][self.sp]<br />
+&nbsp;&nbsp;<strong>apos=</strong>&amp;apos;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
@@ -222,6 +248,18 @@ NAMESPACE: var<br />
 <strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
+<br />
+<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>_format=</strong>[ENT.lt]{{self.t}}[ENT.gt]<br />
+<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>_format=</strong>[ENT.lb]{{self.t}}[ENT.rb]<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
@@ -295,8 +333,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>title=</strong>name of script<br />
 &nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
 <br />
-<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.wc_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
@@ -473,6 +517,11 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>style=</strong>border:none<br />
 <br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
+&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
+<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -503,8 +552,31 @@ NAMESPACE: html<br />
 <strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
+<br />
 <strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;margin-left:2em<br />
+<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
+<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>name=</strong>viewport<br />
+&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
 <br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -520,8 +592,15 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>revTitle<br />
 <br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>indent<br />
 <br />
 <strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -533,7 +612,8 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
 <br />
 <strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1119,6 +1199,30 @@ NAMESPACE: code<br />
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
+<strong>ENT=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
+&nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
+&nbsp;&nbsp;<strong>rb=</strong>&amp;rsqb;<br />
+&nbsp;&nbsp;<strong>lcb=</strong>&amp;lcub;<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>&amp;rcub;<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>lt=</strong>&amp;lt;<br />
+&nbsp;&nbsp;<strong>gt=</strong>&amp;gt;<br />
+&nbsp;&nbsp;<strong>at=</strong>&amp;commat;<br />
+&nbsp;&nbsp;<strong>lp=</strong>&amp;lpar;<br />
+&nbsp;&nbsp;<strong>rp=</strong>&amp;rpar;<br />
+&nbsp;&nbsp;<strong>plus=</strong>&amp;plus;<br />
+&nbsp;&nbsp;<strong>ins=</strong>[self.plus][self.plus]<br />
+&nbsp;&nbsp;<strong>minus=</strong>&amp;minus;<br />
+&nbsp;&nbsp;<strong>tilde=</strong>&amp;sim;<br />
+&nbsp;&nbsp;<strong>del=</strong>[self.tilde][self.tilde]<br />
+&nbsp;&nbsp;<strong>sp=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>sp2=</strong>[self.sp][self.sp]<br />
+&nbsp;&nbsp;<strong>apos=</strong>&amp;apos;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
@@ -1173,6 +1277,18 @@ NAMESPACE: var<br />
 <strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
+<br />
+<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>_format=</strong>[ENT.lt]{{self.t}}[ENT.gt]<br />
+<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>_format=</strong>[ENT.lb]{{self.t}}[ENT.rb]<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
@@ -1246,8 +1362,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>title=</strong>name of script<br />
 &nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
 <br />
-<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}{{self.c}}{{html.p.&gt;}}{{html.div.&gt;}}<br />
+<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._div_toc_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.wc_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_toc_.&lt;}}{{html._p_toc_.&lt;}}{{self.t}}{{html._p_toc_.&gt;}}{{html._p_toc_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your toc title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your toc content<br />
 <br />
@@ -1400,6 +1522,11 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>style=</strong>border:none<br />
 <br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
+&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
+<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -1430,8 +1557,31 @@ NAMESPACE: html<br />
 <strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
+<br />
 <strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;margin-left:2em<br />
+<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
+<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>name=</strong>viewport<br />
+&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
 <br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1447,8 +1597,15 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>revTitle<br />
 <br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>indent<br />
 <br />
 <strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1460,7 +1617,8 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
 <br />
 <strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
