@@ -85,6 +85,14 @@ NAMESPACE: html<br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
+&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
+<br />
 <strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -103,13 +111,35 @@ NAMESPACE: html<br />
 <strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
+<br />
 <strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
+<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>name=</strong>viewport<br />
+&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
 <br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
@@ -125,7 +155,8 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
 <br />
 <strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
