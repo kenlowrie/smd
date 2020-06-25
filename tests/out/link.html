@@ -449,9 +449,10 @@ NAMESPACE: link<br />
 </code>
 </div>
 <a id="ns_link"></a>
-<div class="extras"><h2>@link Namspace</h2></div>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>@link Namespace</h2></div>
+<div class="extras"><p>The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.</p></div>
 <a id="links"></a>
-<div class="extras"><h2>Links</h2></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>
 <div class="extras"><p>There are two different styles of links built-in to smd which map to standard HTML links:</p></div>
 <ol>
 <li style="font-size:1.3em;margin-left:2em">Hyperlinks - Links created using the HTML <strong>a</strong> tag with the <strong>href</strong> attribute. e.g. <em>&lt;a href="url"&gt;content&lt;/a&gt;</em></li>
@@ -459,7 +460,7 @@ NAMESPACE: link<br />
 </ol>
 <div class="extras"><p>As you can see, these links are both based on the HTML <strong>a</strong> attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the <em><strong>sys.imports/link.md</strong></em> file.</p></div>
 <a id="hyperlinks"></a>
-<div class="extras"><h3>Creating Hyperlinks</h3></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Hyperlinks</h3></div>
 <div class="extras"><p>Hyperlinks are created using the @link namespace in smd, while specifying the attributes desired to describe the link. The @link namespace is a subclass of @html, and therefore it shares all the same characteristics, such as the &lt; attribute to emit the open tag HTML and &gt; to emit the close tag HTML. For more information on the @html namespace, refer to the user manual.</p></div>
 <div class="extras"><p>You can create a variable in the @link namespace using the following syntax:</p></div>
 <div class="extras"><h3 class="indent">&#64;link _="name" href="http://example.com"</h3></div>
@@ -475,15 +476,17 @@ NAMESPACE: link<br />
 <div class="extras"><p>You can also set the initial value for <strong>_text</strong> when the link variable is initially defined. For example, if we write:</p></div>
 <div class="extras"><h3 class="indent">&#64;link _="name" href="http://example.com" _inherit="_template_" _text="my default title"</h3></div>
 <div class="extras"><p>And I then write <strong>&lsqb;link.name&rsqb;</strong>, I will get the new default value for _text, i.e.: <a href="http://example.com">my default title</a>, without having to specify <strong>_text</strong> on the initial usage of the link.</p></div>
-<div class="plain"><p class="plainTitle">Using the link factory to create hyperlinks</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>Using the link factory to create hyperlinks</h3></div>
 <div class="extras"><p>Before we leave the section on hyperlinks, let's a have a look at a better shorthand for creating links, the built-in link factory <strong>ln_factory</strong>. This built-in allows you to easily create a new link with minimal parameters:</p></div>
-<div class="extras"><h3 class="indent">&#91;ln_factory(nm="sample" hr="http://example.com" t="my default title"]</h3></div>
+<div class="extras"><h3 class="indent">&lsqb;ln_factory(nm="sample" hr="http://example.com" t="my default title")&rsqb;</h3></div>
 <div class="extras"><p>And now, if I write <strong>&#91;sample]</strong>, I will get: <a href="http://example.com">my default title</a>. Notice how in this example, we left off the namespace <strong>link.</strong>. Namespaces allow identifiers to be reused, and the value of a duplicated identifier in different namespaces will be unique. This ambiguity can lead to unexpected expansion since the if no namespace is supplied, the different namespaces are searched attempting to resolve the identifier. If the parser finds a match before it searches the intended namespace, then that is what it will use. Given that, it's always a good idea to specify the namespace except in the most simple of documents, to avoid incorrect expansion down the road. Thus, if I write <strong>&#91;link.sample]</strong>, I will get the value as before: <a href="http://example.com">my default title</a>.</p></div>
 <div class="extras"><p>As you might expect, <strong>ln_factory</strong> inherits from <strong>link._template</strong>, and as such, it inherits attributes including <strong>_asurl</strong>. For example, <em><strong>&lsqb;link.sample._asurl&rsqb;</strong></em> which expands to <strong>&lt;a href="http://example.com"&gt;http://example.com&lt;/a&gt;</strong> and renders as: <a href="http://example.com">http://example.com</a>.</p></div>
 <div class="extras"><p>One other feature of the <strong>link._template_</strong> is the <strong>_qlink</strong> and <strong>_qtext</strong> attributes. These allow you to specify alternative link text to the same <strong>href</strong>. For example, if I add <strong>_qtext="alternative link text"</strong> when the variable is declared, and then write <strong>&#91;link.sample._qlink]</strong>, I will get: <a href="http://example.com">alternative link text</a>.</p></div>
 <div class="extras"><p>You can also specify the <strong>_qtext</strong> using the special <strong>_null_</strong> syntax:  <strong>&#91;link.sample._null_&lpar;_qtext="alt2 link text"&rpar;]</strong>. Doing so then cause <strong>_qlink</strong> to emit: <a href="http://example.com">alt2 link text</a>.</p></div>
 <div class="extras"><p>As in the @html namespace, any valid HTML attribute can be specified when creating link variables. Like @html, attributes that begin with an underscore <em><strong>_</strong></em> are considered <em>private</em> and attributes that begin with a letter are considered <em>public</em>. When HTML tags are emitted as part of variable expansion, all public attributes are written as part of the opening tag. Let's see how this works.</p></div>
-<div class="extras"><p>If we add <strong>title="my link title here"</strong> when we define the link variable <strong>link.sample</strong> we were just using, and then emit the code using any of the emitters <strong>(link.sample, link.sample._asurl, link.sample._qlink)</strong>, the HTML code includes a <strong>title=</strong> attribute every time the anchor opening tag is written. Let's see how that looks...</p></div>
+<div class="extras"><p>If we add <strong>title="my link title here"</strong> when we define the link variable <strong>link.sample</strong> we were just using, and then emit the code using any of the emitters <strong>(link.sample, link.sample._asurl, link.sample._qlink)</strong>, the HTML code includes a <strong>title=</strong> attribute every time the anchor opening tag is written. Let's see how that looks, first, we'll declare it:</p></div>
+<div class="extras"><h3 class="indent">&lsqb;ln_factory(nm="sample" hr="http://example.com" t="my default title" title="my link title here")&rsqb;</h3></div>
+<div class="extras"><p>And now, let's take a look at what the parser emits and what the browser renders:</p></div>
 <div class="extras"><p><strong>&lsqb;link.sample&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;my default title&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">my default title</a></p></div>
 <div class="extras"><p><strong>&lsqb;link.sample._asurl&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;http://example.com&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">http://example.com</a></p></div>
 <div class="extras"><p><strong>&lsqb;link.sample._qlink&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;alt2 link text&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">alt2 link text</a></p></div>
@@ -494,11 +497,11 @@ NAMESPACE: link<br />
 <div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">alt2 link text</a></p></div>
 <div class="extras"><p>This should give you a pretty good idea of how you can use hyperlinks in your smd documents, and so this wraps up the section on creating them using the built-ins provided in <em><strong>sys.imports/link.md</strong></em>.</p></div>
 <a id="bookmarks"></a>
-<div class="extras"><h3>Creating Bookmarks</h3></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Bookmarks</h3></div>
 <div class="extras"><p>Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the <em><strong>ID</strong></em> and the actual reference to the ID, which is done by writing <em><strong>#ID</strong></em>. Within smd, bookmarks are implemented with the @link namespace, and are usually created using the Bookmark factory, <strong>bm_factory</strong>, which is a built-in link variable. <strong>bm_factory</strong> uses the <strong>bm_template</strong> variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.</p></div>
 <div class="extras"><p class="note red indent"><em><strong>NOTE</strong></em>: Because the <strong>bm_template</strong> isn't useful outside the context of the <strong>bm_factory</strong>, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.</p></div>
 <div class="extras"><p>Similar to it's counterpart <strong>ln_factory</strong>, has the following syntax:</p></div>
-<div class="extras"><h3 class="indent">&#91;bm_factory(nm="bookmark1" t="my bookmark text"]</h3></div>
+<div class="extras"><h3 class="indent">&lsqb;bm_factory(nm="bookmark1" t="my bookmark text")&rsqb;</h3></div>
 <div class="extras"><p>The <strong>bm_factory</strong> does not need the <strong>hr=</strong> parameter, however, because the href is constructed using only the bookmark name, since it refers to a location within the current document.</p></div>
 <div class="extras"><p>Once the bookmark is created using the syntax above, hyperlinks within the current document are created by using the <strong>.link</strong> attribute, and the anchor location is emitted using simply the variable name. Let's look at an example.</p></div>
 <div class="extras"><p>Within your document, use the <strong>&#91;link.bookmark1]</strong> to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: <strong>&#91;link.bookmark1.link]</strong>, as I have done right here: <a href="#bookmark1">my bookmark text</a>. &lt;-- Click on that link and see that it takes you to the location below.</p></div>
@@ -744,6 +747,9 @@ NAMESPACE: var<br />
 <strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>chapter=</strong>{{code.pushlines(t="@wrap html.divx1\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>section=</strong>{{code.pushlines(t="@wrap html.divx2\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>subsect=</strong>{{code.pushlines(t="@wrap html.divx3\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>t=</strong>### This is where I dropped the anchor for **bookmark1**<br />
 <br />

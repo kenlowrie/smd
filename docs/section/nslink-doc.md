@@ -1,13 +1,14 @@
 //@import '$/link-inc.md"
 
 @wrap divx, p
-
 [link.ns_link]
-[wrap_h(t="##@link Namspace")]
+[wrap_h.chapter(t="##@link Namespace")]
+
+The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.
 
 // links
 [link.links]
-[wrap_h(t="##Links")]
+[wrap_h.section(t="##Link Styles")]
 There are two different styles of links built-in to smd which map to standard HTML links:
 
 @@[html.ol.<]
@@ -20,7 +21,7 @@ Bookmarks - Links created using the HTML **a** tag with the **id** attribute. *[
 As you can see, these links are both based on the HTML **a** attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the ***sys.imports/link.md*** file.
 
 [link.hyperlinks]
-[wrap_h(t="###Creating Hyperlinks")]
+[wrap_h.section(t="###Creating Hyperlinks")]
 
 Hyperlinks are created using the @link namespace in smd, while specifying the attributes desired to describe the link. The @link namespace is a subclass of @html, and therefore it shares all the same characteristics, such as the &lt; attribute to emit the open tag HTML and &gt; to emit the close tag HTML. For more information on the @html namespace, refer to the user manual.
 
@@ -64,12 +65,12 @@ You can also set the initial value for **_text** when the link variable is initi
 
 And I then write [e_var.b(t="link.name")], I will get the new default value for _text, i.e.: [link.name], without having to specify **_text** on the initial usage of the link.
 
-[plain(t="Using the link factory to create hyperlinks")]
+[wrap_h.subsect(t="###Using the link factory to create hyperlinks")]
 
 Before we leave the section on hyperlinks, let's a have a look at a better shorthand for creating links, the built-in link factory **ln_factory**. This built-in allows you to easily create a new link with minimal parameters:
 
 @wrap divx
-{:.indent}###[encode_smd(t="[ln_factory(nm=\"sample\" hr=\"http://example.com\" t=\"my default title\"]")]
+{:.indent}###[ENT.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title")[ENT.rb]
 @parw
 
 [link.ln_factory(nm="sample" hr="http://example.com" t="my default title"")]
@@ -86,9 +87,15 @@ You can also specify the **_qtext** using the special **_null_** syntax:  **[enc
 
 As in the @html namespace, any valid HTML attribute can be specified when creating link variables. Like @html, attributes that begin with an underscore ***_*** are considered *private* and attributes that begin with a letter are considered *public*. When HTML tags are emitted as part of variable expansion, all public attributes are written as part of the opening tag. Let's see how this works.
 
-If we add **title="my link title here"** when we define the link variable **link.sample** we were just using, and then emit the code using any of the emitters **(link.sample, link.sample._asurl, link.sample._qlink)**, the HTML code includes a **title=** attribute every time the anchor opening tag is written. Let's see how that looks...
+If we add **title="my link title here"** when we define the link variable **link.sample** we were just using, and then emit the code using any of the emitters **(link.sample, link.sample._asurl, link.sample._qlink)**, the HTML code includes a **title=** attribute every time the anchor opening tag is written. Let's see how that looks, first, we'll declare it:
+
+@wrap divx
+{:.indent}###[ENT.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title" title="my link title here")[ENT.rb]
+@parw
 
 [link.sample._null_(title="my link title here")]
+
+And now, let's take a look at what the parser emits and what the browser renders:
 
 [e_var.b(t="link.sample")] emits *[code.escape_var(v="link.sample")]* which renders as: [link.sample]
 [e_var.b(t="link.sample._asurl")] emits *[code.escape_var(v="link.sample._asurl")]* which renders as: [link.sample._asurl]
@@ -110,7 +117,7 @@ This should give you a pretty good idea of how you can use hyperlinks in your sm
 
 
 [link.bookmarks]
-[wrap_h(t="###Creating Bookmarks")]
+[wrap_h.section(t="###Creating Bookmarks")]
 
 Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the ***ID*** and the actual reference to the ID, which is done by writing ***#ID***. Within smd, bookmarks are implemented with the @link namespace, and are usually created using the Bookmark factory, **bm_factory**, which is a built-in link variable. **bm_factory** uses the **bm_template** variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.
 
@@ -119,7 +126,7 @@ Bookmarks are a special type of link used within an HTML document. There are two
 Similar to it's counterpart **ln_factory**, has the following syntax:
 
 @wrap divx
-{:.indent}###[encode_smd(t="[bm_factory(nm=\"bookmark1\" t=\"my bookmark text\"]")]
+{:.indent}###[ENT.lb]bm_factory(nm="bookmark1" t="my bookmark text")[ENT.rb]
 @parw
 
 The **bm_factory** does not need the **hr=** parameter, however, because the href is constructed using only the bookmark name, since it refers to a location within the current document.

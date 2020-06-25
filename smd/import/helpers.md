@@ -2,6 +2,9 @@
 @import "$/code.md"
 @html _="tab" _inherit="span" class="indent"
 @html _="divx" _inherit="_div_extras_"
+@html _="divx1" _inherit="divx" style="border-bottom:5px solid green;color:green"
+@html _="divx2" _inherit="divx" style="border-bottom:3px solid black;color:green"
+@html _="divx3" _inherit="divx" style="border-bottom:2px solid black"
 @html _="li2" _tag="li" _inherit="li" style="font-size:1.3em;margin-left:2em"
 
 @var hash1="# [code.repeat.run(t=\"-\", c=\"42\")]"
@@ -10,7 +13,10 @@
 @var wrap_h="{{code.pushlines(t=\"@wrap html.divx\n{{self.t}}\n@parw 1\")}}"\
     hash1="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash1}}\n@parw 1\")}}"\
     hash2="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash2}}\n@parw 1\")}}"\
-    hash3="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash3}}\n@parw 1\")}}"
+    hash3="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash3}}\n@parw 1\")}}"\
+    chapter="{{code.pushlines(t=\"@wrap html.divx1\n{{self.t}}\n@parw 1\")}}"\
+    section="{{code.pushlines(t=\"@wrap html.divx2\n{{self.t}}\n@parw 1\")}}"\
+    subsect="{{code.pushlines(t=\"@wrap html.divx3\n{{self.t}}\n@parw 1\")}}"
 
 @var ENT="Entity Constants: {{self._all_attrs_}}" \
     ast="&ast;"\
