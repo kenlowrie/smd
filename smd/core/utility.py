@@ -20,6 +20,11 @@ def _get_ns_value(v):
     global _ns_xface
     return _ns_xface.getValue(v)
 
+def _get_ns_value_safe(v):
+    global _ns_xface
+    return _ns_xface.getValue(v) if _ns_xface.exists(v) else None
+
+
 class HtmlUtils():
 
     @staticmethod
@@ -31,12 +36,22 @@ class HtmlUtils():
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
     @staticmethod
+    def escape_html_var(s):
+        v = _get_ns_value_safe(s)
+        return HtmlUtils.escape_html(v) if v else f"Variable {s} is not defined"
+
+    @staticmethod
     def encode_smd(s):
         if type(s) != type(''):
             # If we weren't passed a string, convert it to a string before we escape it.
             s = str(s)
 
         return s.replace("[", "&#91;").replace("*", "&#42;").replace("@", "&#64;").replace("++", "&plus;&plus;").replace("~~", "&sim;&sim;")
+
+    @staticmethod
+    def encode_smd_var(s):
+        v = _get_ns_value_safe(s)
+        return HtmlUtils.encode_smd(v) if v else f"Variable {s} is not defined"
 
     @staticmethod
     def str_to_html_entity_mix(string):
