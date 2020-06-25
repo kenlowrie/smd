@@ -4,6 +4,20 @@
 The @var keyword is used to construct a more flexible type of variable for your documents. It uses a syntax similar to the @image keyword.
 
 
+
+[docthis.open(h="Add this to nsvar-doc.md")]
+
+The anatomy of a complex variable definition. Passing parameters, self, why _ is important. How link and html work. How code works.
+
+.@var fu=\"bar\" i.e. short notation
+.@var fu=\"bar\" _format=\"wins\" i.e. assignment to fu ignored if _format present
+.@set fu=\"bar2\" a1=\"val\" i.e. you can add attrs during a set operation
+.@set _=\"defaults\" revision=\"0.4.2\" - that you can add an attr while keeping the rest...
+.{:.bigandbold}you can add a span prefix
+[docthis.close]
+
+
+
 {:.syntax}--- divTitle @image keyword
     {:.indent}@var _id="varname" attr1="value1" _format="format string"
 

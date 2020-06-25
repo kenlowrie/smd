@@ -88,14 +88,14 @@
 @html _id="_p_toc_content_" \
       _inherit="p" \
       style="font-size:1.2em" 
- 
+//TODO: Seems like all of these should do the @wrap nop/@parw 1 on the open/close anything that uses open then close...
 @var _id="toc" \
           _format="@@ {{self.inline}}" \
           inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._div_toc_.>}}"\
           with_content="@@ {{self.wc_inline}}" \
           wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-          wc_open="@@ {{self.wc_open_inline}}"\
-          wc_close="@@ {{self.wc_close_inline}}"\
+          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
           wc_open_inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._p_toc_content_.<}}"\
           wc_close_inline="{{html.p.>}}{{html.div.>}}"\
           t="This is your toc title" \

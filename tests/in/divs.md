@@ -79,7 +79,9 @@
 [var.toc(t="toc non default title")]
 [var.toc.with_content]
 [var.toc.with_content(c="toc non default comment")]
-
+[var.toc.wc_open]
+toc content using .wc_open and .wc_close
+[var.toc.wc_close]
 
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
@@ -88,6 +90,9 @@
 [toc(t="toc non default title")]
 [toc.with_content]
 [toc.with_content(c="toc non default comment")]
+[toc.wc_open]
+toc content using .wc_open and .wc_close
+[toc.wc_close]
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.review")]

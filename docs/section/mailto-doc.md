@@ -1,5 +1,16 @@
-
 [link.mailto_links]
+
+[docthis.open(h="Add this to mailto-doc.md")]
+
+mailto: hyperlinks must be discussed here, we cannot do that in the unittest for link.md because output changes between runs.
+
+
+[docthis.close]
+
+
+
+
+
 ###mailto links
 You can create mailto: links in your document too, which enables users to click on a link to automatically compose an email addressed to the specified email address. AVScript will encode the entire mailto: link URL using a mix of decimal and hexadecimal HTML entities as a deterrent to spam bots that mine email addresses from HTML documents. Here's the syntax for a *mailto:* link:
  

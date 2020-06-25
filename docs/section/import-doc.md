@@ -1,6 +1,22 @@
 [link.imports]
-{:.plain}@@@ plainTitle
-##Importing documents
+[wrap_h(t="## Importing documents")]
+
+Content about what TEMPLATE IS USED FOR.
+
+[docthis.open(h="Add this to import-doc.md")]
+
+8. Document the @embed "filename" support.
+40. DOCS: @import "[sys.imports]/def_head.md" twice in a row only works the first time. Intentional. stream().open()
+Explain how @import '$' works when no files open i.e. reading from stdin
+
+
+
+[docthis.close]
+
+
+
+
+
 
 {:.syntax}@@@ divTitle Syntax:
     {:.indent}**@import "filename"**

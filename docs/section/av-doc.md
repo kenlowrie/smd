@@ -1,4 +1,12 @@
+[link.avs]
 
+[wrap_h(t="## AV Visual Script Formatter")]
+
+[docthis.open(h="Add this to av-doc.md")]
+
+avshot ...
+
+[docthis.close]
 
 
 Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.
