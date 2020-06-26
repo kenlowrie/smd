@@ -572,6 +572,7 @@ class HtmlNamespace(AdvancedNamespace):
     _start = '<'
     _end = '>'
     _start_esc = '<+'
+    _tag = '_tag'
     _element_partials = [_start, _end, _start_esc]
 
     def __init__(self, markdown, namespace_name, oprint, add_debug_obj=True):
@@ -580,11 +581,14 @@ class HtmlNamespace(AdvancedNamespace):
             self.debug = Debug('ns.html')
             self.dbgPrint("My NS is: {}".format(self.namespace))
 
-    def addVariable(self, dict, name=None):
+    def addVariable(self, dict, name=None, addTag=True):
         var_name = super(HtmlNamespace, self).addVariable(dict)
 
         if not super(HtmlNamespace, self).exists('{}.{}'.format(var_name, AdvancedNamespace._default_format_attr)):
             super(HtmlNamespace, self).addAttribute(var_name,AdvancedNamespace._default_format_attr,'<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>')
+
+        if addTag and not super(HtmlNamespace, self).exists('{}.{}'.format(var_name, '_tag')):
+            super(HtmlNamespace, self).addAttribute(var_name,'_tag',var_name)
 
         return var_name
 
@@ -626,10 +630,12 @@ class LinkNamespace(HtmlNamespace):
         self.dbgPrint("My NS is: {}".format(self.namespace))
 
     def addVariable(self, dict, name=None):
-        var_name = super(LinkNamespace, self).addVariable(dict)
+        tag = HtmlNamespace._tag
 
-        if not super(LinkNamespace, self).exists('{}.{}'.format(var_name, '_tag')):
-            super(LinkNamespace, self).addAttribute(var_name,'_tag','a')
+        var_name = super(LinkNamespace, self).addVariable(dict, addTag=False)
+
+        if not super(LinkNamespace, self).exists('{}.{}'.format(var_name, tag)):
+            super(LinkNamespace, self).addAttribute(var_name,tag,'a')
 
 class CodeNamespace(AdvancedNamespace):
     _run_ = 'run'           # .run attribute. Optional. i.e. [code.varname] === [code.varname.run]

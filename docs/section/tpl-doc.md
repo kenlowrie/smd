@@ -1,5 +1,5 @@
 [link.TEMPLATE]
-[wrap_h(t="## The TEMPLATE IS ABOUT")]
+[wrap_h.chapter(t="## The TEMPLATE IS ABOUT")]
 
 Content about what TEMPLATE IS USED FOR.
 

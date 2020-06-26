@@ -11,14 +11,14 @@
 @wrap nop
 [var.toc.wc_open(t="Table of Contents - Unittest [ns]")]
 [b]
-@import "[sys.basepath]/../docs/section/nslink-inc.md"
+@import "[sys.root]/docs/section/nslink-inc.md"
 [var.toc.wc_close]
 
 [wrap_h(t="###Review link bookmarks from link-inc.md")]
 @dump link="inlinemd|^links$|hyperlinks|bookmarks"
 @parw
 
-@import "[sys.basepath]/../docs/section/nslink-doc.md"
+@import "[sys.root]/docs/section/nslink-doc.md"
 
 [plain(t="Testing adding new @link builtins")]
 

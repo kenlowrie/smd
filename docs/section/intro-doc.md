@@ -1,5 +1,5 @@
 [link.intro]
-[wrap_h.chapter(t="# Introduction to SMD")]
+[wrap_h.chapter(t="## Getting Started")]
 
 In this chapter, we will discuss the basics of SMD: what it is, and some of the things you can do with it. It's a fairly versatile script parser, that you can use to easily create HTML documents on the fly, and turn them into a static page, or serve them via an endpoint. Let's dive right in.
 

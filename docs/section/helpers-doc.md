@@ -1,5 +1,5 @@
 [link.helpers]
-[wrap_h(t="## Helper built-ins")]
+[wrap_h.chapter(t="## Helper built-ins")]
 
 There are tons of helper built-ins that are provided in the different namespaces to make it easy to create content.
 
@@ -14,6 +14,7 @@ Document code.encode_smd
 //@set _ns="code" _="encode_smd" b="**{{self.run}}(t={{self.t}})**"
 //[encode_smd.b(t="[var]")]
 
+document these
 //@@[code.escape_var(v="var.bb")]
 //@@[code.encode_smd_var(v="var.bb")]
 

@@ -40,7 +40,8 @@
     del="[self.tilde][self.tilde]"\
     sp="&nbsp;"\
     sp2="[self.sp][self.sp]"\
-    apos="&apos;"
+    apos="&apos;"\
+    num="&num;" hashtag="&num;
 
 @var e_tag="[ENT.lt]{{self.t}}[ENT.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 @var e_var="[ENT.lb]{{self.t}}[ENT.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"

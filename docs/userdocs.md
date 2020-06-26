@@ -8,10 +8,10 @@
 @import '[sys.imports]/avs/avs.md'
 @import '$/import/userguideheading.md'
 
-@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***"
+@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***" short_b="**{{self.short}}**" desc_b="**{{self.desc}}**"
 
-@var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd"
-@var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"
+@var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd" short="Interactive Script Markdown"
+@var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"  short="Script Markdown Parser"
 
 //@dump var=".*smd"
 
@@ -42,6 +42,7 @@
 @import "$/section/intro-inc.md"
 @import "$/section/heading-inc.md"
 @import "$/section/wrap-inc.md"
+@import "$/section/builtins-inc.md"
 @import "$/section/helpers-inc.md"
 @import "$/section/ns-inc.md"
 @import "$/section/nsvar-inc.md"
@@ -67,11 +68,17 @@ Holding tank for adding things that need to be covered somewhere...
 
 @wrap divx, p
 
+[wrap_h.chapter(t="# [smd] - The [smd.short] Processor")]
+
+Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of [smb.b], and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!
+
 @import "$/section/setup-doc.md"
 @import "$/section/cmdline-doc.md"
 @import "$/section/intro-doc.md"
 @import "$/section/heading-doc.md"
 @import "$/section/wrap-doc.md"
+@import "$/section/builtins-doc.md"
+@import "$/section/helpers-doc.md"
 
 @import "$/section/ns-doc.md"
 @import "$/section/nsvar-doc.md"

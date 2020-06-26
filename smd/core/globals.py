@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-from os.path import join, abspath, dirname, realpath
+from pathlib import Path
 
 def _getBasepath():
-    return abspath(dirname(dirname(realpath(__file__))))
+    return Path(__file__).resolve().parent.parent
 
 def init_globals():
     return [
-        '@var _id="sys" basepath="{}" imports="{}"'.format(_getBasepath(), join(_getBasepath(),'import')),
+        '@var _id="sys" basepath="{}" imports="{}" root="{}"'.format(_getBasepath(), Path().joinpath(_getBasepath(),'import'), _getBasepath().parent ),
     ]
 
 if __name__ == '__main__':

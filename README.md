@@ -10,7 +10,7 @@ This project was originally inspired by John Gruber's [Markdown](https://daringf
 
 #### Installing this app on your system
 
-For instructions on how to install this package on your system, refer to the user guide located in the **docs/export** folder of the repository. Open the file **userguide.html** in your browser.
+For instructions on how to install this package on your system, refer to the user guide located in the **docs/export** folder of the repository. Open the file **userguide.html** in your browser. SMD requires Python 3.7.3 or later, so if you are running anything older than that, you will either have to upgrade or install a virtual environment with something newer in order to run the package.
 
 #### Why Script Markdown Processor?
 
@@ -22,4 +22,4 @@ User documentation is available via the "docs/userdocs.md" file, which can be re
 
 #### Summary
 
-This concludes the README.md for the Script Markdown (smd) Processor Python Package.
+This concludes the *README.md* for the Script Markdown (smd) Processor Python Package.
