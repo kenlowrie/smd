@@ -1,5 +1,5 @@
 [link.cmdline]
-[wrap_h(t="## smd command line parameters")]
+[wrap_h.chapter(t="## smd command line parameters")]
 
 this will talk about the command line parameters.
 

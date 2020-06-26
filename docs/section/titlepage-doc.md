@@ -1,5 +1,5 @@
 [link.title_pages]
-##Cover, Revision & Contact Sections
+[wrap_h.chapter(t="##Cover, Revision & Contact Sections")]
 
 There are three (3) specialized sections that can be defined within your document to add commonly used information in script files. They are:
 

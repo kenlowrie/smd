@@ -1,4 +1,4 @@
 [link.ns_code]
-## @code Namespace
+[wrap_h.chapter(t="## @code Namespace")]
 
 Section on @code namespaces

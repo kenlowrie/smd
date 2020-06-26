@@ -8,6 +8,9 @@
 @import '[sys.imports]/avs/avs.md'
 @import '$/import/userguideheading.md'
 
+@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"  
+// The name SMD (smd) should be abstracted in a variable at the lowest level, such that I can change it on the fly and it would reflect throughout the docs.
+
 // More helpers for the user manual. Add anything useful to built-ins once completed.
 
 @var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
@@ -28,6 +31,7 @@
 
 [link.bm_factory(nm="summary" t="Summary")]
 [var.toc.wc_open(t="Table of Contents - SMD User Guide[bb]")]
+@import "$/section/setup-inc.md"
 @import "$/section/cmdline-inc.md"
 @import "$/section/intro-inc.md"
 @import "$/section/heading-inc.md"
@@ -57,6 +61,7 @@ Holding tank for adding things that need to be covered somewhere...
 
 @wrap divx, p
 
+@import "$/section/setup-doc.md"
 @import "$/section/cmdline-doc.md"
 @import "$/section/intro-doc.md"
 @import "$/section/heading-doc.md"
@@ -80,6 +85,6 @@ Holding tank for adding things that need to be covered somewhere...
 @import "$/section/debug-doc.md"
 
 [link.summary]
-[wrap_h(t="## Summary")]
+[wrap_h.chapter(t="## Summary")]
 
 Well that's it! Hope you've enjoyed reading the docs for the smd utility. More importantly, I hope that you can use this app to streamline your html document and audio/visual script development!

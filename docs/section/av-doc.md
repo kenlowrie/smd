@@ -1,6 +1,6 @@
 [link.avs]
 
-[wrap_h(t="## AV Visual Script Formatter")]
+[wrap_h.chapter(t="## AV Visual Script Formatter")]
 
 [docthis.open(h="Add this to av-doc.md")]
 

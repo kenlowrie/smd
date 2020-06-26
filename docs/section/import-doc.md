@@ -1,5 +1,5 @@
 [link.imports]
-[wrap_h(t="## Importing documents")]
+[wrap_h.chapter(t="## Importing documents")]
 
 Content about what TEMPLATE IS USED FOR.
 

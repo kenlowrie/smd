@@ -1,9 +1,7 @@
 [link.ns_var]
-[wrap_h(t="## The @var Namespace")]
+[wrap_h.chapter(t="## The @var Namespace")]
 
 The @var keyword is used to construct a more flexible type of variable for your documents. It uses a syntax similar to the @image keyword.
-
-
 
 [docthis.open(h="Add this to nsvar-doc.md")]
 
@@ -17,9 +15,9 @@ The anatomy of a complex variable definition. Passing parameters, self, why _ is
 [docthis.close]
 
 
-
-{:.syntax}--- divTitle @image keyword
-    {:.indent}@var _id="varname" attr1="value1" _format="format string"
+[syntax.with_content(t="@image keyword" c="\
+    @var _id=\"varname\" attr1=\"value1\" _format=\"format string\"\
+")]
 
 Here's how it works. _id="varname" is going to be how you reference any of the attributes of the variable. You can specify up to 20 attributes per variable, including the name, so really only 19. Accessing the variable attributes is similar to what we say with the @image attributes, using the dot syntax. Given the prior example:
 

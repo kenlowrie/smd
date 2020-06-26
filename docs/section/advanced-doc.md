@@ -1,7 +1,7 @@
 
 [link.advanced]
-{:.plain}@@@ plainTitle
-##Advanced Topics: @raw, @image, @var &amp; @set
+[wrap_h.chapter(t="##Advanced Topics: @raw, @image, @var &amp; @set")]
+
 
 {:.syntax}@@@ divTitle Syntax:
     {:.indent}**@raw raw HTML**

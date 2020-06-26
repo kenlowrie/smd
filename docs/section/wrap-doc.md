@@ -1,5 +1,5 @@
 [link.wrap]
-[wrap_h(t="## @wrap and @parw")]
+[wrap_h.chapter(t="## @wrap and @parw")]
 
 By default, smd does not place any type of wrapper around emitted content. This is a good default, however, many times there are cases where adding wrappers can greatly assist your formatting efforts. This is where @wrap comes in handy...
 

@@ -1,5 +1,5 @@
 [link.headings]
-[wrap_h(t="##Headers")]
+[wrap_h.chapter(t="##Headings")]
 
 Just like in standard Markdown, you can use the # symbol at the beginning of a line to designate an HTML [e_tag.b(t="h1")] element. ## symbols designate an [e_tag.b(t="h2")] element, and so on, up to ###### for [e_tag.b(t="h6")]. Here are examples of each.
 

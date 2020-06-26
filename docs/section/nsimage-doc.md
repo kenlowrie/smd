@@ -1,5 +1,5 @@
 [link.ns_image]
-## The @image Namespace
+[wrap_h.chapter(t="## The @image Namespace")]
 
 The @image statement can be used to include images in your document. Basically, @image is a convenient way to abstract the &lt;IMG&gt; HTML tag. The full syntax is:
 

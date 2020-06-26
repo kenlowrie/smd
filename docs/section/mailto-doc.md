@@ -9,18 +9,20 @@ mailto: hyperlinks must be discussed here, we cannot do that in the unittest for
 
 
 
+[wrap_h.chapter(t="###mailto links")]
 
-
-###mailto links
-You can create mailto: links in your document too, which enables users to click on a link to automatically compose an email addressed to the specified email address. AVScript will encode the entire mailto: link URL using a mix of decimal and hexadecimal HTML entities as a deterrent to spam bots that mine email addresses from HTML documents. Here's the syntax for a *mailto:* link:
+You can create mailto: links in your document too, which enables users to click on a link to automatically compose an email addressed to the specified email address. [smd.b] will encode the entire mailto: link URL using a mix of decimal and hexadecimal HTML entities as a deterrent to spam bots that mine email addresses from HTML documents. Here's the syntax for a *mailto:* link:
  
-{:.syntax}@@@ divTitle mailto Link Syntax
-    {:.indent2.bigandbold}&lt;&#91;*LinkID*&#93;&gt; &lt; : &gt; &lt;***mailto:you@yourdomain.com***&gt;
-    [SP]
-    {:.indent2.bigandbold}Examples:
-    [SP]
-    {:.indent3.bigandbold}&#91;email_me&#93;:mailto:user@mydomain.com *&lt;-- mailto Link Example*
-    {:.indent3.bigandbold}&#91;feedback&#93;:mailto:user@mydomain.com?subject=feature%20feedback*&lt;-- mailto link with subject*
+[syntax.with_content(t="mailto Link Syntax" c="\
+    {:.indent2.bigandbold}&lt;&#91;*LinkID*&#93;&gt; &lt; : &gt; &lt;***mailto:you@yourdomain.com***&gt;\
+    [sp]\
+    {:.indent2.bigandbold}Examples:\
+    [sp]\
+    {:.indent3.bigandbold}&#91;email_me&#93;:mailto:user@mydomain.com *&lt;-- mailto Link Example*\
+    {:.indent3.bigandbold}&#91;feedback&#93;:mailto:user@mydomain.com?subject=feature%20feedback*&lt;-- mailto link with subject*\
+")]
+
+
 [email_me]:mailto:user@mydomain.com
 [feedback]:mailto:user@mydomain.com?subject=feature%20feedback
 
@@ -65,14 +67,3 @@ This happens because any variable used in an assignment is expanded at the time 
 [full]
 
 Sweet! Just what we wanted. By using the {{}} around a variable name used in an assignment of another variable, expansion is delayed until the variable is used. This feature is used quite a bit in the film, shot and image support later on. Check the examples in the tests directory to see it in action.
-
-## Link aliases
-
-Building on that, we can create aliases for inline links. Say I define a reference link like this: 
-{:.indent}###&#91;cls]:https://cloudylogic.com
-[cls]:https://cloudylogic.com
-Now, when I write **&#91;cls]**, it is replaced with a link to https://cloudylogic.com. For example: [cls].
-And that's all good. It's concise, I only have to write *cls* in [ ] and it is wrapped with an HTML link. Saves a lot of typing and potential mistakes. But what if I want to have other, more descriptive names for that URL? Good news, we can do that using a special form of aliases: [Descriptive Text]=[id], where *id* is the name of a previously described reference link. Let me go ahead and create an alias for the *cls* link so the descriptive name is Cloudy Logic.
-{:.indent}###&#91;Cloudy Logic]=cls
-[Cloudy Logic]=cls
-Now, when I write [Cloudy Logic], it is wrapped with the link for *cls*. Cool!

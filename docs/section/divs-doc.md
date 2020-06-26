@@ -1,8 +1,10 @@
-
 [link.div]
-{:.plain}@@@ plainTitle
-##Divs
-You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. The complete syntax is: 
+[wrap_h.chapter(t="##Divs")]
+
+You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. ***Actually, no, you can't do that...***
+
+This will need to document each of the sections in the divs.md built-ins.
+The complete syntax is: 
 
 ###&#91;{:.class}&lt;***---*** | ***@@@***&gt; &lt;***title_className | .***&gt; &#91;optional title&#93;
 

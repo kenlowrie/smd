@@ -1,6 +1,5 @@
 [link.debug]
-{:.plain}@@@ plainTitle
-{:.plainTitle}##Debugging
+[wrap_h.chapter(t="##Debugging")]
 
 [docthis.open(h="Add this to debug-doc.md")]
 
