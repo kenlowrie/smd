@@ -8,7 +8,13 @@
 @import '[sys.imports]/avs/avs.md'
 @import '$/import/userguideheading.md'
 
-@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"  
+@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***"
+
+@var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd"
+@var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"
+
+//@dump var=".*smd"
+
 // The name SMD (smd) should be abstracted in a variable at the lowest level, such that I can change it on the fly and it would reflect throughout the docs.
 
 // More helpers for the user manual. Add anything useful to built-ins once completed.
