@@ -18,9 +18,10 @@ from .constants import Constants
 
 class _OpenFile(object):
     """A simple class to keep track of files that are opened."""
-    def __init__(self, f, name):
+    def __init__(self, f, name, wrapStackPosition):
         self.file = f
         self.name = name
+        self.wrapStackPos = wrapStackPosition
 
 
 class StreamHandler(object):
@@ -77,6 +78,9 @@ class StreamHandler(object):
     def force_eof(self):
         self.fake_eof = True
 
+    def getWrapStackPositionOfCurrentFile(self):
+        return self.filestack[-1].wrapStackPos if len(self.filestack) else -1
+
     def push(self, fh, name=None):
         """
         Push an open file onto the stack for readline()
@@ -84,7 +88,9 @@ class StreamHandler(object):
         This method can be used to push an open file onto the filestack,
         as an alternative to passing in a filename (open() method).
         """
-        self.filestack.append(_OpenFile(fh, name))
+        from .wrap import WrapperStack
+        self.filestack.append(_OpenFile(fh, name, WrapperStack.getWrapStackPosition()))
+        self.debug.print(f"Set current wsp to: {self.filestack[-1].wrapStackPos}<br />")
         self.idx += 1
 
     def open(self, filename):
@@ -196,6 +202,9 @@ class StreamHandler(object):
                 # Pop the current file from the stack
                 f = self.filestack.pop()
                 f.file.close()
+                # Reset the wrap stack position to what it was when we opened the file
+                from .wrap import WrapperStack
+                WrapperStack.resetWrapStackPosition(f.wrapStackPos, self.debug.print)
                 # set the index back 1, so future reads will use prior file
                 self.idx -= 1
 

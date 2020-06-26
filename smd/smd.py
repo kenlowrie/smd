@@ -120,7 +120,7 @@ class ScriptParser(StdioWrapper):
         self._line = Line(md_func=self._md.markdown)
         self._lineInCache = False       # if we have a line in the cache
         self._shotListQ = BookmarkList()    # shot list link Q
-        self._wrapper = []              # queue of wrapper tags
+        self._wrapper = []              # stack of wrapper tags
 
         # add a custom TLS object that holds the reference to the wrap stack, so we can access it from the .core.utility module.
         self.tls.addObjectToTLS('wrapstack', self._wrapper)
@@ -543,30 +543,39 @@ class ScriptParser(StdioWrapper):
                         # This is a debug only message indicating the instance wasn't valid for some reason
                         self.debug_smd.print(f"WARNING: wrapTag object instance is not valid<br />")
                 else:
+                    # Don't pop off more items that were queued while this file was running
+                    topOfWrapStack = self.stdinput.getWrapStackPositionOfCurrentFile()
+                    if topOfWrapStack < 0: topOfWrapStack = 0
+
                     # handling the @parw (pop() top most stack item from wrapper queue)
                     if not hasattr(self, 'wrapper'):
                         raise AssertionError("No wrapper list is set in our instance")
-                    elif not self.wrapper:
+                    elif not self.wrapper or len(self.wrapper) < topOfWrapStack:
                         # @parw invoked with empty stack
                         self.oprint('WARNING: wrapper stack is empty<br />')
+                    elif len(self.wrapper) < topOfWrapStack:
+                        # @parw invoked with empty stack in currently imported file
+                        self.oprint('WARNING: wrapper stack is empty for this input stream<br />')
                     elif m.group(2) == '':
                         # @parw invoked with no parameters
-                        self.wrapper.pop()
+                        if len(self.wrapper) > topOfWrapStack:
+                            self.wrapper.pop()
                     else:
                         # parse the parms: [*|all|#]
                         parameter = m.group(2)
                         if parameter in ['*', 'all']:
                             # empty the stack
-                            while self.wrapper:
+                            while self.wrapper and len(self.wrapper) > topOfWrapStack:
                                 self.wrapper.pop()
                         elif parameter.isnumeric():
                             # pop specified number of items from stack
                             count = int(parameter)
-                            while self.wrapper and count > 0:
+                            while self.wrapper and count > 0 and len(self.wrapper) > topOfWrapStack:
+                                #print(f"+++>{len(self.wrapper)} and {topOfWrapStack} and {len(self.wrapper) > topOfWrapStack}")
                                 self.wrapper.pop()
                                 count -= 1
                             if count != 0:
-                                self.oprint(f'WARNING: only {int(parameter)-count} items found on the stack<br />')
+                                self.oprint(f'WARNING: only {int(parameter)-count} items found on the stack that can be cleared<br />')
                         else:
                             self.oprint(f'WARNING: unknown option <em>{parameter}</em> passed to @parw<br />')
 

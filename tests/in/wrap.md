@@ -145,6 +145,17 @@ back to plain purple.
 
 @parw *
 
+Now let's test to make sure that the wrapper stack is maintained across imports ...
+Current wrap stack level is: [code.wrap_stack(w="#")]
+@wrap meta
+@wrap link
+Current wrap stack level is: [code.wrap_stack(w="#")]
+Current tag before import of wrap1.md should be 'link': [code.wrap_stack(w="*")]
+@import '$/import/wrap1.md'
+Current tag after import of wrap1.md should be 'link': [code.wrap_stack(w="*")]
+Current wrap stack level is: [code.wrap_stack(w="#")]
+@parw *
+
 [wrap_h(t="### And this is the end of the @wrap test.")]
 
 Going to get one more warning about the wrapper stack being empty, cause I flushed it above...[b]

@@ -11,6 +11,11 @@ Add @wrap, and probably need to clean up the docs in tests/in/script1.md; possib
 96. Add @wrap tag1 [, tag2 [...]] support
 98. Should handle_header() handle @wrap lines? Code added, need to review closely.
 
+@wrap levels are maintained across imports. so you can't leave a dangling wrap tag from an import file; it is cleared when the file is closed and reset to what it was when the file was imported. time will tell if this is an annoyance or not...
+
+@parw will only clear as far as the top of the stack for the currently imported file...
+
+[code.wrap_stack(w="[>|<|#]")] - document all of these...
 
 [docthis.close]
 
