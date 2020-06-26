@@ -10,28 +10,16 @@ This project was originally inspired by John Gruber's [Markdown](https://daringf
 
 #### Installing this app on your system
 
-To install this on your system, do the following from a terminal window (after cloning it to your local system):
-
-```
-cd root_of_cloned_repo
-pip install .
-```
-
-That's it! If you run into any problems, feel free to contact me for assistance.
+For instructions on how to install this package on your system, refer to the user guide located in the **docs/export** folder of the repository. Open the file **userguide.html** in your browser.
 
 #### Why Script Markdown Processor?
 
-I wanted a way to dynamically create pages for use in OBS Studio, and this seemed like a good starting point to leverage other code I had.
+I wanted a way to dynamically create browser content for use in OBS Studio, and this seemed like a good starting point to leverage other code I had. It grew from there...
 
 #### Getting Started with the App
 
-I don't think this app requires much documentation. But again, I will write up some additional basic information after I finish fixing a few more bugs and testing it out on different devices and browsers.
-
-//TODO Need to update the userdocs.md once I get a good baseline.
-
-User documentation is available via the "userdocs.md" file, which relies on the import file import/userguideheading.md.
-
+User documentation is available via the "docs/userdocs.md" file, which can be rendered on the fly using smd, smdparse or ismd. A static version has been exported into the **docs/export** folder for convenience.
 
 #### Summary
 
-This concludes the documentation on the Script Markdown (smd) Processor.
+This concludes the README.md for the Script Markdown (smd) Processor Python Package.
