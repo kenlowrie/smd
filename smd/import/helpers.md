@@ -1,6 +1,7 @@
 @import "$/html.md"
 @import "$/code.md"
 @html _="tab" _inherit="span" class="indent"
+@html _="us" _inherit="span" style="text-decoration:underline"
 @html _="divx" _inherit="_div_extras_"
 @html _="divx1" _inherit="divx" style="border-bottom:5px solid green;color:green"
 @html _="divx2" _inherit="divx" style="border-bottom:3px solid black;color:green"
@@ -46,3 +47,4 @@
 @var e_tag="[ENT.lt]{{self.t}}[ENT.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 @var e_var="[ENT.lb]{{self.t}}[ENT.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 
+@var e_us="{{html.us.<}}{{self.t}}{{html.us.>}}" t="text_to_underscore"

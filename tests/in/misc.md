@@ -8,7 +8,6 @@
 [var.syntax.wc_open(t="Variable Decorators")]
 
 [b]
-[var.syntax.wc_p_open]
 {:.bigandbold.indent}&nbsp;@var variable="{:.class}value"
 [bb]
 So, if you declared this: **@var mynewvar="{:.bigandbold.red}My new big bold value"**, and then write &#91;mynewvar], you'd get this:[bb]
@@ -35,20 +34,16 @@ So, if you declared this: **@var mynewvar="{:.bigandbold.red}My new big bold val
 
 [var.plain(t="[title]")]
 [var.syntax.wc_open(t="Specifics when choosing TRT option")]
-[var.syntax.wc_p_open][b]
     {:.indent2}This rate applies to editing normal footage (video, photos, audio). As an example, the demo film that we produced would have all fit under this rate, with one exception (green screen footage that was keyed for ending). However, if we are given footage that requires *specialized attention*, a different rate will apply on a per clip basis.[dblbrk]
     {:.indent2}Some examples that require specialized attention are: Footage that is shot on green screen and must be keyed. Footage that is shaky and must be stabilized. Footage shot with incorrect color temperature. Any media (video/photos) that requires rotoscoping. Audio that must be cleaned up.
-[html.p.>]
 
 [var.syntax.wc_close]
-[var.syntax.wc_p_open]
 [ol]
 @wrap html.li2
 [UL(t="**Per hour**")]. Editing for this project will be billed at $60/hr. Since we bill based upon hours spent, there are no exceptions to the type of footage being edited, as is the case with the ***"Per runtime minute of film"*** estimate above.[bb]
 [UL(t="**Per project**")]. An estimate for the entire project requires a completed script in AV format, with all details ironed out, including exact clips to be used, footage to be shot, etc. Given those requirements, it is not feasible to provide this option for consideration at this time.
 @parw
 [ol.close]
-[html.p.>]
 
 
 [bb]

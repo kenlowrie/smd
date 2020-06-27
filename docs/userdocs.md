@@ -21,8 +21,6 @@
 
 @var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
 
-@html _="pre" _tag="pre"
-@html _="prewrap" _inherit="pre" style="white-space:pre-wrap"
 @html _="codeblk" _inherit="code" style="display:block;color:purple"
 
 @var docthis="usage: docthis.open(), then content, then docthis.close()"\
@@ -70,7 +68,7 @@ Holding tank for adding things that need to be covered somewhere...
 
 [wrap_h.chapter(t="# [smd] - The [smd.short] Processor")]
 
-Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of [smb.b], and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!
+Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of [smd.b], and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!
 
 @import "$/section/setup-doc.md"
 @import "$/section/cmdline-doc.md"

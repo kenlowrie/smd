@@ -29,13 +29,11 @@ The details for each type of section are as follows:
 @var rev_parms="[lpar]v=\"1.0\"[rpar]"
 
 [var.syntax.wc_open(t="Revision Syntax")]
-
-[var.syntax.wc_p(c="\
      [obkt]var.revision[rev_parms]][b]\
      [obkt]var.revision.plain[rev_parms]][b]\
      [obkt]var.revision.inline[rev_parms]][b]\
      [obkt]var.revision.inline_plain[rev_parms]][b]\
-     [b]Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [obkt]var.revision.plain]")]
+     [b]Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [obkt]var.revision.plain]
 
 [var.syntax.wc_close]
 

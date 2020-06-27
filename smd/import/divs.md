@@ -76,31 +76,6 @@
  
 //TODO: Review this file. Lot's of goodies that will help with the docs.
 
-@html _id="_div_toc_" \
-      _inherit="div" \
-      class="toc"
-@html _id="_div_toc_pbb_" \
-      _inherit="div" \
-      class="toc pbb"
-@html _id="_p_toc_" \
-      _inherit="p" \
-      class="divTitle"
-@html _id="_p_toc_content_" \
-      _inherit="p" \
-      style="font-size:1.2em" 
-//TODO: Seems like all of these should do the @wrap nop/@parw 1 on the open/close anything that uses open then close...
-@var _id="toc" \
-          _format="@@ {{self.inline}}" \
-          inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._div_toc_.>}}"\
-          with_content="@@ {{self.wc_inline}}" \
-          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
-          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
-          wc_open_inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._p_toc_content_.<}}"\
-          wc_close_inline="{{html.p.>}}{{html.div.>}}"\
-          t="This is your toc title" \
-          c="This is your toc content"
-
 @html _id="_div_review_" \
       _inherit="div" \
       class="review"
@@ -144,29 +119,89 @@
 
 @var divxp="{{self.open}}{{self.c}}{{self.close}}" c="default content" open="{{html._div_extras_.<}}{{html.p.<}}" close="{{html.p.>}}{{html.div.>}}"
 
+// ---------------------------------------------------------------
+// Below here have been improved (but still need more improvement)
+// ---------------------------------------------------------------
+
+@html _id="_div_toc_" \
+      _inherit="div" \
+      class="toc"
+@html _id="_div_toc_pbb_" \
+      _inherit="div" \
+      class="toc pbb"
+@html _id="_p_toc_" \
+      _inherit="p" \
+      class="divTitle"
+@html _id="_p_toc_content_" \
+      _inherit="p" \
+      style="font-size:1.2em" 
+//TODO: Seems like all of these should do the @wrap nop/@parw 1 on the open/close anything that uses open then close...
+@var _id="toc" \
+          _format="@@ {{self.inline}}" \
+          inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._div_toc_.>}}"\
+          with_content="@@ {{self.wc_inline}}" \
+          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
+          wc_open_inline="{{html._div_toc_.<}}{{html._p_toc_.<}}{{self.t}}{{html._p_toc_.>}}{{html._p_toc_content_.<}}"\
+          wc_close_inline="{{html.p.>}}{{html.div.>}}"\
+          t="This is your toc title" \
+          c="This is your toc content"
+
+
+
+
 @html _id="_div_syntax_" \
       _inherit="div" \
       class="syntax"
 @html _id="_p_syntax_" \
       _inherit="p" \
-      class="divTitle"
+      class="divTitle"\
+      style="font-size:1.5em"
 @html _id="_p_syntax_content_" \
       _inherit="p" \
-      style="font-size:1.2em" 
- 
-//TODO: This could be streamlined like TOC
+      style="font-size:1.3em;font-weight:500" 
+
 @var _id="syntax" \
-          _format="@@  {{self.inline}}"\
+          _format="@@ {{self.inline}}" \
           inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._div_syntax_.>}}"\
           with_content="@@ {{self.wc_inline}}" \
-          wc_inline="{{self.open_inline}}{{self.c}}{{self.close_inline}}"\
-          wc_open="@@ {{self.open_inline}}" \
-          wc_close="@@ {{self.close_inline}}"\
-          open_inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}"\
-          close_inline="{{html.div.>}}"\
-          wc_p="@@ {{self.wc_p_inline}}"\
-          wc_p_open="@@ {{self.wc_p_open_inline}}"\
-          wc_p_inline="{{html._p_syntax_content_.<}}{{self.c}}{{html.p.>}}"\
-          wc_p_open_inline="{{html._p_syntax_content_.<}}"\
+          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
+          wc_open_inline="{{html._div_syntax_.<}}{{html._p_syntax_.<}}{{self.t}}{{html._p_syntax_.>}}{{html._p_syntax_content_.<}}"\
+          wc_close_inline="{{html.p.>}}{{html.div.>}}"\
           t="This is your syntax title" \
           c="This is your syntax content"
+
+
+@html _="pre" _tag="pre"
+@html _="prewrap" _inherit="pre" style="white-space:pre-wrap"
+
+
+@html _id="_div_terminal_" \
+      _tag="div" \
+      class="plain" style="padding-left:3em;padding-right:3em"
+ 
+@html _id="_prewrap_terminal_" \
+      _inherit="prewrap" \
+      class="divTitle"\
+      style="background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}"
+@html _id="_prewrap_terminal_content_" \
+      _inherit="prewrap" \
+      class="divTitle"\
+      style="background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}" 
+
+
+@var _id="terminal" \
+          _format="@@ {{self.inline}}" \
+          inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_content_.<}}{{self.t}}{{html._prewrap_terminal_content_.>}}{{html._div_terminal_.>}}"\
+          with_content="@@ {{self.wc_inline}}" \
+          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
+          wc_open_inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_.<}}{{self.t}}{{html._prewrap_terminal_.>}}{{html._prewrap_terminal_content_.<}}"\
+          wc_close_inline="{{html.prewrap.>}}{{html.div.>}}"\
+          t="This is your terminal title" \
+          c="This is your terminal content"
+

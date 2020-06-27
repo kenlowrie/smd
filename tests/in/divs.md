@@ -169,39 +169,17 @@ And one last thing
 [var.syntax.wc_close]
 
 [var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
-[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p")]
-[var.syntax.wc_p(c="\
+[var.syntax.wc_open(t="syntax.wc_open")]
     Some content here[b]\
     And some additional[b]\
     And one last thing[b]\
-    ")]
 [var.syntax.wc_close]
 
 [var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
-[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_inline")]
-[var.syntax.wc_p_inline(c="\
+@@[var.syntax.wc_open_inline(t="syntax.wc_open")]
     Some content here[b]\
     And some additional[b]\
-    And one last thing[b]\
-    ")]
-[var.syntax.wc_close]
-
-[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
-[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_open")]
-[var.syntax.wc_p_open]
-@@Some content here[b]
-@@And some additional[b]
-@@And one last thing[b]
-@@[html.p.>]
-[var.syntax.wc_close]
-
-[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
-[var.syntax.wc_open(t="syntax.wc_open and syntax.wc_p_open_inline")]
-[var.syntax.wc_p_open_inline]
-Some content here[b]
-And some additional[b]
-And one last thing[b]
-@@[html.p.>]
-[var.syntax.wc_close]
+    And one last thing[b]
+[var.syntax.wc_close_inline]
 
 [testdoc.end]

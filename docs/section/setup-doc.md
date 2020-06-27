@@ -1,34 +1,6 @@
 [link.setup]
 [wrap_h.chapter(t="## Setting up smd")]
 
-@html _id="_div_terminal_" \
-      _tag="div" \
-      class="plain" style="padding-left:3em;padding-right:3em"
- 
-@html _id="_prewrap_terminal_" \
-      _inherit="prewrap" \
-      class="divTitle"\
-      style="background-color:lightgray;font-style:italic"
-@html _id="_prewrap_terminal_content_" \
-      _inherit="prewrap" \
-      class="divTitle"\
-      style="background-color:lightgray;font-weight:100" 
-
-
-@var _id="terminal" \
-          _format="@@ {{self.inline}}" \
-          inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_content_.<}}{{self.t}}{{html._prewrap_terminal_content_.>}}{{html._div_terminal_.>}}"\
-          with_content="@@ {{self.wc_inline}}" \
-          wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
-          wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
-          wc_open_inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_.<}}{{self.t}}{{html._prewrap_terminal_.>}}{{html._prewrap_terminal_content_.<}}"\
-          wc_close_inline="{{html.prewrap.>}}{{html.div.>}}"\
-          t="This is your terminal title" \
-          c="This is your terminal content"
-
-//@dump var="terminal" html=".*terminal"
-
 There are two approaches to installing [smd.B] on your system; either using **pip** or **pipenv**. This chapter will cover both methods, and you can choose which is better for you.
 
 {:.vo.indent}[smd.b] requires Python 3.7.3 or later! If you are running an older version, you either have to upgrade or install a virtual environment with something newer in order to run [smd.b].
@@ -64,6 +36,8 @@ HINT: If you later decide you want to install [smd.b] in developer mode, you can
 
 [ln_factory(nm="pipenv" hr="https://docs.python-guide.org/dev/virtualenvs/" t="pipenv")]
 @set _ns="link" _="pipenv" target="_blank"
+
+{:.note.red.indent}I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
 
 **[pipenv]** is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way **pip** does, thus isolating [smd.b] to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the **[encode_smd(t="[sys.root]/pipenv")]** directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:
 

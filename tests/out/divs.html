@@ -123,46 +123,32 @@ toc content using .wc_open and .wc_close
 <div class="extras"><p>your content inside a p tag inside a div</p></div>
 <div class="extras"><h1>------------------------------------------</h1></div>
 <div class="extras"><h3>Testing var.specials</h3></div>
-<div class="syntax"><p class="divTitle">This is your syntax title</p></div>
-<div class="syntax"><p class="divTitle">This is your syntax title</p></div>
-<div class="extras"><p><div class="syntax"><p class="divTitle">This is your syntax title</p></div></p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">This is your syntax title</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">This is your syntax title</p></div>
+<div class="extras"><p><div class="syntax"><p class="divTitle" style="font-size:1.5em">This is your syntax title</p></div></p></div>
 <div class="extras"><p>[var.syntax()] <-- Intentional error, calling section with empty paramter list</p></div>
 <div class="extras"><p>[syntax()] <-- Intentional error, calling section with empty paramter list</p></div>
-<div class="syntax"><p class="divTitle">My new title</p></div>
-<div class="syntax"><p class="divTitle">My new title</p></div>
-<div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
-<div class="syntax"><p class="divTitle">My new title</p>This is your syntax content</div>
-<div class="extras"><p><div class="syntax"><p class="divTitle">syntax.wc_inline</p>This is your syntax content</div></p></div>
-<div class="syntax"><p class="divTitle">RESET TITLE</p>RESET CONTENT</div>
-<div class="syntax"><p class="divTitle">RESET TITLE</p>Just some new content</div>
-<div class="syntax"><p class="divTitle">And now the title too</p>Just some new content</div>
-<div class="syntax"><p class="divTitle">RESET TITLE</p>
-</div>
-<div class="syntax"><p class="divTitle">syntax.wc_open</p>
-<div class="extras"><p>Some content here</p></div>
-<div class="extras"><p>And some additional</p></div>
-<div class="extras"><p>And one last thing</p></div>
-</div>
-<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p</p>
-<p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p>
-</div>
-<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_inline</p>
-<div class="extras"><p><p style="font-size:1.2em">    Some content here<br />    And some additional<br />    And one last thing<br />    </p></p></div>
-</div>
-<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open</p>
-<p style="font-size:1.2em">
-Some content here<br />
-And some additional<br />
-And one last thing<br />
-</p>
-</div>
-<div class="syntax"><p class="divTitle">syntax.wc_open and syntax.wc_p_open_inline</p>
-<div class="extras"><p><p style="font-size:1.2em"></p></div>
-<div class="extras"><p>Some content here<br /></p></div>
-<div class="extras"><p>And some additional<br /></p></div>
-<div class="extras"><p>And one last thing<br /></p></div>
-</p>
-</div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">My new title</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">My new title</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">My new title</p><p style="font-size:1.3em;font-weight:500">This is your syntax content</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">My new title</p><p style="font-size:1.3em;font-weight:500">This is your syntax content</p></div>
+<div class="extras"><p><div class="syntax"><p class="divTitle" style="font-size:1.5em">syntax.wc_inline</p><p style="font-size:1.3em;font-weight:500">This is your syntax content</p></div></p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">RESET TITLE</p><p style="font-size:1.3em;font-weight:500">RESET CONTENT</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">RESET TITLE</p><p style="font-size:1.3em;font-weight:500">Just some new content</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">And now the title too</p><p style="font-size:1.3em;font-weight:500">Just some new content</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">RESET TITLE</p><p style="font-size:1.3em;font-weight:500">
+</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">syntax.wc_open</p><p style="font-size:1.3em;font-weight:500">
+Some content here
+And some additional
+And one last thing
+</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">syntax.wc_open</p><p style="font-size:1.3em;font-weight:500">
+Some content here<br />    And some additional<br />    And one last thing<br />
+</p></div>
+<div class="syntax"><p class="divTitle" style="font-size:1.5em">syntax.wc_open</p><p style="font-size:1.3em;font-weight:500">
+<div class="extras"><p>Some content here<br />    And some additional<br />    And one last thing<br /></p></div>
+<div class="extras"><p></p></div></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -254,6 +240,9 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
 &nbsp;&nbsp;<strong>_format=</strong>[ENT.lt]{{self.t}}[ENT.gt]<br />
 <br />
+<strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
+<br />
 <strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
@@ -304,24 +293,31 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@  {{self.inline}}<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._div_syntax_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.open_inline}}{{self.c}}{{self.close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>@@ {{self.open_inline}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>@@ {{self.close_inline}}<br />
-&nbsp;&nbsp;<strong>open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}<br />
-&nbsp;&nbsp;<strong>close_inline=</strong>{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p=</strong>@@ {{self.wc_p_inline}}<br />
-&nbsp;&nbsp;<strong>wc_p_open=</strong>@@ {{self.wc_p_open_inline}}<br />
-&nbsp;&nbsp;<strong>wc_p_inline=</strong>{{html._p_syntax_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_p_open_inline=</strong>{{html._p_syntax_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>syntax.wc_open and syntax.wc_p_open_inline<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap nop\n{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_syntax_.&lt;}}{{html._p_syntax_.&lt;}}{{self.t}}{{html._p_syntax_.&gt;}}{{html._p_syntax_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>syntax.wc_open<br />
 &nbsp;&nbsp;<strong>c=</strong>RESET CONTENT<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
 &nbsp;&nbsp;<strong>root=</strong>/Users/ken/Dropbox/shared/src/script/smd<br />
+<br />
+<strong>terminal=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_terminal_.&lt;}}{{html._prewrap_terminal_content_.&lt;}}{{self.t}}{{html._prewrap_terminal_content_.&gt;}}{{html._div_terminal_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap nop\n{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_terminal_.&lt;}}{{html._prewrap_terminal_.&lt;}}{{self.t}}{{html._prewrap_terminal_.&gt;}}{{html._prewrap_terminal_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
@@ -412,6 +408,11 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>syntax<br />
 <br />
+<strong>_div_terminal_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>plain<br />
+&nbsp;&nbsp;<strong>style=</strong>padding-left:3em;padding-right:3em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>_div_toc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>toc<br />
@@ -455,10 +456,11 @@ NAMESPACE: html<br />
 <strong>_p_syntax_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.5em<br />
 <br />
 <strong>_p_syntax_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;font-weight:500<br />
 <br />
 <strong>_p_toc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -467,6 +469,16 @@ NAMESPACE: html<br />
 <strong>_p_toc_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_prewrap_terminal_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_prewrap_terminal_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -578,6 +590,13 @@ NAMESPACE: html<br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>pre=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>prewrap=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>white-space:pre-wrap<br />
+<br />
 <strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>revision<br />
@@ -614,6 +633,10 @@ NAMESPACE: html<br />
 <br />
 <strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>us=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>text-decoration:underline<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
