@@ -1,12 +1,6 @@
 // Variables that abstract the different types of DIVs
 @import "[sys.imports]/html.md"
 
-//    The case for @raw | @@. When you use them in emitted lines (or inline), any @wrap tag will NOT be applied.
-//    This seems like the best case, otherwise the behaviour of the predefined code will not work as expected,
-//    when used in the context of something else. If you really need this behavior, it can be overridden by
-//    using inline HTML. e.g. <htmlcode>your code</htmlcode> or [html.tag.<]your code[html.tag.>]
-//    This is worked around in some builtins using the .inline attribute to hold the code, and then _format="@@ {{self.inline}}"
-
 @html _id="_div_extras_" \
       _inherit="div" \
       class="extras"
