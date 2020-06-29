@@ -663,7 +663,7 @@ class CodeNamespace(AdvancedNamespace):
             exceptionMessage = "{}".format(str(e))
             code = None
 
-        return code if code is not None else compile('print("Compile error: {}".format(exceptionMessage))','<string>', 'eval')
+        return code if code is not None else compile('print("Compile error: <em>{}</em> -- src=<strong>{}</strong>")'.format(exceptionMessage,src),'<string>', 'eval')
 
     def executePython(self, dict):
         import sys
