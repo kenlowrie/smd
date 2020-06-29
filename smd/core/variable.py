@@ -1060,9 +1060,11 @@ class Namespaces(object):
             return False if not return_elements else (None, None, None)
 
         left2, right2 = self._splitNamespace(right)
-        if left2 is not None and self.exists(variable_name):
+        if left2 is not None:
             # we have 3 elements here, so this is the right format
-            return True if not return_elements else (left, left2, right2)
+            if self.exists(variable_name):
+                return True if not return_elements else (left, left2, right2)
+            return False if not return_elements else (left, left2, None)
 
         # okay, so we have 2 elements, we need to look further
         if left in Namespaces._search_order:

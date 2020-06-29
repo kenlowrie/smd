@@ -86,6 +86,7 @@ class ScriptParser(StdioWrapper):
         # Create the debug tracker object for this app
         self.tlsDebugTracker = DebugTracker(output=self.oprint)
         self.tlsDebugTracker.debug = Debug('_SYSTEM')
+        self.tlsDebugTracker.utilityDebug = Debug('utility')
         
         # before we call the Constructor for StdioWrapper(), which will create a StreamHandler()
         # object, which will instantiate the Cache(), which will process all of the defaults
@@ -666,6 +667,8 @@ class ScriptParser(StdioWrapper):
                     #self.oprint(f"dict-->{d}")
                     namespace = self._md.markdown(d[nskey])
                     del d[nskey]
+                #self.oprint(f"namespace={namespace}")
+                #//TODO: catch the exception here to prevent parser crash...
                 self._ns.updateVariable(d, ns=namespace)
 
             else:

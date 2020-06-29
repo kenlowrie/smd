@@ -2,7 +2,7 @@
 
 from .debug import Debug
 
-# This global is used to hold the interface to Namespaces.
+# These globals are used to hold interfaces to Namespaces, line_cache, etc.
 _ns_xface = None
 _line_cache = None
 
@@ -24,6 +24,10 @@ def _get_ns_value_safe(v):
     global _ns_xface
     return _ns_xface.getValue(v) if _ns_xface.exists(v) else None
 
+def _get_debug():
+    from .thread import getTLS
+    from .constants import Constants
+    return getTLS().getObjectFromTLS(Constants.debugTracker).utilityDebug
 
 class HtmlUtils():
 
@@ -181,8 +185,11 @@ class CodeHelpers():
 
     @staticmethod
     def append(v=None, text="ns.var.attr"):
+        debug = _get_debug()
+
+        fn="append"
         if not v or not _ns_xface.exists(v):
-            print("existing attribute variable name is required")
+            debug.print(f"{fn}: existing attribute variable name is required: {v}")
             return
 
         v_ns, v_name, v_attr = _ns_xface.isAttribute(text, True)
@@ -199,7 +206,7 @@ class CodeHelpers():
             _ns_xface.setAttribute(var, attr, val)
             #print("{}={}+{}".format(v,val,text))
         else:
-            print("Attribute [{}] is not defined".format(v))
+            debug.print(f"{fn}: Attribute [{v}] is not defined")
 
     @staticmethod
     def equals(v1=None, v2=None, true=None, false=None):
@@ -231,44 +238,123 @@ class CodeHelpers():
             CodeHelpers.pushlines(falseval)
                 
     @staticmethod
-    def replace(var=None, val=None, str=None):        
-        for v in [var, val, str]:
+    def replace(search_str=None, replace_str_var_name=None, attr=None):        
+        debug = _get_debug()
+
+        fn="replace"
+        for v in [search_str, replace_str_var_name, attr]:
             if not v:
-                print("missing required parameter {}".format(str(v)))
+                debug.print(f"{fn}: missing required parameter {str(v)}")
                 return
 
         # Go get the replacement value for "var"
-        val_ns, val_name, val_attr = _ns_xface.isAttribute(val, True)
+        val_ns, val_name, val_attr = _ns_xface.isAttribute(replace_str_var_name, True)
         if val_attr is None:
-            repval = _ns_xface.getValue(val)
-        else:
-            repval = _ns_xface.getAttribute('{}.{}'.format(val_ns, val_name), val_attr)
+            debug.print(f"{fn}: no variable named {replace_str_var_name} was found to get replacement value.")
+            return
 
+        repval = _ns_xface.getAttribute('{}.{}'.format(val_ns, val_name), val_attr)
+
+        debug.print(f"{fn}: repval={repval}<br />")
         # Get the string that we're going to operate on
-        v_ns, v_name, v_attr = _ns_xface.isAttribute(str, True)
+        v_ns, v_name, v_attr = _ns_xface.isAttribute(attr, True)
         if v_attr is None:
-            # If there's no attribute, look in the basic namespace
-            repstr = _ns_xface.getValue(str)
-        else:
-            repstr = _ns_xface.getAttribute('{}.{}'.format(v_ns, v_name), v_attr)
+            debug.print(f"{fn}: no variable named {attr} was found.")
+            return
 
+        repstr = _ns_xface.getAttribute('{}.{}'.format(v_ns, v_name), v_attr)
+
+        debug.print(f"{fn}: search_str={search_str} repstr={repstr}<br />")
         if repstr:
             # make sure we have a valid string to work with
-            CodeHelpers.pushlines(repstr.replace(var, repval))
+            CodeHelpers.pushlines(repstr.replace(search_str, repval).replace('\\n','\n'))
         else:
-            print("no string to operate on...")
+            debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
+
+    @staticmethod
+    def attr_replace(search_str=None, replace_str_var_name=None, attr=None):        
+        debug = _get_debug()
+
+        fn="attr_replace"
+        for v in [search_str, replace_str_var_name, attr]:
+            if not v:
+                debug.print(f"{fn}: missing required parameter {str(v)}")
+                return
+
+        # Go get the replacement value for "var"
+        val_ns, val_name, val_attr = _ns_xface.isAttribute(replace_str_var_name, True)
+        if val_attr is None:
+            debug.print(f"{fn}: no variable named {replace_str_var_name} was found to get replacement value.")
+            return
+
+        repval = _ns_xface.getAttribute('{}.{}'.format(val_ns, val_name), val_attr)
+
+        debug.print(f"{fn}: repval={repval}<br />")
+        # Get the string that we're going to operate on
+        v_ns, v_name, v_attr = _ns_xface.isAttribute(attr, True)
+        if v_attr is None:
+            debug.print(f"{fn}: no variable named {attr} was found.")
+            return
+
+        fq_name = f"{v_ns}.{v_name}"
+        repstr = _ns_xface.getAttribute(fq_name, v_attr)
+
+        debug.print(f"{fn}: search_str={search_str} repstr={repstr}<br />")
+        if repstr:
+            # make sure we have a valid string to work with
+            _ns_xface.setAttribute(fq_name, v_attr, repstr.replace(search_str, repval).replace('\\n','\n'))
+            #new_attr_val = f'@set _="{fq_name}" {v_attr}="{repstr.replace(search_str, repval)}"'
+            #CodeHelpers.pushline(new_attr_val)
+        else:
+            debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
+
+    @staticmethod
+    def attr_replace_str(search_str=None, replace_str=None, attr=None):
+        debug = _get_debug()
+
+        fn="attr_replace_str"
+        for v in [search_str, replace_str, attr]:
+            if not v:
+                debug.print(f"{fn}: missing required parameter {str(v)}")
+                return
+
+        debug.print(f"{fn}: search_str={search_str} --- replace_str={replace_str}")
+
+        # Get the string that we're going to operate on
+        v_ns, v_name, v_attr = _ns_xface.isAttribute(attr, True)
+        debug.print(f"{fn}: v_ns={v_ns}--v_name={v_name}--v_attr={v_attr}")
+        if v_attr is None:
+            debug.print(f"{fn}: no variable named {attr} was found.")
+            return
+
+        fq_name = f"{v_ns}.{v_name}"
+        repstr = _ns_xface.getAttribute(fq_name, v_attr)
+
+        debug.print(f"{fn}: current value for {attr}={repstr}")
+        if repstr:
+            # make sure we have a valid string to work with
+            _ns_xface.setAttribute(fq_name, v_attr, repstr.replace(search_str, replace_str).replace('\\n','\n'))
+        else:
+            debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
 
     @staticmethod
     def pushline(s=None):
+        debug = _get_debug()
         if s is not None and type(s) is type(''):
+            #//TODO: What if I marked the line down here?
+            #This would be useful when pushlines pushes multiple lines which
+            # would end up allowing other things to resolve... hmmmm.
+            debug.print(f"push1:-->{s}<--")
             _line_cache.pushline(s)
 
     @staticmethod
     def pushlines(s=None):
         #_line_cache.pushline("#### I was passed this: {}".format(HtmlUtils.escape_html(s)))
+        debug = _get_debug()
         if s is not None and type(s) is type(''):
             lines = s.split('\n')[::-1]
             for line in lines:
+                debug.print(f"push*:-->{line}<--")
                 _line_cache.pushline(line)
 
     @staticmethod
