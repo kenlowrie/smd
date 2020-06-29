@@ -3,17 +3,14 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
 finish writing tests for @html, @image and @code.
 document the key elements (@var, @html, @code, @image, etc.) -- use the "tests/in" files to make it "current".
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
-Should I encode the &squot; entity in src= lines before compiling them? Would this solve the issue where the compiler errors out because I use &squot; to surround the src=?
 @if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
 @func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them...
 Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
 Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
-Rework divs.md relying on _inherit to make all of the macros consistent with less duplicate code...
 smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
 You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
 Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
@@ -25,6 +22,7 @@ Split A/V specific CSS to separate file. Realize this will complicate using smd 
 figure out which things need to be tested using stand alone python scripts and start building/adding them.
 Make a single shell script that runs both/all of the command line tests ...
 Make all global variables go away. Should be able to do this using addObjectToTLS, like I did with tls['wrapstack']
+Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
 
 
 Priority 3 | p3
@@ -125,6 +123,8 @@ Add code.escape_var("variablename") and code.encode_smd_var("variablename"). Tha
 move the @link "doc" portion of the unittest over to the /docs folder and then just pull it in dynamically for testing. Two birds, one stone.
 Start rewriting userdoc.md so it conforms to smd. Have it @import sections for each namespace, so the markdown can be used for both the usermanual and unittests.
 @wrap and @parw need to be aware of imported files. automatically pop stack when eof of current file is hit, and stop "@parw all|*" at the boundary of the imported file.
+Rework divs.md relying on _inherit to make all of the macros consistent with less duplicate code...
+Should I encode the &squot; entity in src= lines before compiling them? Would this solve the issue where the compiler errors out because I use &squot; to surround the src=? Not needed. Fixed bug in compile() ...
 
 
 
