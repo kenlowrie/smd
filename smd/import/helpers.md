@@ -19,7 +19,7 @@
     section="{{code.pushlines(t=\"@wrap html.divx2\n{{self.t}}\n@parw 1\")}}"\
     subsect="{{code.pushlines(t=\"@wrap html.divx3\n{{self.t}}\n@parw 1\")}}"
 
-@var ENT="Entity Constants: {{self._all_attrs_}}" \
+@var E="Entity Constants: {{self._all_attrs_}}" \
     ast="&ast;"\
     ast2="[self.ast][self.ast]"\
     ast3="[self.ast][self.ast][self.ast]"\
@@ -44,7 +44,7 @@
     apos="&apos;"\
     num="&num;" hashtag="&num;
 
-@var e_tag="[ENT.lt]{{self.t}}[ENT.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
-@var e_var="[ENT.lb]{{self.t}}[ENT.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
+@var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
+@var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 
 @var e_us="{{html.us.<}}{{self.t}}{{html.us.>}}" t="text_to_underscore"

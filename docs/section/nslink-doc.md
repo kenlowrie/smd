@@ -70,7 +70,7 @@ And I then write [e_var.b(t="link.name")], I will get the new default value for 
 Before we leave the section on hyperlinks, let's a have a look at a better shorthand for creating links, the built-in link factory **ln_factory**. This built-in allows you to easily create a new link with minimal parameters:
 
 @wrap divx
-{:.indent}###[ENT.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title")[ENT.rb]
+{:.indent}###[E.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title")[E.rb]
 @parw
 
 [link.ln_factory(nm="sample" hr="http://example.com" t="my default title"")]
@@ -90,7 +90,7 @@ As in the @html namespace, any valid HTML attribute can be specified when creati
 If we add **title="my link title here"** when we define the link variable **link.sample** we were just using, and then emit the code using any of the emitters **(link.sample, link.sample._asurl, link.sample._qlink)**, the HTML code includes a **title=** attribute every time the anchor opening tag is written. Let's see how that looks, first, we'll declare it:
 
 @wrap divx
-{:.indent}###[ENT.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title" title="my link title here")[ENT.rb]
+{:.indent}###[E.lb]ln_factory(nm="sample" hr="http://example.com" t="my default title" title="my link title here")[E.rb]
 @parw
 
 [link.sample._null_(title="my link title here")]
@@ -126,7 +126,7 @@ Bookmarks are a special type of link used within an HTML document. There are two
 Similar to it's counterpart **ln_factory**, has the following syntax:
 
 @wrap divx
-{:.indent}###[ENT.lb]bm_factory(nm="bookmark1" t="my bookmark text")[ENT.rb]
+{:.indent}###[E.lb]bm_factory(nm="bookmark1" t="my bookmark text")[E.rb]
 @parw
 
 The **bm_factory** does not need the **hr=** parameter, however, because the href is constructed using only the bookmark name, since it refers to a location within the current document.

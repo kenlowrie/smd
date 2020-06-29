@@ -62,7 +62,7 @@ And then invoke [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environ
 [ln_factory(nm="tcl-tk", hr="https://stackoverflow.com/questions/60469202/unable-to-install-tkinter-with-pyenv-pythons-on-macos" t="tcl-tk for pyenv")]
 @set _ns="link" _="tcl-tk" target="_blank"
 
-[note(t="NOTE2: If you will be using [ismd.b] [ENT.lp][ismd.short_b][ENT.rp], the version of Python you will be using must have been built with **[tk.tkinter]** [ENT.lp]**[tk]**[ENT.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
+[note(t="NOTE2: If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk.tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
 
 If you did not have these flags set when you did the install of Python using **[pyenv]**, and you want to use ismd, you will have to *uninstall* the current version, and reinstall it (with the propery environment variables set). Here is a link [tk._asurl] that will provide the information you need to get this done, although take a look at this [tcl-tk.<]Stackoverflow Question and Answer[tcl-tk.>] for the steps needed to solve this issue.
 
@@ -71,7 +71,7 @@ If you did not have these flags set when you did the install of Python using **[
 [terminal.wc_open(t="Running virtual environment for OBS Studio browser endpoints")]
 [sp]
 $ cd pipenv
-[ENT.num] need a better folder name
+[E.num] need a better folder name
 pipenv install  - this will what's referred to in Pipfile.lock
 pipenv shell
 ismd -nd -f clock.md -m endpoint hostgui
@@ -118,4 +118,4 @@ Just below, I will import the README.md from the root directory of this reposito
 @@[divxplus.>]
 @parw 1
 
-As you can see, the simple markdown including headings e.g. **[ENT.num]**, bold face [e_tag.b(t="strong")] and italics [e_tag.b(t="em")] are parsed and render the same with [smd.b] as they do with standard **markdown**. As you will soon see, however, [smd.b] will do much, much more.
+As you can see, the simple markdown including headings e.g. **[E.num]**, bold face [e_tag.b(t="strong")] and italics [e_tag.b(t="em")] are parsed and render the same with [smd.b] as they do with standard **markdown**. As you will soon see, however, [smd.b] will do much, much more.

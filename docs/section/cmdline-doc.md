@@ -57,7 +57,7 @@ In order to do that, we will start by providing an overview of the repository la
 [DC.3a]def_close.md - default HTML closing tags
 [DC.3z][e_us(t="builtins.md")] - main system builtins file
 [DC.4a]common.md - generic builtins
-[DC.4a]defaults.md - default values used in def_[ENT.ast].md files
+[DC.4a]defaults.md - default values used in def_[E.ast].md files
 [DC.4a]code.md - @code namespace builtins
 [DC.4a]html.md - @html namespace builtins
 [DC.4z]link.md - @link namespace builtins[DC.eol]

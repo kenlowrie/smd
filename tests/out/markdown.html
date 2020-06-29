@@ -49,7 +49,7 @@ header markdown must be first thing on the line. # This will not be a header, ev
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
-<strong>ENT=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
+<strong>E=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
 &nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
 &nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
 &nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
@@ -102,7 +102,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
 &nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
 &nbsp;&nbsp;<strong>dn=</strong>box<br />
-&nbsp;&nbsp;<strong>usage=</strong>**usage: [ENT.lb]_dfactory(dn="divName")[ENT.rb]**<br />
+&nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
@@ -184,7 +184,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[ENT.lt]{{self.t}}[ENT.gt]<br />
+&nbsp;&nbsp;<strong>_format=</strong>[E.lt]{{self.t}}[E.gt]<br />
 <br />
 <strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
@@ -193,7 +193,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[ENT.lb]{{self.t}}[ENT.rb]<br />
+&nbsp;&nbsp;<strong>_format=</strong>[E.lb]{{self.t}}[E.rb]<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />

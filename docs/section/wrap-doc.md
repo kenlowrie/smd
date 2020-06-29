@@ -15,14 +15,14 @@
 //[docthis.close]
 
 
-By default, [smd.b] does not place any type of wrapper around emitted content. This is a good default, however, many times adding wrappers can greatly assist your formatting efforts. This is where @wrap comes in handy...
+By default, [smd.b] does not place any type of wrapper around emitted contE. This is a good default, however, many times adding wrappers can greatly assist your formatting efforts. This is where @wrap comes in handy...
 
 First, let's review the complete syntax for both [smdwrap.b] and [smdparw.b]
 
 [syntax.wc_open(t="@wrap and @parw command syntax")]
     [b]
-    [tab.<][smdwrap.b] **[ENT.lt]html.tag [ENT.lb], html.tag [ENT.lb], ...]] | [ENT.lb]nop | null][ENT.gt]**[bb][tab.>]
-    [tab.<][smdparw.b] **[ENT.lb][ENT.ast] | all | [ENT.num] [ENT.rb]**[tab.>]
+    [tab.<][smdwrap.b] **[E.lt]html.tag [E.lb], html.tag [E.lb], ...]] | [E.lb]nop | null][E.gt]**[bb][tab.>]
+    [tab.<][smdparw.b] **[E.lb][E.ast] | all | [E.num] [E.rb]**[tab.>]
     [bb]
     [tab.<][tab.<]*NOTE: tag variables passed to [smdwrap.b] **must** be in the **@html** namespace.[tab.>][tab.>]*
 
@@ -116,7 +116,7 @@ And now this line will have the previously specified wrap tags of div, p
 
 [terminal.wc_close]
 
-The [smdparw.b] also accepts parameters: (**[ENT.ast] | all**) or alternatively a **[ENT.num]** specified how many tags to clear from the stack. By default, [smdparw.b] will clear a single item from the wrap stack. If you pass an integer *n*, then it will attempt to clear *n* items from the wrap stack. If you pass either **[ENT.ast]** or **all**, then it will clear all items from the wrap stack, but only those that were added within the current scope. The current scope just means the current **@import** file, and it goes back to the note we made up front about remove items from the wrap stack. Here are a couple of examples of the parameters to [smdparw.b]:
+The [smdparw.b] also accepts parameters: (**[E.ast] | all**) or alternatively a **[E.num]** specified how many tags to clear from the stack. By default, [smdparw.b] will clear a single item from the wrap stack. If you pass an integer *n*, then it will attempt to clear *n* items from the wrap stack. If you pass either **[E.ast]** or **all**, then it will clear all items from the wrap stack, but only those that were added within the current scope. The current scope just means the current **@import** file, and it goes back to the note we made up front about remove items from the wrap stack. Here are a couple of examples of the parameters to [smdparw.b]:
 
 [terminal.wc_open(t="Clearing the wrap stack")]
 [sp]
@@ -145,15 +145,15 @@ The final thing we'll cover is a specialized @code macro called **wrap_stack**. 
 
 The first thing is the macro itself, here's the syntax for it:
 
-@var stax="(w=\"[ENT.lt] | [ENT.gt] | [ENT.num]\")"
+@var stax="(w=\"[E.lt] | [E.gt] | [E.num]\")"
 
-[syntax(t="Syntax: [ENT.lb]code.wrap_stack[stax][ENT.rb]")]
+[syntax(t="Syntax: [E.lb]code.wrap_stack[stax][E.rb]")]
 
-If you invoke it with no parameters *[ENT.lb]code.wrap_stack[ENT.rb]*, it will return the complete starting and ending tags for the current wrap tag. 
+If you invoke it with no parameters *[E.lb]code.wrap_stack[E.rb]*, it will return the complete starting and ending tags for the current wrap tag. 
 
-If you pass *[ENT.lt]*, it returns the opening tag(s) sequence, and conversely, *[ENT.gt]* returns the closing tag(s).
+If you pass *[E.lt]*, it returns the opening tag(s) sequence, and conversely, *[E.gt]* returns the closing tag(s).
 
-Finally, if you pass *[ENT.num]*, it returns the current stack size, which is really only useful for debugging purposes. Here's a some examples:
+Finally, if you pass *[E.num]*, it returns the current stack size, which is really only useful for debugging purposes. Here's a some examples:
 
 [terminal.wc_open(t="Clearing the wrap stack")]
 [sp]
@@ -164,19 +164,19 @@ Finally, if you pass *[ENT.num]*, it returns the current stack size, which is re
 [encode_smd(t="@@[code.wrap_stack]")]
 [escape(t="<div><p></p></div>")]
 [sp]
-[encode_smd(t="@@[code.wrap_stack")](w="[ENT.lt]")]
+[encode_smd(t="@@[code.wrap_stack")](w="[E.lt]")]
 [escape(t="<div><p>")]
 [sp]
-[encode_smd(t="@@[code.wrap_stack")](w="[ENT.gt]")]
+[encode_smd(t="@@[code.wrap_stack")](w="[E.gt]")]
 [escape(t="</p></div>")]
 [sp]
-[encode_smd(t="@@[code.wrap_stack")](w="[ENT.num]")]
+[encode_smd(t="@@[code.wrap_stack")](w="[E.num]")]
 1
 [sp]
 
 [terminal.wc_close]
 
-At first glance, the initial call to **[ENT.lb]code.wrap_stack[ENT.rb]** might look like a bug, because the tag appears twice. However, this is behaving properly, since tecnically, a wrap tag of **div,p** is currently in effect, and thus the output from the call to **code.wrap_stack** is being wrapped in the tags! On the subsequent calls, you'll notice we prefix each line with ***[ENT.at][ENT.at]***, something we haven't discussed yet. This is the **raw** prefix, and when used at the start of any line, any wrap tags in effect are ignored.
+At first glance, the initial call to **[E.lb]code.wrap_stack[E.rb]** might look like a bug, because the tag appears twice. However, this is behaving properly, since tecnically, a wrap tag of **div,p** is currently in effect, and thus the output from the call to **code.wrap_stack** is being wrapped in the tags! On the subsequent calls, you'll notice we prefix each line with ***[E.at][E.at]***, something we haven't discussed yet. This is the **raw** prefix, and when used at the start of any line, any wrap tags in effect are ignored.
 
 This concludes the chapter on [smdwrap.b] and [smdparw.b].
 

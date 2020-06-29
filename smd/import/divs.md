@@ -62,7 +62,7 @@
       code="{{code.replace(var=\"$DIVNAME$\", val=\"_dfactory.dn\", str=\"var._df_html_code_._str\")}}"\
       simple="{{code.replace(var=\"$DIVNAME$\", val=\"_dfactory.dn\", str=\"var._df_html_simple_._str\")}}"\
       dn="UNDEFINED"\
-      usage="**usage: [ENT.lb]_dfactory(dn=\"divName\")[ENT.rb]**"
+      usage="**usage: [E.lb]_dfactory(dn=\"divName\")[E.rb]**"
       
 
 [_dfactory(dn="section")]
