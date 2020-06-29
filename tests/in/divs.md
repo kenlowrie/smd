@@ -2,8 +2,6 @@
 
 [var.testdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
 
-[wrap_h.hash1]
-
 [wrap_h(t="### Testing var.section")]
 [var.section]
 [var.section()] <-- Intentional error, calling section with empty paramter list
@@ -36,6 +34,10 @@
 
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
+[section_pbb]
+[section_pbb.with_content]
+[section_pbb(t="section_pbb title")]
+[section_pbb.with_content(c="section_pbb content", t="section_pbb title2")]
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.plain")]
@@ -65,6 +67,8 @@
 
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
+
+//This is intentionally ambiguous. code is also a namespace, so [code.with_content] looks for a code macro called "with_content", instead of resolving to [var.code.with_content]...
 
 [code]
 [code.with_content]
@@ -117,6 +121,11 @@ toc content using .wc_open and .wc_close
 [var.note(t="note non default title")]
 [var.note.with_content]
 [var.note.with_content(c="note non default comment")]
+[var.note.wc_open(t="non-default-title-wc_open")]
+some additional note content.[b]
+and some more[b]
+and still more
+[var.note.wc_close]
 
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
@@ -125,15 +134,72 @@ toc content using .wc_open and .wc_close
 [note(t="note non default title")]
 [note.with_content]
 [note.with_content(c="note non default comment")]
+[note.wc_open(t="non-default-title-wc_open")]
+some additional note content.[b]
+and some more[b]
+and still more
+[note.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.vo")]
+[var.vo]
+[var.vo.with_content]
+[var.vo(t="some default text")]
+[var.vo.with_content(c="some default content text")]
+[var.vo.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.vo.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing vo without prefix var.")]
+[vo]
+[vo.with_content]
+[vo(t="some default text")]
+[vo.with_content(c="some default content text")]
+[vo.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[vo.wc_close]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.box")]
+[var.box]
+[var.box.with_content]
+[var.box(t="some default text")]
+[var.box.with_content(c="some default content text")]
+[var.box.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.box.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing box without prefix var.")]
+[box]
+[box.with_content]
+[box(t="some default text")]
+[box.with_content(c="some default content text")]
+[box.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[box.wc_close]
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.extras and var.divxp")]
-//TODO: Should these emit the raw prefix by default? Look where they are used. if always with @@, then fix it!
-@@[var.extras]
-@@[var.extras(c="your comment inside an extras div")]
+[var.extras]
+[var.extras(c="your comment inside an extras div")]
 
-@@[var.divxp]
-@@[var.divxp(c="your content inside a p tag inside a div")]
+[var.divxp]
+[var.divxp(c="your content inside a p tag inside a div")]
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.specials")]

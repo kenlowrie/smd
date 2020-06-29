@@ -141,6 +141,9 @@ NAMESPACE: html<br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>pre=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+<br />
 <strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -179,6 +182,22 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: &lt;strong&gt;{{self._}}(_var_=&lt;em&gt;&amp;quot;ns.var.attr&amp;quot;&lt;/em&gt;, _txtvar_=&lt;em&gt;&amp;quot;ns.var.attr with text to add&amp;quot;&lt;/em&gt;)&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
+<br />
+<strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('$.s_str', '$.r_var', '$.attr')<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_var=</strong>variable with new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('$.s_str', '$.r_var', '$.attr')<br />
+<br />
+<strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('$.s_str', '$.r_str', '$.attr')<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_str=</strong>new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_str('$.s_str', '$.r_str', '$.attr')<br />
 <br />
 <strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />

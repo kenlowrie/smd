@@ -17,6 +17,7 @@
 @html _="li" _tag="li"
 @html _="ol" _tag="ol"
 @html _="p" _tag="p"
+@html _="pre"
 @html _="span" _tag="span"
 @html _="table" _tag="table"
 @html _="td" _tag="td"

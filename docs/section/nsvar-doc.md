@@ -12,6 +12,14 @@ The anatomy of a complex variable definition. Passing parameters, self, why _ is
 .@set fu=\"bar2\" a1=\"val\" i.e. you can add attrs during a set operation
 .@set _=\"defaults\" revision=\"0.4.2\" - that you can add an attr while keeping the rest...
 .{:.bigandbold}you can add a span prefix
+
+Both of these work, so document both of them and test both of them...
+
+// if you pass invalid namespace to update, the parser crashes. Fix that!!!
+.@set _ns="namespace" _="name" attr="value"
+
+.@set _="ns.name" attr="value"
+
 [docthis.close]
 
 

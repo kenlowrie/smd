@@ -397,6 +397,23 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('$._var_', '$._txtvar_')<br />
 <br />
+<strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('$.s_str', '$.r_var', '$.attr')<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_var=</strong>variable with new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('$.s_str', '$.r_var', '$.attr')<br />
+<br />
+<strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('$.s_str', '$.r_str', '$.attr')<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_str=</strong>new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'s_str': 'html._div_section', 'r_str': 'html._div_section_pbb', 'attr': 'var.section_pbb.wc_open_inline'}<br />
+<br />
 <strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
 &nbsp;&nbsp;<strong>123attr=</strong>nope<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
@@ -569,7 +586,8 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>val=</strong>value_to_insert<br />
 &nbsp;&nbsp;<strong>str=</strong>string to operate on<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'var': '$DIVNAME$', 'val': '_dfactory.dn', 'str': 'var._df_var_simple_._str'}<br />
 <br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />

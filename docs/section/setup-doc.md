@@ -21,6 +21,8 @@ $ pip install selenium
 $ pip install bottle
 [terminal.wc_close]
 
+[note(t="Need to document downloading a driver for selenium.")]
+*download from here: [escape(t="https://sites.google.com/a/chromium.org/chromedriver/downloads")]*
 
 You can also install the package in developer mode with the -e flag. This will point the installation of the package to the current cloned repository directory instead of copying it over to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change. Use the following command in your terminal window to install [smd.b] in developer mode:
 

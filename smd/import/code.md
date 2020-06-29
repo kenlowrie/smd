@@ -80,24 +80,32 @@
       var="varname_to_replace"\
       val="value_to_insert"\
       str="string to operate on"
-
 @code _id="wrap_stack"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})"\
       w="*"\
       encode="False"
-
 @code _id="encode_smd"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))"\
       t="Usage: code.encode_smd.run(t=\"smd markdown to encode\")"
-
 @code _id="escape_var"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('$.v'))"\
       v="Usage: code.escape.run(v=\"var_to_esc\")"
-
 @code _id="encode_smd_var"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('$.v'))"\
       v="Usage: code.encode_smd_var.run(v=\"var_to_encode\")"
+@code _id="attr_replace"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace('$.s_str', '$.r_var', '$.attr')"\
+      s_str="string_to_replace"\
+      r_var="variable with new_value"\
+      attr="ns.var.attr"
+@code _id="attr_replace_str"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('$.s_str', '$.r_str', '$.attr')"\
+      s_str="string_to_replace"\
+      r_str="new_value"\
+      attr="ns.var.attr"
