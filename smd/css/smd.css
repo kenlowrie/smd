@@ -204,7 +204,8 @@ div.toc p, div.syntax p, div.lyrics p{
 
 div.syntax{
 	background-color: #ffcfcf;
-    margin-left: 3em;
+    margin-left: 3.3em;
+    margin-right: 3.3em;
 }
 
 div.syntax p.divTitle{
@@ -333,6 +334,10 @@ td {
     width: 100%;
 }
 
+li {
+    margin-left:3em;
+    margin-right:3em;
+}
 /* @group AV Format */
 
 ul {
@@ -350,7 +355,9 @@ p {
 	margin-bottom: 0;
 	margin-top: 1em;
 	font-family: "Courier Prime", Courier, "Courier New", mono;
-	padding: .7em 1em 1em;
+    /*padding: .7em 1em 1em;*/
+    padding-left: 1em;
+    padding-right: 1em;
 	border-top: 1px solid #ccc;
 }
 
@@ -381,21 +388,40 @@ p + p {
     border: 2px dotted #777777;
 }
 
-.box, div.extras p.box {
-    padding: 5px;
-    border: 2px solid #000000;
-}
-
 .note, .question, .vo, .important, .greyout {
     width: 40%;
     padding: 5px;
     margin: 1em;
 }
 
+.ulist {
+    all: unset;
+    padding: 1em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.olist {
+    all: unset;
+    padding: 1em;
+    list-style-type: decimal;
+}
+
+
+div.extras p.note, div.extras p.question, div.extras p.vo, div.extras p.important, div.extras p.greyout, div.extras p.box, div.extras ul.ulist, div.extras ol.olist{
+    margin-left:3em;
+    margin-right:3em;
+    font-size: 1.3em;
+}
+
+.box, div.extras p.box {
+    padding: 5px;
+    border: 2px solid #000000;
+}
+
 .note, div.extras p.note {
     border: 2px solid #777777;
     background-color: #f7f7f7;
-    font-size: 1.3em;
 }
 
 .question, div.extras p.question {
@@ -413,7 +439,6 @@ p + p {
 
 .important, div.extras p.important {
     padding: 15px;
-    font-size: 1.2em;
     font-weight: bold;
     text-transform:uppercase;
 }

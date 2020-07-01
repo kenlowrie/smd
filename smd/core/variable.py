@@ -819,6 +819,9 @@ class Namespaces(object):
         self.oprint = oprint
         setNSxface(self)
 
+    def isValidNamespace(self, ns=None):
+        return True if ns in self._namespaces else False
+
     def addVariable(self, value, name=None, ns=None):
         if ns is None:
             ns = Namespaces._var

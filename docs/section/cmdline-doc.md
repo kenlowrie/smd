@@ -76,12 +76,11 @@ In order to do that, we will start by providing an overview of the repository la
 
 The major components consist of three (3) command line interfaces.
 
-@wrap li2
-@@[html.ol.<]
+[olist.wc_open]
 [smd.b] - The [smd.short] command line interface
 [smdparse.b] - The [smdparse.short] command line interface
 [ismd.b] - The [ismd.short] command line interface[html.ol.>]
-@parw
+[olist.wc_close]
 
 [smd.b] is the main command line interface, and the one that you can use to experiment with this language. If you have installed [smd], go ahead and try it by entering the following command in a terminal window:
 
@@ -107,8 +106,7 @@ Both [smdparse.b] and [ismd.b] will be covered in detail in their respective cha
 
 [terminal(t="$ smd")]
 
-@wrap divx, ol
-@wrap li2
+[olist.wc_open]
 The following provides a high level layout of the startup of smd:
 
 load builtins.md - which loads ...
@@ -118,13 +116,12 @@ import def_body.md
 
 command prompt
 
-<CTRL-D> ends the input (or eof if -f or < (redirection) used
+[e_tag(t="CTRL-D")] ends the input (or EOF if -f or [E.lt] (redirection) used
 
 import def_bodyclose.md
 import def_close.md
 
-@parw 2
-
+[olist.wc_close]
 
 [wrap_h.section(t="## smd command line parameters")]
 
@@ -161,11 +158,29 @@ optional arguments:
 [sp]
 [terminal.wc_close]
 
-[smdparse.b] accepts the same parameters as [smd.b], plus these additional parameters:
-
 [terminal.wc_open(t="smdparse command line parameters")]
 [sp]
-
+[smdparse.b] accepts the same parameters as [smd.b], plus these additional parameters:
+[sp]
+usage: smdparse [-h] -f FILENAME [-c [CSSFILELIST [CSSFILELIST ...]]] [-sph HEAD_FILE_NAME] [-i [IMPORTFILELIST [IMPORTFILELIST ...]]] [-d [PATH]] [-dbg]
+                [-notid] [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead] [-nobody] [-html HTML_NAME] [-head HEAD_NAME] [-body BODY_NAME]
+                [-bodyclose BODYCLOSE_NAME] [-close CLOSE_NAME] [-nu] [-o [RAW_OUTPUT_FILE]]
+[sp]
+Generate HTML file from a text file in Script Markdown format.
+[sp]
+optional arguments:
+  -h, --help show this help message and exit
+  -f FILENAME, --filename FILENAME the file that you want to parse
+  -c [CSSFILELIST [CSSFILELIST ...]], --cssfile [CSSFILELIST [CSSFILELIST ...]] the CSS file you want used for the styling. Default is smd.css
+  -sph HEAD_FILE_NAME, --smdparse-head-name HEAD_FILE_NAME the filename to use for the head HTML markdown. Default is smdparse_head.md
+  -i [IMPORTFILELIST [IMPORTFILELIST ...]], --import [IMPORTFILELIST [IMPORTFILELIST ...]] list of file(s) to import after builtins.md loaded. Default is None
+  -d [PATH], --path [PATH] the directory that you want the HTML file written to. Default is ./html
+  -dbg, --debug display additional debug information. Default is: False
+  -notid, --no-tid-in-output do not display the thread id in the output messages. Default is: False
+[sp]
+  *command line options for [smd.b] ...*
+[sp]
+This utility exits after parsing the input file.
 
 [sp]
 [terminal.wc_close]
@@ -175,16 +190,30 @@ optional arguments:
 
 [terminal.wc_open(t="ismd command line parameters")]
 [sp]
-
-
+usage: ismd [-h] -f FILENAME [-c [CSSFILELIST [CSSFILELIST ...]]] [-sph HEAD_FILE_NAME] [-d [PATH]] [-i [IMPORTFILELIST [IMPORTFILELIST ...]]]
+            [-m MONITOR [MONITOR ...]] [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead] [-nobody] [-html HTML_NAME] [-head HEAD_NAME] [-body BODY_NAME]
+            [-bodyclose BODYCLOSE_NAME] [-close CLOSE_NAME] [-nu] [-o [RAW_OUTPUT_FILE]]
+[sp]
+Generate HTML file from a text file in Script Markdown format.
+[sp]
+optional arguments:
+  -h, --help show this help message and exit
+  -f FILENAME, --filename FILENAME the file that you want to parse
+  -c [CSSFILELIST [CSSFILELIST ...]], --cssfile [CSSFILELIST [CSSFILELIST ...]] the CSS file you want used for the styling. Default is smd.css
+  -sph HEAD_FILE_NAME, --smdparse-head-name HEAD_FILE_NAME the filename to use for the head HTML markdown. Default is smdparse_head.md
+  -d [PATH], --path [PATH] the directory that you want the HTML file written to. Default is ./html
+  -i [IMPORTFILELIST [IMPORTFILELIST ...]], --import [IMPORTFILELIST [IMPORTFILELIST ...]] list of file(s) to import after builtins.md loaded. Default is None
+  -m MONITOR [MONITOR ...], --monitor MONITOR [MONITOR ...] the monitor [browser, hostgui, endpoint] you want used to display changes. Default is browser
+[sp]
+  *command line options for [smd.b] ...*
+[sp]
+The program monitors changes and keeps window updated until CTRL-C is pressed.
 [sp]
 [terminal.wc_close]
 
 
 
 [docthis.open(h="Add this to cmdline-doc.md")]
-
-all the new command line switches. distinguish between smd, ismd, smdparse, smdlive
 
 41. Document all the new command line switches (smd, smdparse, ismd and smdlive)
 

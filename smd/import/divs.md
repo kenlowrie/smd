@@ -86,6 +86,9 @@
 [_dfactory.as_simple(dn="note")]
 [_dfactory.as_simple(dn="vo")]
 [_dfactory.as_simple(dn="box")]
+[_dfactory.as_simple(dn="question")]
+[_dfactory.as_simple(dn="greyout")]
+[_dfactory.as_simple(dn="important")]
 
 @var extras="@@{{html._div_extras_.<}}{{self.c}}{{html.div.>}}" c="default content"
 

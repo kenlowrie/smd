@@ -667,9 +667,11 @@ class ScriptParser(StdioWrapper):
                     #self.oprint(f"dict-->{d}")
                     namespace = self._md.markdown(d[nskey])
                     del d[nskey]
-                #self.oprint(f"namespace={namespace}")
-                #//TODO: catch the exception here to prevent parser crash...
-                self._ns.updateVariable(d, ns=namespace)
+                if self._ns.isValidNamespace(namespace) or namespace == '?':
+                    #//TODO: catch the exception here to prevent parser crash...
+                    self._ns.updateVariable(d, ns=namespace)
+                else:
+                    self.oprint(f"WARNING: namespace <em>{namespace}</em> is not a valid namespace.<br />")
 
             else:
                 self.oprint(lineObj.original_line)

@@ -42,7 +42,8 @@
     sp="&nbsp;"\
     sp2="[self.sp][self.sp]"\
     apos="&apos;"\
-    num="&num;" hashtag="&num;
+    num="&num;" hashtag="&num;"\
+    amp="&amp;"
 
 @var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 @var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"

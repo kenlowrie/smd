@@ -49,7 +49,6 @@ These next ones will have the namespace parser  catch the errors and fail the va
 
 @dump var="c[0-9]{1,2}"
 
-//TODO the next line will crash the parser. Fix that.
 @set c0="" a="9"
 
 @dump var="c[0-9]{1,2}"
@@ -89,6 +88,27 @@ So finally, I put the [] around the code.encode_smd, and {{}} around self.c, and
 
 ***[ENC]***
 [plain(t="Specific Testing of @set namespace with @var variables")]
+
+This might be added in the future, if there are things I specifically need to unittest that are not already covered.
+
+[var.plain(t="User manual sections for @var and @set")]
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+
+@wrap nop
+[var.toc.wc_open(t="Table of Contents - Unittest [smdvar.il]")]
+[b]
+@import "[sys.root]/docs/section/nsvar-inc.md"
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from nsvar-inc.md")]
+@dump link="^ns_var|var_|^set_.*$"
+@parw
+
+@import "[sys.root]/docs/section/nsvar-doc.md"
+
+
 
 
 

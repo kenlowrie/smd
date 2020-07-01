@@ -6,6 +6,7 @@
 @import '[sys.imports]/report.md'
 @import '[sys.imports]/helpers.md'
 @import '[sys.imports]/avs/avs.md'
+@import '$/userdocs_macros.md'
 @import '$/import/userguideheading.md'
 
 @var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***" short_b="**{{self.short}}**" desc_b="**{{self.desc}}**"

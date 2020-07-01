@@ -23,12 +23,12 @@ Just like in standard Markdown, you can use the # symbol at the beginning of a l
 
 You may want to style the headers to your liking in the smd.css file.
 
-[note(t="IMPORTANT! Using the # to create headings ***requires*** that the hashtag start in column 1 of the line. If you start it anywhere else, it will be interepreted simply as an inline hashtag.")]
+[bluenote.wc_open]
+{:.important}IMPORTANT! Using the # to create headings ***requires*** that the hashtag start in column 1 of the line. If you start it anywhere else, it will be interepreted simply as an inline hashtag.
+[bluenote.wc_close]
 
 For example:
 
 [wrap_h(t="# this works")]
 
 But **#this works**, clearly does not work.
-
-

@@ -3,7 +3,9 @@
 
 There are two approaches to installing [smd.B] on your system; either using **pip** or **pipenv**. This chapter will cover both methods, and you can choose which is better for you.
 
-{:.vo.indent}[smd.b] requires Python 3.7.3 or later! If you are running an older version, you either have to upgrade or install a virtual environment with something newer in order to run [smd.b].
+[box.wc_open]
+NOTE: [smd.b] requires Python 3.7.3 or later! If you are running an older version, you either have to upgrade or install a virtual environment with something newer in order to run [smd.b].
+[box.wc_close]
 
 [wrap_h.section(t="###Installing with pip")]
 
@@ -21,8 +23,10 @@ $ pip install selenium
 $ pip install bottle
 [terminal.wc_close]
 
-[note(t="Need to document downloading a driver for selenium.")]
+[question.wc_open]
+Need to document downloading a driver for selenium.[bb]
 *download from here: [escape(t="https://sites.google.com/a/chromium.org/chromedriver/downloads")]*
+[question.wc_close]
 
 You can also install the package in developer mode with the -e flag. This will point the installation of the package to the current cloned repository directory instead of copying it over to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change. Use the following command in your terminal window to install [smd.b] in developer mode:
 
@@ -30,16 +34,19 @@ You can also install the package in developer mode with the -e flag. This will p
 [sp]
 $ pip install -e .
 [terminal.wc_close]
-@html _="p2" _tag="p" class="note blue indent" style="margin-right:5em;margin-left:5em"
-@wrap divx,p2
+
+[bluenote.wc_open]
 HINT: If you later decide you want to install [smd.b] in developer mode, you can issue the above command to accomplish that. If it detects that [smd.b] is already installed on your system, it will uninstall it first, and then install it in developer mode.
-@parw
+[bluenote.wc_close]
+
 [wrap_h.section(t="###Installing with pipenv")]
 
 [ln_factory(nm="pipenv" hr="https://docs.python-guide.org/dev/virtualenvs/" t="pipenv")]
 @set _ns="link" _="pipenv" target="_blank"
 
-{:.note.red.indent}I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
+[question.wc_open]
+I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
+[question.wc_close]
 
 **[pipenv]** is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way **pip** does, thus isolating [smd.b] to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the **[encode_smd(t="[sys.root]/pipenv")]** directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:
 
@@ -108,11 +115,10 @@ Need to move the additional useful variable definitions from this chapter to the
 [docthis.close]
 
 [wrap_h.section(t="### README.md from repository root")]
-
 Just below, I will import the README.md from the root directory of this repository. That file uses a more standard markdown syntax, and if you review the rendered output, you will see where certain things do not expand as the syntax is not supported by [smd.b]. The most obvious are the inline and reference links, although this is a rather simple example, not intended to show all differences between **markdown** and [smd.b].
 
+@html _="divxplus" _inherit="divx" style="margin-left:7em;margin-right:7em;background-color:lightgray;padding:2em;font-size:1.3em"
 @wrap divx
-@html _="divxplus" _inherit="divx" style="margin:5em;margin-right:250px;background-color:lightgray;padding:2em"
 @@[divxplus.<]
 @import "[sys.root]/README.md"
 @@[divxplus.>]

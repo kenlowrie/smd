@@ -8,5 +8,13 @@ Section on @code namespaces
 
 TODO: Should I encode ' before compiling to avoid syntax errors? Not sure if it's that easy, but worth a look...
 
+_code="used by code ns"
+_params_="used by code ns"
+_last="used by code ns"
+run="code.var.run"
+src="print('required for code')"
+type="eval"
+
+
 [docthis.close]
 

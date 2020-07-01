@@ -1,14 +1,5 @@
+
 [link.wrap]
-
-//TODO: Move these over to divs.md once I've worked out the kinks...
-
-@var smdtag="@@{{self.il}}" p="" il="[encode_smd(t=\"{{self.p}}\")]" b="**{{self.il}}**" em="*{{self.il}}*" emb="***{{self.il}}***"
-@var _="smdwrap" _inherit="smdtag" p="@wrap"
-@var _="smdwrap_parms" _inherit="smdtag" p="@wrap {{self.parms}}"
-@var _="smdparw" _inherit="smdtag" p="@parw"
-@var _="smdparw_parms" _inherit="smdtag" p="@parw {{self.parms}}"
-
-
 [wrap_h.chapter(t="## @wrap and @parw")]
 
 //[docthis.open(h="Add this to wrap-doc.md")]
