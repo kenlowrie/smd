@@ -1,36 +1,104 @@
 [link.div]
 [wrap_h.chapter(t="##Divs")]
 
-You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. ***Actually, no, you can't do that...***
+In this chapter, we will discuss the predefined **DIV**'s that are declared inside the builtin file **divs.md**. 
+[rednote.wc_open]
+NOTE: If you have not read the chapters on [smdvar.b], [smdset.b] and [smdhtml.b], stop right now and go read them. Otherwise, you might have trouble understanding the concepts that will be covered in this chapter...
+[rednote.wc_close]
+
+There are several types of these that are created to give several options for your content. Let's first look at a summary of the divs that are available to you:
+
+[ulistplain.wc_open]
+[e_us(t="{:.blue}**Generic Groups**")]
+[e_var.b(t="section")] - Generic content
+[e_var.b(t="section_pbb")] - Generic content but with the class **pbb** (i.e. page break before -- when printing)
+[e_var.b(t="toc")] - Table of Contents
+[e_var.b(t="syntax")] - Syntax content
+[e_var.b(t="review")] - Review content
+[e_var.b(t="review_pba")] - Review content with **pba** class (i.e. page break after -- when printing)
+[e_var.b(t="plain")] - Plain content with class plainTitle (draws a bottom-border) after the title[bb]
+[e_us(t="{:.blue}**Code Group**")]
+[e_var.b(t="code")] - Code content - See notes for rendering details[bb]
+[e_us(t="{:.blue}**Note Groups**")]
+[e_var.b(t="note")] - Note content - See notes for rendering details on this and remaining DIVs
+[e_var.b(t="vo")] - Voiceover content
+[e_var.b(t="box")] - Box content
+[e_var.b(t="question")] - Question content
+[e_var.b(t="greyout")] - Greyout content
+[e_var.b(t="important")] - Important content[bb]
+[e_us(t="{:.blue}**List Groups**")]
+[e_var.b(t="ulist")] - Unordered bulleted list content
+[e_var.b(t="ulistplain")] - Unordered list no bullets content
+[e_var.b(t="olist")] - Ordered list with decimal numbers content
+
+[ulistplain.wc_close]
+
+//TODO: Move these
+@var e_div_ll="{{self._public_attrs_}}" s="SECTION" e="*{{self.s}}*" b="**{{self.s}}**" emb="***{{self.s}}***" il="{{self.s}}"
+@var _="e_div" _inherit="e_div_ll" _format="{{self.il}}" s="section"
+
+There are four different styles of DIVs that are predefined for you, and you can add more as well as customize these to your hearts content. Each of these has a similar interface, so let's see how what that is, and how it is used. Only one of each different type will be covered, since the interface on the others is identical! We will start with the *[e_var.b(t="section")]-style* DIVs, of which you have **section, section_pbb, toc, syntax, review, review_pba and plain**.
+
+//TODO: Move this to the userdocs_macros.md or helpers.md...
+@html _="fatmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray" _open="@@{{self.<}}" _close="@@{{self.>}}"
+Let's begin by taking a look at the actual definition of [e_div.b]:
+[fatmargin._open] 
+[var.code.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
+@dump html="^.*section_$|^_p_section_content" var="section$"
+[var.code.wc_close]
+[fatmargin._close]
+
+If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the complete syntax for these generic groups:
+
+[syntax.wc_open(t="[E.lb]section[E.rb] attributes/methods")]
+[e_us(t="[b]**[smdraw.b] Versions**")] - these issue the *[smdwrap_parms.il(parms="nop")]*[b]
+[e_var.b(t="section")] - Creates a section with a title [e_var.b(t="section.t")][b]
+[e_var.b(t="section.with_content")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")][b]
+[e_var.b(t="section.wc_open")] - Creates a section with a title [e_var.b(t="section.t")] and stays open for content[b]
+[e_var.b(t="section.wc_close")] - Closes a previous call to [e_var.b(t="section.wc_open")][bb]
+[e_us(t="**Inline Versions**")] - these do **not** issue the *[smdwrap_parms.il(parms="nop")]*[b]
+[e_var.b(t="section.inline")] - Creates a section with a title [e_var.b(t="section.t")][b]
+[e_var.b(t="section.wc_inline")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")] [b]
+[e_var.b(t="section.wc_open_inline")] - Creates an inline section with a title [e_var.b(t="section.t")] and stays open for content[b]
+[e_var.b(t="section.wc_close_inline")] - Closes a previous call to [e_var.b(t="section.wc_open_inline")][bb]
+
+[section.wc_close]
+
+Now let's try each of the methods using the default values, starting with [e_var.b(t="section")]:
+
+[section]
+
+If we look at the HTML for it, you will see:
+
+[syntax.wc_open(t="Raw HTML emitted by the [E.lb]section[E.rb]")]
+[b]
+[tab.<][escape_var(v="var.section")][tab.>]
+[syntax.wc_close]
+
+As mentioned, this is in the [smdraw.b] section, so the parser emits the double **@@** prefix, which prevents the output formatter from prefixing any [smdwrap.b] tags.
+
+[e_var.b(t="section.with_content")] emits *[escape_var(v="var.section.with_content")]* which renders like this:
+[section.with_content]
+
+//TODO: We cannot escape_var these things that do {{pushlines}}. Look into that, is it easily fixable?
+
+//[e_var(t="section.wc_open")] emits *[escape_var(v="var.section.wc_open")]* which renders like this:
+
+[e_var(t="section.wc_open")] renders like this:
+
+[section.wc_open]
+
+//and now we have to write [e_var.b(t="section.wc_close")] to emit *[escape_var(v="var.section.wc_close")]* which will close the
+
+and now we have to write [e_var.b(t="section.wc_close")] which will close the previous div.
+We can keep typing lines, though, and they are added to this section.
+
+[section.wc_close]
+
+
 
 This will need to document each of the sections in the divs.md built-ins.
 The complete syntax is: 
-
-###&#91;{:.class}&lt;***---*** | ***@@@***&gt; &lt;***title_className | .***&gt; &#91;optional title&#93;
-
-The class prefix is optional, but handy if you want your DIV to be styled in a unique way. You can list one or more classes in dotted notation. E.g.: **{:.myclass}** or **{:.myclass1.myclass2}**. Then an optional class for the title, or '.' to indicate no title class, and finally, the optional title. Let's take a look at an example:
-
-When I write ***{:.section}@@@ divTitle This is my new DIV section*** at the start of a new line, I get this:
-{:.section}--- divTitle This is my new DIV section
-
-If I indent subsequent lines immediately following the DIV declaration, they become part of the DIV as a regular paragraph. For example, I'll add four (4) indented lines immediately after the previous DIV declaration and I get this:
-
-{:.section}--- divTitle This is my new DIV section
-    This is line 1
-    This is line 2
-    This is line 3
-    This is line 4
-
-There are a several built-in CSS classes that are defined in the accompanying **avscript_md.css** file, and you can add your own to get new DIVs formatted to your liking.
-
-{:.syntax}@@@ divTitle Predefined DIVs
-    [SP]
-    {:.indent.bigandbold}&#123;:.toc} -- For Table of Contents sections.
-    {:.indent.bigandbold}&#123;:.section} -- Generic section.
-    {:.indent.bigandbold}&#123;:.unused} -- Unused section.
-    {:.indent.bigandbold}&#123;:.syntax} -- Syntax section.
-    {:.indent.bigandbold}&#123;:.review} -- Review section.
-    {:.indent.bigandbold}&#123;:.plain} -- Plain section.
 
 Remember, you can add your own classes in a CSS file, and then reference them using the built-in formatting of **avscript_md**.
 

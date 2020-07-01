@@ -42,6 +42,7 @@
 
 
 @html _="ulist" _inherit="ul" class="ulist"
+@html _="ulistplain" _inherit="ul" class="ulist-plain"
 @html _="olist" _inherit="ol" class="olist"
 
 @var _="_lists_"\
@@ -59,6 +60,10 @@
       sID="ulist"\
       t="var.{{self.sID}} default title" \
       c="var.{{self.sID}} default content"
+
+@var _="ulistplain" _inherit="ulist"\
+      inline="{{html._div_extras_.<}}{{html.ulistplain.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"\
 
 @var _="olist"\
     _inherit="_lists_"\

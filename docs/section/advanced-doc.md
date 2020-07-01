@@ -15,12 +15,12 @@ This is worked around in some builtins using the .inline attribute to hold the c
 [docthis.close]
 
 
-
-
-{:.syntax}@@@ divTitle Syntax:
-    {:.indent}**@raw raw HTML**
-    {:.indent}**@image _id="name" src="/path/to/image" ...**
-    {:.indent}**@var _id="name" attr1="value1" _format="fmt string"**
+[syntax.wc_open(t="[smdraw.b], [smdimage.b] and [smdvar.b]")]
+[b]
+**@raw raw HTML**[b]
+**@image _id="name" src="/path/to/image" ...**[b]
+**@var _id="name" attr1="value1" _format="fmt string"**[b]
+[syntax.wc_close]
 
 These keywords, @raw, @image and @var, can be used to incorporate more control over the output of your document. I'll provide a high level look at each of them, but probably the best way to see what type of flexibility they offer would be to review some of the samples in the "tests" directory.
 
