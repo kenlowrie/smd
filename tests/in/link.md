@@ -8,6 +8,8 @@
 
 [plain(t="Testing @link builtin functions")]
 
+@import "[sys.root]/docs/userdocs_macros.md"
+
 @wrap nop
 [var.toc.wc_open(t="Table of Contents - Unittest [ns]")]
 [b]

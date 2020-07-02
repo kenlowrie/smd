@@ -16,5 +16,8 @@ src="print('required for code')"
 type="eval"
 
 
+// be sure to test the @code thing where the only way to change attribute defaults is to use @set...
+
+
 [docthis.close]
 

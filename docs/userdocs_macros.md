@@ -85,3 +85,4 @@
 [code.attr_replace_str(s_str="_p_note_" r_str="_p_rednote_" attr="var.rednote.inline")]
 [code.attr_replace_str(s_str="_p_note_" r_str="_p_rednote_" attr="var.rednote.wc_open_inline")]
 
+@html _="fatmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray" _open="@@{{self.<}}" _close="@@{{self.>}}"

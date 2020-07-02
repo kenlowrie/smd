@@ -139,10 +139,18 @@ Within your document, use the **[encode_smd(t="[link.bookmark1]")]** to place th
 
 I'm going to dump the various @link variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.
 
-@dump link="name|sample|bookmark1"
+[fatmargin._open] 
+[var.code.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
+@dump link="name$|sample|bookmark1"
+[var.code.wc_close]
+[fatmargin._close]
 
 [link.bookmark1]
 [wrap_h(t="### This is where I dropped the anchor for **bookmark1**")]
+
+Before we leave bookmarks, it is worth mentioning that this factory also supports the **_qlink** and **_qtext** attributes, just like standard links do. So, using our prior bookmark, here is the output when using them:
+
+[e_var.b(t="link.bookmark1._qlink[E.lp]\"my alternate bookmark name\"[E.rp]")] --[E.gt] [link.bookmark1._qlink(_qtext="my alternate bookmark name")]
 
 That's about all there is to using the smd built-ins for creating HTML bookmarks within a document.
 

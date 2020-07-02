@@ -9,14 +9,15 @@ We will discuss this namespace first, because it is the basis for all namespaces
 [link.var_syntax]
 [wrap_h.section(t="### @var Syntax")]
 
+//@dump var="toc" html="_toc_"
+//[escape_var(v="code.wrap_stack")]
 
 [syntax.wc_open(t="@var command syntax")]
+//[escape_var(v="code.wrap_stack")]
     [b]
     [tab.<][smdvar.b] **name="value" [E.lb] attr="value" [E.lb]...]&nbsp;]**[bb][tab.>]
     [tab.<][smdvar.b] **_id="name" [E.lb]_format="value" [E.lb]...[E.rb][E.sp]]**[bb][tab.>]
-    [question.wc_open]
-    [tab.<][tab.<]NOTE: either underscore [E.apos]**_**[E.apos] or [E.apos]**_id**[E.apos] can be used to name the variable.[tab.>][tab.>]
-    [question.wc_close]
+    {:.red}[tab.<][tab.<]NOTE: either underscore [E.apos]**_**[E.apos] or [E.apos]**_id**[E.apos] can be used to name the variable.[tab.>][tab.>]
 [syntax.wc_close]
 
 [smdvar.b] variables are the only ones that can use the shorthand **name="value"** notation when defining a variable. All the other namespaces require that the **[E.lb]*_* or *_id*[E.rb]** special attribute name be used to specify the variable name.  Note that when the shorthand notation is used, it is the first **name="value"** pair that will be used to name the variable. Each of the following examples does exactly the same thing:
@@ -257,11 +258,12 @@ You can also add new attributes to an existing variable with [smdset.b]. And, if
 
 Let's dump the variable 'fu' to see all the attributes and their values.
 
-[divx.<]
-[divx.<]
+
+[fatmargin._open] 
+[var.code.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
 @dump var="fu$"
-[divx.>]
-[divx.>]
+[var.code.wc_close]
+[fatmargin._close]
 
 And finally, you can also specify the namespace two different ways with [smdset.b]. Witness:
 
@@ -281,12 +283,11 @@ And finally, you can also specify the namespace two different ways with [smdset.
 
 One last time let's dump the variable 'fu' to see all the attributes and their values.
 
-[divx.<]
-[divx.<]
+[fatmargin._open] 
+[var.code.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
 @dump var="fu$"
-[divx.>]
-[divx.>]
-
+[var.code.wc_close]
+[fatmargin._close]
 
 Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.
 

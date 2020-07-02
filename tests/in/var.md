@@ -69,24 +69,6 @@ We can define variables using the syntax: ***@var name="value"***. Here's an exa
 @var whoami="Ken Lowrie"
 Now, whenever I write whoami inside square brackets **[ ]**, it will replace it with *Ken Lowrie*. Let's try that now. Hello, my name is *[whoami]*. That's pretty straightforward...
 
-// be sure to test the @code thing where the only way to change attribute defaults is to use @set...
-
-#### Starting with using @set to change compiled code in @code macros
-//Here is a difference between {{ }} and [ ]
-//TODO: Study this, and understand why it happens, and when it's useful to rely on it when writing macros and expansions.
-@var ENC="{{code.encode_smd(t=\"&nbsp;{{self.c}}\")}}" c="[smd_markdown_here]"
-I expect to get **smd_markdown_here**, but instead I get *[ENC]*
-@dump var="ENC"
-
-@var ENC="[code.encode_smd(t=\"&nbsp;[self.c]\")]" c="[smd_markdown_here]"
-So put [] around self.c to get **smd_markdown_here**, but instead I get *[ENC]*
-@dump var="ENC"
-
-@var ENC="[code.encode_smd(t=\"&nbsp;{{self.c}}\")]" c="[smd_markdown_here]"
-So finally, I put the [] around the code.encode_smd, and {{}} around self.c, and I get *[ENC]*
-@dump var="ENC"
-
-***[ENC]***
 [plain(t="Specific Testing of @set namespace with @var variables")]
 
 This might be added in the future, if there are things I specifically need to unittest that are not already covered.
@@ -95,16 +77,15 @@ This might be added in the future, if there are things I specifically need to un
 
 @import "[sys.root]/docs/userdocs_macros.md"
 
-
-@wrap nop
 [var.toc.wc_open(t="Table of Contents - Unittest [smdvar.il]")]
+@wrap nop
 [b]
 @import "[sys.root]/docs/section/nsvar-inc.md"
+@parw
 [var.toc.wc_close]
 
 [wrap_h(t="###Review link bookmarks from nsvar-inc.md")]
 @dump link="^ns_var|var_|^set_.*$"
-@parw
 
 @import "[sys.root]/docs/section/nsvar-doc.md"
 

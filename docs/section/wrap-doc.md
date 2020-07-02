@@ -146,7 +146,7 @@ If you pass *[E.lt]*, it returns the opening tag(s) sequence, and conversely, *[
 
 Finally, if you pass *[E.num]*, it returns the current stack size, which is really only useful for debugging purposes. Here's a some examples:
 
-[terminal.wc_open(t="Clearing the wrap stack")]
+[terminal.wc_open(t="Viewing the wrap stack")]
 [sp]
 [smdwrap_parms(parms="div, p")]
 [encode_smd(t="[code.wrap_stack]")]
