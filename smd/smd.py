@@ -298,9 +298,6 @@ class ScriptParser(StdioWrapper):
         was just read from the file. This logic has been placed in a class
         method so it can be used in both places.
         """
-        # remember if this line was indented...
-        self._line.was_indented = True if match('[ \t]', line) else False
-
         # save a copy of the original line...
         self._line.original_line = line
 
@@ -325,8 +322,6 @@ class ScriptParser(StdioWrapper):
             if not line.strip():
                 continue
             if line[0:2] != '//':
-                break
-            if line[0:3] == '///':
                 break
 
         self._setLineAttrs(line)
