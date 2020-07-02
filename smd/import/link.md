@@ -11,8 +11,11 @@
 @link _id="bm_template" \
       id="{{self._}}" \
       _format="@@ {{self._inline}}" \
-      link="<a href=\"#{{self.id}}\">{{self.text}}</a>" \
+      _link_o="<a href=\"#{{self.id}}\">"\
+      link="{{self._link_o}}{{self.text}}</a>" \
       text="TEXT-TO-DISPLAY-FOR-LINK"   \
-      _inline="<a id=\"{{self.id}}\"></a>"
+      _inline="<a id=\"{{self.id}}\"></a>"\
+      _qlink="{{self._link_o}}{{self._qtext}}</a>" \
+      _qtext="SETMETOLINKTEXT"
 @link _id="bm_factory" \
       _format="@link _id=\"{{self.nm}}\" _inherit=\"bm_template\" text=\"{{self.t}}\""

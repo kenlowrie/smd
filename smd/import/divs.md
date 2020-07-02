@@ -5,40 +5,40 @@
       _inherit="div" \
       class="extras"
 
-@var _="_df_html_p_" _str="@html _=\"_div_$DIVNAME$_\" _inherit=\"div\" class=\"$DIVNAME$\"\
-      \n@html _=\"_div_$DIVNAME$_pbb_\" _inherit=\"_div_$DIVNAME$_\" class=\"$DIVNAME$ pbb\"\
-      \n@html _=\"_p_$DIVNAME$_\" _inherit=\"p\" class=\"divTitle\"\
-      \n@html _=\"_p_$DIVNAME$_content_\" _inherit=\"p\""
+@var _="_df_html_p_" _str="@html _=\"_$DIVNAME$_div_\" _inherit=\"div\" class=\"$DIVNAME$\"\
+      \n@html _=\"_$DIVNAME$_div_pbb_\" _inherit=\"_$DIVNAME$_div_\" class=\"$DIVNAME$ pbb\"\
+      \n@html _=\"_$DIVNAME$_p_\" _inherit=\"p\" class=\"divTitle\"\
+      \n@html _=\"_$DIVNAME$_p_content_\" _inherit=\"p\""
 
-@var _="_df_html_code_" _str="@html _=\"_div_$DIVNAME$_\" _inherit=\"div\" class=\"$DIVNAME$\"\
+@var _="_df_html_code_" _str="@html _=\"_$DIVNAME$_div_\" _inherit=\"div\" class=\"$DIVNAME$\"\
       \n@html _=\"_$DIVNAME$_\" _inherit=\"code\" style=\"font-size:1.4em;font-weight:bold\"\
       \n@html _=\"_$DIVNAME$_content_\" _inherit=\"code\" style=\"font-size:1.2em\""
 
-@var _="_df_html_simple_" _str="@html _=\"_div_$DIVNAME$_\" _inherit=\"div\" class=\"extras\"\
-      \n@html _=\"_div_$DIVNAME$_pbb_\" _inherit=\"_div_$DIVNAME$_\" class=\"extras pbb\"\
-      \n@html _=\"_div_$DIVNAME$_pba_\" _inherit=\"_div_$DIVNAME$_\" class=\"extras pba\"\
-      \n@html _=\"_p_$DIVNAME$_\" _inherit=\"p\" class=\"$DIVNAME$\""
+@var _="_df_html_simple_" _str="@html _=\"_$DIVNAME$_div_\" _inherit=\"div\" class=\"extras\"\
+      \n@html _=\"_$DIVNAME$_div_pbb_\" _inherit=\"_$DIVNAME$_div_\" class=\"extras pbb\"\
+      \n@html _=\"_$DIVNAME$_div_pba_\" _inherit=\"_$DIVNAME$_div_\" class=\"extras pba\"\
+      \n@html _=\"_$DIVNAME$_p_\" _inherit=\"p\" class=\"$DIVNAME$\""
 
 @var _df_var_template="usage: this is meant to be inherited by _df_var_"\
       _format="@@ {{self.inline}}"\
       with_content="@@ {{self.wc_inline}}"\
       wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-      wc_open="{{code.pushlines(t=\"@wrap {{self.wrapID}}\n{{self.wc_open_inline}}\")}}"\
-      wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
+      wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}\")}}"\
+      wc_close="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline}}\")}}"\
 
 
 @var _="_df_var_p_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
-      inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}{{self.t}}{{html._p_$DIVNAME$_.>}}{{html._div_$DIVNAME$_.>}}\"\
-      wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}{{self.t}}{{html._p_$DIVNAME$_.>}}{{html._p_$DIVNAME$_content_.<}}\"\
+      inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_p_content_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
-      wrapID=\"_p_$DIVNAME$_content_\"\
+      wrapID=\"_$DIVNAME$_p_content_\"\
       t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\""
       
 @var _="_df_var_code_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
-      inline=\"{{html._div_$DIVNAME$_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._div_$DIVNAME$_.>}}\"\
-      wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_content_.<}}\"\
+      inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_div_.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_content_.<}}\"\
       wc_close_inline=\"{{html.code.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"_$DIVNAME$_content_\"\
@@ -46,8 +46,8 @@
       c=\"$DIVNAME$ default content\""
       
 @var _="_df_var_simple_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
-      inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}{{self.t}}{{html._p_$DIVNAME$_.>}}{{html._div_$DIVNAME$_.>}}\"\
-      wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}\"\
+      inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"nop\"\
@@ -70,17 +70,17 @@
 
 [_dfactory(dn="section")]
 @var _="section_pbb" _inherit="section"
-[code.attr_replace_str(s_str="html._div_section" r_str="html._div_section_pbb" attr="var.section_pbb.inline")]
-[code.attr_replace_str(s_str="html._div_section" r_str="html._div_section_pbb" attr="var.section_pbb.wc_open_inline")]
+[code.attr_replace_str(s_str="html._section_div" r_str="html._section_div_pbb" attr="var.section_pbb.inline")]
+[code.attr_replace_str(s_str="html._section_div" r_str="html._section_div_pbb" attr="var.section_pbb.wc_open_inline")]
 
 [_dfactory(dn="toc")]
 [_dfactory(dn="syntax")]
 
 [_dfactory(dn="review")]
-@html _="_div_review_pba_" _inherit="_div_review_" class="review pba"
+@html _="_review_pba_div_" _inherit="_review_div_" class="review pba"
 
 [_dfactory(dn="plain")]
-@set _="html._p_plain_" class="plainTitle"
+@set _="html._plain_p_" class="plainTitle"
 
 //as_code uses a different markup: essentially code instead of p
 [_dfactory.as_code(dn="code")]
@@ -105,27 +105,27 @@
 
 @html _="prewrap" _inherit="pre" style="white-space:pre-wrap"
 
-@html _id="_div_terminal_" \
+@html _id="_terminal_div_" \
       _tag="div" \
       class="plain" style="padding-left:3em;padding-right:3em"
  
-@html _id="_prewrap_terminal_" \
+@html _id="_terminal_prewrap_" \
       _inherit="prewrap" \
       class="divTitle"\
       style="background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}"
-@html _id="_prewrap_terminal_content_" \
+@html _id="_terminal_prewrap_content_" \
       _inherit="prewrap" \
       class="divTitle"\
       style="background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}"
 
 @var _id="terminal" \
           _format="@@ {{self.inline}}" \
-          inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_content_.<}}{{self.t}}{{html._prewrap_terminal_content_.>}}{{html._div_terminal_.>}}"\
+          inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_content_.<}}{{self.t}}{{html._terminal_prewrap_content_.>}}{{html._terminal_div_.>}}"\
           with_content="@@ {{self.wc_inline}}" \
           wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
           wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
           wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
-          wc_open_inline="{{html._div_terminal_.<}}{{html._prewrap_terminal_.<}}{{self.t}}{{html._prewrap_terminal_.>}}{{html._prewrap_terminal_content_.<}}"\
+          wc_open_inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_.<}}{{self.t}}{{html._terminal_prewrap_.>}}{{html._terminal_prewrap_content_.<}}"\
           wc_close_inline="{{html.prewrap.>}}{{html.div.>}}"\
           t="This is your terminal title" \
           c="This is your terminal content"

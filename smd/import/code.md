@@ -92,7 +92,7 @@
 @code _id="escape_var"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('$.v'))"\
-      v="Usage: code.escape.run(v=\"var_to_esc\")"
+      v="Usage: code.escape_var.run(v=\"var_to_esc\")"
 @code _id="encode_smd_var"\
       type="exec"\
       src="from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('$.v'))"\
