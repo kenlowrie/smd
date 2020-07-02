@@ -8,12 +8,13 @@ document the key elements (@var, @html, @code, @image, etc.) -- use the "tests/i
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
 @if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
-@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them...
+@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
 Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
 Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
 smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
 You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
-Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
+Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ...
+Split out the div sections specific to AV into the AVS.md file (from divs.md).
 
 Priority 2 | p2
 ---------------
@@ -52,7 +53,7 @@ Completed
 ---------
 Figure out how to implement the outer HTML Tag support
 Figure out how to implement the <head></head> support
-Implement the @embed support for inlining HTML, script, content, etc, without processing. [done]
+Implement the @embed support for inlining HTML, script, content, etc, without processing.
 Update the modified event to only track changes to the specific files being updated, instead of entire directory.
 Use a thread to run the window mainloop, so Tk refreshes more often, like when you are dragging the scroll bar, etc. couldn't make this work, gave up for now.
 Review all the mindmaps, evernotes, etc., and make 1 consolidated list (here) of the things I need to be focused on.
@@ -125,6 +126,8 @@ Start rewriting userdoc.md so it conforms to smd. Have it @import sections for e
 @wrap and @parw need to be aware of imported files. automatically pop stack when eof of current file is hit, and stop "@parw all|*" at the boundary of the imported file.
 Rework divs.md relying on _inherit to make all of the macros consistent with less duplicate code...
 Should I encode the &squot; entity in src= lines before compiling them? Would this solve the issue where the compiler errors out because I use &squot; to surround the src=? Not needed. Fixed bug in compile() ...
+Add user_import, user_base and user_root to the @sys variable.
+Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
 
 
 
