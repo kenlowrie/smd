@@ -51,12 +51,12 @@ Let's begin by taking a look at the actual definition of [e_div.b]:
 If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the complete syntax for these generic groups:
 
 [syntax.wc_open(t="[E.lb]section[E.rb] attributes/methods")]
-[e_us(t="[b]**[smdraw.b] Versions**")] - these emit the *[smdwrap_parms.il(parms="nop")]*[b]
+[e_us(t="[b]**[smdraw.b] Versions**")] - these emit the *[smdwrap_wp.il(parms="nop")]*[b]
 [e_var.b(t="section")] - Creates a section with a title [e_var.b(t="section.t")][b]
 [e_var.b(t="section.with_content")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")][b]
 [e_var.b(t="section.wc_open")] - Creates a section with a title [e_var.b(t="section.t")] and stays open for content[b]
 [e_var.b(t="section.wc_close")] - Closes a previous call to [e_var.b(t="section.wc_open")][bb]
-[e_us(t="**Inline Versions**")] - these do **not** emit the *[smdwrap_parms.il(parms="nop")]*[b]
+[e_us(t="**Inline Versions**")] - these do **not** emit the *[smdwrap_wp.il(parms="nop")]*[b]
 [e_var.b(t="section.inline")] - Creates a section with a title [e_var.b(t="section.t")][b]
 [e_var.b(t="section.wc_inline")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")] [b]
 [e_var.b(t="section.wc_open_inline")] - Creates an inline section with a title [e_var.b(t="section.t")] and stays open for content[b]
@@ -155,13 +155,13 @@ And now, [e_var.b(t="section.wc_inline")]:
 
 Essentially what you get when using them is output wrapped with whatever the current [smdwrap.b] tag happens to be. This gives you plenty of flexibility to style the output by only controlling the block elements that contain the **_inline** versions of each.
 
-Currently, the [smdwrap.b] tag is set to: ***[escape_var(v="code.wrap_stack")]***. Let's set it to [smdwrap_parms.b(parms="nop")], and then add the same two previous markdown elements:
+Currently, the [smdwrap.b] tag is set to: ***[escape_var(v="code.wrap_stack")]***. Let's set it to [smdwrap_wp.b(parms="nop")], and then add the same two previous markdown elements:
 @wrap nop
 [section.inline]
 [section.wc_inline]
 @parw
 
-Now they are identical to using the **non-_inline** versions, since [smdwrap_parms.b] is essentially telling the output formatter to write in raw mode! The final two inline modes will be covered in the next section on nesting DIVs, but there isn't any real magic to them. They match up to their counterparts exactly like the two we just reviewed...
+Now they are identical to using the **non-_inline** versions, since [smdwrap_wp.b] is essentially telling the output formatter to write in raw mode! The final two inline modes will be covered in the next section on nesting DIVs, but there isn't any real magic to them. They match up to their counterparts exactly like the two we just reviewed...
 
 [wrap_h.subsect(t="###Final notes on nesting DIVS")]
 Before we leave Generic DIVs, let's look at a few more examples of nesting. You can get into some precarious formatting issues if you aren't careful, due to how most modern browsers treat block elements, as you'll see below.
@@ -187,8 +187,6 @@ In this next example, we will do the same thing, but without any line breaks. It
 @@[section.wc_open_inline] Here is some content. [section.wc_open_inline] Here is different content. [section.wc_open_inline] And here's the last nested content. [section.wc_close_inline] But here is some additional written after closing the innermost div. [section.wc_close_inline] And some final content just before closing the outmost div... [section.wc_close_inline]
 
 In this final example on nesting, we are using the raw attributes again, just writing the content on separate lines. This behaves exactly like the first version above, just perhaps a bit more readable since you don't need the [smdraw.b] tags.
-
-also, should we rename everything to _DIVNAME_div, _DIVNAME_p, etc.? That seems smarter, things will sort together...
 
 [section.wc_open] 
     Here is some content.<br/>

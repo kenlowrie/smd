@@ -26,7 +26,7 @@ The concept for [smdwrap.b] is straightforward: whenever anything is written to 
 [sp]
 Begin by showing that input is not wrapped by default
 Begin by showing that input is not wrapped by default
-[smdwrap_parms(parms="p")]
+[smdwrap_wp(parms="p")]
 This line will be wrapped with HTML p tags
 [escape(t="<p>This line will be wrapped with HTML p tags</p>")]
 This line also...
@@ -44,10 +44,10 @@ It's important to note that any **@wrap** tags that are in effect during the pro
 
 [terminal.wc_open(t="@wrap tag nexting")]
 [sp]
-[smdwrap_parms(parms="div")]
+[smdwrap_wp(parms="div")]
 This line will be wrapped with HTML div tags
 [escape(t="<div>This line will be wrapped with HTML div tags</div>")]
-[smdwrap_parms(parms="p")]
+[smdwrap_wp(parms="p")]
 This line, however, will be wrapped in HTML p tags
 [escape(t="<p>This line, however, will be wrapped in HTML p tags</p>")]
 [smdparw]
@@ -61,7 +61,7 @@ In addition, you are not limited to a single HTML tag when wrapping. Take a look
 
 [terminal.wc_open(t="@wrap tag multiples")]
 [sp]
-[smdwrap_parms(parms="div, p")]
+[smdwrap_wp(parms="div, p")]
 This line will be wrapped with HTML both a div and a p tag
 [escape(t="<div><p>This line will be wrapped with HTML both a div and a p tag</p></div>")]
 [terminal.wc_close]
@@ -72,7 +72,7 @@ It is important to distinguish that if multiple tags are listed on a single **@w
 [sp]
 Begin by showing that input is not wrapped by default
 Begin by showing that input is not wrapped by default
-[smdwrap_parms(parms="div, p")]
+[smdwrap_wp(parms="div, p")]
 This line will be wrapped with HTML both a div and a p tag
 [escape(t="<div><p>This line will be wrapped with HTML both a div and a p tag</p></div>")]
 [smdparw]
@@ -95,10 +95,10 @@ The [smdwrap.b] has two specialized parameters **nop** and **null** which do the
 
 [terminal.wc_open(t="Temporarily suspend wrapping of content")]
 [sp]
-[smdwrap_parms(parms="div, p")]
+[smdwrap_wp(parms="div, p")]
 This line will be wrapped with HTML both a div and a p tag
 [escape(t="<div><p>This line will be wrapped with HTML both a div and a p tag</p></div>")]
-[smdwrap_parms(parms="null")]
+[smdwrap_wp(parms="null")]
 And now this line has no tags
 And now this line has no tags
 [smdparw]
@@ -111,23 +111,23 @@ The [smdparw.b] also accepts parameters: (**[E.ast] | all**) or alternatively a 
 
 [terminal.wc_open(t="Clearing the wrap stack")]
 [sp]
-[smdwrap_parms(parms="div, p")]
+[smdwrap_wp(parms="div, p")]
 This line will be wrapped with HTML both a div and a p tag
 [escape(t="<div><p>This line will be wrapped with HTML both a div and a p tag</p></div>")]
-[smdwrap_parms(parms="li")]
+[smdwrap_wp(parms="li")]
 And now this line a list item tag
 [escape(t="<li>And now this line a list item tag</li>")]
-[smdparw_parms(parms="*")]
+[smdparw_wp(parms="*")]
 And now this line has no tags
 And now this line has no tags
 [sp]
-[smdwrap_parms(parms="div")]
+[smdwrap_wp(parms="div")]
 This line will be wrapped with HTML div tags
 [escape(t="<div>This line will be wrapped with HTML div tags</div>")]
-[smdwrap_parms(parms="p")]
+[smdwrap_wp(parms="p")]
 This line, however, will be wrapped in HTML p tags
 [escape(t="<p>This line, however, will be wrapped in HTML p tags</p>")]
-[smdparw_parms(parms="25")]
+[smdparw_wp(parms="25")]
 [escape(t="WARNING: only 2 items found on the stack that can be cleared<br />")]
 
 [terminal.wc_close]
@@ -148,7 +148,7 @@ Finally, if you pass *[E.num]*, it returns the current stack size, which is real
 
 [terminal.wc_open(t="Viewing the wrap stack")]
 [sp]
-[smdwrap_parms(parms="div, p")]
+[smdwrap_wp(parms="div, p")]
 [encode_smd(t="[code.wrap_stack]")]
 [escape(t="<div><p><div><p></p></div></p></div>")]
 [sp]

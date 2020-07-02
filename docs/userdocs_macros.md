@@ -36,9 +36,9 @@
 @var _="smdcomment" _inherit="smdtag" p="//"
 @var _="smdcomment_wp" _inherit="smdtag" p="// {{self.parms}}"
 @var _="smdwrap" _inherit="smdtag" p="@wrap"
-@var _="smdwrap_parms" _inherit="smdtag" p="@wrap {{self.parms}}"
+@var _="smdwrap_wp" _inherit="smdtag" p="@wrap {{self.parms}}"
 @var _="smdparw" _inherit="smdtag" p="@parw"
-@var _="smdparw_parms" _inherit="smdtag" p="@parw {{self.parms}}"
+@var _="smdparw_wp" _inherit="smdtag" p="@parw {{self.parms}}"
 
 
 @html _="ulist" _inherit="ul" class="ulist"

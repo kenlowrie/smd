@@ -26,6 +26,7 @@ TEST::: [escape_var(v="code.wrap_stack")]
 
 ----------------------
 
+you can't use escape_var... if the variable has a {{code.pushlines}} in it. I think because it expands, not sure. It would be nice to figure out why this is, because several of the builtin code macros fail when attempting to use them with variables that use pushlines... Not just code.pushlines either. I think it has to do with get_value() in the namespace xface actually causing code to run??? figure it out!
 ----------------------
 
 ----------------------
