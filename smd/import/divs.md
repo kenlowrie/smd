@@ -23,7 +23,7 @@
       _format="@@ {{self.inline}}"\
       with_content="@@ {{self.wc_inline}}"\
       wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-      wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+      wc_open="{{code.pushlines(t=\"@wrap {{self.wrapID}}\n{{self.wc_open_inline}}\")}}"\
       wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
 
 
@@ -32,6 +32,7 @@
       wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}{{self.t}}{{html._p_$DIVNAME$_.>}}{{html._p_$DIVNAME$_content_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
+      wrapID=\"_p_$DIVNAME$_content_\"\
       t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\""
       
@@ -40,6 +41,7 @@
       wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_content_.<}}\"\
       wc_close_inline=\"{{html.code.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
+      wrapID=\"_$DIVNAME$_content_\"\
       t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\""
       
@@ -48,6 +50,7 @@
       wc_open_inline=\"{{html._div_$DIVNAME$_.<}}{{html._p_$DIVNAME$_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
+      wrapID=\"nop\"\
       t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\""
       
