@@ -360,8 +360,12 @@ class CodeHelpers():
     @staticmethod
     def pushvar(v=None):
 
+        debug = _get_debug()
+        fn="pushvar"
+
         #_line_cache.pushline("#### I was passed this: {}".format(v))
         if v is not None and type(v) is type(''):
+            debug.print(f"{fn}: get_ns_value() = {_get_ns_value(v)}")
             #_line_cache.pushline("#### get_ns_value returns: {}".format(HtmlUtils.escape_html(_get_ns_value(v))))
             lines = _get_ns_value(v).split('\n')[::-1]
             for line in lines:
