@@ -42,7 +42,7 @@ class HtmlUtils():
     @staticmethod
     def escape_html_var(s):
         v = _get_ns_value_safe(s)
-        return HtmlUtils.escape_html(v) if v else f"Variable {s} is not defined"
+        return HtmlUtils.escape_html(v) if v is not None else f"Variable {s} is not defined"
 
     @staticmethod
     def encode_smd(s):
@@ -55,7 +55,7 @@ class HtmlUtils():
     @staticmethod
     def encode_smd_var(s):
         v = _get_ns_value_safe(s)
-        return HtmlUtils.encode_smd(v) if v else f"Variable {s} is not defined"
+        return HtmlUtils.encode_smd(v) if v is not None else f"Variable {s} is not defined"
 
     @staticmethod
     def str_to_html_entity_mix(string):
