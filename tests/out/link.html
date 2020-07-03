@@ -519,7 +519,7 @@ NAMESPACE: link<br />
 <div class="extras"><p>Within your document, use the <strong>&#91;link.bookmark1]</strong> to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: <strong>&#91;link.bookmark1.link]</strong>, as I have done right here: <a href="#bookmark1">my bookmark text</a>. &lt;-- Click on that link and see that it takes you to the location below.</p></div>
 <div class="extras"><p>I'm going to dump the various @link variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="code"><code style="font-size:1.4em;font-weight:bold">[e_div.s] variable definition and associated <strong>@html</strong> elements</code><code style="font-size:1.2em">
+<div class="code"><code style="font-size:1.4em;font-weight:bold">[e_div.s] variable definition and associated <strong>@html</strong> elements</code>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -556,7 +556,7 @@ NAMESPACE: link<br />
 <br />
 </code>
 </div>
-</code></div>
+</div>
 </div>
 <a id="bookmark1"></a>
 <div class="extras"><h3>This is where I dropped the anchor for <strong>bookmark1</strong></h3></div>
@@ -601,6 +601,12 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>amp=</strong>&amp;amp;<br />
 &nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
 <br />
+<strong>EMOJI=</strong><br />&nbsp;&nbsp;<strong>mask=</strong>&amp;#x1F637;<br />
+&nbsp;&nbsp;<strong>shades=</strong>&amp;#x1F60E;<br />
+&nbsp;&nbsp;<strong>smile=</strong>&amp;#x1F642;<br />
+&nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
+<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="[ns]" _="d0" _format="d0_rval"<br />
 &nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;{{self.c}}")]<br />
 <br />
@@ -610,7 +616,7 @@ NAMESPACE: var<br />
 <br />
 <strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
 <br />
-<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_content_.&lt;}}"      wc_close_inline="{{html.code.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
+<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
 <strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_p_content_.&lt;}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
@@ -679,8 +685,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.code.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>code<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_code_content_<br />
 &nbsp;&nbsp;<strong>t=</strong>[e_div.s] variable definition and associated [smdhtml.b] elements<br />
@@ -732,6 +738,10 @@ NAMESPACE: var<br />
 <strong>dump=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>dump [ns]<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." link="."<br />
+<br />
+<strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+&nbsp;&nbsp;<strong>e=</strong>smile<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
@@ -1181,6 +1191,8 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
+<strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[sp][sp][sp][sp]<br />
+<br />
 <strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
@@ -1211,6 +1223,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+<br />
+<strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+&nbsp;&nbsp;<strong>wc_open_content=</strong>{{code.pushlines(t="@wrap nop\n{{html._terminal_prewrap_content_.&lt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_content=</strong>{{code.pushlines(t="{{html._terminal_prewrap_content_.&gt;}}\n@parw 1")}}<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />

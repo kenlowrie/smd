@@ -2,8 +2,10 @@
 [link.wrap]
 [wrap_h.chapter(t="## @wrap and @parw")]
 
-//[docthis.open(h="Add this to wrap-doc.md")]
-//[docthis.close]
+[docthis.open(h="Add this to wrap-doc.md")]
+
+Discuss [e_var.b(t="code.wrap_stack[E.lp]w=\"\"[E.rp]")] tag.[E.lt] and tag.[E.gt]
+[docthis.close]
 
 
 By default, [smd.b] does not place any type of wrapper around emitted contE. This is a good default, however, many times adding wrappers can greatly assist your formatting efforts. This is where @wrap comes in handy...

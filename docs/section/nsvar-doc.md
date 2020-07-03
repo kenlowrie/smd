@@ -9,11 +9,7 @@ We will discuss this namespace first, because it is the basis for all namespaces
 [link.var_syntax]
 [wrap_h.section(t="### @var Syntax")]
 
-//@dump var="toc" html="_toc_"
-//[escape_var(v="code.wrap_stack")]
-
 [syntax.wc_open(t="@var command syntax")]
-//[escape_var(v="code.wrap_stack")]
     [b]
     [tab.<][smdvar.b] **name="value" [E.lb] attr="value" [E.lb]...]&nbsp;]**[bb][tab.>]
     [tab.<][smdvar.b] **_id="name" [E.lb]_format="value" [E.lb]...[E.rb][E.sp]]**[bb][tab.>]
@@ -32,6 +28,10 @@ We will discuss this namespace first, because it is the basis for all namespaces
 
 Essentially, defining a variable in *any* of the namespaces is done in exactly this fashion. ***@ns*** followed by a series of attribute="value" pairs. Remember, only [smdvar.b] allows the shorthand **fu="bar"** format for naming the variable and setting the **_format** attribute value. All other namespaces require the alternate format.
 
+[note.wc_open]
+If you redeclare a variable, it will be overwritten with the new declaration. If you want to add attributes to an existing variable, use [smdset.b]
+[note.wc_close]
+
 [terminal.wc_open(t="Defining variables in other namespaces")]
 [sp]
 [smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
@@ -40,9 +40,35 @@ Essentially, defining a variable in *any* of the namespaces is done in exactly t
 [sp]
 [terminal.wc_close]
 
-Notice that in the @html and @link declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the @var variable. That is, when you write [e_var.b(t="var.fu")], [e_var.b(t="html.fu")], [e_var.b(t="link.fu")] in your markdown document, each would simply emit **bar**.
+Notice that in the [smdhtml.b] and [smdlink.b] declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the @var variable. That is, when you write [e_var.b(t="var.fu")], [e_var.b(t="html.fu")], [e_var.b(t="link.fu")] in your markdown document, each would simply emit **bar**.
 
-One other caveat to the shorthand notation: if you specify also specify the _format= attribute, whatever you attempt to assign as part of the declaration will be ignored, and the value specified with _format will win. For example:
+[terminal.wc_open(t="Using _format on [smdhtml.il] and [smdlink.il]")]
+[sp]
+[smdcomment] declare 'fu' in [smdvar.il], [smdhtml.il] & [smdlink.il]
+[smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
+[smdhtml_wp(parms="_id=\"fu\" _format=\"bar\"")]
+[smdlink_wp(parms="_id=\"fu\" _format=\"bar\"")]
+[sp]
+@var _id="fu" _format="bar"
+@html _id="fu" _format="bar"
+@link _id="fu" _format="bar"
+[smdcomment] now print each one
+[e_var(t="var.fu")] emits *[var.fu]*
+[e_var(t="html.fu")] emits *[html.fu]*
+[e_var(t="link.fu")] emits *[link.fu]*
+[smdcomment] Redefine html.fu and link.fu
+@html _id="fu"
+@link _id="fu"
+[smdcomment] now print each one
+[e_var(t="var.fu")] emits *[var.fu]*
+[e_var(t="html.fu")] emits *[escape_var(v="html.fu")]*
+[e_var(t="link.fu")] emits *[escape_var(v="link.fu")]*
+
+[terminal.wc_close]
+
+The reason that [e_var.b(t="html.fu")] emits *[escape_var(v="html.fu")]* will be explained in the [smdhtml.b] chapter on variable declarations. For now, just go with it. [e_moji.big(e="tonguewink")]
+
+One other caveat to the shorthand notation: if you specify also specify the **_format= attribute**, whatever you attempt to assign as part of the declaration will be ignored, and the value specified with _format will win. For example:
 
 @var fu="bar" _format="123"
 [terminal.wc_open(t="Using shorthand notation and specifiying _format")]
@@ -226,35 +252,35 @@ Attributes of any variable in any namespace can be added or updated at any time.
 
 You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let's see both of these things in action now.
 
-[terminal.wc_open(t="Adding attributes with [smdset.il]")]
-
-[smdcomment_wp(parms="add a new attribute to 'fu' using [smdset.il]")]
+[terminal2.wc_open(t="Adding attributes with [smdset.il]")]
+[terminal2.wc_open_content]
+[smdcomment_wp.il(parms="add a new attribute to 'fu' using [smdset.il]")]
 [smdset_wp.b(parms="_=\"fu\" attr2=\"value42\"")]
 @set _="fu" attr2="value42"
 [e_var.b(t="fu.attr2")] emits **[fu.attr2]**
 [sp]
-[smdcomment_wp(parms="adding a new attribute doesn't affect existing attributes in 'fu'")]
+[smdcomment_wp.il(parms="adding a new attribute doesn't affect existing attributes in 'fu'")]
 [e_var.b(t="fu.attr1")] still emits **[fu.attr1]**
 
 [sp]
-[smdcomment_wp(parms="using the _null_ attribute, add attr3 to 'fu'")]
+[smdcomment_wp.il(parms="using the _null_ attribute, add attr3 to 'fu'")]
 [e_var.b(t="fu._null_[E.lp]attr3=\"many ways to add attributes\"[E.rp]")]
 [fu._null_(attr3="many ways to add attributes")]
 [e_var.b(t="fu.attr3")] emits **[fu.attr3]**
 
 [sp]
-[smdcomment_wp(parms="We can also add and update variables at the same time")]
+[smdcomment_wp.il(parms="We can also add and update variables at the same time")]
 [e_var.b(t="fu._null_[E.lp]attr3=\"update 3rd attribute\" attr4=\"add 4th attribute\"[E.rp]")]
 [fu._null_(attr3="update 3rd attribute" attr4="add 4th attribute")]
 [e_var.b(t="fu.attr3")] emits **[fu.attr3]** and [e_var.b(t="fu.attr4")] emits **[fu.attr4]**
 
 [sp]
-[smdcomment_wp(parms="We can also add and update variables at the same time using [smdset.b]")]
+[smdcomment_wp.il(parms="We can also add and update variables at the same time using [smdset.b]")]
 [smdset_wp.b(parms="_=\"fu\" attr2=\"update attr2\" attr6=\"6th attribute\"")]
 @set _="fu" attr2="update attr2" attr6="6th attribute"
 [e_var.b(t="fu.attr2")] emits **[fu.attr2]** and [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
-
-[terminal.wc_close]
+[terminal2.wc_close_content]
+[terminal2.wc_close]
 
 Let's dump the variable 'fu' to see all the attributes and their values.
 

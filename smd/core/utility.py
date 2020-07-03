@@ -136,6 +136,10 @@ class CodeHelpers():
                 rs = f"{tag.end}"
             elif item == '#':
                 rs = f"{len(stack)}"
+            elif item == 'tag.<':
+                rs = f"{tag.tag_start}"
+            elif item == 'tag.>':
+                rs = f"{tag.tag_end}"
             else:
                 # anything else just return the entire tag
                 rs = f"{tag.start}{tag.end}"

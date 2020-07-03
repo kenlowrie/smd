@@ -117,7 +117,7 @@ Need to move the additional useful variable definitions from this chapter to the
 [wrap_h.section(t="### README.md from repository root")]
 Just below, I will import the README.md from the root directory of this repository. That file uses a more standard markdown syntax, and if you review the rendered output, you will see where certain things do not expand as the syntax is not supported by [smd.b]. The most obvious are the inline and reference links, although this is a rather simple example, not intended to show all differences between **markdown** and [smd.b].
 
-@html _="divxplus" _inherit="divx" style="margin-left:7em;margin-right:7em;background-color:lightgray;padding:2em;font-size:1.3em"
+@html _="divxplus" _inherit="divx" style="margin-left:7em;margin-right:7em;background-color:lightgray;padding:0 1em .5em;font-size:1.3em"
 @wrap divx
 @@[divxplus.<]
 @import "[sys.root]/README.md"

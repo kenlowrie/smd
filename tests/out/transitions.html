@@ -259,7 +259,7 @@ NAMESPACE: var<br />
 <br />
 <strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
 <br />
-<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_content_.&lt;}}"      wc_close_inline="{{html.code.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
+<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
 <strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_p_content_.&lt;}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
@@ -322,8 +322,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.code.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>code<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_code_content_<br />
 &nbsp;&nbsp;<strong>t=</strong>code default title<br />
@@ -542,6 +542,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+<br />
+<strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+&nbsp;&nbsp;<strong>wc_open_content=</strong>{{code.pushlines(t="@wrap nop\n{{html._terminal_prewrap_content_.&lt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_content=</strong>{{code.pushlines(t="{{html._terminal_prewrap_content_.&gt;}}\n@parw 1")}}<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
@@ -857,6 +870,9 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 &nbsp;&nbsp;<strong>style=</strong>border-bottom:2px solid black<br />
 <br />
+<strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>em<br />
+<br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
 &nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
@@ -932,6 +948,9 @@ NAMESPACE: html<br />
 <br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>strong<br />
 <br />
 <strong>tab=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

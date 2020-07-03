@@ -38,8 +38,8 @@
       
 @var _="_df_var_code_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_div_.>}}\"\
-      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_content_.<}}\"\
-      wc_close_inline=\"{{html.code.>}}{{html.div.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}\"\
+      wc_close_inline=\"{{html.div.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"_$DIVNAME$_content_\"\
       t=\"$DIVNAME$ default title\" \
@@ -129,6 +129,15 @@
           wc_close_inline="{{html.prewrap.>}}{{html.div.>}}"\
           t="This is your terminal title" \
           c="This is your terminal content"
+
+@var _id="terminal2" _inherit="terminal"\
+          wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_\")}}"\
+          wc_close="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline}}\")}}"\
+          wc_open_inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_.<}}{{self.t}}{{html._terminal_prewrap_.>}}"\
+          wc_close_inline="{{html.div.>}}"\
+          wc_open_content="{{code.pushlines(t=\"@wrap nop\n{{html._terminal_prewrap_content_.<}}\")}}"\
+          wc_close_content="{{code.pushlines(t=\"{{html._terminal_prewrap_content_.>}}\n@parw 1\")}}"
+
 
 //@dump var="[_dfactory.dn]|review" html=".*[_dfactory.dn]|^_div_rev|^_p_rev"
 //@dump var="[_dfactory.dn]|code" html=".*[_dfactory.dn]|^_div_cod|^_code"

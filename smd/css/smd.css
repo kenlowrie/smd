@@ -416,6 +416,12 @@ p + p {
     list-style-type: decimal;
 }
 
+.olist-Alpha{ list-style-type: upper-alpha; }
+.olist-alpha{ list-style-type: lower-alpha; }
+.olist-Roman{ list-style-type: upper-roman; }
+.olist-roman{ list-style-type: lower-roman; }
+.olist-Greek{ list-style-type: upper-greek; }
+.olist-greek{ list-style-type: lower-greek; }
 
 div.extras p.note, div.extras p.question, div.extras p.vo, div.extras p.important, div.extras p.greyout, div.extras p.box, div.extras ul.ulist, div.extras ol.olist, div.extras ul.ulist-plain{
     margin-left:3em;

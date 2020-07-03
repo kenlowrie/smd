@@ -657,6 +657,9 @@ NAMESPACE: link<br />
 &nbsp;
 </pre></div>
 <div class="extras"><p>Essentially, defining a variable in <em>any</em> of the namespaces is done in exactly this fashion. <em><strong>@ns</strong></em> followed by a series of attribute="value" pairs. Remember, only <strong>@var</strong> allows the shorthand <strong>fu="bar"</strong> format for naming the variable and setting the <strong>_format</strong> attribute value. All other namespaces require the alternate format.</p></div>
+<div class="extras"><p class="note">
+If you redeclare a variable, it will be overwritten with the new declaration. If you want to add attributes to an existing variable, use <strong>@set</strong>
+</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining variables in other namespaces</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 @var _id="fu" _format="bar"
@@ -664,8 +667,26 @@ NAMESPACE: link<br />
 @link _id="fu"
 &nbsp;
 </pre></div>
-<div class="extras"><p>Notice that in the @html and @link declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the @var variable. That is, when you write <strong>&lsqb;var.fu&rsqb;</strong>, <strong>&lsqb;html.fu&rsqb;</strong>, <strong>&lsqb;link.fu&rsqb;</strong> in your markdown document, each would simply emit <strong>bar</strong>.</p></div>
-<div class="extras"><p>One other caveat to the shorthand notation: if you specify also specify the _format= attribute, whatever you attempt to assign as part of the declaration will be ignored, and the value specified with _format will win. For example:</p></div>
+<div class="extras"><p>Notice that in the <strong>@html</strong> and <strong>@link</strong> declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the @var variable. That is, when you write <strong>&lsqb;var.fu&rsqb;</strong>, <strong>&lsqb;html.fu&rsqb;</strong>, <strong>&lsqb;link.fu&rsqb;</strong> in your markdown document, each would simply emit <strong>bar</strong>.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using _format on @html and @link</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&nbsp;
+// declare 'fu' in @var, @html & @link
+@var _id="fu" _format="bar"
+@html _id="fu" _format="bar"
+@link _id="fu" _format="bar"
+&nbsp;
+// now print each one
+&lsqb;var.fu&rsqb; emits <em>bar</em>
+&lsqb;html.fu&rsqb; emits <em>bar</em>
+&lsqb;link.fu&rsqb; emits <em>bar</em>
+// Redefine html.fu and link.fu
+// now print each one
+&lsqb;var.fu&rsqb; emits <em>bar</em>
+&lsqb;html.fu&rsqb; emits <em>&lt;fu&gt;&lt;/fu&gt;</em>
+&lsqb;link.fu&rsqb; emits <em>&lt;a&gt;&lt;/a&gt;</em>
+</pre></div>
+<div class="extras"><p>The reason that <strong>&lsqb;html.fu&rsqb;</strong> emits <em>&lt;fu&gt;&lt;/fu&gt;</em> will be explained in the <strong>@html</strong> chapter on variable declarations. For now, just go with it. <span style="font-size:2em">&#x1F61C;</span></p></div>
+<div class="extras"><p>One other caveat to the shorthand notation: if you specify also specify the <strong>_format= attribute</strong>, whatever you attempt to assign as part of the declaration will be ignored, and the value specified with _format will win. For example:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using shorthand notation and specifiying _format</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 @var fu="bar" _format="123"
@@ -788,7 +809,8 @@ Need some table/header/row/data helpers
 </pre></div>
 <div class="extras"><p class="note">The <strong>_null_</strong> attribute illustrates an important concept with the attributes of variables in [smd.b]. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except <strong>@code</strong>; in the <strong>@code</strong> namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.<br /><br />As previously mentioned, the only way to change the value of a variable in the <strong>@code</strong> namespace is by using <strong>@set</strong>. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.</p></div>
 <div class="extras"><p>You can also add new attributes to an existing variable with <strong>@set</strong>. And, if you <strong>@set</strong> a variable that does not exist, <strong>@set</strong> will create it. Let's see both of these things in action now.</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding attributes with @set</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding attributes with @set</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 // add a new attribute to 'fu' using @set
 <strong>@set _="fu" attr2="value42"</strong>
 <strong>&lsqb;fu.attr2&rsqb;</strong> emits <strong>value42</strong>
@@ -807,10 +829,11 @@ Need some table/header/row/data helpers
 // We can also add and update variables at the same time using <strong>@set</strong>
 <strong>@set _="fu" attr2="update attr2" attr6="6th attribute"</strong>
 <strong>&lsqb;fu.attr2&rsqb;</strong> emits <strong>update attr2</strong> and <strong>&lsqb;fu.attr6&rsqb;</strong> emits <strong>6th attribute</strong>
-</pre></div>
+</pre>
+</div>
 <div class="extras"><p>Let's dump the variable 'fu' to see all the attributes and their values.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="code"><code style="font-size:1.4em;font-weight:bold">Current definition of &apos;fu&apos; variable</code><code style="font-size:1.2em">
+<div class="code"><code style="font-size:1.4em;font-weight:bold">Current definition of &apos;fu&apos; variable</code>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -825,7 +848,7 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-</code></div>
+</div>
 </div>
 <div class="extras"><p>And finally, you can also specify the namespace two different ways with <strong>@set</strong>. Witness:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Specifying the namespace</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
@@ -839,7 +862,7 @@ NAMESPACE: var<br />
 </pre></div>
 <div class="extras"><p>One last time let's dump the variable 'fu' to see all the attributes and their values.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="code"><code style="font-size:1.4em;font-weight:bold">Current definition of &apos;fu&apos; variable</code><code style="font-size:1.2em">
+<div class="code"><code style="font-size:1.4em;font-weight:bold">Current definition of &apos;fu&apos; variable</code>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -854,7 +877,7 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-</code></div>
+</div>
 </div>
 <div class="extras"><p>Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the <strong>@var</strong> namespace.</p></div>
 <div class="extras"><p class="question">
@@ -897,6 +920,12 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>amp=</strong>&amp;amp;<br />
 &nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
 <br />
+<strong>EMOJI=</strong><br />&nbsp;&nbsp;<strong>mask=</strong>&amp;#x1F637;<br />
+&nbsp;&nbsp;<strong>shades=</strong>&amp;#x1F60E;<br />
+&nbsp;&nbsp;<strong>smile=</strong>&amp;#x1F642;<br />
+&nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
+<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="[ns]" _="d0" _format="d0_rval"<br />
 &nbsp;&nbsp;<strong>_format=</strong>[code.encode_smd(t="&amp;nbsp;{{self.c}}")]<br />
 <br />
@@ -908,7 +937,7 @@ NAMESPACE: var<br />
 <br />
 <strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
 <br />
-<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_content_.&lt;}}"      wc_close_inline="{{html.code.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
+<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
 <strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_p_content_.&lt;}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
 <br />
@@ -1004,8 +1033,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.code.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>code<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_code_content_<br />
 &nbsp;&nbsp;<strong>t=</strong>Current definition of [E.apos]fu[E.apos] variable<br />
@@ -1061,6 +1090,10 @@ NAMESPACE: var<br />
 <strong>dump=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>dump [ns]<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="."<br />
+<br />
+<strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+&nbsp;&nbsp;<strong>e=</strong>tonguewink<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
@@ -1407,7 +1440,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
-&nbsp;&nbsp;<strong>parms=</strong>_id="fu"<br />
+&nbsp;&nbsp;<strong>parms=</strong>_id="fu" _format="bar"<br />
 <br />
 <strong>smdimage=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@image<br />
 &nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
@@ -1450,7 +1483,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
-&nbsp;&nbsp;<strong>parms=</strong>_id="fu"<br />
+&nbsp;&nbsp;<strong>parms=</strong>_id="fu" _format="bar"<br />
 <br />
 <strong>smdparw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw<br />
 &nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
@@ -1575,6 +1608,8 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
+<strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[sp][sp][sp][sp]<br />
+<br />
 <strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
@@ -1605,6 +1640,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>Specifying the namespace<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+<br />
+<strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>Adding attributes with [smdset.il]<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+&nbsp;&nbsp;<strong>wc_open_content=</strong>{{code.pushlines(t="@wrap nop\n{{html._terminal_prewrap_content_.&lt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_content=</strong>{{code.pushlines(t="{{html._terminal_prewrap_content_.&gt;}}\n@parw 1")}}<br />
 <br />
 <strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />

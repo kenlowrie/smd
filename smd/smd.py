@@ -478,11 +478,11 @@ class ScriptParser(StdioWrapper):
                 def __init__(self,tags, ns_parseVariableNameInNamespace, markdown, oprint):
                     # add ability to push a null or nop onto the stack, to temporarily disable @wrap output
                     if tags.lower() in ['null', 'nop']:
-                        self._start = self._end = ''
+                        self._start = self._end = self._tag_start = self._tag_end = ''
                         return
 
-                    self._start = None
-                    self._end = None
+                    self._start = self._end = self._tag_start = self._tag_end = None
+
                     tag_names = []
                     html_ns = 'html'
                     ns_parseVariableNameInNamespace
@@ -503,15 +503,20 @@ class ScriptParser(StdioWrapper):
 
                         tag_names.append(f"{html_ns}.{self._name}")
                     # we successively parsed all the tags, now let's build the start and end tag strings and save them.
-                    self._start = ''
-                    self._end = ''
+                    self._start = self._end = self._tag_start = self._tag_end = ''
+
                     # For the opening, do them in order, picking up tag.< for each
                     for tag in tag_names:
+                        self._tag_start += f"{tag},"
                         self._start += markdown(f"[{tag}.<]")
                     
                     # For the ending, do them in reverse order, picking up tag.> for each
                     for tag in tag_names[::-1]:
+                        self._tag_end += f"{tag},"
                         self._end += markdown(f"[{tag}.>]")
+                    
+                    self._tag_start = self._tag_start[0:-1]
+                    self._tag_end = self._tag_end[0:-1]
 
                 @property
                 def start(self):
@@ -520,6 +525,14 @@ class ScriptParser(StdioWrapper):
                 @property
                 def end(self):
                     return self._end
+
+                @property
+                def tag_start(self):
+                    return self._tag_start
+
+                @property
+                def tag_end(self):
+                    return self._tag_end
 
 
             from .core.utility import HtmlUtils
@@ -530,6 +543,7 @@ class ScriptParser(StdioWrapper):
                                                     HtmlUtils.escape_html(m.group(2)))
                 )
                 if( m.group(1) == 'wrap'):
+                    self.debug_smd.print(f"-->{m.group(2)}")
                     # Parse the tag(s) and construct the object instance
                     tag = wrapTag(m.group(2), self._ns.parseVariableName, self._md.markdown, self.oprint)
                     if tag.start is not None and tag.end is not None:

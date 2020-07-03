@@ -44,6 +44,13 @@
 @html _="ulist" _inherit="ul" class="ulist"
 @html _="ulistplain" _inherit="ul" class="ulist-plain"
 @html _="olist" _inherit="ol" class="olist"
+@html _="olist_template" _inherit="ol"  _format="@@{{self._inline}}" _inline="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"
+@html _="olistAlpha" _inherit="olist_template" class="olist-Alpha"
+@html _="olistalpha" _inherit="olist_template" class="olist-alpha"
+@html _="olistRoman" _inherit="olist_template" class="olist-Roman"
+@html _="olistroman" _inherit="olist_template" class="olist-roman"
+@html _="olistGreek" _inherit="olist_template" class="olist-Greek"
+@html _="olistgreek" _inherit="olist_template" class="olist-greek"
 
 @var _="_lists_"\
       _format="@@ {{self.inline}}"\
@@ -86,3 +93,21 @@
 [code.attr_replace_str(s_str="_p_note_" r_str="_p_rednote_" attr="var.rednote.wc_open_inline")]
 
 @html _="fatmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray" _open="@@{{self.<}}" _close="@@{{self.>}}"
+
+@var EMOJI="Emoji Constants: {{self._public_attrs_}}" \
+    mask="&#x1F637;"\
+    shades="&#x1F60E;"\
+    smile="&#x1F642;"\
+    tonguewink="&#x1F61C;"
+
+@html _="spanfs" _inherit="span" \
+      _s1="font-size:1em" \
+      _s2="font-size:2em" \
+      _format="<{{self._tag}} style=\"{{self._s1}}\">"\
+      _big="<{{self._tag}} style=\"{{self._s2}}\">"
+
+@var e_moji="{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.>}}" \
+      big="{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.>}}"\
+      e="smile"
+
+@var sp4="[sp][sp][sp][sp]"

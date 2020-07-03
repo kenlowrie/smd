@@ -31,13 +31,16 @@ In order to do that, we will start by providing an overview of the repository la
 [terminal.wc_open(t="[smd] repository structure")]
 [sp]
 [e_us(t="root")]
-[DC.1]debug - Python scripts used for debugging [smd.b], [smdparse.b] and [ismd.b][DC.eol]
+[DC.1]debug - Python scripts used for debugging [smd.b], [smdparse.b] and [ismd.b]
+[DC.2a]debug.py - Python script used for debugging [smd.b]
+[DC.2a]debug-1.py - Python script used for debugging [smdparse.b]
+[DC.2z]debug-2.py - Python script used for debugging [ismd.b][DC.eol]
 [DC.1][e_us(t="docs")] - user guide, etc.
 [DC.2a]export - a rendered version of the user documentation in HTML format
 [DC.2a]import - imports used by the documentation
 [DC.2a]section - chapters that make up the user documentation
 [DC.2z]userdocs.md - the top level user documentation file
-[DC.3z]**This file is parsed to create the documentation using** *[smdparse] -f userdocs.md -c*[DC.eol]
+[DC.3z]**Parsed using *[smdparse] -f userdocs.md -c -d export* to create *docs/export/userdocs.html*** [DC.eol]
 [DC.1][e_us(t="samples")] - example [smd.b] files
 [DC.2z][e_us(t="obs")] - sample OBS Studio files
 [DC.3a]clock - displays an updating digital clock via an OBS Browser link
@@ -96,32 +99,51 @@ To close [smd], type **CTRL-D ([DC.ctrl]D)** (yes, macOS users, that's **CTRL-D*
 
 You can also terminate [smd] by pressing **CTRL-C ([DC.ctrl]C)**, however that results in the **SIG-INT** signal being sent, which will cause an unorderly shutdown (i.e. none of the closing tags will be written, etc.)
 
-[smdparse.b] is a higher level command line interface that sits atop [smd.b]. It imports the direct [smd] entry point, so it's using the exact same underlying code to parse your documents, however, it adds several useful options for automation. It also provides a foundation for the final major component, [ismd.b].
+[smdparse.b] is a higher level command line interface that sits atop [smd.b]. It imports the direct [smd] entry point, so it's using the exact same underlying code to parse your documents, however, it adds several useful options for automation. It also provides the foundation for the final major component, [ismd.b].
 
 [ismd.b] is an **interactive** version of [smd] that provides three different methods for viewing the output from [smd]. What's unique about it is that it monitors **all** of the underlying files that are processed by [smd] for changes, and when it detects a change, it automatically parses the document again, and updates the output monitors. There are three different monitors currently supported by [ismd.b]: **browser** (the default), which displays the output in a browser window; **hostgui**, which displays the raw HTML output in a host window and finally **endpoint**, which creates an HTTP endpoint on the localhost that can be opened by any web browser. 
 
 Both [smdparse.b] and [ismd.b] will be covered in detail in their respective chapters.
 
-[wrap_h.section(t="### startup & shutdown of [smd]")]
+The following provides a high-level overview of the startup of [smd.b]. This is the basic flow when no command line parameters are passed to [smd.b].
 
-[terminal(t="$ smd")]
+@html _="smallprint" _inherit="p" style="font-size: .8em;margin:-1.5em;padding:2em;"
+
+[fatmargin._open]
+[var.code.wc_open(t="High level overview of startup")]
 
 [olist.wc_open]
-The following provides a high level layout of the startup of smd:
-
-load builtins.md - which loads ...
+import builtins.md - which imports several other modules
+@@[olistAlpha.<]
+import defaults.md
+import common.md
+import code.md
+import link.md
+import html.md
+@@[olistAlpha.>]
+import opening body markup
+@@[olistAlpha.<]
 import def_html.md
 import def_head.md
 import def_body.md
+@@[olistAlpha.>]
 
-command prompt
+@@[divx.<]
+@wrap smallprint
+*[smdcomment.il] command prompt for interactive input unless -f filename or [E.lt] filename (redirection from shell)*[b]*[smdcomment.il] [e_tag(t="CTRL-D")] ends the input **(or EOF if -f filename or [E.lt] filename (redirection from shell))***
+@parw
+@@[divx.>]
 
-[e_tag(t="CTRL-D")] ends the input (or EOF if -f or [E.lt] (redirection) used
-
+import closing body markup
+@@[olistAlpha.<]
 import def_bodyclose.md
 import def_close.md
+@@[olistAlpha.>]
 
 [olist.wc_close]
+
+[var.code.wc_close]
+[fatmargin._close]
 
 [wrap_h.section(t="## smd command line parameters")]
 
