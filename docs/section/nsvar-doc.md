@@ -1,15 +1,15 @@
 
 [link.ns_var]
-[wrap_h.chapter(t="## The @var Namespace")]
+[wrap_h.chapter(t="## The [smdvar.il] Namespace")]
 
-The @var keyword is used to construct a more flexible type of variable for your documents. These variables are stored in the @var namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
+The [smdvar.il] keyword is used to construct a more flexible type of variable for your documents. These variables are stored in the [smdvar.il] namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
 
 We will discuss this namespace first, because it is the basis for all namespaces, and most of the features, syntax and semantics apply to the others. Given that, it is a great starting point for our discussion on creating variables for use in [smd.b] documents.
 
 [link.var_syntax]
-[wrap_h.section(t="### @var Syntax")]
+[wrap_h.section(t="### [smdvar.il] Syntax")]
 
-[syntax.wc_open(t="@var command syntax")]
+[syntax.wc_open(t="[smdvar.il] command syntax")]
     [b]
     [tab.<][smdvar.b] **name="value" [E.lb] attr="value" [E.lb]...]&nbsp;]**[bb][tab.>]
     [tab.<][smdvar.b] **_id="name" [E.lb]_format="value" [E.lb]...[E.rb][E.sp]]**[bb][tab.>]
@@ -40,7 +40,7 @@ If you redeclare a variable, it will be overwritten with the new declaration. If
 [sp]
 [terminal.wc_close]
 
-Notice that in the [smdhtml.b] and [smdlink.b] declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the @var variable. That is, when you write [e_var.b(t="var.fu")], [e_var.b(t="html.fu")], [e_var.b(t="link.fu")] in your markdown document, each would simply emit **bar**.
+Notice that in the [smdhtml.b] and [smdlink.b] declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the [smdvar.il] variable. That is, when you write [e_var.b(t="var.fu")], [e_var.b(t="html.fu")], [e_var.b(t="link.fu")] in your markdown document, each would simply emit **bar**.
 
 [terminal.wc_open(t="Using _format on [smdhtml.il] and [smdlink.il]")]
 [sp]
@@ -80,8 +80,8 @@ Then [e_var(t="fu")] will emit **[fu]** instead of *bar*
 [terminal.wc_close]
 
 
-[link.var_syntax]
-[wrap_h.section(t="### @var Variable names")]
+[link.var_names]
+[wrap_h.section(t="### [smdvar.il] Variable names")]
 
 Variable names in the [smdvar.b] namespace, well actually, in **any** namespace are restricted to these requirements:
 
@@ -132,7 +132,7 @@ a-b - valid
 As you can see, attribute names are not quite as restrictive in their naming as variable names, allowing dashes to be used, and also allowing names to begin with numbers.
 
 [link.var_attrs]
-[wrap_h.section(t="### @var Built-in Attributes")]
+[wrap_h.section(t="### [smdvar.il] Built-in Attributes")]
 
 [smdvar.b] variables have a number of built-in attributes to extract common components. In fact, all namespaces share these built-in attributes, and in the case of variables based on the [smdhtml.b] namespace, they are relied on much more, but nonetheless, they can be useful in any of the namespaces, if for no other reason to assist in debugging complex declarations.
 
@@ -165,7 +165,7 @@ _null_=A null attribute - emits nothing, used to set default values of any publi
 [terminal.wc_close]
 
 [link.var_misc]
-[wrap_h.subsect(t="### @var Miscellaneous Examples")]
+[wrap_h.subsect(t="### [smdvar.il] Miscellaneous Examples")]
 
 Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.
 
@@ -201,7 +201,7 @@ So that's pretty cool, but there's a bit more to the _format attribute. You can 
 
 Using that, you can build some pretty powerful tools for automating frequently used tasks in your documents. Take a look at the **film.md**, **image.md** and **avs.md** tests to get an idea of what you can do.
 
-Before we leave this, take note of the difference between {{first}} and {{self.first}}. Both syntaxes are valid, but the first one references the normal variable first, while the second one (self.first) references the first attribute defined within the *varname* variable. Also take note that you can reference the attributes of other @var variables as long as you qualify them. Let me show you a quick example of that. Take this:
+Before we leave this, take note of the difference between {{first}} and {{self.first}}. Both syntaxes are valid, but the first one references the normal variable first, while the second one (self.first) references the first attribute defined within the *varname* variable. Also take note that you can reference the attributes of other [smdvar.il] variables as long as you qualify them. Let me show you a quick example of that. Take this:
 
 [tab.<][smdvar_wp.b(parms="_id=\"var1\" first=\"ken\" last=\"lowrie\"")][tab.>]
 [tab.<][smdvar_wp.b(parms="_id=\"var2\" prefix=\"mr.\" _format=\"{{self.prefix}} {{var1.first}} {{var1.last}}\"")][tab.>]
@@ -334,3 +334,5 @@ Discuss @set and also [e_var.b(t="var._null_[E.lp]attr=\"\"[E.rp]")]
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]
 
+
+[link.toc.link]
