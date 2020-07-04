@@ -330,18 +330,6 @@ class ScriptParser(StdioWrapper):
         # return the non-marked down version
         return self._line.original_line
 
-    def _addBookmark(self, linktext):
-        """
-        Generate unique HTML bookmark and return the inline <a> tag to define it.
-
-        Arguments:
-            linktext -- optional text to wrap the <a> element around.
-
-        Returns:
-            HTML <a> element as string: <a id="GENERATED UNIQUE_ID">linktext</a>
-        """
-        return "<a id=\"{0}\"></a>\n".format(self._shotListQ.addBookmark(linktext))
-
     def _stripClass(self, line):
         """
         Strip the {:.class} prefix off line, and return tuple of (class, line)
