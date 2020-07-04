@@ -155,3 +155,5 @@ Before we leave bookmarks, it is worth mentioning that this factory also support
 That's about all there is to using the smd built-ins for creating HTML bookmarks within a document.
 
 @parw 1
+
+[link.toc.link]

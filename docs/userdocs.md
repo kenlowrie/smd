@@ -9,18 +9,7 @@
 @import '$/userdocs_macros.md'
 @import '$/import/userguideheading.md'
 
-@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***" short_b="**{{self.short}}**" desc_b="**{{self.desc}}**"
-
-@var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd" short="Interactive Script Markdown"
-@var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"  short="Script Markdown Parser"
-
-//@dump var=".*smd"
-
-// The name SMD (smd) should be abstracted in a variable at the lowest level, such that I can change it on the fly and it would reflect throughout the docs.
-
 // More helpers for the user manual. Add anything useful to built-ins once completed.
-
-@var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
 
 @html _="codeblk" _inherit="code" style="display:block;color:purple"
 
@@ -32,15 +21,16 @@
 
 // Override some of the default helpers
 
-
-
+[link.bm_factory(nm="toc" t="Table of Contents")]
 [link.bm_factory(nm="summary" t="Summary")]
+[link.bm_factory(nm="building" t="Building Documents")]
+
+[link.toc]
 [var.toc.wc_open(t="Table of Contents - SMD User Guide[bb]")]
 @import "$/section/setup-inc.md"
 @import "$/section/cmdline-inc.md"
 @import "$/section/intro-inc.md"
 @import "$/section/heading-inc.md"
-@import "$/section/wrap-inc.md"
 @import "$/section/builtins-inc.md"
 @import "$/section/helpers-inc.md"
 @import "$/section/ns-inc.md"
@@ -50,20 +40,21 @@
 @import "$/section/mailto-inc.md"
 @import "$/section/nsimage-inc.md"
 @import "$/section/nscode-inc.md"
+[link.building.link] - **Creating sophisticated layouts**[b]
+@import "$/section/import-inc.md"
+@import "$/section/wrap-inc.md"
 @import "$/section/divs-inc.md"
 @import "$/section/titlepage-inc.md"
-@import "$/section/import-inc.md"
 @import "$/section/advanced-inc.md"
 @import "$/section/predefcss-inc.md"
 @import "$/section/av-inc.md"
 @import "$/section/debug-inc.md"
-[link.summary.link] - **Summary of the User Guide**[b]
+[link.summary.link] - **So long, and thanks for all the fish**[b]
 [var.toc.wc_close]
 
-[docthis.open(h="Add this to ????.md")]
-Holding tank for adding things that need to be covered somewhere...
-[docthis.close]
-
+//[docthis.open(h="Add this to ????.md")]
+//Holding tank for adding things that need to be covered somewhere...
+//[docthis.close]
 
 @wrap divx, p
 
@@ -75,7 +66,6 @@ Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can tak
 @import "$/section/cmdline-doc.md"
 @import "$/section/intro-doc.md"
 @import "$/section/heading-doc.md"
-@import "$/section/wrap-doc.md"
 @import "$/section/builtins-doc.md"
 @import "$/section/helpers-doc.md"
 
@@ -87,9 +77,15 @@ Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can tak
 @import "$/section/nsimage-doc.md"
 @import "$/section/nscode-doc.md"
 
+[link.building]
+[wrap_h.chapter(t="## Creating Sophisticated Layouts")]
+
+Now that you've got the basics out of the way, it's time to dig in a little deeper and look at the tools available to create bigger and more sophisticated layouts for your documents. In the chapters that follow, we will look at importing files in order to create reusable building blocks, managing the default block tags emitted when no specific HTML markdown is specified, and a set of common **div**'s that you can use and/or customize to your specific needs.
+
+@import "$/section/import-doc.md"
+@import "$/section/wrap-doc.md"
 @import "$/section/divs-doc.md"
 @import "$/section/titlepage-doc.md"
-@import "$/section/import-doc.md"
 @import "$/section/advanced-doc.md"
 @import "$/section/predefcss-doc.md"
 @import "$/section/av-doc.md"
@@ -100,3 +96,5 @@ Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can tak
 [wrap_h.chapter(t="## Summary")]
 
 Well that's it! Hope you've enjoyed reading the docs for the smd utility. More importantly, I hope that you can use this app to streamline your html document and audio/visual script development!
+
+[link.toc.link]

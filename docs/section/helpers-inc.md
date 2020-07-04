@@ -1,3 +1,3 @@
 [link.bm_factory(nm="helpers" t="Helper built-ins")]
 
-[link.helpers.link] - **Helper built-ins. Why do I care?**[b]
+[tab.<][link.helpers.link] - **Helper built-ins. Why do I care?**[tab.>][b]

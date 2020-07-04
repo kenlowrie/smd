@@ -60,7 +60,7 @@
       wc_close="{{code.pushlines(t=\"@@{{self.wc_close_inline}}\n@parw 1\")}}"
 
 @var _="ulist"\
-    _inherit="_lists_"\
+      _inherit="_lists_"\
       inline="{{html._div_extras_.<}}{{html.ulist.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
       wc_open_inline="{{html._div_extras_.<}}{{html.ulist.<}}"\
       wc_close_inline="{{html.ul.>}}{{html.div.>}}"\
@@ -70,18 +70,29 @@
 
 @var _="ulistplain" _inherit="ulist"\
       inline="{{html._div_extras_.<}}{{html.ulistplain.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"
 
 @var _="olist"\
-    _inherit="_lists_"\
-      inline="{{html._div_extras_.<}}{{html.ulist.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
+      _inherit="_lists_"\
+      inline="{{html._div_extras_.<}}{{html.olist.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
       wc_open_inline="{{html._div_extras_.<}}{{html.olist.<}}"\
       wc_close_inline="{{html.ol.>}}{{html.div.>}}"\
       sID="olist"\
       t="var.{{self.sID}} default title" \
       c="var.{{self.sID}} default content"
 
-@html _="spanwc" _inherit="span" class="blue"
+@var _="olistAlpha" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}"
+
+@var _="olistRoman" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistRoman.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistRoman.<}}"
+
+@var _="olistGreek" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistGreek.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistGreek.<}}"
+
 
 @html _="_p_bluenote_" _inherit="_p_note_" class="{{html._p_note_.class}} blue"
 @html _="_p_rednote_" _inherit="_p_note_" class="{{html._p_note_.class}} red"
@@ -100,6 +111,7 @@
     smile="&#x1F642;"\
     tonguewink="&#x1F61C;"
 
+@html _="spanwc" _inherit="span" class="blue"
 @html _="spanfs" _inherit="span" \
       _s1="font-size:1em" \
       _s2="font-size:2em" \
@@ -111,3 +123,13 @@
       e="smile"
 
 @var sp4="[sp][sp][sp][sp]"
+
+// The name SMD (smd) should be abstracted in a variable at the lowest level, such that I can change it on the fly and it would reflect throughout the docs.
+
+@var smd="{{self.lcase}}" ucase="SMD" lcase="smd" short="Script Markdown" desc="{{self.ucase}} - {{self.short}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" B="**{{self.ucase}}**" EM="*{{self.ucase}}*" EMB="***{{self.ucase}}***" short_b="**{{self.short}}**" desc_b="**{{self.desc}}**"
+
+@var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd" short="Interactive Script Markdown"
+@var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"  short="Script Markdown Parser"
+
+@var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
+

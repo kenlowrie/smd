@@ -1,2 +1,3 @@
 [link.bm_factory(nm="advanced" t="Advanced Topics")]
-[link.advanced.link] - **Introducing @raw and other stuff**[b]
+
+[tab.<][link.advanced.link] - **[smdraw.il] and other homeless stuff**[tab.>][b]

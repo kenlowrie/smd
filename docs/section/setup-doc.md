@@ -125,3 +125,5 @@ Just below, I will import the README.md from the root directory of this reposito
 @parw 1
 
 As you can see, the simple markdown including headings e.g. **[E.num]**, bold face [e_tag.b(t="strong")] and italics [e_tag.b(t="em")] are parsed and render the same with [smd.b] as they do with standard **markdown**. As you will soon see, however, [smd.b] will do much, much more.
+
+[link.toc.link]

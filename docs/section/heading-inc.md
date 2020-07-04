@@ -1,3 +1,3 @@
 [link.bm_factory(nm="headings" t="Headings")]
 
-[link.headings.link] - **Adding Headings**[b]
+[tab.<][link.headings.link] - **Adding Headings**[tab.>][b]

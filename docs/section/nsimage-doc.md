@@ -29,3 +29,4 @@ Note that if there's ambiguity in the names used for regular variables, image va
     src="foo.png"[b]&#91;img1] would expand as ***image1***, and \
     &#91;image.img1] would expand as the ***&ltimg ...&gt*** html code.
 
+[link.toc.link]

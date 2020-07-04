@@ -1,6 +1,6 @@
 
 [link.advanced]
-[wrap_h.chapter(t="##Advanced Topics: @raw, @image, @var &amp; @set")]
+[wrap_h.chapter(t="##Advanced Topics: [smdraw.il] and more")]
 
 
 [docthis.open(h="Add this to advanced-doc.md")]
@@ -160,3 +160,5 @@ I'll get this instead:
 Same image, but without a border.
 
 So that pretty much sums up the advanced section. Hopefully it was helpful, if not, ask questions, and I'll clarify. Or better yet, improve the docs, and submit a pull request. :)
+
+[link.toc.link]

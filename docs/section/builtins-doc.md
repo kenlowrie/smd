@@ -55,3 +55,4 @@ The most commonly used of the sys attributes is import. Anytime you want to load
 
 [docthis.close]
 
+[link.toc.link]

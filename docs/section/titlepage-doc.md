@@ -50,3 +50,4 @@ The contact section allows you to specify several key elements about the script 
 
 Each contact element is optional, and the elements can appear in any order. To see these tags in action, take a look at the **userguideheading.md** document in the import folder of this user guide.
 
+[link.toc.link]

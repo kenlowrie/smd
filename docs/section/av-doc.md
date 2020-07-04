@@ -51,3 +51,4 @@ If you examine the HTML output, you will not see the previous line in the output
 
 //TODO: This needs to be defined in the builtins
 
+[link.toc.link]

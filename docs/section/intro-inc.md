@@ -2,4 +2,4 @@
 [link.bm_factory(nm="inlinemd", t="Inline Markdown")]
 
 [link.intro.link] - **Getting Started with SMD**[b]
-[link.inlinemd.link] - **Formatting content inline**[b]
+[tab.<][link.inlinemd.link] - **Formatting content inline**[tab.>][b]

@@ -22,3 +22,4 @@ document these
 
 [docthis.close]
 
+[link.toc.link]

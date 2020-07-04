@@ -563,6 +563,7 @@ NAMESPACE: link<br />
 <div class="extras"><p>Before we leave bookmarks, it is worth mentioning that this factory also supports the <strong>_qlink</strong> and <strong>_qtext</strong> attributes, just like standard links do. So, using our prior bookmark, here is the output when using them:</p></div>
 <div class="extras"><p><strong>&lsqb;link.bookmark1._qlink&lpar;"my alternate bookmark name"&rpar;&rsqb;</strong> --&gt; <a href="#bookmark1">my alternate bookmark name</a></p></div>
 <div class="extras"><p>That's about all there is to using the smd built-ins for creating HTML bookmarks within a document.</p></div>
+<div class="extras"><p>[link.toc.link]</p></div>
 <div class="plain"><p class="plainTitle">Testing adding new @link builtins</p></div>
 <div class="extras"><p>This seems unnecessary at this time.</p></div>
 <div class="plain"><p class="plainTitle">Testing generic @link support</p></div>
@@ -803,6 +804,24 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>true=</strong>@[ns] _="c2" _format="{{c0.a}}" src="print()" type="eval"<br />
 &nbsp;&nbsp;<strong>false=</strong>@[ns] _="c2" _format="{{c0.a}}"<br />
 <br />
+<strong>ismd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>iSMD<br />
+&nbsp;&nbsp;<strong>lcase=</strong>ismd<br />
+&nbsp;&nbsp;<strong>short=</strong>Interactive Script Markdown<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
+&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
+&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
+&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
+<br />
+<strong>mk=</strong><br />&nbsp;&nbsp;<strong>s=</strong>@@&lt;br/&gt;{{code.repeat(t="&amp;" c="100")}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>e=</strong>@@&lt;br/&gt;{{code.repeat(t="%" c="100")}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.s}}<br />
+<br />
 <strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
@@ -823,8 +842,44 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.ulist.&lt;}}{{self.t}}{{html.ulist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>olist<br />
 &nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
@@ -915,6 +970,20 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
 &nbsp;&nbsp;<strong>t=</strong>section default title<br />
 &nbsp;&nbsp;<strong>c=</strong>section default content<br />
+<br />
+<strong>smd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMD<br />
+&nbsp;&nbsp;<strong>lcase=</strong>smd<br />
+&nbsp;&nbsp;<strong>short=</strong>Script Markdown<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
+&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
+&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
+&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
 <br />
 <strong>smdbreak=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@break<br />
 &nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
@@ -1069,6 +1138,20 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdparse=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMDParse<br />
+&nbsp;&nbsp;<strong>lcase=</strong>smdparse<br />
+&nbsp;&nbsp;<strong>short=</strong>Script Markdown Parser<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
+&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
+&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
+&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
+&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
+&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
+&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
 <br />
 <strong>smdparw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw<br />
 &nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
