@@ -151,7 +151,7 @@ class ScriptParser(StdioWrapper):
             #                     RawLine Prefix   Test Regex               Match Regex
             'header': RegexMain(   False,  True,   r'^([#]{1,6})[ ]*',      r'^([#]{1,6})[ ]*(.*)'),
             'import': RegexMain(   False,  False,  r'^[@]import[ ]*',       r'^[@]import[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
-            'embed': RegexMain(    False,  False,  r'^[@]embed[ ]*',        r'^[@]embed[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
+            'embed': RegexMain(    False,  False,  r'^[@]embed[ ]*',        r'^[@]embed[ ]+(\"[^\"]*?\"|\'[^\']*?\')(.*)'),   # r'^[@]embed[ ]+[\'|\"](.+?[^\'|\"])(?<!\\)[\'|\"](.*)'
             'watch': RegexMain(    False,  False,  r'^[@]watch[ ]*',        r'^[@]watch[ ]+[\'|\"](.+[^\'|\"])[\'|\"]'),
             'var': RegexMain(      True,   False,  r'^@var[ ]*',            r'^(@var(\s*.*))'),  # r'^(@var(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'), 
             'set': RegexMain(      True,   False,  r'^@set[ ]*',            r'^(@set(\s*.*))'),  # r'^(@set(\s*([\w]+)\s*=\s*\"(.*?)(?<!\\)\")+)'),
@@ -402,7 +402,7 @@ class ScriptParser(StdioWrapper):
             """Handle a watch parse line"""
             if(m is not None and len(m.groups()) == 1):
                 try:
-                    watch_fn = m.group(1)
+                    watch_fn = self.stdinput.handleRelativePathMarker(m.group(1))
                     if not isfile(watch_fn):
                         self.oprint(f"WARNING: Watch file \"{watch_fn}\" does not exist. Not adding to watch list")
                     else:
@@ -420,22 +420,37 @@ class ScriptParser(StdioWrapper):
 
         def handle_embed(m, lineObj):
             """Handle an embed parse line"""
-            if(m is not None and len(m.groups()) == 1):
+            if(m is not None and len(m.groups()) >= 1):
+                self.debug_smd.print(f"parameters to @embed->{m.groups()}")
+                escape_output = False
+                if len(m.groups()) > 1 and m.groups()[1]:
+                    d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[1])}
+                    self.debug_smd.print(f"additional parameters to @embed->{m.groups()[1]}--{d}")
+                    for key in d:
+                        if key.lower() in ['esc', 'escape']:
+                            if d[key].lower() in ['1', 't', 'true', 'y', 'yes']:
+                                escape_output = True
+                        else:
+                            self.debug_smd.print(f"Unknown parameter passed to @embed {key}")
+
                 try:
-                    embed_fn = m.group(1)
+                    embed_fn = self.stdinput.handleRelativePathMarker(m.group(1)[1:-1])
                     if not isfile(embed_fn):
                         raise FileError(1, "ERROR: Unable to embed \"{}\". File does not exist.<br />".format(embed_fn))
 
                     self.tls.fileTracker.seen = embed_fn
 
                     with open(embed_fn) as f:
-                        self.oprint(f.read())
+                        from .core.utility import HtmlUtils
+                        self.oprint(f.read() if escape_output is False else HtmlUtils.escape_html(f.read()))
                 except FileError as fe:
                     self.oprint(fe.errmsg)
                 except IOError as e:
                     self.oprint(f"I/O error({e.errno}): {e.strerror}")
                 except:
                     self.oprint(f"Unexpected error processing @embed file[{embed_fn}]:", exc_info()[0])
+            else:
+                self.oprint(lineObj.original_line)
 
         def handle_break(m, lineObj):
             """Handle a break parse line"""
@@ -531,7 +546,7 @@ class ScriptParser(StdioWrapper):
                                                     HtmlUtils.escape_html(m.group(2)))
                 )
                 if( m.group(1) == 'wrap'):
-                    self.debug_smd.print(f"-->{m.group(2)}")
+                    self.debug_smd.print(f"@wrap parameters-->{m.group(2)}")
                     # Parse the tag(s) and construct the object instance
                     tag = wrapTag(m.group(2), self._ns.parseVariableName, self._md.markdown, self.oprint)
                     if tag.start is not None and tag.end is not None:

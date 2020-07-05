@@ -81,6 +81,29 @@ class StreamHandler(object):
     def getWrapStackPositionOfCurrentFile(self):
         return self.filestack[-1].wrapStackPos if len(self.filestack) else -1
 
+    def handleRelativePathMarker(self, filename):
+        # If name is prefixed with '$', prefix the filename with the path of
+        # CURRENT open file. If this is the first file to be opened, or if
+        # the current file being read is stdin, the Path().cwd() is used.
+        if(filename[0] == '$'):
+            def fixname(fn):
+                # allow both '$path/file.md' and '$/path/file.md'
+                from os import sep
+                return fn[1:] if fn[1] != sep else fn[2:]
+
+            self.debug.print(f"self.idx is [{self.idx}]")
+            if self.idx >= 0: self.debug.print(f"self.filestack[self.idx].name is {self.filestack[self.idx].name}")
+            # Make sure we have an open file, otherwise use Path().cwd() as the path
+            if self.idx < 0:
+                cwd = Path().cwd()
+                self.debug.print(f"No open file, using current directory for '$': {cwd}")
+                filename = Path(filename).joinpath(cwd, fixname(filename))
+            elif self.idx >= 0:
+                path = Path(self.filestack[self.idx].name).resolve()
+                filename = path.joinpath(path.parent, fixname(filename))
+
+        return filename
+
     def push(self, fh, name=None):
         """
         Push an open file onto the stack for readline()
@@ -114,25 +137,7 @@ class StreamHandler(object):
                 raise FileError(2, "ERROR: sys.stdin can only be opened at start")
 
         else:
-            # If name is prefixed with '$', prefix the filename with the path of
-            # CURRENT open file. If this is the first file to be opened, or if
-            # the current file being read is stdin, the Path().cwd() is used.
-            if(filename[0] == '$'):
-                def fixname(fn):
-                    # allow both '$path/file.md' and '$/path/file.md'
-                    from os import sep
-                    return fn[1:] if fn[1] != sep else fn[2:]
-
-                self.debug.print(f"self.idx is [{self.idx}]")
-                if self.idx >= 0: self.debug.print(f"self.filestack[self.idx].name is {self.filestack[self.idx].name}")
-                # Make sure we have an open file, otherwise use Path().cwd() as the path
-                if self.idx < 0:
-                    cwd = Path().cwd()
-                    self.debug.print(f"No open file, using current directory for '$': {cwd}")
-                    filename = Path(filename).joinpath(cwd, fixname(filename))
-                elif self.idx >= 0:
-                    path = Path(self.filestack[self.idx].name).resolve()
-                    filename = path.joinpath(path.parent, fixname(filename))
+            filename = self.handleRelativePathMarker(filename)
 
             # Make sure the specified file exists, and then open it
             name = Path(filename).resolve()
