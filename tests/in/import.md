@@ -33,6 +33,9 @@ The reasoning behind @importing it first is because you can only @import once, b
 [code.encode_smd(t="@embed \"in/import/test_embed.md - 2nd Time\"")][b]
 @embed "in/import/test_embed.md"
 
+@embed esc="true"
+@embed escape="true"
+
 [plain(t="{:.blue}Testing @watch")]
 
 // Get a list of everything we've seen so far.
@@ -51,6 +54,25 @@ This next file doesn't exist. Should get a warning from @watch...
 @dump tracked=".*/stop.md"
 @watch "in/stop.md"
 @dump tracked=".*/stop.md"
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.plain(t="User manual sections for [smdimport.b], [smdembed.b] & [smdwatch.b]")]
+
+[var.toc.wc_open(t="Table of Contents - Unittest [smdimport.b], [smdembed.b] & [smdwatch.b]")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/import-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from import-inc.md")]
+@dump link="^imports|embed|watch"
+
+@import "[sys.root]/docs/section/import-doc.md"
+
+
+
 
 @set dump_ns_list="var=\".*\" link=\"c|d\""
 [var.testdoc.end]
