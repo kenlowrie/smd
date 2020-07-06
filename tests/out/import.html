@@ -332,6 +332,11 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
 <br />
+<strong>_self=</strong><br />&nbsp;&nbsp;<strong>il=</strong>{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>_self_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;#x73;elf<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />

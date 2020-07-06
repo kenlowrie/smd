@@ -1,3 +1,11 @@
 [link.bm_factory(nm="ns_html" t="@html Namespace")]
+[link.bm_factory(nm="html_syntax", t="Syntax")]
+[link.bm_factory(nm="html_names", t="Names")]
+[link.bm_factory(nm="html_attrs", t="Attributes")]
+[link.bm_factory(nm="html_misc", t="Miscellaneous")]
 
 [tab.<][link.ns_html.link] - **@html Namespace**[tab.>][b]
+[tab.<][tab.<][link.html_syntax.link] - **Syntax for [smdhtml.il] Variables**[tab.>][tab.>][b]
+[tab.<][tab.<][link.html_names.link] - **Variable Names**[tab.>][tab.>][b]
+[tab.<][tab.<][link.html_attrs.link] - **Built-in Attributes**[tab.>][tab.>][b]
+[tab.<][tab.<][link.html_misc.link] - **More examples using [smdhtml.il]**[tab.>][tab.>][b]

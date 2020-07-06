@@ -408,6 +408,257 @@ NAMESPACE: html<br />
 <div class="plain"><p class="plainTitle">Specific Namespace testing for <em><strong>@html</strong></em> namespace</p></div>
 <div class="plain"><p class="plainTitle">Testing @html builtin functions</p></div>
 <div class="plain"><p class="plainTitle">Testing adding new @html builtins</p></div>
+<div class="plain"><p class="plainTitle">User manual sections for <strong>@html</strong></p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest <strong>@html</strong></p><p>
+<br />
+<span class="indent"><a href="#ns_html">@html Namespace</a> - <strong>@html Namespace</strong></span><br />
+<span class="indent"><span class="indent"><a href="#html_syntax">Syntax</a> - <strong>Syntax for @html Variables</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#html_names">Names</a> - <strong>Variable Names</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#html_attrs">Attributes</a> - <strong>Built-in Attributes</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#html_misc">Miscellaneous</a> - <strong>More examples using @html</strong></span></span><br />
+</p></div>
+<div class="extras"><h3>Review link bookmarks from nshtml-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>html_attrs=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Attributes<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>html_misc=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Miscellaneous<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>html_names=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Names<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>html_syntax=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Syntax<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ns_html=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@html Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ns_html"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>@html Namespace</h2></div>
+<div class="extras"><p>The <strong>@html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the @html namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
+<div class="extras"><p>Many of the features and concepts discussed for [link.ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>@html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.</p></div>
+<a id="html_syntax"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Syntax</h3></div>
+<div class="syntax"><p class="divTitle">@html command syntax</p><p>
+<p><br /></p>
+<p><span class="indent"><strong>@html</strong> <strong>_id="name" &lsqb;_tag="tagname" &lsqb;...&rsqb;&nbsp;&nbsp;&rsqb;</strong><br /><br /></span></p>
+</p></div>
+<div class="extras"><p>All of the built-in attributes previously documented for <strong>@var</strong> are supported for <strong>@html</strong> variables, and a new one <strong>_tag</strong> has been introduced. _tag is used to set the HTML element name for the variable. If _tag is not specified, it will be set to the same value as _id. Let's define a few variables, and then examine them.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining an @html variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&nbsp;
+@html _="blockquote" cite="url-goes-here"
+@html _id="bquote" _tag="blockquote"
+@html _id="bq" _inherit="blockquote"
+</pre></div>
+<div class="extras"><p>In the preceding example, we've defined  three <strong>@html</strong> variables: <strong>blockquote</strong>, <strong>bquote</strong> and <strong>bq</strong>. Let's use <strong>@dump</strong> to take a look at their declarations.</p></div>
+<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
+<div class="code"><code style="font-size:1.4em;font-weight:bold">Definition of <em>blockquote</em>, <em>bquote</em> & <em>bq</em> variables</code>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>url-goes-here<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>url-goes-here<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bquote=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+</code>
+</div>
+</div>
+</div>
+<div class="extras"><p>First, take a look at <strong>blockquote</strong>. <strong>_tag</strong>, although we didn't specify it, has been set to <strong>blockquote</strong>. In many cases, this is what you want, so not having to specify it is a nice shortcut when declaring variables. Also, notice how <strong>_format</strong> has been set to <em>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;{{self._tag}}&gt;</em>.</p></div>
+<div class="extras"><p>Given that, if we write <em>&lsqb;blockquote&rsqb;</em> it will emit <em><strong>&lt;blockquote cite="url-goes-here"&gt;&lt;/blockquote&gt;</strong></em>.</p></div>
+<div class="extras"><p>The first thing you'll notice is that there isn't a way to get content between the opening and closing tags, so on the surface, this doesn't look very useful. Enter the special attributes <strong>&lt;</strong> and <strong>&gt;</strong>, supported by all <strong>@html</strong>-based namespaces.</p></div>
+<div class="extras"><p>Now, if we write <strong>&lsqb;blockquote<em>.&lt;</em>&rsqb;</strong> it will emit &lt;blockquote cite="url-goes-here"&gt;. Conversely, if we write <strong>&lsqb;blockquote<em>.&gt;</em>&rsqb;</strong>, it will emit &lt;/blockquote&gt;. So now all we need is to specify a value for the <strong>cite</strong> attribute when we declare the open tag, add some content, and specify the closing tag. Let's see how it all comes together.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding content to the blockquote HTML variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&nbsp;
+<strong>&lsqb;blockquote.&lt;&lpar;cite="https://google.com"&rpar;&rsqb;</strong>
+Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.
+<strong>&lsqb;blockquote.&gt;&rsqb;</strong>
+</pre></div>
+<div class="extras"><p>This is what will be rendered by the browser:</p></div>
+<div class="extras"><p><blockquote cite="https://google.com">Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.</blockquote></p></div>
+<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an @html variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>@html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
+<div class="extras"><p><strong>bq</strong> is identical to <strong>blockquote</strong>, because the <strong>_inherit</strong> attribute was specified at declaration time. Recall from the <strong>@var</strong> section, <strong>_inherit</strong> is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:</p></div>
+<div class="extras"><p><strong>@html _id="bq" _inherit="blockquote" cite="different-default-citation"</strong></p></div>
+<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
+<div class="code"><code style="font-size:1.4em;font-weight:bold">New definition of <em>bq</em> variable</code>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>different-default-citation<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+</code>
+</div>
+</div>
+</div>
+<a id="html_names"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Variable names</h3></div>
+<div class="extras"><p>Variable names in the <strong>@html</strong> namespace are restricted to the same requires as the <strong>@var</strong> namespace.</p></div>
+<a id="html_attrs"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Built-in Attributes</h3></div>
+<div class="extras"><p>In addition to all of the built-in attributes supported by <strong>@var</strong>, <strong>@html</strong> variables have several built-ins that are unique to it:</p></div>
+<div class="extras"><ul class="ulist">
+<li><strong>_tag</strong> = The HTML element name of the variable</li>
+<li><strong><</strong> = The opening tag for this variable</li>
+<li><strong>></strong> = The closing tag for this variable</li>
+<li><strong><+</strong> = The opening tag with embedded quotes escaped</li>
+</ul></div>
+<div class="extras"><p>We've already seen these in action above, so no need to discuss further with the exception of the <strong>&lt;+</strong>, which will output the opening tag with escaped quotes in the public variable definitions.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Examples</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>&lsqb;html.blockquote&rsqb;</strong> <em>=</em> &lt;blockquote cite="https://google.com"&gt;&lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<&rsqb;</strong> <em>=</em> &lt;blockquote cite="https://google.com"&gt;
+<strong>&lsqb;html.blockquote.>&rsqb;</strong> <em>=</em> &lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<+&rsqb;</strong> <em>=</em> &lt;blockquote cite=\"https://google.com\"&gt;
+<strong>&lsqb;html.blockquote._id&rsqb;</strong> <em>=</em> blockquote
+<strong>&lsqb;html.blockquote._tag&rsqb;</strong> <em>=</em> blockquote
+<strong>&lsqb;html.blockquote._public_keys_&rsqb;</strong> <em>=</em> cite,
+<strong>&lsqb;html.blockquote._private_keys_&rsqb;</strong> <em>=</em> _format, _tag,
+</pre></div>
+<a id="html_misc"></a>
+<div class="extras" style="border-bottom:2px solid black"><h3>@html Miscellaneous Examples</h3></div>
+<div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>@html</strong> namespace. Let's start by examining the contents of the <strong>&lsqb;sys.imports&rsqb;/html.md</strong> file:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+@html _id="html" _tag="html"
+// &lt;head&gt; related tags
+@html _id="head" _tag="head"
+@html _="title" _tag="title" _format="{{self.&lt;}}{{self._t}}{{self.&gt;}}" _t="Default Title"
+@html _="meta" _tag="meta" _format="{{self.&lt;}}"
+@html _="meta-charset" _inherit="meta" charset="UTF-8"
+@html _="meta-viewport" _inherit="meta" name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+@html _="link" _tag="link" _format="{{self.&lt;}}"
+@html _="script" _tag="script"
+@html _="css" _inherit="link" rel="stylesheet" href="your-stylesheet.css"
+@html _="js" _inherit="script" src="your-javascript.js"
+// &lt;body&gt; related tags
+@html _="body" _tag="body"
+@html _="code" _tag="code"
+@html _="div" _tag="div"
+@html _="em"
+@html _="h" _tag="h" 1="&lt;h1&gt;{{self.t}}&lt;/h1&gt;" 2="&lt;h2&gt;{{self.t}}&lt;/h2&gt;" 3="&lt;h3&gt;{{self.t}}&lt;/h3&gt;" 4="&lt;h4&gt;{{self.t}}&lt;/h4&gt;" 5="&lt;h5&gt;{{self.t}}&lt;/h5&gt;" 6="&lt;h6&gt;{{self.t}}&lt;/h6&gt;" _format="usage: [{{self._}}.#(t=\"your header\")]"
+@html _="li" _tag="li"
+@html _="ol" _tag="ol"
+@html _="p" _tag="p"
+@html _="pre"
+@html _="span" _tag="span"
+@html _="strong"
+@html _="table" _tag="table"
+@html _="td" _tag="td"
+@html _="th" _tag="th"
+@html _="tr" _tag="tr"
+@html _="ul" _tag="ul"
+
+</pre></div>
+<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>@html</strong>. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Let's look at helpers.md:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+@import "$/html.md"
+@import "$/code.md"
+@html _="tab" _inherit="span" class="indent"
+@html _="us" _inherit="span" style="text-decoration:underline"
+@html _="divx" _inherit="_div_extras_"
+@html _="divx1" _inherit="divx" style="border-bottom:5px solid green;color:green"
+@html _="divx2" _inherit="divx" style="border-bottom:3px solid black;color:green"
+@html _="divx3" _inherit="divx" style="border-bottom:2px solid black"
+@html _="li2" _tag="li" _inherit="li" style="font-size:1.3em;margin-left:2em"
+
+@var hash1="# [code.repeat.run(t=\"-\", c=\"42\")]"
+@var hash2="## [code.repeat.run(t=\"-\", c=\"42\")]"
+@var hash3="### [code.repeat.run(t=\"-\", c=\"42\")]"
+@var wrap_h="{{code.pushlines(t=\"@wrap html.divx\n{{self.t}}\n@parw 1\")}}"\
+    hash1="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash1}}\n@parw 1\")}}"\
+    hash2="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash2}}\n@parw 1\")}}"\
+    hash3="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash3}}\n@parw 1\")}}"\
+    chapter="{{code.pushlines(t=\"@wrap html.divx1\n{{self.t}}\n@parw 1\")}}"\
+    section="{{code.pushlines(t=\"@wrap html.divx2\n{{self.t}}\n@parw 1\")}}"\
+    subsect="{{code.pushlines(t=\"@wrap html.divx3\n{{self.t}}\n@parw 1\")}}"
+
+@var E="Entity Constants: {{self._all_attrs_}}" \
+    ast="&amp;ast;"\
+    ast2="[self.ast][self.ast]"\
+    ast3="[self.ast][self.ast][self.ast]"\
+    lb="&amp;lsqb;"\
+    rb="&amp;rsqb;"\
+    lcb="&amp;lcub;"\
+    lcb2="[self.lcb][self.lcb]"\
+    rcb="&amp;rcub;"\
+    rcb2="[self.rcb][self.rcb]"\
+    lt="&amp;lt;"\
+    gt="&amp;gt;"\
+    at="&amp;commat;"\
+    lp="&amp;lpar;"\
+    rp="&amp;rpar;"\
+    plus="&amp;plus;"\
+    ins="[self.plus][self.plus]"\
+    minus="&amp;minus;"\
+    tilde="&amp;sim;"\
+    del="[self.tilde][self.tilde]"\
+    sp="&amp;nbsp;"\
+    sp2="[self.sp][self.sp]"\
+    apos="&amp;apos;"\
+    num="&amp;num;" hashtag="&amp;num;"\
+    amp="&amp;amp;"
+
+@var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
+@var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
+
+@var e_us="{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}" t="text_to_underscore"
+
+</pre></div>
+<div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>@html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
+<div class="extras"><p>[link.toc.link]</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -492,6 +743,14 @@ NAMESPACE: html<br />
 <strong>_note_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>note<br />
+<br />
+<strong>_p_bluenote_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>***_p_note_*** does not exist<br />
+&nbsp;&nbsp;<strong>class=</strong>{{html._p_note_.class}} blue<br />
+&nbsp;&nbsp;<strong>_tag=</strong>_p_bluenote_<br />
+<br />
+<strong>_p_rednote_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>***_p_note_*** does not exist<br />
+&nbsp;&nbsp;<strong>class=</strong>{{html._p_note_.class}} red<br />
+&nbsp;&nbsp;<strong>_tag=</strong>_p_rednote_<br />
 <br />
 <strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -635,7 +894,18 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>123attr=</strong>nope<br />
 &nbsp;&nbsp;<strong>_tag=</strong>b1<br />
 <br />
+<strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>different-default-citation<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bquote=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
@@ -713,6 +983,12 @@ NAMESPACE: html<br />
 <br />
 <strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>em<br />
+<br />
+<strong>fatmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
@@ -821,6 +1097,44 @@ NAMESPACE: html<br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Alpha<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Greek<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Roman<br />
+<br />
+<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-alpha<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-greek<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-roman<br />
+<br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -844,6 +1158,16 @@ NAMESPACE: html<br />
 <br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>spanfs=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}} style="{{self._s1}}"&gt;<br />
+&nbsp;&nbsp;<strong>_s1=</strong>font-size:1em<br />
+&nbsp;&nbsp;<strong>_s2=</strong>font-size:2em<br />
+&nbsp;&nbsp;<strong>_big=</strong>&lt;{{self._tag}} style="{{self._s2}}"&gt;<br />
+<br />
+<strong>spanwc=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>blue<br />
 <br />
 <strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>strong<br />
@@ -870,6 +1194,14 @@ NAMESPACE: html<br />
 <br />
 <strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist-plain<br />
 <br />
 <strong>us=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

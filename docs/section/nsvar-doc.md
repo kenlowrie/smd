@@ -18,7 +18,7 @@ We will discuss this namespace first, because it is the basis for all namespaces
 
 [smdvar.b] variables are the only ones that can use the shorthand **name="value"** notation when defining a variable. All the other namespaces require that the **[E.lb]*_* or *_id*[E.rb]** special attribute name be used to specify the variable name.  Note that when the shorthand notation is used, it is the first **name="value"** pair that will be used to name the variable. Each of the following examples does exactly the same thing:
 
-[terminal.wc_open(t="Defining a variable")]
+[terminal.wc_open(t="Declaring a variable")]
 [sp]
 [smdvar_wp(parms="fu=\"bar\"")]
 [smdvar_wp(parms="_=\"fu\" _format=\"bar\"")]
@@ -26,13 +26,13 @@ We will discuss this namespace first, because it is the basis for all namespaces
 [sp]
 [terminal.wc_close]
 
-Essentially, defining a variable in *any* of the namespaces is done in exactly this fashion. ***@ns*** followed by a series of attribute="value" pairs. Remember, only [smdvar.b] allows the shorthand **fu="bar"** format for naming the variable and setting the **_format** attribute value. All other namespaces require the alternate format.
+Essentially, declaring a variable in *any* of the namespaces is done in exactly this fashion. ***@ns*** followed by a series of attribute="value" pairs. Remember, only [smdvar.b] allows the shorthand **fu="bar"** format for naming the variable and setting the **_format** attribute value. All other namespaces require the alternate format. In addition, namespaces based on [smdhtml.b] normally do not specify **_format**, since that attribute is constructed on the fly during the declaration. More on that later.
 
 [note.wc_open]
 If you redeclare a variable, it will be overwritten with the new declaration. If you want to add attributes to an existing variable, use [smdset.b]
 [note.wc_close]
 
-[terminal.wc_open(t="Defining variables in other namespaces")]
+[terminal.wc_open(t="Declaring variables in other namespaces")]
 [sp]
 [smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
 [smdhtml_wp(parms="_id=\"fu\"")]
@@ -79,6 +79,27 @@ Then [e_var(t="fu")] will emit **[fu]** instead of *bar*
 [sp]
 [terminal.wc_close]
 
+[wrap_h.subsect(t="### Inheriting attributes")]
+
+One last concept to discuss about declaring variables is the attribute **_inherit**. This attribute can be used at declaration time only, and it's purpose is to avoid having to redefine common attributes. This is used throughout the builtin files that come with [smd.b], so you'll see it used quite often. Let's look at an example of how it is used.
+
+[terminal.wc_open(t="Using _inherit to streamline declarations")]
+[sp]
+[smdcomment] declare 'smdtag' variable
+[smdvar.b] smdtag="@@[_self.il(p="il")]" il="[E.lb]encode_smd[E.lp]t=\"[_self.il]\"[E.rp][E.rb]" b="[E.ast2][_self.il][E.ast2]" em="[E.ast][_self.il][E.ast]" emb="[E.ast3][_self.il][E.ast3]"
+[sp]
+[smdcomment] now declare several variables based on **smdtag**
+[smdvar_wp(parms="_id=\"smdvar\" _inherit=\"smdtag\" p=\"@var\"")]
+[smdvar_wp(parms="_id=\"smdhtml\" _inherit=\"smdtag\" p=\"@html\"")]
+[smdvar_wp(parms="_id=\"smdlink\" _inherit=\"smdtag\" p=\"@link\"")]
+[sp]
+[smdcomment] now we have three new variables that all contain similar attributes
+[e_var(t="smdvar")] = [smdvar.il], [e_var(t="smdvar.b")] = [smdvar.b], [e_var(t="smdvar.em")] = [smdvar.em], [e_var(t="smdvar.emb")] = [smdvar.emb]
+[e_var(t="smdhtml")] = [smdhtml.il], [e_var(t="smdhtml.b")] = [smdhtml.b], [e_var(t="smdhtml.em")] = [smdhtml.em], [e_var(t="smdhtml.emb")] = [smdhtml.emb]
+[e_var(t="smdlink")] = [smdlink.il], [e_var(t="smdlink.b")] = [smdlink.b], [e_var(t="smdlink.em")] = [smdlink.em], [e_var(t="smdlink.emb")] = [smdlink.emb]
+[terminal.wc_close]
+
+If you specify an attribute that is defined in the underlying inherited variable, it will override the underlying value. Otherwise, the new variable will contain all of the same attributes, plus any new ones added at the time of declaration (or later using [smdset.b]).
 
 [link.var_names]
 [wrap_h.section(t="### [smdvar.il] Variable names")]
@@ -191,7 +212,7 @@ And now we write the following markdown:
 
 So that's pretty cool, but there's a bit more to the _format attribute. You can reference the attributes contained within the variable by using **{{self}}.attrname**. Given that, if we rewrote the prior example as:
 
-[tab.<][smdvar_wp.b(parms="_id=\"fullname\" first=\"ken\" last=\"lowrie\" _format=\"[E.lcb2]self.first[E.rcb2] [E.lcb2]self.last[E.rcb2]\"")][tab.>]
+[tab.<][smdvar_wp.b(parms="_id=\"fullname\" first=\"ken\" last=\"lowrie\" _format=\"[E.lcb2][_self_].first[E.rcb2] [E.lcb2][_self_].last[E.rcb2]\"")][tab.>]
 
 @var _id="fullname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}"
 
@@ -204,7 +225,7 @@ Using that, you can build some pretty powerful tools for automating frequently u
 Before we leave this, take note of the difference between {{first}} and {{self.first}}. Both syntaxes are valid, but the first one references the normal variable first, while the second one (self.first) references the first attribute defined within the *varname* variable. Also take note that you can reference the attributes of other [smdvar.il] variables as long as you qualify them. Let me show you a quick example of that. Take this:
 
 [tab.<][smdvar_wp.b(parms="_id=\"var1\" first=\"ken\" last=\"lowrie\"")][tab.>]
-[tab.<][smdvar_wp.b(parms="_id=\"var2\" prefix=\"mr.\" _format=\"{{self.prefix}} {{var1.first}} {{var1.last}}\"")][tab.>]
+[tab.<][smdvar_wp.b(parms="_id=\"var2\" prefix=\"mr.\" _format=\"{{{{_self_}}.prefix}} {{var1.first}} {{var1.last}}\"")][tab.>]
 
 @var _id="var1" first="ken" last="lowrie"
 @var _id="var2" prefix="mr." _format="{{self.prefix}} {{var1.first}} {{var1.last}}"

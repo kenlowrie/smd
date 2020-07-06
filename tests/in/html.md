@@ -13,6 +13,23 @@
 
 [plain(t="Testing adding new @html builtins")]
 
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.plain(t="User manual sections for [smdhtml.b]")]
+
+[var.toc.wc_open(t="Table of Contents - Unittest [smdhtml.b]")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/nshtml-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from nshtml-inc.md")]
+@dump link="^ns_html|html_"
+
+@import "[sys.root]/docs/section/nshtml-doc.md"
+
+
 @set dump_ns_list="html=\".\""
 
 [var.testdoc.end]

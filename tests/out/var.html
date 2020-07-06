@@ -649,18 +649,18 @@ NAMESPACE: link<br />
 <p><span class="red"><span class="indent"><span class="indent">NOTE: either underscore &apos;<strong>_</strong>&apos; or &apos;<strong>_id</strong>&apos; can be used to name the variable.</span></span></span></p>
 </p></div>
 <div class="extras"><p><strong>@var</strong> variables are the only ones that can use the shorthand <strong>name="value"</strong> notation when defining a variable. All the other namespaces require that the <strong>&lsqb;<em>_</em> or <em>_id</em>&rsqb;</strong> special attribute name be used to specify the variable name.  Note that when the shorthand notation is used, it is the first <strong>name="value"</strong> pair that will be used to name the variable. Each of the following examples does exactly the same thing:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining a variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaring a variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 @var fu="bar"
 @var _="fu" _format="bar"
 @var _id="fu" _format="bar"
 &nbsp;
 </pre></div>
-<div class="extras"><p>Essentially, defining a variable in <em>any</em> of the namespaces is done in exactly this fashion. <em><strong>@ns</strong></em> followed by a series of attribute="value" pairs. Remember, only <strong>@var</strong> allows the shorthand <strong>fu="bar"</strong> format for naming the variable and setting the <strong>_format</strong> attribute value. All other namespaces require the alternate format.</p></div>
+<div class="extras"><p>Essentially, declaring a variable in <em>any</em> of the namespaces is done in exactly this fashion. <em><strong>@ns</strong></em> followed by a series of attribute="value" pairs. Remember, only <strong>@var</strong> allows the shorthand <strong>fu="bar"</strong> format for naming the variable and setting the <strong>_format</strong> attribute value. All other namespaces require the alternate format. In addition, namespaces based on <strong>@html</strong> normally do not specify <strong>_format</strong>, since that attribute is constructed on the fly during the declaration. More on that later.</p></div>
 <div class="extras"><p class="note">
 If you redeclare a variable, it will be overwritten with the new declaration. If you want to add attributes to an existing variable, use <strong>@set</strong>
 </p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining variables in other namespaces</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaring variables in other namespaces</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 @var _id="fu" _format="bar"
 @html _id="fu"
@@ -694,6 +694,24 @@ If you redeclare a variable, it will be overwritten with the new declaration. If
 Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 &nbsp;
 </pre></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>Inheriting attributes</h3></div>
+<div class="extras"><p>One last concept to discuss about declaring variables is the attribute <strong>_inherit</strong>. This attribute can be used at declaration time only, and it's purpose is to avoid having to redefine common attributes. This is used throughout the builtin files that come with <strong>smd</strong>, so you'll see it used quite often. Let's look at an example of how it is used.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using _inherit to streamline declarations</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&nbsp;
+// declare 'smdtag' variable
+<strong>@var</strong> smdtag="@@&lcub;&lcub;&#x73;elf.il&rcub;&rcub;" il="&lsqb;encode_smd&lpar;t=\"&lcub;&lcub;&#x73;elf.il&rcub;&rcub;\"&rpar;&rsqb;" b="&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;" em="&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;" emb="&ast;&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;&ast;"
+&nbsp;
+// now declare several variables based on <strong>smdtag</strong>
+@var _id="smdvar" _inherit="smdtag" p="@var"
+@var _id="smdhtml" _inherit="smdtag" p="@html"
+@var _id="smdlink" _inherit="smdtag" p="@link"
+&nbsp;
+// now we have three new variables that all contain similar attributes
+&lsqb;smdvar&rsqb; = @var, &lsqb;smdvar.b&rsqb; = <strong>@var</strong>, &lsqb;smdvar.em&rsqb; = <em>@var</em>, &lsqb;smdvar.emb&rsqb; = <em><strong>@var</strong></em>
+&lsqb;smdhtml&rsqb; = @html, &lsqb;smdhtml.b&rsqb; = <strong>@html</strong>, &lsqb;smdhtml.em&rsqb; = <em>@html</em>, &lsqb;smdhtml.emb&rsqb; = <em><strong>@html</strong></em>
+&lsqb;smdlink&rsqb; = @link, &lsqb;smdlink.b&rsqb; = <strong>@link</strong>, &lsqb;smdlink.em&rsqb; = <em>@link</em>, &lsqb;smdlink.emb&rsqb; = <em><strong>@link</strong></em>
+</pre></div>
+<div class="extras"><p>If you specify an attribute that is defined in the underlying inherited variable, it will override the underlying value. Otherwise, the new variable will contain all of the same attributes, plus any new ones added at the time of declaration (or later using <strong>@set</strong>).</p></div>
 <a id="var_names"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@var Variable names</h3></div>
 <div class="extras"><p>Variable names in the <strong>@var</strong> namespace, well actually, in <strong>any</strong> namespace are restricted to these requirements:</p></div>
@@ -774,14 +792,14 @@ Need some table/header/row/data helpers
 <strong>&lsqb;varname._format&rsqb;</strong> would emit <em><strong>format string</strong></em>.
 </pre></div>
 <div class="extras"><p>So that's pretty cool, but there's a bit more to the _format attribute. You can reference the attributes contained within the variable by using <strong>{{self}}.attrname</strong>. Given that, if we rewrote the prior example as:</p></div>
-<div class="extras"><p><span class="indent"><strong>@var _id="fullname" first="ken" last="lowrie" _format="&lcub;&lcub;var.smdvar_wp.first&rcub;&rcub; &lcub;&lcub;var.smdvar_wp.last&rcub;&rcub;"</strong></span></p></div>
+<div class="extras"><p><span class="indent"><strong>@var _id="fullname" first="ken" last="lowrie" _format="&lcub;&lcub;&#x73;elf.first&rcub;&rcub; &lcub;&lcub;&#x73;elf.last&rcub;&rcub;"</strong></span></p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <strong>&lsqb;fullname&rsqb;</strong> would emit <em><strong>ken lowrie</strong></em>.
 </pre></div>
 <div class="extras"><p>Using that, you can build some pretty powerful tools for automating frequently used tasks in your documents. Take a look at the <strong>film.md</strong>, <strong>image.md</strong> and <strong>avs.md</strong> tests to get an idea of what you can do.</p></div>
 <div class="extras"><p>Before we leave this, take note of the difference between {{first}} and {{self.first}}. Both syntaxes are valid, but the first one references the normal variable first, while the second one (self.first) references the first attribute defined within the <em>varname</em> variable. Also take note that you can reference the attributes of other @var variables as long as you qualify them. Let me show you a quick example of that. Take this:</p></div>
 <div class="extras"><p><span class="indent"><strong>@var _id="var1" first="ken" last="lowrie"</strong></span></p></div>
-<div class="extras"><p><span class="indent"><strong>@var _id="var2" prefix="mr." _format="[var.smdvar_wp.prefix] [var1.first] [var1.last]"</strong></span></p></div>
+<div class="extras"><p><span class="indent"><strong>@var _id="var2" prefix="mr." _format="[&#x73;elf.prefix] [var1.first] [var1.last]"</strong></span></p></div>
 <div class="extras"><p>Then, if you write this:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <strong>&lsqb;var2&rsqb;</strong> would emit <em><strong>mr. ken lowrie</strong></em>.
@@ -968,6 +986,12 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+<br />
+<strong>_self=</strong><br />&nbsp;&nbsp;<strong>il=</strong>{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+&nbsp;&nbsp;<strong>p=</strong>il<br />
+<br />
+<strong>_self_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;#x73;elf<br />
 <br />
 <strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
 <br />
