@@ -307,9 +307,9 @@ Let's dump the variable 'fu' to see all the attributes and their values.
 
 
 [fatmargin._open] 
-[var.code.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
+[var.source.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
 @dump var="fu$"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 And finally, you can also specify the namespace two different ways with [smdset.b]. Witness:
@@ -331,9 +331,9 @@ And finally, you can also specify the namespace two different ways with [smdset.
 One last time let's dump the variable 'fu' to see all the attributes and their values.
 
 [fatmargin._open] 
-[var.code.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
+[var.source.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
 @dump var="fu$"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.

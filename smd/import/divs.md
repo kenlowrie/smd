@@ -83,7 +83,7 @@
 @set _="html._plain_p_" class="plainTitle"
 
 //as_code uses a different markup: essentially code instead of p
-[_dfactory.as_code(dn="code")]
+[_dfactory.as_code(dn="source")]
 
 //as_simple is a much simpler version of markup for notes, questions, etc.
 [_dfactory.as_simple(dn="note")]

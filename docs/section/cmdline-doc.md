@@ -110,7 +110,7 @@ The following provides a high-level overview of the startup of [smd.b]. This is 
 @html _="smallprint" _inherit="p" style="font-size: .8em;margin:-1.5em;padding:2em;"
 
 [fatmargin._open]
-[var.code.wc_open(t="High level overview of startup")]
+[var.source.wc_open(t="High level overview of startup")]
 
 [olist.wc_open]
 import builtins.md - which imports several other modules
@@ -142,7 +142,7 @@ import def_close.md
 
 [olist.wc_close]
 
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 [wrap_h.section(t="## smd command line parameters")]

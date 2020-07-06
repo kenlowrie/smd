@@ -207,7 +207,7 @@ NAMESPACE: link<br />
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}" class="divTitle"><strong>Example @watch statement</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;@watch "mywatchfile.html"</pre></div>
 <div class="extras"><p>You can use the <strong>@dump</strong> keyword with option <strong>tracked=</strong> to review the files that are currently being watched. This is a good way to just make sure that your watch command is working as expected during the creation process. For example, let's say you <strong>@embed</strong> the file "myscript.html" which includes a <strong>&lt;script&gt;</strong> tag that references <strong>myjavascript.js</strong>. We could make sure that our <strong>@watch</strong> markdown is correct by using the following markdown:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="code"><code style="font-size:1.4em;font-weight:bold">Debug hack for making sure my @watch file is monitored</code>
+<div class="source"><code style="font-size:1.4em;font-weight:bold">Debug hack for making sure my @watch file is monitored</code>
 <code style="font-size:1.2em"><br /><br /></code>
 <code style="font-size:1.2em">// first let's dump the embed file inline escaped<br /></code>
 <code style="font-size:1.2em"><strong>@embed '$/../import/myscript.html' escape="true"<br /></strong></code>
@@ -368,19 +368,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>box default title<br />
 &nbsp;&nbsp;<strong>c=</strong>box default content<br />
-<br />
-<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>code<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_code_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>Debug hack for making sure my [smdwatch.il] file is monitored<br />
-&nbsp;&nbsp;<strong>c=</strong>code default content<br />
 <br />
 <strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
@@ -953,6 +940,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
 &nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}{{html._source_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>source<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>Debug hack for making sure my [smdwatch.il] file is monitored<br />
+&nbsp;&nbsp;<strong>c=</strong>source default content<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />

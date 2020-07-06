@@ -57,24 +57,22 @@
 [plain.with_content(c="plain non default comment")]
 
 [wrap_h.hash1]
-[wrap_h(t="### Testing var.code")]
+[wrap_h(t="### Testing var.source")]
 
-[var.code]
-[var.code.with_content]
-[var.code(t="code non default title")]
-[var.code.with_content]
-[var.code.with_content(c="code non default comment")]
+[var.source]
+[var.source.with_content]
+[var.source(t="source non default title")]
+[var.source.with_content]
+[var.source.with_content(c="source non default comment")]
 
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
 
-//This is intentionally ambiguous. code is also a namespace, so [code.with_content] looks for a code macro called "with_content", instead of resolving to [var.code.with_content]...
-
-[code]
-[code.with_content]
-[code(t="code non default title")]
-[code.with_content]
-[code.with_content(c="code non default comment")]
+[source]
+[source.with_content]
+[source(t="source non default title")]
+[source.with_content]
+[source.with_content(c="source non default comment")]
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.toc")]

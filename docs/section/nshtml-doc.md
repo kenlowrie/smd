@@ -30,9 +30,9 @@ In the preceding example, we've defined  three [smdhtml.b] variables: **blockquo
 @html _id="bq" _inherit="blockquote"
 
 [fatmargin._open] 
-[var.code.wc_open(t="Definition of *blockquote*, *bquote* & *bq* variables")]
+[var.source.wc_open(t="Definition of *blockquote*, *bquote* & *bq* variables")]
 @dump html="^blockquote$|bq.*"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 First, take a look at **blockquote**. **_tag**, although we didn't specify it, has been set to **blockquote**. In many cases, this is what you want, so not having to specify it is a nice shortcut when declaring variables. Also, notice how **_format** has been set to *[E.lt]{{self._tag}}{{self._public_attrs_}}[E.gt][E.lt]{{self._tag}}[E.gt]*. 
@@ -63,9 +63,9 @@ Let's return to looking at the **bquote** and **bq** variables. With **bquote**,
 @html _id="bq" _inherit="blockquote" cite="different-default-citation"
 
 [fatmargin._open] 
-[var.code.wc_open(t="New definition of *bq* variable")]
+[var.source.wc_open(t="New definition of *bq* variable")]
 @dump html="bq$"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 

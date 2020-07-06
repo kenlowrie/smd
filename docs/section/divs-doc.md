@@ -43,9 +43,9 @@ There four different styles of DIVs are predefined for you, and you can add more
 
 Let's begin by taking a look at the actual definition of [e_div.b]:
 [fatmargin._open] 
-[var.code.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
+[var.source.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
 @dump html="^.*section_$|^_p_section_content" var="section$"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the complete syntax for these generic groups:

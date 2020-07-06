@@ -140,9 +140,9 @@ Within your document, use the **[encode_smd(t="[link.bookmark1]")]** to place th
 I'm going to dump the various @link variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.
 
 [fatmargin._open] 
-[var.code.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
+[var.source.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
 @dump link="name$|sample|bookmark1"
-[var.code.wc_close]
+[var.source.wc_close]
 [fatmargin._close]
 
 [link.bookmark1]

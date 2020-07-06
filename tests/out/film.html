@@ -255,19 +255,6 @@ NAMESPACE: var<br />
 <br />
 <strong>cast=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.tags.cast]<br />
 <br />
-<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}{{html._code_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._code_div_.&lt;}}{{html._code_.&lt;}}{{self.t}}{{html._code_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>code<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_code_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>code default title<br />
-&nbsp;&nbsp;<strong>c=</strong>code default content<br />
-<br />
 <strong>comment=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{html.comment.&lt;}}{{self.t}}{{html.comment.&gt;}}<br />
 &nbsp;&nbsp;<strong>t=</strong>Make sure [mom] is already moving when she comes into frame.<br />
 <br />
@@ -666,6 +653,19 @@ NAMESPACE: var<br />
 <br />
 <strong>son=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.cast}SON<br />
 <br />
+<strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}{{html._source_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>source<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>source default title<br />
+&nbsp;&nbsp;<strong>c=</strong>source default content<br />
+<br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
 <strong>ss=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def.img_st_inline_border}}<br />
@@ -858,18 +858,6 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_t=</strong>castmembername<br />
 &nbsp;&nbsp;<strong>class=</strong>cast<br />
 <br />
-<strong>_code_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
-<br />
-<strong>_code_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
-<br />
-<strong>_code_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>code<br />
-<br />
 <strong>_div_av_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>av<br />
@@ -1023,6 +1011,18 @@ NAMESPACE: html<br />
 <br />
 <strong>_section_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
+<br />
+<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>source<br />
 <br />
 <strong>_span_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
