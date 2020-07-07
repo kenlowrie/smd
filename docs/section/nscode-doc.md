@@ -20,5 +20,3 @@ type="eval"
 
 
 [docthis.close]
-
-[link.toc.link]

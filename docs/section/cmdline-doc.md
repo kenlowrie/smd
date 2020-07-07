@@ -241,5 +241,3 @@ The program monitors changes and keeps window updated until CTRL-C is pressed.
 
 
 [docthis.close]
-
-[link.toc.link]

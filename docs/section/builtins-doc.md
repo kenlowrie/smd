@@ -54,5 +54,3 @@ The most commonly used of the sys attributes is import. Anytime you want to load
 [docthis.open(h="Add this to builtins-doc.md")]
 
 [docthis.close]
-
-[link.toc.link]

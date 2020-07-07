@@ -118,6 +118,3 @@ Many times, you may find that taking a system provided builtin as a starting poi
 
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]
-
-
-[link.toc.link]

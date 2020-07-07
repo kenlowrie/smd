@@ -50,5 +50,3 @@ Here are a few more of the predefined classes available, and remember, you can t
 You can stack multiple classes by simply stringing them together. For example, on the next line, I'll write **{:.greybg.bigandbold.blue}This is a big and bold blue note on a grey background.**
 
 {:.greybg.bigandbold.blue}This is a big and bold blue note on a grey background.
-
-[link.toc.link]

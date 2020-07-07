@@ -28,5 +28,3 @@ Note that if there's ambiguity in the names used for regular variables, image va
 {:.indent.bigandbold}&#91;img1]=image1[b]@image _id="img1" \
     src="foo.png"[b]&#91;img1] would expand as ***image1***, and \
     &#91;image.img1] would expand as the ***&ltimg ...&gt*** html code.
-
-[link.toc.link]

@@ -12,5 +12,3 @@ In [smd.b], one of the primary types of markdown (specially formatted text) that
 [ulist.wc_close]
 
 In the chapters that follow, we will take an indepth look at each namespace to learn it's specific syntax and semantics.
-
-[link.toc.link]

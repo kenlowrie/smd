@@ -354,6 +354,3 @@ Discuss @set and also [e_var.b(t="var._null_[E.lp]attr=\"\"[E.rp]")]
 
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]
-
-
-[link.toc.link]

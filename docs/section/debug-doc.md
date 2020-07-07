@@ -104,5 +104,3 @@ Dumping variables and links
 
 
 [docthis.close]
-
-[link.toc.link]

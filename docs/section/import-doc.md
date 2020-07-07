@@ -126,5 +126,3 @@ When you review the preceding section in the docs, you will notice a lot more th
 [wrap_h.section(t="###Summary of [smdimport.il], [smdembed.il] and [smdwatch.il]")]
 
 That wraps up the section on importing, embedding and watching files. Onward!
-
-[link.toc.link]

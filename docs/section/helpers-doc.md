@@ -18,8 +18,4 @@ document these
 //@@[code.escape_var(v="var.bb")]
 //@@[code.encode_smd_var(v="var.bb")]
 
-
-
 [docthis.close]
-
-[link.toc.link]

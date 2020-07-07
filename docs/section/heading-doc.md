@@ -32,5 +32,3 @@ For example:
 [wrap_h(t="# this works")]
 
 But **#this works**, clearly does not work.
-
-[link.toc.link]

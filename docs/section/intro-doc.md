@@ -41,5 +41,3 @@ When you want to wrap text with [e_tag(t="ins")], use the double plus ([E.ins]),
 Similarly, when you want to wrap text with [e_tag(t="del")], use the double tilde ([E.del]), and it will render like this: ~~Stuff that's been removed~~.
 
 So far, this is similar to using regular markdown, so that part, at least, probably isn't new or exciting. When we start mixing in variables, however, things will get much more interesting. We will see that in the chapters that cover the namespaces: **var**, **html**, **link**, **image**, and **code**.
-
-[link.toc.link]

@@ -70,35 +70,57 @@
 Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of [smd.b], and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!
 
 @import "$/section/setup-doc.md"
+[link.toc.link]
 @import "$/section/cmdline-doc.md"
+[link.toc.link]
 @import "$/section/intro-doc.md"
+[link.toc.link]
 @import "$/section/heading-doc.md"
+[link.toc.link]
 @import "$/section/builtins-doc.md"
+[link.toc.link]
 @import "$/section/helpers-doc.md"
+[link.toc.link]
 
 @import "$/section/ns-doc.md"
+[link.toc.link]
 @import "$/section/nsvar-doc.md"
+[link.toc.link]
 @import "$/section/nshtml-doc.md"
+[link.toc.link]
 @import "$/section/nslink-doc.md"
+[link.toc.link]
 @import "$/section/mailto-doc.md"
+[link.toc.link]
 @import "$/section/nsimage-doc.md"
+[link.toc.link]
 @import "$/section/nscode-doc.md"
+[link.toc.link]
 
 [link.building]
 [wrap_h.chapter(t="## Creating Sophisticated Layouts")]
 
 Now that you've got the basics out of the way, it's time to dig in a little deeper and look at the tools available to create bigger and more sophisticated layouts for your documents. In the chapters that follow, we will look at importing files in order to create reusable building blocks, managing the default block tags emitted when no specific HTML markdown is specified, and a set of common **div**'s that you can use and/or customize to your specific needs.
+[link.toc.link]
 
 @import "$/section/import-doc.md"
+[link.toc.link]
 @import "$/section/wrap-doc.md"
+[link.toc.link]
 @import "$/section/divs-doc.md"
+[link.toc.link]
 @import "$/section/titlepage-doc.md"
+[link.toc.link]
 @import "$/section/advanced-doc.md"
+[link.toc.link]
 @import "$/section/predefcss-doc.md"
+[link.toc.link]
 // av-doc might fit better in the examples? unless it's just documenting avshot.visual, audio, etc.
 @import "$/section/av-doc.md"
+[link.toc.link]
 
 @import "$/section/debug-doc.md"
+[link.toc.link]
 
 [link.examples]
 [wrap_h.chapter(t="## Specialized examples built with [smd]")]

@@ -160,5 +160,3 @@ I'll get this instead:
 Same image, but without a border.
 
 So that pretty much sums up the advanced section. Hopefully it was helpful, if not, ask questions, and I'll clarify. Or better yet, improve the docs, and submit a pull request. :)
-
-[link.toc.link]
