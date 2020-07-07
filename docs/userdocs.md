@@ -24,6 +24,7 @@
 [link.bm_factory(nm="toc" t="Table of Contents")]
 [link.bm_factory(nm="summary" t="Summary")]
 [link.bm_factory(nm="building" t="Building Documents")]
+[link.bm_factory(nm="examples" t="Sample Documents")]
 
 [link.toc]
 [var.toc.wc_open(t="Table of Contents - SMD User Guide[bb]")]
@@ -49,6 +50,12 @@
 @import "$/section/predefcss-inc.md"
 @import "$/section/av-inc.md"
 @import "$/section/debug-inc.md"
+[link.examples.link] - **Specialized examples built with [smd]**[b]
+@import "$/samples/film/film-inc.md"
+@import "$/samples/avscript/script1-inc.md"
+@import "$/samples/proposal/misc-inc.md"
+@import "$/samples/avshots/shots-inc.md"
+@import "$/samples/images/images-inc.md"
 [link.summary.link] - **So long, and thanks for all the fish**[b]
 [var.toc.wc_close]
 
@@ -88,9 +95,29 @@ Now that you've got the basics out of the way, it's time to dig in a little deep
 @import "$/section/titlepage-doc.md"
 @import "$/section/advanced-doc.md"
 @import "$/section/predefcss-doc.md"
+// av-doc might fit better in the examples? unless it's just documenting avshot.visual, audio, etc.
 @import "$/section/av-doc.md"
 
 @import "$/section/debug-doc.md"
+
+[link.examples]
+[wrap_h.chapter(t="## Specialized examples built with [smd]")]
+
+In these final chapters, we will look at several different layouts created with [smd.b] that show some of what you can do with this app. They were taken from actual projects I did, with just some minor cleanup to hopefully give you ideas and/or a starting point for creating your content.
+
+[link.toc.link]
+
+@import "$/samples/film/film-doc.md"
+[link.toc.link]
+@import "$/samples/avscript/script1-doc.md"
+[link.toc.link]
+@import "$/samples/proposal/misc-doc.md"
+[link.toc.link]
+@import "$/samples/avshots/shots-doc.md"
+[link.toc.link]
+@import "$/samples/images/images-doc.md"
+[link.toc.link]
+
 
 [link.summary]
 [wrap_h.chapter(t="## Summary")]

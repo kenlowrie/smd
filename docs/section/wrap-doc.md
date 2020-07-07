@@ -44,7 +44,7 @@ It's important to note that any **@wrap** tags that are in effect during the pro
 
 [smdtag.b(p="@wrap")] tags can be nested as well. Consider the following example:
 
-[terminal.wc_open(t="@wrap tag nexting")]
+[terminal.wc_open(t="@wrap tag nesting")]
 [sp]
 [smdwrap_wp(parms="div")]
 This line will be wrapped with HTML div tags

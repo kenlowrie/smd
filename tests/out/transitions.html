@@ -9,6 +9,31 @@
 <div class="wrapper">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: transitions.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing transitions between shots in AV scripts</h3>
+<div class="plain"><p class="plainTitle">User manual sections for avshots.md</p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest transitions.md</p><p>
+<br />
+<span class="indent"><a href="#ug_samp_shots">A/V Shots</a> - <strong>Sample on creating A/V Shots</strong></span><br />
+</p></div>
+<div class="extras"><h3>Review link bookmarks from shots-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>ug_samp_shots=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>A/V Shots<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ug_samp_shots"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>Using A/V Shots in a document</h2></div>
 <div class="plain"><p class="plainTitle"><span class="blue">Transitions</span></p><p><span class="blue">This test document is used to test the transitions from A/V sections</span></p></div>
 <div class="av"><ul>
 <li>Shot</li>
@@ -84,112 +109,10 @@
 </ul>
 <p>Description</p>
 </div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: var<br />
-----------------------------------------<br />
-<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
-<br />
-<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
-<br />
-<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
-<br />
-<strong>box=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._box_div_.&lt;}}{{html._box_p_.&lt;}}{{self.t}}{{html._box_p_.&gt;}}{{html._box_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._box_div_.&lt;}}{{html._box_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>box<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>box default title<br />
-&nbsp;&nbsp;<strong>c=</strong>box default content<br />
-<br />
-<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>A<br />
-&nbsp;&nbsp;<strong>author=</strong>B<br />
-&nbsp;&nbsp;<strong>logline=</strong>C<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
-&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
-<br />
-<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
-<br />
-<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
-&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
-&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
-&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
-&nbsp;&nbsp;<strong>t1=</strong>Title<br />
-&nbsp;&nbsp;<strong>t2=</strong>author<br />
-&nbsp;&nbsp;<strong>t3=</strong>logline<br />
-<br />
-<strong>variable=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>VALUE<br />
-<br />
-<strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._vo_div_.&lt;}}{{html._vo_p_.&lt;}}{{self.t}}{{html._vo_p_.&gt;}}{{html._vo_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._vo_div_.&lt;}}{{html._vo_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>vo<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>vo default title<br />
-&nbsp;&nbsp;<strong>c=</strong>vo default content<br />
-<br />
-</code>
-</div>
 <div class="av"><ul>
 <li>Shot</li>
 </ul>
 <p>Description</p>
-</div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: link<br />
-----------------------------------------<br />
-<strong>Amazon=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://www.amazon.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>title=</strong>Amazon website<br />
-<br />
-<strong>Google=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://www.google.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>amazon=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://www.amazon.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>title=</strong>amazon website<br />
-<br />
-<strong>cls=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>href=</strong>https://www.cloudylogic.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-</code>
 </div>
 <div class="av"><ul>
 <li>Shot</li>
@@ -226,80 +149,22 @@ NAMESPACE: link<br />
 ----------------------------------------<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
-<strong>E=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
-&nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
-&nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
-&nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
-&nbsp;&nbsp;<strong>rb=</strong>&amp;rsqb;<br />
-&nbsp;&nbsp;<strong>lcb=</strong>&amp;lcub;<br />
-&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
-&nbsp;&nbsp;<strong>rcb=</strong>&amp;rcub;<br />
-&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
-&nbsp;&nbsp;<strong>lt=</strong>&amp;lt;<br />
-&nbsp;&nbsp;<strong>gt=</strong>&amp;gt;<br />
-&nbsp;&nbsp;<strong>at=</strong>&amp;commat;<br />
-&nbsp;&nbsp;<strong>lp=</strong>&amp;lpar;<br />
-&nbsp;&nbsp;<strong>rp=</strong>&amp;rpar;<br />
-&nbsp;&nbsp;<strong>plus=</strong>&amp;plus;<br />
-&nbsp;&nbsp;<strong>ins=</strong>[self.plus][self.plus]<br />
-&nbsp;&nbsp;<strong>minus=</strong>&amp;minus;<br />
-&nbsp;&nbsp;<strong>tilde=</strong>&amp;sim;<br />
-&nbsp;&nbsp;<strong>del=</strong>[self.tilde][self.tilde]<br />
-&nbsp;&nbsp;<strong>sp=</strong>&amp;nbsp;<br />
-&nbsp;&nbsp;<strong>sp2=</strong>[self.sp][self.sp]<br />
-&nbsp;&nbsp;<strong>apos=</strong>&amp;apos;<br />
-&nbsp;&nbsp;<strong>num=</strong>&amp;num;<br />
-&nbsp;&nbsp;<strong>hashtag=</strong>&amp;num;<br />
-&nbsp;&nbsp;<strong>amp=</strong>&amp;amp;<br />
-&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
-<strong>_df_html_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_" _inherit="code" style="font-size:1.4em;font-weight:bold"      \n@html _="_$DIVNAME$_content_" _inherit="code" style="font-size:1.2em"<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
-<strong>_df_html_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="$DIVNAME$ pbb"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="divTitle"      \n@html _="_$DIVNAME$_p_content_" _inherit="p"<br />
-<br />
-<strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
-<br />
-<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
-<br />
-<strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_p_content_.&lt;}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
-<br />
-<strong>_df_var_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      sID="$DIVNAME$"      wrapID="nop"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"<br />
-<br />
-<strong>_df_var_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+<strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-<br />
-<strong>_dfactory=</strong><br />&nbsp;&nbsp;<strong>as_p=</strong>{{self.p}}{{self.var_p}}<br />
-&nbsp;&nbsp;<strong>as_code=</strong>{{self.code}}{{self.var_code}}<br />
-&nbsp;&nbsp;<strong>as_simple=</strong>{{self.simple}}{{self.var_simple}}<br />
-&nbsp;&nbsp;<strong>var_p=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_p_._str")}}<br />
-&nbsp;&nbsp;<strong>var_code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_code_._str")}}<br />
-&nbsp;&nbsp;<strong>var_simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_simple_._str")}}<br />
-&nbsp;&nbsp;<strong>p=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_p_._str")}}<br />
-&nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
-&nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
-&nbsp;&nbsp;<strong>dn=</strong>important<br />
-&nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
-<br />
-<strong>avshot=</strong><br />&nbsp;&nbsp;<strong>start=</strong>@@ {{html._div_av_.&lt;}}{{html.ul.&lt;}}<br />
-&nbsp;&nbsp;<strong>trans=</strong>@@ {{html.ul.&gt;}}<br />
-&nbsp;&nbsp;<strong>end_shot=</strong>@@ {{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>shot_only=</strong>{{code.pushlines(t="{{self._start_shot_}}\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{code.pushlines(t="{{self._start_shot_}}\n@wrap p\n{{self._d}}\n@parw 1\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>_start_shot_=</strong>{{self.start}}\n@wrap li\n{{self._s}}\n@parw 1\n{{self.trans}}<br />
-&nbsp;&nbsp;<strong>visual=</strong>{{code.pushlines(t="{{self.start}}\n@wrap li")}}<br />
-&nbsp;&nbsp;<strong>audio=</strong>{{code.pushlines(t="@parw\n{{self.trans}}\n@wrap p")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>noaudio=</strong>{{code.pushlines(t="@parw\n{{self.trans}}\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>_s=</strong>Your Shot Here<br />
-&nbsp;&nbsp;<strong>_d=</strong>Your Shot Description here<br />
-<br />
-<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
-<br />
-<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}{{self.t}}{{html._note_p_.&gt;}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>t=</strong>note default title<br />
+&nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
 <br />
@@ -315,17 +180,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>box default title<br />
 &nbsp;&nbsp;<strong>c=</strong>box default content<br />
-<br />
-<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
-&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
-&nbsp;&nbsp;<strong>cn=</strong>A<br />
-&nbsp;&nbsp;<strong>ph=</strong>B<br />
-&nbsp;&nbsp;<strong>em=</strong>C<br />
-&nbsp;&nbsp;<strong>c1=</strong>D<br />
-&nbsp;&nbsp;<strong>c2=</strong>E<br />
-&nbsp;&nbsp;<strong>c3=</strong>F<br />
 <br />
 <strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>A<br />
 &nbsp;&nbsp;<strong>author=</strong>B<br />
@@ -347,238 +201,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t2=</strong>author<br />
 &nbsp;&nbsp;<strong>t3=</strong>logline<br />
 <br />
-<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
-&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
-&nbsp;&nbsp;<strong>_nop=</strong><br />
-<br />
-<strong>divxp=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
-&nbsp;&nbsp;<strong>c=</strong>default content<br />
-&nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
-&nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-<br />
-<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
-<br />
-<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
-<br />
-<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lt]{{self.t}}[E.gt]<br />
-<br />
-<strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
-<br />
-<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lb]{{self.t}}[E.rb]<br />
-<br />
-<strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
-<br />
-<strong>greyout=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._greyout_div_.&lt;}}{{html._greyout_p_.&lt;}}{{self.t}}{{html._greyout_p_.&gt;}}{{html._greyout_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._greyout_div_.&lt;}}{{html._greyout_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>greyout<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>greyout default title<br />
-&nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
-<br />
-<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
-<br />
-<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
-<br />
-<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
-<br />
-<strong>important=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._important_div_.&lt;}}{{html._important_p_.&lt;}}{{self.t}}{{html._important_p_.&gt;}}{{html._important_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._important_div_.&lt;}}{{html._important_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>important<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>important default title<br />
-&nbsp;&nbsp;<strong>c=</strong>important default content<br />
-<br />
-<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}{{self.t}}{{html._note_p_.&gt;}}{{html._note_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>note<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>note default title<br />
-&nbsp;&nbsp;<strong>c=</strong>note default content<br />
-<br />
-<strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._plain_div_.&lt;}}{{html._plain_p_.&lt;}}{{self.t}}{{html._plain_p_.&gt;}}{{html._plain_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._plain_div_.&lt;}}{{html._plain_p_.&lt;}}{{self.t}}{{html._plain_p_.&gt;}}{{html._plain_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>plain<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_plain_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>{:.green}This should be a new section<br />
-&nbsp;&nbsp;<strong>c=</strong>{:.blue}This test document is used to test the transitions from A/V sections<br />
-<br />
-<strong>question=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._question_div_.&lt;}}{{html._question_p_.&lt;}}{{self.t}}{{html._question_p_.&gt;}}{{html._question_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._question_div_.&lt;}}{{html._question_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>question<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>question default title<br />
-&nbsp;&nbsp;<strong>c=</strong>question default content<br />
-<br />
-<strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._review_div_.&lt;}}{{html._review_p_.&lt;}}{{self.t}}{{html._review_p_.&gt;}}{{html._review_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._review_div_.&lt;}}{{html._review_p_.&lt;}}{{self.t}}{{html._review_p_.&gt;}}{{html._review_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>review<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_review_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>review default title<br />
-&nbsp;&nbsp;<strong>c=</strong>review default content<br />
-<br />
-<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
-&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
-&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
-&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
-<br />
-<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>section<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>section default title<br />
-&nbsp;&nbsp;<strong>c=</strong>section default content<br />
-<br />
-<strong>section_pbb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_pbb_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_pbb_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_pbb_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>section<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>section default title<br />
-&nbsp;&nbsp;<strong>c=</strong>section default content<br />
-<br />
-<strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}{{html._source_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>source<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>source default title<br />
-&nbsp;&nbsp;<strong>c=</strong>source default content<br />
-<br />
-<strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
-<br />
-<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._syntax_div_.&lt;}}{{html._syntax_p_.&lt;}}{{self.t}}{{html._syntax_p_.&gt;}}{{html._syntax_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._syntax_div_.&lt;}}{{html._syntax_p_.&lt;}}{{self.t}}{{html._syntax_p_.&gt;}}{{html._syntax_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>syntax<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_syntax_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>syntax default title<br />
-&nbsp;&nbsp;<strong>c=</strong>syntax default content<br />
-<br />
-<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
-&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
-&nbsp;&nbsp;<strong>root=</strong>/Users/ken/Dropbox/shared/src/script/smd<br />
-&nbsp;&nbsp;<strong>user_basepath=</strong>/Users/ken/.smd<br />
-&nbsp;&nbsp;<strong>user_imports=</strong>/Users/ken/.smd/import<br />
-&nbsp;&nbsp;<strong>user_root=</strong>/Users/ken<br />
-<br />
-<strong>terminal=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap nop\n{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}{{html._terminal_prewrap_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
-&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
-<br />
-<strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
-&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
-&nbsp;&nbsp;<strong>wc_open_content=</strong>{{code.pushlines(t="@wrap nop\n{{html._terminal_prewrap_content_.&lt;}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_content=</strong>{{code.pushlines(t="{{html._terminal_prewrap_content_.&gt;}}\n@parw 1")}}<br />
-<br />
-<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>title=</strong>name of script<br />
-&nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
-<br />
-<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
-&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
-&nbsp;&nbsp;<strong>title=</strong>transitions.md<br />
-&nbsp;&nbsp;<strong>desc=</strong>Testing transitions between shots in AV scripts<br />
-<br />
-<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._toc_div_.&lt;}}{{html._toc_p_.&lt;}}{{self.t}}{{html._toc_p_.&gt;}}{{html._toc_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._toc_div_.&lt;}}{{html._toc_p_.&lt;}}{{self.t}}{{html._toc_p_.&gt;}}{{html._toc_p_content_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>sID=</strong>toc<br />
-&nbsp;&nbsp;<strong>wrapID=</strong>_toc_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>toc default title<br />
-&nbsp;&nbsp;<strong>c=</strong>toc default content<br />
-<br />
 <strong>variable=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>VALUE<br />
 <br />
 <strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -593,391 +215,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>vo default title<br />
 &nbsp;&nbsp;<strong>c=</strong>vo default content<br />
-<br />
-<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>chapter=</strong>{{code.pushlines(t="@wrap html.divx1\n{{self.t}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>section=</strong>{{code.pushlines(t="@wrap html.divx2\n{{self.t}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>subsect=</strong>{{code.pushlines(t="@wrap html.divx3\n{{self.t}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
-<br />
-----------------------------------------<br />
-NAMESPACE: html<br />
-----------------------------------------<br />
-<strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_box_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_box_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_box_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>box<br />
-<br />
-<strong>_div_av_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>av<br />
-<br />
-<strong>_div_extras_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_greyout_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_greyout_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_greyout_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_greyout_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>greyout<br />
-<br />
-<strong>_important_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_important_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_important_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_important_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>important<br />
-<br />
-<strong>_note_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_note_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_note_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_note_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>note<br />
-<br />
-<strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>plain<br />
-<br />
-<strong>_plain_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>plain pbb<br />
-<br />
-<strong>_plain_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>plainTitle<br />
-<br />
-<strong>_plain_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_question_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_question_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_question_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>question<br />
-<br />
-<strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>review<br />
-<br />
-<strong>_review_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>review pbb<br />
-<br />
-<strong>_review_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_review_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_review_pba_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>review pba<br />
-<br />
-<strong>_section_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>section<br />
-<br />
-<strong>_section_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>section pbb<br />
-<br />
-<strong>_section_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_section_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
-<br />
-<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
-<br />
-<strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>source<br />
-<br />
-<strong>_syntax_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>syntax<br />
-<br />
-<strong>_syntax_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>syntax pbb<br />
-<br />
-<strong>_syntax_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_syntax_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_terminal_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>class=</strong>plain<br />
-&nbsp;&nbsp;<strong>style=</strong>padding-left:3em;padding-right:3em<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_terminal_prewrap_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
-&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_terminal_prewrap_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
-&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_toc_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>toc<br />
-<br />
-<strong>_toc_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>toc pbb<br />
-<br />
-<strong>_toc_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
-<br />
-<strong>_toc_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>_vo_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>_vo_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
-<br />
-<strong>_vo_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
-<br />
-<strong>_vo_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>vo<br />
-<br />
-<strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>code=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>contact-div=</strong><br />&nbsp;&nbsp;<strong>class=</strong>contact<br />
-&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>border:none<br />
-<br />
-<strong>contact-td-left=</strong><br />&nbsp;&nbsp;<strong>class=</strong>left nowrap<br />
-&nbsp;&nbsp;<strong>style=</strong>border:none<br />
-&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>contact-td-right=</strong><br />&nbsp;&nbsp;<strong>class=</strong>right nowrap<br />
-&nbsp;&nbsp;<strong>style=</strong>border:none<br />
-&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>border:none<br />
-<br />
-<strong>css=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
-&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
-&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
-<br />
-<strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-<br />
-<strong>divx1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-&nbsp;&nbsp;<strong>style=</strong>border-bottom:5px solid green;color:green<br />
-<br />
-<strong>divx2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-&nbsp;&nbsp;<strong>style=</strong>border-bottom:3px solid black;color:green<br />
-<br />
-<strong>divx3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>extras<br />
-&nbsp;&nbsp;<strong>style=</strong>border-bottom:2px solid black<br />
-<br />
-<strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>em<br />
-<br />
-<strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
-&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
-&nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
-&nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
-&nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
-&nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
-&nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
-&nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
-<br />
-<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
-&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>js=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
-<br />
-<strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;margin-left:2em<br />
-<br />
-<strong>link=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
-<br />
-<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
-<br />
-<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
-&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
-<br />
-<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
-&nbsp;&nbsp;<strong>name=</strong>viewport<br />
-&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
-<br />
-<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>pre=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
-<br />
-<strong>prewrap=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
-&nbsp;&nbsp;<strong>style=</strong>white-space:pre-wrap<br />
-<br />
-<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>revision<br />
-<br />
-<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>revTitle<br />
-<br />
-<strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>_tag=</strong>strong<br />
-<br />
-<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>indent<br />
-<br />
-<strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>td=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>th=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
-<br />
-<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-<br />
-<strong>us=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>style=</strong>text-decoration:underline<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
@@ -999,14 +236,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
-&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
-&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_html.run(url="{{self.href}}")}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>amazon=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>href=</strong>https://www.amazon.com<br />
@@ -1016,21 +245,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>title=</strong>amazon website<br />
 <br />
-<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-&nbsp;&nbsp;<strong>nm=</strong>myanchor<br />
-&nbsp;&nbsp;<strong>t=</strong>*This is my text*<br />
-<br />
-<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>cls=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>href=</strong>https://www.cloudylogic.com<br />
@@ -1039,22 +253,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-<strong>myanchor=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>&lt;em&gt;This is my text&lt;/em&gt;<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-----------------------------------------<br />
-NAMESPACE: image<br />
-----------------------------------------<br />
 </code>
 </div>
 </div>

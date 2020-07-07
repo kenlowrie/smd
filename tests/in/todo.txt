@@ -7,6 +7,7 @@ dump - dump.md DONE
 embed   - import.md DONE
 film - film.md DONE
 header  - markdown.md DONE (and it's used in pretty much every script)
+html - html.md DONE
 image - image.md DONE
 import  - import.md DONE
 link - link.md DONE
@@ -26,7 +27,6 @@ wrap - wrap.md DONE
 
 
 code - code.md
-html - html.md
 
 
 Final reviews after completing the test script rewrites ...

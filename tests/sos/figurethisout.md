@@ -70,6 +70,9 @@ Uses courier font and formatting
 var.terminal vs var.terminal2. Is one better over the other? Should I fix the output of terminal?
 ----------------------
 // ID: 0008-20
+// Is this what I was trying to get at with _c _r item in the punchlist.txt?
+@html _="spanwc" _inherit="span" class="blue" _c="" _content("{{self.<}}{{self._c}}{{self.>}}"
+
 ----------------------
 // ID: 0009-20
 ----------------------
