@@ -156,6 +156,13 @@ Current tag after import of wrap1.md should be 'link': [code.wrap_stack(w="*")]
 Current wrap stack level is: [code.wrap_stack(w="#")]
 @parw *
 
+[b]
+@wrap nop
+TEST::: [code.escape_var(v="code.wrap_stack")]
+@wrap divx
+TEST::: [code.escape_var(v="code.wrap_stack")]
+@parw *
+
 [wrap_h(t="### And this is the end of the @wrap test.")]
 
 Going to get one more warning about the wrapper stack being empty, cause I flushed it above...[b]

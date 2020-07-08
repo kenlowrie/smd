@@ -1,12 +1,16 @@
-//TODO: Remove all the commented out code
-//TODO: Should this include all the AV related imports, so you only have to @import one thing?
 
-// avshot
-// [var.avshot(v="WS: Info here", a="vo info")]
+@import '[sys.imports]/avs/shortcuts.md'
+@import '[sys.imports]/avs/film.md'
+@import '[sys.imports]/avs/image.md'
+@import '[sys.imports]/avs/shot.md'
+
+// avshot - Method Attributes
 // [var.avshot.visual]
 // [var.avshot.audio]
 // [var.avshot.end]
 // [var.avshot.noaudio] 
+// [var.avshot.shot_only(_s="your shot info here")]
+// [var.avshot.shot_with_desc(_s="Shot info here" _d="Shot description/narrative here")]
 
 @html _id="_div_av_" \
       _inherit="div" \

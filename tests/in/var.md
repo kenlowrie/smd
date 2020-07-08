@@ -73,6 +73,23 @@ Now, whenever I write whoami inside square brackets **[ ]**, it will replace it 
 
 This might be added in the future, if there are things I specifically need to unittest that are not already covered.
 
+[plain(t="Test redeclaring variables")]
+
+// Just add unittests for these cases
+@var fu="1"
+@var fu1="abc" attr="xyz"
+@var _="fu2" _format="23" attr2="bc"
+@var fu3="boo" _format="32" attr2="cb"
+@dump var="fu"
+@var fu="2"
+@var fu1="xyz"
+@var fu2="32"
+@var _="fu3"
+@dump var="fu"
+// these show that if you redeclare a variable, the redeclaration wins...
+
+
+
 [var.plain(t="User manual sections for @var and @set")]
 
 @import "[sys.root]/docs/userdocs_macros.md"
@@ -88,10 +105,6 @@ This might be added in the future, if there are things I specifically need to un
 @dump link="^ns_var|var_|^set_.*$"
 
 @import "[sys.root]/docs/section/nsvar-doc.md"
-
-
-
-
 
 //TODO: Why if I try to put [ns] in here does it not expand when the code is compiled over in testdoc.end???
 // this relates back to there not being a reliable way to cause variables to evaluate markdown when the variable is created.

@@ -10,10 +10,10 @@
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: transitions.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing transitions between shots in AV scripts</h3>
 <div class="plain"><p class="plainTitle">User manual sections for avshots.md</p></div>
-<div class="toc"><p class="divTitle">Table of Contents - Unittest transitions.md</p><p>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest transitions.md</p>
 <br />
 <span class="indent"><a href="#ug_samp_shots">A/V Shots</a> - <strong>Sample on creating A/V Shots</strong></span><br />
-</p></div>
+</div>
 <div class="extras"><h3>Review link bookmarks from shots-inc.md</h3></div>
 <div class="variables">
 <code>
@@ -155,12 +155,13 @@ NAMESPACE: var<br />
 <br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}{{self.t}}{{html._note_p_.&gt;}}{{html._note_div_.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>note default title<br />
@@ -170,12 +171,13 @@ NAMESPACE: var<br />
 <br />
 <strong>box=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._box_div_.&lt;}}{{html._box_p_.&lt;}}{{self.t}}{{html._box_p_.&gt;}}{{html._box_div_.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._box_div_.&lt;}}{{html._box_p_.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>box<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>box default title<br />
@@ -205,12 +207,13 @@ NAMESPACE: var<br />
 <br />
 <strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._vo_div_.&lt;}}{{html._vo_p_.&lt;}}{{self.t}}{{html._vo_p_.&gt;}}{{html._vo_div_.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._vo_div_.&lt;}}{{html._vo_p_.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>vo<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>vo default title<br />

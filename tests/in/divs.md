@@ -65,6 +65,22 @@
 [var.source.with_content]
 [var.source.with_content(c="source non default comment")]
 
+[var.source.wc_open]
+[b]we are open
+[var.source.wc_close]
+
+//NOTE: The inline versions of source and probably note, etc., are not really useful, because
+//      block elements as wrappers (which is likely in effect), are going to confuse the browser
+//      because they will wrap other open block tags. 
+//      Below is one workaround, another is how terminal2 is implemented by adding wc_open/close_content
+@wrap nop
+[html.divx.<]
+[var.source.wc_open_inline]
+[b]we are open inline
+[var.source.wc_close_inline]
+[html.divx.>]
+@parw
+
 [wrap_h.hash2]
 [wrap_h(t="### Testing without the namespace prefix var.")]
 

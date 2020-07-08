@@ -3,67 +3,19 @@
 // First get the basic divs
 @import '[sys.imports]/divs.md'
 
-// Define a var for underscoring text
-@html _id="uline" \
-      _inherit="span" \
-      style="text-decoration:underline"
-@var _id="uline1" \
-      _format="{{html.uline.<}}{{self.t}}{{html.uline.>}}" \
-      t="TEXT TO UNDERSCORE"
+// Declare some custom film/video DIVs
 
-// Define a set of vars for letting me make an ordered list
-// This is special, because you have to open the OL, add all the LI and then close the OL
-//TODO: It would be useful to add these _open/_close attrs to other things in here...
-@html _="ol1" \
-      _inherit="ol" \
-      _open="@@ {{_div_extras_.<}}{{self.<}}" \
-      _close="@@{{self.>}}{{_div_extras_.>}}" \
-      style="margin-left:2em" 
-
-@html _id="li1" \
-      _inherit="li" \
-      style="font-size:1.3em"
-
-@var _id="li1" \
-     _format="@@ {{html.li.<}}{{self.t}}{{html.li.>}}" \
-     t="usage: var.li1(t=\"List item\")"
-
-@html _id="comment" \
-      _inherit="p" \
-      class="note" 
+@html _="comment" _inherit="p" class="note"
 
 @var _id="comment" \
      _format="{{html.comment.<}}{{self.t}}{{html.comment.>}}" \
      t="usage: var.comment(t=\"your comment here\")"
 
+[_dfactory(dn="lyrics")]
+@set _="html._lyrics_p_" class="lyrics italic"
 
-@html _id="_div_lyrics_" \
-      _inherit="div" \
-      class="lyrics"
-@html _id="_p_lyrics_" \
-      _inherit="p" \
-      class="lyrics italic"
- 
-@var _id="lyrics" \
-          _format="@@ {{html._div_lyrics_.<}}{{html._p_lyrics_.<}}{{self.t}}[bb]{{self.lyric}}{{html.p.>}}{{html.div.>}}" \
-          t="{:.bigandbold}Song Lyrics" \
-          lyric="YOUR LYRICS HERE use &#91;b] between lines"
+[_dfactory(dn="scene")]
 
-@html _id="_div_scene_" \
-      _inherit="div" \
-      class="scene"
-@html _id="_p_scene_" \
-      _inherit="p" \
-      class="divTitle"
-@html _id="_p_scene_content_" \
-      _inherit="p" \
-      style="font-size:1.2em" 
- 
-@var _id="scene" \
-          _format="@@ {{html._div_scene_.<}}{{html._p_scene_.<}}{{self.t}}{{html._p_scene_.>}}{{html._div_scene_.>}}" \
-          with_content="@@ {{html._div_scene_.<}}{{html._p_scene_.<}}{{self.t}}{{html._p_scene_.>}}{{html._p_scene_content_.<}}{{self.c}}{{html.p.>}}{{html.div.>}}" \
-          t="This is your scene title" \
-          c="This is your content"
 
 @html _id="_span_" \
       _inherit="span" \
@@ -86,14 +38,16 @@
       name_e="{{html._cast_.<+}}{{self.actor}}{{html._cast_.>}}" \
       castmember="UNDEFINED" \
       actor="UNDEFINED"\
-      _help_="x"
+      _help_="See *code.cast_factory*"
+
 @var _id="_propitem_" \
       _format="{{html._props_.<}}{{self.prop}}{{html._props_.>}}" \
       prop="UNDEFINED" \
-      _help_="x"
+      _help_="See *code.prop_factory*"
 
+// Example: [cast_factory(nm="Jones" a="Harrison Ford" m="Indiana Jones")]
 @code _id="cast_factory" type="eval" \
-    src="print('@var _id=\"$.nm\" _inherit=\"_castmember_\" castmember=\"$.c\" actor=\"$.a\" castname=\"$.m\"')"\
+    src="print('@var _id=\"$.nm\" _inherit=\"_castmember_\" castmember=\"$.c\" actor=\"$.a\" fname=\"$.m\"')"\
     c = "*UNDEFINED*" \
     a = "*UNDEFINED*" \
     m = "*UNDEFINED*" \

@@ -22,24 +22,26 @@
 @var _df_var_template="usage: this is meant to be inherited by _df_var_"\
       _format="@@ {{self.inline}}"\
       with_content="@@ {{self.wc_inline}}"\
-      wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+      wc_inline="{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}"\
       wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}\")}}"\
       wc_close="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline}}\")}}"\
 
 
 @var _="_df_var_p_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
-      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_p_content_.<}}\"\
-      wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}\"\
+      wc_close_inline=\"{{html.div.>}}\"\
+      wc_content=\"{{html._$DIVNAME$_p_content_.<}}{{self.c}}{{html.p.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"_$DIVNAME$_p_content_\"\
       t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\""
-      
+
 @var _="_df_var_code_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}{{html._$DIVNAME$_div_.>}}\"\
       wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_.<}}{{self.t}}{{html._$DIVNAME$_.>}}\"\
       wc_close_inline=\"{{html.div.>}}\"\
+      wc_content=\"{{html._$DIVNAME$_content_.<}}{{self.c}}{{html._$DIVNAME$_content_.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"_$DIVNAME$_content_\"\
       t=\"$DIVNAME$ default title\" \
@@ -49,6 +51,7 @@
       inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
       wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
+      wc_content=\"{{self.c}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"nop\"\
       t=\"$DIVNAME$ default title\" \

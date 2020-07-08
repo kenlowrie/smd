@@ -1,5 +1,5 @@
 // This file creates some useful variables for marking down shots
-@var _id="fs" \
+@var _id="FS" \
      pov="**POV**"   \
      ots="**OTS**"   \
      fg="**FG:&nbsp;**"   \
@@ -18,7 +18,7 @@
      la="**LA**"   \
      _format="**File Shot Prefixes:**[bb]***{{self._public_keys_}}***"
 
-@var _id="tags" \
+@var _id="TAGS" \
      ns="**NEED SHOT(s) HERE**" \
      narr="{:.bigandbold.blue}Narrative -" \
      perf="{:.bigandbold.green}Performance -" \
@@ -37,12 +37,11 @@
       _inherit="p" \
       class="right"
 
-@var _id="notes" \
+@var _id="SHOTNOTE" \
      cont="*{soundtrack continues}*"    \
      C="CGI:"    \
      ST="SUBTITLE:"    \
      BS="**BLACK SCREEN**"    \
-     CT3="{{html._div_gen_.<}}{{html._p_right_.<}}CUT TO:{{html.p.>}}{{html.div.>}}"    \
      CT="{{html._div_gen_.<}}{{html._p_right_.<}}CUT TO:{{html.p.>}}{{html.div.>}}"    \
      F2B="{{html._div_gen_.<}}{{html._p_right_.<}}FADE TO BLACK:{{html.p.>}}{{html.div.>}}"    \
      f2b="{{html.span.<}}**FTB:**{{html.span.>}}"    \

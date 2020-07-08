@@ -12,63 +12,49 @@
 @var image_path="[sys.root]/docs/samples/image"
 @import '$/cls-noreviewer.md'
 
-@import '[sys.imports]/avs/shortcuts.md'
-@import '[sys.imports]/avs/film.md'
+@import "[sys.imports]/avs/avs.md"
 
-@var ns="[var.tags.ns]"
-@var narr="[var.tags.narr]"
-@var perf="[var.tags.perf]"
-@var stock="[var.tags.stock]"
-@var unk="[var.tags.unk]"
-@var ws="[var.fs.ws]"
-@var ews="[var.fs.ews]"
-@var els="[var.fs.els]"
-@var ms="[var.fs.ms]"
-@var cu="[var.fs.cu]"
-@var mcu="[var.fs.mcu]"
-@var ecu="[var.fs.ecu]"
-@var ra="[var.fs.ra]"
-@var ha="[var.fs.ha]"
+// import short version of commonly used tags for convenience
+@import "[sys.imports]/avs/shotacro.md"
 
-@var wardrobe="[var.tags.wardrobe]"
-@var makeup="[var.tags.makeup]"
-@var props="[var.tags.props]"
-@var cast="[var.tags.cast]"
+// code.cast_factory makes it easy to generate a cast member
+// [nm] will be the character name; also accessible via [nm.name] or [nm.name_e] (escaped)
+// [nm.actor] is the actor's real name
+// [nm.fname] is the character full name
+// Example: [cast_factory(nm="Jones" a="Harrison Ford" m="Indiana Jones")]
 
+[cast_factory(nm="mom" c="MOM" a="Actor Name" m="Character Full Name")]
+[cast_factory(nm="daughter" c="DAUGHTER" a="Actor Name" m="Character Full Name")]
+[cast_factory(nm="son" c="SON" a="Actor Name" m="Character Full Name")]
 
-@var mom="{:.cast}MOM"
-@var daughter="{:.cast}DAUGHTER"
-@var son="{:.cast}SON"
-@var grocerybags="{:.props}Grocery Bags"
-@var keys="{:.props}KEYS"
-@var note="{:.props}The Note"
-@var food="{:.props}Food items"
-@var cap="{:.props}Baseball Cap"
-@var picture="{:.props}Framed Family Picture"
+// code.prop_factory creates prop variables to easily mark them up in the script
+// [nm] is the propname; also [nm.prop]
+// Example: [prop_factory(nm="phone" p="iPhone")]
+
+[prop_factory(nm="grocerybags", p="Grocery Bags")]
+[prop_factory(nm="keys" p="KEYS")]
+[prop_factory(nm="note" p="The Note")]
+[prop_factory(nm="food" p="Food items")]
+[prop_factory(nm="cap" p="Baseball Cap")]
+[prop_factory(nm="picture" p="Framed Family Picture")]
 
 //-------------------------------------------------------------------
 @var prodnotes="{:.indent}We want to shoot between August 13th - August 17th, based on schedules. Prefer if cast can be available to shoot any day/time (weekdays, evenings or weekends), but we will work around schedules. Primary location will be NE San Antonio."
 
 [section_pbb(t="[title] Music Video Casting Call and Character Breakdown")]
 **Production Title:** [title][b]**Independent/Student/Studio:** Independent[b]**Production Type:** Music Video[bb]**Production Location:** NE San Antonio[bb]**Production Start Date:** 08/05/2018[b]**Production Wrap Date:** 08/20/2018[b]**Production Schedule:** August 13 - 17 &lpar;*Preferred*&rpar;[bb][prodnotes]
-**Producer&lpar;s&rpar;:/Director&lpar;s&rpar;:** [Cloudy Logic Studios]
+**Producer&lpar;s&rpar;:/Director&lpar;s&rpar;:** [ProductionCompany]
 **Synopsis:** "[title]" will be a combination narrative and performance video. The song is about ...
-
-@var lp="&lpar;"
-@var rp="&rpar;"
 
 [plain(t="Character Breakdowns:")]
 
 ***All parts are non-speaking, and we are in search of actors that are able to emote well, especially for the role of [mom].***
 Ethnicities aren't important, however, we will try to cast the [mom], [son] and [daughter] roles with actors that *could be* related.
 @var familypix="*Must be available to take family pictures before production begins.*"
-[mom] [lp]Female, 35-45[rp] This is the lead role in the video. Mother arrives home and discovers... In the various scenes, we follow her through ... This character will be a very emotional role throughout the video. [familypix]
+[mom] (Female, 35-45) This is the lead role in the video. Mother arrives home and discovers... In the various scenes, we follow her through ... This character will be a very emotional role throughout the video. [familypix]
 
-//several She goes from panic and alarm to anger and depression, and then to acceptance. 
+[plain(t="Scene Breakdowns:")]
 
-@import '[sys.imports]/avs/image.md'
-@import '[sys.imports]/avs/shot.md'
-@import "[sys.imports]/avs/avs.md"
 [IMG_SIZE_LARGE]
 @var framegrab="*NEED FRAME GRAB FROM VIDEO HERE*"
 @var ss="{{var.img_def.img_st_inline_border}}"
@@ -104,22 +90,18 @@ Probably just use the [title] and [artist] titles on this shot.
 
 // -------------------------------------------------------------------
 [section(t="[narr] continues - Location S:15 L:~14s-")]
-
-[var.lyrics(lyric="I'm sorry momma[b]that you're reading this[b]I always wanted to make you smile[b]so I must go on with this")]
+[var.lyrics.with_content(t="**Song Lyrics**" c="[b]I'm sorry momma[b]that you're reading this[b]I always wanted to make you smile[b]so I must go on with this")]
 
 // -------------------------------------------------------------------
 [plain(t="Scene 99 - Random Stuff")]
 
 @var stockshot="{{stock}}"
 
-[var.avshot.visual]
-[stockshot] - Clips of moments from his life
-[var.avshot.audio]
-Various shots implying flashbacks to memories or moments of his life. *If needed*
-[var.avshot.end]
+[avshot.shot_only(_s="WS: Describe your opening master shot here")]
+[avshot.shot_with_desc(_s="[stockshot] Clips of moments from his life" _d="Various shots implying flashbacks to memories or moments of his life. *If needed*")]
 
 [var.avshot.visual]
-[stockshot] - Possibly one w/[mom] comforting son
+[stockshot] Possibly one w/[mom] comforting son
 [var.avshot.audio]
 Show his smile. Return to stock image. *If needed*
 [var.avshot.end]
@@ -143,10 +125,11 @@ Show his smile. Return to stock image. *If needed*
 
 [wrap_h(t="## Proposed shooting schedule")]
 
-Originally, production was planned for August 2018, but it has been delayed until September due to scheduling conflicts of both cast and crew. We are anticipating two to three [lp]1/2[rp] days for production as follows:
+Originally, production was planned for August 2018, but it has been delayed until September due to scheduling conflicts of both cast and crew. We are anticipating two to three (1/2) days for production as follows:
 
-[var.scene.with_content(t="Scene 3 EXT" \
-    c="Cast: [mom], [daughter], [son][bb]Info: One (1) production day, evening shoot, *call time **5pm**, wrap time **8pm***.")]
+[var.scene.wc_open(t="Scene 3 EXT")]
+    Cast: [mom], [daughter], [son][bb]Info: One (1) production day, evening shoot, *call time **5pm**, wrap time **8pm***.
+[var.scene.wc_close]
 
 [var.scene.with_content(t="Scene 1 EXT & Scene 2 INT" \
     c="Cast: [mom], [daughter][bb]Info: 1/2 Production day, *call time **8a**, wrap time **12pm** (noon)*")]
