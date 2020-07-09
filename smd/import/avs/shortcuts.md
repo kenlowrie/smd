@@ -5,12 +5,6 @@
 
 // Declare some custom film/video DIVs
 
-@html _="comment" _inherit="p" class="note"
-
-@var _id="comment" \
-     _format="{{html.comment.<}}{{self.t}}{{html.comment.>}}" \
-     t="usage: var.comment(t=\"your comment here\")"
-
 [_dfactory(dn="lyrics")]
 @set _="html._lyrics_p_" class="lyrics italic"
 

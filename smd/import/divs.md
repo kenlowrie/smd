@@ -21,11 +21,15 @@
 
 @var _df_var_template="usage: this is meant to be inherited by _df_var_"\
       _format="@@ {{self.inline}}"\
+      nd="@@{{self.inline_nd}}"\
       with_content="@@ {{self.wc_inline}}"\
+      with_content_nd="@@ {{self.wc_inline_nd}}"\
       wc_inline="{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}"\
+      wc_inline_nd="{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}"\
       wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}\")}}"\
       wc_close="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline}}\")}}"\
-
+      wc_open_nd="{{code.pushlines(t=\"@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}\")}}"\
+      wc_close_nd="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline_nd}}\")}}"
 
 @var _="_df_var_p_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
@@ -48,9 +52,12 @@
       c=\"$DIVNAME$ default content\""
       
 @var _="_df_var_simple_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
-      inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}{{html._$DIVNAME$_div_.>}}\"\
+      inline=\"{{html._$DIVNAME$_div_.<}}{{self.inline_nd}}{{html._$DIVNAME$_div_.>}}\"\
+      inline_nd=\"{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}\"\
       wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
+      wc_open_inline_nd=\"{{html._$DIVNAME$_p_.<}}\"\
+      wc_close_inline_nd=\"{{html.p.>}}\"\
       wc_content=\"{{self.c}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"nop\"\

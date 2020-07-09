@@ -57,8 +57,6 @@ you can't use escape_var... if the variable has a {{code.pushlines}} in it. I th
 
 
 ----------------------
-// ID: 0010-20
-----------------------
 // ID: 0011-20
 ----------------------
 // ID: 0012-20
@@ -135,6 +133,16 @@ IMPORT HERE
 
 @wrap divx,p
 [bb]
+
+----------------------
+// ID: 0010-20
+If you are using any non-block elements as your current [smdwrap.b] tag, and you are using any of the **avshot** builtins, you need to reset the floating element CSS that is used by the **AV** div. In this example, I've set the [smdwrap.b] tag to [encode_tag(t="p")], so you can see what happens.
+
+[smd.b] has a built keyword, two actually, that you can use to clear the floats and begin normal markdown. They are: [smdbreak.b] or [smdexit.b]. They do exactly the same thing, so it doesn't matter which one you use. Once you insert that command, the floats will be cleared, and you can continue with normal markdown.
+
+I need to fix this once and for all. **p** needs to be the plain p with 1.2em size, so you have a better default. And then AV shot (and any other built-ins for shots), can be modified to use the "special p" that has the float right CSS associated.
+
+
 
 ----------------------
 

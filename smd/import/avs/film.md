@@ -39,7 +39,7 @@
 
 @var _id="SHOTNOTE" \
      cont="*{soundtrack continues}*"    \
-     C="CGI:"    \
+     C="**CGI:**"    \
      ST="SUBTITLE:"    \
      BS="**BLACK SCREEN**"    \
      CT="{{html._div_gen_.<}}{{html._p_right_.<}}CUT TO:{{html.p.>}}{{html.div.>}}"    \

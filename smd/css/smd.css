@@ -340,7 +340,7 @@ li {
 }
 /* @group AV Format */
 
-ul {
+div.av ul {
 	width: 45%;
 	float: left;
 	background-color: #f0f0f0;
@@ -349,16 +349,13 @@ ul {
 	list-style-type: none;
 }
 
-p {
+div.av p {
 	width: 45%;
 	float: right;
 	margin-bottom: 0;
 	margin-top: 1em;
 	font-family: "Courier Prime", Courier, "Courier New", mono;
-    /*padding: .7em 1em 1em;*/
     padding: .5em 1em .7em;
-    padding-left: 1em;
-    padding-right: 1em;
 	border-top: 1px solid #ccc;
 }
 
@@ -370,11 +367,11 @@ ul li + li {
 	margin-top: 10px;
 }
 */
-ul + ul {
+div.av ul + ul {
 	clear: left;
 }
 
-p + p {
+div.av p + p {
 	clear: right;
 	border-top: none;
 	margin-top: 0;
@@ -434,33 +431,43 @@ div.extras p.note, div.extras p.question, div.extras p.vo, div.extras p.importan
     border: 2px solid #000000;
 }
 
-.note, div.extras p.note {
+.note, div.extras p.note, div.av p.note {
     border: 2px solid #777777;
     background-color: #f7f7f7;
 }
 
-.question, div.extras p.question {
+.question, div.extras p.question, div.av p.question {
     color: red;
     border: 2px dotted #777777;
 	background-color: #f7f7f7;
 }
 
-.vo, div.extras p.vo {
+.vo, div.extras p.vo, div.av p.vo {
     color: blue;
     border: 2px dotted #777777;
 	background-color: #f7f7f7;
 	/*white-space: pre;*/
 }
 
-.important, div.extras p.important {
+.important, div.extras p.important, div.av p.important {
     padding: 15px;
     font-weight: bold;
     text-transform:uppercase;
+    border:none;
 }
 
-.greyout, div.extras p.greyout {
+.greyout, div.extras p.greyout, div.av p.greyout {
     color: gray;
-	background-color: #f7f7f7;
+    background-color: #f7f7f7;
+    border:none;
+}
+
+div.av p.note, div.av p.question, div.av p.vo, div.av p.important, div.av p.greyout{
+    width: 42%;
+}
+
+p span.note, p span.question, p span.vo{
+    line-height: 2;
 }
 
 .width50 { width: 50%; }

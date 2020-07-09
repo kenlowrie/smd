@@ -30,3 +30,4 @@
 @var fi="[var.SHOTNOTE.fi]"
 @var xf="[var.SHOTNOTE.xf]"
 @var cont="[var.SHOTNOTE.cont]"
+@var cgi="[var.SHOTNOTE.C]"

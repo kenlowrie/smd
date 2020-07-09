@@ -33,7 +33,7 @@
 
 [prop_factory(nm="grocerybags", p="Grocery Bags")]
 [prop_factory(nm="keys" p="KEYS")]
-[prop_factory(nm="note" p="The Note")]
+[prop_factory(nm="thenote" p="The Note")]
 [prop_factory(nm="food" p="Food items")]
 [prop_factory(nm="cap" p="Baseball Cap")]
 [prop_factory(nm="picture" p="Framed Family Picture")]
@@ -76,7 +76,7 @@ Ethnicities aren't important, however, we will try to cast the [mom], [son] and 
 [var.avshot.audio]
 [slate]
 Probably just use the [title] and [artist] titles on this shot.
-[comment(t="This needs to start high enough up that you can't see the trunk, and make sure the sky is NOT blown out! It comes down to reveal [mom] opening trunk and reaching in to grab groceries.")]
+[note.nd(t="This needs to start high enough up that you can't see the trunk, and make sure the sky is NOT blown out! It comes down to reveal [mom] opening trunk and reaching in to grab groceries.")]
 [var.avshot.end]
 
 [shot_factory(nm="shot1")]
@@ -85,7 +85,7 @@ Probably just use the [title] and [artist] titles on this shot.
 [var.avshot.visual]
 [var.shotinfo2(shotid="shot1")]
 [var.avshot.audio]
-[comment(t="Make sure [mom] is already moving when she comes into frame.")]
+[note.nd(t="Make sure [mom] is already moving when she comes into frame.")]
 [var.avshot.end]
 
 // -------------------------------------------------------------------
