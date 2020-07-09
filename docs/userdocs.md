@@ -108,6 +108,21 @@ Now that you've got the basics out of the way, it's time to dig in a little deep
 @import "$/section/wrap-doc.md"
 [link.toc.link]
 @import "$/section/divs-doc.md"
+
+// Reset the cover, contact and revision info so the docs make sense. :)
+@set _id="var.cover"\
+     title="{{defaults.title}}" \
+     author="{{defaults.author}}" \
+     logline="{{defaults.logline}}"
+@set _id="var.contact" \
+     cn="{{defaults.cn}}" \
+     ph="{{defaults.ph}}" \
+     em="{{defaults.em}}" \
+     c1="{{defaults.c1}}" \
+     c2="{{defaults.c2}}" \
+     c3="{{defaults.c3}}"
+@set _id="var.revision" v="{{defaults.revision}}"
+
 [link.toc.link]
 @import "$/section/titlepage-doc.md"
 [link.toc.link]

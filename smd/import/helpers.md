@@ -43,7 +43,9 @@
     sp2="[self.sp][self.sp]"\
     apos="&apos;"\
     num="&num;" hashtag="&num;"\
-    amp="&amp;"
+    amp="&amp;"\
+    bs="&bsol;"\
+    fs="&sol;" fs2="[self.fs][self.fs]"
 
 @var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
 @var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"

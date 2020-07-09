@@ -2,71 +2,6 @@
 
 [var.testdoc_nw.begin(title="specials.md" desc="Testing Cover, Revision and Contact section types")]
 
-@var lpar="&lpar;"
-@var rpar="&rpar;"
-@var obkt="&#91;"
-
-There are three (3) predefined section types that can be defined within your document to add commonly used information in script files. They are defined in *sys.imports/report.md*:
-
-{:.indent}###@var.cover - To add a cover section
-{:.indent}###@var.revision - To add a revision section
-{:.indent}###@var.contact - To add a contact section
-
-The details for each type of section are as follows:
-
-[var.plain(t="@var.cover")]
-
-[hash1]
-
-[var.syntax.with_content(t="Cover Title Syntax" c="\
-     var.cover[lpar]title=\"your title\", author=\"author name\", logline=\"logline or short description\"[rpar] [bb]\
-     Each element is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says \"author\", doesn't mean you have to put the author name there. You could instead write \"Roses are Red\", and that would be just fine...[bb]\
-     var.cover.inline[lpar]title=\"your title\", author=\"author name\", logline=\"logline or short description\"[rpar] [bb]\
-")]
-
-[var.plain(t="@var.revision")]
-
-@var rev_parms="[lpar]v=\"1.0\"[rpar]"
-
-[var.syntax.wc_open(t="Revision Syntax")]
-     [obkt]var.revision[rev_parms]][b]\
-     [obkt]var.revision.plain[rev_parms]][b]\
-     [obkt]var.revision.inline[rev_parms]][b]\
-     [obkt]var.revision.inline_plain[rev_parms]][b]\
-     [b]Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [obkt]var.revision.plain]
-
-[var.syntax.wc_close]
-
-@html _id="indent" _tag="span" style="padding-left:3em" _s="mytext" _format="{{self.<}}{{self._s}}{{self.>}}"
-
-[var.plain(t="@var.contact")]
-
-[var.syntax.wc_open(t="Contact Syntax")]
-
-[var.syntax.wc_p_open]
-@@ var.contact[lpar]cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3"[bb]
-@@ Each element is optional, and the elements can appear in any order. By default, the system looks in the var.defaults variable for the definitions of cn, ph, em, c1, c2 & c3. As such, you can conveniently set them using a single call:[bb]
-@@ [sp]**@set _id="defaults"\[b] \
-     [html.indent(_s="cn=\"Ken Lowrie\"")][b]\
-     [html.indent(_s="ph=\"*512-555-1234*\"")][b]\
-     [html.indent(_s="em=\"[me@mycompany.com]\"")][b]\
-     [html.indent(_s="c1=\"Copyright © 2020 My Company, LLC.\"")][b]\
-     [html.indent(_s="c2=\"All Rights Reserved.\"")][b]\
-     [html.indent(_s="c3=\"[www.cloudylogic.com]\"")][b]**
-@@ [b]To see these tags in action, take a look at the userguideheading.md document in the import folder of this user guide.
-
-@@ [html.p.>]
-
-[var.syntax.wc_close]
-
-@set _id="defaults"\
-     cn="Ken Lowrie"\
-     ph="*512-555-1234*"\
-     em="[me@mycompany.com]"\
-     c1="Copyright © 2020 My Company, LLC."\
-     c2="All Rights Reserved."\
-     c3="[www.cloudylogic.com]"
-
 // And now let's try various versions
 [hash1]
 ### var.cover.inline versions
@@ -184,5 +119,24 @@ The details for each type of section are as follows:
 [var.contact.inline(cn="Contact Name" ph="210-555-1212" em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name" ph="210-555-1212"   c2="Copyright Line 2c" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.plain(t="User manual sections for titlepage-doc.md")]
+
+[var.toc.wc_open(t="Table of Contents - Unittest titlepage-doc.md")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/titlepage-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from titlepage-inc.md")]
+@dump link="^ug_title_page|ug_tp"
+
+@import "[sys.root]/docs/section/titlepage-doc.md"
+
+@set dump_ns_list="var=\"cover|revision|contact|defaults\" html=\"revision|contact\""
+
 
 [var.testdoc_nw.end]
