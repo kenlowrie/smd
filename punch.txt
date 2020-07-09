@@ -3,8 +3,9 @@ Punch List Items.
 
 Priority 1 | p1
 ---------------
-finish writing tests for @html, @image and @code.
-document the key elements (@var, @html, @code, @image, etc.) -- use the "tests/in" files to make it "current".
+finish writing tests for @image and @code.
+document the key elements (@code, @image) -- use the "tests/in" files to make it "current".
+Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
 @if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
@@ -13,8 +14,16 @@ Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so yo
 Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
 smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
 You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
-Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ...
+Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
 Split out the div sections specific to AV into the AVS.md file (from divs.md).
+Need a way to delete an attribute or a variable?
+Seems like I should track where _markdown is called, and only in the main output loop, should things be expanded/processed. I don't know if this is possible, but it seems like if it were, it would solve a lot of the issues I have with trying to do things like escape_var, encode_var, etc, when the underlying variable calls code.push* or code.repeat, etc, etc. Worth a glance in any case...
+@html should add _c(content) and _r(rawcontent) - grep make sure _c, _r not currently used anywhere. If so, fix that first, then implement this. What is this for? _c is the content? And it is returned how? What is meant by _r(rawcontent)? html.foo._c? html.foo(_c="content")
+It would be awesome if I could figure out regex for [var("1 agument")], and that argument is always the first in the declaration, only when you need to specify a different argument do you have to resort to naming them.
+Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
+Refresh the samples so they are using current markdown...
+
+
 
 Priority 2 | p2
 ---------------
@@ -24,6 +33,10 @@ figure out which things need to be tested using stand alone python scripts and s
 Make a single shell script that runs both/all of the command line tests ...
 Make all global variables go away. Should be able to do this using addObjectToTLS, like I did with tls['wrapstack']
 Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
+Need to add negative tests to the unittests. that is, things that should fail. This is done for some things, but not all. Need to expand it...
+Test this on Windows 10. If I can make this work there, that would be a huge win.
+Test it on Linux (Ubuntu maybe? -- Ask Stephen for recommendation on OS and Desktop/if that matters)
+
 
 
 Priority 3 | p3
@@ -31,13 +44,15 @@ Priority 3 | p3
 SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
 add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
 --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
+--developer mode switch (@debug developer="yes" -- so you can enable inside the interpreter) should define things like [mk] and other helpers.
 release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 Code review Cache, ImportCache & SystemDefaults.
 maybe add a pause/resume method on the watcher class i could engage while parsing...
 Make a pass at cleaning up //TODO, or at least listing them here or in docs
-Is @break/@exit useful? Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
+Is @break/@exit useful? Yes, I still use it sometimes. Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 See how close I can get to a clean render of Buddy's music video script markdown file...
 Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
+Save input lines in smd and implement arrow keys for input
 
 
 Priority 5 | p5
@@ -128,6 +143,8 @@ Rework divs.md relying on _inherit to make all of the macros consistent with les
 Should I encode the &squot; entity in src= lines before compiling them? Would this solve the issue where the compiler errors out because I use &squot; to surround the src=? Not needed. Fixed bug in compile() ...
 Add user_import, user_base and user_root to the @sys variable.
 Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
+var.code needs to be renamed because when you write [code.wc_open] it's always wrong. now called var.source
+Create an Examples section to the user docs, and move the "script", "specials", "images", etc. as documentation, and then in the unittest, just import that part of the user guide. 2 birds, one stone.
 
 
 
