@@ -148,6 +148,50 @@
           wc_open_content="{{code.pushlines(t=\"@wrap nop\n{{html._terminal_prewrap_content_.<}}\")}}"\
           wc_close_content="{{code.pushlines(t=\"{{html._terminal_prewrap_content_.>}}\n@parw 1\")}}"
 
+// specialized ordered and unordered lists
+
+
+@var _="_lists_"\
+      _format="@@ {{self.inline}}"\
+      with_content="@@ {{self.wc_inline}}"\
+      wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
+      wc_open="{{code.pushlines(t=\"@wrap li\n@@{{self.wc_open_inline}}\")}}"\
+      wc_close="{{code.pushlines(t=\"@@{{self.wc_close_inline}}\n@parw 1\")}}"
+
+@var _="ulist"\
+      _inherit="_lists_"\
+      inline="{{html._div_extras_.<}}{{html.ulist.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.ulist.<}}"\
+      wc_close_inline="{{html.ul.>}}{{html.div.>}}"\
+      sID="ulist"\
+      t="var.{{self.sID}} default title" \
+      c="var.{{self.sID}} default content"
+
+@var _="ulistplain" _inherit="ulist"\
+      inline="{{html._div_extras_.<}}{{html.ulistplain.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"
+
+@var _="olist"\
+      _inherit="_lists_"\
+      inline="{{html._div_extras_.<}}{{html.olist.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olist.<}}"\
+      wc_close_inline="{{html.ol.>}}{{html.div.>}}"\
+      sID="olist"\
+      t="var.{{self.sID}} default title" \
+      c="var.{{self.sID}} default content"
+
+@var _="olistAlpha" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}"
+
+@var _="olistRoman" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistRoman.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistRoman.<}}"
+
+@var _="olistGreek" _inherit="olist"\
+      inline="{{html._div_extras_.<}}{{html.olistGreek.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
+      wc_open_inline="{{html._div_extras_.<}}{{html.olistGreek.<}}"
+
 
 //@dump var="[_dfactory.dn]|review" html=".*[_dfactory.dn]|^_div_rev|^_p_rev"
 //@dump var="[_dfactory.dn]|code" html=".*[_dfactory.dn]|^_div_cod|^_code"

@@ -24,22 +24,22 @@ So finally, I put the [] around the code.encode_smd, and {{}} around self.c, and
 ----------------------
 // ID: 0005-20
 Two different ways to do indented boxes
-[fatmargin._open]
+[bmgreybg._open]
 [var.code.wc_open(t="High level overview of startup")]
 
 Uses courier font and formatting
 
 [var.code.wc_close]
-[fatmargin._close]
+[bmgreybg._close]
 
 
 
-[fatmargin._open]
+[bmgreybg._open]
 [wrap_h(t="###High level overview of startup")]
 
 ... data here - uses standard font and formatting...
 
-[fatmargin._close]
+[bmgreybg._close]
 
 ----------------------
 // ID: 0007-20

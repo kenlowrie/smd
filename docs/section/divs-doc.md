@@ -42,11 +42,11 @@ The predefined DIVs in the **divs.md** builtin are organized into four types to 
 There four different styles of DIVs are predefined for you, and you can add more as well as customize these to your hearts content. Each of these has a similar interface, so let's see what that is, and how it is used. Only one of each different type will be covered, since the interface on the others is identical! We will start with the *[e_var.b(t="section")]-style* DIVs, of which you have **section, section_pbb, toc, syntax, review, review_pba and plain**.
 
 Let's begin by taking a look at the actual definition of [e_div.b]:
-[fatmargin._open] 
+[bmgreybg._open] 
 [var.source.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
 @dump html="^.*section_$|^_p_section_content" var="section$"
 [var.source.wc_close]
-[fatmargin._close]
+[bmgreybg._close]
 
 If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the complete syntax for these generic groups:
 

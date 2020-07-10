@@ -253,6 +253,12 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>fs2=</strong>[self.fs][self.fs]<br />
 &nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
 <br />
+<strong>EMOJI=</strong><br />&nbsp;&nbsp;<strong>mask=</strong>&amp;#x1F637;<br />
+&nbsp;&nbsp;<strong>shades=</strong>&amp;#x1F60E;<br />
+&nbsp;&nbsp;<strong>smile=</strong>&amp;#x1F642;<br />
+&nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
+<br />
 <strong>_df_html_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_" _inherit="code" style="font-size:1.4em;font-weight:bold"      \n@html _="_$DIVNAME$_content_" _inherit="code" style="font-size:1.2em"<br />
 <br />
 <strong>_df_html_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="$DIVNAME$ pbb"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="divTitle"      \n@html _="_$DIVNAME$_p_content_" _inherit="p"<br />
@@ -289,9 +295,37 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
+<strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._bluenote_p_.&lt;}}{{self.t}}{{html._bluenote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._bluenote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>t=</strong>note default title<br />
+&nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
 <br />
@@ -361,6 +395,10 @@ NAMESPACE: var<br />
 <strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." html="." link="." image="."<br />
+<br />
+<strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+&nbsp;&nbsp;<strong>e=</strong>smile<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
 &nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
@@ -452,6 +490,54 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>non-default-title-wc_open<br />
 &nbsp;&nbsp;<strong>c=</strong>note non default comment<br />
 <br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
 <strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -492,6 +578,28 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>question default title<br />
 &nbsp;&nbsp;<strong>c=</strong>question default content<br />
+<br />
+<strong>rednote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._rednote_p_.&lt;}}{{self.t}}{{html._rednote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._rednote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>t=</strong>note default title<br />
+&nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -658,6 +766,30 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>toc non default title<br />
 &nbsp;&nbsp;<strong>c=</strong>toc non default comment<br />
 <br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.ulist.&lt;}}{{self.t}}{{html.ulist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.ulist.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ul.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>ulist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.ulistplain.&lt;}}{{self.t}}{{html.ulist.&gt;}}{{html._div_extras_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.ulistplain.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ul.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>ulist<br />
+&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
 <strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -692,6 +824,10 @@ NAMESPACE: var<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
+<strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+<br />
 <strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
@@ -790,6 +926,10 @@ NAMESPACE: html<br />
 <strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>question<br />
+<br />
+<strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
 <br />
 <strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -897,6 +1037,18 @@ NAMESPACE: html<br />
 <strong>_vo_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>vo<br />
+<br />
+<strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1008,6 +1160,44 @@ NAMESPACE: html<br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Alpha<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Greek<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Roman<br />
+<br />
+<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-alpha<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-greek<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-roman<br />
+<br />
 <strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -1031,6 +1221,16 @@ NAMESPACE: html<br />
 <br />
 <strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>spanfs=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}} style="{{self._s1}}"&gt;<br />
+&nbsp;&nbsp;<strong>_s1=</strong>font-size:1em<br />
+&nbsp;&nbsp;<strong>_s2=</strong>font-size:2em<br />
+&nbsp;&nbsp;<strong>_big=</strong>&lt;{{self._tag}} style="{{self._s2}}"&gt;<br />
+<br />
+<strong>spanwc=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>blue<br />
 <br />
 <strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>strong<br />
@@ -1057,6 +1257,14 @@ NAMESPACE: html<br />
 <br />
 <strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist-plain<br />
 <br />
 <strong>us=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

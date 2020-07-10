@@ -115,6 +115,18 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>123attr=</strong>nope<br />
 &nbsp;&nbsp;<strong>_tag=</strong>b1<br />
 <br />
+<strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
@@ -601,70 +613,31 @@ NAMESPACE: html<br />
 @html _="tr" _tag="tr"
 @html _="ul" _tag="ul"
 
-</pre></div>
-<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>@html</strong>. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Let's look at helpers.md:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-@import "$/html.md"
-@import "$/code.md"
-@html _="tab" _inherit="span" class="indent"
-@html _="us" _inherit="span" style="text-decoration:underline"
-@html _="divx" _inherit="_div_extras_"
-@html _="divx1" _inherit="divx" style="border-bottom:5px solid green;color:green"
-@html _="divx2" _inherit="divx" style="border-bottom:3px solid black;color:green"
-@html _="divx3" _inherit="divx" style="border-bottom:2px solid black"
-@html _="li2" _tag="li" _inherit="li" style="font-size:1.3em;margin-left:2em"
+// useful list styles
+@html _="ulist" _inherit="ul" class="ulist"
+@html _="ulistplain" _inherit="ul" class="ulist-plain"
+@html _="olist" _inherit="ol" class="olist"
+@html _="olist_template" _inherit="ol"  _format="@@{{self._inline}}" _inline="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;"
+@html _="olistAlpha" _inherit="olist_template" class="olist-Alpha"
+@html _="olistalpha" _inherit="olist_template" class="olist-alpha"
+@html _="olistRoman" _inherit="olist_template" class="olist-Roman"
+@html _="olistroman" _inherit="olist_template" class="olist-roman"
+@html _="olistGreek" _inherit="olist_template" class="olist-Greek"
+@html _="olistgreek" _inherit="olist_template" class="olist-greek"
 
-@var hash1="# [code.repeat.run(t=\"-\", c=\"42\")]"
-@var hash2="## [code.repeat.run(t=\"-\", c=\"42\")]"
-@var hash3="### [code.repeat.run(t=\"-\", c=\"42\")]"
-@var wrap_h="{{code.pushlines(t=\"@wrap html.divx\n{{self.t}}\n@parw 1\")}}"\
-    hash1="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash1}}\n@parw 1\")}}"\
-    hash2="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash2}}\n@parw 1\")}}"\
-    hash3="{{code.pushlines(t=\"@wrap html.divx\n{{var.hash3}}\n@parw 1\")}}"\
-    chapter="{{code.pushlines(t=\"@wrap html.divx1\n{{self.t}}\n@parw 1\")}}"\
-    section="{{code.pushlines(t=\"@wrap html.divx2\n{{self.t}}\n@parw 1\")}}"\
-    subsect="{{code.pushlines(t=\"@wrap html.divx3\n{{self.t}}\n@parw 1\")}}"
-
-@var E="Entity Constants: {{self._all_attrs_}}" \
-    ast="&amp;ast;"\
-    ast2="[self.ast][self.ast]"\
-    ast3="[self.ast][self.ast][self.ast]"\
-    lb="&amp;lsqb;"\
-    rb="&amp;rsqb;"\
-    lcb="&amp;lcub;"\
-    lcb2="[self.lcb][self.lcb]"\
-    rcb="&amp;rcub;"\
-    rcb2="[self.rcb][self.rcb]"\
-    lt="&amp;lt;"\
-    gt="&amp;gt;"\
-    at="&amp;commat;"\
-    lp="&amp;lpar;"\
-    rp="&amp;rpar;"\
-    plus="&amp;plus;"\
-    ins="[self.plus][self.plus]"\
-    minus="&amp;minus;"\
-    tilde="&amp;sim;"\
-    del="[self.tilde][self.tilde]"\
-    sp="&amp;nbsp;"\
-    sp2="[self.sp][self.sp]"\
-    apos="&amp;apos;"\
-    num="&amp;num;" hashtag="&amp;num;"\
-    amp="&amp;amp;"\
-    bs="&amp;bsol;"\
-    fs="&amp;sol;" fs2="[self.fs][self.fs]"
-
-@var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
-@var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
-
-@var e_us="{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}" t="text_to_underscore"
 
 </pre></div>
+<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>@html</strong>. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember <strong>helpers.md</strong> from the earlier chapter [link.ug_helpers.link]?</p></div>
 <div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>@html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
+<strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+<br />
 <strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
@@ -733,14 +706,6 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>note<br />
 <br />
-<strong>_p_bluenote_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>***_p_note_*** does not exist<br />
-&nbsp;&nbsp;<strong>class=</strong>{{html._p_note_.class}} blue<br />
-&nbsp;&nbsp;<strong>_tag=</strong>_p_bluenote_<br />
-<br />
-<strong>_p_rednote_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>***_p_note_*** does not exist<br />
-&nbsp;&nbsp;<strong>class=</strong>{{html._p_note_.class}} red<br />
-&nbsp;&nbsp;<strong>_tag=</strong>_p_rednote_<br />
-<br />
 <strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>plain<br />
@@ -771,6 +736,10 @@ NAMESPACE: html<br />
 <strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>question<br />
+<br />
+<strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
 <br />
 <strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -895,9 +864,21 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>123attr=</strong>nope<br />
 &nbsp;&nbsp;<strong>_tag=</strong>b1<br />
 <br />
+<strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
 <strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>https://google.com<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -984,12 +965,6 @@ NAMESPACE: html<br />
 <br />
 <strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>em<br />
-<br />
-<strong>fatmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
-&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
-&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 &nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />

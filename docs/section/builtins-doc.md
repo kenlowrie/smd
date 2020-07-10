@@ -1,4 +1,4 @@
-[link.builtins]
+[link.ug_builtins]
 [wrap_h.chapter(t="## The builtins")]
 
 This chapter will cover the builtins that are automatically loaded (unless the -ndb and -nub command line switches are specified).
@@ -47,10 +47,5 @@ There is a special built-in in the @var namespace called sys that contains sever
 
 The most commonly used of the sys attributes is import. Anytime you want to load one of the system defined import files. For example, **@import "[e_var(t="sys.imports")]/divs.md"** would import the *divs.md* markdown script.
 
-
-
-
-
-[docthis.open(h="Add this to builtins-doc.md")]
-
-[docthis.close]
+//[docthis.open(h="Add this to builtins-doc.md")]
+//[docthis.close]

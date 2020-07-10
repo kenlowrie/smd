@@ -1,4 +1,5 @@
-
+// These macros are helpers for the manual. Not really useful outside of the guide...
+// Except for the unittests, which includes this whenever including markdown from the manual...
 @var smdtag="@@{{self.il}}" p="" il="[encode_smd(t=\"{{self.p}}\")]" b="**{{self.il}}**" em="*{{self.il}}*" emb="***{{self.il}}***"
 
 @var _="smdvar" _inherit="smdtag" p="@var"
@@ -40,88 +41,6 @@
 @var _="smdparw" _inherit="smdtag" p="@parw"
 @var _="smdparw_wp" _inherit="smdtag" p="@parw {{self.parms}}"
 
-
-@html _="ulist" _inherit="ul" class="ulist"
-@html _="ulistplain" _inherit="ul" class="ulist-plain"
-@html _="olist" _inherit="ol" class="olist"
-@html _="olist_template" _inherit="ol"  _format="@@{{self._inline}}" _inline="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"
-@html _="olistAlpha" _inherit="olist_template" class="olist-Alpha"
-@html _="olistalpha" _inherit="olist_template" class="olist-alpha"
-@html _="olistRoman" _inherit="olist_template" class="olist-Roman"
-@html _="olistroman" _inherit="olist_template" class="olist-roman"
-@html _="olistGreek" _inherit="olist_template" class="olist-Greek"
-@html _="olistgreek" _inherit="olist_template" class="olist-greek"
-
-@var _="_lists_"\
-      _format="@@ {{self.inline}}"\
-      with_content="@@ {{self.wc_inline}}"\
-      wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-      wc_open="{{code.pushlines(t=\"@wrap li\n@@{{self.wc_open_inline}}\")}}"\
-      wc_close="{{code.pushlines(t=\"@@{{self.wc_close_inline}}\n@parw 1\")}}"
-
-@var _="ulist"\
-      _inherit="_lists_"\
-      inline="{{html._div_extras_.<}}{{html.ulist.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.ulist.<}}"\
-      wc_close_inline="{{html.ul.>}}{{html.div.>}}"\
-      sID="ulist"\
-      t="var.{{self.sID}} default title" \
-      c="var.{{self.sID}} default content"
-
-@var _="ulistplain" _inherit="ulist"\
-      inline="{{html._div_extras_.<}}{{html.ulistplain.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"
-
-@var _="olist"\
-      _inherit="_lists_"\
-      inline="{{html._div_extras_.<}}{{html.olist.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olist.<}}"\
-      wc_close_inline="{{html.ol.>}}{{html.div.>}}"\
-      sID="olist"\
-      t="var.{{self.sID}} default title" \
-      c="var.{{self.sID}} default content"
-
-@var _="olistAlpha" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}"
-
-@var _="olistRoman" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistRoman.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistRoman.<}}"
-
-@var _="olistGreek" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistGreek.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistGreek.<}}"
-
-
-@html _="_p_bluenote_" _inherit="_p_note_" class="{{html._p_note_.class}} blue"
-@html _="_p_rednote_" _inherit="_p_note_" class="{{html._p_note_.class}} red"
-@var _="bluenote" _inherit="note"
-[code.attr_replace_str(s_str="_p_note_" r_str="_p_bluenote_" attr="var.bluenote.inline")]
-[code.attr_replace_str(s_str="_p_note_" r_str="_p_bluenote_" attr="var.bluenote.wc_open_inline")]
-@var _="rednote" _inherit="note"
-[code.attr_replace_str(s_str="_p_note_" r_str="_p_rednote_" attr="var.rednote.inline")]
-[code.attr_replace_str(s_str="_p_note_" r_str="_p_rednote_" attr="var.rednote.wc_open_inline")]
-
-@html _="fatmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray" _open="@@{{self.<}}" _close="@@{{self.>}}"
-
-@var EMOJI="Emoji Constants: {{self._public_attrs_}}" \
-    mask="&#x1F637;"\
-    shades="&#x1F60E;"\
-    smile="&#x1F642;"\
-    tonguewink="&#x1F61C;"
-
-@html _="spanwc" _inherit="span" class="blue"
-@html _="spanfs" _inherit="span" \
-      _s1="font-size:1em" \
-      _s2="font-size:2em" \
-      _format="<{{self._tag}} style=\"{{self._s1}}\">"\
-      _big="<{{self._tag}} style=\"{{self._s2}}\">"
-
-@var e_moji="{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.>}}" \
-      big="{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.>}}"\
-      e="smile"
-
 @var sp4="[sp][sp][sp][sp]"
 
 // The name SMD (smd) should be abstracted in a variable at the lowest level, such that I can change it on the fly and it would reflect throughout the docs.
@@ -131,8 +50,11 @@
 @var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd" short="Interactive Script Markdown"
 @var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"  short="Script Markdown Parser"
 
+//TODO: When I add a developer switch (or mode), this should be one of the things that is added
+//      Very useful to create a marker in large output documents to find where you are when debugging. :)
 @var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
 
+// This is used when we are documenting attribute creation, because you can't use {{self.}} directly
+// If you do, it evaluates to the variable being used to emit the docs. DOH!
 @var _self_="&#x73;elf"
 @var _self="@@{{self.il}}" il="{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}"
-

@@ -88,7 +88,7 @@ The usage is simple, identical to [smdembed.b] as a matter of fact (except that 
 
 You can use the [smddump.b] keyword with option **tracked=** to review the files that are currently being watched. This is a good way to just make sure that your watch command is working as expected during the creation process. For example, let's say you [smdembed.b] the file "myscript.html" which includes a [e_tag.b(t="script")] tag that references **myjavascript.js**. We could make sure that our [smdwatch.b] markdown is correct by using the following markdown:
 
-[fatmargin._open]
+[bmgreybg._open]
 [var.source.wc_open(t="Debug hack for making sure my [smdwatch.il] file is monitored")]
 [bb]
 [smdcomment.il] first let's dump the embed file inline escaped[b]
@@ -113,7 +113,7 @@ You can use the [smddump.b] keyword with option **tracked=** to review the files
 [b]
 [smdcomment.il] Cool! Now both files are being watched ...[b]
 [var.source.wc_close]
-[fatmargin._close]
+[bmgreybg._close]
 
 When you review the preceding section in the docs, you will notice a lot more than is actually needed in practice. This is because I wanted to show the steps and the actual content to help you understand all the steps. In reality, all you needed was:
 

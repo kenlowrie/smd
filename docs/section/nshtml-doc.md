@@ -29,11 +29,11 @@ In the preceding example, we've defined  three [smdhtml.b] variables: **blockquo
 @html _id="bquote" _tag="blockquote"
 @html _id="bq" _inherit="blockquote"
 
-[fatmargin._open] 
+[bmgreybg._open] 
 [var.source.wc_open(t="Definition of *blockquote*, *bquote* & *bq* variables")]
 @dump html="^blockquote$|bq.*"
 [var.source.wc_close]
-[fatmargin._close]
+[bmgreybg._close]
 
 First, take a look at **blockquote**. **_tag**, although we didn't specify it, has been set to **blockquote**. In many cases, this is what you want, so not having to specify it is a nice shortcut when declaring variables. Also, notice how **_format** has been set to *[E.lt]{{self._tag}}{{self._public_attrs_}}[E.gt][E.lt]{{self._tag}}[E.gt]*. 
 
@@ -62,11 +62,11 @@ Let's return to looking at the **bquote** and **bq** variables. With **bquote**,
 
 @html _id="bq" _inherit="blockquote" cite="different-default-citation"
 
-[fatmargin._open] 
+[bmgreybg._open] 
 [var.source.wc_open(t="New definition of *bq* variable")]
 @dump html="bq$"
 [var.source.wc_close]
-[fatmargin._close]
+[bmgreybg._close]
 
 
 [link.html_names]
@@ -108,11 +108,7 @@ Here are just a few more examples to help drive home your understanding of the d
 @embed "[sys.imports]/html.md" esc="y"
 [terminal.wc_close]
 
-You can see a combination of syntaxes used in declaring the builtins for [smdhtml.b]. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Let's look at helpers.md:
-
-[terminal.wc_open(t="Contents of html.md builtins")]
-@embed "[sys.imports]/helpers.md" esc="y"
-[terminal.wc_close]
+You can see a combination of syntaxes used in declaring the builtins for [smdhtml.b]. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember **helpers.md** from the earlier chapter [link.ug_helpers.link]?
 
 Many times, you may find that taking a system provided builtin as a starting point, using **_inherit** to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of [smdhtml.b]. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.
 

@@ -26,3 +26,16 @@
 @html _="th" _tag="th"
 @html _="tr" _tag="tr"
 @html _="ul" _tag="ul"
+
+// useful list styles
+@html _="ulist" _inherit="ul" class="ulist"
+@html _="ulistplain" _inherit="ul" class="ulist-plain"
+@html _="olist" _inherit="ol" class="olist"
+@html _="olist_template" _inherit="ol"  _format="@@{{self._inline}}" _inline="<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}>"
+@html _="olistAlpha" _inherit="olist_template" class="olist-Alpha"
+@html _="olistalpha" _inherit="olist_template" class="olist-alpha"
+@html _="olistRoman" _inherit="olist_template" class="olist-Roman"
+@html _="olistroman" _inherit="olist_template" class="olist-roman"
+@html _="olistGreek" _inherit="olist_template" class="olist-Greek"
+@html _="olistgreek" _inherit="olist_template" class="olist-greek"
+

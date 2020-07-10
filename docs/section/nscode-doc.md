@@ -16,6 +16,20 @@ src="print('required for code')"
 type="eval"
 
 
+Document code.encode_smd
+
+@@[code.encode_smd(t="@dump sysdef=\".\"")][b]
+
+{:.bigandbold}If this is inline, *[code.encode_smd(t="@var name=\"value\" _format=\"# {{self.name}}\"")]*
+//@dump code="encode_smd"
+//@set _ns="code" _="encode_smd" b="**{{self.run}}(t={{self.t}})**"
+//[encode_smd.b(t="[var]")]
+
+document these
+//@@[code.escape_var(v="var.bb")]
+//@@[code.encode_smd_var(v="var.bb")]
+
+
 // be sure to test the @code thing where the only way to change attribute defaults is to use @set...
 
 

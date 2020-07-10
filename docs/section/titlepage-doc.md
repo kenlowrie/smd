@@ -1,8 +1,6 @@
 [link.ug_title_pages]
 [wrap_h.chapter(t="##Cover, Revision & Contact Sections")]
 
-
-@html _="bigmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em" _open="@@{{self.<}}" _close="@@{{self.>}}"
 @var bmo="{{html.bigmargin._open}}"
 @var bmc="{{html.bigmargin._close}}"
 

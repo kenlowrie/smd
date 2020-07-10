@@ -1,3 +1,3 @@
-[link.bm_factory(nm="helpers" t="Helper built-ins")]
+[link.bm_factory(nm="ug_helpers" t="Helper built-ins")]
 
-[tab.<][link.helpers.link] - **Helper built-ins. Why do I care?**[tab.>][b]
+[tab.<][link.ug_helpers.link] - **Helper built-ins. Why do I care?**[tab.>][b]

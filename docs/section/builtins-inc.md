@@ -1,3 +1,3 @@
-[link.bm_factory(nm="builtins" t="Builtin identifiers")]
+[link.bm_factory(nm="ug_builtins" t="Builtin identifiers")]
 
-[tab.<][link.builtins.link] - **The predefined built-ins of [smb]**[tab.>][b]
+[tab.<][link.ug_builtins.link] - **The predefined built-ins of [smb]**[tab.>][b]
