@@ -99,7 +99,7 @@ For this example, let's look at an alternative of editing defaults.md to specify
      [ulistplain.>]
 [ulistplain.wc_close]
 
-So, I'm going to do that now, and then we'll write the **[encode_smd(t="[var.contact]")] markdown and see what we get.
+So, I'm going to do that now, and then we'll write the **[encode_smd(t="[var.contact]")]** markdown and see what we get.
 
 @set _id="defaults"\
      cn="Ken Lowrie"\

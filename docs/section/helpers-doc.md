@@ -10,7 +10,7 @@ Let's start by taking a look at what's contained in **helpers.md**:
 //[docthis.open(h="Add this to helpers-doc.md")]
 //[docthis.close]
 
-[terminal.wc_open(t="Contents of html.md builtins")]
+[terminal.wc_open(t="Contents of helpers.md builtins")]
 @embed "[sys.imports]/helpers.md" esc="y"
 [terminal.wc_close]
 

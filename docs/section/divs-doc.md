@@ -26,6 +26,7 @@ The predefined DIVs in the **divs.md** builtin are organized into four types to 
 [e_var.b(t="box")] - Box content
 [e_var.b(t="question")] - Question content
 [e_var.b(t="greyout")] - Greyout content
+[e_var.b(t="generic")] - Generic content
 [e_var.b(t="important")] - Important content[bb]
 [e_us(t="{:.green}**List DIVs**")]
 [e_var.b(t="ulist")] - Unordered bulleted list content

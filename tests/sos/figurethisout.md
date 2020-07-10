@@ -50,6 +50,12 @@ var.terminal vs var.terminal2. Is one better over the other? Should I fix the ou
 // Is this what I was trying to get at with _c _r item in the punchlist.txt?
 @html _="spanwc" _inherit="span" class="blue" _c="" _content("{{self.<}}{{self._c}}{{self.>}}"
 
+@link _="email_me" href="mailto:me@my101.com" _content="email me"
+variable is declared as _format="<{{self._tag}}{{self._public_attrs_}}>{{self._content_}}</{{self._tag}}>" _content_="{{self._c}}" _c=""
+
+It's like using _inherit. If you use _content, then it adds _content="{{self._c}}" and _c="email me" when the variable is declared...
+
+
 ----------------------
 // ID: 0009-20
 you can't use escape_var... if the variable has a {{code.pushlines}} in it. I think because it expands, not sure. It would be nice to figure out why this is, because several of the builtin code macros fail when attempting to use them with variables that use pushlines... Not just code.pushlines either. I think it has to do with get_value() in the namespace xface actually causing code to run??? figure it out!

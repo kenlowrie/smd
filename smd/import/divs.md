@@ -54,7 +54,7 @@
 @var _="_df_var_simple_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{self.inline_nd}}{{html._$DIVNAME$_div_.>}}\"\
       inline_nd=\"{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}\"\
-      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{html._$DIVNAME$_p_.<}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{self.wc_open_inline_nd}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
       wc_open_inline_nd=\"{{html._$DIVNAME$_p_.<}}\"\
       wc_close_inline_nd=\"{{html.p.>}}\"\
@@ -102,6 +102,7 @@
 [_dfactory.as_simple(dn="question")]
 [_dfactory.as_simple(dn="greyout")]
 [_dfactory.as_simple(dn="important")]
+[_dfactory.as_simple(dn="generic")]
 
 @var extras="@@{{html._div_extras_.<}}{{self.c}}{{html.div.>}}" c="default content"
 

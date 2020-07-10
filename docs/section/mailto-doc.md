@@ -1,69 +1,47 @@
-[link.mailto_links]
-
-[docthis.open(h="Add this to mailto-doc.md")]
-
-mailto: hyperlinks must be discussed here, we cannot do that in the unittest for link.md because output changes between runs.
-
-
-[docthis.close]
-
-
-
+[link.ug_mailto_links]
 [wrap_h.chapter(t="###mailto links")]
 
+//[docthis.open(h="Add this to mailto-doc.md")]
+//[docthis.close]
+
 You can create mailto: links in your document too, which enables users to click on a link to automatically compose an email addressed to the specified email address. [smd.b] will encode the entire mailto: link URL using a mix of decimal and hexadecimal HTML entities as a deterrent to spam bots that mine email addresses from HTML documents. Here's the syntax for a *mailto:* link:
- 
-[syntax.with_content(t="mailto Link Syntax" c="\
-    {:.indent2.bigandbold}&lt;&#91;*LinkID*&#93;&gt; &lt; : &gt; &lt;***mailto:you@yourdomain.com***&gt;\
-    [sp]\
-    {:.indent2.bigandbold}Examples:\
-    [sp]\
-    {:.indent3.bigandbold}&#91;email_me&#93;:mailto:user@mydomain.com *&lt;-- mailto Link Example*\
-    {:.indent3.bigandbold}&#91;feedback&#93;:mailto:user@mydomain.com?subject=feature%20feedback*&lt;-- mailto link with subject*\
-")]
+[syntax.wc_open(t="mailto Link Syntax")]
+    [generic.wc_open_inline]
+        [smdlink.b] _id="name" href="*mailto:*you@yourdomain.com"[bb]
+        [smdcomment.b] or use the link factory
+        [encode_smd(t="[link.ln_factory(nm=\"sample\" hr=\"mailto://example.com\" t=\"my default title\") ]")]
+    [generic.wc_close_inline]
+[syntax.wc_close]
 
+Let's create two sample links using each method and see how they are then used in your markdown:
 
-[email_me]:mailto:user@mydomain.com
-[feedback]:mailto:user@mydomain.com?subject=feature%20feedback
+@link _="email_me" href="mailto:me@domain.com"
+[ln_factory(nm="feedback" hr="mailto:user@mydomain.com?subject=feature%20feedback" t="Send feedback")]
 
-I've defined the previous examples inline in the user docs, so now we can use them by embedding the link id within square brackets, like so: [email_me]. Or using the second form, send me [feedback].
+[terminal.wc_open(t="using the mailto: prefix on [smdlink.il] declarations")]
+    [tab.<]@link _="email_me" href="mailto:me@domain.com"[tab.>]
+    [tab.<][E.lb]ln_factory(nm="feedback" hr="mailto:user@mydomain.com?subject=feature%20feedback" t="Send feedback")[E.rb][tab.>]
+[terminal.wc_close]
 
-{:.syntax}--- divTitle Variable Decorators
-    [SP]
-    {:.bigandbold.indent}&#91;variable]={:.class}value
+I've defined the previous examples inline in the user docs, so now we can use them by using either of these methods:
 
-So, if you declared this: [encode_smd(t="@var mynewvar=\"{:.bigandbold.red}My new big bold value\"")], and then write &#91;mynewvar], you'd get this:
-@var mynewvar="{:.bigandbold.red}My new big bold value"
-[mynewvar] &lt;-- At the start of the line
-And it can also be used inline: [mynewvar]
+**[encode_smd(t="[link.email_me.<]email_me[link.email_me.>")]** emits this:[b]
+[tab.<]*[escape_var(v="link.email_me.<")]*email_me*[escape_var(v="link.email_me.>")]*[tab.>]
 
-### Delayed Expansion
+which the browser renders like this: [email_me.<]email me[email_me.>].
 
-Sometimes, it's useful to delay the expansion of a variable until right before it's used. Take the following example:
+[bluenote.wc_open]
+**Wait, what the ... happened to the href?**
+[bb]
+[tab.<]*[escape_var(v="link.email_me.<")]*[tab.>]
+[bb]
+How come the **href** on the link is all jacked up? Actually, this is intentional! It encodes the email address in a way that makes it a bit more challenging for **spambots** and other web scraper tools to detect an email address. Not impossible, but definitely more challenging! In addition, every time the parser runs the output will be slightly different, yet the link and the behavior remain consistent and correct! Just a cool side benefit to how [smd.b] parses and encodes links that use a **mailto** prefix on the **href**.
+[bluenote.wc_close]
 
-&#91;first]=Ken<br />&#91;last]=Lowrie[b]&#91;full]=&#91;first]&#91;last]
+Getting back to **mailto** links, let's take a look at the other example, the one created with the link factory. The variable name for it is **feedback**, and to use the link, all we need to write is **[encode_smd(t="[feedback]")]**, which is much easier and cleaner than having to use the link open and close tags as before.
 
-When you look at this, the expectation might be that the variable **&#91;full]** would be different if I changed &#91;first]=Brenda. But let's see what happens when we do that. Here's the code:
+When we do that, the browser will display [feedback], which is exactly what we need. If you'll recall from the discussion on the link factory before, you also have access to the **_qlink** attribute, so we can create custom alternate text on the fly. 
 
-&#91;first]=Ken<br />&#91;last]=Lowrie[b]&#91;full]={:.red}&#91;first]&#91;last] \
-[b]&#91;full][b]&#91;first]=Brenda[b]&#91;full]
+For example, if we write **[encode_smd(t="[feedback._qlink")](_qtext="I would love to get your feedback!")]**, then this is what the browser would display: [feedback._qlink(_qtext="I would love to get your feedback!")]
 
-And when we run that code:
-
-[first]=Ken
-[last]=Lowrie
-[full]={:.red}[first] [last]
-[full]
-[first]=Brenda
-[full]
-
-This happens because any variable used in an assignment is expanded at the time that the variable is defined, and not when it's actually used. However, it's possible to force that behavior using **{{}}** when defining a variable. In this example, we'll change the line **&#91;full]={:.red}[{{first}}] [{{last}}]**, but everything else remains the same. Let's see what happens.
-
-[first]=Ken
-[last]=Lowrie
-[full]={:.red}[{{first}}] [{{last}}]
-[full]
-[first]=Brenda
-[full]
-
-Sweet! Just what we wanted. By using the {{}} around a variable name used in an assignment of another variable, expansion is delayed until the variable is used. This feature is used quite a bit in the film, shot and image support later on. Check the examples in the tests directory to see it in action.
+And so we come to the end of the [smdlink.b] chapter. Built upon the [smdhtml.b] namespace, [smdlink.b] offers some cool features for creating and using hyperlinks if your markdown documents. Next up, is the [smdimage.b] namespace.

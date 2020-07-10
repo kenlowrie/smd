@@ -181,6 +181,31 @@ wc_open_inline_nd
 
 
 
+[var.avshot.visual]
+And now *generic*...
+
+[var.avshot.audio]
+This is the standard generic_div variant inside the div.av
+[generic(t="I wonder if we should maybe add that line from the unused section about \"...\"")]
+[generic.nd]
+This next one is inline using raw HTML
+@@<p class="generic">this is an inline note. lorem ipsum. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+with_content_nd
+[generic.with_content_nd]
+inline_nd
+[generic.inline_nd]
+wc_open_nd
+[generic.wc_open_nd]
+this is my open generic no div
+[generic.wc_close_nd]
+wc_open_inline_nd
+@@[generic.wc_open_inline_nd]
+@@this is my open generic no div
+@@[generic.wc_close_inline_nd]
+[var.avshot.end]
+
+
+
 {: .ignore}Anything with a .ignore class won't be displayed when the page is rendered by a browser, but is still part of the actual HTML document.
 
 @exit
@@ -200,6 +225,6 @@ wc_open_inline_nd
 
 @import "[sys.root]/docs/samples/avscript/script1-doc.md"
 
-@set dump_ns_list="var=\"note|question|greyout|important|vo\" html=\".*(note|question|vo|greyout|important)\"" 
+@set dump_ns_list="var=\"note|question|greyout|important|generic|vo\" html=\".*(note|question|vo|greyout|important|generic)\"" 
 
 [var.testdoc_nw.end]
