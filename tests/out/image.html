@@ -403,6 +403,135 @@ NAMESPACE: image<br />
 </div>
 <div class="plain"><p class="plainTitle">Testing @image builtin functions</p></div>
 <div class="plain"><p class="plainTitle">Testing adding new @image builtins</p></div>
+<div class="plain"><p class="plainTitle">User manual sections for nsimage-doc.md</p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest nsimage-doc.md</p>
+<br />
+<span class="indent"><a href="#ug_ns_image">@image Namespace</a> - <strong>@image Namespace</strong></span><br />
+<span class="indent"><span class="indent"><a href="#ug_image_builtins">@image Builtins</a> - <strong>@image Namespace</strong></span></span><br />
+</div>
+<div class="extras"><h3>Review link bookmarks from nsimage-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>ug_image_builtins=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@image Builtins<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_ns_image=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@image Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ug_ns_image"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>The @image Namespace</h2></div>
+<div class="extras"><p>The <strong>@image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>@image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag. <strong>@image</strong> is based on the <strong>@html</strong> namespace, so the underlying semantics include everything it. The full syntax is:</p></div>
+<div class="syntax"><p class="divTitle">@image Syntax</p>
+<p><div class="extras"><p class="generic"></p>
+<p>@image _id="imagename" src="pathtoimage" alt="" _private="val"</p>
+<p></p></div></p>
+</div>
+<div class="extras"><p>Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the <strong>@image</strong> namespace. You will use that name to cause the <strong>&lt;img&gt;</strong> tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated <strong>@image</strong> HTML code. So, if you were to write:</p></div>
+<div class="source"><code style="font-size:1.4em;font-weight:bold"></code>
+<code style="font-size:1.2em"><h4 class="indent">@image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"</h4></code>
+</div>
+<div class="extras"><p>and then write:</p></div>
+<div class="extras"><p><h4 class="indent">&lsqb;img1&rsqb;</h4></p></div>
+<div class="extras"><p>The code that would be inserted would be:</p></div>
+<div class="extras"><p><span class="indent"><strong>&lt;img src="path/foo.jpg" alt="my text for alt" class="myclass"/&gt;</strong></span></p></div>
+<div class="extras"><p>Note that _id wasn't included, nor was _private. However, I can reference them both using the syntax:</p></div>
+<div class="extras"><p><span class="indent"><strong>&lsqb;img1._id&rsqb;</strong> which emits <em>img1</em> and <strong>&lsqb;img1._private&rsqb;</strong> which emits <em>My private note</em></span></p></div>
+<div class="extras"><p>This also works to reference the normal attributes. e.g. <strong>&lsqb;img1.class&rsqb;</strong> which emits <em>myclass</em>.</p></div>
+<div class="extras"><p>And as is the case for all namespaces, if there's ambiguity in the names used in different namespaces, you can add the namespace prefix to clarify. For example, <em><strong>image.</strong></em> in front of the name to force the correct namespace to resolve. For example, if I write the following two lines in my document:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>@var</strong> img1="my variable img1 in @var namespace"
+<strong>@image</strong> _id="img1" src="foo.png"
+</pre></div>
+<div class="extras"><p>Then, when I write <strong>&lsqb;var.img1&rsqb;</strong> the parser will emit <em>my variable img1 in @var namespace</em> and when I write <strong>&lsqb;image.img1&rsqb;</strong> the parser emits <em>&lt;img src="foo.png"/&gt;</em>.</p></div>
+<div class="extras"><p>Let's go ahead and include an inline image to see <strong>@image</strong> in action. I will write:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>@image</strong> _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" alt="shot 1" style="width:30%"
+</pre></div>
+<div class="extras"><p>When I write <strong>&lsqb;shot1&rsqb;</strong>, the parser emits <em>&lt;img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/&gt;</em> and the browser renders:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/></p></div>
+<div class="extras"><p>Easy enough. Now let's take a look at the system provided builtins for <strong>@image</strong>.</p></div>
+<a id="ug_image_builtins"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@image builtins</h3></div>
+<div class="extras"><p>The <strong>@image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of <strong>image.md</strong>:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of sys.imports/image.md</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+// Create a constant var with various styles and defaults for images
+
+@var _id="IMG_DEF" \
+      _i_width="90%" \
+      _b_size="1px" \
+      _b_type="solid" \
+      img_border_style="border:{{self._b_size}} {{self._b_type}};padding:1em;" \
+      img_inline_style="margin-left:auto;margin-right:auto;width:{{self._i_width}};" \
+      img_st_inline="{{self.img_inline_style}}" \
+      img_st_inline_border="{{self.img_inline_style}}{{self.img_border_style}}" \
+      img_st_block="display:block;{{self.img_inline_style}}" \
+      img_st_block_border="display:block;{{self.img_inline_style}}{{self.img_border_style}}" \
+      _format="{{self._private_keys_}}{{self._public_keys_}}"
+
+
+// Some useful defaults for _i_width
+@var IMG_SIZE="{{self._public_keys_}}"\
+      thumb="{{var.IMG_DEF._null_(_i_width=\"20%\")}}"\
+      small="{{var.IMG_DEF._null_(_i_width=\"40%\")}}"\
+      medium="{{var.IMG_DEF._null_(._i_width=\"70%\")}}"\
+      large="{{var.IMG_DEF._null_(_i_width=\"90%\")}}"\
+      custom="{{var.IMG_DEF._null_(_i_width=\"{{self.w}}\")}}"\
+      w="50%"
+
+// Some useful shortcuts to select styling for an image
+@var IMG_STYLE="{{self._public_keys_}}"\
+      inline="{{var.IMG_DEF.img_st_inline}}"\
+      inline_border="{{var.IMG_DEF.img_st_inline_border}}"\
+      block="{{var.IMG_DEF.img_st_block}}"\
+      block_border="{{var.IMG_DEF.img_st_block_border}}"
+
+</pre></div>
+<div class="extras"><p>This limited set of builtins is intended as a starting point for your own image styling. <strong>IMG_DEF</strong> contains four different default styles, each of which can be selected using the <strong>IMG_STYLE</strong> attribute shortcuts:</p></div>
+<div class="extras"><ul class="ulist-plain">
+<li><strong>&lsqb;IMG_STYLE.inline&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_STYLE.inline_border&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_STYLE.block&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_STYLE.block_border&rsqb;</strong></li>
+</ul></div>
+<div class="extras"><p>In addition, four fixed size attributes and one custom size attribute is provided via the <strong>IMG_SIZE</strong> declaration:</p></div>
+<div class="extras"><ul class="ulist-plain">
+<li><strong>&lsqb;IMG_SIZE.thumb&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_SIZE.small&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_SIZE.medium&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_SIZE.large&rsqb;</strong></li>
+<li><strong>&lsqb;IMG_SIZE.custom&lpar;w="##%"&rpar;)&rsqb;</strong></li>
+</ul></div>
+<div class="extras"><p>For a quick example of the size and styling shortcuts, let's write the following markdown in this document and see what we get:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;IMG_SIZE.thumb&rsqb;
+@image _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" style="&lsqb;IMG_STYLE.inline_border&rsqb;"
+&lsqb;shot1&rsqb;
+</pre></div>
+<div class="extras"><p>And here is what the browser renders:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p class="note red">
+Why is it not working when I write {{var.img_def.img_..}} instead it only works when using the brackets?
+</p></div>
+<div class="extras"><p>You can see more of these builtins and the <strong>@image</strong> support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -479,6 +608,10 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
+<strong>img1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>foo.png<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
@@ -497,6 +630,11 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>not_private=</strong>YES<br />
 &nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
+&nbsp;&nbsp;<strong>style=</strong>[var.IMG_STYLE.inline_border]<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />

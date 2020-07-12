@@ -3,11 +3,10 @@
 
 @var image_path="[sys.root]/docs/samples/image"
 
-@import '[sys.imports]/avs/image.md'
 @import '[sys.imports]/avs/avs.md'
 
-[IMG_SIZE_LARGE]
-@var ss="{{var.img_def.img_st_inline_border}}"
+[IMG_SIZE.large]
+@var ss="{{var.IMG_STYLE.inline_border}}"
 @var trythis="{:.red.bold}Try to get this shot"
 @var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
@@ -62,10 +61,10 @@ And here is some info about shot0
 [var.shotinfo2(shotid="needshot")]
 [var.avshot.noaudio]
 
-@image _id="shot2a" src="[image_path]/shot1.jpg" style="[var.img_def.img_st_inline]"
-@image _id="shot2b" src="[image_path]/shot1.jpg" style="[var.img_def.img_st_inline_border]"
-@image _id="shot3a" src="[image_path]/shot1.jpg" style="[var.img_def.img_st_block]"
-@image _id="shot3b" src="[image_path]/shot1.jpg" style="[var.img_def.img_st_block_border]"
+@image _id="shot2a" src="[image_path]/shot1.jpg" style="[var.IMG_STYLE.inline]"
+@image _id="shot2b" src="[image_path]/shot1.jpg" style="[var.IMG_STYLE.inline_border]"
+@image _id="shot3a" src="[image_path]/shot1.jpg" style="[var.IMG_STYLE.block]"
+@image _id="shot3b" src="[image_path]/shot1.jpg" style="[var.IMG_STYLE.block_border]"
 
 [shot_factory(nm="shot2a")]
 [var.shot2a._null_(d="shot1.jpg" c="yes" l="85mm")]

@@ -1,30 +1,123 @@
-[link.ns_image]
+[link.ug_ns_image]
 [wrap_h.chapter(t="## The @image Namespace")]
 
-The @image statement can be used to include images in your document. Basically, @image is a convenient way to abstract the &lt;IMG&gt; HTML tag. The full syntax is:
+@wrap divx, p
 
-{:.syntax}--- divTitle @image keyword
-    {:.indent}@image _id="imagename" src="pathtoimage" alt="" _private="val"
+The [smdimage.b] keyword is used to declare variables that are used to include images in your document. Basically, [smdimage.b] is a convenient way to abstract the [e_tag.b(t="img")] HTML tag. [smdimage.b] is based on the [smdhtml.b] namespace, so the underlying semantics include everything it. The full syntax is:
 
-Here's how it works. _id="imagename" is going to be how you cause the &lt;img&gt; tag to be generated in your document. Any variable that begins with an underscore (_) is considered private, and will not be included in the generated IMG HTML code. So, if you were to write:
+[syntax.wc_open(t="[smdimage.il] Syntax")]
+    [generic.wc_open_inline]
+        @image _id="imagename" src="pathtoimage" alt="" _private="val"
+    [generic.wc_close_inline]
+[syntax.wc_close]
 
-{:.indent}#### @image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
+Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the [smdimage.b] namespace. You will use that name to cause the [e_tag.b(t="img")] tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated [smdimage.b] HTML code. So, if you were to write:
 
-and then I wrote:
-{:.indent}#### [img1]
+[source.wc_open(t="")]
+    {:.indent}#### @image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
+[source.wc_close]
 
-The code that would be inserted in the an "extras" DIV would be:
+@image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
 
-{:.indent}#### &ltimg src="path/foo.jpg" alt="my text for alt" class="myclass" /&gt;
+and then write:
+{:.indent}#### [e_var(t="img1")]
+
+The code that would be inserted would be:
+
+[tab.<]**[escape_var(v="img1")]**[tab.>]
 
 Note that _id wasn't included, nor was _private. However, I can reference them both using the syntax:
 
-{:.indent}#### &#91;img1._id] and &#91;img1._private].
+[tab.<][e_var.b(t="img1._id")] which emits *[img1._id]* and [e_var.b(t="img1._private")] which emits *[img1._private]*[tab.>]
 
-This also works to reference the normal attributes. e.g. &#91;img1.class] would print **myclass**.
+This also works to reference the normal attributes. e.g. [e_var.b(t="img1.class")] which emits *[img1.class]*.
 
-Note that if there's ambiguity in the names used for regular variables, image variables and *as you'll see next*, varv2 variables, you can add a prefix to clarify. For example, ***image.*** in front of the name to force the correct namespace to resolve. For example:
+And as is the case for all namespaces, if there's ambiguity in the names used in different namespaces, you can add the namespace prefix to clarify. For example, ***image.*** in front of the name to force the correct namespace to resolve. For example, if I write the following two lines in my document:
 
-{:.indent.bigandbold}&#91;img1]=image1[b]@image _id="img1" \
-    src="foo.png"[b]&#91;img1] would expand as ***image1***, and \
-    &#91;image.img1] would expand as the ***&ltimg ...&gt*** html code.
+[terminal.wc_open(t="")]
+    [smdvar.b] img1="my variable img1 in [smdvar.il] namespace"
+    [smdimage.b] _id="img1" src="foo.png"
+[terminal.wc_close]
+
+@var img1="my variable img1 in [smdvar.il] namespace"
+@image _id="img1" src="foo.png"
+
+Then, when I write [e_var.b(t="var.img1")] the parser will emit *[var.img1]* and when I write [e_var.b(t="image.img1")] the parser emits *[escape_var(v="image.img1")]*.
+
+Let's go ahead and include an inline image to see [smdimage.b] in action. I will write:
+
+[terminal.wc_open(t="")]
+    [smdimage.b] _="shot1" src="[E.lb]sys.root[E.rb]/docs/import/shot1.jpg" alt="shot 1" style="width:30%"
+[terminal.wc_close]
+
+@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" alt="shot 1" style="width:30%"
+
+When I write [e_var.b(t="shot1")], the parser emits *[escape_var(v="image.shot1")]* and the browser renders:
+
+[shot1]
+
+Easy enough. Now let's take a look at the system provided builtins for [smdimage.b].
+
+
+[link.ug_image_builtins]
+[wrap_h.section(t="### [smdimage.il] builtins")]
+
+// Include image.md before we embed it, otherwise it won't load...
+
+@import "[sys.imports]/image.md"
+
+The [smdimage.b] namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of **image.md**:
+
+[terminal.wc_open(t="Contents of sys.imports/image.md")]
+@embed "[sys.imports]/image.md" esc="y"
+[terminal.wc_close]
+
+This limited set of builtins is intended as a starting point for your own image styling. **IMG_DEF** contains four different default styles, each of which can be selected using the **IMG_STYLE** attribute shortcuts:
+
+[ulistplain.wc_open]
+@wrap [code.wrap_stack(w="tag.<")],strong
+[e_var(t="IMG_STYLE.inline")]
+[e_var(t="IMG_STYLE.inline_border")]
+[e_var(t="IMG_STYLE.block")]
+[e_var(t="IMG_STYLE.block_border")]
+@parw
+[ulistplain.wc_close]
+
+In addition, four fixed size attributes and one custom size attribute is provided via the **IMG_SIZE** declaration:
+
+[ulistplain.wc_open]
+@wrap [code.wrap_stack(w="tag.<")],strong
+[e_var(t="IMG_SIZE.thumb")]
+[e_var(t="IMG_SIZE.small")]
+[e_var(t="IMG_SIZE.medium")]
+[e_var(t="IMG_SIZE.large")]
+[e_var(t="IMG_SIZE.custom[E.lp]w=\"##%\"[E.rp])")]
+@parw
+[ulistplain.wc_close]
+
+For a quick example of the size and styling shortcuts, let's write the following markdown in this document and see what we get:
+
+[terminal.wc_open(t="")]
+    [e_var(t="IMG_SIZE.thumb")]
+    [smdimage] _="shot1" src="[E.lb]sys.root[E.rb]/docs/import/shot1.jpg" style="[E.lb]IMG_STYLE.inline_border[E.rb]"
+    [e_var(t="shot1")]
+[terminal.wc_close]
+
+And here is what the browser renders:
+
+[IMG_SIZE.thumb]
+
+@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="[var.IMG_STYLE.inline_border]"
+
+[shot1]
+
+[rednote.wc_open]
+Why is it not working when I write {{var.img_def.img_..}} instead it only works when using the brackets?
+[rednote.wc_close]
+
+You can see more of these builtins and the [smdimage.b] support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.
+
+
+//[docthis.open(h="Add this to nsimage-doc.md")]
+//[docthis.close]
+

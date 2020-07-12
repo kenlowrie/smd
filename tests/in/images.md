@@ -1,13 +1,13 @@
 @import "$/testsetup.md"
 
-[var.testdoc_nw.begin(title="image.md" desc="Testing Images in Shots support from avs/image.md")]
+[var.testdoc_nw.begin(title="image.md" desc="Testing Images in Shots support from image.md")]
 
 
 @import "[sys.root]/docs/userdocs_macros.md"
 
-[var.plain(t="User manual sections for images.md")]
+[var.plain(t="User manual sections for samples/images/images-doc.md")]
 
-[var.toc.wc_open(t="Table of Contents - Unittest images.md")]
+[var.toc.wc_open(t="Table of Contents - Unittest samples/images/images-inc.md")]
 @wrap nop
 [b]
 @import "[sys.root]/docs/samples/images/images-inc.md"

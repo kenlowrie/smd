@@ -183,13 +183,30 @@ NAMESPACE: var<br />
 <br />
 <strong>FancyJoe=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;span class="bigandbold"&gt;Joe Producer&lt;/span&gt;<br />
 <br />
-<strong>IMG_SIZE_LARGE=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def._null_(_i_width="90%")}}<br />
+<strong>IMG_DEF=</strong><br />&nbsp;&nbsp;<strong>_i_width=</strong>40%<br />
+&nbsp;&nbsp;<strong>_b_size=</strong>1px<br />
+&nbsp;&nbsp;<strong>_b_type=</strong>solid<br />
+&nbsp;&nbsp;<strong>img_border_style=</strong>border:{{self._b_size}} {{self._b_type}};padding:1em;<br />
+&nbsp;&nbsp;<strong>img_inline_style=</strong>margin-left:auto;margin-right:auto;width:{{self._i_width}};<br />
+&nbsp;&nbsp;<strong>img_st_inline=</strong>{{self.img_inline_style}}<br />
+&nbsp;&nbsp;<strong>img_st_inline_border=</strong>{{self.img_inline_style}}{{self.img_border_style}}<br />
+&nbsp;&nbsp;<strong>img_st_block=</strong>display:block;{{self.img_inline_style}}<br />
+&nbsp;&nbsp;<strong>img_st_block_border=</strong>display:block;{{self.img_inline_style}}{{self.img_border_style}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._private_keys_}}{{self._public_keys_}}<br />
 <br />
-<strong>IMG_SIZE_MEDIUM=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def._null_(_i_width="70%")}}<br />
+<strong>IMG_SIZE=</strong><br />&nbsp;&nbsp;<strong>thumb=</strong>{{var.IMG_DEF._null_(_i_width="20%")}}<br />
+&nbsp;&nbsp;<strong>small=</strong>{{var.IMG_DEF._null_(_i_width="40%")}}<br />
+&nbsp;&nbsp;<strong>medium=</strong>{{var.IMG_DEF._null_(._i_width="70%")}}<br />
+&nbsp;&nbsp;<strong>large=</strong>{{var.IMG_DEF._null_(_i_width="90%")}}<br />
+&nbsp;&nbsp;<strong>custom=</strong>{{var.IMG_DEF._null_(_i_width="{{self.w}}")}}<br />
+&nbsp;&nbsp;<strong>w=</strong>50%<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
-<strong>IMG_SIZE_SMALL=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def._null_(_i_width="40%")}}<br />
-<br />
-<strong>IMG_SIZE_THUMB=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def._null_(_i_width="20%")}}<br />
+<strong>IMG_STYLE=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{var.IMG_DEF.img_st_inline}}<br />
+&nbsp;&nbsp;<strong>inline_border=</strong>{{var.IMG_DEF.img_st_inline_border}}<br />
+&nbsp;&nbsp;<strong>block=</strong>{{var.IMG_DEF.img_st_block}}<br />
+&nbsp;&nbsp;<strong>block_border=</strong>{{var.IMG_DEF.img_st_block_border}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
 <strong>JoeProducer=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Joe Producer<br />
 <br />
@@ -572,17 +589,6 @@ NAMESPACE: var<br />
 <strong>headshots=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[image_path]<br />
 <br />
 <strong>image_path=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[sys.root]/docs/samples/image<br />
-<br />
-<strong>img_def=</strong><br />&nbsp;&nbsp;<strong>_i_width=</strong>40%<br />
-&nbsp;&nbsp;<strong>_b_size=</strong>1px<br />
-&nbsp;&nbsp;<strong>_b_type=</strong>solid<br />
-&nbsp;&nbsp;<strong>img_border_style=</strong>border:{{self._b_size}} {{self._b_type}};padding:1em;<br />
-&nbsp;&nbsp;<strong>img_inline_style=</strong>margin-left:auto;margin-right:auto;width:{{self._i_width}};<br />
-&nbsp;&nbsp;<strong>img_st_inline=</strong>{{self.img_inline_style}}<br />
-&nbsp;&nbsp;<strong>img_st_inline_border=</strong>{{self.img_inline_style}}{{self.img_border_style}}<br />
-&nbsp;&nbsp;<strong>img_st_block=</strong>display:block;{{self.img_inline_style}}<br />
-&nbsp;&nbsp;<strong>img_st_block_border=</strong>display:block;{{self.img_inline_style}}{{self.img_border_style}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self._private_keys_}}{{self._public_keys_}}<br />
 <br />
 <strong>img_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@image _id="{{self.nm}}" src="{{self.s}}" style="{{self.st}}"<br />
 &nbsp;&nbsp;<strong>s=</strong>[image_path]/shot1.jpg<br />
@@ -1331,7 +1337,7 @@ NAMESPACE: var<br />
 <br />
 <strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[sp][sp][sp][sp]<br />
 <br />
-<strong>ss=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.img_def.img_st_inline_border}}<br />
+<strong>ss=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{var.IMG_STYLE.inline_border}}<br />
 <br />
 <strong>stock=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[var.TAGS.stock]<br />
 <br />

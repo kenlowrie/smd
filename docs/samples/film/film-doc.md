@@ -55,9 +55,9 @@ Ethnicities aren't important, however, we will try to cast the [mom], [son] and 
 
 [plain(t="Scene Breakdowns:")]
 
-[IMG_SIZE_LARGE]
+[IMG_SIZE.large]
 @var framegrab="*NEED FRAME GRAB FROM VIDEO HERE*"
-@var ss="{{var.img_def.img_st_inline_border}}"
+@var ss="{{var.IMG_STYLE.inline_border}}"
 @var trythis="{:.red.bold}Try to get this shot"
 @var beforeshoot="{:.red.bold}NEED TO GET THIS DONE BEFORE PRODUCTION"
 
@@ -115,7 +115,7 @@ Show his smile. Return to stock image. *If needed*
 @image _id="actress2" src="[headshots]/actress2.jpg" style="[ss]" _name="Actor2 Name" _source="[sTAW]"
 
 
-[IMG_SIZE_SMALL]
+[IMG_SIZE.small]
 @var backup="**BACKUP CAST MEMBER**"
 @var tnted="**TNT SENT**"
 

@@ -417,10 +417,10 @@ NAMESPACE: link<br />
 <div class="plain"><p class="plainTitle">Testing @link builtin functions</p></div>
 <div class="toc"><p class="divTitle">Table of Contents - Unittest link</p>
 <p><br /></p>
-<p><span class="indent"><a href="#ns_link">@link Namespace</a> - <strong>@link Namespace</strong>"</span><br /></p>
-<p><span class="indent"><span class="indent"><a href="#links">Links</a> - <strong>Link Styles</strong></span></span><br /></p>
-<p><span class="indent"><span class="indent"><a href="#hyperlinks">Hyper Links</a> - <strong>Creating hyperlinks</strong></span></span><br /></p>
-<p><span class="indent"><span class="indent"><a href="#bookmarks">Bookmark Links</a> - <strong>Creating bookmarks</strong></span></span><br /></p>
+<p><span class="indent"><a href="#ug_ns_link">@link Namespace</a> - <strong>@link Namespace</strong>"</span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_links">Links</a> - <strong>Link Styles</strong></span></span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_hyperlinks">Hyper Links</a> - <strong>Creating hyperlinks</strong></span></span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_bookmarks">Bookmark Links</a> - <strong>Creating bookmarks</strong></span></span><br /></p>
 </div>
 <div class="extras"><h3>Review link bookmarks from link-inc.md</h3></div>
 <div class="variables">
@@ -428,7 +428,7 @@ NAMESPACE: link<br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -438,7 +438,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -448,11 +448,11 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_ns_link=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Links<br />
+&nbsp;&nbsp;<strong>text=</strong>@link Namespace<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
@@ -460,10 +460,10 @@ NAMESPACE: link<br />
 <br />
 </code>
 </div>
-<a id="ns_link"></a>
+<a id="ug_ns_link"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>@link Namespace</h2></div>
 <div class="extras"><p>The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.</p></div>
-<a id="links"></a>
+<a id="ug_links"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>
 <div class="extras"><p>There are two different styles of links built-in to smd which map to standard HTML links:</p></div>
 <ol>
@@ -471,7 +471,7 @@ NAMESPACE: link<br />
 <li style="font-size:1.3em;margin-left:2em">Bookmarks - Links created using the HTML <strong>a</strong> tag with the <strong>id</strong> attribute. <em>&lt;a id="bookmark_name"&gt;&lt;/a&gt;</em></li>
 </ol>
 <div class="extras"><p>As you can see, these links are both based on the HTML <strong>a</strong> attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the <em><strong>sys.imports/link.md</strong></em> file.</p></div>
-<a id="hyperlinks"></a>
+<a id="ug_hyperlinks"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Hyperlinks</h3></div>
 <div class="extras"><p>Hyperlinks are created using the @link namespace in smd, while specifying the attributes desired to describe the link. The @link namespace is a subclass of @html, and therefore it shares all the same characteristics, such as the &lt; attribute to emit the open tag HTML and &gt; to emit the close tag HTML. For more information on the @html namespace, refer to the user manual.</p></div>
 <div class="extras"><p>You can create a variable in the @link namespace using the following syntax:</p></div>
@@ -508,7 +508,7 @@ NAMESPACE: link<br />
 <div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">http://example.com</a></p></div>
 <div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:3em">alt2 link text</a></p></div>
 <div class="extras"><p>This should give you a pretty good idea of how you can use hyperlinks in your smd documents, and so this wraps up the section on creating them using the built-ins provided in <em><strong>sys.imports/link.md</strong></em>.</p></div>
-<a id="bookmarks"></a>
+<a id="ug_bookmarks"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Bookmarks</h3></div>
 <div class="extras"><p>Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the <em><strong>ID</strong></em> and the actual reference to the ID, which is done by writing <em><strong>#ID</strong></em>. Within smd, bookmarks are implemented with the @link namespace, and are usually created using the Bookmark factory, <strong>bm_factory</strong>, which is a built-in link variable. <strong>bm_factory</strong> uses the <strong>bm_template</strong> variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.</p></div>
 <div class="extras"><p class="note"><em><strong>NOTE</strong></em>: Because the <strong>bm_template</strong> isn't useful outside the context of the <strong>bm_factory</strong>, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.</p></div>
@@ -1589,16 +1589,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>my alternate bookmark name<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
 &nbsp;&nbsp;<strong>a=</strong>8<br />
 &nbsp;&nbsp;<strong>b=</strong>2<br />
@@ -1629,16 +1619,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>target=</strong>_blank<br />
 &nbsp;&nbsp;<strong>title=</strong>click on me to search on google.com<br />
-<br />
-<strong>hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
 <strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1695,16 +1675,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>Links<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>nm=</strong>google<br />
@@ -1720,16 +1690,6 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>_inherit=</strong>_template_<br />
 <br />
-<strong>ns_link=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>@link Namespace<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
 <strong>sample=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>my default title<br />
 &nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
@@ -1739,6 +1699,46 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>title=</strong>my link title here<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:3em<br />
+<br />
+<strong>ug_bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_ns_link=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@link Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
 </code>
 </div>
