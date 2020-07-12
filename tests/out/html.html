@@ -423,11 +423,11 @@ NAMESPACE: html<br />
 <div class="plain"><p class="plainTitle">User manual sections for <strong>@html</strong></p></div>
 <div class="toc"><p class="divTitle">Table of Contents - Unittest <strong>@html</strong></p>
 <br />
-<span class="indent"><a href="#ns_html">@html Namespace</a> - <strong>@html Namespace</strong></span><br />
-<span class="indent"><span class="indent"><a href="#html_syntax">Syntax</a> - <strong>Syntax for @html Variables</strong></span></span><br />
-<span class="indent"><span class="indent"><a href="#html_names">Names</a> - <strong>Variable Names</strong></span></span><br />
-<span class="indent"><span class="indent"><a href="#html_attrs">Attributes</a> - <strong>Built-in Attributes</strong></span></span><br />
-<span class="indent"><span class="indent"><a href="#html_misc">Miscellaneous</a> - <strong>More examples using @html</strong></span></span><br />
+<span class="indent"><a href="#ug_ns_html">@html Namespace</a> - <strong>@html Namespace</strong></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_syntax">Syntax</a> - <strong>Syntax for @html Variables</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_names">Names</a> - <strong>Variable Names</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_attrs">Attributes</a> - <strong>Built-in Attributes</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_misc">Miscellaneous</a> - <strong>More examples using @html</strong></span></span><br />
 </div>
 <div class="extras"><h3>Review link bookmarks from nshtml-inc.md</h3></div>
 <div class="variables">
@@ -435,7 +435,7 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 NAMESPACE: link<br />
 ----------------------------------------<br />
-<strong>html_attrs=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_html_attrs=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -445,7 +445,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>html_misc=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_html_misc=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -455,7 +455,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>html_names=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_html_names=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -465,7 +465,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>html_syntax=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_html_syntax=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -475,7 +475,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-<strong>ns_html=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+<strong>ug_ns_html=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
@@ -487,11 +487,11 @@ NAMESPACE: link<br />
 <br />
 </code>
 </div>
-<a id="ns_html"></a>
+<a id="ug_ns_html"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>@html Namespace</h2></div>
 <div class="extras"><p>The <strong>@html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the @html namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
-<div class="extras"><p>Many of the features and concepts discussed for [link.ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>@html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.</p></div>
-<a id="html_syntax"></a>
+<div class="extras"><p>Many of the features and concepts discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>@html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.</p></div>
+<a id="ug_html_syntax"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Syntax</h3></div>
 <div class="syntax"><p class="divTitle">@html command syntax</p>
 <p><br /></p>
@@ -557,10 +557,10 @@ NAMESPACE: html<br />
 </div>
 </div>
 </div>
-<a id="html_names"></a>
+<a id="ug_html_names"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Variable names</h3></div>
 <div class="extras"><p>Variable names in the <strong>@html</strong> namespace are restricted to the same requires as the <strong>@var</strong> namespace.</p></div>
-<a id="html_attrs"></a>
+<a id="ug_html_attrs"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Built-in Attributes</h3></div>
 <div class="extras"><p>In addition to all of the built-in attributes supported by <strong>@var</strong>, <strong>@html</strong> variables have several built-ins that are unique to it:</p></div>
 <div class="extras"><ul class="ulist">
@@ -580,7 +580,7 @@ NAMESPACE: html<br />
 <strong>&lsqb;html.blockquote._public_keys_&rsqb;</strong> <em>=</em> cite,
 <strong>&lsqb;html.blockquote._private_keys_&rsqb;</strong> <em>=</em> _format, _tag,
 </pre></div>
-<a id="html_misc"></a>
+<a id="ug_html_misc"></a>
 <div class="extras" style="border-bottom:2px solid black"><h3>@html Miscellaneous Examples</h3></div>
 <div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>@html</strong> namespace. Let's start by examining the contents of the <strong>&lsqb;sys.imports&rsqb;/html.md</strong> file:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">

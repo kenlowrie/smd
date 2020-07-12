@@ -1,3 +1,3 @@
-[link.bm_factory(nm="ns_code" t="@code Namespace")]
+[link.bm_factory(nm="ug_ns_code" t="@code Namespace")]
 
-[tab.<][link.ns_code.link] - **@code Namespace**[tab.>][b]
+[tab.<][link.ug_ns_code.link] - **@code Namespace**[tab.>][b]

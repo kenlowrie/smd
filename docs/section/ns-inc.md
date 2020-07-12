@@ -1,3 +1,3 @@
-[link.bm_factory(nm="namespaces" t="Namespaces")]
+[link.bm_factory(nm="ug_namespaces" t="Namespaces")]
 
-[link.namespaces.link] - **Namespaces**[b]
+[link.ug_namespaces.link] - **Namespaces**[b]

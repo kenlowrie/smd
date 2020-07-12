@@ -1,4 +1,4 @@
-[link.predefined_classes]
+[link.ug_predefined_classes]
 [wrap_h.chapter(t="##Predefined classes")]
 
 There are a number of predefined classes in the primary CSS file that can be used to quickly style your AV scripts. You can add others as required, and decorate your elements as needed. Here are a few of them, used outside the AV DIV, and then again inside an AV DIV.

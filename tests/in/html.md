@@ -25,7 +25,7 @@
 [var.toc.wc_close]
 
 [wrap_h(t="###Review link bookmarks from nshtml-inc.md")]
-@dump link="^ns_html|html_"
+@dump link="^ug_ns_html|ug_html_"
 
 @import "[sys.root]/docs/section/nshtml-doc.md"
 

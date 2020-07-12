@@ -17,7 +17,7 @@
 [var.toc.wc_close]
 
 [wrap_h(t="###Review link bookmarks from link-inc.md")]
-@dump link="inlinemd|^links$|hyperlinks|bookmarks"
+@dump link="ug_ns_link|^_uglinks$|ug_hyperlinks|ug_bookmarks"
 @parw
 
 @import "[sys.root]/docs/section/nslink-doc.md"

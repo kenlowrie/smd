@@ -1,12 +1,12 @@
 
-[link.ns_var]
+[link.ug_ns_var]
 [wrap_h.chapter(t="## The [smdvar.il] Namespace")]
 
 The [smdvar.il] keyword is used to construct a more flexible type of variable for your documents. These variables are stored in the [smdvar.il] namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
 
 We will discuss this namespace first, because it is the basis for all namespaces, and most of the features, syntax and semantics apply to the others. Given that, it is a great starting point for our discussion on creating variables for use in [smd.b] documents.
 
-[link.var_syntax]
+[link.ug_var_syntax]
 [wrap_h.section(t="### [smdvar.il] Syntax")]
 
 [syntax.wc_open(t="[smdvar.il] command syntax")]
@@ -101,7 +101,7 @@ One last concept to discuss about declaring variables is the attribute **_inheri
 
 If you specify an attribute that is defined in the underlying inherited variable, it will override the underlying value. Otherwise, the new variable will contain all of the same attributes, plus any new ones added at the time of declaration (or later using [smdset.b]).
 
-[link.var_names]
+[link.ug_var_names]
 [wrap_h.section(t="### [smdvar.il] Variable names")]
 
 Variable names in the [smdvar.b] namespace, well actually, in **any** namespace are restricted to these requirements:
@@ -152,7 +152,7 @@ a-b - valid
 
 As you can see, attribute names are not quite as restrictive in their naming as variable names, allowing dashes to be used, and also allowing names to begin with numbers.
 
-[link.var_attrs]
+[link.ug_var_attrs]
 [wrap_h.section(t="### [smdvar.il] Built-in Attributes")]
 
 [smdvar.b] variables have a number of built-in attributes to extract common components. In fact, all namespaces share these built-in attributes, and in the case of variables based on the [smdhtml.b] namespace, they are relied on much more, but nonetheless, they can be useful in any of the namespaces, if for no other reason to assist in debugging complex declarations.
@@ -185,7 +185,7 @@ _null_=A null attribute - emits nothing, used to set default values of any publi
 [e_var.b(t="html.divx._public_attrs_")] *=*[html.divx._public_attrs_]
 [terminal.wc_close]
 
-[link.var_misc]
+[link.ug_var_misc]
 [wrap_h.subsect(t="### [smdvar.il] Miscellaneous Examples")]
 
 Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.
@@ -244,7 +244,7 @@ One last thing, remember how we discussed that sometimes you need a way to resol
 
 This can let you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter [smdset.b] and the **_null_** attribute.
 
-[link.set_keyword]
+[link.ug_set_keyword]
 [wrap_h.subsect(t="### The [smdset.il] Keyword")]
 
 Attributes of any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except [smdcode.b]. In [smdcode.il], there is only one way to update an attribute value, and that is with [smdset.b]. Let's see how it's done.

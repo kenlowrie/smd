@@ -1,11 +1,11 @@
-[link.ns_html]
+[link.ug_ns_html]
 [wrap_h.chapter(t="## [smdhtml.il] Namespace")]
 
 The [smdhtml.b] keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the [smdhtml.il] namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
 
-Many of the features and concepts discussed for [link.ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to [smdhtml.b] variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.
+Many of the features and concepts discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to [smdhtml.b] variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.
 
-[link.html_syntax]
+[link.ug_html_syntax]
 [wrap_h.section(t="### @html Syntax")]
 
 [syntax.wc_open(t="@html command syntax")]
@@ -69,12 +69,12 @@ Let's return to looking at the **bquote** and **bq** variables. With **bquote**,
 [bmgreybg._close]
 
 
-[link.html_names]
+[link.ug_html_names]
 [wrap_h.section(t="### [smdhtml.il] Variable names")]
 
 Variable names in the [smdhtml.b] namespace are restricted to the same requires as the [smdvar.b] namespace.
 
-[link.html_attrs]
+[link.ug_html_attrs]
 [wrap_h.section(t="### [smdhtml.il] Built-in Attributes")]
 
 In addition to all of the built-in attributes supported by [smdvar.b], [smdhtml.b] variables have several built-ins that are unique to it:
@@ -99,7 +99,7 @@ We've already seen these in action above, so no need to discuss further with the
 [e_var.b(t="html.blockquote._private_keys_")] *=* [blockquote._private_keys_]
 [terminal.wc_close]
 
-[link.html_misc]
+[link.ug_html_misc]
 [wrap_h.subsect(t="### [smdhtml.il] Miscellaneous Examples")]
 
 Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the [smdhtml.b] namespace. Let's start by examining the contents of the **[e_var(t="sys.imports")]/html.md** file:

@@ -102,7 +102,7 @@ This might be added in the future, if there are things I specifically need to un
 [var.toc.wc_close]
 
 [wrap_h(t="###Review link bookmarks from nsvar-inc.md")]
-@dump link="^ns_var|var_|^set_.*$"
+@dump link="^ug_ns_var|ug_var_|^ug_set_.*$"
 
 @import "[sys.root]/docs/section/nsvar-doc.md"
 

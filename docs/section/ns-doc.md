@@ -1,4 +1,4 @@
-[link.namespaces]
+[link.ug_namespaces]
 [wrap_h.chapter(t="## Namespaces")]
 
 In [smd.b], one of the primary types of markdown (specially formatted text) that you can use is the **variable**. There are several types of variables that are supported, and they are referred to as namespaces within [smd.b]. They are:

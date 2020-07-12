@@ -1,13 +1,12 @@
-//@import '$/link-inc.md"
+[link.ug_ns_link]
+[wrap_h.chapter(t="##@link Namespace")]
 
 @wrap divx, p
-[link.ns_link]
-[wrap_h.chapter(t="##@link Namespace")]
 
 The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.
 
 // links
-[link.links]
+[link.ug_links]
 [wrap_h.section(t="##Link Styles")]
 There are two different styles of links built-in to smd which map to standard HTML links:
 
@@ -20,7 +19,7 @@ Bookmarks - Links created using the HTML **a** tag with the **id** attribute. *[
 
 As you can see, these links are both based on the HTML **a** attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the ***sys.imports/link.md*** file.
 
-[link.hyperlinks]
+[link.ug_hyperlinks]
 [wrap_h.section(t="###Creating Hyperlinks")]
 
 Hyperlinks are created using the @link namespace in smd, while specifying the attributes desired to describe the link. The @link namespace is a subclass of @html, and therefore it shares all the same characteristics, such as the &lt; attribute to emit the open tag HTML and &gt; to emit the close tag HTML. For more information on the @html namespace, refer to the user manual.
@@ -116,7 +115,7 @@ This should give you a pretty good idea of how you can use hyperlinks in your sm
 
 
 
-[link.bookmarks]
+[link.ug_bookmarks]
 [wrap_h.section(t="###Creating Bookmarks")]
 
 Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the ***ID*** and the actual reference to the ID, which is done by writing ***#ID***. Within smd, bookmarks are implemented with the @link namespace, and are usually created using the Bookmark factory, **bm_factory**, which is a built-in link variable. **bm_factory** uses the **bm_template** variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.
