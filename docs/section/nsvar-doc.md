@@ -180,8 +180,8 @@ _null_=A null attribute - emits nothing, used to set default values of any publi
 [e_var.b(t="var.fu._all_attrs_")] *=*[fu._all_attrs_]
 [e_var.b(t="var.fu._private_keys_")] *=*[fu._private_keys_]
 [sp]
-[e_var.b(t="html.divx._all_attrs_")] *=*[html.divx._all_attrs_]
-[e_var.b(t="html.divx._private_attrs_")] *=*[html.divx._private_attrs_]
+[e_var.b(t="html.divx._all_attrs_")] *=*[get_variable(v="html.divx._all_attrs_" ret_type="0" escape="True")]
+[e_var.b(t="html.divx._private_attrs_")] *=*[get_variable(v="html.divx._private_attrs_" ret_type="0" escape="True")]
 [e_var.b(t="html.divx._public_attrs_")] *=*[html.divx._public_attrs_]
 [terminal.wc_close]
 

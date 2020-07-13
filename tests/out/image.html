@@ -77,10 +77,10 @@ NAMESPACE: image<br />
 </div>
 <div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
 <div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
-<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<{{self._tag}}{{self._public_attrs_}}/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _format=\"<{{self._tag}}{{self._public_attrs_}}/>\" _tag=\"img\"</p></div>
-<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<{{self._tag}}{{self._public_attrs_}}/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _format=\"<{{self._tag}}{{self._public_attrs_}}/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _format=\"<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _format=\"<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>\" _tag=\"img\"</p></div>
 <div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
 <div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _format, _tag,</p></div>
 <div class="extras"><p><em><strong>null</strong></em> =</p></div>
@@ -402,6 +402,32 @@ NAMESPACE: image<br />
 </code>
 </div>
 <div class="plain"><p class="plainTitle">Testing @image builtin functions</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
+&nbsp;&nbsp;<strong>style=</strong>[var.IMG_STYLE.inline_border]<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
+&nbsp;&nbsp;<strong>style=</strong>{{var.IMG_STYLE.inline_border}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+</code>
+</div>
 <div class="plain"><p class="plainTitle">Testing adding new @image builtins</p></div>
 <div class="plain"><p class="plainTitle">User manual sections for nsimage-doc.md</p></div>
 <div class="toc"><p class="divTitle">Table of Contents - Unittest nsimage-doc.md</p>
@@ -439,7 +465,8 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_ns_image"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>The @image Namespace</h2></div>
-<div class="extras"><p>The <strong>@image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>@image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag. <strong>@image</strong> is based on the <strong>@html</strong> namespace, so the underlying semantics include everything it. The full syntax is:</p></div>
+<div class="extras"><p>The <strong>@image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>@image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag.</p></div>
+<div class="extras"><p>Despite being an abstraction of the HTML element <strong>img</strong>, <strong>@image</strong> is not based on the <strong>@html</strong> namespace. Given that, the underlying semantics do not support the <strong>@html</strong> built-in attributes such as <strong>.&lt;, .&gt; and .&lt;+</strong>. The full syntax is:</p></div>
 <div class="syntax"><p class="divTitle">@image Syntax</p>
 <p><div class="extras"><p class="generic"></p>
 <p>@image _id="imagename" src="pathtoimage" alt="" _private="val"</p>
@@ -523,14 +550,11 @@ NAMESPACE: link<br />
 <div class="extras"><p>For a quick example of the size and styling shortcuts, let's write the following markdown in this document and see what we get:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &lsqb;IMG_SIZE.thumb&rsqb;
-@image _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" style="&lsqb;IMG_STYLE.inline_border&rsqb;"
+@image _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" style="&lcub;&lcub;IMG_STYLE.inline_border&rcub;&rcub;"
 &lsqb;shot1&rsqb;
 </pre></div>
 <div class="extras"><p>And here is what the browser renders:</p></div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
-<div class="extras"><p class="note red">
-Why is it not working when I write {{var.img_def.img_..}} instead it only works when using the brackets?
-</p></div>
 <div class="extras"><p>You can see more of these builtins and the <strong>@image</strong> support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.</p></div>
 <div class="variables">
 <code>
@@ -634,7 +658,7 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
 <strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
-&nbsp;&nbsp;<strong>style=</strong>[var.IMG_STYLE.inline_border]<br />
+&nbsp;&nbsp;<strong>style=</strong>{{var.IMG_STYLE.inline_border}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />

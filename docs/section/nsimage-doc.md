@@ -3,7 +3,9 @@
 
 @wrap divx, p
 
-The [smdimage.b] keyword is used to declare variables that are used to include images in your document. Basically, [smdimage.b] is a convenient way to abstract the [e_tag.b(t="img")] HTML tag. [smdimage.b] is based on the [smdhtml.b] namespace, so the underlying semantics include everything it. The full syntax is:
+The [smdimage.b] keyword is used to declare variables that are used to include images in your document. Basically, [smdimage.b] is a convenient way to abstract the [e_tag.b(t="img")] HTML tag. 
+
+Despite being an abstraction of the HTML element **img**, [smdimage.b] is not based on the [smdhtml.b] namespace. Given that, the underlying semantics do not support the [smdhtml.b] built-in attributes such as **.[E.lt], .[E.gt] and .[E.lt]+**. The full syntax is:
 
 [syntax.wc_open(t="[smdimage.il] Syntax")]
     [generic.wc_open_inline]
@@ -99,21 +101,15 @@ For a quick example of the size and styling shortcuts, let's write the following
 
 [terminal.wc_open(t="")]
     [e_var(t="IMG_SIZE.thumb")]
-    [smdimage] _="shot1" src="[E.lb]sys.root[E.rb]/docs/import/shot1.jpg" style="[E.lb]IMG_STYLE.inline_border[E.rb]"
+    [smdimage] _="shot1" src="[E.lb]sys.root[E.rb]/docs/import/shot1.jpg" style="[E.lcb2]IMG_STYLE.inline_border[E.rcb2]"
     [e_var(t="shot1")]
 [terminal.wc_close]
 
 And here is what the browser renders:
 
 [IMG_SIZE.thumb]
-
-@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="[var.IMG_STYLE.inline_border]"
-
+@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="{{var.IMG_STYLE.inline_border}}"
 [shot1]
-
-[rednote.wc_open]
-Why is it not working when I write {{var.img_def.img_..}} instead it only works when using the brackets?
-[rednote.wc_close]
 
 You can see more of these builtins and the [smdimage.b] support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.
 

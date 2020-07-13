@@ -165,7 +165,7 @@ class CodeHelpers():
         return news
 
     @staticmethod
-    def get_ns_var(v=None):
+    def get_ns_var(v=None, rt=2, esc=False):
         global _ns_xface
         if not _ns_xface:
             print("interface not initialized")
@@ -174,9 +174,10 @@ class CodeHelpers():
         if not v:
             print("missing variable name")
         elif _ns_xface.exists(v):
-            print(_ns_xface.getValue(v))
+            val = _ns_xface.getValue(v,None,rt)
+            print(val if esc == False else HtmlUtils().escape_html(val))
         else:
-            print("{} is undefined.".format(v))
+            print("{} is undefined r={}.".format(v,rt))
 
 
     @staticmethod

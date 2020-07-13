@@ -307,6 +307,9 @@ class AdvancedNamespace(Namespace):
     _default_format_attr = '_format'
     _raw_format_attr = '_raw'               #//TODO: What is this _raw attr used for? I don't think it is. remove it??
     _inherit_attr = '_inherit'
+    _rtype_raw = 0      # this will just return the default attribute value, with no calls to markdown
+    _rtype_phase1 = 1   # this will process the markdown that's in the square brackets only, convert {{ to [ and }} to ]
+    _rtype_normal = 2   # the default. getValue returns fully marked down content for attribute values
 
     def __init__(self, markdown, namespace_name, oprint):
         super(AdvancedNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
@@ -455,7 +458,35 @@ class AdvancedNamespace(Namespace):
         id0, el0 = self._parseVariable(id, True)
         return id0 if el0 is not None else id
 
-    def getValue(self, id):
+    def _jitMarkdown(self, id0, el0, passnum, ret_type, isSpecial = False):
+        if isSpecial:
+            attr_val = self.getSpecialAttr(el0, id0)
+        else:
+            attr_val = self.vars[id0].rval[el0]
+
+        if ret_type == AdvancedNamespace._rtype_raw: return attr_val
+
+        fmt_str = self._markdown(attr_val).replace('{{','[').replace('}}',']')
+
+        #self.dbgState(True)
+        if isSpecial:
+            self.dbgPrint("MD{1}-0: <strong>{0}</strong>".format(HtmlUtils.escape_html(attr_val), passnum))
+        else:
+            self.dbgPrint("MD{1}-0: <strong>{0}</strong>".format(HtmlUtils.escape_html(self.vars[id0].rval[el0]), passnum))
+        self.dbgPrint("RS{1}-0: <em>{0}</em>".format(HtmlUtils.escape_html(fmt_str), passnum))
+
+        if ret_type == AdvancedNamespace._rtype_phase1: return fmt_str
+
+        # And now, markdown again, to expand the self. namespace variables
+        s = self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace, id0)))
+
+        self.dbgPrint("MD{3}-1: fmt_str(self.-&gt;{0}{1}):<strong>{2}</strong>".format(self.namespace, id0, HtmlUtils.escape_html(fmt_str), passnum))
+        self.dbgPrint("RS{1}-1: <em>{0}</em>".format(HtmlUtils.escape_html(s), passnum))
+        #self.dbgState(False)
+
+        return s
+
+    def getValue(self, id, ret_type):
         self.dbgPrint('<strong>getValue("<em>{}</em>")</strong>'.format(id))
         id0, el0 = self._parseVariable(id)
         if el0 is not None:
@@ -465,32 +496,29 @@ class AdvancedNamespace(Namespace):
                 self.dbgPrint('Returning {} for getValue("{}")'.format(id0, el0))
                 return id0
 
-            if el0 in VariableStore._special_attributes:
-                # should this be marked down? Probably.
-                s = self._markdown(self.getSpecialAttr(el0, id0))
+            #//TODO: Seems like we should be using _is_special instead of just looking at the base class, right?
+            #        Changed on 7/13: Used to be "el0 in VariableStore._special_attributes:" 
+            if self._isSpecial(el0):
+                # We need to send this through the markdown processing, including handling {{}} and self.
+                #s = self._markdown(self.getSpecialAttr(el0, id0))
+                s = self._jitMarkdown(id0, el0, 1, ret_type, True)
+
                 self.dbgPrint('Returning <em>{}</em> for <strong>getValue("{}.{}</strong>")'.format(s, id0, el0))
                 return s
 
             if el0 == AdvancedNamespace._raw_format_attr and el0 in self.vars[id0].rval:
                 # We need to return this string raw.
+                #//TODO: I don't think this was ever used. See if I can figure out the intent and either implement or remove it.
                 raw = self.vars[id0].rval[el0]
                 self.dbgPrint("Returning _raw(\"<em>{}</em>\") as value for <strong>{}</strong>".format(raw, id))
 
                 return raw
 
-            # TODO: When test code in place, I need to remove this and see what happens.
-            #       Feels a bit like a side affect...
-            # First, apply standard markdown in case _format has regular variables in it.
-            fmt_str = self._markdown(self.vars[id0].rval[el0]).replace('{{','[').replace('}}',']')
-            self.dbgPrint("MD1: <strong>{}</strong>".format(HtmlUtils.escape_html(self.vars[id0].rval[el0])))
-            self.dbgPrint("RS1: <em>{}</em>".format(HtmlUtils.escape_html(fmt_str)))
+            s = self._jitMarkdown(id0, el0, 2, ret_type, False)
 
-            # And now, markdown again, to expand the self. namespace variables
-            s = self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace, id0)))
-            self.dbgPrint("MD2: fmt_str(self.-&gt;{}{}):<strong>{}</strong>".format(self.namespace,id0, HtmlUtils.escape_html(fmt_str)))
-            self.dbgPrint("RS2: <em>{}</em>".format(HtmlUtils.escape_html(s)))
             # If the namespace is link. and the attribute is href, we need to encode it.
             if self.namespace == 'link.' and el0 == 'href':
+                #//TODO: Is this intentional? Should the URL be encoded or is this just for print? Seems like a bug/oversight.
                 self.dbgPrint("Encoding HREF from <strong>{}</strong> to <em>{}</em>".format(s, HtmlUtils.encodeURL(s)))
             return s
 
@@ -499,15 +527,8 @@ class AdvancedNamespace(Namespace):
             fmt = AdvancedNamespace._default_format_attr
             if fmt in self.vars[id0].rval:
                 self.dbgPrint("Returning _format(\"<em>{}</em>\") as value for <strong>{}</strong>".format(self.vars[id0].rval[fmt], id))
-                # First, apply standard markdown in case _format has regular variables in it.
-                fmt_str = self._markdown(self.vars[id0].rval[fmt]).replace('{{','[').replace('}}',']')
-                self.dbgPrint("MD3: <strong>{}</strong>".format(HtmlUtils.escape_html(self.vars[id0].rval[fmt])))
-                self.dbgPrint("RS3: <em>{}</em>".format(HtmlUtils.escape_html(fmt_str)))
+                s = self._jitMarkdown(id0, fmt, 3, ret_type, False)
 
-                # And now, markdown again, to expand the self. namespace variables
-                s = self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace, id0)))
-                self.dbgPrint("MD4: fmt_str(self.-&gt;{}{}):<strong>{}</strong>".format(self.namespace,id0, HtmlUtils.escape_html(fmt_str)))
-                self.dbgPrint("RS4: <em>{}</em>".format(HtmlUtils.escape_html(s)))
                 return s
 
             compoundVar = ''
@@ -517,7 +538,7 @@ class AdvancedNamespace(Namespace):
                 if type(attrValue) != type(''):
                     attrValue = str(attrValue)
                 attrText = self._markdown(attrValue)
-                compoundVar += ' {}="{}"<br />\n'.format(item, attrText)
+                compoundVar += ' {}="{}"<br />\n'.format(item, attrText if ret_type != AdvancedNamespace._rtype_raw else attrValue)
             return compoundVar
 
         # logically, you won't ever get here, because everyone always
@@ -608,19 +629,27 @@ class HtmlNamespace(AdvancedNamespace):
 
         raise SyntaxError("Invalid element partial [{}]".format(which))
 
-    def getValue(self, id):
+    def getValue(self, id, ret_type):
         id0, el0 = self._parseVariable(id)
         self.dbgPrint('getValue("{}","{}",{})'.format(id,id0,None if el0 is None else '"{}"'.format(el0)))
         if el0 is not None:
             if el0 in HtmlNamespace._element_partials:
 
+                #//TODO: Need to handle the ret_type logic here so @html handles the <, >, <+ correctly if raw data requested.
                 # First, apply standard markdown in case _format has regular variables in it.
-                fmt_str = self._markdown(self.getElementPartial(el0).replace('{{','[').replace('}}',']'))
+                attr_value = self.getElementPartial(el0)
+                if ret_type == AdvancedNamespace._rtype_raw: return attr_value
+
+                fmt_str = self._markdown(attr_value).replace('{{','[').replace('}}',']')
+                if ret_type == AdvancedNamespace._rtype_phase1: return fmt_str
+
+                #//TODO: Was semantically different before. We translated {{}} and then marked down, and then did the self. replacement/markdown...
+                #fmt_str = self._markdown(self.getElementPartial(el0).replace('{{','[').replace('}}',']'))
                 # And now, markdown again, to expand the self. namespace variables
                 self.dbgPrint("Replace self.{}{} in {} and markdown".format(self.namespace, id0, fmt_str))
                 return self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace,id0)))
 
-        return super(HtmlNamespace, self).getValue(id)
+        return super(HtmlNamespace, self).getValue(id, ret_type)
 
 
 class LinkNamespace(HtmlNamespace):
@@ -645,7 +674,7 @@ class CodeNamespace(AdvancedNamespace):
     #_defaults_ = '_defaults_'
     _code_str = '<strong><em><span class="blue">@code</span></em></strong>'
     #_locals_ = '_locals_'
-    _element_partials = [_run_, _code_, _params_, _last_]
+    _element_partials = [_run_, _code_, _params_]   #, _last_] - Cannot put _last in here cause it isn't handled as a special...
 
     def __init__(self, markdown, namespace_name, oprint):
         super(CodeNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
@@ -734,7 +763,7 @@ class CodeNamespace(AdvancedNamespace):
 
         return super(CodeNamespace, self).exists(id)
 
-    def getValue(self, id):
+    def getValue(self, id, ret_type):
         def xlat_parameters(s, d):
             if not d: return s
             for item in d:
@@ -764,7 +793,7 @@ class CodeNamespace(AdvancedNamespace):
 
 
             # Need to expand any variables inside src... (referencing self. overwrites _params_ :(
-            src = super(CodeNamespace, self).getValue('{}.src'.format(id0))
+            src = super(CodeNamespace, self).getValue('{}.src'.format(id0), ret_type)
             self.dbgPrint("(src)=<em>{}</em>".format(src))
             self.dbgPrintDict("[dict]=", dict)
 
@@ -792,7 +821,7 @@ class CodeNamespace(AdvancedNamespace):
             # Trying to return these will crash the markdown processor. Just bail and say we can't do it.
             return f'{id0}.{el0} is instance data and is not printable'
 
-        return super(CodeNamespace, self).getValue(id)
+        return super(CodeNamespace, self).getValue(id, ret_type)
 
 
 class Namespaces(object):
@@ -947,7 +976,7 @@ class Namespaces(object):
 
         return False
 
-    def getValue(self, variable_name, jit_attrs=None):
+    def getValue(self, variable_name, jit_attrs=None, ret_type=AdvancedNamespace._rtype_normal):
         self.debug.print('getValue(<em>"{}"</em>, <strong>[{}]</strong>)'.format(variable_name, jit_attrs))
 
         def addJITattrs(jit_attrs, ns, var):
@@ -977,7 +1006,7 @@ class Namespaces(object):
                 addJITattrs(jit_attrs, ns, name)
 
                 # TODO: Shouldn't we check to see that it's there?
-                return self._namespaces[ns].getValue(name)
+                return self._namespaces[ns].getValue(name, ret_type)
 
         #if self.debug self.oprint("NO NAMESPACE OR UNKNOWN NAMESPACE")
         # Since the NS wasn't valid, we need to fall back to the full name again
@@ -985,7 +1014,7 @@ class Namespaces(object):
             if self._namespaces[ns].exists(variable_name):
                 # TODO: this is confusing, and will lead to errors. REFACTOR.
                 addJITattrs(jit_attrs, ns, variable_name)
-                return self._namespaces[ns].getValue(variable_name)
+                return self._namespaces[ns].getValue(variable_name, ret_type)
 
         # TODO: We may want to just return variable_name instead... like before...
         return "Variable {} is (undefined)".format(variable_name)    # I don't think this will ever happen

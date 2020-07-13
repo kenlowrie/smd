@@ -11,6 +11,17 @@
 
 [plain(t="Testing @html builtin functions")]
 
+[sp][get_variable(v="section", ret_type="1")]
+[sp][get_variable(v="_section_div_", ret_type="0")]
+[sp][get_variable(v="_section_div_", ret_type="1")]
+[sp][get_variable(v="_section_div_.<", ret_type="0")]
+[sp][get_variable(v="_section_div_.<", ret_type="1")]
+[sp][get_variable(v="_section_div_.<+", ret_type="0")]
+[sp][get_variable(v="_section_div_.<+", ret_type="1")]
+[sp][get_variable(v="_section_div_.<+", ret_type="0" escape="True")]
+[sp][get_variable(v="_section_div_.<+", ret_type="1", escape="True" )]
+
+
 [plain(t="Testing adding new @html builtins")]
 
 @import "[sys.root]/docs/userdocs_macros.md"

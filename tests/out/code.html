@@ -43,7 +43,6 @@ WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a va
 WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
 WARNING: Use of reserved attribute name <em>_code</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
 WARNING: Use of reserved attribute name <em>_params_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
-WARNING: Use of reserved attribute name <em>_last</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
 WARNING: Use of reserved attribute name <em>run</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
 <div class="variables">
 <code>
@@ -523,6 +522,15 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v=&amp;quot;variable_name&amp;quot;, default=&amp;quot;default value&amp;quot;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+<br />
+<strong>get_variable=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)<br />
+&nbsp;&nbsp;<strong>v=</strong>variable_name<br />
+&nbsp;&nbsp;<strong>ret_type=</strong>2<br />
+&nbsp;&nbsp;<strong>escape=</strong>False<br />
+&nbsp;&nbsp;<strong>_help_=</strong>Usage: {{self._}}(v="variable_name" ret_type="0|1|2" escape="True|False")<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)<br />
 <br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />

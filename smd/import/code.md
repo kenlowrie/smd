@@ -50,6 +50,13 @@
       src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')"\
       v="variable_name"\
       _help_="Usage: {{self._}}(v=\"variable_name\")"
+@code _id="get_variable"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)"\
+      v="variable_name"\
+      ret_type="2"\
+      escape="False"\
+      _help_="Usage: {{self._}}(v=\"variable_name\" ret_type=\"0|1|2\" escape=\"True|False\")"
 @code _id="get_default"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')"\

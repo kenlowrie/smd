@@ -6,10 +6,22 @@
 
 @import "$/nsbasic.md"
 
+@import "[sys.imports]/image.md"
+
 [plain(t="Testing @image builtin functions")]
+[IMG_SIZE.thumb]
+
+// 1st time use brackets around style
+@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="[var.IMG_STYLE.inline_border]"
+[shot1]
+@dump image="shot1"
+
+//2nd time use curly braces around style
+@image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="{{var.IMG_STYLE.inline_border}}"
+[shot1]
+@dump image="shot1"
 
 [plain(t="Testing adding new @image builtins")]
-
 
 
 @import "[sys.root]/docs/userdocs_macros.md"
