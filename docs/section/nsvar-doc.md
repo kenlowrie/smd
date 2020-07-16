@@ -86,7 +86,7 @@ One last concept to discuss about declaring variables is the attribute **_inheri
 [terminal.wc_open(t="Using _inherit to streamline declarations")]
 [sp]
 [smdcomment] declare [E.apos]smdtag[E.apos] variable
-[smdvar.b] smdtag="@@[_self.il(p="il")]" il="[E.lb]encode_smd[E.lp]t=\"[_self.il]\"[E.rp][E.rb]" b="[E.ast2][_self.il][E.ast2]" em="[E.ast][_self.il][E.ast]" emb="[E.ast3][_self.il][E.ast3]"
+[smdvar.b] smdtag="@@[_self.il(p="il")]" il="[E.lcb2]encode_smd[E.lp]t=\"[_self.il]\"[E.rp][E.rcb2]" b="[E.ast2][_self.il][E.ast2]" em="[E.ast][_self.il][E.ast]" emb="[E.ast3][_self.il][E.ast3]"
 [sp]
 [smdcomment] now declare several variables based on **smdtag**
 [smdvar_wp(parms="_id=\"smdvar\" _inherit=\"smdtag\" p=\"@var\"")]
@@ -347,10 +347,10 @@ Discuss @set and also [e_var.b(t="var._null_[E.lp]attr=\"\"[E.rp]")]
 @var ns="var"
 
 @set _ns="[ns]" _="c2" attr1="*attribute 1*" attr2="**attribute 2**" attr3="{{self.attr1}}--{{self.attr2}}" attr4="[self.attr2]--[self.attr1]"
-[encode_smd(t="[c2.attr1]")] = [c2.attr1]
-[encode_smd(t="[c2.attr2]")] = [c2.attr2]
-[encode_smd(t="[c2.attr3]")] = [c2.attr3]
-[encode_smd(t="[c2.attr4]")] = [c2.attr4]
+[encode_smd(t="<c2.attr1>")] = [c2.attr1]
+[encode_smd(t="<c2.attr2>")] = [c2.attr2]
+[encode_smd(t="<c2.attr3>")] = [c2.attr3]
+[encode_smd(t="<c2.attr4>")] = [c2.attr4]
 
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]

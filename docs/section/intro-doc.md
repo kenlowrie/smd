@@ -22,7 +22,7 @@ A few of the standard markdown span elements are supported, as are a couple of s
 
 @@[html.ol.<]
 @wrap li2
-Variables - These are smd namespace variables accessed with this type of markdown: **[encode_smd(t="[variable]")]**
+Variables - These are smd namespace variables accessed with this type of markdown: **[encode_smd(t="<variable>")]**
 Strong - Double [E.ast2] placed around content will apply the [e_tag.b(t="strong")] tag: **[encode_smd(t="**wrap text in a single asterisk for bold**")]**
 Emphasis - Single &ast; placed around content will apply the [e_tag.b(t="em")] tag: *[encode_smd(t="*wrap text in single asterisks for emphasis*")]*
 Insertion - Double &plus; placed around content will apply the [e_tag.b(t="ins")] tag: ++[encode_smd(t="++wrap text in double plus signs for &lt;ins&gt; tag++")]++

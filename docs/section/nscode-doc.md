@@ -18,7 +18,7 @@ type="eval"
 IDEA: @get _ns="" _id="[ns.]name" raw="true" markdown="false" escape="true"
 Implementation: [get_variable_RENAME(v="varname" ret_type="0-raw,1-1st pass markdown-2normal as in full markdown" escape="True|False")]
 
-Should [encode_smd(t="[get]")] and [encode_smd(t="[get_variable]")] be combined? Seems unnecessary to have both of them.
+Should [encode_smd(t="<get>")] and [encode_smd(t="<get_variable>")] be combined? Seems unnecessary to have both of them.
 
 // If the following isn't done/documented, I should move it to a future_list or something...
 Can't I also "store" an instance of a variable (like code), that has compiled something that I will use over and over?

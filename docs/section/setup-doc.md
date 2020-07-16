@@ -48,7 +48,7 @@ HINT: If you later decide you want to install [smd.b] in developer mode, you can
 I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
 [question.wc_close]
 
-**[pipenv]** is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way **pip** does, thus isolating [smd.b] to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the **[encode_smd(t="[sys.root]/pipenv")]** directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:
+**[pipenv]** is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way **pip** does, thus isolating [smd.b] to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the **[encode_smd(t="<sys.root>/pipenv")]** directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:
 
 [terminal(t="$ pipenv install")]
 

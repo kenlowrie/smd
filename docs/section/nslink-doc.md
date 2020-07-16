@@ -149,7 +149,7 @@ The **bm_factory** does not need the **hr=** parameter, however, because the hre
 
 Once the bookmark is created using the syntax above, hyperlinks within the current document are created by using the **.link** attribute, and the anchor location is emitted using simply the variable name. Let's look at an example.
 
-Within your document, use the **[encode_smd(t="[link.bookmark1]")]** to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: **[encode_smd(t="[link.bookmark1.link]")]**, as I have done right here: [link.bookmark1.link]. &lt;-- Click on that link and see that it takes you to the location below.
+Within your document, use the **[encode_smd(t="<link.bookmark1>")]** to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: **[encode_smd(t="<link.bookmark1.link>")]**, as I have done right here: [link.bookmark1.link]. &lt;-- Click on that link and see that it takes you to the location below.
 
 I'm going to dump the various @link variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.
 

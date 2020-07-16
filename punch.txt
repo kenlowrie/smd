@@ -29,7 +29,9 @@ Change @declarations in all namespaces (and @set) to markdown attributes at decl
 Priority 1 | p1
 ---------------
 @if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
-@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
+@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... 
+    I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", 
+    and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
 Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
 Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
 smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
@@ -68,8 +70,8 @@ Priority 3 | p3
 ---------------
 SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
 add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
---developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
---developer mode switch (@debug developer="yes" -- so you can enable inside the interpreter) should define things like [mk] and other helpers.
+    --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
+    --developer mode switch (@debug developer="yes" -- so you can enable inside the interpreter) should define things like [mk] and other helpers.
 release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 Code review Cache, ImportCache & SystemDefaults.
 maybe add a pause/resume method on the watcher class i could engage while parsing...

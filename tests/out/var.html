@@ -817,7 +817,7 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using _inherit to streamline declarations</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 // declare &apos;smdtag&apos; variable
-<strong>&#64;var</strong> smdtag="@@&lcub;&lcub;&#x73;elf.il&rcub;&rcub;" il="&lsqb;encode_smd&lpar;t=\"&lcub;&lcub;&#x73;elf.il&rcub;&rcub;\"&rpar;&rsqb;" b="&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;" em="&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;" emb="&ast;&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;&ast;"
+<strong>&#64;var</strong> smdtag="@@&lcub;&lcub;&#x73;elf.il&rcub;&rcub;" il="&lcub;&lcub;encode_smd&lpar;t=\"&lcub;&lcub;&#x73;elf.il&rcub;&rcub;\"&rpar;&rcub;&rcub;" b="&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;" em="&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;" emb="&ast;&ast;&ast;&lcub;&lcub;&#x73;elf.il&rcub;&rcub;&ast;&ast;&ast;"
 &nbsp;
 // now declare several variables based on <strong>smdtag</strong>
 &#64;var _id="smdvar" _inherit="smdtag" p="&#64;var"
@@ -1020,10 +1020,10 @@ NAMESPACE: var<br />
 Discuss @set and also <strong>&lsqb;var._null_&lpar;attr=""&rpar;&rsqb;</strong>
 </p></div>
 <div class="extras"><p class="note"><strong>&#64;code</strong> attributes cannot be changed via _null_ or when markdown is applied. You must use <strong>&#64;set</strong> to do that</p></div>
-<div class="extras"><p>&lsqb;em&rsqb;attribute 1&lsqb;/em&rsqb; = <em>attribute 1</em></p></div>
-<div class="extras"><p>&lsqb;strong&rsqb;attribute 2&lsqb;/strong&rsqb; = <strong>attribute 2</strong></p></div>
-<div class="extras"><p>&lsqb;em&rsqb;attribute 1&lsqb;/em&rsqb;--&lsqb;strong&rsqb;attribute 2&lsqb;/strong&rsqb; = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
-<div class="extras"><p>&lsqb;strong&rsqb;attribute 2&lsqb;/strong&rsqb;--&lsqb;em&rsqb;attribute 1&lsqb;/em&rsqb; = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr1&rsqb; = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2&rsqb; = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3&rsqb; = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4&rsqb; = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
