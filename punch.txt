@@ -1,13 +1,33 @@
 Punch List Items.
 -----------------
 
-Priority 1 | p1
+SOC
+
+There are cases where {{foo}} is expanding only to [foo]. Sometimes, this is because foo hasn't been declared. I think there might
+be other times, where you might have attr="self.foo" and since the current variable isn't declared, it will simply
+end up as [foo].
+
+Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clearn.
+
+The issue where you can't prevent expansion is annoying. Sometimes, like in the nsbasic.md file where I am
+using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will
+not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
+
+
+Priority 0 | p0
 ---------------
 finish writing tests for @image and @code.
+Update nsbasic.md so we print the attributes escaped and raw, for easier comparison. (during the part where we try to add reserved attributes).
 document the key elements (@code, @image) -- use the "tests/in" files to make it "current".
+Refresh the samples so they are using current markdown...
 Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
+Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change)
+    Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
+
+Priority 1 | p1
+---------------
 @if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
 @func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
 Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
@@ -16,12 +36,9 @@ smd.py should use the WrapperClass() methods for manipulating the wrapper stack.
 You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
 Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
 Split out the div sections specific to AV into the AVS.md file (from divs.md).
-Need a way to delete an attribute or a variable?
 Seems like I should track where _markdown is called, and only in the main output loop, should things be expanded/processed. I don't know if this is possible, but it seems like if it were, it would solve a lot of the issues I have with trying to do things like escape_var, encode_var, etc, when the underlying variable calls code.push* or code.repeat, etc, etc. Worth a glance in any case...
 @html should add _c(content) and _r(rawcontent) - grep make sure _c, _r not currently used anywhere. If so, fix that first, then implement this. What is this for? _c is the content? And it is returned how? What is meant by _r(rawcontent)? html.foo._c? html.foo(_c="content")
 It would be awesome if I could figure out regex for [var("1 agument")], and that argument is always the first in the declaration, only when you need to specify a different argument do you have to resort to naming them.
-Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
-Refresh the samples so they are using current markdown...
 
 
 
@@ -35,7 +52,15 @@ Make all global variables go away. Should be able to do this using addObjectToTL
 Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
 Need to add negative tests to the unittests. that is, things that should fail. This is done for some things, but not all. Need to expand it...
 Test this on Windows 10. If I can make this work there, that would be a huge win.
-Test it on Linux (Ubuntu maybe? -- Ask Stephen for recommendation on OS and Desktop/if that matters)
+How about the ability to delete a variable and also an attribute.
+    [code.rename_var]
+    [code.duplicate_var]
+    [code.rename_attr]
+    [code.duplicate_attr]
+    [code.delete_attr]
+    [code.delete_var]
+    [code.add_var]
+    [code.update_var]??
 
 
 
@@ -53,6 +78,11 @@ Is @break/@exit useful? Yes, I still use it sometimes. Unless I figure out anoth
 See how close I can get to a clean render of Buddy's music video script markdown file...
 Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
 Save input lines in smd and implement arrow keys for input
+Should Python or SRC be aliases for @code variables?
+    [Python.variable.run]
+    [SRC.variable.run]
+Test it on Linux (Ubuntu maybe? -- Ask Stephen for recommendation on OS and Desktop/if that matters)
+
 
 
 Priority 5 | p5
@@ -62,6 +92,7 @@ Maybe consider option to pass in a file handle for the raw_output from smdparse,
 Move all of these things to the issues tracker in github, and get rid of this file.
 How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes? tried: \s([\w]+)\s*=\s*[\"\'](.*?)(?<!\\)[\"\'] on special_ and the match regex. fails miserably.
 Might be cool if there was an html python pretty printer on pypi I could build into hostgui. pip install beautifulsoup4. https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
 
 
 Completed
