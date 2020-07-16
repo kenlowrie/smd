@@ -462,6 +462,16 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_ns_link"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>@link Namespace</h2></div>
+<div class="extras"><p>[docthis.open(h="Add this to ns_code-doc.md")]</p></div>
+// &lsqb;ln_factory(nm="tk" hr="https://tkdocs.com/tutorial/install.html" t="Tk")]
+// @set _ns="link" _="tk" tkinter="{{self.<}}tkinter{{self.>}}" target="_blank"
+<div class="extras"><p>Public attributes cannot refer to self.< or ns._.< because it will loop forever...</p></div>
+<div class="extras"><p>I think this can happen anywhere, .attr1 includes .attr2 which includes .attr1, right?</p></div>
+// @var x="{{y}}"
+// @var y="{{x}}"
+<div class="extras"><p>Solution 1: _markdown tracks recursion strings, then if the NestingError exception is raised, it will dump to console.</p></div>
+<div class="extras"><p>requires that @debug on="markdown"</p></div>
+<div class="extras"><p>[docthis.close]</p></div>
 <div class="extras"><p>The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.</p></div>
 <a id="ug_links"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>

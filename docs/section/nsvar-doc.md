@@ -250,7 +250,7 @@ This can let you build some really cool automation in your documents. But you ne
 Attributes of any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except [smdcode.b]. In [smdcode.il], there is only one way to update an attribute value, and that is with [smdset.b]. Let's see how it's done.
 
 [terminal.wc_open(t="Updating attribute values with [smdset.il]")]
-[smdcomment_wp(parms="First, let's declare a new variable called 'fu'")]
+[smdcomment_wp(parms="First, let[E.apos]s declare a new variable called [E.apos]fu[E.apos]")]
 [smdvar_wp.b(parms="fu=\"bar\" attr1=\"value1\"")]
 @var fu="bar" attr1="value1"
 [e_var.b(t="fu.attr1")] emits **[fu.attr1]**

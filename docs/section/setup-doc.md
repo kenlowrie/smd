@@ -61,7 +61,7 @@ And then invoke [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environ
 [note(t="NOTE: If you do not have [pipenv] installed on your machine, you can navigate to [pipenv._asurl] to get information on it.")]
 
 [ln_factory(nm="tk" hr="https://tkdocs.com/tutorial/install.html" t="Tk")]
-@set _ns="link" _="tk" tkinter="{{self.<}}tkinter{{self.>}}" target="_blank"
+@set _ns="link" _="tk" _tkinter="{{self.<}}tkinter{{self.>}}" target="_blank"
 [ln_factory(nm="activestate" hr="https://www.activestate.com/products/python/" t="ActiveState")]
 @set _ns="link" _="activestate" target="_blank"
 [ln_factory(nm="pyenv" hr="https://github.com/pyenv/pyenv#installation" t="pyenv")]
@@ -69,7 +69,7 @@ And then invoke [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environ
 [ln_factory(nm="tcl-tk", hr="https://stackoverflow.com/questions/60469202/unable-to-install-tkinter-with-pyenv-pythons-on-macos" t="tcl-tk for pyenv")]
 @set _ns="link" _="tcl-tk" target="_blank"
 
-[note(t="NOTE2: If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk.tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
+[note(t="NOTE2: If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk._tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
 
 If you did not have these flags set when you did the install of Python using **[pyenv]**, and you want to use ismd, you will have to *uninstall* the current version, and reinstall it (with the propery environment variables set). Here is a link [tk._asurl] that will provide the information you need to get this done, although take a look at this [tcl-tk.<]Stackoverflow Question and Answer[tcl-tk.>] for the steps needed to solve this issue.
 
@@ -77,9 +77,9 @@ If you did not have these flags set when you did the install of Python using **[
 
 [terminal.wc_open(t="Running virtual environment for OBS Studio browser endpoints")]
 [sp]
+[E.num] TODO: need a better folder name
 $ cd pipenv
-[E.num] need a better folder name
-pipenv install  - this will what's referred to in Pipfile.lock
+pipenv install  - this will install what's referred to in Pipfile.lock
 pipenv shell
 ismd -nd -f clock.md -m endpoint hostgui
 [terminal.wc_close]

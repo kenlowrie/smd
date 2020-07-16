@@ -1,6 +1,21 @@
 [link.ug_ns_link]
 [wrap_h.chapter(t="##@link Namespace")]
 
+[docthis.open(h="Add this to ns_code-doc.md")]
+    [smdcomment] [E.lb]ln_factory(nm="tk" hr="https://tkdocs.com/tutorial/install.html" t="Tk")]
+    [smdcomment] @set _ns="link" _="tk" tkinter="{{self.<}}tkinter{{self.>}}" target="_blank"
+
+    Public attributes cannot refer to self.< or ns._.< because it will loop forever...
+
+    I think this can happen anywhere, .attr1 includes .attr2 which includes .attr1, right?
+    [smdcomment] @var x="{{y}}"
+    [smdcomment] @var y="{{x}}"
+
+    Solution 1: _markdown tracks recursion strings, then if the NestingError exception is raised, it will dump to console.
+                requires that @debug on="markdown"
+                
+[docthis.close]
+
 @wrap divx, p
 
 The @link namespace is built atop the @html namespace, and as such, it inherits all the same characteristics of things defined in the @html space. In this chapter, we will take a closer look at the @link namespace and what it has to offer.

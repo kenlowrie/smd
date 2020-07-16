@@ -1,6 +1,6 @@
 // These macros are helpers for the manual. Not really useful outside of the guide...
 // Except for the unittests, which includes this whenever including markdown from the manual...
-@var smdtag="@@{{self.il}}" p="" il="[encode_smd(t=\"{{self.p}}\")]" b="**{{self.il}}**" em="*{{self.il}}*" emb="***{{self.il}}***"
+@var smdtag="@@{{self.il}}" p="" il="{{encode_smd(t=\"{{self.p}}\")}}" b="**{{self.il}}**" em="*{{self.il}}*" emb="***{{self.il}}***"
 
 @var _="smdvar" _inherit="smdtag" p="@var"
 @var _="smdvar_wp" _inherit="smdtag" p="@var {{self.parms}}"
