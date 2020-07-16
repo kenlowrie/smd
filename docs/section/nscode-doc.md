@@ -53,5 +53,9 @@ document these
 
 // be sure to test the @code thing where the only way to change attribute defaults is to use @set...
 
+// document that you cannot use () inside parameter strings, as it breaks the parser...
+**[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]** - Doesn't work
+**[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]** - Works just fine.
+// I really wish I could just fix this. What a PITA...
 
 [docthis.close]

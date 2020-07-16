@@ -19,8 +19,9 @@ class Markdown(object):
         self._current_nesting_level = 0
         # Dictionary of each markdown type that we process on each line
         self._regex_markdown = {
-            'vars': RegexMD(r'(\[(\w[^[\]\)]*)([\(](.+?)[\)])?\])', None),  # Negative look ahead not required
-            #'vars': RegexMD(r'(\[(\w[^[\]\)]*)([\(](.+?)[\)])+\]|(\[(\w[^[\]\)]*)\]))', None),
+            # Changed 7/15 so if (parms="") used, and inside the string was a ']', it wouldn't stop reading.
+            # This required that I add an | condition, to handle the case where [varname] was used w/o parms.
+            'vars': RegexMD(r'(\[(\w[^[\]\)]*)([\(](.+?)[\)])+\]|(\[(\w[^[\]\)]*)\]))', None),
             'strong': RegexMD(r'(\*{2}(?!\*)(.+?)\*{2})', '<strong>{0}</strong>'),
             'emphasis': RegexMD(r'(\*(.+?)\*)', '<em>{0}</em>'),
             'ins': RegexMD(r'(\+{2}(.+?)\+{2})', '<ins>{0}</ins>'),
@@ -131,12 +132,11 @@ class Markdown(object):
                  [ variable_name ]
 
             NOTE: Spaces are for readability. Spaces are NOT allowed in the markdown, unless quoted.
-            
+
             See docstring in code for argument information.
             """
             def makeJitAttrs(params):
-                d = {l[0]: l[1] for l in self._special_parameter.regex.findall(params)}
-                #d = {l[0]: self._md_value(l[1], True) for l in self._special_parameter.regex.findall(params)}
+                d = {l[0]: self._md_value(l[1], True) for l in self._special_parameter.regex.findall(params)}
                 return d
 
             varName = m[1] if m[1] else m[5]

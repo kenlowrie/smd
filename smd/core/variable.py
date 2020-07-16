@@ -261,7 +261,8 @@ class VariableStore(object):
     def unescapeString(self,s):
         if type(s) != type(''):
             return s
-        return s.replace('\\"', '"')
+        # Markdown just the [] vars. {{}} vars signal delayed expansion.
+        return self._markdown(s.replace('\\"', '"'))
 
     def unescapeStringQuotes(self,d):
         for item in d:

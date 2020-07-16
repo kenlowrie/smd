@@ -6,7 +6,7 @@
 
 In this example, we will use [smd.b] to create a simple Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that show the visuals i.e. shots on the left, and the audio i.e. narration or voiceover, on the right. [smd.b] has several builtins that assist with creating this type of script.
 
-Start by including **[encode_smd(t="@import [sys.imports]")]/avs/avs.md**, and you will get everything you need to quickly create your script.
+Start by including **[encode_smd(t="@import <sys.imports>")]/avs/avs.md**, and you will get everything you need to quickly create your script.
 
 [wrap_h(t="## A/V Script Series")]
 
@@ -42,7 +42,7 @@ A/V Script for [client] project entitled "Bestest Social Media Campaign for Acme
 // Inluce the avs/shotacro.md builtins file to get various shot shorthand variable declarations
 @import "[sys.imports]/avs/shotacro.md"
 
-**[encode_smd(t="[avshot.visual]")]** begins the definition of a shot. You can list one or more shots in this section, and include formatting and other markdown. When you are done listing the shots, you will use either **[encode_smd(t="[avshot.audio]")]** or **[encode_smd(t="[avshot.noaudio]")]** to either begin listing the narration or voiceover, or simply close out the shot. 
+**[encode_smd(t="<avshot.visual>")]** begins the definition of a shot. You can list one or more shots in this section, and include formatting and other markdown. When you are done listing the shots, you will use either **[encode_smd(t="<avshot.audio>")]** or **[encode_smd(t="<avshot.noaudio>")]** to either begin listing the narration or voiceover, or simply close out the shot. 
 
 In this example, we will open with **avshot.visual**, write out shot description, and the close with **avshot.noaudio**, so there won't be anything listed in the right column.
 
@@ -57,7 +57,7 @@ Not too exciting just yet, but we'll get there. The more common case is to use *
 [ws] Busy freeway rush hour traffic at a standstill
 
 [var.avshot.audio]
-In this example, after the preceding shot declaration, we used **[encode_smd(t="[avshot.audio]")]** to close out the visuals section, and begin the narrative section. You can have as much narration and notes as you need. When you're done, close out the shot with **[encode_smd(t="[avshot.end]")]**.
+In this example, after the preceding shot declaration, we used **[encode_smd(t="<avshot.audio>")]** to close out the visuals section, and begin the narrative section. You can have as much narration and notes as you need. When you're done, close out the shot with **[encode_smd(t="<avshot.end>")]**.
 
 There are a bunch of useful shot notation mnemonics defined in the **sys.imports/avs/shotacro.md** file, so you'll definitely want to review that to get an idea of those goodies!
 
@@ -94,7 +94,7 @@ The narrative for the shots on the left would go here.
 MS:Paranoid guy looking thru blinds
 If you indent a line following a shot, then that text becomes part of the prior shot, allowing you to put a little more description if you need it.
 [var.avshot.audio]
-If you want to put inline notes, questions or use any of the Simple Divs (*note, question, vo, important, greyout*), you need to use the ***no-div** version. The **no-div** version uses the suffix **_nd** on the key attribute names. For example, if I use the default and write:[bb] **[encode_smd(t="[note")][E.lp]t="this is my note")]**, this is what I will see:
+If you want to put inline notes, questions or use any of the Simple Divs (*note, question, vo, important, greyout*), you need to use the ***no-div** version. The **no-div** version uses the suffix **_nd** on the key attribute names. For example, if I use the default and write:[bb] **[encode_smd(t="<note")][E.lp]t="this is my note")]**, this is what I will see:
 [var.note(t="this is my note")]
 See how the box jams up against the left margin of the right column? It also clears the floats, which will mess up the formatting for the next element in the audio section... ugh! 
 
@@ -167,14 +167,14 @@ TS1
 [plain(t="Specialized avshot builtins")]
 There are two short versions of avshot that can be used for quick shot only cases or shot with short description. They are:
 
-[tab.<]**[encode_smd(t="[avshot.shot_only]")]** and **[encode_smd(t="[avshot.shot_with_desc]")]**[tab.>]
+[tab.<]**[encode_smd(t="<avshot.shot_only>")]** and **[encode_smd(t="<avshot.shot_with_desc>")]**[tab.>]
 
 They are just simplified versions you can use to quickly generate a shot only or a shot with short description.
 
 [terminal2.wc_open(t="Simplified *avshot* methods")]
 
-**[encode_smd(t="[avshot.shot_only")](_s="shot info"[E.rp]]**
-**[encode_smd(t="[avshot.shot_only")](_s="shot info" _d="shot description"[E.rp]]**
+**[encode_smd(t="<avshot.shot_only")](_s="shot info"[E.rp]]**
+**[encode_smd(t="<avshot.shot_only")](_s="shot info" _d="shot description"[E.rp]]**
 [terminal2.wc_close]
 
 [var.avshot.shot_only(_s="[cu] Hands holding phone")]

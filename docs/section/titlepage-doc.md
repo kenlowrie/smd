@@ -20,15 +20,16 @@ The details for each type of section are discussed below.
 [wrap_h.section(t="### @var.cover")]
 [var.syntax.wc_open(t="Cover Title Syntax")]
      @wrap divx,_syntax_p_content_
-          [encode_smd(t="[var.cover(title=\"your title\", author=\"author name\", logline=\"logline or short description\") ]")][b]
-          [encode_smd(t="[var.cover.inline(title=\"your title\", author=\"author name\", logline=\"logline or short description\") ]")][b]
+          [encode_smd(t="<var.cover")](title="your title", author="author name", logline="logline or short description")][b]
+          [encode_smd(t="<var.cover.inline")](title="your title", author="author name", logline="logline or short description")][b]
      @parw
      [b]
      Each attribute is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says "author", doesn't mean you have to put the author name there. You could instead write "Roses are Red", and that would be just fine...
 
 [var.syntax.wc_close]
 
-Let's see how **[encode_smd(t="[var.cover]")]** renders out:
+Let's see how **[encode_smd(t="<var.cover>")]** renders out:
+
 [bmo]
 [var.cover.inline]
 [bmc]
@@ -54,16 +55,16 @@ That's better! So that's pretty much all there is to **var.cover**. It's used in
           [E.lb]var.revision.inline_plain[rev_parms]][b]
      @parw
      [b]
-     Specify the revision number of your document within quotes. The default rendering of the **var.revision** variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [encode_smd(t="[var.revision.plain]")]. In our example below, we are going to use the **plain** version, because this file is included as part of the unittests, and timestamping would cause the test to fail every time. :)
+     Specify the revision number of your document within quotes. The default rendering of the **var.revision** variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. [encode_smd(t="<var.revision.plain>")]. In our example below, we are going to use the **plain** version, because this file is included as part of the unittests, and timestamping would cause the test to fail every time. :)
 
 [var.syntax.wc_close]
 
-Let's see how **[encode_smd(t="[var.cover]")]** renders out:
+Let's see how **[encode_smd(t="<var.revision.plain>")]** renders out:
 [bmo]
 [var.revision.plain]
 [bmc]
 
-And once again, we see that the default revision if not specified, looks to **var.default** for the **revision** attribute. Let's go ahead and specify the revision in the markdown using the following syntax: **[encode_smd(t="[var.revision.plain(v=\"1.4.2\") ]")]** 
+And once again, we see that the default revision if not specified, looks to **var.default** for the **revision** attribute. Let's go ahead and specify the revision in the markdown using the following syntax: **[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]**
 
 [bmo]
 [var.revision.plain(v="1.4.2")]
@@ -79,8 +80,8 @@ Now that you've seen both **var.cover** and **var.revision**, you can probably g
 [var.syntax.wc_open(t="Contact Syntax")]
      @wrap divx,_syntax_p_content_
 
-     [encode_smd(t="[var.contact")][var.contact_parms]]
-     [encode_smd(t="[var.contact.inline")][var.contact_parms]]
+     [encode_smd(t="<var.contact")][var.contact_parms]]
+     [encode_smd(t="<var.contact.inline")][var.contact_parms]]
      @parw
      [b]
      Each element is optional, and the elements can appear in any order. By default, the system looks in the *var.defaults* variable for the definitions of *cn, ph, em, c1, c2 & c3*.
@@ -99,8 +100,7 @@ For this example, let's look at an alternative of editing defaults.md to specify
      [ulistplain.>]
 [ulistplain.wc_close]
 
-So, I'm going to do that now, and then we'll write the **[encode_smd(t="[var.contact]")]** markdown and see what we get.
-
+So, I'm going to do that now, and then we'll write the **[encode_smd(t="<var.contact>")]** markdown and see what we get.
 @set _id="defaults"\
      cn="Ken Lowrie"\
      ph="*512-555-1234*"\

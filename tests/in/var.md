@@ -11,13 +11,13 @@
 
 @var a1="a1_rval"
 @var _a4="a4_rval"
-[code.encode_smd(t="[a1]")] --> [a1]
-[code.encode_smd(t="[_a4]")] --> [_a4]
+[code.encode_smd(t="<a1]")] --> [a1]
+[code.encode_smd(t="<_a4]")] --> [_a4]
 Setting default rvalue for a2 and a3
 @set a2="a2_rval"
 @set a3="a3_rval"
-[code.encode_smd(t="[a2]")] --> [a2]
-[code.encode_smd(t="[a3]")] --> [a3]
+[code.encode_smd(t="<a2]")] --> [a2]
+[code.encode_smd(t="<a3]")] --> [a3]
 
 @dump var="^a[0-9]{1,2}$"
 
@@ -25,7 +25,7 @@ This next one will work, sort of, because another attribute will become the new 
 {:.blue}&nbsp;@var $="syntax" b_unexpected="attribute ends up becoming the name of the variable..."
 
 @var $="syntax" b_unexpected="attribute ends up becoming the name of the variable..."
-***[code.encode_smd(t="[b_unexpected]")]*** = **[b_unexpected]**
+***[code.encode_smd(t="<b_unexpected]")]*** = **[b_unexpected]**
 These next ones will have the namespace parser  catch the errors and fail the variable creation.
 
 @var 1="1_rval"
@@ -44,8 +44,8 @@ These next ones will have the namespace parser  catch the errors and fail the va
 @var c1="[c0.a]"
 @var c2="{{c0.a}}"
 
-[encode_smd(t="[c1]")] = [c1]
-[encode_smd(t="[c2]")] = [c2]
+[encode_smd(t="<c1]")] = [c1]
+[encode_smd(t="<c2]")] = [c2]
 
 @dump var="c[0-9]{1,2}"
 
@@ -55,9 +55,10 @@ These next ones will have the namespace parser  catch the errors and fail the va
 
 @set _="c0" a="8" _fmt="Constants"
 
-//TODO: not the behaviour I expected. Thought c1 would have still been 1. Looks like delayed expansion may be the default behavior...
-[encode_smd(t="[c1]")] = [c1]
-[encode_smd(t="[c2]")] = [c2]
+Now we can see that c1 is 1 and c2 is 8 like you would expect. This is because **[]** is marked down during declaration, whereas **{{}}** is not until you reference it. Unfortunately, you cannot accomplish this via the nsbasic.md macro, because of the changes to how just-in-time parameters are marked down during Markdown()._markdown. A big gain, but a bit of a loss as well. Maybe I'll figure out how to get around this as things continue to stabilize and improve...
+
+[encode_smd(t="<c1]")] = [c1]
+[encode_smd(t="<c2]")] = [c2]
 
 @dump var="c[0-9]{1,2}"
 

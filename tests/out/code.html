@@ -15,15 +15,24 @@
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
-<div class="extras"><p>&#91;&#91;ns].a1] --> [code.a1]</p></div>
-<div class="extras"><p>&#91;&#91;ns].a2] --> [code.a2]</p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> [code.a3]</p></div>
-<div class="extras"><p>&#91;&#91;ns]._a4] --> [code._a4]</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> [code.a1]</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a2&rsqb; --> [code.a2]</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> [code.a3]</p></div>
+<div class="extras"><p>&lsqb;code.a4&rsqb; --> [code.a4]</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD (which may return, because now the parser is too smart) :)</h3></p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns].a1] --> [code.a1]</p></div>
+<div class="extras"><p>&lsqb;code.a2] --> [code.a2]</p></div>
+<div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{code.a1}}</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> [code.a1]</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- You can't parse delayed expansion <em><strong>{{}}</strong></em> inline, only as parameters ...</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
 <div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
-<div class="extras"><p>&#91;&#91;ns].a2] --> [code.a2]</p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> [code.a3]</p></div>
+<div class="extras"><p>[&lsqb;ns].a2] --> [code.a2]</p></div>
+<div class="extras"><p>[&lsqb;ns].a3] --> [code.a3]</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -117,8 +126,10 @@ NAMESPACE: code<br />
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
-<div class="extras"><p>&#91;&#91;ns].c1] =</p></div>
-<div class="extras"><p>&#91;&#91;ns].c2] =</p></div>
+<div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
+<div class="extras"><p>because when <br /><br />.code=<em>@code _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.code=<em>@code _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -141,7 +152,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
@@ -172,7 +183,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
@@ -181,8 +192,8 @@ NAMESPACE: code<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>&#91;c1] =</p></div>
-<div class="extras"><p>&#91;c2] =</p></div>
+<div class="extras"><p>&lsqb;c1] =</p></div>
+<div class="extras"><p>&lsqb;c2] =</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -205,7 +216,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
@@ -216,10 +227,10 @@ NAMESPACE: code<br />
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
-<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
-<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -242,20 +253,21 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
 </code>
 </div>
 <div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
 <div class="extras"><p><h3>Create new variable using @set</h3></p></div>
 <div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
 <div class="variables">
@@ -263,6 +275,16 @@ NAMESPACE: code<br />
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;[self.c]<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="code" _="d0" _format="d0_rval"</strong></p></div>
@@ -437,14 +459,14 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>src=</strong>print()<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
@@ -465,8 +487,8 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd('$.t'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: code.encode_smd.run(t="smd markdown to encode")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&amp;nbsp;{{self.c}}<br />
-&nbsp;&nbsp;<strong>_params_=</strong>{'t': '&amp;nbsp;{{self.c}}'}<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;nbsp;[self.c]<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'t': '&amp;nbsp;[self.c]'}<br />
 <br />
 <strong>encode_smd_var=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('$.v'))<br />

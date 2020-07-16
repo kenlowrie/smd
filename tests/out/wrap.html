@@ -165,26 +165,26 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>alsoworks=</strong>html.wt3<br />
 &nbsp;&nbsp;<strong>_format=</strong>html.wt1<br />
 <br />
-<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>fails=</strong>[html.wt2]<br />
+<strong>wt2=</strong><br />&nbsp;&nbsp;<strong>fails=</strong>&lt;span class="myclass2" style="color:blue;font-size:1.3em"&gt;&lt;/span&gt;<br />
 &nbsp;&nbsp;<strong>alsofails=</strong>{{html.wt3}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>[html.wt1]<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;span class="myclass1" style="color:red;font-size:1.3em"&gt;&lt;/span&gt;<br />
 <br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>wt1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass1<br />
-&nbsp;&nbsp;<strong>style=</strong>color:red;[var.fs_attr]<br />
+&nbsp;&nbsp;<strong>style=</strong>color:red;font-size:1.3em<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>wt2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass2<br />
-&nbsp;&nbsp;<strong>style=</strong>color:blue;[var.fs_attr]<br />
+&nbsp;&nbsp;<strong>style=</strong>color:blue;{{var.fs_attr}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>wt3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>myclass3<br />
-&nbsp;&nbsp;<strong>style=</strong>color:green;[var.fs_attr]<br />
+&nbsp;&nbsp;<strong>style=</strong>color:green;font-size:1.3em<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 </code>

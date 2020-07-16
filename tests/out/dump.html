@@ -283,7 +283,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
 &nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
 &nbsp;&nbsp;<strong>dn=</strong>generic<br />
-&nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
+&nbsp;&nbsp;<strong>usage=</strong>&lt;strong&gt;usage: [E.lb]_dfactory(dn="divName")[E.rb]&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
 <strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -361,7 +361,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
 <br />
 <strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)&lt;br /&gt;{{self.nm}}.inline(same)&lt;/strong&gt;<br />
 <br />
 <strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
 &nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
@@ -392,19 +392,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lt]{{self.t}}[E.gt]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
 <br />
 <strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
 <br />
 <strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lb]{{self.t}}[E.rb]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
@@ -453,11 +453,11 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>greyout default title<br />
 &nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
 <br />
-<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># ------------------------------------------<br />
 <br />
-<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## ------------------------------------------<br />
 <br />
-<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### ------------------------------------------<br />
 <br />
 <strong>important=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -638,7 +638,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
 &nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: &lt;em&gt;&lt;strong&gt;{{self.v}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
 <br />
 <strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -866,7 +866,7 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+&nbsp;&nbsp;<strong>class=</strong>note blue<br />
 <br />
 <strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -985,7 +985,7 @@ NAMESPACE: html<br />
 <br />
 <strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
+&nbsp;&nbsp;<strong>class=</strong>note red<br />
 <br />
 <strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1101,7 +1101,7 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
 &nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1472,7 +1472,8 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>t=</strong>repeat_str <br />
 &nbsp;&nbsp;<strong>c=</strong>2<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('$.t'*$.c))<br />
+&nbsp;&nbsp;<strong>_last=</strong>------------------------------------------<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'t': '-', 'c': '42'}<br />
 <br />
 <strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.replace('$.var', '$.val', '$.str')<br />
@@ -1661,13 +1662,169 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">            markdown: 2: mdvars(<strong>s)=</strong><em>[code.pushlines(t="@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]")]</em><br />
 </span>
+<span class="debug">            markdown: 3: markdown(@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>s)=</strong><em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"dump_ns_list"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>var="." html="." link="." image="."</em>") as value for <strong>dump_ns_list</strong><br />
+</span>
+<span class="debug">            markdown: 4: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">              ns.var: MD3-0: <strong>var="." html="." link="." image="."</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-0: <em>var="." html="." link="." image="."</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.dump_ns_list):<strong>var="." html="." link="." image="."</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-1: <em>var="." html="." link="." image="."</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(var="." html="." link="." image=".")<br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[0])=</strong><em>[doc_closure]</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"doc_closure"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_close.md"</em>") as value for <strong>doc_closure</strong><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "{{sys.imports}}/def_close.md")<br />
+</span>
+<span class="debug">              ns.var: MD3-0: <strong>@import "{{sys.imports}}/def_close.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-0: <em>@import "[sys.imports]/def_close.md"</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "[sys.imports]/def_close.md")<br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_close.md"</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2-0: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2-0: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2-1: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2-1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.doc_closure):<strong>@import "[sys.imports]/def_close.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-1: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[0])=</strong><em>[body_closure]</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
+</span>
+<span class="debug">            markdown: 3: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"body_closure"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_bodyclose.md"</em>") as value for <strong>body_closure</strong><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "{{sys.imports}}/def_bodyclose.md")<br />
+</span>
+<span class="debug">              ns.var: MD3-0: <strong>@import "{{sys.imports}}/def_bodyclose.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-0: <em>@import "[sys.imports]/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "[sys.imports]/def_bodyclose.md")<br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
+</span>
+<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
+</span>
+<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2-0: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2-0: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD2-1: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
+</span>
+<span class="debug">              ns.var: RS2-1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
+</span>
+<span class="debug">            markdown: 5: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
+</span>
+<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.body_closure):<strong>@import "[sys.imports]/def_bodyclose.md"</strong><br />
+</span>
+<span class="debug">              ns.var: RS3-1: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
+</span>
+<span class="debug">            markdown: 4: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
+<span class="debug">            markdown: 3: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
+</span>
 <span class="debug">             ns.code: <strong>exists("<em>pushlines</em>")</strong><br />
 </span>
-<span class="debug">                  ns: getValue(<em>"code.pushlines"</em>, <strong>[{'t': '@parw\\n@dump [dump_ns_list]\\n[doc_closure]\\n[body_closure]'}]</strong>)<br />
+<span class="debug">                  ns: getValue(<em>"code.pushlines"</em>, <strong>[{'t': '@parw\\n@dump var="." html="." link="." image="."\\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"'}]</strong>)<br />
 </span>
 <span class="debug">             ns.code: <strong>updateVariable("<em>None</em>")</strong><br />
 </span>
-<span class="debug">             ns.code: &nbsp;&nbsp;<strong>_params_</strong>: {'t': '@parw\\n@dump [dump_ns_list]\\n[doc_closure]\\n[body_closure]'}<br />
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>_params_</strong>: {'t': '@parw\\n@dump var="." html="." link="." image="."\\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"'}<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>_</strong>: pushlines<br />
 </span>
@@ -1689,9 +1846,9 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: Parameters:<br />
 </span>
-<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"<br />
 </span>
-<span class="debug">             ns.code: Replacing: <strong>t</strong> with <em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
+<span class="debug">             ns.code: Replacing: <strong>t</strong> with <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.src</em>")</strong><br />
 </span>
@@ -1723,161 +1880,9 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: <strong>getValue("<em>pushlines.t</em>")</strong><br />
 </span>
-<span class="debug">            markdown: 4: markdown(@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure])<br />
+<span class="debug">            markdown: 4: markdown(@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
 </span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[dump_ns_list]</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>dump_ns_list</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</em><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
-</span>
-<span class="debug">                  ns: getValue(<em>"dump_ns_list"</em>, <strong>[None]</strong>)<br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>getValue("<em>dump_ns_list</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>dump_ns_list</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: Returning _format("<em>var="." html="." link="." image="."</em>") as value for <strong>dump_ns_list</strong><br />
-</span>
-<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
-</span>
-<span class="debug">              ns.var: MD3-0: <strong>var="." html="." link="." image="."</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-0: <em>var="." html="." link="." image="."</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
-</span>
-<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.dump_ns_list):<strong>var="." html="." link="." image="."</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-1: <em>var="." html="." link="." image="."</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(var="." html="." link="." image=".")<br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[doc_closure]</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>doc_closure</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n[doc_closure]\n[body_closure]</em><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
-</span>
-<span class="debug">                  ns: getValue(<em>"doc_closure"</em>, <strong>[None]</strong>)<br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>getValue("<em>doc_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>doc_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_close.md"</em>") as value for <strong>doc_closure</strong><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "{{sys.imports}}/def_close.md")<br />
-</span>
-<span class="debug">              ns.var: MD3-0: <strong>@import "{{sys.imports}}/def_close.md"</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-0: <em>@import "[sys.imports]/def_close.md"</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "[sys.imports]/def_close.md")<br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_close.md"</em><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD2-0: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
-</span>
-<span class="debug">              ns.var: RS2-0: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD2-1: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
-</span>
-<span class="debug">              ns.var: RS2-1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.doc_closure):<strong>@import "[sys.imports]/def_close.md"</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-1: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md")<br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[0])=</strong><em>[body_closure]</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>m[1])=</strong><em>body_closure</em><br />
-</span>
-<span class="debug">            markdown: 4: mdvars(<strong>s)=</strong><em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n[body_closure]</em><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
-</span>
-<span class="debug">                  ns: getValue(<em>"body_closure"</em>, <strong>[None]</strong>)<br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>getValue("<em>body_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>body_closure</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: Returning _format("<em>@import "{{sys.imports}}/def_bodyclose.md"</em>") as value for <strong>body_closure</strong><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "{{sys.imports}}/def_bodyclose.md")<br />
-</span>
-<span class="debug">              ns.var: MD3-0: <strong>@import "{{sys.imports}}/def_bodyclose.md"</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-0: <em>@import "[sys.imports]/def_bodyclose.md"</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "[sys.imports]/def_bodyclose.md")<br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>m[0])=</strong><em>[sys.imports]</em><br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>m[1])=</strong><em>sys.imports</em><br />
-</span>
-<span class="debug">            markdown: 5: mdvars(<strong>s)=</strong><em>@import "[sys.imports]/def_bodyclose.md"</em><br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">                  ns: getValue(<em>"sys.imports"</em>, <strong>[None]</strong>)<br />
-</span>
-<span class="debug">              ns.var: <strong>exists("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">              ns.var: <strong>getValue("<em>sys.imports</em>")</strong><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD2-0: <strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
-</span>
-<span class="debug">              ns.var: RS2-0: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD2-1: fmt_str(self.-&gt;var.sys):<strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import</strong><br />
-</span>
-<span class="debug">              ns.var: RS2-1: <em>/Users/ken/Dropbox/shared/src/script/smd/smd/import</em><br />
-</span>
-<span class="debug">            markdown: 6: markdown(/Users/ken/Dropbox/shared/src/script/smd/smd/import)<br />
-</span>
-<span class="debug">              ns.var: MD3-1: fmt_str(self.-&gt;var.body_closure):<strong>@import "[sys.imports]/def_bodyclose.md"</strong><br />
-</span>
-<span class="debug">              ns.var: RS3-1: <em>@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
-</span>
-<span class="debug">            markdown: 5: markdown(@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md")<br />
-</span>
-<span class="debug">             ns.code: MD2-0: <strong>@parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]</strong><br />
+<span class="debug">             ns.code: MD2-0: <strong>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</strong><br />
 </span>
 <span class="debug">             ns.code: RS2-0: <em>@parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"</em><br />
 </span>
@@ -1901,7 +1906,7 @@ NAMESPACE: code<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>src</strong>: from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
 </span>
-<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump [dump_ns_list]\n[doc_closure]\n[body_closure]<br />
+<span class="debug">             ns.code: &nbsp;&nbsp;<strong>t</strong>: @parw\n@dump var="." html="." link="." image="."\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_close.md"\n@import "/Users/ken/Dropbox/shared/src/script/smd/smd/import/def_bodyclose.md"<br />
 </span>
 <span class="debug">             ns.code: &nbsp;&nbsp;<strong>_code</strong>: &lt;code object&gt;<br />
 </span>
@@ -2029,7 +2034,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
 &nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
 &nbsp;&nbsp;<strong>dn=</strong>generic<br />
-&nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
+&nbsp;&nbsp;<strong>usage=</strong>&lt;strong&gt;usage: [E.lb]_dfactory(dn="divName")[E.rb]&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
 <strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -2107,7 +2112,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
 <br />
 <strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)&lt;br /&gt;{{self.nm}}.inline(same)&lt;/strong&gt;<br />
 <br />
 <strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
 &nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
@@ -2138,19 +2143,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lt]{{self.t}}[E.gt]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
 <br />
 <strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
 <br />
 <strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lb]{{self.t}}[E.rb]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
 <br />
 <strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
@@ -2199,11 +2204,11 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>greyout default title<br />
 &nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
 <br />
-<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># ------------------------------------------<br />
 <br />
-<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## ------------------------------------------<br />
 <br />
-<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### ------------------------------------------<br />
 <br />
 <strong>important=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -2384,7 +2389,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
 &nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: &lt;em&gt;&lt;strong&gt;{{self.v}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
 <br />
 <strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -2585,7 +2590,7 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+&nbsp;&nbsp;<strong>class=</strong>note blue<br />
 <br />
 <strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -2704,7 +2709,7 @@ NAMESPACE: html<br />
 <br />
 <strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
+&nbsp;&nbsp;<strong>class=</strong>note red<br />
 <br />
 <strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -2820,7 +2825,7 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
 &nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

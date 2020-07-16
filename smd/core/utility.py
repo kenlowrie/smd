@@ -50,7 +50,7 @@ class HtmlUtils():
             # If we weren't passed a string, convert it to a string before we escape it.
             s = str(s)
 
-        return s.replace("[", "&#91;").replace("*", "&#42;").replace("@", "&#64;").replace("++", "&plus;&plus;").replace("~~", "&sim;&sim;")
+        return s.replace("<", "&lsqb;").replace(">", "&rsqb;").replace("2{", "&lcub;&lcub;").replace("2}","&rcub;&rcub;").replace("*", "&#42;").replace("@", "&#64;").replace("++", "&plus;&plus;").replace("~~", "&sim;&sim;")
 
     @staticmethod
     def encode_smd_var(s):

@@ -173,12 +173,12 @@ NAMESPACE: link<br />
 <a id="ug_tp_cover"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@var.cover</h3></div>
 <div class="syntax"><p class="divTitle">Cover Title Syntax</p>
-<div class="extras"><p>&#91;var.cover(title="your title", author="author name", logline="logline or short description") ]<br /></p></div>
-<div class="extras"><p>&#91;var.cover.inline(title="your title", author="author name", logline="logline or short description") ]<br /></p></div>
+<div class="extras"><p>&lsqb;var.cover(title="your title", author="author name", logline="logline or short description")]<br /></p></div>
+<div class="extras"><p>&lsqb;var.cover.inline(title="your title", author="author name", logline="logline or short description")]<br /></p></div>
 <p><br /></p>
 <p>Each attribute is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says "author", doesn't mean you have to put the author name there. You could instead write "Roses are Red", and that would be just fine...</p>
 </div>
-<div class="extras"><p>Let's see how <strong>&#91;var.cover]</strong> renders out:</p></div>
+<div class="extras"><p>Let's see how <strong>&lsqb;var.cover&rsqb;</strong> renders out:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="extras"><p><div class="cover"><h3>title</h3><p>author</p><p class="coverSummary">logline</p></div></p></div>
 </div>
@@ -195,13 +195,13 @@ NAMESPACE: link<br />
 <div class="extras"><p>&lsqb;var.revision.inline&lpar;v="1.0"&rpar;]<br /></p></div>
 <div class="extras"><p>&lsqb;var.revision.inline_plain&lpar;v="1.0"&rpar;]<br /></p></div>
 <p><br /></p>
-<p>Specify the revision number of your document within quotes. The default rendering of the <strong>var.revision</strong> variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. &#91;var.revision.plain]. In our example below, we are going to use the <strong>plain</strong> version, because this file is included as part of the unittests, and timestamping would cause the test to fail every time. :)</p>
+<p>Specify the revision number of your document within quotes. The default rendering of the <strong>var.revision</strong> variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. &lsqb;var.revision.plain&rsqb;. In our example below, we are going to use the <strong>plain</strong> version, because this file is included as part of the unittests, and timestamping would cause the test to fail every time. :)</p>
 </div>
-<div class="extras"><p>Let's see how <strong>&#91;var.cover]</strong> renders out:</p></div>
+<div class="extras"><p>Let's see how <strong>&lsqb;var.revision.plain&rsqb;</strong> renders out:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="revision"><p class="revTitle">Revision: <em><strong>1.1</strong></em></p></div>
 </div>
-<div class="extras"><p>And once again, we see that the default revision if not specified, looks to <strong>var.default</strong> for the <strong>revision</strong> attribute. Let's go ahead and specify the revision in the markdown using the following syntax: <strong>&#91;var.revision.plain(v="1.4.2") ]</strong></p></div>
+<div class="extras"><p>And once again, we see that the default revision if not specified, looks to <strong>var.default</strong> for the <strong>revision</strong> attribute. Let's go ahead and specify the revision in the markdown using the following syntax: <strong>&lsqb;var.revision.plain&lpar;v="1.4.2"&rpar;&rsqb;</strong></p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="revision"><p class="revTitle">Revision: <em><strong>1.4.2</strong></em></p></div>
 </div>
@@ -209,8 +209,8 @@ NAMESPACE: link<br />
 <a id="ug_tp_contact"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@var.contact</h3></div>
 <div class="syntax"><p class="divTitle">Contact Syntax</p>
-<div class="extras"><p>&#91;var.contact(cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3")]</p></div>
-<div class="extras"><p>&#91;var.contact.inline(cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3")]</p></div>
+<div class="extras"><p>&lsqb;var.contact(cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3")]</p></div>
+<div class="extras"><p>&lsqb;var.contact.inline(cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3")]</p></div>
 <p><br /></p>
 <p>Each element is optional, and the elements can appear in any order. By default, the system looks in the <em>var.defaults</em> variable for the definitions of <em>cn, ph, em, c1, c2 & c3</em>.</p>
 </div>
@@ -225,11 +225,11 @@ NAMESPACE: link<br />
 <li><span class="indent">c3="www.mydomain.com"</span></li>
 <li></ul></li>
 </ul></div>
-<div class="extras"><p>So, I'm going to do that now, and then we'll write the <strong>&#91;var.contact]</strong> markdown and see what we get.</p></div>
+<div class="extras"><p>So, I'm going to do that now, and then we'll write the <strong>&lsqb;var.contact&rsqb;</strong> markdown and see what we get.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="extras"><p><div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright  Line 1<br />Copyright Line 2<br />Copyright Line 3<br /></td><td class="right nowrap" style="border:none">Contact Name<br />210-555-1212<br />email@mydomain.com<br /></td></tr></table></div></p></div>
 </div>
-<div class="extras"><p>Pretty cool, huh? Of course you would likely create <strong>@link</strong> variables for the email address and the website so you could make them hyperlinks, but I'm going to leave that up to you to do.</p></div>
+<div class="extras"><p>Pretty cool, huh? Of course you would likely create <strong>&#64;link</strong> variables for the email address and the website so you could make them hyperlinks, but I'm going to leave that up to you to do.</p></div>
 <div class="extras"><p>So that's it for these special section divs. Let's move on!</p></div>
 <div class="variables">
 <code>
@@ -257,7 +257,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
 <br />
 <strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)&lt;br /&gt;{{self.nm}}.inline(same)&lt;/strong&gt;<br />
 <br />
 <strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
 &nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
@@ -273,7 +273,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
 &nbsp;&nbsp;<strong>_nop=</strong><br />
 &nbsp;&nbsp;<strong>cn=</strong>Ken Lowrie<br />
-&nbsp;&nbsp;<strong>ph=</strong>*512-555-1234*<br />
+&nbsp;&nbsp;<strong>ph=</strong>&lt;em&gt;512-555-1234&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>em=</strong>me@mycompany.com<br />
 &nbsp;&nbsp;<strong>c1=</strong>Copyright © 2020 My Company, LLC.<br />
 &nbsp;&nbsp;<strong>c2=</strong>All Rights Reserved.<br />
@@ -284,7 +284,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
 &nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: &lt;em&gt;&lt;strong&gt;{{self.v}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>v=</strong>1.4.2<br />
 <br />
 ----------------------------------------<br />

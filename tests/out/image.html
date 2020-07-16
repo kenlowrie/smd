@@ -11,13 +11,22 @@
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @image namespace</h3>
 <div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
 <div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@image</strong></em> namespace</p></div>
-<div class="extras"><p>&#91;&#91;ns].a1] --> a1_rval</p></div>
-<div class="extras"><p>&#91;&#91;ns].a2] --> <img/></p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> <img/></p></div>
-<div class="extras"><p>&#91;&#91;ns]._a4] --> [image._a4]</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a2&rsqb; --> <img/></p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> <img/></p></div>
+<div class="extras"><p>&lsqb;image.a4&rsqb; --> a4_rval</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD (which may return, because now the parser is too smart) :)</h3></p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;image.a2] --> <img/></p></div>
+<div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{image.a1}}</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- You can't parse delayed expansion <em><strong>{{}}</strong></em> inline, only as parameters ...</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
 <div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
-<div class="extras"><p>&#91;&#91;ns].a2] --> a2_rval</p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> a3_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a3] --> a3_rval</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -78,9 +87,9 @@ NAMESPACE: image<br />
 <div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
 <div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
 <div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _format=\"<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
 <div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _format=\"<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>\" _tag=\"img\"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
 <div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
 <div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _format, _tag,</p></div>
 <div class="extras"><p><em><strong>null</strong></em> =</p></div>
@@ -119,8 +128,10 @@ NAMESPACE: image<br />
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
-<div class="extras"><p>&#91;&#91;ns].c1] = 1</p></div>
-<div class="extras"><p>&#91;&#91;ns].c2] = 1</p></div>
+<div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
+<div class="extras"><p>because when <br /><br />.code=<em>@image _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.image=<em>@image _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] = 1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] = 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -135,7 +146,7 @@ NAMESPACE: image<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
 </code>
@@ -154,13 +165,13 @@ NAMESPACE: image<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>&#91;c1] = 1</p></div>
-<div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="extras"><p>&lsqb;c1] = 1</p></div>
+<div class="extras"><p>&lsqb;c2] = 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -175,17 +186,17 @@ NAMESPACE: image<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
 </code>
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
-<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
-<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -200,16 +211,17 @@ NAMESPACE: image<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
 </code>
 </div>
 <div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
 <div class="extras"><p><h3>Create new variable using @set</h3></p></div>
 <div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
 <div class="variables">
@@ -217,6 +229,16 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;[self.c]<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="image" _="d0" _format="d0_rval"</strong></p></div>
@@ -408,8 +430,8 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
-<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
-&nbsp;&nbsp;<strong>style=</strong>[var.IMG_STYLE.inline_border]<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
@@ -421,7 +443,7 @@ NAMESPACE: image<br />
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
-<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg<br />
 &nbsp;&nbsp;<strong>style=</strong>{{var.IMG_STYLE.inline_border}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
@@ -432,8 +454,8 @@ NAMESPACE: image<br />
 <div class="plain"><p class="plainTitle">User manual sections for nsimage-doc.md</p></div>
 <div class="toc"><p class="divTitle">Table of Contents - Unittest nsimage-doc.md</p>
 <br />
-<span class="indent"><a href="#ug_ns_image">@image Namespace</a> - <strong>@image Namespace</strong></span><br />
-<span class="indent"><span class="indent"><a href="#ug_image_builtins">@image Builtins</a> - <strong>@image Namespace</strong></span></span><br />
+<span class="indent"><a href="#ug_ns_image">&#64;image Namespace</a> - <strong>@image Namespace</strong></span><br />
+<span class="indent"><span class="indent"><a href="#ug_image_builtins">&#64;image Builtins</a> - <strong>@image Namespace</strong></span></span><br />
 </div>
 <div class="extras"><h3>Review link bookmarks from nsimage-inc.md</h3></div>
 <div class="variables">
@@ -445,7 +467,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>@image Builtins<br />
+&nbsp;&nbsp;<strong>text=</strong>&amp;#64;image Builtins<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
@@ -455,7 +477,7 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
 &nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
 &nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>@image Namespace<br />
+&nbsp;&nbsp;<strong>text=</strong>&amp;#64;image Namespace<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
@@ -465,14 +487,14 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_ns_image"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>The @image Namespace</h2></div>
-<div class="extras"><p>The <strong>@image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>@image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag.</p></div>
-<div class="extras"><p>Despite being an abstraction of the HTML element <strong>img</strong>, <strong>@image</strong> is not based on the <strong>@html</strong> namespace. Given that, the underlying semantics do not support the <strong>@html</strong> built-in attributes such as <strong>.&lt;, .&gt; and .&lt;+</strong>. The full syntax is:</p></div>
-<div class="syntax"><p class="divTitle">@image Syntax</p>
+<div class="extras"><p>The <strong>&#64;image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>&#64;image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag.</p></div>
+<div class="extras"><p>Despite being an abstraction of the HTML element <strong>img</strong>, <strong>&#64;image</strong> is not based on the <strong>&#64;html</strong> namespace. Given that, the underlying semantics do not support the <strong>&#64;html</strong> built-in attributes such as <strong>.&lt;, .&gt; and .&lt;+</strong>. The full syntax is:</p></div>
+<div class="syntax"><p class="divTitle">&#64;image Syntax</p>
 <p><div class="extras"><p class="generic"></p>
 <p>@image _id="imagename" src="pathtoimage" alt="" _private="val"</p>
 <p></p></div></p>
 </div>
-<div class="extras"><p>Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the <strong>@image</strong> namespace. You will use that name to cause the <strong>&lt;img&gt;</strong> tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated <strong>@image</strong> HTML code. So, if you were to write:</p></div>
+<div class="extras"><p>Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the <strong>&#64;image</strong> namespace. You will use that name to cause the <strong>&lt;img&gt;</strong> tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated <strong>&#64;image</strong> HTML code. So, if you were to write:</p></div>
 <div class="source"><code style="font-size:1.4em;font-weight:bold"></code>
 <code style="font-size:1.2em"><h4 class="indent">@image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"</h4></code>
 </div>
@@ -485,20 +507,20 @@ NAMESPACE: link<br />
 <div class="extras"><p>This also works to reference the normal attributes. e.g. <strong>&lsqb;img1.class&rsqb;</strong> which emits <em>myclass</em>.</p></div>
 <div class="extras"><p>And as is the case for all namespaces, if there's ambiguity in the names used in different namespaces, you can add the namespace prefix to clarify. For example, <em><strong>image.</strong></em> in front of the name to force the correct namespace to resolve. For example, if I write the following two lines in my document:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-<strong>@var</strong> img1="my variable img1 in @var namespace"
-<strong>@image</strong> _id="img1" src="foo.png"
+<strong>&#64;var</strong> img1="my variable img1 in &#64;var namespace"
+<strong>&#64;image</strong> _id="img1" src="foo.png"
 </pre></div>
-<div class="extras"><p>Then, when I write <strong>&lsqb;var.img1&rsqb;</strong> the parser will emit <em>my variable img1 in @var namespace</em> and when I write <strong>&lsqb;image.img1&rsqb;</strong> the parser emits <em>&lt;img src="foo.png"/&gt;</em>.</p></div>
-<div class="extras"><p>Let's go ahead and include an inline image to see <strong>@image</strong> in action. I will write:</p></div>
+<div class="extras"><p>Then, when I write <strong>&lsqb;var.img1&rsqb;</strong> the parser will emit <em>my variable img1 in &#64;var namespace</em> and when I write <strong>&lsqb;image.img1&rsqb;</strong> the parser emits <em>&lt;img src="foo.png"/&gt;</em>.</p></div>
+<div class="extras"><p>Let's go ahead and include an inline image to see <strong>&#64;image</strong> in action. I will write:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-<strong>@image</strong> _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" alt="shot 1" style="width:30%"
+<strong>&#64;image</strong> _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" alt="shot 1" style="width:30%"
 </pre></div>
 <div class="extras"><p>When I write <strong>&lsqb;shot1&rsqb;</strong>, the parser emits <em>&lt;img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/&gt;</em> and the browser renders:</p></div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/></p></div>
-<div class="extras"><p>Easy enough. Now let's take a look at the system provided builtins for <strong>@image</strong>.</p></div>
+<div class="extras"><p>Easy enough. Now let's take a look at the system provided builtins for <strong>&#64;image</strong>.</p></div>
 <a id="ug_image_builtins"></a>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@image builtins</h3></div>
-<div class="extras"><p>The <strong>@image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of <strong>image.md</strong>:</p></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;image builtins</h3></div>
+<div class="extras"><p>The <strong>&#64;image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of <strong>image.md</strong>:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of sys.imports/image.md</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 // Create a constant var with various styles and defaults for images
 
@@ -550,12 +572,12 @@ NAMESPACE: link<br />
 <div class="extras"><p>For a quick example of the size and styling shortcuts, let's write the following markdown in this document and see what we get:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &lsqb;IMG_SIZE.thumb&rsqb;
-@image _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" style="&lcub;&lcub;IMG_STYLE.inline_border&rcub;&rcub;"
+&#64;image _="shot1" src="&lsqb;sys.root&rsqb;/docs/import/shot1.jpg" style="&lcub;&lcub;IMG_STYLE.inline_border&rcub;&rcub;"
 &lsqb;shot1&rsqb;
 </pre></div>
 <div class="extras"><p>And here is what the browser renders:</p></div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
-<div class="extras"><p>You can see more of these builtins and the <strong>@image</strong> support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.</p></div>
+<div class="extras"><p>You can see more of these builtins and the <strong>&#64;image</strong> support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -586,10 +608,10 @@ NAMESPACE: image<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
@@ -657,7 +679,7 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
-<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>[sys.root]/docs/import/shot1.jpg<br />
+<strong>shot1=</strong><br />&nbsp;&nbsp;<strong>src=</strong>/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg<br />
 &nbsp;&nbsp;<strong>style=</strong>{{var.IMG_STYLE.inline_border}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />

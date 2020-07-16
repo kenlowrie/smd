@@ -49,7 +49,7 @@ You can create a variable in the @link namespace using the following syntax:
 If you then specify [e_var.b(t="link.name")], the parser will emit **[escape_var(v="link.name")]**. Such a simple example isn't very useful, however, since we need the ability to insert content between the anchor tag. This can be accomplished by using the special attributes &lt; and &gt;, as follows:
 
 @wrap divx
-{:indent}###[encode_smd(t="[link.name.<]content here[link.name.>]")]
+{:indent}###[encode_smd(t="<link.name.[E.lt]>content here<link.name.[E.gt]>")]
 @parw
 
 Now, the parser emits: **[escape_var(v="link.name.<")]content here[escape_var(v="link.name.>")]**, which is a bit more useful, but seemingly rather complex to to use in practice. In light of this, two special built-ins are provided in order to ease the creation and usage of hyperlinks. The first is a link template, [e_var.b(t="link._template_")], which can be inherited during creation of new links, and the second is a factory, [e_var.b(t="link.ln_factory")], which can be used to easily create a hyperlink with minimal input, and which has several useful attributes that can be used during rendering. Let's take a look at each of these now.
@@ -61,11 +61,11 @@ Going back to our original example, if we add **_inherit="_template_"** to the d
 @parw
 
 @link _="name" _inherit="_template_" href="http://example.com"
-We now have several new attributes available to use. For example, if we write [e_var.b(t="link.name._asurl")], the parser emits **[escape_var(v="link.name._asurl")]** which renders as [link.name._asurl]. If we use just the variable name like we did before e.g. [e_var.b(t="link.name")], we get this: [link.name]. As you can see, the default text for the link is actually a usage statement, requesting that we add the **_text=** parameter like so: **[encode_smd(t="[link.name&lpar;_text=\"my web site\"&rpar;]")]**, which then yields: [link.name(_text="my web site")]. 
+We now have several new attributes available to use. For example, if we write [e_var.b(t="link.name._asurl")], the parser emits **[escape_var(v="link.name._asurl")]** which renders as [link.name._asurl]. If we use just the variable name like we did before e.g. [e_var.b(t="link.name")], we get this: [link.name]. As you can see, the default text for the link is actually a usage statement, requesting that we add the **_text=** parameter like so: **[encode_smd(t="<link.name&lpar;_text=\"my web site\"&rpar;>")]**, which then yields: [link.name(_text="my web site")]. 
 
 If you want to use different content with the same link, then specifying the **_text=** parameter provides a convenient way to do that. For example, if I change the parameter to **_text="My Really Cool Website"**, I will get: [link.name(_text="My Really Cool Website")].
 
-There is one side effect to overriding the default values for attributes on variables in all namespaces except the @code namespace. When a default attribute is overridden in a call, it changes the default value of that attribute for subsequent calls! For example, if I write **[encode_smd(t="[link.name]")]**, I will get the last value specified for _text, e.g. [link.name].
+There is one side effect to overriding the default values for attributes on variables in all namespaces except the @code namespace. When a default attribute is overridden in a call, it changes the default value of that attribute for subsequent calls! For example, if I write **[encode_smd(t="<link.name>")]**, I will get the last value specified for _text, e.g. [link.name].
 
 [note(t="Keep that in mind as it affects parameter passing in all of the namespaces except @code.[bb]In **@code**, default values for parameters can only be overridden when the variable is defined with **@code** or updated with **@set**. Anything passed via a call will be persisted for that call, and then revert to the original values.")]
 
@@ -89,15 +89,15 @@ Before we leave the section on hyperlinks, let's a have a look at a better short
 
 [link.ln_factory(nm="sample" hr="http://example.com" t="my default title"")]
 
-And now, if I write **[encode_smd(t="[sample]")]**, I will get: [name]. Notice how in this example, we left off the namespace **link.**. Namespaces allow identifiers to be reused, and the value of a duplicated identifier in different namespaces will be unique. This ambiguity can lead to unexpected expansion since the if no namespace is supplied, the different namespaces are searched attempting to resolve the identifier. If the parser finds a match before it searches the intended namespace, then that is what it will use. Given that, it's always a good idea to specify the namespace except in the most simple of documents, to avoid incorrect expansion down the road. Thus, if I write **[encode_smd(t="[link.sample]")]**, I will get the value as before: [link.sample].
+And now, if I write **[encode_smd(t="<sample>")]**, I will get: [sample]. Notice how in this example, we left off the namespace **link.**. Namespaces allow identifiers to be reused, and the value of a duplicated identifier in different namespaces will be unique. This ambiguity can lead to unexpected expansion since the if no namespace is supplied, the different namespaces are searched attempting to resolve the identifier. If the parser finds a match before it searches the intended namespace, then that is what it will use. Given that, it's always a good idea to specify the namespace except in the most simple of documents, to avoid incorrect expansion down the road. Thus, if I write **[encode_smd(t="<link.sample>")]**, I will get the value as before: [link.sample].
 
 As you might expect, **ln_factory** inherits from **link._template**, and as such, it inherits attributes including **_asurl**. For example, [e_var.emb(t="link.sample._asurl")] which expands to **[escape_var(v="link.sample._asurl")]** and renders as: [link.sample._asurl]. 
 
 [link.sample._null_(_qtext="alternative link text")]
-One other feature of the **link._template_** is the **_qlink** and **_qtext** attributes. These allow you to specify alternative link text to the same **href**. For example, if I add **_qtext="alternative link text"** when the variable is declared, and then write **[encode_smd(t="[link.sample._qlink]")]**, I will get: [link.sample._qlink].
+One other feature of the **link._template_** is the **_qlink** and **_qtext** attributes. These allow you to specify alternative link text to the same **href**. For example, if I add **_qtext="alternative link text"** when the variable is declared, and then write **[encode_smd(t="<link.sample._qlink>")]**, I will get: [link.sample._qlink].
 
 [link.sample._null_(_qtext="alt2 link text")]
-You can also specify the **_qtext** using the special **_null_** syntax:  **[encode_smd(t="[link.sample._null_&lpar;_qtext=\"alt2 link text\"&rpar;]")]**. Doing so then cause **_qlink** to emit: [link.sample._qlink].
+You can also specify the **_qtext** using the special **_null_** syntax:  **[encode_smd(t="<link.sample._null_&lpar;_qtext=\"alt2 link text\"&rpar;>")]**. Doing so then cause **_qlink** to emit: [link.sample._qlink].
 
 As in the @html namespace, any valid HTML attribute can be specified when creating link variables. Like @html, attributes that begin with an underscore ***_*** are considered *private* and attributes that begin with a letter are considered *public*. When HTML tags are emitted as part of variable expansion, all public attributes are written as part of the opening tag. Let's see how this works.
 
@@ -115,9 +115,9 @@ And now, let's take a look at what the parser emits and what the browser renders
 [e_var.b(t="link.sample._asurl")] emits *[code.escape_var(v="link.sample._asurl")]* which renders as: [link.sample._asurl]
 [e_var.b(t="link.sample._qlink")] emits *[code.escape_var(v="link.sample._qlink")]* which renders as: [link.sample._qlink]
 
-If you hover over any of the preceding links, the browser will show "**my link title here**" after a couple of seconds. By using this feature, you can add custom CSS styling via **style=** along with other valid HTML attributes to any *@link, @image or @html* namespace tag.. As one last example, we will add **style="font-size:3em"** to the link.sample variable, and then emit the same 3 links as before:
+If you hover over any of the preceding links, the browser will show "**my link title here**" after a couple of seconds. By using this feature, you can add custom CSS styling via **style=** along with other valid HTML attributes to any *@link, @image or @html* namespace tag.. As one last example, we will add **style="font-size:2em"** to the link.sample variable, and then emit the same 3 links as before:
 
-[link.sample._null_(style="font-size:3em")]
+[link.sample._null_(style="font-size:2em")]
 
 [e_var.b(t="link.sample")] emits *[code.escape_var(v="link.sample")]* which renders as: [link.sample]
 

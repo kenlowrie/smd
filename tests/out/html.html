@@ -11,13 +11,22 @@
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @html namespace</h3>
 <div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
 <div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@html</strong></em> namespace</p></div>
-<div class="extras"><p>&#91;&#91;ns].a1] --> a1_rval</p></div>
-<div class="extras"><p>&#91;&#91;ns].a2] --> <a2></a2></p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> <a3></a3></p></div>
-<div class="extras"><p>&#91;&#91;ns]._a4] --> [html._a4]</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a2&rsqb; --> <a2></a2></p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> <a3></a3></p></div>
+<div class="extras"><p>&lsqb;html.a4&rsqb; --> a4_rval</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD (which may return, because now the parser is too smart) :)</h3></p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;html.a2] --> <a2></a2></p></div>
+<div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{html.a1}}</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- You can't parse delayed expansion <em><strong>{{}}</strong></em> inline, only as parameters ...</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
 <div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
-<div class="extras"><p>&#91;&#91;ns].a2] --> a2_rval</p></div>
-<div class="extras"><p>&#91;&#91;ns].a3] --> a3_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a3] --> a3_rval</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -78,9 +87,9 @@ NAMESPACE: html<br />
 <div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
 <div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
 <div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
-<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _format=\"<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>\" _tag=\"invalid-attribute\"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
 <div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
-<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _format=\"<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>\" _tag=\"invalid-attribute\"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
 <div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
 <div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _format, _tag,</p></div>
 <div class="extras"><p><em><strong>null</strong></em> =</p></div>
@@ -122,7 +131,7 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
 &nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -134,8 +143,10 @@ NAMESPACE: html<br />
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
-<div class="extras"><p>&#91;&#91;ns].c1] = 1</p></div>
-<div class="extras"><p>&#91;&#91;ns].c2] = 1</p></div>
+<div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
+<div class="extras"><p>because when <br /><br />.code=<em>@html _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.html=<em>@html _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] = 1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] = 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -150,7 +161,7 @@ NAMESPACE: html<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c1<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c2<br />
 <br />
 </code>
@@ -169,13 +180,13 @@ NAMESPACE: html<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c1<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c2<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>&#91;c1] = 1</p></div>
-<div class="extras"><p>&#91;c2] = 8</p></div>
+<div class="extras"><p>&lsqb;c1] = 1</p></div>
+<div class="extras"><p>&lsqb;c2] = 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -190,17 +201,17 @@ NAMESPACE: html<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c1<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c2<br />
 <br />
 </code>
 </div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
-<div class="extras"><p>&#91;c2.attr1] = <em>attribute 1</em></p></div>
-<div class="extras"><p>&#91;c2.attr2] = <strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
-<div class="extras"><p>&#91;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -215,16 +226,17 @@ NAMESPACE: html<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c1<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c2<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
 </code>
 </div>
 <div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
 <div class="extras"><p><h3>Create new variable using @set</h3></p></div>
 <div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
 <div class="variables">
@@ -232,6 +244,16 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;[self.c]<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="html" _="d0" _format="d0_rval"</strong></p></div>
@@ -429,14 +451,14 @@ NAMESPACE: html<br />
 <div class="extras"><p>&nbsp;&lt;{{self._tag}}{{self._public_attrs_esc_}}&gt;</p></div>
 <div class="extras"><p>&nbsp;&lt;[self._tag][self._public_attrs_esc_]&gt;</p></div>
 <div class="plain"><p class="plainTitle">Testing adding new @html builtins</p></div>
-<div class="plain"><p class="plainTitle">User manual sections for <strong>@html</strong></p></div>
-<div class="toc"><p class="divTitle">Table of Contents - Unittest <strong>@html</strong></p>
+<div class="plain"><p class="plainTitle">User manual sections for <strong>&#64;html</strong></p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest <strong>&#64;html</strong></p>
 <br />
 <span class="indent"><a href="#ug_ns_html">@html Namespace</a> - <strong>@html Namespace</strong></span><br />
-<span class="indent"><span class="indent"><a href="#ug_html_syntax">Syntax</a> - <strong>Syntax for @html Variables</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_syntax">Syntax</a> - <strong>Syntax for &#64;html Variables</strong></span></span><br />
 <span class="indent"><span class="indent"><a href="#ug_html_names">Names</a> - <strong>Variable Names</strong></span></span><br />
 <span class="indent"><span class="indent"><a href="#ug_html_attrs">Attributes</a> - <strong>Built-in Attributes</strong></span></span><br />
-<span class="indent"><span class="indent"><a href="#ug_html_misc">Miscellaneous</a> - <strong>More examples using @html</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_misc">Miscellaneous</a> - <strong>More examples using &#64;html</strong></span></span><br />
 </div>
 <div class="extras"><h3>Review link bookmarks from nshtml-inc.md</h3></div>
 <div class="variables">
@@ -497,23 +519,23 @@ NAMESPACE: link<br />
 </code>
 </div>
 <a id="ug_ns_html"></a>
-<div class="extras" style="border-bottom:5px solid green;color:green"><h2>@html Namespace</h2></div>
-<div class="extras"><p>The <strong>@html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the @html namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
-<div class="extras"><p>Many of the features and concepts discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>@html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.</p></div>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>&#64;html Namespace</h2></div>
+<div class="extras"><p>The <strong>&#64;html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the &#64;html namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
+<div class="extras"><p>Many of the features and concepts discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>&#64;html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts.</p></div>
 <a id="ug_html_syntax"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Syntax</h3></div>
 <div class="syntax"><p class="divTitle">@html command syntax</p>
 <p><br /></p>
-<p><span class="indent"><strong>@html</strong> <strong>_id="name" &lsqb;_tag="tagname" &lsqb;...&rsqb;&nbsp;&nbsp;&rsqb;</strong><br /><br /></span></p>
+<p><span class="indent"><strong>&#64;html</strong> <strong>_id="name" &lsqb;_tag="tagname" &lsqb;...&rsqb;&nbsp;&nbsp;&rsqb;</strong><br /><br /></span></p>
 </div>
-<div class="extras"><p>All of the built-in attributes previously documented for <strong>@var</strong> are supported for <strong>@html</strong> variables, and a new one <strong>_tag</strong> has been introduced. _tag is used to set the HTML element name for the variable. If _tag is not specified, it will be set to the same value as _id. Let's define a few variables, and then examine them.</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining an @html variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="extras"><p>All of the built-in attributes previously documented for <strong>&#64;var</strong> are supported for <strong>&#64;html</strong> variables, and a new one <strong>_tag</strong> has been introduced. _tag is used to set the HTML element name for the variable. If _tag is not specified, it will be set to the same value as _id. Let's define a few variables, and then examine them.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining an &#64;html variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
-@html _="blockquote" cite="url-goes-here"
-@html _id="bquote" _tag="blockquote"
-@html _id="bq" _inherit="blockquote"
+&#64;html _="blockquote" cite="url-goes-here"
+&#64;html _id="bquote" _tag="blockquote"
+&#64;html _id="bq" _inherit="blockquote"
 </pre></div>
-<div class="extras"><p>In the preceding example, we've defined  three <strong>@html</strong> variables: <strong>blockquote</strong>, <strong>bquote</strong> and <strong>bq</strong>. Let's use <strong>@dump</strong> to take a look at their declarations.</p></div>
+<div class="extras"><p>In the preceding example, we've defined  three <strong>&#64;html</strong> variables: <strong>blockquote</strong>, <strong>bquote</strong> and <strong>bq</strong>. Let's use <strong>&#64;dump</strong> to take a look at their declarations.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
 <div class="source"><code style="font-size:1.4em;font-weight:bold">Definition of <em>blockquote</em>, <em>bquote</em> & <em>bq</em> variables</code>
 <div class="variables">
@@ -538,7 +560,7 @@ NAMESPACE: html<br />
 </div>
 <div class="extras"><p>First, take a look at <strong>blockquote</strong>. <strong>_tag</strong>, although we didn't specify it, has been set to <strong>blockquote</strong>. In many cases, this is what you want, so not having to specify it is a nice shortcut when declaring variables. Also, notice how <strong>_format</strong> has been set to <em>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;{{self._tag}}&gt;</em>.</p></div>
 <div class="extras"><p>Given that, if we write <em>&lsqb;blockquote&rsqb;</em> it will emit <em><strong>&lt;blockquote cite="url-goes-here"&gt;&lt;/blockquote&gt;</strong></em>.</p></div>
-<div class="extras"><p>The first thing you'll notice is that there isn't a way to get content between the opening and closing tags, so on the surface, this doesn't look very useful. Enter the special attributes <strong>&lt;</strong> and <strong>&gt;</strong>, supported by all <strong>@html</strong>-based namespaces.</p></div>
+<div class="extras"><p>The first thing you'll notice is that there isn't a way to get content between the opening and closing tags, so on the surface, this doesn't look very useful. Enter the special attributes <strong>&lt;</strong> and <strong>&gt;</strong>, supported by all <strong>&#64;html</strong>-based namespaces.</p></div>
 <div class="extras"><p>Now, if we write <strong>&lsqb;blockquote<em>.&lt;</em>&rsqb;</strong> it will emit &lt;blockquote cite="url-goes-here"&gt;. Conversely, if we write <strong>&lsqb;blockquote<em>.&gt;</em>&rsqb;</strong>, it will emit &lt;/blockquote&gt;. So now all we need is to specify a value for the <strong>cite</strong> attribute when we declare the open tag, add some content, and specify the closing tag. Let's see how it all comes together.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding content to the blockquote HTML variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
@@ -548,9 +570,9 @@ Google has always had the "I'm Feeling Lucky" button just below it's search inpu
 </pre></div>
 <div class="extras"><p>This is what will be rendered by the browser:</p></div>
 <div class="extras"><p><blockquote cite="https://google.com">Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.</blockquote></p></div>
-<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an @html variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>@html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
-<div class="extras"><p><strong>bq</strong> is identical to <strong>blockquote</strong>, because the <strong>_inherit</strong> attribute was specified at declaration time. Recall from the <strong>@var</strong> section, <strong>_inherit</strong> is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:</p></div>
-<div class="extras"><p><strong>@html _id="bq" _inherit="blockquote" cite="different-default-citation"</strong></p></div>
+<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an &#64;html variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>&#64;html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
+<div class="extras"><p><strong>bq</strong> is identical to <strong>blockquote</strong>, because the <strong>_inherit</strong> attribute was specified at declaration time. Recall from the <strong>&#64;var</strong> section, <strong>_inherit</strong> is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:</p></div>
+<div class="extras"><p><strong>&#64;html _id="bq" _inherit="blockquote" cite="different-default-citation"</strong></p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
 <div class="source"><code style="font-size:1.4em;font-weight:bold">New definition of <em>bq</em> variable</code>
 <div class="variables">
@@ -567,11 +589,11 @@ NAMESPACE: html<br />
 </div>
 </div>
 <a id="ug_html_names"></a>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Variable names</h3></div>
-<div class="extras"><p>Variable names in the <strong>@html</strong> namespace are restricted to the same requires as the <strong>@var</strong> namespace.</p></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Variable names</h3></div>
+<div class="extras"><p>Variable names in the <strong>&#64;html</strong> namespace are restricted to the same requires as the <strong>&#64;var</strong> namespace.</p></div>
 <a id="ug_html_attrs"></a>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Built-in Attributes</h3></div>
-<div class="extras"><p>In addition to all of the built-in attributes supported by <strong>@var</strong>, <strong>@html</strong> variables have several built-ins that are unique to it:</p></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Built-in Attributes</h3></div>
+<div class="extras"><p>In addition to all of the built-in attributes supported by <strong>&#64;var</strong>, <strong>&#64;html</strong> variables have several built-ins that are unique to it:</p></div>
 <div class="extras"><ul class="ulist">
 <li><strong>_tag</strong> = The HTML element name of the variable</li>
 <li><strong><</strong> = The opening tag for this variable</li>
@@ -590,8 +612,8 @@ NAMESPACE: html<br />
 <strong>&lsqb;html.blockquote._private_keys_&rsqb;</strong> <em>=</em> _format, _tag,
 </pre></div>
 <a id="ug_html_misc"></a>
-<div class="extras" style="border-bottom:2px solid black"><h3>@html Miscellaneous Examples</h3></div>
-<div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>@html</strong> namespace. Let's start by examining the contents of the <strong>&lsqb;sys.imports&rsqb;/html.md</strong> file:</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>&#64;html Miscellaneous Examples</h3></div>
+<div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>&#64;html</strong> namespace. Let's start by examining the contents of the <strong>&lsqb;sys.imports&rsqb;/html.md</strong> file:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 @html _id="html" _tag="html"
 // &lt;head&gt; related tags
@@ -636,8 +658,8 @@ NAMESPACE: html<br />
 
 
 </pre></div>
-<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>@html</strong>. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember <strong>helpers.md</strong> from the earlier chapter [link.ug_helpers.link]?</p></div>
-<div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>@html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
+<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>&#64;html</strong>. Most are very simple, just the name and tag, others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember <strong>helpers.md</strong> from the earlier chapter [link.ug_helpers.link]?</p></div>
+<div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>&#64;html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -645,7 +667,7 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+&nbsp;&nbsp;<strong>class=</strong>note blue<br />
 <br />
 <strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -764,7 +786,7 @@ NAMESPACE: html<br />
 <br />
 <strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
+&nbsp;&nbsp;<strong>class=</strong>note red<br />
 <br />
 <strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -900,7 +922,7 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
 <br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>style=</strong>[html.bigmargin.style];border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
 &nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -924,10 +946,10 @@ NAMESPACE: html<br />
 <strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c1<br />
 <br />
-<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{c0.a}}<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
 &nbsp;&nbsp;<strong>_tag=</strong>c2<br />
-&nbsp;&nbsp;<strong>attr1=</strong>*attribute 1*<br />
-&nbsp;&nbsp;<strong>attr2=</strong>**attribute 2**<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />

@@ -4,7 +4,7 @@
 
 @var fs_attr="font-size:1.3em"
 @html _id="wt1" _tag="span" class="myclass1" style="color:red;[var.fs_attr]"
-@html _id="wt2" _tag="span" class="myclass2" style="color:blue;[var.fs_attr]"
+@html _id="wt2" _tag="span" class="myclass2" style="color:blue;{{var.fs_attr}}"
 @html _id="wt3" _tag="span" class="myclass3" style="color:green;[var.fs_attr]"
 
 [wrap_h.hash2]

@@ -44,7 +44,7 @@ Notice that in the [smdhtml.b] and [smdlink.b] declarations we didn't specify th
 
 [terminal.wc_open(t="Using _format on [smdhtml.il] and [smdlink.il]")]
 [sp]
-[smdcomment] declare 'fu' in [smdvar.il], [smdhtml.il] & [smdlink.il]
+[smdcomment] declare [E.apos]fu[E.apos] in [smdvar.il], [smdhtml.il] & [smdlink.il]
 [smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
 [smdhtml_wp(parms="_id=\"fu\" _format=\"bar\"")]
 [smdlink_wp(parms="_id=\"fu\" _format=\"bar\"")]
@@ -85,7 +85,7 @@ One last concept to discuss about declaring variables is the attribute **_inheri
 
 [terminal.wc_open(t="Using _inherit to streamline declarations")]
 [sp]
-[smdcomment] declare 'smdtag' variable
+[smdcomment] declare [E.apos]smdtag[E.apos] variable
 [smdvar.b] smdtag="@@[_self.il(p="il")]" il="[E.lb]encode_smd[E.lp]t=\"[_self.il]\"[E.rp][E.rb]" b="[E.ast2][_self.il][E.ast2]" em="[E.ast][_self.il][E.ast]" emb="[E.ast3][_self.il][E.ast3]"
 [sp]
 [smdcomment] now declare several variables based on **smdtag**
@@ -256,13 +256,13 @@ Attributes of any variable in any namespace can be added or updated at any time.
 [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
 
 [sp]
-[smdcomment_wp(parms="using [smdset.il], change the value of attr1 to 'value2'")]
+[smdcomment_wp(parms="using [smdset.il], change the value of attr1 to [E.apos]value2[E.apos]")]
 [smdset_wp.b(parms="_=\"fu\" attr1=\"value2\"")]
 @set _="fu" attr1="value2"
 [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
 
 [sp]
-[smdcomment_wp(parms="using the _null_ attribute, change the value of attr1 to 'value3'")]
+[smdcomment_wp(parms="using the _null_ attribute, change the value of attr1 to [E.apos]value3[E.apos]")]
 [e_var.b(t="fu._null_[E.lp]attr1=\"value3\"[E.rp]")]
 [fu._null_(attr1="value3")]
 [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
@@ -271,20 +271,20 @@ Attributes of any variable in any namespace can be added or updated at any time.
 
 [note(t="The **_null_** attribute illustrates an important concept with the attributes of variables in [smd.b]. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except [smdcode.b]; in the [smdcode.b] namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.[bb]As previously mentioned, the only way to change the value of a variable in the [smdcode.b] namespace is by using [smdset.b]. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.")]
 
-You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let's see both of these things in action now.
+You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let[E.apos]s see both of these things in action now.
 
 [terminal2.wc_open(t="Adding attributes with [smdset.il]")]
 [terminal2.wc_open_content]
-[smdcomment_wp.il(parms="add a new attribute to 'fu' using [smdset.il]")]
+[smdcomment_wp.il(parms="add a new attribute to [E.apos]fu[E.apos] using [smdset.il]")]
 [smdset_wp.b(parms="_=\"fu\" attr2=\"value42\"")]
 @set _="fu" attr2="value42"
 [e_var.b(t="fu.attr2")] emits **[fu.attr2]**
 [sp]
-[smdcomment_wp.il(parms="adding a new attribute doesn't affect existing attributes in 'fu'")]
+[smdcomment_wp.il(parms="adding a new attribute doesn[E.apos]t affect existing attributes in [E.apos]fu[E.apos]")]
 [e_var.b(t="fu.attr1")] still emits **[fu.attr1]**
 
 [sp]
-[smdcomment_wp.il(parms="using the _null_ attribute, add attr3 to 'fu'")]
+[smdcomment_wp.il(parms="using the _null_ attribute, add attr3 to [E.apos]fu[E.apos]")]
 [e_var.b(t="fu._null_[E.lp]attr3=\"many ways to add attributes\"[E.rp]")]
 [fu._null_(attr3="many ways to add attributes")]
 [e_var.b(t="fu.attr3")] emits **[fu.attr3]**
@@ -316,7 +316,7 @@ And finally, you can also specify the namespace two different ways with [smdset.
 
 [terminal.wc_open(t="Specifying the namespace")]
 
-[smdcomment_wp(parms="Specify the namespace with @set; don't leave it to chance!")]
+[smdcomment_wp(parms="Specify the namespace with @set; don[E.apos]t leave it to chance!")]
 [smdset_wp.b(parms="*_ns=\"var\"* _=\"fu\" attr6=\"update attr6\"")]
 @set _ns="var" _="fu" attr6="update attr6"
 [e_var.b(t="fu.attr6")] emits **[fu.attr6]**

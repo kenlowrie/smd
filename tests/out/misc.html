@@ -178,7 +178,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
 &nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
 &nbsp;&nbsp;<strong>dn=</strong>generic<br />
-&nbsp;&nbsp;<strong>usage=</strong>**usage: [E.lb]_dfactory(dn="divName")[E.rb]**<br />
+&nbsp;&nbsp;<strong>usage=</strong>&lt;strong&gt;usage: [E.lb]_dfactory(dn="divName")[E.rb]&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
 <strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -263,7 +263,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
 <br />
 <strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage:[bb]**{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)[b]{{self.nm}}.inline(same)**<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)&lt;br /&gt;{{self.nm}}.inline(same)&lt;/strong&gt;<br />
 <br />
 <strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
 &nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
@@ -275,14 +275,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t2=</strong>author<br />
 &nbsp;&nbsp;<strong>t3=</strong>logline<br />
 <br />
-<strong>dblbrk=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[break][break]<br />
+<strong>dblbrk=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;&lt;br /&gt;<br />
 <br />
 <strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
 &nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
 &nbsp;&nbsp;<strong>_nop=</strong><br />
 <br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
-&nbsp;&nbsp;<strong>c=</strong>    Thanks again for choosing us for your production needs. We look forward to working with you on this project.[bb]    Please let [me] know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.[bb][bb]    Warmest regards,[bb]    [signature]<br />
+&nbsp;&nbsp;<strong>c=</strong>    Thanks again for choosing us for your production needs. We look forward to working with you on this project.&lt;br /&gt;&lt;br /&gt;    Please let [me] know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;    Warmest regards,&lt;br /&gt;&lt;br /&gt;    &lt;br /&gt;&lt;div class="extras"&gt;&lt;p&gt;&lt;span class="bigandbold"&gt;Firstname LastName&lt;/span&gt;&lt;br /&gt;Producer&lt;br /&gt;Production Company&lt;br /&gt;512.867.5309&lt;br /&gt;__DELETEME__mailto:you@youremailaddress.com&lt;/p&gt;&lt;/div&gt;<br />
 &nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
 &nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -296,19 +296,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
 <strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lt]{{self.t}}[E.gt]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
 <br />
 <strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
 <br />
 <strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>_format=</strong>[E.lb]{{self.t}}[E.rb]<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
 <br />
 <strong>email=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>__DELETEME__mailto:you@youremailaddress.com<br />
 <br />
@@ -359,11 +359,11 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>greyout default title<br />
 &nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
 <br />
-<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># [code.repeat.run(t="-", c="42")]<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># ------------------------------------------<br />
 <br />
-<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## [code.repeat.run(t="-", c="42")]<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## ------------------------------------------<br />
 <br />
-<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### [code.repeat.run(t="-", c="42")]<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### ------------------------------------------<br />
 <br />
 <strong>important=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -391,14 +391,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>lcase=</strong>ismd<br />
 &nbsp;&nbsp;<strong>short=</strong>Interactive Script Markdown<br />
 &nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
-&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
-&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
-&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
-&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
 <br />
 <strong>li=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;li style="font-size:1.3em"&gt;{{self.i}}&lt;/li&gt;<br />
@@ -429,7 +429,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>{:.bigandbold}**NOTE**: Final media is *not delivered* until all outstanding invoices have been paid in full.<br />
+&nbsp;&nbsp;<strong>t=</strong>{:.bigandbold}&lt;strong&gt;NOTE&lt;/strong&gt;: Final media is &lt;em&gt;not delivered&lt;/em&gt; until all outstanding invoices have been paid in full.<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>ol=</strong><br />&nbsp;&nbsp;<strong>close=</strong>&lt;/ol&gt;&lt;/div&gt;<br />
@@ -483,9 +483,9 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
-<strong>option1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.bigandbold}[sp][sp]{[sp][sp]} Per runtime minute.<br />
+<strong>option1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.bigandbold}&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;} Per runtime minute.<br />
 <br />
-<strong>option2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.bigandbold}[sp][sp]{[sp][sp]} Per hour.<br />
+<strong>option2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{:.bigandbold}&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;} Per hour.<br />
 <br />
 <strong>phone=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>512.867.5309<br />
 <br />
@@ -576,7 +576,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
 &nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
-&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: &lt;em&gt;&lt;strong&gt;{{self.v}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
 <br />
 <strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -617,309 +617,309 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>section default title<br />
 &nbsp;&nbsp;<strong>c=</strong>section default content<br />
 <br />
-<strong>sigme=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[FancyMe]&lt;br /&gt;Producer&lt;br /&gt;Production Company&lt;br /&gt;[phone]&lt;br /&gt;[email]<br />
+<strong>sigme=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;span class="bigandbold"&gt;Firstname LastName&lt;/span&gt;&lt;br /&gt;Producer&lt;br /&gt;Production Company&lt;br /&gt;512.867.5309&lt;br /&gt;__DELETEME__mailto:you@youremailaddress.com<br />
 <br />
-<strong>signature=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;&lt;div class="extras"&gt;&lt;p&gt;[sigme]&lt;/p&gt;&lt;/div&gt;<br />
+<strong>signature=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;&lt;div class="extras"&gt;&lt;p&gt;&lt;span class="bigandbold"&gt;Firstname LastName&lt;/span&gt;&lt;br /&gt;Producer&lt;br /&gt;Production Company&lt;br /&gt;512.867.5309&lt;br /&gt;__DELETEME__mailto:you@youremailaddress.com&lt;/p&gt;&lt;/div&gt;<br />
 <br />
 <strong>smd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMD<br />
 &nbsp;&nbsp;<strong>lcase=</strong>smd<br />
 &nbsp;&nbsp;<strong>short=</strong>Script Markdown<br />
 &nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
-&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
-&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
-&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
-&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
 <br />
 <strong>smdbreak=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@break<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdbreak_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@break {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdcode=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@code<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdcode_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@code {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdcomment=</strong><br />&nbsp;&nbsp;<strong>p=</strong>//<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdcomment_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>// {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smddebug=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@debug<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smddebug_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@debug {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smddump=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@dump<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smddump_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@dump {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdembed=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@embed<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdembed_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@embed {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdexit=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@exit<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdexit_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@exit {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdhtml=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@html<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdhtml_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@html {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdimage=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@image<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdimage_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@image {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdimport=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@import<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdimport_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@import {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdlink=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@link<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdlink_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@link {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdparse=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMDParse<br />
 &nbsp;&nbsp;<strong>lcase=</strong>smdparse<br />
 &nbsp;&nbsp;<strong>short=</strong>Script Markdown Parser<br />
 &nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self._format}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self._format}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self._format}}***<br />
-&nbsp;&nbsp;<strong>B=</strong>**{{self.ucase}}**<br />
-&nbsp;&nbsp;<strong>EM=</strong>*{{self.ucase}}*<br />
-&nbsp;&nbsp;<strong>EMB=</strong>***{{self.ucase}}***<br />
-&nbsp;&nbsp;<strong>short_b=</strong>**{{self.short}}**<br />
-&nbsp;&nbsp;<strong>desc_b=</strong>**{{self.desc}}**<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
 <br />
 <strong>smdparw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdparw_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdquit=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@quit<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdquit_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@quit {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdraw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@raw<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdraw_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@raw {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdset=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@set<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdset_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@set {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdstop=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@stop<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdstop_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@stop {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdtag=</strong><br />&nbsp;&nbsp;<strong>p=</strong><br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdvar=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@var<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdvar_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@var {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdwatch=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@watch<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdwatch_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@watch {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdwrap=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@wrap<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>smdwrap_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@wrap {{self.parms}}<br />
-&nbsp;&nbsp;<strong>il=</strong>[encode_smd(t="{{self.p}}")]<br />
-&nbsp;&nbsp;<strong>b=</strong>**{{self.il}}**<br />
-&nbsp;&nbsp;<strong>em=</strong>*{{self.il}}*<br />
-&nbsp;&nbsp;<strong>emb=</strong>***{{self.il}}***<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
 <br />
 <strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -943,7 +943,7 @@ NAMESPACE: var<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
 <br />
-<strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[sp][sp][sp][sp]<br />
+<strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
 <br />
 <strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -1081,7 +1081,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>section=</strong>{{code.pushlines(t="@wrap html.divx2\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>subsect=</strong>{{code.pushlines(t="@wrap html.divx3\n{{self.t}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>t=</strong>##Creating a Proposal using [smd]<br />
+&nbsp;&nbsp;<strong>t=</strong>##Creating a Proposal using smd<br />
 <br />
 </code>
 </div>

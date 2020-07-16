@@ -24,8 +24,8 @@ and here is another line.
 this is my note, I wonder if we should maybe add that line from the unused section about I don't remember what, I just need this to be longer.
 and here is another line.
 </p>
-Moving into <strong>@wrap</strong> <strong>divx</strong>
-<div class="extras">Now inside <strong>@wrap</strong> <strong>divx</strong></div>
+Moving into <strong>&#64;wrap</strong> <strong>divx</strong>
+<div class="extras">Now inside <strong>&#64;wrap</strong> <strong>divx</strong></div>
 <div class="extras"><h3>note and note.nd first</h3></div>
 <div class="extras"><p class="note">lorem ipsum. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p></div>
 <p class="note">lorem ipsum. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
@@ -44,7 +44,7 @@ and here is another line.
 this is my note, I wonder if we should maybe add that line from the unused section about I don't remember what, I just need this to be longer.
 and here is another line.
 </p>
-<strong>@wrap</strong> <strong>stack cleared - back to default of 0: ""</strong>
+<strong>&#64;wrap</strong> <strong>stack cleared - back to default of 0: ""</strong>
 <div class="av"><ul>
 <li>Over in the Audio section, let's see how each of the no-div sections look when used inside avshot.audio. We will start with the <em>note</em> builtin</li>
 </ul>
@@ -209,7 +209,7 @@ NAMESPACE: link<br />
 <a id="ug_samp_avscript"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Sample A/V Script Document</h2></div>
 <div class="extras"><p>In this example, we will use <strong>smd</strong> to create a simple Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that show the visuals i.e. shots on the left, and the audio i.e. narration or voiceover, on the right. <strong>smd</strong> has several builtins that assist with creating this type of script.</p></div>
-<div class="extras"><p>Start by including <strong>&#64;import &#91;sys.imports]/avs/avs.md</strong>, and you will get everything you need to quickly create your script.</p></div>
+<div class="extras"><p>Start by including <strong>&#64;import &lsqb;sys.imports&rsqb;/avs/avs.md</strong>, and you will get everything you need to quickly create your script.</p></div>
 <div class="extras"><h2>A/V Script Series</h2></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Script summary goes here and can be as long as needed. Let it wrap around if you have softwrap, or just go on forever.</p></div>
 <div class="revision"><p class="revTitle">Revision: <em><strong>1a</strong></em></p></div>
@@ -219,7 +219,7 @@ NAMESPACE: link<br />
 <div class="section"><p class="divTitle"></p>
 <p>A/V Script for <strong>Client Name</strong> project entitled "Bestest Social Media Campaign for Acme Widgets, LLC"</p>
 </div>
-<div class="extras"><p><strong>&#91;avshot.visual]</strong> begins the definition of a shot. You can list one or more shots in this section, and include formatting and other markdown. When you are done listing the shots, you will use either <strong>&#91;avshot.audio]</strong> or <strong>&#91;avshot.noaudio]</strong> to either begin listing the narration or voiceover, or simply close out the shot.</p></div>
+<div class="extras"><p><strong>&lsqb;avshot.visual&rsqb;</strong> begins the definition of a shot. You can list one or more shots in this section, and include formatting and other markdown. When you are done listing the shots, you will use either <strong>&lsqb;avshot.audio&rsqb;</strong> or <strong>&lsqb;avshot.noaudio&rsqb;</strong> to either begin listing the narration or voiceover, or simply close out the shot.</p></div>
 <div class="extras"><p>In this example, we will open with <strong>avshot.visual</strong>, write out shot description, and the close with <strong>avshot.noaudio</strong>, so there won't be anything listed in the right column.</p></div>
 <div class="av"><ul>
 <li><strong>CU:&nbsp;</strong> Staring out the window</li>
@@ -229,7 +229,7 @@ NAMESPACE: link<br />
 <div class="av"><ul>
 <li><strong>WS:&nbsp;</strong> Busy freeway rush hour traffic at a standstill</li>
 </ul>
-<p>In this example, after the preceding shot declaration, we used <strong>&#91;avshot.audio]</strong> to close out the visuals section, and begin the narrative section. You can have as much narration and notes as you need. When you're done, close out the shot with <strong>&#91;avshot.end]</strong>.</p>
+<p>In this example, after the preceding shot declaration, we used <strong>&lsqb;avshot.audio&rsqb;</strong> to close out the visuals section, and begin the narrative section. You can have as much narration and notes as you need. When you're done, close out the shot with <strong>&lsqb;avshot.end&rsqb;</strong>.</p>
 <p>There are a bunch of useful shot notation mnemonics defined in the <strong>sys.imports/avs/shotacro.md</strong> file, so you'll definitely want to review that to get an idea of those goodies!</p>
 </div>
 <div class="plain"><p class="plainTitle">Mixing AV Script builtins and other markdown</p></div>
@@ -257,7 +257,7 @@ NAMESPACE: link<br />
 <li>MS:Paranoid guy looking thru blinds</li>
 <li>If you indent a line following a shot, then that text becomes part of the prior shot, allowing you to put a little more description if you need it.</li>
 </ul>
-<p>If you want to put inline notes, questions or use any of the Simple Divs (<em>note, question, vo, important, greyout</em>), you need to use the *<strong>no-div</strong> version. The <strong>no-div</strong> version uses the suffix <strong>_nd</strong> on the key attribute names. For example, if I use the default and write:<br /><br /> <strong>&#91;note&lpar;t="this is my note")]</strong>, this is what I will see:</p>
+<p>If you want to put inline notes, questions or use any of the Simple Divs (<em>note, question, vo, important, greyout</em>), you need to use the *<strong>no-div</strong> version. The <strong>no-div</strong> version uses the suffix <strong>_nd</strong> on the key attribute names. For example, if I use the default and write:<br /><br /> <strong>&lsqb;note&lpar;t="this is my note")]</strong>, this is what I will see:</p>
 <div class="extras"><p class="note">this is my note</p></div>
 <p>See how the box jams up against the left margin of the right column? It also clears the floats, which will mess up the formatting for the next element in the audio section... ugh!</p>
 <p>This time, i'll write <strong>note.nd</strong>, to use the no-div variant, and let's see how that looks:</p>
@@ -319,11 +319,11 @@ NAMESPACE: link<br />
 </div>
 <div class="plain"><p class="plainTitle">Specialized avshot builtins</p></div>
 <div class="extras"><p>There are two short versions of avshot that can be used for quick shot only cases or shot with short description. They are:</p></div>
-<div class="extras"><p><span class="indent"><strong>&#91;avshot.shot_only]</strong> and <strong>&#91;avshot.shot_with_desc]</strong></span></p></div>
+<div class="extras"><p><span class="indent"><strong>&lsqb;avshot.shot_only&rsqb;</strong> and <strong>&lsqb;avshot.shot_with_desc&rsqb;</strong></span></p></div>
 <div class="extras"><p>They are just simplified versions you can use to quickly generate a shot only or a shot with short description.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Simplified <em>avshot</em> methods</pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&#91;avshot.shot_only(_s="shot info"&rpar;]</strong></pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&#91;avshot.shot_only(_s="shot info" _d="shot description"&rpar;]</strong></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&lsqb;avshot.shot_only(_s="shot info"&rpar;]</strong></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&lsqb;avshot.shot_only(_s="shot info" _d="shot description"&rpar;]</strong></pre>
 </div>
 <div class="av"><ul>
 <li><strong>CU:&nbsp;</strong> Hands holding phone</li>
@@ -426,7 +426,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>this is my note<br />
-&nbsp;&nbsp;<strong>c=</strong>wc-[E.gt]{{self.t}}<br />
+&nbsp;&nbsp;<strong>c=</strong>wc-&amp;gt;[self.t]<br />
 <br />
 <strong>question=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -477,7 +477,7 @@ NAMESPACE: html<br />
 ----------------------------------------<br />
 <strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] blue<br />
+&nbsp;&nbsp;<strong>class=</strong>note blue<br />
 <br />
 <strong>_generic_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -561,7 +561,7 @@ NAMESPACE: html<br />
 <br />
 <strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
-&nbsp;&nbsp;<strong>class=</strong>[html._note_p_.class] red<br />
+&nbsp;&nbsp;<strong>class=</strong>note red<br />
 <br />
 <strong>_vo_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
