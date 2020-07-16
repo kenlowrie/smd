@@ -111,8 +111,8 @@ Show his smile. Return to stock image. *If needed*
 @var headshots="[image_path]"
 @var sTAW="Source: TAW"
 
-@image _id="actress1" src="[headshots]/actress1.jpg" style="[ss]" _name="Actor1 Name" _source="[sTAW]"
-@image _id="actress2" src="[headshots]/actress2.jpg" style="[ss]" _name="Actor2 Name" _source="[sTAW]"
+@image _id="actress1" src="[headshots]/actress1.jpg" style="{{ss}}" _name="Actor1 Name" _source="[sTAW]"
+@image _id="actress2" src="[headshots]/actress2.jpg" style="{{ss}}" _name="Actor2 Name" _source="[sTAW]"
 
 
 [IMG_SIZE.small]
