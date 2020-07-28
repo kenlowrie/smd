@@ -18,6 +18,9 @@ class Variable(object):
     all = '_all_attrs_'
     all_esc = '_all_attrs_esc_'
     null = '_null_'
+    help_attr = '_help'
+    help = '?'
+    help_plain = '??'
     rvalue = '_rval'
     prefix = '_'
 
@@ -90,7 +93,7 @@ class VariableStore(object):
                            Variable.public_esc, Variable.private_esc, 
                            Variable.public_keys, Variable.private_keys, 
                            Variable.all, Variable.all_esc,
-                           Variable.null]
+                           Variable.null, Variable.help, Variable.help_plain]
 
     """Class to abstract a dictionary of variables"""
     def __init__(self, markdown, oprint):
@@ -172,12 +175,12 @@ class VariableStore(object):
 
         raise NameError("setAttribute: Variable {} is not defined".format(name))
 
-    def getAttribute(self, name, attr):
+    def getAttribute(self, name, attr, default=None):
         if self.exists(name):
             if attr in self.vars[name].rval:
                 return self.vars[name].rval[attr]
 
-            return ''   # Should I return an error instead?
+            return default if default else ''   # Should I return an error instead?
 
         raise NameError("getAttribute: Variable {} is not defined".format(name))
 
@@ -230,8 +233,36 @@ class VariableStore(object):
         if self.exists(name):
             return self.vars[name].getAttrsAsDict(Variable.all)
 
+    def getHelp(self, name):
+        if self.exists(name):
+            return self.getAttribute(name, Variable.help_attr, '<em>No help available</em>')
+
+    def getHelpPlain(self, name):
+        if self.exists(name):
+            help_str = self.getAttribute(name, Variable.help_attr)
+            if help_str is None: return 'No help available'
+            from re import sub
+            help_str = help_str.replace('&nbsp;', ' ').replace('<br />', '\n')
+            return sub(r'</?\w*>','',
+                   sub(r'&amp;','&',
+                   sub(r'&lt;','<', 
+                   sub(r'&gt;','>', 
+                   sub(r'&ast;','*', 
+                   sub(r'&lcub;','{', 
+                   sub(r'&rcub;','}', 
+                   sub(r'&lsqb;','[', 
+                   sub(r'&rsqb;',']', 
+                   sub(r'&plus;','+', 
+                   sub(r'&sim;','~', 
+                   sub(r'&#34;','"', 
+                   sub(r'&commat;','@',help_str)))))))))))))
+
     def getSpecialAttr(self, which, variable):
-        if which == Variable.public:
+        if which == Variable.help:
+            return self.getHelp(variable)
+        elif which == Variable.help_plain:
+            return self.getHelpPlain(variable)
+        elif which == Variable.public:
             return self.getPublicAttrs(variable)
         elif which == Variable.private:
             return self.getPrivateAttrs(variable)
@@ -262,7 +293,10 @@ class VariableStore(object):
         if type(s) != type(''):
             return s
         # Markdown just the [] vars. {{}} vars signal delayed expansion.
-        return self._markdown(s.replace('\\"', '"'))
+        #return self._markdown(s.replace('\\"', '"'))
+        s = self._markdown(s.replace('\\"', '"'))
+        return s.replace('[!','[').replace('!]', ']')
+
 
     def unescapeStringQuotes(self,d):
         for item in d:
@@ -547,22 +581,28 @@ class AdvancedNamespace(Namespace):
         # passed in. But just in case...
         return '(undefined variable) {}"'.format(id)
 
-    def dumpVars(self, which='.*', indent=''):
+    def dumpVars(self, help, which='.*', indent='', format=True, whitespace=False):
         """Dumps the image variable list, names and values."""
         from .regex import RegexSafe
         reObj = RegexSafe(which)
         
         from types import CodeType
+        full_str = "{2}<strong>{0}=</strong>{1}<br />" if format else "{2}{0}={1}"
+        code_str = '&nbsp;&nbsp;<strong>{}=</strong><em>{}</em><br />\n' if format else '&nbsp;&nbsp;{}={}<br />\n' if whitespace else '  {}={}\n'
+        attr_str = '&nbsp;&nbsp;<strong>{}=</strong>{}<br />\n' if format else '&nbsp;&nbsp;{}={}<br />\n' if whitespace else '  {}={}\n'
         for var in sorted(self.vars):
             if reObj.is_match(var) is None:
                 continue
-            dict_str = '<br />'
+            dict_str = '<br />' if format else '<br />\n' if whitespace else '\n'
             for d_item in self.vars[var].rval:
                 if isinstance(self.vars[var].rval[d_item], (CodeType)):
-                    dict_str += '&nbsp;&nbsp;<strong>{}=</strong><em>{}</em><br />\n'.format(d_item, HtmlUtils.escape_html('<code object>'))
+                    dict_str += code_str.format(d_item, HtmlUtils.escape_html('<code object>'))
+                elif not help and d_item == Variable.help_attr:
+                    continue
                 else:
-                    dict_str += '&nbsp;&nbsp;<strong>{}=</strong>{}<br />\n'.format(d_item, HtmlUtils.escape_html(self.vars[var].rval[d_item]))
-            self.oprint("{2}<strong>{0}=</strong>{1}<br />".format(var, dict_str, indent))
+                    dict_str += attr_str.format(d_item, HtmlUtils.escape_html(self.vars[var].rval[d_item]))
+
+            self.oprint(full_str.format(var, dict_str, indent))
 
 class VarNamespace(AdvancedNamespace):
     def __init__(self, markdown, namespace_name, oprint):
@@ -636,7 +676,7 @@ class HtmlNamespace(AdvancedNamespace):
         if el0 is not None:
             if el0 in HtmlNamespace._element_partials:
 
-                #//TODO: Need to handle the ret_type logic here so @html handles the <, >, <+ correctly if raw data requested.
+                # Handle the ret_type logic here so @html handles the <, >, <+ correctly if raw data requested.
                 # First, apply standard markdown in case _format has regular variables in it.
                 attr_value = self.getElementPartial(el0)
                 if ret_type == AdvancedNamespace._rtype_raw: return attr_value
@@ -1151,19 +1191,25 @@ class Namespaces(object):
             self.oprint("{1}\nNAMESPACE: {0}\n{1}".format(ns,'-'*40))
             self._namespaces[ns].dumpVarsAsStrings()
 
-    def dumpVars(self):
+    def dumpVars(self, help=True):
         for ns in Namespaces._search_order:
             self.oprint("{1}<br />\nNAMESPACE: {0}<br />\n{1}<br />".format(ns,'-'*40))
-            self._namespaces[ns].dumpVars()
+            self._namespaces[ns].dumpVars(help)
 
-    def dumpNamespaces(self, which):
+    def dumpNamespaces(self, which, help=True):
         for item in which:
             if item in self._namespaces:
                 self.oprint("{1}<br />\nNAMESPACE: {0}<br />\n{1}<br />".format(item,'-'*40))
-                self._namespaces[item].dumpVars(which=which[item])
+                self._namespaces[item].dumpVars(help, which=which[item])
             else:
                 self.oprint("{} is not a valid namespace to dump<br />".format(item))
 
+    def dumpSpecific(self, ns, name, help=True, format=False, whitespace=False):
+        if ns not in self._namespaces:
+            self.oprint(f"{ns} is not a valid namespace")
+            return
+
+        self._namespaces[ns].dumpVars(help, format=format, whitespace=whitespace, which=name)
 
 if __name__ == '__main__':
     print("Library module. Not directly callable.")
