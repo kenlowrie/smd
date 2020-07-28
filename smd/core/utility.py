@@ -16,6 +16,10 @@ def _set_line_cache(line_cache_ptr):
     global _line_cache
     _line_cache = line_cache_ptr
 
+def _get_ns_value_raw(v, ret_type):
+    global _ns_xface
+    return _ns_xface.getValue(v, ret_type=ret_type)
+
 def _get_ns_value(v):
     global _ns_xface
     return _ns_xface.getValue(v)
@@ -28,6 +32,10 @@ def _get_debug():
     from .thread import getTLS
     from .constants import Constants
     return getTLS().getObjectFromTLS(Constants.debugTracker).utilityDebug
+
+def _get_ns_xface():
+    global _ns_xface
+    return _ns_xface
 
 class HtmlUtils():
 
@@ -372,9 +380,60 @@ class CodeHelpers():
         if v is not None and type(v) is type(''):
             debug.print(f"{fn}: get_ns_value() = {_get_ns_value(v)}")
             #_line_cache.pushline("#### get_ns_value returns: {}".format(HtmlUtils.escape_html(_get_ns_value(v))))
-            lines = _get_ns_value(v).split('\n')[::-1]
+            lines = _get_ns_value(v).split('\\n')[::-1]
             for line in lines:
                 _line_cache.pushline(line)
+
+    @staticmethod
+    def pushlist(var=None):
+
+        debug = _get_debug()
+        fn="pushlist"
+
+        if not var:
+            debug.print(f"{fn}: missing required parameter {str(var)}")
+            return
+
+        # Get the string that we're going to operate on
+        v_ns, v_name, v_attr = _ns_xface.isAttribute(var, True)
+        debug.print(f"{fn}: v_ns={v_ns}--v_name={v_name}--v_attr={v_attr}")
+        if v_attr is None:
+            v_ns, v_name, v_attr = _ns_xface.isAttribute(f"{v_ns}.{v_name}.attrlist", True)
+            if v_attr is None:
+                debug.print(f"{fn}: no attribute named {var}.attrlist was found.")
+                return
+        debug.print(f"{fn}: v_ns={v_ns}--v_name={v_name}--v_attr={v_attr}")
+
+        # At this point, v_ns, v_name and v_attr point to the list (presumably)
+        debug.print(f"{fn}: get_ns_value() = {_get_ns_value_raw(var,0)}")
+
+        fq_name = f"{v_ns}.{v_name}"
+        attrlist = _ns_xface.getAttribute(fq_name, v_attr).split(',')
+
+        debug.print(f"{fn}: attrlist = {attrlist}")
+        #lines = _get_ns_value(v).split('\\n')[::-1]
+        for a in attrlist[::-1]:
+            x = _get_ns_value_raw(f"{fq_name}.{a}",1)
+            debug.print(f"{fn}: {fq_name}.{a} = {x}")
+            _line_cache.pushline(_get_ns_value_raw(f"{fq_name}.{a}",1))
+            #debug.print(f"{fn}: attr = {a}")
+
+    @staticmethod
+    def dump(ns=None, name=None, format=False, whitespace=False, help=True):
+        
+        debug = _get_debug()
+        fn="dump"
+
+        for v in [ns, name]:
+            if not v:
+                debug.print(f"{fn}: missing required parameter {str(v)}")
+                return
+
+        debug.print(f"{fn}: ns={ns} --- name={name} --- format={format} --- whitespace={whitespace} --- help={help}")
+
+        _ns = _get_ns_xface()
+
+        _ns.dumpSpecific(ns, name, help=help, format=format, whitespace=whitespace)
 
 
 if __name__ == '__main__':
