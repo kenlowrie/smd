@@ -2,7 +2,7 @@
       _format="{{self.<}}{{self._text}}{{self.>}}" \
       _text="Usage: link.{{self._}}(_text=\"Text to Link\")" \
       href="www.YOUR-URL-GOES-HERE.com" \
-      _asurl="{{self.<}}{{code.esc_html.run(url=\"{{self.href}}\")}}{{self.>}}" \
+      _asurl="{{self.<}}{{code.esc_angles.run(url=\"{{self.href}}\")}}{{self.>}}" \
       _qlink="{{self.<}}{{self._qtext}}{{self.>}}" \
       _qtext="SETMETOLINKTEXT"
 @link _id="ln_factory" \

@@ -107,8 +107,6 @@ This might be added in the future, if there are things I specifically need to un
 
 @import "[sys.root]/docs/section/nsvar-doc.md"
 
-//TODO: Why if I try to put [ns] in here does it not expand when the code is compiled over in testdoc.end???
-// this relates back to there not being a reliable way to cause variables to evaluate markdown when the variable is created.
-@set dump_ns_list="var=\".\""
+@set dump_ns_list="[ns]=\".\" help=\"f\""
 
 [var.testdoc.end]

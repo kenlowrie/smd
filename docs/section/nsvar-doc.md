@@ -162,6 +162,8 @@ Here is the full list of built-in attributes supported across all namespaces:
 [ulist.wc_open]
 _=The name of the variable
 _id=The name of the variable
+?=Returns **_help** if present otherwise **No help available**
+_help=The help string for this variable
 _private_attrs_=All of the private attributes (those that begin with underscore [E.apos]_[E.apos])
 _public_attrs_=All of the public attributes (those that do not begin with underscore)
 _private_attrs_esc_=Same as private attributes, but quotes are escaped.
@@ -179,6 +181,7 @@ _null_=A null attribute - emits nothing, used to set default values of any publi
 [e_var.b(t="var.fu._id")] *=* [fu._id]
 [e_var.b(t="var.fu._all_attrs_")] *=*[fu._all_attrs_]
 [e_var.b(t="var.fu._private_keys_")] *=*[fu._private_keys_]
+[e_var.b(t="var.fu.?")] *=*[fu.?]
 [sp]
 [e_var.b(t="html.divx._all_attrs_")] *=*[get_variable(v="html.divx._all_attrs_" ret_type="0" escape="True")]
 [e_var.b(t="html.divx._private_attrs_")] *=*[get_variable(v="html.divx._private_attrs_" ret_type="0" escape="True")]

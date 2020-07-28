@@ -262,4 +262,37 @@ And one last thing
     And one last thing[b]
 [var.syntax.wc_close_inline]
 
+[wrap_h(t="### Testing help")]
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.section")]
+        [section.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.source")]
+        [source.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.note")]
+        [note.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.terminal")]
+        [terminal.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.terminal2")]
+        [terminal2.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+
 [testdoc.end]

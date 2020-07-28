@@ -31,14 +31,14 @@
 [code.encode_smd(t="<[ns].a4>")] --> [[ns].a4]
 
 [hash3]
-### Old school way of encoding SMD (which may return, because now the parser is too smart) :)
+### Old school way of encoding SMD
 [E.lb][E.lb]ns].a1] --> [[ns].a1]
 [E.lb][ns].a2] --> [[ns].a2]
 
 ### And now just trying all the combinations...
-[code.encode_smd(t="2{<ns>.a12}")] --> {{[ns].a1}}
+[code.encode_smd(t="2{<ns>.a12}")] --> {{[ns].a1}}  -- Delayed expansion ***{{}}*** does not work inline
 [code.encode_smd(t="<<ns>.a1>")] --> [[ns].a1]
-[code.encode_smd(t="<2{ns2}.a1>")] --> [{{ns}}.a1] -- You can't parse delayed expansion ***{{}}*** inline, only as parameters ...
+[code.encode_smd(t="<2{ns2}.a1>")] --> [{{ns}}.a1] -- Delayed expansion ***{{}}*** does not work inline
 
 
 [hash3]
@@ -62,7 +62,7 @@ Setting default rvalue for a2 and a3
 
 // attempt to add all the reserved attributes
 //TODO: should I account for _ns in the reserved list? It is now an option to @SET, but stripped out before creating the variable
-@[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"
+@[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="*{{self._}}this is line 1 help text*<br />**line2** help text." 
 @[dump] = "invalid"
 ***public*** = [invalid-attribute._public_attrs_]
 ***public_esc*** = [invalid-attribute._public_attrs_esc_]
@@ -78,7 +78,13 @@ Setting default rvalue for a2 and a3
 ***_code*** = [invalid-attribute._code]
 ***_params_*** = [invalid-attribute._params_]
 ***_last*** = [invalid-attribute._last]
-***_rval*** on legimate variable = [_a4._rval]
+***_help*** = [invalid-attribute._help]
+***?*** = [invalid-attribute.?]
+***??*** = [invalid-attribute.??]
+***_last*** = [invalid-attribute._last]
+***_rval*** on legitimate variable = [a4._rval]
+***No help available*** on legitimate variable = [a4.?]
+***[a4._help]*** on legitimate variable = [a4._help]
 
 [invalid-attribute._null_(not_private="YES")]
 invalid-attribute.not_private = [invalid-attribute.not_private]
@@ -169,7 +175,8 @@ because when [bb].code=*[var.expr.code]* or [b].[ns]=*[var.expr.line]*[bb]are ev
 [wrap_h.hash2]
 
 This will test changing a variable's attributes using @set
-@var ENC="[code.encode_smd(t=\"&nbsp;{{self.c}}\")]" c="[smd_markdown_here]"
+@var ENC="{{code.encode_smd(t=\"&nbsp;{{self.c}}\")}}" c="[smd_markdown_here]"
+Current value for [encode_smd(t="<ENC>")]=*[ENC]*
 
 ### Create new variable using @set
 
@@ -178,10 +185,15 @@ Make sure variable d0 doesn't exist...
 @dump  var="ENC"
 
 // We can change the 'c' attribute of the ENC variable and it will recompile the code for us...
-@set _ns="var" _="ENC" c="@set _ns=\"[ns]\" _=\"d0\" _format=\"d0_rval\""
+// We will also change _format, because we don't want to encode the line, we want it to actually get parsed...
+@set _ns="var" _="ENC" c="@set _ns=\"[ns]\" _=\"d0\" _format=\"d0_rval\"" _format="{{self.c}}"
+
 **Now create the variable using [ENC]**
-@set _ns="[ns]" _="d0" _format="d0_rval"
+//The next line will actually expand to: @set _ns="[ns]" _="d0" _format="d0_rval"
+[ENC]
 @[dump] = "^d[0-9]{1,2}$"
+@dump  var="ENC"
+New value for [encode_smd(t="<ENC>")]=*[ENC]*
 
 **And change its default value**
 @set _ns="[ns]" _="d0" _format="d0_rval+"

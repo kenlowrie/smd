@@ -35,5 +35,5 @@ This seems unnecessary at this time.
 [link.google._asurl]
 [link.google._qlink]
 
-@set dump_ns_list="var=\".\" link=\".\""
+@set dump_ns_list="var=\".\" [ns]=\".\" help=\"f\""
 [var.testdoc.end]

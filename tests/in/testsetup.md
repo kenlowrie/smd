@@ -12,7 +12,7 @@
 @html _id="h2sh" _tag="h2" style="border-top: 3px solid black;border-bottom: 2px dashed black"
 @html _id="h3sh" _tag="h3" style="font-size:1.3em;border-bottom: 3px solid black"
 
-@var dump_ns_list="var=\".\" html=\".\" link=\".\" image=\".\""
+@var dump_ns_list="var=\".\" html=\".\" link=\".\" image=\".\" help=\"f\""
 @var body_closure="@import \"{{sys.imports}}/def_bodyclose.md\""
 @var doc_closure="@import \"{{sys.imports}}/def_close.md\""
 

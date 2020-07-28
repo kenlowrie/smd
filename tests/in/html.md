@@ -41,6 +41,6 @@
 @import "[sys.root]/docs/section/nshtml-doc.md"
 
 
-@set dump_ns_list="html=\".\""
+@set dump_ns_list="html=\".\" help=\"f\""
 
 [var.testdoc.end]

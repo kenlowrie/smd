@@ -16,13 +16,13 @@
 <div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> <img/></p></div>
 <div class="extras"><p>&lsqb;image.a4&rsqb; --> a4_rval</p></div>
 <div class="extras"><p><h3>------------------------------------------</h3></p></div>
-<div class="extras"><p><h3>Old school way of encoding SMD (which may return, because now the parser is too smart) :)</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD</h3></p></div>
 <div class="extras"><p>&lsqb;&lsqb;ns].a1] --> a1_rval</p></div>
 <div class="extras"><p>&lsqb;image.a2] --> <img/></p></div>
 <div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
-<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{image.a1}}</p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{image.a1}}  -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
 <div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
-<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- You can't parse delayed expansion <em><strong>{{}}</strong></em> inline, only as parameters ...</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
 <div class="extras"><p><h3>------------------------------------------</h3></p></div>
 <div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
 <div class="extras"><p>[&lsqb;ns].a2] --> a2_rval</p></div>
@@ -79,6 +79,7 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>not_private=</strong>yes<br />
 &nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}this is line 1 help text&lt;/em&gt;&lt;br /&gt;&lt;strong&gt;line2&lt;/strong&gt; help text.<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
@@ -86,19 +87,26 @@ NAMESPACE: image<br />
 </div>
 <div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
 <div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
-<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
-<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<img run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"/>" _tag="img"</p></div>
 <div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
-<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _format, _tag,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _help, _format, _tag,</p></div>
 <div class="extras"><p><em><strong>null</strong></em> =</p></div>
 <div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
 <div class="extras"><p><em><strong>run</strong></em> = code.var.run</p></div>
 <div class="extras"><p><em><strong>_code</strong></em> = used by code ns</p></div>
 <div class="extras"><p><em><strong>_params_</strong></em> = used by code ns</p></div>
 <div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
-<div class="extras"><p><em><strong>_rval</strong></em> on legimate variable = [_a4._rval]</p></div>
+<div class="extras"><p><em><strong>_help</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>?</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>??</strong></em> = invalid-attributethis is line 1 help text
+line2 help text.</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legitimate variable = [a4._rval]</p></div>
+<div class="extras"><p><em><strong>No help available</strong></em> on legitimate variable = <em>No help available</em></p></div>
+<div class="extras"><p><em><strong>[a4._help]</strong></em> on legitimate variable = [a4._help]</p></div>
 <div class="extras"><p>invalid-attribute.not_private = YES</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
@@ -222,6 +230,7 @@ NAMESPACE: image<br />
 </div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
+<div class="extras"><p>Current value for &lsqb;ENC&rsqb;=<em>&nbsp;[smd_markdown_here]</em></p></div>
 <div class="extras"><p><h3>Create new variable using @set</h3></p></div>
 <div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
 <div class="variables">
@@ -237,11 +246,11 @@ NAMESPACE: image<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
-&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;[self.c]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.encode_smd(t="&amp;nbsp;{{self.c}}")}}<br />
 <br />
 </code>
 </div>
-<div class="extras"><p><strong>Now create the variable using &nbsp;@set _ns="image" _="d0" _format="d0_rval"</strong></p></div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="image" _="d0" _format="d0_rval"</strong></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -252,6 +261,17 @@ NAMESPACE: image<br />
 <br />
 </code>
 </div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="image" _="d0" _format="d0_rval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="image" _="d0" _format="d0_rval"</em></p></div>
 <div class="extras"><p><strong>And change its default value</strong></p></div>
 <div class="variables">
 <code>

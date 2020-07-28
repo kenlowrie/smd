@@ -40,8 +40,6 @@
 
 @import "[sys.root]/docs/section/nsimage-doc.md"
 
-
-
-@set dump_ns_list="image=\".\""
+@set dump_ns_list="[ns]=\".\" help=\"f\""
 
 [var.testdoc.end]
