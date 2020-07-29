@@ -293,8 +293,8 @@ class VariableStore(object):
         if type(s) != type(''):
             return s
         # Markdown just the [] vars. {{}} vars signal delayed expansion.
-        #return self._markdown(s.replace('\\"', '"'))
         s = self._markdown(s.replace('\\"', '"'))
+        # And now change [!!] to []
         return s.replace('[!','[').replace('!]', ']')
 
 
