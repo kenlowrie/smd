@@ -13,6 +13,20 @@ The issue where you can't prevent expansion is annoying. Sometimes, like in the 
 using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will
 not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
 
+Maybe adding a ! to beginning and ending of string would work? x="!{{self.something}}!" means leave it alone (other than strip the !..! from it before storing it...)
+
+Move .?/._help to nsvar-doc.md from nscode-doc.md since this applies globally now.
+Documet .?? would strip the HTML tags and replace it with readable text, so you can get help in "smd -nd"
+
+Decide if $.attr substitutions should be marked down. Currently, they are not...
+
+[code.dump(ns="ns", var="var_name", escape="True | False")]
+
+Write help for div built-ins, and put in common variable, then reference it (if this works). 
+
+Add documentation for [!!].
+
+Terminal and terminal2 built-in help needs updating.
 
 Priority 0 | p0
 ---------------
@@ -25,6 +39,7 @@ Document using smd with pipenv and an OBS page.
 Finish clock and border as 2 POCs that are part of the source tree.
 Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change)
     Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
+Make sure all code macros have unit tests for them. e.g. pushvar does not...
 
 Priority 1 | p1
 ---------------
