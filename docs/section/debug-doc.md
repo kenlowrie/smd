@@ -99,8 +99,7 @@ Dumping variables and links
 [docthis.open(h="Add this to debug-doc.md")]
 
 17. Document @debug, @debug tags="" on="", off="", toggle="", enabled=""
-18. Document @dump, @dump sysdef="." tracked="." [var|html|link|image|code]="."
-
+18. Document @dump, @dump sysdef="." tracked="." [var|html|link|image|code]="." help="False"
 
 
 [docthis.close]

@@ -633,14 +633,19 @@ class ScriptParser(StdioWrapper):
 
             if(m is not None):
                 d = {l[0]: l[1] for l in self._special_parameter.regex.findall(m.groups()[0])}
+                help = True
 
                 self.oprint("<div class=\"variables\">")
                 self.oprint("<code>")
                 if not d:
                     self.tlsSysDefaults.dump(which=None, oprint=self.oprint)
                     self.tlsFileTracker.dump(which=None, oprint=self.oprint)
-                    self._ns.dumpVars()
+                    self._ns.dumpVars(help)
                 else:
+                    if 'help' in d:
+                        help = False if d['help'].lower() in ['false', 'no', 'f', 'n', 'off', '0'] else True
+                        del d['help']
+
                     if 'sysdef' in d:
                         self.tlsSysDefaults.dump(d['sysdef'], self.oprint)
                         del d['sysdef']
@@ -650,7 +655,7 @@ class ScriptParser(StdioWrapper):
                         del d['tracked']
                     
                     if d is not None:
-                        self._ns.dumpNamespaces(d)
+                        self._ns.dumpNamespaces(d, help)
                 self.oprint("</code>")
                 self.oprint("</div>")
             else:
