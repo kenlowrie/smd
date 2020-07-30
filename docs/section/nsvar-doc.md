@@ -355,5 +355,12 @@ Discuss @set and also [e_var.b(t="var._null_[E.lp]attr=\"\"[E.rp]")]
 [encode_smd(t="<c2.attr3>")] = [c2.attr3]
 [encode_smd(t="<c2.attr4>")] = [c2.attr4]
 
-//[docthis.open(h="Add this to nsvar-doc.md")]
-//[docthis.close]
+[docthis.open(h="Add this to nsvar-doc.md")]
+
+//@debug on="ns.image"
+TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...
+TODO: Unless it is @image (@code?), in which case you get different results...
+TODO: Or @code, that also is different...
+
+
+[docthis.close]

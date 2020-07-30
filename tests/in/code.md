@@ -11,7 +11,27 @@
 @import "$/nsbasic.md"
 @parw
 
-TODO: Need to add some code specific testing pulling cases from the nsbasic.md, because much of that doesn't test due to missing src and type attributes.
+[wrap_h.hash3]
+[wrap_h(t="{:.blue}<h4>Re-Testing creating names with invalid characters</h4>")]
+
+Test @[ns] with no parameters[b]
+@[ns]
+[code.pushline(t="@[ns] src=\"print()\" type=\"eval\"")]
+
+These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty[b]
+
+@[ns] @="syntax" src="print()" type="eval"
+@[ns] +="syntax" src="print()" type="eval"
+@[ns] ^="syntax" src="print()" type="eval"
+@[ns] $="syntax" src="print()" type="eval"
+@[ns] ©="syntax" src="print()" type="eval"
+
+Now create a new variable with 25 attributes (by redefining an existing variable)
+
+@[ns] _="id2" 01="1" 02="2" 03="3" 04="4" 05="5" 06="6" 07="7" 08="8" 09="9" 10="10"\
+             11="11" 12="12" 13="13" 14="14" 15="15" 16="16" 17="17" 18="18" 19="19" 20="20" 21="21" 22="22" 23="23" 24="24" 25="25" src="print(\"test\")" type="eval"
+**Added 25 new attributes to id2. It now equals**[b]
+[code.dump(ns="[ns]" name="id2" format="True" whitespace="True")] 
 
 [plain(t="Testing @code builtin functions")]
 

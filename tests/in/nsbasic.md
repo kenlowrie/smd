@@ -120,9 +120,14 @@ These next ones will have the namespace parser  catch the errors and fail the va
 // This is another way I was trying to simplify and not have to specify the test line twice, but you get side affects
 // because if you put variables in the expression, they expand when the macro runs due to the indirection, so not quite there...
 [var.expr._null_(line="@[ns] _=\"b1\" _format=\"mix of attrs\" 123attr=\"nope\"")]
-[var.in_code_namespace(true="[var.expr.code]" false="[var.expr.line]")]
+[var.in_code_namespace(true="[!var.expr.code!]" false="[!var.expr.line!]")]
 
-@[dump] = "b"
+@set _="code.dump" format="True" whitespace="True"
+[code.dump(ns="var" name="expr")]
+--> [get_variable(v="var.expr.line" ret_type="0")]
+--> [get_variable(v="var.expr.code" ret_type="0")]
+
+@[dump] = "b" help="f"
 
 [wrap_h.hash3]
 [wrap_h(t="{:.blue}<h4>Testing creating variables with delayed expansion of other variables</h4>")]
@@ -131,20 +136,28 @@ These next 3 illustrate the issue described above. There is no way to get c0.a t
 because when [bb].code=*[var.expr.code]* or [b].[ns]=*[var.expr.line]*[bb]are evaluated, they are expanded at the time, and that changes behavior
 [var.expr._null_(line="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\"")]
 [var.in_code_namespace(true="{{var.expr.code}}" false="{{var.expr.line}}")]
+[divx.<][p.<]
+[code.dump(ns="[ns]" name="c0")]
 
-[var.expr._null_(line="@[ns] _=\"c1\" _format=\"[c0.a]\"")]
+[var.expr._null_(line="@[ns] _=\"c1\" _format=\"[!c0.a!]\"")]
 [var.in_code_namespace(true="{{var.expr.code}}" false="{{var.expr.line}}")]
 
-//TODO: Will this kill the improvement? .replace("{!", "{{").replace("!}", "}}")
-//[var.expr._null_(line="@[ns] _=\"c2\" _format=\"{!c0.a!}\"")]
+[code.dump(ns="[ns]" name="c1")]
+
 [var.expr._null_(line="@[ns] _=\"c2\" _format=\"{{c0.a}}\"")]
 [var.in_code_namespace(true="{{var.expr.code}}" false="{{var.expr.line}}")]
+
+[code.dump(ns="[ns]" name="c2")]
+[p.>][divx.>]
+
+[encode_smd(t="[<ns].c1]")] = [var.in_code_namespace(true="[![!ns!].c1._format!]" false="[[ns].c1]")]
+[encode_smd(t="[<ns].c2]")] = [var.in_code_namespace(true="[![!ns!].c2._format!]" false="[[ns].c2]")]
 
 [var.in_code_namespace(true="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\"")]
 [var.in_code_namespace(true="@[ns] _=\"c1\" _format=\"[c0.a]\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c1\" _format=\"[c0.a]\"")]
 [var.in_code_namespace(true="@[ns] _=\"c2\" _format=\"{{c0.a}}\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c2\" _format=\"{{c0.a}}\"")]
-[encode_smd(t="[<ns].c1]")] = [[ns].c1]
-[encode_smd(t="[<ns].c2]")] = [[ns].c2]
+[encode_smd(t="[<ns].c1]")] = [[ns].c1] or [[ns].c1._format]
+[encode_smd(t="[<ns].c2]")] = [[ns].c2] or [[ns].c2._format]
 
 @[dump] = "c[0-9]{1,2}"
 
@@ -184,9 +197,13 @@ Make sure variable d0 doesn't exist...
 @[dump] = "^d[0-9]{1,2}$"
 @dump  var="ENC"
 
+@var code_helper="{{self.attrs_code}}" attrs_code="src=\"print(12345)\" type=\"eval\"" attrs_other=""
+
+[var.in_code_namespace(false="@set _=\"code_helper\" _format=\"{{var.code_helper.attrs_other}}\"" true="")]
+@dump var="code_"
 // We can change the 'c' attribute of the ENC variable and it will recompile the code for us...
 // We will also change _format, because we don't want to encode the line, we want it to actually get parsed...
-@set _ns="var" _="ENC" c="@set _ns=\"[ns]\" _=\"d0\" _format=\"d0_rval\"" _format="{{self.c}}"
+@set _ns="var" _="ENC" c="@set _ns=\"[ns]\" _=\"d0\" _format=\"d0_rval\"" _format="{{self.c}} {{var.code_helper}}"
 
 **Now create the variable using [ENC]**
 //The next line will actually expand to: @set _ns="[ns]" _="d0" _format="d0_rval"
@@ -215,10 +232,8 @@ Which now causes d0.extraattr to have a new value = **[d0.extraattr]**
 //TODO:
 can we remove an attribute?
 
-//@debug on="ns.image"
-//TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...
-//TODO: Unless it is @image (@code?), in which case you get different results...
-@set _ns="[ns]" _id="id1" attr1="New Value"
+[pushline(t="@set _ns=\"[ns]\" _id=\"id1\" attr1=\"New Value\" [var.code_helper]")]
+
 @[dump] = "^id1$"
 ATTR1 should be "New Value":
 [id1]
@@ -234,7 +249,8 @@ ATTR1 should be "New Value":
 [id1]
 @[dump] = "^id1$"
 
-@set _ns="[ns]" _id="id2" foo="nubar" bar="oldfu"
+//@set _ns="[ns]" _id="id2" foo="nubar" bar="oldfu" src="print(\"test\")" type="eval"
+[pushline(t="@set _ns=\"[ns]\" _id=\"id2\" foo=\"nubar\" bar=\"oldfu\" {{var.code_helper}}")]
 **Created id2 with same attributes as id1 except ATTR1. *id2* =**
 [[ns].id2]
 @[dump] = "^id2$"

@@ -117,6 +117,12 @@ ERROR: addVariable called with empty dictionary.<br />
 ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@var _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<div class="extras"><p>--> @var _="b1" _format="mix of attrs" 123attr="nope"</p></div>
+<div class="extras"><p>--> {{self.line}} src="print()" type="eval"</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -150,7 +156,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>note default title<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content<br />
-&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;note(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the note div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = content for note div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;note&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;nop&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;If no method specified&lt;/em&gt; uses &lt;strong&gt;inline&lt;/strong&gt; raw i.e. prefixed with @@&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert note div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert note div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a note div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap nop&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close note div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close note div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert note with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open note without DIV wrapper using &lt;strong&gt;wrap nop&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
 <br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
 <br />
@@ -175,7 +180,6 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
 &nbsp;&nbsp;<strong>t=</strong>box default title<br />
 &nbsp;&nbsp;<strong>c=</strong>box default content<br />
-&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;box(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the box div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = content for box div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;box&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.box.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;If no method specified&lt;/em&gt; uses &lt;strong&gt;inline&lt;/strong&gt; raw i.e. prefixed with @@&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert box div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert box div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a box div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.box.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close box div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close box div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert box with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open box without DIV wrapper using &lt;strong&gt;wrap [var.box.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
 <br />
 </code>
 </div>
@@ -183,8 +187,23 @@ NAMESPACE: var<br />
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
 <div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
 <div class="extras"><p>because when <br /><br />.code=<em>@var _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.var=<em>@var _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
-<div class="extras"><p>[&lsqb;ns].c1] = 1</p></div>
-<div class="extras"><p>[&lsqb;ns].c2] = 1</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+<br />
+<div class="extras"><p></p></div></p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] = 1 or 1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] = 1 or 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -283,7 +302,18 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-<div class="extras"><p><strong>Now create the variable using @set _ns="var" _="d0" _format="d0_rval"</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="var" _="d0" _format="d0_rval" </strong></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -299,11 +329,11 @@ NAMESPACE: var<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="var" _="d0" _format="d0_rval"<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="var" _="d0" _format="d0_rval"</em></p></div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="var" _="d0" _format="d0_rval" </em></p></div>
 <div class="extras"><p><strong>And change its default value</strong></p></div>
 <div class="variables">
 <code>
@@ -1051,6 +1081,11 @@ Discuss @set and also <strong>&lsqb;var._null_&lpar;attr=""&rpar;&rsqb;</strong>
 <div class="extras"><p>&lsqb;c2.attr2&rsqb; = <strong>attribute 2</strong></p></div>
 <div class="extras"><p>&lsqb;c2.attr3&rsqb; = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
 <div class="extras"><p>&lsqb;c2.attr4&rsqb; = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="extras"><p>[docthis.open(h="Add this to nsvar-doc.md")]</p></div>
+<div class="extras"><p>TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...</p></div>
+<div class="extras"><p>TODO: Unless it is @image (@code?), in which case you get different results...</p></div>
+<div class="extras"><p>TODO: Or @code, that also is different...</p></div>
+<div class="extras"><p>[docthis.close]</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -1096,7 +1131,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
 <br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="var" _="d0" _format="d0_rval"<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
 <br />
 <strong>_a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
 <br />
@@ -1224,6 +1259,10 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
 <br />
 <strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
@@ -1447,8 +1486,8 @@ NAMESPACE: var<br />
 <strong>in_code_namespace=</strong><br />&nbsp;&nbsp;<strong>code=</strong>code<br />
 &nbsp;&nbsp;<strong>namespace=</strong>var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{code.equals(v1="self.code", v2="self.namespace", true="self.true", false="self.false")}}<br />
-&nbsp;&nbsp;<strong>true=</strong>@var _="c2" _format="1" src="print()" type="eval"<br />
-&nbsp;&nbsp;<strong>false=</strong>@var _="c2" _format="1"<br />
+&nbsp;&nbsp;<strong>true=</strong><br />
+&nbsp;&nbsp;<strong>false=</strong>@set _="code_helper" _format=""<br />
 <br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />

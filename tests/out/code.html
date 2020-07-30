@@ -118,6 +118,12 @@ line2 help text.</p></div>
 ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@code _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<div class="extras"><p>--> @code _="b1" _format="mix of attrs" 123attr="nope"</p></div>
+<div class="extras"><p>--> {{self.line}} src="print()" type="eval"</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -136,8 +142,35 @@ NAMESPACE: code<br />
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
 <div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
 <div class="extras"><p>because when <br /><br />.code=<em>@code _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.code=<em>@code _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>src=</strong>print()<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print()<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>src=</strong>print()<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print()<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>src=</strong>print()<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print()<br />
+<br />
+<div class="extras"><p></p></div></p></div>
 <div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>1</p></div>
 <div class="extras"><p>[&lsqb;ns].c2] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =  or 1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =  or 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -296,13 +329,29 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-<div class="extras"><p><strong>Now create the variable using @set _ns="code" _="d0" _format="d0_rval"</strong></p></div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.attrs_code}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="code" _="d0" _format="d0_rval" src="print(12345)" type="eval"</strong></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+<br />
 </code>
 </div>
 <div class="variables">
@@ -311,18 +360,23 @@ NAMESPACE: code<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="code" _="d0" _format="d0_rval"<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="code" _="d0" _format="d0_rval"</em></p></div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="code" _="d0" _format="d0_rval" src="print(12345)" type="eval"</em></p></div>
 <div class="extras"><p><strong>And change its default value</strong></p></div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @code d0</strong></p></div>
@@ -331,6 +385,13 @@ NAMESPACE: code<br />
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newly added attribute<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Now add the attribute extraattr to @code d0, and change newattr = fubar</strong></p></div>
@@ -339,74 +400,186 @@ NAMESPACE: code<br />
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+&nbsp;&nbsp;<strong>newattr=</strong>fubar<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
 </code>
 </div>
 <div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
 <div class="extras"><p>Changing d0.newattr="newval"</p></div>
 <div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
 <div class="extras"><p>can we remove an attribute?</p></div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+<br />
 </code>
 </div>
 <div class="extras"><p>ATTR1 should be "New Value":</p></div>
-<div class="extras"><p>[id1]</p></div>
+<div class="extras"><p>12345</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
-<div class="extras"><p>[id1]</p></div>
+<div class="extras"><p>12345</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+&nbsp;&nbsp;<strong>foo=</strong>bar<br />
+<br />
 </code>
 </div>
 <div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
-<div class="extras"><p>bar="oldfu"<br />
- foo="nubar"<br /></p></div>
+<div class="extras"><p>12345</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
 </code>
 </div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
-<div class="extras"><p>[code.id2]</p></div>
+<div class="extras"><p>12345</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
 </code>
 </div>
 @code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
-<div class="extras"><p>[code.id2]</p></div>
+<div class="extras"><p>12345</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
 </code>
 </div>
-@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
 <div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
-<div class="extras"><p>[code.id2]</p></div>
+<div class="extras"><p>12345</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: code<br />
 ----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+<br />
 </code>
 </div>
-TODO: Need to add some code specific testing pulling cases from the nsbasic.md, because much of that doesn't test due to missing src and type attributes.
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Re-Testing creating names with invalid characters</h4></span></div>
+Test @code with no parameters<br />
+@code namespace requires both <em>src='source code string'</em> and <em>type=&lt;exec or eval&gt;</em><br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty<br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+ADD: Dictionary is missing ['_id', '_']<br />{'src': 'print()', 'type': 'eval'}<br />
+Now create a new variable with 25 attributes (by redefining an existing variable)
+<strong>Added 25 new attributes to id2. It now equals</strong><br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>src=</strong>print("test")<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print("test")<br />
+<br />
 <div class="plain"><p class="plainTitle">Testing @code builtin functions</p></div>
 <h3>In this section, add tests to exercise all macros in the <strong>code.md</strong> built-ins.</h3>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -1546,6 +1719,15 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
 &nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
 <br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print(12345)<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newval<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
 <strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 &nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
@@ -1664,6 +1846,45 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>### My Inline Heading<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>src=</strong>print(12345)<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>12345<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>src=</strong>print("test")<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print("test")<br />
 <br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />

@@ -123,6 +123,12 @@ ERROR: addVariable called with empty dictionary.<br />
 ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
 ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@image _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<div class="extras"><p>--> @image _="b1" _format="mix of attrs" 123attr="nope"</p></div>
+<div class="extras"><p>--> {{self.line}} src="print()" type="eval"</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -138,8 +144,26 @@ NAMESPACE: image<br />
 <div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
 <div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
 <div class="extras"><p>because when <br /><br />.code=<em>@image _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.image=<em>@image _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
-<div class="extras"><p>[&lsqb;ns].c1] = 1</p></div>
-<div class="extras"><p>[&lsqb;ns].c2] = 1</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<div class="extras"><p></p></div></p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c1] = 1 or 1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] = 1 or 1</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -250,7 +274,18 @@ NAMESPACE: var<br />
 <br />
 </code>
 </div>
-<div class="extras"><p><strong>Now create the variable using @set _ns="image" _="d0" _format="d0_rval"</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="image" _="d0" _format="d0_rval" </strong></p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -267,11 +302,11 @@ NAMESPACE: image<br />
 NAMESPACE: var<br />
 ----------------------------------------<br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="image" _="d0" _format="d0_rval"<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
 <br />
 </code>
 </div>
-<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="image" _="d0" _format="d0_rval"</em></p></div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="image" _="d0" _format="d0_rval" </em></p></div>
 <div class="extras"><p><strong>And change its default value</strong></p></div>
 <div class="variables">
 <code>
