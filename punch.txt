@@ -3,26 +3,12 @@ Punch List Items.
 
 SOC
 
-There are cases where {{foo}} is expanding only to [foo]. Sometimes, this is because foo hasn't been declared. I think there might
-be other times, where you might have attr="self.foo" and since the current variable isn't declared, it will simply
-end up as [foo].
-
 Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clearn.
-
-The issue where you can't prevent expansion is annoying. Sometimes, like in the nsbasic.md file where I am
-using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will
-not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
-
-Maybe adding a ! to beginning and ending of string would work? x="!{{self.something}}!" means leave it alone (other than strip the !..! from it before storing it...)
 
 Move .?/._help to nsvar-doc.md from nscode-doc.md since this applies globally now.
 Documet .?? would strip the HTML tags and replace it with readable text, so you can get help in "smd -nd"
 
 Decide if $.attr substitutions should be marked down. Currently, they are not...
-
-[code.dump(ns="ns", var="var_name", escape="True | False")]
-
-Write help for div built-ins, and put in common variable, then reference it (if this works). 
 
 Add documentation for [!!].
 
@@ -37,8 +23,6 @@ Refresh the samples so they are using current markdown...
 Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
-Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change)
-    Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
 Make sure all code macros have unit tests for them. e.g. pushvar does not...
 
 Priority 1 | p1
@@ -70,14 +54,14 @@ Should I add a wrapstack to @dump? So I can see what is queued up? Would be help
 Need to add negative tests to the unittests. that is, things that should fail. This is done for some things, but not all. Need to expand it...
 Test this on Windows 10. If I can make this work there, that would be a huge win.
 How about the ability to delete a variable and also an attribute.
-    [code.rename_var]
-    [code.duplicate_var]
-    [code.rename_attr]
-    [code.duplicate_attr]
-    [code.delete_attr]
-    [code.delete_var]
-    [code.add_var]
-    [code.update_var]??
+    [code.var_add] - why? @var, @ns
+    [code.var_delete]
+    [code.var_duplicate]
+    [code.var_rename]
+    [code.attr_delete]
+    [code.attr_duplicate]
+    [code.attr_update] - why?? @set
+    [code.attr_rename]
 
 
 
@@ -193,6 +177,13 @@ Add user_import, user_base and user_root to the @sys variable.
 Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
 var.code needs to be renamed because when you write [code.wc_open] it's always wrong. now called var.source
 Create an Examples section to the user docs, and move the "script", "specials", "images", etc. as documentation, and then in the unittest, just import that part of the user guide. 2 birds, one stone.
+Figure out how mailto: gets encoded on link. line 555 in variable.py. also, is core/link.py even used any more?
+[code.dump(ns="ns", var="var_name", escape="True | False")]
+Write help for div built-ins, and put in common variable, then reference it (if this works). 
+There are cases where {{foo}} is expanding only to [foo]. Sometimes, this is because foo hasn't been declared. I think there might be other times, where you might have attr="self.foo" and since the current variable isn't declared, it will simply end up as [foo].
+The issue where you can't prevent expansion is annoying. Sometimes, like in the nsbasic.md file where I am using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
+Maybe adding a ! to beginning and ending of string would work? x="!{{self.something}}!" means leave it alone (other than strip the !..! from it before storing it...)
+Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change) -- Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
 
 
 
