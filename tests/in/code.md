@@ -37,8 +37,104 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 ### In this section, add tests to exercise all macros in the **code.md** built-ins.
 
-[wrap_h.hash2]
-Testing code.wrap_stack
+@var div_helper="{{self._all_keys_}}"\
+    macro="macro.name"
+
+// You have to use [!!] to set macro so it will expand before {{div_helper._null}} is processed, resulting in [code.pushlist.name] being what macro is set to...
+@var dividers="{{self._all_keys_}}"\
+    1="{{wrap_h.hash2}}"\
+    2="@wrap divx,p"\
+    3="{{div_helper._null_(macro=\"[!code.pushlist.name!]\")}}"\
+    4="Testing {{var.div_helper.macro}}"\
+    5="{{var.div_helper.macro}} testing complete"\
+    6="@parw"\
+    7="{{wrap_h.hash3}}"\
+    start="1,2,3,4"\
+    end="5,6,7"
+
+//[code.dump(ns="var", name="div_helper" format="True" whitespace="True")]
+
+[code.pushlist(name="code.esc_angles" attrlist="var.dividers.start")]
+
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.escape" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.escape_var" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.encodeURL" attrlist="var.dividers.start")]
+**encodeURL** is thoroughly tested already. The underlying Python function is used by variable.py when returning _public_attrs_ and it detects *href* in an @link request.[bb]It is also tested in **tests/mailto.md** encoding URLs with spaces, and two mailto: samples, one with just an email address, and another with a parameter with spaces.
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.encode_smd" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.encode_smd_var" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.datetime_stamp" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.repeat" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.get" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.get_variable" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.get_default" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.pushline" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.pushlines" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.pushvar" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[pushlist(name="code.ln_alias" attrlist="var.dividers.start")]
+
+//@dump link="ln_factory" code="ln_alias"
+@dump link="lntest"
+[ln_factory(nm="lntest" hr="https://google.com" t="Google")]
+@dump link="lntest"
+[lntest]
+[ln_alias(nm="lntest" attr="_alt" lt="Alternate Google Attribute")]
+@dump link="lntest"
+[lntest._alt]
+
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.append" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.equals" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[pushlist(name="code.wrap_stack" attrlist="var.dividers.start")]
 
 // Change the default encoding of output from wrap_stack to True so the HTML tags are not interpreted by the browser
 @set _id="code.wrap_stack" encode="True"
@@ -65,26 +161,41 @@ And now we are back to normal, as we emitted the close tag via code.wrap_stack(w
 @@[code.wrap_stack(w="*", encode="False")]
 There should be an empty div before this because we emitted the entire wrap tag sequence with code.wrap_stack(w="*")
 
-This concludes the testing of code.wrap_stack
 @parw
 
-[wrap_h.hash2]
+[pushlist(attrlist="var.dividers.end")]
 
-@wrap divx,p
+[code.pushlist(name="code.replace" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
 
-[wrap_h.hash2]
-Testing code.ln_alias
 
-//@dump link="ln_factory" code="ln_alias"
-@dump link="lntest"
-[ln_factory(nm="lntest" hr="https://google.com" t="Google")]
-@dump link="lntest"
-[lntest]
-[ln_alias(nm="lntest" attr="_alt" lt="Alternate Google Attribute")]
-@dump link="lntest"
-[lntest._alt]
+[code.pushlist(name="code.attr_replace" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
 
-@parw
+
+[code.pushlist(name="code.attr_replace_str" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.dump" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.pushlist" attrlist="var.dividers.start")]
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.split_as" attrlist="var.dividers.start")]
+**Is this even used any more?**
+[pushlist(attrlist="var.dividers.end")]
+
+
+// ------------------------------------
+
+[code.pushlist(name="code.NEXT" attrlist="var.dividers.start")]
+
+[pushlist(attrlist="var.dividers.end")]
+
 
 [plain(t="Testing adding new @code builtins")]
 

@@ -583,21 +583,61 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 <div class="plain"><p class="plainTitle">Testing @code builtin functions</p></div>
 <h3>In this section, add tests to exercise all macros in the <strong>code.md</strong> built-ins.</h3>
 <div class="extras"><h2>------------------------------------------</h2></div>
-Testing code.wrap_stack
-<div class="extras"><p>
-Initially, the wrap_stack should be empty: ""
-</p></div>
-<div class="extras"><p>And now we are changing it to the more traditional "@wrap divx, p": "&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;"</p></div>
-<div class="extras"><p>Next up, we will turn off @wrap, and see that we are clear.</p></div>
-This should not be wrapped.
-<div class="extras"><p>
-And this should be wrapped, even though we said it was raw, because previously, we emitted the open tag via code.wrap_stack(w="<")...
-</p></div>
-<div class="extras"><p>And now we are back to normal, as we emitted the close tag via code.wrap_stack(w=">")</p></div>
-<div class="extras"><p></p></div>
-<div class="extras"><p>There should be an empty div before this because we emitted the entire wrap tag sequence with code.wrap_stack(w="*")</p></div>
-<div class="extras"><p>This concludes the testing of code.wrap_stack</p></div>
+<div class="extras"><p>Testing code.esc_angles</p></div>
+<div class="extras"><p>code.esc_angles testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.escape</p></div>
+<div class="extras"><p>code.escape testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.escape_var</p></div>
+<div class="extras"><p>code.escape_var testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.encodeURL</p></div>
+<div class="extras"><p>code.encodeURL testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.encode_smd</p></div>
+<div class="extras"><p>code.encode_smd testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.encode_smd_var</p></div>
+<div class="extras"><p>code.encode_smd_var testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.datetime_stamp</p></div>
+<div class="extras"><p>code.datetime_stamp testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.repeat</p></div>
+<div class="extras"><p>code.repeat testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.get</p></div>
+<div class="extras"><p>code.get testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.get_variable</p></div>
+<div class="extras"><p>code.get_variable testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.get_default</p></div>
+<div class="extras"><p>code.get_default testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.pushline</p></div>
+<div class="extras"><p>code.pushline testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.pushlines</p></div>
+<div class="extras"><p>code.pushlines testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.pushvar</p></div>
+<div class="extras"><p>code.pushvar testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.ln_alias</p></div>
 <div class="variables">
@@ -640,6 +680,61 @@ NAMESPACE: link<br />
 </code>
 </div>
 <div class="extras"><p><a href="https://google.com">Alternate Google Attribute</a></p></div>
+<div class="extras"><p>code.ln_alias testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.append</p></div>
+<div class="extras"><p>code.append testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.equals</p></div>
+<div class="extras"><p>code.equals testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.wrap_stack</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<div class="extras"><p>Initially, the wrap_stack should be empty: "&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;"</p></div>
+<div class="extras"><p></p></div></p></div>
+<div class="extras"><p>And now we are changing it to the more traditional "@wrap divx, p": "&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;"</p></div>
+<div class="extras"><p>Next up, we will turn off @wrap, and see that we are clear.</p></div>
+This should not be wrapped.
+<div class="extras"><p>
+And this should be wrapped, even though we said it was raw, because previously, we emitted the open tag via code.wrap_stack(w="<")...
+</p></div>
+<div class="extras"><p>And now we are back to normal, as we emitted the close tag via code.wrap_stack(w=">")</p></div>
+<div class="extras"><p></p></div>
+<div class="extras"><p>There should be an empty div before this because we emitted the entire wrap tag sequence with code.wrap_stack(w="*")</p></div>
+<div class="extras"><p>code.wrap_stack testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.replace</p></div>
+<div class="extras"><p>code.replace testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.attr_replace</p></div>
+<div class="extras"><p>code.attr_replace testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.attr_replace_str</p></div>
+<div class="extras"><p>code.attr_replace_str testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.dump</p></div>
+<div class="extras"><p>code.dump testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.pushlist</p></div>
+<div class="extras"><p>code.pushlist testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.split_as</p></div>
+<div class="extras"><p><strong>Is this even used any more?</strong></p></div>
+<div class="extras"><p>code.split_as testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.NEXT</p></div>
+<div class="extras"><p>code.NEXT testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
 <div class="plain"><p class="plainTitle">Testing adding new @code builtins</p></div>
 <div class="plain"><p class="plainTitle">User manual sections for @code</p></div>
 <div class="toc"><p class="divTitle">Table of Contents - Unittest &#64;code</p>
@@ -1117,7 +1212,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
-&nbsp;&nbsp;<strong>name=</strong>esc_angles<br />
+&nbsp;&nbsp;<strong>name=</strong>code.esc_angles<br />
 <br />
 </p></div>
 </div>
@@ -1934,7 +2029,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
-&nbsp;&nbsp;<strong>name=</strong>esc_angles<br />
+&nbsp;&nbsp;<strong>name=</strong>code.esc_angles<br />
 <br />
 <strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />

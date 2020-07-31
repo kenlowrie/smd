@@ -26,13 +26,8 @@ import smd.smd
 
 def decode(html_string):
     from sys import version_info
-    if version_info.major < 3:
-        from HTMLParser import HTMLParser
-        unescape = HTMLParser().unescape
-    else:
-        from html import unescape
+    from html import unescape
 
-    #h = HTMLParser()
     return unescape(html_string)
 
 
@@ -176,13 +171,24 @@ class TestSMD(TestCase):
         }
 
         # Find all the <a href="encoded_mailto_link">varname</a> lines
-        m = findall(g1, self.capturedOutput.getvalue())
+        output = self.capturedOutput.getvalue()
+        m = findall(g1, output)
         self.assertEqual(len(m), 3)
         for mailto_set in m:
             # extract the mailto link and the variable name from a match
             mailto, var_name = mailto_set
 
             self.assertEqual(decode(mailto), d.get(var_name))
+        
+        google="https://www.google.com?s=\"testing%20stuff\""
+        self.assertTrue(output.find(google) != -1)
+
+        decoded = decode(output)
+        encode1 = "mailto:info@domain.com"
+        self.assertTrue(decoded.find(encode1) != -1)
+
+        encode2 = "mailto:info@www.testdomain.net?a=\"this%20is%20a%20test\""
+        self.assertTrue(decoded.find(encode2) != -1)
 
 
 if __name__ == '__main__':
