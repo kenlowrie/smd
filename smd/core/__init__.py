@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from .link import *
 from .line import *
 from .cache import *
 from .debug import *

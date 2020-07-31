@@ -54,7 +54,6 @@ if version_info < MIN_PYTHON:
     exit("Python %s.%s.%s or later is required.\n" % MIN_PYTHON)
 
 from .core.line import Line
-from .core.link import LinkDict
 from .core.debug import DebugTracker, Debug
 from .core.regex import Regex, RegexMD, RegexMain
 from .core.stdio import StdioWrapper

@@ -340,7 +340,6 @@ class Namespace(VariableStore):
 class AdvancedNamespace(Namespace):
     _variable_name_str = ["_id", "_"]
     _default_format_attr = '_format'
-    _raw_format_attr = '_raw'               #//TODO: What is this _raw attr used for? I don't think it is. remove it??
     _inherit_attr = '_inherit'
     _rtype_raw = 0      # this will just return the default attribute value, with no calls to markdown
     _rtype_phase1 = 1   # this will process the markdown that's in the square brackets only, convert {{ to [ and }} to ]
@@ -531,31 +530,14 @@ class AdvancedNamespace(Namespace):
                 self.dbgPrint('Returning {} for getValue("{}")'.format(id0, el0))
                 return id0
 
-            #//TODO: Seems like we should be using _is_special instead of just looking at the base class, right?
-            #        Changed on 7/13: Used to be "el0 in VariableStore._special_attributes:" 
             if self._isSpecial(el0):
                 # We need to send this through the markdown processing, including handling {{}} and self.
-                #s = self._markdown(self.getSpecialAttr(el0, id0))
                 s = self._jitMarkdown(id0, el0, 1, ret_type, True)
 
                 self.dbgPrint('Returning <em>{}</em> for <strong>getValue("{}.{}</strong>")'.format(s, id0, el0))
                 return s
 
-            if el0 == AdvancedNamespace._raw_format_attr and el0 in self.vars[id0].rval:
-                # We need to return this string raw.
-                #//TODO: I don't think this was ever used. See if I can figure out the intent and either implement or remove it.
-                raw = self.vars[id0].rval[el0]
-                self.dbgPrint("Returning _raw(\"<em>{}</em>\") as value for <strong>{}</strong>".format(raw, id))
-
-                return raw
-
-            s = self._jitMarkdown(id0, el0, 2, ret_type, False)
-
-            # If the namespace is link. and the attribute is href, we need to encode it.
-            if self.namespace == 'link.' and el0 == 'href':
-                #//TODO: Is this intentional? Should the URL be encoded or is this just for print? Seems like a bug/oversight.
-                self.dbgPrint("Encoding HREF from <strong>{}</strong> to <em>{}</em>".format(s, HtmlUtils.encodeURL(s)))
-            return s
+            return self._jitMarkdown(id0, el0, 2, ret_type, False)
 
         if self.exists(id0):
             # if the special _format element exists, return it with markdown applied
