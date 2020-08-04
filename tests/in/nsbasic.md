@@ -1,10 +1,6 @@
 // ns needs to be set to a valid namespace
-// maybe add [code.defined("variable", trueLine2push, falseline2push)]
 
 // because this is shared code, we don't want to rely on the shorthand notation '@ns name="value"' in here...
-//@var __stop_cmd="{{code.pushline(\"@stop\")}}"
-//@set _ns="code" _id="equals" true="{{code.pushline(\"@stop\")}}, false="Testing namespace {{ns}}")]}}
-//[code.equals(v1="[var.ns._format]", v2="")]
 
 @var _id="in_code_namespace" \
     code="code"\
@@ -52,14 +48,6 @@ Setting default rvalue for a2 and a3
 
 @[dump] = "^a[0-9]{1,2}$"
 
-//Okay, escaped versions are not printing escaped because the changes to markdown [] and {{}} in parameters has broken it.
-// Feeble attempts to fix follow, but likely going to need to add "encode" or something to code.get_variable as a way to
-// mask the \" in the string so it will print as expected. If I ever care enough that this works...
-//
-//@var private_esc="{{code.get_variable(v=\"invalid-attribute._private_attrs_esc_\" escape=\"True\")}}"
-//PE=[private_esc]
-//
-
 // attempt to add all the reserved attributes
 //TODO: should I account for _ns in the reserved list? It is now an option to @SET, but stripped out before creating the variable
 @[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="*{{self._}}this is line 1 help text*<br />**line2** help text." 
@@ -67,9 +55,9 @@ Setting default rvalue for a2 and a3
 ***public*** = [invalid-attribute._public_attrs_]
 ***public_esc*** = [invalid-attribute._public_attrs_esc_]
 [var.in_code_namespace(true="***private*** = cannot print, has instance data" false="***private*** = [invalid-attribute._private_attrs_]")]
-[var.in_code_namespace(true="***private_esc*** = cannot print, has instance data" false="***private_esc*** = [invalid-attribute._private_attrs_esc_]")]
+[var.in_code_namespace(true="***private_esc*** = cannot print, has instance data" false="***private_esc*** = [!invalid-attribute._private_attrs_esc_!]")]
 [var.in_code_namespace(true="***all_attrs*** = cannot print, has instance data" false="***all_attrs*** = [invalid-attribute._all_attrs_]")]
-[var.in_code_namespace(true="***all_attrs_esc*** = cannot print, has instance data" false="***all_attrs_esc*** = [invalid-attribute._all_attrs_esc_]")]
+[var.in_code_namespace(true="***all_attrs_esc*** = cannot print, has instance data" false="***all_attrs_esc*** = [!invalid-attribute._all_attrs_esc_!]")]
 ***public_keys*** = [invalid-attribute._public_keys_]
 ***private_keys*** = [invalid-attribute._private_keys_]
 ***null*** = [invalid-attribute._null_]
@@ -124,8 +112,8 @@ These next ones will have the namespace parser  catch the errors and fail the va
 
 @set _="code.dump" format="True" whitespace="True"
 [code.dump(ns="var" name="expr")]
---> [get_variable(v="var.expr.line" ret_type="0")]
---> [get_variable(v="var.expr.code" ret_type="0")]
+--> [get_value(v="var.expr.line" ret_type="0")]
+--> [get_value(v="var.expr.code" ret_type="0")]
 
 @[dump] = "b" help="f"
 
