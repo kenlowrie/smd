@@ -11,15 +11,36 @@
 
 [plain(t="Testing @html builtin functions")]
 
-[sp][get_variable(v="section", ret_type="1")]
-[sp][get_variable(v="_section_div_", ret_type="0")]
-[sp][get_variable(v="_section_div_", ret_type="1")]
-[sp][get_variable(v="_section_div_.<", ret_type="0")]
-[sp][get_variable(v="_section_div_.<", ret_type="1")]
-[sp][get_variable(v="_section_div_.<+", ret_type="0")]
-[sp][get_variable(v="_section_div_.<+", ret_type="1")]
-[sp][get_variable(v="_section_div_.<+", ret_type="0" escape="True")]
-[sp][get_variable(v="_section_div_.<+", ret_type="1", escape="True" )]
+0=[get_value(v="section", ret_type="0")]
+1=[get_value(v="section", ret_type="1")]
+2=[get_value(v="section", ret_type="2")]
+// Return type 3 will return as [var.section.inline], which will then proceed to get marked down by the parser...
+// It's a strange side effect, b/c of how it's being used here. You ask for an attribute value, and it gives it to you, but it isn't fully marked down yet (b/c you asked for it that way... :) In this case, you have to use esc_smd="True"
+3=[get_value(v="section", ret_type="3")]
+// This is a real janky workaround if you don't want to esc the SMD....
+//@var x="[get_value(v=\"section\", ret_type=\"3\")]"
+//3=[escape_var(v="x")]
+3=[get_value(v="section", ret_type="3" esc_smd="True")]
+9=[get_value(v="section", ret_type="9" escape="True")]
+
+[b]**v="_section_div"**[b]
+0=[get_value(v="_section_div_", ret_type="0")]
+1=[get_value(v="_section_div_", ret_type="1")]
+2=[get_value(v="_section_div_", ret_type="2")]
+3=[get_value(v="_section_div_", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_", ret_type="9" escape="True")]
+[b]**v="_section_div.[E.lt]"**[b]
+0=[get_value(v="_section_div_.<", ret_type="0")]
+1=[get_value(v="_section_div_.<", ret_type="1")]
+2=[get_value(v="_section_div_.<", ret_type="2")]
+3=[get_value(v="_section_div_.<", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_.<", ret_type="9" escape="True")]
+[b]**v="_section_div.[E.lt]+"**[b]
+0=[get_value(v="_section_div_.<+", ret_type="0")]
+1=[get_value(v="_section_div_.<+", ret_type="1")]
+2=[get_value(v="_section_div_.<+", ret_type="2")]
+3=[get_value(v="_section_div_.<+", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_.<+", ret_type="9" escape="True" )]
 
 
 [plain(t="Testing adding new @html builtins")]
