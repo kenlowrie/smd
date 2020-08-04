@@ -71,7 +71,7 @@ And then invoke [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environ
 
 [note(t="NOTE2: If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk._tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
 
-If you did not have these flags set when you did the install of Python using **[pyenv]**, and you want to use ismd, you will have to *uninstall* the current version, and reinstall it (with the propery environment variables set). Here is a link [tk._asurl] that will provide the information you need to get this done, although take a look at this [tcl-tk.<]Stackoverflow Question and Answer[tcl-tk.>] for the steps needed to solve this issue.
+If you did not have these flags set when you did the install of Python using **[pyenv]**, and you want to use ismd, you will have to *uninstall* the current version, and reinstall it (with the environment variables set). Here is a link [tk._asurl] that will provide the information you need to get this done, although take a look at this [tcl-tk.<]Stackoverflow Question and Answer[tcl-tk.>] for the steps needed to solve this issue.
 
 [wrap_h.section(t="### Creating a virtual environment for running **OBS Studio** browser endpoints")]
 

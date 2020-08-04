@@ -47,7 +47,7 @@ Finally, a commonly used trick of extending an underlying macro is used to creat
 [bluenote(t="This is my inline note using the **bluenote** builtin created in helpers.md.")]
 [rednote(t="This is my inline note using the **rednote** builtin created in helpers.md.")]
 
-Take an underlying builtin and just **tweaking** it makes it easy to extend the builtins, without having to spend a lot of time recreating the wheel so to speak... [e_moji.big(e="tonguewink")]
+Taking an underlying builtin and just **tweaking** it makes it easy to extend the builtins, without having to spend a lot of time recreating the wheel so to speak... [e_moji.big(e="tonguewink")]
 
 The last things (at the time of writing this chapter) are the **bigmargin** and **bmgreybg** [smdhtml.b] variables that are also used in the documentation to render content with bigger than the default margins. They can both be nested, which makes it easy to do things like this:
 

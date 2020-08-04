@@ -11,10 +11,7 @@ The [smdcode.b] keyword is used to construct a very specialized type of variable
 
 [docthis.open(h="Add this to ns_code-doc.md")]
 
-IDEA: @get _ns="" _id="[ns.]name" raw="true" markdown="false" escape="true"
-Implementation: [get_variable_RENAME(v="varname" ret_type="0-raw,1-1st pass markdown-2normal as in full markdown" escape="True|False")]
-
-Should [encode_smd(t="<get>")] and [encode_smd(t="<get_variable>")] be combined? Seems unnecessary to have both of them.
+Should [encode_smd(t="<get>")] and [encode_smd(t="<get_value>")] be combined? Seems unnecessary to have both of them.
 
 // If the following isn't done/documented, I should move it to a future_list or something...
 Can't I also "store" an instance of a variable (like code), that has compiled something that I will use over and over?
@@ -158,8 +155,8 @@ Let's take a quick look at the definition for **code.echo**:
 
 Accessing these attributes is done the same way as any other namespace. For example:
 
-**[encode_smd(t="<code.echo.src>")]** contains *[code.get_variable(v="code.echo.src" ret_type="0")]* which emits *[code.echo.src]*.
-**[encode_smd(t="<code.echo._last>")]** contains *[code.get_variable(v="code.echo._last" ret_type="0")]* which emits *[code.echo._last]*.
+**[encode_smd(t="<code.echo.src>")]** contains *[code.get_value(v="code.echo.src" ret_type="0")]* which emits *[code.echo.src]*.
+**[encode_smd(t="<code.echo._last>")]** contains *[code.get_value(v="code.echo._last" ret_type="0")]* which emits *[code.echo._last]*.
 
 **_last** just provides a convenient way to access the value output of the last time the code was run by the Python interpreter, avoiding having to run it again to get the same value. You might find this useful at times.
 
@@ -270,7 +267,7 @@ In addition to the specific attributes covered above, [smdcode.b] variables supp
 [pushlist(name="attr_replace")]
 [pushlist(name="attr_replace_str")]
 [pushlist(name="get")]
-[pushlist(name="get_variable")]
+[pushlist(name="get_value")]
 [pushlist(name="get_default")]
 
 [wrap_h.subsect(t="### Specialized get variable / attribute values")]

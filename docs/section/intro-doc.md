@@ -23,10 +23,10 @@ A few of the standard markdown span elements are supported, as are a couple of s
 @@[html.ol.<]
 @wrap li2
 Variables - These are smd namespace variables accessed with this type of markdown: **[encode_smd(t="<variable>")]**
-Strong - Double [E.ast2] placed around content will apply the [e_tag.b(t="strong")] tag: **[encode_smd(t="**wrap text in a single asterisk for bold**")]**
-Emphasis - Single &ast; placed around content will apply the [e_tag.b(t="em")] tag: *[encode_smd(t="*wrap text in single asterisks for emphasis*")]*
-Insertion - Double &plus; placed around content will apply the [e_tag.b(t="ins")] tag: ++[encode_smd(t="++wrap text in double plus signs for &lt;ins&gt; tag++")]++
-Deletion - Double &sim; placed around content will apply the [e_tag.b(t="del")] tag: ~~[encode_smd(t="~~wrap text in double tilde for &lt;del&gt; tag~~")]~~
+Strong - Double [E.ast2] placed around content will apply the [e_tag.b(t="strong")] tag: **[encode_smd(t="[E.ast2]wrap text in double asterisk for bold[E.ast2]")]**
+Emphasis - Single &ast; placed around content will apply the [e_tag.b(t="em")] tag: *[encode_smd(t="[E.ast]wrap text in single asterisk for emphasis[E.ast]")]*
+Insertion - Double &plus; placed around content will apply the [e_tag.b(t="ins")] tag: ++[encode_smd(t="2+wrap text in double plus signs for &lt;ins&gt; tag2+")]++
+Deletion - Double &sim; placed around content will apply the [e_tag.b(t="del")] tag: ~~[encode_smd(t="2~wrap text in double tilde for &lt;del&gt; tag2~")]~~
 @parw
 @@[html.ol.>]
 

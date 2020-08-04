@@ -1,5 +1,5 @@
 
-[link.wrap]
+[link.ug_wrap]
 [wrap_h.chapter(t="## @wrap and @parw")]
 
 [docthis.open(h="Add this to wrap-doc.md")]
