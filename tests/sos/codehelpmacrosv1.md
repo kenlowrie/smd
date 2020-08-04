@@ -190,9 +190,9 @@
 [bigmargin._close] 
 
 [bigmargin._open] 
-    [section.wc_open(t="Macro: code.get_variable")]
-        [code.get_variable.?]
-        [code.dump(name="get_variable")]
+    [section.wc_open(t="Macro: code.get_value")]
+        [code.get_value.?]
+        [code.dump(name="get_value")]
     [section.wc_close]
 [bigmargin._close] 
 
