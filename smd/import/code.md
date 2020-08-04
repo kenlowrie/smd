@@ -108,8 +108,8 @@
 @code _id="get_default"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')"\
-      v="default"\
-      default="undefined variable"\
+      v="var or attr name"\
+      default="default value"\
       _help="[sp.2]*{{self._}}(v=\"variable_name\", default=\"default value\")*[bb]\
 [sp.4]**v** - The variable / attribute name to get[b]\
 [sp.4]**default** - value to return if **v** is not defined[bb]\

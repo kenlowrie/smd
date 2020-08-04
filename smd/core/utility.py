@@ -200,7 +200,7 @@ class CodeHelpers():
     @staticmethod
     def default(v=None, default_value=""):
         if not v:
-            print("existing variable name is required")
+            print("variable name is required")
             return
 
         print("{}".format(default_value if not _ns_xface.exists(v) else _ns_xface.getValue(v)))
