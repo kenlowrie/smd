@@ -4,7 +4,6 @@
 
 @var ns="code"
 
-
 //TODO: What is _raw attribute for? Look at all the _element_partials. Need to make sure everything is covered in testing...
 
 @wrap divx,p
@@ -56,14 +55,26 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 [code.pushlist(name="code.esc_angles" attrlist="var.dividers.start")]
 
+[ln_factory(nm="ln_esc_angles" hr="https://www.test.com" t="Test Site")]
+[ln_esc_angles] = [ln_esc_angles._asurl]
+[esc_angles(url="<this is just text with angle brackets>")]
+[esc_angles(url="<https://test.domain.com?parameter1>")]
 [pushlist(attrlist="var.dividers.end")]
-
 
 [code.pushlist(name="code.escape" attrlist="var.dividers.start")]
+**escape** and **escape_var** get used quite a bit in the **wrap-doc.md** user guide chapter, which is included by the **tests/in/wrap.md**, so they both get good coverage.[b]
+[escape(t="<https://test.domain.com?parameter1&parameter2>")]
 [pushlist(attrlist="var.dividers.end")]
 
 
+@html _="blockquote" cite="url-goes-here"
 [code.pushlist(name="code.escape_var" attrlist="var.dividers.start")]
+    [terminal.wc_open(t="Examples")]
+        [e_var.b(t="html.blockquote")] *=* [escape_var(v="html.blockquote")]
+        [e_var.b(t="html.blockquote.<")] *=* [escape_var(v="html.blockquote.<")]
+        [e_var.b(t="html.blockquote.>")] *=* [escape_var(v="html.blockquote.>")]
+        [e_var.b(t="html.blockquote.<+")] *=* [escape_var(v="html.blockquote.<+")]
+    [terminal.wc_close]
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -73,18 +84,49 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 
 [code.pushlist(name="code.encode_smd" attrlist="var.dividers.start")]
+**encode_smd** is used throughout the documentation and unit tests, so only minimal testing is needed for it. The main thing to capture here is how you cannot use inline markdown in the string to encode, because it will be marked down before being passed to the macro, which will then proceed to encode the HTML as SMD...
+
+@var A="answers" y="- **right**" n="- *wrong*"
+[encode_smd(t="@wrap **is**")] [A.n]
+[encode_smd(t="@wrap [E.ast2]is[E.ast2]")] [A.y]
+
+[encode_smd(t="++wrong++ : ~~wrong~~ : *wrong* : ***wrong***")] [A.n]
+[encode_smd(t="[E.ins]right[E.ins] : [E.del]right[E.del] : [E.ast]right[E.ast] : [E.ast3]right[E.ast3]")] [A.y]
+
+[encode_smd(t="<var.attr(p1=\"v1\")>")] [A.n]
+[encode_smd(t="<var.attr[E.lp]p1=\"v1\"[E.rp]>")] [A.y]
+
+[encode_smd(t="< > 2{ 2} * @ 2+ 2~")] [A.y]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.encode_smd_var" attrlist="var.dividers.start")]
+
+@var encode_var_tests="public keys - {{self._public_keys_}}"\
+    1="<var.attr(p1=\"v1\")>"\
+    2="@wrap **is**"\
+    3="< > 2{ 2} * @ 2+ 2~"\
+    4="[E.ins]right[E.ins] : [E.del]right[E.del] : [E.ast]right[E.ast] : [E.ast3]right[E.ast3]"\
+    5="++wrong++ : ~~wrong~~ : *wrong* : ***wrong***"
+
+[encode_var_tests]
+[encode_smd_var(v="encode_var_tests.1")] [A.y]
+[encode_smd_var(v="encode_var_tests.2")] [A.n]
+[encode_smd_var(v="encode_var_tests.3")] [A.y]
+[encode_smd_var(v="encode_var_tests.4")] [A.y]
+[encode_smd_var(v="encode_var_tests.5")] [A.n]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.datetime_stamp" attrlist="var.dividers.start")]
+**datetime_stamp** is already unit tested in multiple places.
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.repeat" attrlist="var.dividers.start")]
+**repeat** is already unit tested in multiple places.
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -92,7 +134,58 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 [pushlist(attrlist="var.dividers.end")]
 
 
-[code.pushlist(name="code.get_variable" attrlist="var.dividers.start")]
+[code.pushlist(name="code.get_value" attrlist="var.dividers.start")]
+
+[b]Get **section** variable[b]
+0=[get_value(v="section", ret_type="0")]
+1=[get_value(v="section", ret_type="1")]
+2=[get_value(v="section", ret_type="2")]
+3=[get_value(v="section", ret_type="3" esc_smd="True")]
+9=[get_value(v="section", ret_type="9" escape="True")]
+
+[b]Get **_section_div_** variable[b]
+0=[get_value(v="_section_div_", ret_type="0")]
+1=[get_value(v="_section_div_", ret_type="1")]
+2=[get_value(v="_section_div_", ret_type="2")]
+3=[get_value(v="_section_div_", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_", ret_type="9" escape="True")]
+
+[b]Get **_section_div_.[E.lt]** variable[b]
+0=[get_value(v="_section_div_.<", ret_type="0")]
+1=[get_value(v="_section_div_.<", ret_type="1")]
+2=[get_value(v="_section_div_.<", ret_type="2")]
+3=[get_value(v="_section_div_.<", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_.<", ret_type="9" escape="True")]
+
+[b]Get **_section_div_.[E.lt]+** variable[b]
+0=[get_value(v="_section_div_.<+", ret_type="0")]
+1=[get_value(v="_section_div_.<+", ret_type="1")]
+2=[get_value(v="_section_div_.<+", ret_type="2")]
+3=[get_value(v="_section_div_.<+", ret_type="3" escape="True")]
+9=[get_value(v="_section_div_.<+", ret_type="9", escape="True" )]
+
+[b]Get **dividers** variable[b]
+0=[get_value(v="dividers", ret_type="0")]
+1=[get_value(v="dividers", ret_type="1")]
+2=[get_value(v="dividers", ret_type="2")]
+3=[get_value(v="dividers", ret_type="3")]
+9=[get_value(v="dividers", ret_type="9")]
+
+//[code.dump(ns="var" name="dividers" format="True" whitespace="True")]
+[b]Get **dividers.4** variable[b]
+0=[get_value(v="dividers.4", ret_type="0")]
+1=[get_value(v="dividers.4", ret_type="1")]
+2=[get_value(v="dividers.4", ret_type="2" esc_smd="True")]
+3=[get_value(v="dividers.4", ret_type="3" esc_smd="True")]
+9=[get_value(v="dividers.4", ret_type="9")]
+
+[b]Get **dividers.4** variable with escape="True"[b]
+0=[get_value(v="dividers.4", ret_type="0" escape="True")]
+1=[get_value(v="dividers.4", ret_type="1" escape="True")]
+2=[get_value(v="dividers.4", ret_type="2" esc_smd="True")]
+3=[get_value(v="dividers.4", ret_type="3" esc_smd="True")]
+9=[get_value(v="dividers.4", ret_type="9" escape="True")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
