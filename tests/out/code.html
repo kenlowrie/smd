@@ -644,6 +644,22 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.get</p></div>
+<div class="extras"><p>b=<br /></p></div>
+<div class="extras"><p>encode_var_tests=public keys - 1, 2, 3, 4, 5,</p></div>
+<div class="extras"><p>encode_var_tests.1=<var.attr(p1="v1")></p></div>
+<div class="extras"><p>encode_var_tests.2=@wrap <strong>is</strong></p></div>
+<div class="extras"><p>encode_var_tests.3=< > 2{ 2} * @ 2+ 2~</p></div>
+<div class="extras"><p>encode_var_tests.4=&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>encode_var_tests.5=<ins>wrong</ins> : <del>wrong</del> : <em>wrong</em> : <em><strong>wrong</strong></em></p></div>
+<div class="extras"><p>x=&lt;var.attr(p1="v1")&gt;</p></div>
+<strong>x=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;var.attr(p1="v1")&gt;<br />
+<br />
+<div class="extras"><p>x=&lt;var.attr(p1="v1")&gt;</p></div>
+<strong>x=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[get(v="encode_var_tests.1")]<br />
+<br />
+<div class="extras"><p>x=&lt;var.attr(p1="v1")&gt;</p></div>
+<strong>x=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{get(v="encode_var_tests.1")}}<br />
+<br />
 <div class="extras"><p>code.get testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -694,18 +710,66 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.get_default</p></div>
+<div class="extras"><p>encode_var_tests.2=@wrap <strong>is</strong></p></div>
+<div class="extras"><p>encode_var_tests.3=< > 2{ 2} * @ 2+ 2~</p></div>
+<div class="extras"><p>encode_var_tests.4=&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>encode_var_tests.5=<ins>wrong</ins> : <del>wrong</del> : <em>wrong</em> : <em><strong>wrong</strong></em></p></div>
+<div class="extras"><p>encode_var_tests.2a=default value 2</p></div>
+<div class="extras"><p>encode_var_tests.3a=default value 3</p></div>
+<div class="extras"><p>encode_var_tests.4a=default value 4</p></div>
+<div class="extras"><p>encode_var_tests.5a=default value 5</p></div>
+<div class="extras"><p>encode_var_tests.2a=@wrap <strong>is</strong></p></div>
+<div class="extras"><p>encode_var_tests.3a=< > 2{ 2} * @ 2+ 2~</p></div>
+<div class="extras"><p>encode_var_tests.4a=&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>encode_var_tests.5a=<ins>wrong</ins> : <del>wrong</del> : <em>wrong</em> : <em><strong>wrong</strong></em></p></div>
+<div class="extras"><p>encode_var_tests.2a=[!var.encode_var_tests.2!]</p></div>
+<div class="extras"><p>encode_var_tests.3a=[!var.encode_var_tests.3!]</p></div>
+<div class="extras"><p>encode_var_tests.4a=[!var.encode_var_tests.4!]</p></div>
+<div class="extras"><p>encode_var_tests.5a=[!var.encode_var_tests.5!]</p></div>
+<div class="extras"><p>encode_var_tests.2a=@wrap <strong>is</strong></p></div>
+<div class="extras"><p>encode_var_tests.3a=< > 2{ 2} * @ 2+ 2~</p></div>
+<div class="extras"><p>encode_var_tests.4a=&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>encode_var_tests.5a=<ins>wrong</ins> : <del>wrong</del> : <em>wrong</em> : <em><strong>wrong</strong></em></p></div>
 <div class="extras"><p>code.get_default testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.pushline</p></div>
+<div class="extras"><p><strong>pushline</strong> is unit tested in nsbasic.md, as well as the underlying Python API is used by pushlines and others.</p></div>
+<div class="extras"><p>&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p>hello, world</p></div>
+<div class="extras"><p><h1>hello, world</h1></p></div>
+<div class="extras"><p><em>hello, world</em></p></div>
+<div class="extras"><p><strong>hello, world</strong></p></div>
+<div class="extras"><p><em><strong>hello, world</strong></em></p></div>
+<div class="extras"><p><ins>hello, world</ins></p></div>
+<div class="extras"><p><del>hello</del><ins>Hello</ins>, world</p></div>
+<div class="extras"><p>hello, world<br /><br /></p></div>
+<div class="extras"><p>hello, world<br /><br /></p></div>
 <div class="extras"><p>code.pushline testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.pushlines</p></div>
+<div class="extras"><p><strong>pushlines</strong> is already unit tested in multiple places.</p></div>
 <div class="extras"><p>code.pushlines testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>Testing code.pushlist</p></div>
+<div class="extras"><p><strong>pushlist</strong> is already unit tested in multiple places.</p></div>
+<div class="extras"><p>code.pushlist testing complete</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.pushvar</p></div>
+<div class="extras"><p>public keys - 1, 2, 3, 4, 5,</p></div>
+<div class="extras"><p>S(.1)--&gt;</p></div>
+<div class="extras"><p><var.attr(p1="v1")></p></div>
+<div class="extras"><p>&lt;--E(.1)</p></div>
+<div class="extras"><p>S(.2)--&gt;</p></div>
+ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Tag: [<em>html.&lt;strong&gt;is&lt;/strong&gt;</em>]<br />
+<div class="extras"><p>&lt;--E(.2)</p></div>
+<div class="extras"><p>< > 2{ 2} * @ 2+ 2~</p></div>
+<div class="extras"><p>&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast;</p></div>
+<div class="extras"><p><ins>wrong</ins> : <del>wrong</del> : <em>wrong</em> : <em><strong>wrong</strong></em></p></div>
 <div class="extras"><p>code.pushvar testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -754,10 +818,12 @@ NAMESPACE: link<br />
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.append</p></div>
+<div class="extras"><p><strong>append</strong> currently used by shot.md to append to shot notes</p></div>
 <div class="extras"><p>code.append testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.equals</p></div>
+<div class="extras"><p><strong>equals</strong> currently used by shot.md to select display format, and also by nsbasic.md to provide @code specific namespace tests.</p></div>
 <div class="extras"><p>code.equals testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -778,6 +844,8 @@ And this should be wrapped, even though we said it was raw, because previously, 
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.replace</p></div>
+<div class="extras"><p><strong>replace</strong> currently used by shot.md to change the shotID.</p></div>
+<div class="extras"><p>Also used by divs.md in the div factory.</p></div>
 <div class="extras"><p>code.replace testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -786,24 +854,19 @@ And this should be wrapped, even though we said it was raw, because previously, 
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.attr_replace_str</p></div>
+<div class="extras"><p><strong>attr_replace_str</strong> currently used by divs.md to update attribute values in place.</p></div>
+<div class="extras"><p>It is also used in helpers.md to create derivatives of the <strong>note</strong> DIV, <strong>bluenote</strong> and <strong>rednote</strong>.</p></div>
 <div class="extras"><p>code.attr_replace_str testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.dump</p></div>
+<div class="extras"><p><strong>dump</strong> used by nsbasic.md and code.md unit tests to dump variable declarations inline. It was added late, else it would be used all over... It will be covered in the debug section of the user guide as well.</p></div>
 <div class="extras"><p>code.dump testing complete</p></div>
-<div class="extras"><h3>------------------------------------------</h3></div>
-<div class="extras"><h2>------------------------------------------</h2></div>
-<div class="extras"><p>Testing code.pushlist</p></div>
-<div class="extras"><p>code.pushlist testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.split_as</p></div>
 <div class="extras"><p><strong>Is this even used any more?</strong></p></div>
 <div class="extras"><p>code.split_as testing complete</p></div>
-<div class="extras"><h3>------------------------------------------</h3></div>
-<div class="extras"><h2>------------------------------------------</h2></div>
-<div class="extras"><p>Testing code.NEXT</p></div>
-<div class="extras"><p>code.NEXT testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="plain"><p class="plainTitle">Testing adding new @code builtins</p></div>
 <div class="plain"><p class="plainTitle">User manual sections for @code</p></div>
@@ -1084,7 +1147,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('{{self.v}}'))<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&amp;lt;blockquote cite=\"url-goes-here\"&amp;gt;<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lt;var.attr(p1="v1")&amp;gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1294,7 +1357,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1379,7 +1442,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;var.attr(p1="v1")&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1410,10 +1473,10 @@ NAMESPACE: code<br />
 <div class="extras"><p class="box">
 <strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
-&nbsp;&nbsp;<strong>v=</strong>default<br />
-&nbsp;&nbsp;<strong>default=</strong>undefined variable<br />
+&nbsp;&nbsp;<strong>v=</strong>var or attr name<br />
+&nbsp;&nbsp;<strong>default=</strong>default value<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;ins&gt;wrong&lt;/ins&gt; : &lt;del&gt;wrong&lt;/del&gt; : &lt;em&gt;wrong&lt;/em&gt; : &lt;em&gt;&lt;strong&gt;wrong&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1532,8 +1595,8 @@ NAMESPACE: code<br />
 @code _id="get_default"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')"\
-      v="default"\
-      default="undefined variable"\
+      v="var or attr name"\
+      default="default value"\
       _help="[sp.2]*{{self._}}(v=\"variable_name\", default=\"default value\")*[bb]\
 [sp.4]**v** - The variable / attribute name to get[b]\
 [sp.4]**default** - value to return if **v** is not defined[bb]\
@@ -2002,15 +2065,15 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;var.attr(p1="v1")&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
-&nbsp;&nbsp;<strong>v=</strong>default<br />
-&nbsp;&nbsp;<strong>default=</strong>undefined variable<br />
+&nbsp;&nbsp;<strong>v=</strong>var or attr name<br />
+&nbsp;&nbsp;<strong>default=</strong>default value<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;ins&gt;wrong&lt;/ins&gt; : &lt;del&gt;wrong&lt;/del&gt; : &lt;em&gt;wrong&lt;/em&gt; : &lt;em&gt;&lt;strong&gt;wrong&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>get_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -2116,7 +2179,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>repeat=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />

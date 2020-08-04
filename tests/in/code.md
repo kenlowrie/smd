@@ -131,6 +131,23 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 
 [code.pushlist(name="code.get" attrlist="var.dividers.start")]
+b=[get(v="b")]
+encode_var_tests=[get(v="encode_var_tests")]
+encode_var_tests.1=[get(v="encode_var_tests.1")]
+encode_var_tests.2=[get(v="encode_var_tests.2")]
+encode_var_tests.3=[get(v="encode_var_tests.3")]
+encode_var_tests.4=[get(v="encode_var_tests.4")]
+encode_var_tests.5=[get(v="encode_var_tests.5")]
+@var x="[get(v=\"encode_var_tests.1\")]"
+x=[escape_var(v="x")]
+[code.dump(name="x")]
+@var x="[!get(v=\"encode_var_tests.1\")!]"
+x=[escape_var(v="x")]
+[code.dump(name="x")]
+@var x="{{get(v=\"encode_var_tests.1\")}}"
+x=[escape_var(v="x")]
+[code.dump(name="x")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -190,18 +207,72 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 
 [code.pushlist(name="code.get_default" attrlist="var.dividers.start")]
+
+encode_var_tests.2=[get_default(v="encode_var_tests.2" default="default value 2")]
+encode_var_tests.3=[get_default(v="encode_var_tests.3" default="default value 3")]
+encode_var_tests.4=[get_default(v="encode_var_tests.4" default="default value 4")]
+encode_var_tests.5=[get_default(v="encode_var_tests.5" default="default value 5")]
+encode_var_tests.2a=[get_default(v="encode_var_tests.2a" default="default value 2")]
+encode_var_tests.3a=[get_default(v="encode_var_tests.3a" default="default value 3")]
+encode_var_tests.4a=[get_default(v="encode_var_tests.4a" default="default value 4")]
+encode_var_tests.5a=[get_default(v="encode_var_tests.5a" default="default value 5")]
+encode_var_tests.2a=[get_default(v="encode_var_tests.2a" default="{{var.encode_var_tests.2}}")]
+encode_var_tests.3a=[get_default(v="encode_var_tests.3a" default="{{var.encode_var_tests.3}}")]
+encode_var_tests.4a=[get_default(v="encode_var_tests.4a" default="{{var.encode_var_tests.4}}")]
+encode_var_tests.5a=[get_default(v="encode_var_tests.5a" default="{{var.encode_var_tests.5}}")]
+encode_var_tests.2a=[get_default(v="encode_var_tests.2a" default="[!var.encode_var_tests.2!]")]
+encode_var_tests.3a=[get_default(v="encode_var_tests.3a" default="[!var.encode_var_tests.3!]")]
+encode_var_tests.4a=[get_default(v="encode_var_tests.4a" default="[!var.encode_var_tests.4!]")]
+encode_var_tests.5a=[get_default(v="encode_var_tests.5a" default="[!var.encode_var_tests.5!]")]
+encode_var_tests.2a=[get_default(v="encode_var_tests.2a" default="[var.encode_var_tests.2]")]
+encode_var_tests.3a=[get_default(v="encode_var_tests.3a" default="[var.encode_var_tests.3]")]
+encode_var_tests.4a=[get_default(v="encode_var_tests.4a" default="[var.encode_var_tests.4]")]
+encode_var_tests.5a=[get_default(v="encode_var_tests.5a" default="[var.encode_var_tests.5]")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.pushline" attrlist="var.dividers.start")]
+**pushline** is unit tested in nsbasic.md, as well as the underlying Python API is used by pushlines and others.
+
+[pushline(t="{{encode_var_tests.4}}")]
+[pushline(t="[encode_var_tests.4]")]
+[pushline(t="hello, world")]
+[pushline(t="#hello, world")]
+[pushline(t="*hello, world*")]
+[pushline(t="**hello, world**")]
+[pushline(t="***hello, world***")]
+[pushline(t="++hello, world++")]
+[pushline(t="~~hello~~++Hello++, world")]
+[pushline(t="hello, world{{bb}}")]
+[pushline(t="hello, world[bb]")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.pushlines" attrlist="var.dividers.start")]
+**pushlines** is already unit tested in multiple places.
+[pushlist(attrlist="var.dividers.end")]
+
+
+[code.pushlist(name="code.pushlist" attrlist="var.dividers.start")]
+**pushlist** is already unit tested in multiple places.
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.pushvar" attrlist="var.dividers.start")]
+
+[pushvar(v="encode_var_tests")]
+S(.1)--[E.gt]
+[pushvar(v="encode_var_tests.1")]
+[E.lt]--E(.1)
+S(.2)--[E.gt]
+[pushvar(v="encode_var_tests.2")]
+[E.lt]--E(.2)
+[pushvar(v="encode_var_tests.3")]
+[pushvar(v="encode_var_tests.4")]
+[pushvar(v="encode_var_tests.5")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -220,10 +291,16 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 
 
 [code.pushlist(name="code.append" attrlist="var.dividers.start")]
+
+**append** currently used by shot.md to append to shot notes
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.equals" attrlist="var.dividers.start")]
+
+**equals** currently used by shot.md to select display format, and also by nsbasic.md to provide @code specific namespace tests.
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -259,6 +336,10 @@ There should be an empty div before this because we emitted the entire wrap tag 
 [pushlist(attrlist="var.dividers.end")]
 
 [code.pushlist(name="code.replace" attrlist="var.dividers.start")]
+
+**replace** currently used by shot.md to change the shotID.
+Also used by divs.md in the div factory.
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -267,14 +348,17 @@ There should be an empty div before this because we emitted the entire wrap tag 
 
 
 [code.pushlist(name="code.attr_replace_str" attrlist="var.dividers.start")]
+
+**attr_replace_str** currently used by divs.md to update attribute values in place.
+It is also used in helpers.md to create derivatives of the **note** DIV, **bluenote** and **rednote**.
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.dump" attrlist="var.dividers.start")]
-[pushlist(attrlist="var.dividers.end")]
 
+**dump** used by nsbasic.md and code.md unit tests to dump variable declarations inline. It was added late, else it would be used all over... It will be covered in the debug section of the user guide as well.
 
-[code.pushlist(name="code.pushlist" attrlist="var.dividers.start")]
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -284,11 +368,6 @@ There should be an empty div before this because we emitted the entire wrap tag 
 
 
 // ------------------------------------
-
-[code.pushlist(name="code.NEXT" attrlist="var.dividers.start")]
-
-[pushlist(attrlist="var.dividers.end")]
-
 
 [plain(t="Testing adding new @code builtins")]
 
