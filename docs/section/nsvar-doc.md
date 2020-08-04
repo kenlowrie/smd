@@ -361,6 +361,12 @@ Discuss @set and also [e_var.b(t="var._null_[E.lp]attr=\"\"[E.rp]")]
 TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...
 TODO: Unless it is @image (@code?), in which case you get different results...
 TODO: Or @code, that also is different...
+Document .?
+Document .??
+Document .?? would strip the HTML tags and replace it with readable text, so you can get help in "smd -nd"
+
+Add documentation for [!!].
+
 
 
 [docthis.close]

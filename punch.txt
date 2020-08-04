@@ -3,27 +3,18 @@ Punch List Items.
 
 SOC
 
-Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clearn.
-
-Move .?/._help to nsvar-doc.md from nscode-doc.md since this applies globally now.
-Documet .?? would strip the HTML tags and replace it with readable text, so you can get help in "smd -nd"
-
-Decide if $.attr substitutions should be marked down. Currently, they are not...
-
-Add documentation for [!!].
-
-Terminal and terminal2 built-in help needs updating.
 
 Priority 0 | p0
 ---------------
-finish writing tests for @image and @code.
-Update nsbasic.md so we print the attributes escaped and raw, for easier comparison. (during the part where we try to add reserved attributes).
-document the key elements (@code, @image) -- use the "tests/in" files to make it "current".
+finish writing tests for @image.
+Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clear.
+Decide if $.attr substitutions should be marked down. Currently, they are not...
+Terminal and terminal2 built-in help needs updating.
+document the key elements (@image) -- use the "tests/in" files to make it "current".
 Refresh the samples so they are using current markdown...
 Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
-Make sure all code macros have unit tests for them. e.g. pushvar does not...
 
 Priority 1 | p1
 ---------------
@@ -77,7 +68,6 @@ maybe add a pause/resume method on the watcher class i could engage while parsin
 Make a pass at cleaning up //TODO, or at least listing them here or in docs
 Is @break/@exit useful? Yes, I still use it sometimes. Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 See how close I can get to a clean render of Buddy's music video script markdown file...
-Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
 Save input lines in smd and implement arrow keys for input
 Should Python or SRC be aliases for @code variables?
     [Python.variable.run]
@@ -93,7 +83,6 @@ Maybe consider option to pass in a file handle for the raw_output from smdparse,
 Move all of these things to the issues tracker in github, and get rid of this file.
 How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes? tried: \s([\w]+)\s*=\s*[\"\'](.*?)(?<!\\)[\"\'] on special_ and the match regex. fails miserably.
 Might be cool if there was an html python pretty printer on pypi I could build into hostgui. pip install beautifulsoup4. https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
 
 
 Completed
@@ -184,6 +173,11 @@ There are cases where {{foo}} is expanding only to [foo]. Sometimes, this is bec
 The issue where you can't prevent expansion is annoying. Sometimes, like in the nsbasic.md file where I am using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
 Maybe adding a ! to beginning and ending of string would work? x="!{{self.something}}!" means leave it alone (other than strip the !..! from it before storing it...)
 Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change) -- Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
+Move .?/._help to nsvar-doc.md from nscode-doc.md since this applies globally now.
+Update nsbasic.md so we print the attributes escaped and raw, for easier comparison. (during the part where we try to add reserved attributes).
+Make sure all code macros have unit tests for them. e.g. pushvar does not...
+Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
+Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
 
 
 
