@@ -342,8 +342,10 @@ class AdvancedNamespace(Namespace):
     _default_format_attr = '_format'
     _inherit_attr = '_inherit'
     _rtype_raw = 0      # this will just return the default attribute value, with no calls to markdown
-    _rtype_phase1 = 1   # this will process the markdown that's in the square brackets only, convert {{ to [ and }} to ]
-    _rtype_normal = 2   # the default. getValue returns fully marked down content for attribute values
+    _rtype_phase1 = 1   # this will process the markdown that's in the square brackets only and any inline markdown
+    _rtype_phase2 = 2   # this will convert {{ to [ and }} to ] and return it
+    _rtype_phase3 = 3   # this will convert self. to ns.varname. and return it
+    _rtype_normal = 9   # the default. getValue returns fully marked down content for attribute values
 
     def __init__(self, markdown, namespace_name, oprint):
         super(AdvancedNamespace, self).__init__(markdown, namespace_name, oprint)  # Initialize the base class(es)
@@ -498,25 +500,29 @@ class AdvancedNamespace(Namespace):
         else:
             attr_val = self.vars[id0].rval[el0]
 
+        self.dbgPrint("MD{1}-0: <strong>{0}</strong>".format(HtmlUtils.escape_html(attr_val), passnum))
+
+        # return the raw attribute value if requested
         if ret_type == AdvancedNamespace._rtype_raw: return attr_val
 
-        fmt_str = self._markdown(attr_val).replace('{{','[').replace('}}',']')
-
-        #self.dbgState(True)
-        if isSpecial:
-            self.dbgPrint("MD{1}-0: <strong>{0}</strong>".format(HtmlUtils.escape_html(attr_val), passnum))
-        else:
-            self.dbgPrint("MD{1}-0: <strong>{0}</strong>".format(HtmlUtils.escape_html(self.vars[id0].rval[el0]), passnum))
-        self.dbgPrint("RS{1}-0: <em>{0}</em>".format(HtmlUtils.escape_html(fmt_str), passnum))
-
+        # 1st level markdown of variables with [] and all inline markdown, return if requested
+        fmt_str = self._markdown(attr_val)
+        self.dbgPrint("P1-{1}-0: <em>{0}</em>".format(HtmlUtils.escape_html(fmt_str), passnum))
         if ret_type == AdvancedNamespace._rtype_phase1: return fmt_str
 
-        # And now, markdown again, to expand the self. namespace variables
-        s = self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace, id0)))
+        # replace {{ with [ and }} with ], return if requested
+        fmt_str = fmt_str.replace('{{','[').replace('}}',']')
+        self.dbgPrint("P2-{1}-0: <em>{0}</em>".format(HtmlUtils.escape_html(fmt_str), passnum))
+        if ret_type == AdvancedNamespace._rtype_phase2: return fmt_str
+
+        # replace self. with ns.varname. and return if requested
+        fmt_str = fmt_str.replace('self.','{}{}.'.format(self.namespace, id0))
+        if ret_type == AdvancedNamespace._rtype_phase3: return fmt_str
+
+        s = self._markdown(fmt_str)
 
         self.dbgPrint("MD{3}-1: fmt_str(self.-&gt;{0}{1}):<strong>{2}</strong>".format(self.namespace, id0, HtmlUtils.escape_html(fmt_str), passnum))
         self.dbgPrint("RS{1}-1: <em>{0}</em>".format(HtmlUtils.escape_html(s), passnum))
-        #self.dbgState(False)
 
         return s
 
@@ -659,18 +665,26 @@ class HtmlNamespace(AdvancedNamespace):
             if el0 in HtmlNamespace._element_partials:
 
                 # Handle the ret_type logic here so @html handles the <, >, <+ correctly if raw data requested.
-                # First, apply standard markdown in case _format has regular variables in it.
                 attr_value = self.getElementPartial(el0)
+                # return raw if requested
                 if ret_type == AdvancedNamespace._rtype_raw: return attr_value
 
-                fmt_str = self._markdown(attr_value).replace('{{','[').replace('}}',']')
+                # First, apply standard markdown in case _format has regular variables in it, return that if requested
+                fmt_str = self._markdown(attr_value)
                 if ret_type == AdvancedNamespace._rtype_phase1: return fmt_str
 
-                #//TODO: Was semantically different before. We translated {{}} and then marked down, and then did the self. replacement/markdown...
-                #fmt_str = self._markdown(self.getElementPartial(el0).replace('{{','[').replace('}}',']'))
-                # And now, markdown again, to expand the self. namespace variables
+                # Next translate {{ to [] and }} to ] and return if requested
+                fmt_str = fmt_str.replace('{{','[').replace('}}',']')
+                if ret_type == AdvancedNamespace._rtype_phase2: return fmt_str
+
+                # Translate self. to ns.varname. and return if requested
                 self.dbgPrint("Replace self.{}{} in {} and markdown".format(self.namespace, id0, fmt_str))
-                return self._markdown(fmt_str.replace('self.','{}{}.'.format(self.namespace,id0)))
+                fmt_str = fmt_str.replace('self.','{}{}.'.format(self.namespace,id0))
+                if ret_type == AdvancedNamespace._rtype_phase3: return fmt_str
+
+                # Return the normal var/attr value
+                self.dbgPrint("Replace self. with {}{} in {} and markdown".format(self.namespace, id0, fmt_str))
+                return self._markdown(fmt_str)
 
         return super(HtmlNamespace, self).getValue(id, ret_type)
 
