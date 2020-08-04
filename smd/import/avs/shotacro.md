@@ -1,3 +1,4 @@
+@import "[sys.imports]/avs/film.md"
 
 @var pov="[var.FS.pov]"
 @var ots="[var.FS.ots]"

@@ -774,18 +774,12 @@ ERROR: @wrap tags must <em><strong>exist</strong></em> in the html namespace. Ta
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.ln_alias</p></div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: link<br />
-----------------------------------------<br />
-</code>
-</div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: link<br />
-----------------------------------------<br />
+<div class="extras"><p>
+dump1=
+</p></div>
+<div class="extras"><p>Defining lntest ...</p></div>
+<div class="extras"><p>
+dump2=
 <strong>lntest=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>Google<br />
 &nbsp;&nbsp;<strong>href=</strong>https://google.com<br />
@@ -794,14 +788,10 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 <br />
-</code>
-</div>
+</p></div>
 <div class="extras"><p><a href="https://google.com">Google</a></p></div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: link<br />
-----------------------------------------<br />
+<div class="extras"><p>
+dump3=
 <strong>lntest=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_text=</strong>Google<br />
 &nbsp;&nbsp;<strong>href=</strong>https://google.com<br />
@@ -811,14 +801,73 @@ NAMESPACE: link<br />
 &nbsp;&nbsp;<strong>_tag=</strong>a<br />
 &nbsp;&nbsp;<strong>_alt=</strong>{{lntest.&lt;}}Alternate Google Attribute{{lntest.&gt;}}<br />
 <br />
-</code>
-</div>
+</p></div>
 <div class="extras"><p><a href="https://google.com">Alternate Google Attribute</a></p></div>
 <div class="extras"><p>code.ln_alias testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.append</p></div>
 <div class="extras"><p><strong>append</strong> currently used by shot.md to append to shot notes</p></div>
+<div class="extras"><p>aptest.a1=""</p></div>
+<div class="extras"><p>aptest.a1="&lt;addon text&gt;"</p></div>
+<strong>aptest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>fill1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>add=</strong>{{code.append(attr1="self.a1" attr2="self.fill1")}}<br />
+&nbsp;&nbsp;<strong>add2=</strong>{{code.append(attr1="self.a1" attr2="self.otf")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester<br />
+<br />
+<strong>aptest2=</strong><br />&nbsp;&nbsp;<strong>a2=</strong><br />
+&nbsp;&nbsp;<strong>fill2=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester Alternate<br />
+<br />
+<div class="extras"><p>aptest.a1="&lt;addon text&gt;&lt;addon text&gt;"</p></div>
+<strong>aptest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>fill1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>add=</strong>{{code.append(attr1="self.a1" attr2="self.fill1")}}<br />
+&nbsp;&nbsp;<strong>add2=</strong>{{code.append(attr1="self.a1" attr2="self.otf")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester<br />
+<br />
+<strong>aptest2=</strong><br />&nbsp;&nbsp;<strong>a2=</strong><br />
+&nbsp;&nbsp;<strong>fill2=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester Alternate<br />
+<br />
+<div class="extras"><p>aptest.add=</p></div>
+<div class="extras"><p>aptest.a1="&lt;addon text&gt;&lt;addon text&gt;&lt;addon text&gt;"</p></div>
+<strong>aptest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>fill1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>add=</strong>{{code.append(attr1="self.a1" attr2="self.fill1")}}<br />
+&nbsp;&nbsp;<strong>add2=</strong>{{code.append(attr1="self.a1" attr2="self.otf")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester<br />
+<br />
+<strong>aptest2=</strong><br />&nbsp;&nbsp;<strong>a2=</strong><br />
+&nbsp;&nbsp;<strong>fill2=</strong>&amp;lt;addon text via aptest2.fill2&amp;gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester Alternate<br />
+<br />
+<div class="extras"><p>aptest.add=</p></div>
+<div class="extras"><p>aptest.a1="&lt;addon text&gt;&lt;addon text&gt;&lt;addon text&gt;&lt;On-the-fly-addition&gt;"</p></div>
+<strong>aptest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;&amp;lt;On-the-fly-addition&amp;gt;<br />
+&nbsp;&nbsp;<strong>fill1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>add=</strong>{{code.append(attr1="self.a1" attr2="self.fill1")}}<br />
+&nbsp;&nbsp;<strong>add2=</strong>{{code.append(attr1="self.a1" attr2="self.otf")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester<br />
+&nbsp;&nbsp;<strong>otf=</strong>&amp;lt;On-the-fly-addition&amp;gt;<br />
+<br />
+<strong>aptest2=</strong><br />&nbsp;&nbsp;<strong>a2=</strong><br />
+&nbsp;&nbsp;<strong>fill2=</strong>&amp;lt;addon text via aptest2.fill2&amp;gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester Alternate<br />
+<br />
+<div class="extras"><p>aptest.a1="&lt;addon text&gt;&lt;addon text&gt;&lt;addon text&gt;&lt;On-the-fly-addition&gt;&lt;addon text via aptest2.fill2&gt;"</p></div>
+<strong>aptest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;&amp;lt;addon text&amp;gt;&amp;lt;On-the-fly-addition&amp;gt;&amp;lt;addon text via aptest2.fill2&amp;gt;<br />
+&nbsp;&nbsp;<strong>fill1=</strong>&amp;lt;addon text&amp;gt;<br />
+&nbsp;&nbsp;<strong>add=</strong>{{code.append(attr1="self.a1" attr2="self.fill1")}}<br />
+&nbsp;&nbsp;<strong>add2=</strong>{{code.append(attr1="self.a1" attr2="self.otf")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester<br />
+&nbsp;&nbsp;<strong>otf=</strong>&amp;lt;On-the-fly-addition&amp;gt;<br />
+<br />
+<strong>aptest2=</strong><br />&nbsp;&nbsp;<strong>a2=</strong><br />
+&nbsp;&nbsp;<strong>fill2=</strong>&amp;lt;addon text via aptest2.fill2&amp;gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Append Tester Alternate<br />
+<br />
 <div class="extras"><p>code.append testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -850,22 +899,213 @@ And this should be wrapped, even though we said it was raw, because previously, 
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.attr_replace</p></div>
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown fox jumped over the lazy dog\n<br />
+&nbsp;&nbsp;<strong>a2=</strong>This $r knows that $r and they both know $g\n<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+<br />
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This $r knows that $r and they both know $g\n<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+<br />
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know $g\n<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+<br />
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know her
+<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+<br />
 <div class="extras"><p>code.attr_replace testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.attr_replace_str</p></div>
 <div class="extras"><p><strong>attr_replace_str</strong> currently used by divs.md to update attribute values in place.</p></div>
 <div class="extras"><p>It is also used in helpers.md to create derivatives of the <strong>note</strong> DIV, <strong>bluenote</strong> and <strong>rednote</strong>.</p></div>
+<div class="extras"><p>Add on to the prior variable so we can test the repl_nl option, since that isn't used normally...</p></div>
+<div class="extras"><p>Dump first to show that artest.a3 isn't declared</p></div>
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know her
+<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+<br />
+<div class="extras"><p>Now artest.a3 is declared</p></div>
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know her
+<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+&nbsp;&nbsp;<strong>a3=</strong>$replaceme$ because you\ncan when you want to\ndoes not mean you $will$\n<br />
+<br />
+<div class="extras"><p>Now we replaced $replaceme$ with "Just"</p></div>
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know her
+<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+&nbsp;&nbsp;<strong>a3=</strong>Just because you\ncan when you want to\ndoes not mean you $will$\n<br />
+<br />
+<div class="extras"><p>Now we replaced $will$ with "should!"</p></div>
+<strong>artest=</strong><br />&nbsp;&nbsp;<strong>a1=</strong>The quick brown coyote jumped over the lazy dog
+<br />
+&nbsp;&nbsp;<strong>a2=</strong>This dude knows that dude and they both know her
+<br />
+&nbsp;&nbsp;<strong>r1=</strong>coyote<br />
+&nbsp;&nbsp;<strong>r2=</strong>dude<br />
+&nbsp;&nbsp;<strong>r3=</strong>her<br />
+&nbsp;&nbsp;<strong>_format=</strong>Test variable for code.attr_replace<br />
+&nbsp;&nbsp;<strong>a3=</strong>Just because you
+can when you want to
+does not mean you should!
+<br />
+<br />
 <div class="extras"><p>code.attr_replace_str testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.dump</p></div>
 <div class="extras"><p><strong>dump</strong> used by nsbasic.md and code.md unit tests to dump variable declarations inline. It was added late, else it would be used all over... It will be covered in the debug section of the user guide as well.</p></div>
+<div class="extras"><p>The defaults will be different since they have been overridden by the macros in this unittest!</p></div>
+<strong>dump=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.dump('{{self.ns}}', '{{self.name}}', {{self.format}}, {{self.whitespace}}, {{self.help}})<br />
+&nbsp;&nbsp;<strong>ns=</strong>code<br />
+&nbsp;&nbsp;<strong>name=</strong>dump<br />
+&nbsp;&nbsp;<strong>format=</strong>True<br />
+&nbsp;&nbsp;<strong>whitespace=</strong>True<br />
+&nbsp;&nbsp;<strong>help=</strong>False<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>section<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>section default title<br />
+&nbsp;&nbsp;<strong>c=</strong>section default content<br />
+<br />
+section=<br />
+&nbsp;&nbsp;_format=@@ {{self.inline}}<br />
+&nbsp;&nbsp;nd=@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;with_content=@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;with_content_nd=@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;wc_inline={{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;wc_inline_nd={{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;wc_open={{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;wc_close={{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;wc_open_nd={{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;wc_close_nd={{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;inline={{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
+&nbsp;&nbsp;wc_open_inline={{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;wc_close_inline={{html.div.&gt;}}<br />
+&nbsp;&nbsp;wc_content={{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;sID=section<br />
+&nbsp;&nbsp;wrapID=_section_p_content_<br />
+&nbsp;&nbsp;t=section default title<br />
+&nbsp;&nbsp;c=section default content<br />
+
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>section<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>section default title<br />
+&nbsp;&nbsp;<strong>c=</strong>section default content<br />
+<br />
+section=
+  _format=@@ {{self.inline}}
+  nd=@@{{self.inline_nd}}
+  with_content=@@ {{self.wc_inline}}
+  with_content_nd=@@ {{self.wc_inline_nd}}
+  wc_inline={{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}
+  wc_inline_nd={{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}
+  wc_open={{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}
+  wc_close={{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}
+  wc_open_nd={{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}
+  wc_close_nd={{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}
+  inline={{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}
+  wc_open_inline={{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}
+  wc_close_inline={{html.div.&gt;}}
+  wc_content={{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}
+  sID=section
+  wrapID=_section_p_content_
+  t=section default title
+  c=section default content
+
+<div class="extras"><p><br /></p></div>
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>section<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>section default title<br />
+&nbsp;&nbsp;<strong>c=</strong>section default content<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;section(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the section div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = content for section div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;section&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.section.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;If no method specified&lt;/em&gt; uses &lt;strong&gt;inline&lt;/strong&gt; raw i.e. prefixed with @@&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert section div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert section div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a section div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.section.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close section div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close section div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<br />
 <div class="extras"><p>code.dump testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.split_as</p></div>
-<div class="extras"><p><strong>Is this even used any more?</strong></p></div>
+<div class="extras"><p><strong>split_as</strong> is not used frequently. The only place I found was in shot.md, as a way to dump the defaults for _shot_defs_. If there really isn't any other use for it, maybe it should be deprecated.</p></div>
+<div class="extras"><p><strong><em>_shot_defs_</em> defaults:</strong><br /><br /><em><strong>desc</strong></em>=Your shot description here.<br /><em><strong>lens</strong></em>=24mm<br /><em><strong>fstop</strong></em>=f/2.8<br /><em><strong>iso</strong></em>=320<br /><em><strong>height</strong></em>=36in<br /><em><strong>crane</strong></em>=No<br /><em><strong>scene</strong></em>=<br /><em><strong>notes</strong></em>=<br /><em><strong>val</strong></em>=&lt;em&gt;&lt;strong&gt;default note text&lt;/strong&gt;&lt;/em&gt;<br /></p></div>
 <div class="extras"><p>code.split_as testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="plain"><p class="plainTitle">Testing adding new @code builtins</p></div>
@@ -1391,7 +1631,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>attr1=</strong>ns.var.attr<br />
 &nbsp;&nbsp;<strong>attr2=</strong>ns.txtvar.attr<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('{{self.attr1}}', '{{self.attr2}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1409,7 +1649,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
 &nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1763,15 +2003,6 @@ NAMESPACE: code<br />
 [sp.4]This macro pushes one or more lines specified by **attrlist** onto the input stream. The attributes must be in the same variable.[bb]\
 [sp.4]**NOTE:** See **var.vpl** for a template of what the **attrlist** variable should look like."
 
-// Things that belong elsewhere e.g. shots.md, etc. below here
-@code _id="split_as"\
-      type="exec"\
-      src="from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))"\
-      t="Usage: {{self._}}(t=\"var._public_attrs_\")"
-
-
-// Things that are no longer needed below here
-
 </pre></div>
 <a id="ug_code_misc"></a>
 <div class="extras" style="border-bottom:2px solid black"><h3>&#64;code Miscellaneous Examples</h3></div>
@@ -1899,7 +2130,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>attr1=</strong>ns.var.attr<br />
 &nbsp;&nbsp;<strong>attr2=</strong>ns.txtvar.attr<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('{{self.attr1}}', '{{self.attr2}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -1909,7 +2140,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
 &nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -2199,11 +2430,26 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
+<strong>shot_factory=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"     ')<br />
+&nbsp;&nbsp;<strong>d=</strong>{{var._shot_defs_.desc}}<br />
+&nbsp;&nbsp;<strong>l=</strong>{{var._shot_defs_.lens}}<br />
+&nbsp;&nbsp;<strong>f=</strong>{{var._shot_defs_.fstop}}<br />
+&nbsp;&nbsp;<strong>i=</strong>{{var._shot_defs_.iso}}<br />
+&nbsp;&nbsp;<strong>h=</strong>{{var._shot_defs_.height}}<br />
+&nbsp;&nbsp;<strong>c=</strong>{{var._shot_defs_.crane}}<br />
+&nbsp;&nbsp;<strong>s=</strong>{{var._shot_defs_.scene}}<br />
+&nbsp;&nbsp;<strong>notes=</strong>{{var._shot_defs_.notes}}<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage: &lt;strong&gt;{{self.nm}}(d=&amp;quot;desc&amp;quot; l=&amp;quot;lens&amp;quot; c=&amp;quot;crane&amp;quot;)&lt;/strong&gt;)<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"     ')<br />
+<br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
 &nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="var._public_attrs_")<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>***desc***=Your shot description here.&lt;br /&gt;***lens***=24mm&lt;br /&gt;***fstop***=f/2.8&lt;br /&gt;***iso***=320&lt;br /&gt;***height***=36in&lt;br /&gt;***crane***=No&lt;br /&gt;***scene***=&lt;br /&gt;***notes***=&lt;br /&gt;***val***=&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;default note text&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />

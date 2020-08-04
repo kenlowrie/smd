@@ -86,6 +86,11 @@
                 {{html._td_2spanA_.<}}{{self.notes}}{{html.td.>}}\
               {{html.tr.>}}"
 
+@code _id="split_as"\
+      type="exec"\
+      src="from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))"\
+      t="Usage: {{self._}}(t=\"var._public_attrs_\")"
+
 @var _id="_shot_defs_" \
      desc="Your shot description here." \
      lens="24mm" \
@@ -108,7 +113,7 @@
      crane="{{code.get_default(v=\"self.c\", default=\"{{var._shot_defs_.crane}}\")}}"\
      scene="{{code.get_default(v=\"self.s\", default=\"{{var._shot_defs_.scene}}\")}}"\
      notes="{{code.get_default(v=\"self.n\", default=\"{{var._shot_defs_.notes}}\")}}"\
-     addNote="{{code.append(_var_=\"self.notes\", _txtvar_=\"self.val\")}}"\
+     addNote="{{code.append(attr1=\"self.notes\", attr2=\"self.val\")}}"\
      addBB="{{self.addNote(val=\"{{bb}}\")}}"\
      val="{{var._shot_defs_.notes}}"\
      usage="Usage: **{{self._}}(d=&quot;desc&quot; l=&quot;lens&quot; c=&quot;crane&quot;)**)"\

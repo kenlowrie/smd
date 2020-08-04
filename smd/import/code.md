@@ -275,12 +275,3 @@
 [sp.6]If **attrlist** is an attribute, then that attribute *must* contain a list of other attributes in the same variable.[bb]\
 [sp.4]This macro pushes one or more lines specified by **attrlist** onto the input stream. The attributes must be in the same variable.[bb]\
 [sp.4]**NOTE:** See **var.vpl** for a template of what the **attrlist** variable should look like."
-
-// Things that belong elsewhere e.g. shots.md, etc. below here
-@code _id="split_as"\
-      type="exec"\
-      src="from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))"\
-      t="Usage: {{self._}}(t=\"var._public_attrs_\")"
-
-
-// Things that are no longer needed below here

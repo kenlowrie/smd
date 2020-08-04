@@ -278,13 +278,22 @@ S(.2)--[E.gt]
 
 [pushlist(name="code.ln_alias" attrlist="var.dividers.start")]
 
-//@dump link="ln_factory" code="ln_alias"
-@dump link="lntest"
+@@[wrap_stack(w="<")]
+@@dump1=
+[code.dump(ns="link" name="lntest")]
+@@[wrap_stack(w=">")]
+Defining lntest ...
 [ln_factory(nm="lntest" hr="https://google.com" t="Google")]
-@dump link="lntest"
+@@[wrap_stack(w="<")]
+@@dump2=
+[code.dump(ns="link" name="lntest")]
+@@[wrap_stack(w=">")]
 [lntest]
 [ln_alias(nm="lntest" attr="_alt" lt="Alternate Google Attribute")]
-@dump link="lntest"
+@@[wrap_stack(w="<")]
+@@dump3=
+[code.dump(ns="link" name="lntest")]
+@@[wrap_stack(w=">")]
 [lntest._alt]
 
 [pushlist(attrlist="var.dividers.end")]
@@ -293,6 +302,39 @@ S(.2)--[E.gt]
 [code.pushlist(name="code.append" attrlist="var.dividers.start")]
 
 **append** currently used by shot.md to append to shot notes
+
+@var aptest="Append Tester"\
+    a1=""\
+    fill1=""\
+    add="{{code.append(attr1=\"self.a1\" attr2=\"self.fill1\")}}"\
+    add2="{{code.append(attr1=\"self.a1\" attr2=\"self.otf\")}}"
+
+@var aptest2="Append Tester Alternate"\
+    a2=""\
+    fill2=""
+
+aptest.a1="[aptest.a1]"
+[aptest._null_(fill1="[E.lt]addon text[E.gt]")]
+[append(attr1="var.aptest.a1" attr2="aptest.fill1")]
+aptest.a1="[aptest.a1]"
+[code.dump(name="aptest")]
+[append(attr1="aptest.a1" attr2="aptest.fill1")]
+aptest.a1="[aptest.a1]"
+[code.dump(name="aptest")]
+[aptest2._null_(fill2="[E.lt]addon text via aptest2.fill2[E.gt]")]
+
+aptest.add=[aptest.add]
+aptest.a1="[aptest.a1]"
+[code.dump(name="aptest")]
+
+aptest.add=[aptest.add2(otf="[E.lt]On-the-fly-addition[E.gt]")]
+aptest.a1="[aptest.a1]"
+[code.dump(name="aptest")]
+
+[append(attr1="aptest.a1" attr2="aptest2.fill2")]
+aptest.a1="[aptest.a1]"
+[code.dump(name="aptest")]
+
 
 [pushlist(attrlist="var.dividers.end")]
 
@@ -344,6 +386,22 @@ Also used by divs.md in the div factory.
 
 
 [code.pushlist(name="code.attr_replace" attrlist="var.dividers.start")]
+
+@var artest="Test variable for code.attr_replace"\
+    a1="The quick brown fox jumped over the lazy dog\n"\
+    a2="This $r knows that $r and they both know $g\n"\
+    r1="coyote"\
+    r2="dude"\
+    r3="her"
+
+[code.dump(name="artest")]
+[attr_replace(s_str="fox" r_var="artest.r1" attr="artest.a1")]
+[code.dump(name="artest")]
+[attr_replace(s_str="$r" r_var="var.artest.r2" attr="artest.a2" repl_nl="False")]
+[code.dump(name="artest")]
+[attr_replace(s_str="$g" r_var="var.artest.r3" attr="var.artest.a2")]
+[code.dump(name="artest")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -352,6 +410,21 @@ Also used by divs.md in the div factory.
 **attr_replace_str** currently used by divs.md to update attribute values in place.
 It is also used in helpers.md to create derivatives of the **note** DIV, **bluenote** and **rednote**.
 
+Add on to the prior variable so we can test the repl_nl option, since that isn't used normally...
+
+Dump first to show that artest.a3 isn't declared
+[code.dump(name="artest")]
+@set _="var.artest" a3="$replaceme$ because you\ncan when you want to\ndoes not mean you $will$\n"
+Now artest.a3 is declared
+[code.dump(name="artest")]
+
+[attr_replace_str(s_str="$replaceme$" r_str="Just" attr="var.artest.a3" repl_nl="False")]
+Now we replaced $replaceme$ with "Just"
+[code.dump(name="artest")]
+[attr_replace_str(s_str="$will$" r_str="should!" attr="var.artest.a3" repl_nl="True")]
+Now we replaced $will$ with "should!"
+[code.dump(name="artest")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
@@ -359,11 +432,25 @@ It is also used in helpers.md to create derivatives of the **note** DIV, **bluen
 
 **dump** used by nsbasic.md and code.md unit tests to dump variable declarations inline. It was added late, else it would be used all over... It will be covered in the debug section of the user guide as well.
 
+The defaults will be different since they have been overridden by the macros in this unittest!
+[code.dump(ns="code" name="dump")]
+
+[code.dump(ns="var" name="section$")]
+[code.dump(ns="var" name="section$" format="False")]
+[code.dump(ns="var" name="section$" whitespace="False")]
+[code.dump(ns="var" name="section$" format="False" whitespace="False")]
+[b]
+[code.dump(ns="var" name="section$" help="True")]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
 [code.pushlist(name="code.split_as" attrlist="var.dividers.start")]
-**Is this even used any more?**
+**split_as** is not used frequently. The only place I found was in shot.md, as a way to dump the defaults for _shot_defs_. If there really isn't any other use for it, maybe it should be deprecated.
+
+@import "[sys.imports]/avs/shot.md"
+[_shot_defs_]
+
 [pushlist(attrlist="var.dividers.end")]
 
 
