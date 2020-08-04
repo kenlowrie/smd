@@ -165,6 +165,25 @@ TEST::: [code.escape_var(v="code.wrap_stack")]
 
 [wrap_h(t="### And this is the end of the @wrap test.")]
 
-Going to get one more warning about the wrapper stack being empty, cause I flushed it above...[b]
+[var.plain(t="User manual section for @wrap")]
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.toc.wc_open(t="Table of Contents - Unittest [smdwrap.il]")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/wrap-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from wrap-inc.md")]
+@dump link="^ug_wrap$"
+
+@wrap divx,p
+@import "[sys.root]/docs/section/wrap-doc.md"
+@parw
+
+Going to get one more warning about the wrapper stack being empty, cause I flushed it at the end of the @wrap unittests above...[b]
+
 @set dump_ns_list="var=\"wt\" html=\"wt\""
 [var.testdoc.end]
