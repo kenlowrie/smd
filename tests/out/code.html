@@ -584,34 +584,62 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 <h3>In this section, add tests to exercise all macros in the <strong>code.md</strong> built-ins.</h3>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.esc_angles</p></div>
+<div class="extras"><p><a href="https://www.test.com">Test Site</a> = <a href="https://www.test.com">https://www.test.com</a></p></div>
+<div class="extras"><p>&lt;this is just text with angle brackets&gt;</p></div>
+<div class="extras"><p>&lt;https://test.domain.com?parameter1&gt;</p></div>
 <div class="extras"><p>code.esc_angles testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.escape</p></div>
+<div class="extras"><p><strong>escape</strong> and <strong>escape_var</strong> get used quite a bit in the <strong>wrap-doc.md</strong> user guide chapter, which is included by the <strong>tests/in/wrap.md</strong>, so they both get good coverage.<br /></p></div>
+<div class="extras"><p>&lt;https://test.domain.com?parameter1&amp;parameter2&gt;</p></div>
 <div class="extras"><p>code.escape testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.escape_var</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Examples</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>&lsqb;html.blockquote&rsqb;</strong> <em>=</em> &lt;blockquote cite="url-goes-here"&gt;&lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<&rsqb;</strong> <em>=</em> &lt;blockquote cite="url-goes-here"&gt;
+<strong>&lsqb;html.blockquote.>&rsqb;</strong> <em>=</em> &lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<+&rsqb;</strong> <em>=</em> &lt;blockquote cite=\"url-goes-here\"&gt;
+</pre></div>
 <div class="extras"><p>code.escape_var testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.encodeURL</p></div>
+<div class="extras"><p><strong>encodeURL</strong> is thoroughly tested already. The underlying Python function is used by variable.py when returning _public_attrs_ and it detects <em>href</em> in an @link request.<br /><br />It is also tested in <strong>tests/mailto.md</strong> encoding URLs with spaces, and two mailto: samples, one with just an email address, and another with a parameter with spaces.</p></div>
 <div class="extras"><p>code.encodeURL testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.encode_smd</p></div>
+<div class="extras"><p><strong>encode_smd</strong> is used throughout the documentation and unit tests, so only minimal testing is needed for it. The main thing to capture here is how you cannot use inline markdown in the string to encode, because it will be marked down before being passed to the macro, which will then proceed to encode the HTML as SMD...</p></div>
+<div class="extras"><p>&#64;wrap &lsqb;strong&rsqb;is&lsqb;/strong&rsqb; - <em>wrong</em></p></div>
+<div class="extras"><p>&#64;wrap &ast;&ast;is&ast;&ast; - <strong>right</strong></p></div>
+<div class="extras"><p>&lsqb;ins&rsqb;wrong&lsqb;/ins&rsqb; : &lsqb;del&rsqb;wrong&lsqb;/del&rsqb; : &lsqb;em&rsqb;wrong&lsqb;/em&rsqb; : &lsqb;em&rsqb;&lsqb;strong&rsqb;wrong&lsqb;/strong&rsqb;&lsqb;/em&rsqb; - <em>wrong</em></p></div>
+<div class="extras"><p>&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast; - <strong>right</strong></p></div>
+<div class="extras"><p>[encode_smd(t="<var.attr(p1=\"v1\")>")] - <em>wrong</em></p></div>
+<div class="extras"><p>&lsqb;var.attr&lpar;p1="v1"&rpar;&rsqb; - <strong>right</strong></p></div>
+<div class="extras"><p>&lsqb; &rsqb; &lcub;&lcub; &rcub;&rcub; &#42; &#64; &plus;&plus; &sim;&sim; - <strong>right</strong></p></div>
 <div class="extras"><p>code.encode_smd testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.encode_smd_var</p></div>
+<div class="extras"><p>public keys - 1, 2, 3, 4, 5,</p></div>
+<div class="extras"><p>&lsqb;var.attr(p1="v1")&rsqb; - <strong>right</strong></p></div>
+<div class="extras"><p>&#64;wrap &lsqb;strong&rsqb;is&lsqb;/strong&rsqb; - <em>wrong</em></p></div>
+<div class="extras"><p>&lsqb; &rsqb; &lcub;&lcub; &rcub;&rcub; &#42; &#64; &plus;&plus; &sim;&sim; - <strong>right</strong></p></div>
+<div class="extras"><p>&plus;&plus;right&plus;&plus; : &sim;&sim;right&sim;&sim; : &ast;right&ast; : &ast;&ast;&ast;right&ast;&ast;&ast; - <strong>right</strong></p></div>
+<div class="extras"><p>&lsqb;ins&rsqb;wrong&lsqb;/ins&rsqb; : &lsqb;del&rsqb;wrong&lsqb;/del&rsqb; : &lsqb;em&rsqb;wrong&lsqb;/em&rsqb; : &lsqb;em&rsqb;&lsqb;strong&rsqb;wrong&lsqb;/strong&rsqb;&lsqb;/em&rsqb; - <em>wrong</em></p></div>
 <div class="extras"><p>code.encode_smd_var testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.datetime_stamp</p></div>
+<div class="extras"><p><strong>datetime_stamp</strong> is already unit tested in multiple places.</p></div>
 <div class="extras"><p>code.datetime_stamp testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.repeat</p></div>
+<div class="extras"><p><strong>repeat</strong> is already unit tested in multiple places.</p></div>
 <div class="extras"><p>code.repeat testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
@@ -619,8 +647,50 @@ Now create a new variable with 25 attributes (by redefining an existing variable
 <div class="extras"><p>code.get testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
-<div class="extras"><p>Testing code.get_variable</p></div>
-<div class="extras"><p>code.get_variable testing complete</p></div>
+<div class="extras"><p>Testing code.get_value</p></div>
+<div class="extras"><p><br />Get <strong>section</strong> variable<br /></p></div>
+<div class="extras"><p>0=@@ {{self.inline}}</p></div>
+<div class="extras"><p>1=@@ {{self.inline}}</p></div>
+<div class="extras"><p>2=@@ [self.inline]</p></div>
+<div class="extras"><p>3=&#64;&#64; &lsqb;var.section.inline&rsqb;</p></div>
+<div class="extras"><p>9=@@ &lt;div class="section"&gt;&lt;p class="divTitle"&gt;section default title&lt;/p&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p><br />Get <strong>_section_div_</strong> variable<br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_]></[self._tag]></p></div>
+<div class="extras"><p>3=&lt;div class="section"&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p>9=&lt;div class="section"&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p><br />Get <strong>_section_div_.&lt;</strong> variable<br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_]></p></div>
+<div class="extras"><p>3=&lt;div class="section"&gt;</p></div>
+<div class="extras"><p>9=&lt;div class="section"&gt;</p></div>
+<div class="extras"><p><br />Get <strong>_section_div_.&lt;+</strong> variable<br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_esc_}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_esc_}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_esc_]></p></div>
+<div class="extras"><p>3=&lt;div class=\"section\"&gt;</p></div>
+<div class="extras"><p>9=&lt;div class=\"section\"&gt;</p></div>
+<div class="extras"><p><br />Get <strong>dividers</strong> variable<br /></p></div>
+<div class="extras"><p>0={{self._all_keys_}}</p></div>
+<div class="extras"><p>1={{self._all_keys_}}</p></div>
+<div class="extras"><p>2=[self._all_keys_]</p></div>
+<div class="extras"><p>3=[var.dividers._all_keys_]</p></div>
+<div class="extras"><p>9=[var.dividers._all_keys_]</p></div>
+<div class="extras"><p><br />Get <strong>dividers.4</strong> variable<br /></p></div>
+<div class="extras"><p>0=Testing {{var.div_helper.macro}}</p></div>
+<div class="extras"><p>1=Testing {{var.div_helper.macro}}</p></div>
+<div class="extras"><p>2=Testing &lsqb;var.div_helper.macro&rsqb;</p></div>
+<div class="extras"><p>3=Testing &lsqb;var.div_helper.macro&rsqb;</p></div>
+<div class="extras"><p>9=Testing code.get_value</p></div>
+<div class="extras"><p><br />Get <strong>dividers.4</strong> variable with escape="True"<br /></p></div>
+<div class="extras"><p>0=Testing {{var.div_helper.macro}}</p></div>
+<div class="extras"><p>1=Testing {{var.div_helper.macro}}</p></div>
+<div class="extras"><p>2=Testing &lsqb;var.div_helper.macro&rsqb;</p></div>
+<div class="extras"><p>3=Testing &lsqb;var.div_helper.macro&rsqb;</p></div>
+<div class="extras"><p>9=Testing code.get_value</p></div>
+<div class="extras"><p>code.get_value testing complete</p></div>
 <div class="extras"><h3>------------------------------------------</h3></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><p>Testing code.get_default</p></div>
@@ -820,9 +890,7 @@ NAMESPACE: link<br />
 <div class="extras"><p><strong>&#64;code</strong> variables are probably best described as macros, and although the other namespace variables could also be viewed this way, <strong>&#64;code</strong> variables are much more powerful because they provide a way to construct emitters written in Python! <strong>&#64;code</strong> macros are used heavily throughout the system builtins to achieve some of the more powerful features of <strong>smd</strong>.</p></div>
 <div class="extras"><p class="note blue">If you are not familiar with Python and Python programming, then you may want to skip this section; it isn't for you. You can still do quite a bit with <strong>smd</strong> without having to write extensions in Python.</p></div>
 <div class="extras"><p>[docthis.open(h="Add this to ns_code-doc.md")]</p></div>
-<div class="extras"><p>IDEA: @get _ns="" _id="[ns.]name" raw="true" markdown="false" escape="true"</p></div>
-<div class="extras"><p>Implementation: [get_variable_RENAME(v="varname" ret_type="0-raw,1-1st pass markdown-2normal as in full markdown" escape="True|False")]</p></div>
-<div class="extras"><p>Should &lsqb;get&rsqb; and &lsqb;get_variable&rsqb; be combined? Seems unnecessary to have both of them.</p></div>
+<div class="extras"><p>Should &lsqb;get&rsqb; and &lsqb;get_value&rsqb; be combined? Seems unnecessary to have both of them.</p></div>
 <div class="extras"><p>Can't I also "store" an instance of a variable (like code), that has compiled something that I will use over and over?</p></div>
 <div class="extras"><p>The following doesn't work because code doesn't support _inherit (weird). As-is, because you can't _inherit from a different namespace... Actually, mk is part of @var, but there isn't a _last, because that would be part of code.repeat, and it would change. Without a way to force [] to be evaluated at declaration time, this doesn't seem doable...</p></div>
 <div class="extras"><p>[code.name.run(parms="")]</p></div>
@@ -1001,7 +1069,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
 &nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lt;https://test.domain.com?parameter1&amp;amp;parameter2&amp;gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1016,7 +1084,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('{{self.v}}'))<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('{{self.v}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lt;blockquote cite=\"url-goes-here\"&amp;gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1039,7 +1107,7 @@ NAMESPACE: code<br />
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">Macro: code.encode_smd</p>
-<p>&nbsp;&nbsp;<em>encode_smd(t="smd markdown to encode")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> = an smd string that will be encoded for display<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;So, we have to use <em>&lt;&nbsp;&gt;</em> for <em>&lsqb;&nbsp;&rsqb;</em> and <em>2{</em> for <em>&lcub;&lcub;</em> and <em>2}</em> for <em>&rcub;&rcub;</em>.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;The entire list of replacements is:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&lt;</em> becomes <em>&amp;lsqb;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&gt;</em> becomes <em>&amp;rsqb;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&lcub;</em> becomes <em>&amp;lcub;&amp;lcub;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&rcub;</em> becomes <em>&amp;rcub;&amp;rcub;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&ast;</em> becomes <em>&amp;#42;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&commat;</em> becomes <em>&amp;#64;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&plus;&plus;</em> becomes <em>&amp;plus;&amp;plus;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&sim;&sim;</em> becomes <em>&amp;tilde;&amp;tilde;</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE:</strong> We cannot use square brackets or curly braces directly, because the parser will replace them with markdown.<br />&nbsp;&nbsp;&nbsp;&nbsp;Also, you need to use <em>&lsqb;E.lp&rsqb;</em> for <em>(</em> and <em>&lsqb;E.rp&rsqb;</em> for <em>)</em>, because parenthesis are used by the markdown<br />&nbsp;&nbsp;&nbsp;&nbsp;to identify parameters to the macros.<br /></p>
+<p>&nbsp;&nbsp;<em>encode_smd(t="smd markdown to encode")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> = an smd string that will be encoded for display<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Use <em>&lt;&nbsp;&gt;</em> for <em>&lsqb;&nbsp;&rsqb;</em>, <em>2{</em> for <em>&lcub;&lcub;</em>, <em>2}</em> for <em>&rcub;&rcub;</em>, <em>2&plus;</em> for <em>&plus;&plus;</em> and <em>2&sim;</em> for <em>&sim;&sim;</em>.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;The entire list of replacements is:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&lt;</em> becomes <em>&amp;lsqb;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&gt;</em> becomes <em>&amp;rsqb;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&lcub;</em> becomes <em>&amp;lcub;&amp;lcub;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&rcub;</em> becomes <em>&amp;rcub;&amp;rcub;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&ast;</em> becomes <em>&amp;#42;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&commat;</em> becomes <em>&amp;#64;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&plus;</em> becomes <em>&amp;plus;&amp;plus;</em><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>2&sim;</em> becomes <em>&amp;tilde;&amp;tilde;</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE1:</strong> Do not use square brackets, curly braces, double plus or double tilde directly, because the parser will replace them with markdown.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE2:</strong> You need to use <em>&lsqb;E.lp&rsqb;</em> for <em>(</em> and <em>&lsqb;E.rp&rsqb;</em> for <em>)</em>, because parenthesis are used by the markdown to identify parameters to the macros.</p>
 <div class="extras"><p class="generic"><strong>Dump of code.encode_smd</strong>:</p></div>
 <div class="extras"><p class="box">
 <strong>encode_smd=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -1061,7 +1129,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lsqb;ins&amp;rsqb;wrong&amp;lsqb;/ins&amp;rsqb; : &amp;lsqb;del&amp;rsqb;wrong&amp;lsqb;/del&amp;rsqb; : &amp;lsqb;em&amp;rsqb;wrong&amp;lsqb;/em&amp;rsqb; : &amp;lsqb;em&amp;rsqb;&amp;lsqb;strong&amp;rsqb;wrong&amp;lsqb;/strong&amp;rsqb;&amp;lsqb;/em&amp;rsqb;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1268,16 +1336,17 @@ NAMESPACE: code<br />
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">Macro: code.attr_replace</p>
-<p>&nbsp;&nbsp;<em>attr_replace(s_str="search_str", r_var="attr_with_rep_val" attr="ns.var.attr to operate on")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>s_str</strong> - the string we are searching for<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>r_var</strong> - attribute containing replacement string<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>attr</strong> - attribute containing string to operate on<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Replaces all occurrences of <strong>s_str</strong> with <strong>r_var</strong> in <strong>attr</strong> and updates <strong>attr</strong>.<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE:</strong> Like <strong>code.replace</strong> except modifies <strong>attr</strong> directly and does NOT push anything onto the input stream.</p>
+<p>&nbsp;&nbsp;<em>attr_replace(s_str="search_str", r_var="attr_with_rep_val" attr="ns.var.attr to operate on" repl_nl="True | False")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>s_str</strong> - the string we are searching for<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>r_var</strong> - attribute containing replacement string<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>attr</strong> - attribute containing string to operate on<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>repl_nl</strong> - replace escaped newline with newline (default:True)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Replaces all occurrences of <strong>s_str</strong> with <strong>r_var</strong> in <strong>attr</strong> and updates <strong>attr</strong>.<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE:</strong> Like <strong>code.replace</strong> except modifies <strong>attr</strong> directly and does NOT push anything onto the input stream.</p>
 <div class="extras"><p class="generic"><strong>Dump of code.attr_replace</strong>:</p></div>
 <div class="extras"><p class="box">
 <strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
 &nbsp;&nbsp;<strong>r_var=</strong>variable with new_value<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1285,14 +1354,15 @@ NAMESPACE: code<br />
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">Macro: code.attr_replace_str</p>
-<p>&nbsp;&nbsp;<em>attr_replace_str(s_str="search_str", r_str="repl_str" attr="ns.var.attr to operate on")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>s_str</strong> - the string we are searching for<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>r_str</strong> - the replacement string<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>attr</strong> - attribute containing string to operate on<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Replaces all occurrences of <strong>s_str</strong> with <strong>r_str</strong> in <strong>attr</strong> and updates <strong>attr</strong>.<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE:</strong> Like <strong>code.attr_replace</strong>, but accepts replacement string directly instead of indirectly via attribute.</p>
+<p>&nbsp;&nbsp;<em>attr_replace_str(s_str="search_str", r_str="repl_str" attr="ns.var.attr to operate on" repl_nl="True | False")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>s_str</strong> - the string we are searching for<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>r_str</strong> - the replacement string<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>attr</strong> - attribute containing string to operate on<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>repl_nl</strong> - replace escaped newline with newline (default:True)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Replaces all occurrences of <strong>s_str</strong> with <strong>r_str</strong> in <strong>attr</strong> and updates <strong>attr</strong>.<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>NOTE:</strong> Like <strong>code.attr_replace</strong>, but accepts replacement string directly instead of indirectly via attribute.</p>
 <div class="extras"><p class="generic"><strong>Dump of code.attr_replace_str</strong>:</p></div>
 <div class="extras"><p class="box">
 <strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
 &nbsp;&nbsp;<strong>r_str=</strong>new_value<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
@@ -1316,15 +1386,16 @@ NAMESPACE: code<br />
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
-<div class="section"><p class="divTitle">Macro: code.get_variable</p>
-<p>&nbsp;&nbsp;<em>get_variable(v="variable_name" ret_type="0|1|2" escape="True|False")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>v</strong> - variable / attribute name to get<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>ret_type</strong> - how to emit the value (0, 1 or 2)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>0</strong> - will return the value raw i.e. not marked down<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1</strong> - will return the value with the initial markdown pass, but without handling delayed expansion<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2</strong> - will return the marked down value (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>escape</strong> - True to escape the HTML, False otherwise (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Emits the value of the variable / attribute <strong>v</strong></p>
-<div class="extras"><p class="generic"><strong>Dump of code.get_variable</strong>:</p></div>
+<div class="section"><p class="divTitle">Macro: code.get_value</p>
+<p>&nbsp;&nbsp;<em>get_value(v="variable_name" ret_type="0|1|2|3|9" escape="True|False" esc_smd="True|False")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>v</strong> - variable / attribute name to get<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>ret_type</strong> - how to emit the value (0, 1, 2, 3 or 9)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>0</strong> - will return the value raw i.e. not marked down<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1</strong> - will return the value with the initial markdown pass, but without handling delayed expansion<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2</strong> - will return the after replacing [ with [ and ] with ]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>3</strong> - will return the after replacing <strong>code.get_value.</strong> with <strong>ns.varname.</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>9</strong> - will return the marked down value (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>escape</strong> - True to escape the HTML, False otherwise (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>esc_smd</strong> - True to escape the SMD, False otherwise (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Emits the value of the variable / attribute <strong>v</strong></p>
+<div class="extras"><p class="generic"><strong>Dump of code.get_value</strong>:</p></div>
 <div class="extras"><p class="box">
-<strong>get_variable=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)<br />
+<strong>get_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
-&nbsp;&nbsp;<strong>ret_type=</strong>2<br />
+&nbsp;&nbsp;<strong>ret_type=</strong>9<br />
 &nbsp;&nbsp;<strong>escape=</strong>False<br />
+&nbsp;&nbsp;<strong>esc_smd=</strong>False<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>### My Inline Heading<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
@@ -1392,7 +1463,7 @@ NAMESPACE: code<br />
       t="{{self._help}}"\
       _help="[sp.2]*{{self._}}(t=\"smd markdown to encode\")*[bb]\
 [sp.4]**t** = an smd string that will be encoded for display[bb]\
-[sp.4]So, we have to use *[E.lt][sp][E.gt]* for *[E.lb][sp][E.rb]* and *2{* for *[E.lcb2]* and *2}* for *[E.rcb2]*.[bb]\
+[sp.4]Use *[E.lt][sp][E.gt]* for *[E.lb][sp][E.rb]*, *2{* for *[E.lcb2]*, *2}* for *[E.rcb2]*, *2[E.plus]* for *[E.ins]* and *2[E.tilde]* for *[E.del]*.[bb]\
 [sp.4]The entire list of replacements is:[b]\
 [sp.6]*[E.lt]* becomes *[E.amp]lsqb;*[b]\
 [sp.6]*[E.gt]* becomes *[E.amp]rsqb;*[b]\
@@ -1400,11 +1471,10 @@ NAMESPACE: code<br />
 [sp.6]*2[E.rcb]* becomes *[E.amp]rcub;[E.amp]rcub;*[b]\
 [sp.6]*[E.ast]* becomes *[E.amp]#42;*[b]\
 [sp.6]*[E.at]* becomes *[E.amp]#64;*[b]\
-[sp.6]*2[E.ins]* becomes *[E.amp]plus;[E.amp]plus;*[b]\
-[sp.6]*2[E.del]* becomes *[E.amp]tilde;[E.amp]tilde;*[bb]\
-[sp.4]**NOTE:** We cannot use square brackets or curly braces directly, because the parser will replace them with markdown.[b]\
-[sp.4]Also, you need to use *[E.lb]E.lp[E.rb]* for *(* and *[E.lb]E.rp[E.rb]* for *)*, because parenthesis are used by the markdown[b]\
-[sp.4]to identify parameters to the macros.[b]"
+[sp.6]*2[E.plus]* becomes *[E.amp]plus;[E.amp]plus;*[b]\
+[sp.6]*2[E.tilde]* becomes *[E.amp]tilde;[E.amp]tilde;*[bb]\
+[sp.4]**NOTE1:** Do not use square brackets, curly braces, double plus or double tilde directly, because the parser will replace them with markdown.[bb]\
+[sp.4]**NOTE2:** You need to use *[E.lb]E.lp[E.rb]* for *(* and *[E.lb]E.rp[E.rb]* for *)*, because parenthesis are used by the markdown to identify parameters to the macros."
 
 @code _id="encode_smd_var"\
       type="exec"\
@@ -1440,19 +1510,23 @@ NAMESPACE: code<br />
 [sp.4]**v** - variable / attribute name to get[bb]\
 [sp.4]Emits the value of the variable / attribute **v**"
 
-@code _id="get_variable"\
+@code _id="get_value"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)"\
+      src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)"\
       v="variable_name"\
-      ret_type="2"\
+      ret_type="9"\
       escape="False"\
-      _help="[sp.2]*{{self._}}(v=\"variable_name\" ret_type=\"0|1|2\" escape=\"True|False\")*[bb]\
+      esc_smd="False"\
+      _help="[sp.2]*{{self._}}(v=\"variable_name\" ret_type=\"0|1|2|3|9\" escape=\"True|False\" esc_smd=\"True|False\")*[bb]\
 [sp.4]**v** - variable / attribute name to get[bb]\
-[sp.4]**ret_type** - how to emit the value (0, 1 or 2)[b]\
+[sp.4]**ret_type** - how to emit the value (0, 1, 2, 3 or 9)[b]\
 [sp.6]**0** - will return the value raw i.e. not marked down[b]\
 [sp.6]**1** - will return the value with the initial markdown pass, but without handling delayed expansion[b]\
-[sp.6]**2** - will return the marked down value (default)[bb]\
+[sp.6]**2** - will return the after replacing {{ with [ and }} with ][b]\
+[sp.6]**3** - will return the after replacing **self.** with **ns.varname.**[b]\
+[sp.6]**9** - will return the marked down value (default)[bb]\
 [sp.4]**escape** - True to escape the HTML, False otherwise (default)[bb]\
+[sp.4]**esc_smd** - True to escape the SMD, False otherwise (default)[bb]\
 [sp.4]Emits the value of the variable / attribute **v**"
 
 @code _id="get_default"\
@@ -1566,27 +1640,31 @@ NAMESPACE: code<br />
 
 @code _id="attr_replace"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})"\
       s_str="string_to_replace"\
       r_var="variable with new_value"\
       attr="ns.var.attr"\
-      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_var=\"attr_with_rep_val\" attr=\"ns.var.attr to operate on\")*[bb]\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_var=\"attr_with_rep_val\" attr=\"ns.var.attr to operate on\" repl_nl=\"True | False\")*[bb]\
 [sp.4]**s_str** - the string we are searching for[b]\
 [sp.4]**r_var** - attribute containing replacement string[b]\
-[sp.4]**attr** - attribute containing string to operate on[bb]\
+[sp.4]**attr** - attribute containing string to operate on[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
 [sp.4]Replaces all occurrences of **s_str** with **r_var** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.replace** except modifies **attr** directly and does NOT push anything onto the input stream."
 
 @code _id="attr_replace_str"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}')"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})"\
       s_str="string_to_replace"\
       r_str="new_value"\
       attr="ns.var.attr"\
-      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_str=\"repl_str\" attr=\"ns.var.attr to operate on\")*[bb]\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_str=\"repl_str\" attr=\"ns.var.attr to operate on\" repl_nl=\"True | False\")*[bb]\
 [sp.4]**s_str** - the string we are searching for[b]\
 [sp.4]**r_str** - the replacement string[b]\
-[sp.4]**attr** - attribute containing string to operate on[bb]\
+[sp.4]**attr** - attribute containing string to operate on[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
 [sp.4]Replaces all occurrences of **s_str** with **r_str** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.attr_replace**, but accepts replacement string directly instead of indirectly via attribute."
 
@@ -1762,19 +1840,21 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
 &nbsp;&nbsp;<strong>r_var=</strong>variable with new_value<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}')<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
 &nbsp;&nbsp;<strong>r_str=</strong>new_value<br />
 &nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
@@ -1866,7 +1946,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
 &nbsp;&nbsp;<strong>v=</strong>self._help<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lsqb;ins&amp;rsqb;wrong&amp;lsqb;/ins&amp;rsqb; : &amp;lsqb;del&amp;rsqb;wrong&amp;lsqb;/del&amp;rsqb; : &amp;lsqb;em&amp;rsqb;wrong&amp;lsqb;/em&amp;rsqb; : &amp;lsqb;em&amp;rsqb;&amp;lsqb;strong&amp;rsqb;wrong&amp;lsqb;/strong&amp;rsqb;&amp;lsqb;/em&amp;rsqb;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>equals=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -1908,7 +1988,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
 &nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>_last=</strong>&amp;lt;https://test.domain.com?parameter1&amp;amp;parameter2&amp;gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>escape_var=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
@@ -1933,11 +2013,12 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
-<strong>get_variable=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
-&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)<br />
+<strong>get_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)<br />
 &nbsp;&nbsp;<strong>v=</strong>variable_name<br />
-&nbsp;&nbsp;<strong>ret_type=</strong>2<br />
+&nbsp;&nbsp;<strong>ret_type=</strong>9<br />
 &nbsp;&nbsp;<strong>escape=</strong>False<br />
+&nbsp;&nbsp;<strong>esc_smd=</strong>False<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>### My Inline Heading<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
