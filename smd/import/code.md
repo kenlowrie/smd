@@ -39,7 +39,7 @@
       t="{{self._help}}"\
       _help="[sp.2]*{{self._}}(t=\"smd markdown to encode\")*[bb]\
 [sp.4]**t** = an smd string that will be encoded for display[bb]\
-[sp.4]So, we have to use *[E.lt][sp][E.gt]* for *[E.lb][sp][E.rb]* and *2{* for *[E.lcb2]* and *2}* for *[E.rcb2]*.[bb]\
+[sp.4]Use *[E.lt][sp][E.gt]* for *[E.lb][sp][E.rb]*, *2{* for *[E.lcb2]*, *2}* for *[E.rcb2]*, *2[E.plus]* for *[E.ins]* and *2[E.tilde]* for *[E.del]*.[bb]\
 [sp.4]The entire list of replacements is:[b]\
 [sp.6]*[E.lt]* becomes *[E.amp]lsqb;*[b]\
 [sp.6]*[E.gt]* becomes *[E.amp]rsqb;*[b]\
@@ -47,11 +47,10 @@
 [sp.6]*2[E.rcb]* becomes *[E.amp]rcub;[E.amp]rcub;*[b]\
 [sp.6]*[E.ast]* becomes *[E.amp]#42;*[b]\
 [sp.6]*[E.at]* becomes *[E.amp]#64;*[b]\
-[sp.6]*2[E.ins]* becomes *[E.amp]plus;[E.amp]plus;*[b]\
-[sp.6]*2[E.del]* becomes *[E.amp]tilde;[E.amp]tilde;*[bb]\
-[sp.4]**NOTE:** We cannot use square brackets or curly braces directly, because the parser will replace them with markdown.[b]\
-[sp.4]Also, you need to use *[E.lb]E.lp[E.rb]* for *(* and *[E.lb]E.rp[E.rb]* for *)*, because parenthesis are used by the markdown[b]\
-[sp.4]to identify parameters to the macros.[b]"
+[sp.6]*2[E.plus]* becomes *[E.amp]plus;[E.amp]plus;*[b]\
+[sp.6]*2[E.tilde]* becomes *[E.amp]tilde;[E.amp]tilde;*[bb]\
+[sp.4]**NOTE1:** Do not use square brackets, curly braces, double plus or double tilde directly, because the parser will replace them with markdown.[bb]\
+[sp.4]**NOTE2:** You need to use *[E.lb]E.lp[E.rb]* for *(* and *[E.lb]E.rp[E.rb]* for *)*, because parenthesis are used by the markdown to identify parameters to the macros."
 
 @code _id="encode_smd_var"\
       type="exec"\
@@ -87,19 +86,23 @@
 [sp.4]**v** - variable / attribute name to get[bb]\
 [sp.4]Emits the value of the variable / attribute **v**"
 
-@code _id="get_variable"\
+@code _id="get_value"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape)"\
+      src="from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)"\
       v="variable_name"\
-      ret_type="2"\
+      ret_type="9"\
       escape="False"\
-      _help="[sp.2]*{{self._}}(v=\"variable_name\" ret_type=\"0|1|2\" escape=\"True|False\")*[bb]\
+      esc_smd="False"\
+      _help="[sp.2]*{{self._}}(v=\"variable_name\" ret_type=\"0|1|2|3|9\" escape=\"True|False\" esc_smd=\"True|False\")*[bb]\
 [sp.4]**v** - variable / attribute name to get[bb]\
-[sp.4]**ret_type** - how to emit the value (0, 1 or 2)[b]\
+[sp.4]**ret_type** - how to emit the value (0, 1, 2, 3 or 9)[b]\
 [sp.6]**0** - will return the value raw i.e. not marked down[b]\
 [sp.6]**1** - will return the value with the initial markdown pass, but without handling delayed expansion[b]\
-[sp.6]**2** - will return the marked down value (default)[bb]\
+[sp.6]**2** - will return the after replacing {{ with [ and }} with ][b]\
+[sp.6]**3** - will return the after replacing **self.** with **ns.varname.**[b]\
+[sp.6]**9** - will return the marked down value (default)[bb]\
 [sp.4]**escape** - True to escape the HTML, False otherwise (default)[bb]\
+[sp.4]**esc_smd** - True to escape the SMD, False otherwise (default)[bb]\
 [sp.4]Emits the value of the variable / attribute **v**"
 
 @code _id="get_default"\
@@ -213,27 +216,31 @@
 
 @code _id="attr_replace"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}')"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})"\
       s_str="string_to_replace"\
       r_var="variable with new_value"\
       attr="ns.var.attr"\
-      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_var=\"attr_with_rep_val\" attr=\"ns.var.attr to operate on\")*[bb]\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_var=\"attr_with_rep_val\" attr=\"ns.var.attr to operate on\" repl_nl=\"True | False\")*[bb]\
 [sp.4]**s_str** - the string we are searching for[b]\
 [sp.4]**r_var** - attribute containing replacement string[b]\
-[sp.4]**attr** - attribute containing string to operate on[bb]\
+[sp.4]**attr** - attribute containing string to operate on[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
 [sp.4]Replaces all occurrences of **s_str** with **r_var** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.replace** except modifies **attr** directly and does NOT push anything onto the input stream."
 
 @code _id="attr_replace_str"\
       type="exec"\
-      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}')"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})"\
       s_str="string_to_replace"\
       r_str="new_value"\
       attr="ns.var.attr"\
-      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_str=\"repl_str\" attr=\"ns.var.attr to operate on\")*[bb]\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(s_str=\"search_str\", r_str=\"repl_str\" attr=\"ns.var.attr to operate on\" repl_nl=\"True | False\")*[bb]\
 [sp.4]**s_str** - the string we are searching for[b]\
 [sp.4]**r_str** - the replacement string[b]\
-[sp.4]**attr** - attribute containing string to operate on[bb]\
+[sp.4]**attr** - attribute containing string to operate on[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
 [sp.4]Replaces all occurrences of **s_str** with **r_str** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.attr_replace**, but accepts replacement string directly instead of indirectly via attribute."
 

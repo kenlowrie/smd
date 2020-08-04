@@ -53,12 +53,20 @@ class HtmlUtils():
         return HtmlUtils.escape_html(v) if v is not None else f"Variable {s} is not defined"
 
     @staticmethod
+    def escape_smd(s):
+        if type(s) != type(''):
+            # If we weren't passed a string, convert it to a string before we escape it.
+            s = str(s)
+
+        return s.replace("[", "&lsqb;").replace("]", "&rsqb;").replace("*", "&#42;").replace("@", "&#64;").replace("++", "&plus;&plus;").replace("~~", "&sim;&sim;")
+
+    @staticmethod
     def encode_smd(s):
         if type(s) != type(''):
             # If we weren't passed a string, convert it to a string before we escape it.
             s = str(s)
 
-        return s.replace("<", "&lsqb;").replace(">", "&rsqb;").replace("2{", "&lcub;&lcub;").replace("2}","&rcub;&rcub;").replace("*", "&#42;").replace("@", "&#64;").replace("++", "&plus;&plus;").replace("~~", "&sim;&sim;")
+        return s.replace("<", "&lsqb;").replace(">", "&rsqb;").replace("2{", "&lcub;&lcub;").replace("2}","&rcub;&rcub;").replace("*", "&#42;").replace("@", "&#64;").replace("2+", "&plus;&plus;").replace("2~", "&sim;&sim;")
 
     @staticmethod
     def encode_smd_var(s):
@@ -173,7 +181,7 @@ class CodeHelpers():
         return news
 
     @staticmethod
-    def get_ns_var(v=None, rt=2, esc=False):
+    def get_ns_var(v=None, rt=9, esc=False, esc_smd=False):
         global _ns_xface
         if not _ns_xface:
             print("interface not initialized")
@@ -183,6 +191,7 @@ class CodeHelpers():
             print("missing variable name")
         elif _ns_xface.exists(v):
             val = _ns_xface.getValue(v,None,rt)
+            val = HtmlUtils().escape_smd(val) if esc_smd else val
             print(val if esc == False else HtmlUtils().escape_html(val))
         else:
             print("{} is undefined r={}.".format(v,rt))
@@ -285,7 +294,7 @@ class CodeHelpers():
             debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
 
     @staticmethod
-    def attr_replace(search_str=None, replace_str_var_name=None, attr=None):        
+    def attr_replace(search_str=None, replace_str_var_name=None, attr=None, replace_nl=True):        
         debug = _get_debug()
 
         fn="attr_replace"
@@ -315,14 +324,13 @@ class CodeHelpers():
         debug.print(f"{fn}: search_str={search_str} repstr={repstr}<br />")
         if repstr:
             # make sure we have a valid string to work with
-            _ns_xface.setAttribute(fq_name, v_attr, repstr.replace(search_str, repval).replace('\\n','\n'))
-            #new_attr_val = f'@set _="{fq_name}" {v_attr}="{repstr.replace(search_str, repval)}"'
-            #CodeHelpers.pushline(new_attr_val)
+            newvalue = repstr.replace(search_str, repval)
+            _ns_xface.setAttribute(fq_name, v_attr, newvalue.replace('\\n','\n') if replace_nl else newvalue)
         else:
             debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
 
     @staticmethod
-    def attr_replace_str(search_str=None, replace_str=None, attr=None):
+    def attr_replace_str(search_str=None, replace_str=None, attr=None, replace_nl=True):
         debug = _get_debug()
 
         fn="attr_replace_str"
@@ -346,7 +354,8 @@ class CodeHelpers():
         debug.print(f"{fn}: current value for {attr}={repstr}")
         if repstr:
             # make sure we have a valid string to work with
-            _ns_xface.setAttribute(fq_name, v_attr, repstr.replace(search_str, replace_str).replace('\\n','\n'))
+            newvalue = repstr.replace(search_str, replace_str)
+            _ns_xface.setAttribute(fq_name, v_attr, newvalue.replace('\\n','\n') if replace_nl else newvalue)
         else:
             debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
 
@@ -413,9 +422,11 @@ class CodeHelpers():
         debug.print(f"{fn}: attrlist = {attrlist}")
         #lines = _get_ns_value(v).split('\\n')[::-1]
         for a in attrlist[::-1]:
-            x = _get_ns_value_raw(f"{fq_name}.{a}",1)
-            debug.print(f"{fn}: {fq_name}.{a} = {x}")
-            _line_cache.pushline(_get_ns_value_raw(f"{fq_name}.{a}",1))
+            raw_value = _get_ns_value_raw(f"{fq_name}.{a}",3)
+            #debug.toggle()
+            debug.print(f"{fn}: {fq_name}.{a} = {raw_value}")
+            #debug.toggle()
+            _line_cache.pushline(raw_value)
             #debug.print(f"{fn}: attr = {a}")
 
     @staticmethod
