@@ -575,41 +575,8 @@ NAMESPACE: link<br />
 <div class="extras"><p>Easy enough. Now let's take a look at the system provided builtins for <strong>&#64;image</strong>.</p></div>
 <a id="ug_image_builtins"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;image builtins</h3></div>
-<div class="extras"><p>The <strong>&#64;image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of <strong>image.md</strong>:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of sys.imports/image.md</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-// Create a constant var with various styles and defaults for images
-
-@var _id="IMG_DEF" \
-      _i_width="90%" \
-      _b_size="1px" \
-      _b_type="solid" \
-      img_border_style="border:{{self._b_size}} {{self._b_type}};padding:1em;" \
-      img_inline_style="margin-left:auto;margin-right:auto;width:{{self._i_width}};" \
-      img_st_inline="{{self.img_inline_style}}" \
-      img_st_inline_border="{{self.img_inline_style}}{{self.img_border_style}}" \
-      img_st_block="display:block;{{self.img_inline_style}}" \
-      img_st_block_border="display:block;{{self.img_inline_style}}{{self.img_border_style}}" \
-      _format="{{self._private_keys_}}{{self._public_keys_}}"
-
-
-// Some useful defaults for _i_width
-@var IMG_SIZE="{{self._public_keys_}}"\
-      thumb="{{var.IMG_DEF._null_(_i_width=\"20%\")}}"\
-      small="{{var.IMG_DEF._null_(_i_width=\"40%\")}}"\
-      medium="{{var.IMG_DEF._null_(._i_width=\"70%\")}}"\
-      large="{{var.IMG_DEF._null_(_i_width=\"90%\")}}"\
-      custom="{{var.IMG_DEF._null_(_i_width=\"{{self.w}}\")}}"\
-      w="50%"
-
-// Some useful shortcuts to select styling for an image
-@var IMG_STYLE="{{self._public_keys_}}"\
-      inline="{{var.IMG_DEF.img_st_inline}}"\
-      inline_border="{{var.IMG_DEF.img_st_inline_border}}"\
-      block="{{var.IMG_DEF.img_st_block}}"\
-      block_border="{{var.IMG_DEF.img_st_block_border}}"
-
-</pre></div>
-<div class="extras"><p>This limited set of builtins is intended as a starting point for your own image styling. <strong>IMG_DEF</strong> contains four different default styles, each of which can be selected using the <strong>IMG_STYLE</strong> attribute shortcuts:</p></div>
+<div class="extras"><p>The <strong>&#64;image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. These builtins are a good starting point for your own image styling, so let's begin with a quick overview of the builtins in <strong>sys.imports/image.md</strong>.</p></div>
+<div class="extras"><p><strong>IMG_DEF</strong> contains four different default styles, each of which can be selected using the <strong>IMG_STYLE</strong> attribute shortcuts:</p></div>
 <div class="extras"><ul class="ulist-plain">
 <li><strong>&lsqb;IMG_STYLE.inline&rsqb;</strong></li>
 <li><strong>&lsqb;IMG_STYLE.inline_border&rsqb;</strong></li>
@@ -632,12 +599,57 @@ NAMESPACE: link<br />
 </pre></div>
 <div class="extras"><p>And here is what the browser renders:</p></div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
-<div class="extras"><p>You can see more of these builtins and the <strong>&#64;image</strong> support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.</p></div>
+<div class="extras"><p>Let's take a closer look at the builtins declared in <strong>image.md</strong> to assist with using images in your documents. We will start by looking at the built-in help for each builtin, and then we'll move on to using them in our document.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>IMG_DEF</strong> Help:</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&nbsp;&nbsp;<em>IMG_DEF</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Defines common image styling options.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Not normally accessed directly. Used by <strong>IMG_SIZE</strong> and <strong>IMG_STYLE</strong> as helpers.<br /><br />&nbsp;&nbsp;<strong>Common Attribute Values</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>_i_width</strong> - width: CSS value<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>_b_size</strong> - border: CSS size value<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>_b_type</strong> - border: CSS type value<br /><br />&nbsp;&nbsp;<strong>Common Styling Defaults</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_border_style</strong> - CSS styling for bordered image<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_inline_style</strong> - CSS styling for borderless image<br /><br />&nbsp;&nbsp;<strong>Common Image Style Options</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_st_inline</strong> - CSS styling for inline image<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_st_inline_border</strong> - CSS styling for inline bordered image<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_st_block</strong> - CSS styling for block image<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>img_st_block_border</strong> - CSS styling for block bordered image.</pre>
+</div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>IMG_SIZE</strong> Help:</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&nbsp;&nbsp;<em>IMG_SIZE</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Provides methods for common image sizes.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Use them when you want to change the default image size used in the <strong>IMG_STYLE</strong> attributes.<br /><br />&nbsp;&nbsp;<strong>Common Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>thumb</strong> - Sets <strong>IMG_DEF._i_width</strong> to 20%<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>small</strong> - Sets <strong>IMG_DEF._i_width</strong> to 40%<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>medium</strong> - Sets <strong>IMG_DEF._i_width</strong> to 70%<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>large</strong> - Sets <strong>IMG_DEF._i_width</strong> to 90%<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>custom(w)</strong> - Sets <strong>IMG_DEF._i_width</strong> to <strong>w</strong><br /><br />&nbsp;&nbsp;<strong>Examples</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lsqb;IMG_SIZE.small&rsqb;</strong> - Sets <strong>IMG_DEF._i_width</strong> to <strong>20%</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lsqb;IMG_SIZE.custom&lpar;w="50%"&rpar;&rsqb;</strong> - Sets <strong>IMG_DEF._i_width</strong> to <strong>50%</strong>.</pre>
+</div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>IMG_STYLE</strong> Help:</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&nbsp;&nbsp;<em>IMG_STYLE</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Several styling attributes for common image styles.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;These attributes are used to obtain various CSS styles for an @image variable.<br /><br />&nbsp;&nbsp;<strong>Common Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>inline</strong> - Returns <strong>IMG_DEF.img_st_inline</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>inline_border</strong> - Returns <strong>IMG_DEF.img_st_inline_border</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>block</strong> - Returns <strong>IMG_DEF.img_st_block</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>block_border</strong> - Returns <strong>IMG_DEF.img_st_block_border</strong><br />&nbsp;&nbsp;<strong>Examples</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lsqb;IMG_STYLE.inline&rsqb;</strong> - Returns the CSS to style an inline image<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lsqb;IMG_STYLE.block_border&rsqb;</strong> - Returns the CSS to style a block image with a border.</pre>
+</div>
+<div class="extras"><p>The builtins you normally use in your documents are <strong>IMG_SIZE</strong> and <strong>IMG_STYLE</strong>. <strong>IMG_SIZE</strong> is used to set the size of the image that will be displayed in the document. Before we get too far, though, we need to actually declare an <strong>@image</strong> variable that we can experiment with. Let's begin with the following declaration:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declare an image variable</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">// Set image size to large, declare myshot var and render</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.large&rsqb;</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;image _id="myshot" src="&lsqb;image_path&rsqb;/needshot.png" style="&lsqb;IMG_STYLE.inline_border&rsqb;"</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
+</div>
+<div class="extras"><p>And when we do that, here's what we get:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>Okay, not too complicated thus far. The first thing to note is that the image size takes up almost the entire document window. This is because the width is currently set to <strong>90%</strong>. So let's go ahead and set the size to <strong>&lsqb;IMG_SIZE.small&rsqb;</strong>, and then render the image again:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>Wait, this looks the same! What's going on? Let's begin by taking a look at the declaration for <strong>myshot</strong>:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaration of image.myshot</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+dump image
+</pre></div>
+<div class="extras"><p>Okay, looks like the issue is that <strong>style</strong> is hard-coded to the <strong>inline_border</strong> style. So, if we redeclare our @image variable, but this time use either "<strong>[!IMG_STYLE.inline_border!]</strong>" or "<strong>{{IMG_STYLE.inline_border}}</strong>", either of which will cause the parser to not evaluate the variable until it is used, that should allow us to override it. So basically, here's the markdown:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declare an image variable</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">// Declare myshot, set image size to small, render</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;image _id="myshot" src="&lsqb;image_path&rsqb;/needshot.png" style="&lsqb;!IMG_STYLE.inline_border!&rsqb;"</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.small&rsqb;</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
+</div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:40%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>And now if I write <strong>&lsqb;IMG_SIZE.thumb&rsqb;</strong> followed by <strong>&lsqb;myshot&rsqb;</strong> I will get:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>Let's review the new definition of <strong>myshot</strong> to see how this change affected the variable definition:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaration of image.myshot</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+dump image
+</pre></div>
+<div class="extras"><p>You can see that <strong>style=</strong> is now set to <strong>&lsqb;IMG_STYLE.inline_border&rsqb;</strong> instead of being hardcoded. Using the <em><strong>!!</strong></em> around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. <strong>{{}}</strong>.</p></div>
+<div class="extras"><p>You can see more of these builtins and the <strong>&#64;image</strong> support in action by reviewing the [link.examples._qlink(_qtext="samples")] that are included in the user guide.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
 NAMESPACE: image<br />
 ----------------------------------------<br />
+<strong>_img_template_=</strong><br />&nbsp;&nbsp;<strong>_set_style=</strong>{{code.attr_replace_value(attr="self.style" value="{{self._st}}")}}<br />
+&nbsp;&nbsp;<strong>_set_style_as_var=</strong>{{code.attr_replace_value(attr="self.style" value="\x5b{{self._st}}\x5d")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
 <strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />
@@ -731,6 +743,11 @@ NAMESPACE: image<br />
 &nbsp;&nbsp;<strong>not_private=</strong>YES<br />
 &nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
 &nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>img<br />
+<br />
+<strong>myshot=</strong><br />&nbsp;&nbsp;<strong>src=</strong>/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png<br />
+&nbsp;&nbsp;<strong>style=</strong>[IMG_STYLE.inline_border]<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}/&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>img<br />
 <br />

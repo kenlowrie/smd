@@ -1674,6 +1674,23 @@ NAMESPACE: code<br />
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
+<div class="section"><p class="divTitle">Macro: code.attr_replace_value</p>
+<p>&nbsp;&nbsp;<em>attr_replace_value(attr="ns.var.attr to operate on" value="new value" repl_nl="True | False")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>attr</strong> - attribute whose value we are to replace<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>value</strong> - replacement value<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>repl_nl</strong> - replace escaped newline with newline (default:True)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Replaces <strong>attr</strong> with <strong>value</strong>.</p>
+<div class="extras"><p class="generic"><strong>Dump of code.attr_replace_value</strong>:</p></div>
+<div class="extras"><p class="box">
+<strong>attr_replace_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>value=</strong>new_value<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+</p></div>
+</div>
+</div>
+<div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">Macro: code.get</p>
 <p>&nbsp;&nbsp;<em>get(v="variable_name")</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>v</strong> - variable / attribute name to get<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Emits the value of the variable / attribute <strong>v</strong></p>
 <div class="extras"><p class="generic"><strong>Dump of code.get</strong>:</p></div>
@@ -1956,6 +1973,18 @@ NAMESPACE: code<br />
 [sp.4]Replaces all occurrences of **s_str** with **r_var** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.replace** except modifies **attr** directly and does NOT push anything onto the input stream."
 
+@code _id="attr_replace_value"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})"\
+      attr="ns.var.attr"\
+      value="new_value"\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(attr=\"ns.var.attr to operate on\" value=\"new value\" repl_nl=\"True | False\")*[bb]\
+[sp.4]**attr** - attribute whose value we are to replace[b]\
+[sp.4]**value** - replacement value[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
+[sp.4]Replaces **attr** with **value**."
+
 @code _id="attr_replace_str"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})"\
@@ -2151,6 +2180,15 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong><br />
+&nbsp;&nbsp;<strong>_params_=</strong>{}<br />
+<br />
+<strong>attr_replace_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>value=</strong>new_value<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
@@ -2356,6 +2394,20 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print("test")<br />
 <br />
+<strong>image_factory=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="\x5b$.st\x5d"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;\x7b\x7bself._\x7d\x7d&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;\x7b\x7bimage._img_template_._help\x7d\x7d"     ')<br />
+&nbsp;&nbsp;<strong>ip=</strong>img_path/filename<br />
+&nbsp;&nbsp;<strong>st=</strong>!IMG_STYLE.inline_border!<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="[$.st]"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;{{self._}}&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;{{image._img_template_._help}}"     ')<br />
+<br />
+<strong>image_factory_abs_style=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="$.st"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;\x7b\x7bself._\x7d\x7d&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;\x7b\x7bimage._img_template_._help\x7d\x7d"     ')<br />
+&nbsp;&nbsp;<strong>ip=</strong>img_path/filename<br />
+&nbsp;&nbsp;<strong>st=</strong>\x7b\x7bIMG_STYLE.inline_border\x7d\x7d<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="$.st"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;{{self._}}&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;{{image._img_template_._help}}"     ')<br />
+<br />
 <strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
 &nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
@@ -2440,13 +2492,12 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>c=</strong>{{var._shot_defs_.crane}}<br />
 &nbsp;&nbsp;<strong>s=</strong>{{var._shot_defs_.scene}}<br />
 &nbsp;&nbsp;<strong>notes=</strong>{{var._shot_defs_.notes}}<br />
-&nbsp;&nbsp;<strong>usage=</strong>Usage: &lt;strong&gt;{{self.nm}}(d=&amp;quot;desc&amp;quot; l=&amp;quot;lens&amp;quot; c=&amp;quot;crane&amp;quot;)&lt;/strong&gt;)<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"     ')<br />
 <br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />
-&nbsp;&nbsp;<strong>t=</strong>Usage: {{self._}}(t="var._public_attrs_")<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>***desc***=Your shot description here.&lt;br /&gt;***lens***=24mm&lt;br /&gt;***fstop***=f/2.8&lt;br /&gt;***iso***=320&lt;br /&gt;***height***=36in&lt;br /&gt;***crane***=No&lt;br /&gt;***scene***=&lt;br /&gt;***notes***=&lt;br /&gt;***val***=&amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;default note text&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;&lt;br /&gt;<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />

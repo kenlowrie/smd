@@ -1085,6 +1085,10 @@ Discuss @set and also <strong>&lsqb;var._null_&lpar;attr=""&rpar;&rsqb;</strong>
 <div class="extras"><p>TODO: Make sure I document how if a variable has no _format attribute, when you reference it w/o an attribute qualifier, it dumps all attributes...</p></div>
 <div class="extras"><p>TODO: Unless it is @image (@code?), in which case you get different results...</p></div>
 <div class="extras"><p>TODO: Or @code, that also is different...</p></div>
+<div class="extras"><p>Document .?</p></div>
+<div class="extras"><p>Document .??</p></div>
+<div class="extras"><p>Document .?? would strip the HTML tags and replace it with readable text, so you can get help in "smd -nd"</p></div>
+<div class="extras"><p>Add documentation for [!!].</p></div>
 <div class="extras"><p>[docthis.close]</p></div>
 <div class="variables">
 <code>
@@ -1132,6 +1136,14 @@ NAMESPACE: var<br />
 <br />
 <strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="var" _="d0" _format="d0_rval"<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
+<br />
+<strong>HEX=</strong><br />&nbsp;&nbsp;<strong>lb=</strong>\x5b<br />
+&nbsp;&nbsp;<strong>rb=</strong>\x5d<br />
+&nbsp;&nbsp;<strong>lcb=</strong>\x7b<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>\x7d<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
 <br />
 <strong>_a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
 <br />

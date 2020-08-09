@@ -80,6 +80,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
 &nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
 <br />
+<strong>HEX=</strong><br />&nbsp;&nbsp;<strong>lb=</strong>\x5b<br />
+&nbsp;&nbsp;<strong>rb=</strong>\x5d<br />
+&nbsp;&nbsp;<strong>lcb=</strong>\x7b<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>\x7d<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
@@ -337,6 +345,15 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(s_str="search_str", r_str="repl_str" attr="ns.var.attr to operate on" repl_nl="True | False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;s_str&lt;/strong&gt; - the string we are searching for&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;r_str&lt;/strong&gt; - the replacement string&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - attribute containing string to operate on&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;repl_nl&lt;/strong&gt; - replace escaped newline with newline (default:True)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces all occurrences of &lt;strong&gt;s_str&lt;/strong&gt; with &lt;strong&gt;r_str&lt;/strong&gt; in &lt;strong&gt;attr&lt;/strong&gt; and updates &lt;strong&gt;attr&lt;/strong&gt;.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Like &lt;strong&gt;code.attr_replace&lt;/strong&gt;, but accepts replacement string directly instead of indirectly via attribute.<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
 &nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})<br />
+<br />
+<strong>attr_replace_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>value=</strong>new_value<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(attr="ns.var.attr to operate on" value="new value" repl_nl="True | False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - attribute whose value we are to replace&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;value&lt;/strong&gt; - replacement value&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;repl_nl&lt;/strong&gt; - replace escaped newline with newline (default:True)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces &lt;strong&gt;attr&lt;/strong&gt; with &lt;strong&gt;value&lt;/strong&gt;.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
 <br />
 <strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />

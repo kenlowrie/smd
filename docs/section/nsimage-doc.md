@@ -68,13 +68,9 @@ Easy enough. Now let's take a look at the system provided builtins for [smdimage
 
 @import "[sys.imports]/image.md"
 
-The [smdimage.b] namespace provides a limited set of builtins to get you started with using images in your markdown. Let's have a look at the contents of **image.md**:
+The [smdimage.b] namespace provides a limited set of builtins to get you started with using images in your markdown. These builtins are a good starting point for your own image styling, so let's begin with a quick overview of the builtins in **sys.imports/image.md**. 
 
-[terminal.wc_open(t="Contents of sys.imports/image.md")]
-@embed "[sys.imports]/image.md" esc="y"
-[terminal.wc_close]
-
-This limited set of builtins is intended as a starting point for your own image styling. **IMG_DEF** contains four different default styles, each of which can be selected using the **IMG_STYLE** attribute shortcuts:
+ **IMG_DEF** contains four different default styles, each of which can be selected using the **IMG_STYLE** attribute shortcuts:
 
 [ulistplain.wc_open]
 @wrap [code.wrap_stack(w="tag.<")],strong
@@ -111,8 +107,86 @@ And here is what the browser renders:
 @image _="shot1" src="[sys.root]/docs/import/shot1.jpg" style="{{var.IMG_STYLE.inline_border}}"
 [shot1]
 
-You can see more of these builtins and the [smdimage.b] support in action by reviewing the [link.examples.<]samples[link.examples.>] that are included in the user guide.
+@var image_path="[sys.root]/docs/samples/image"
 
+@import '[sys.imports]/avs/avs.md'
+
+@set _="code.dump" format="True" whitespace="True"
+
+Let's take a closer look at the builtins declared in **image.md** to assist with using images in your documents. We will start by looking at the built-in help for each builtin, and then we'll move on to using them in our document.
+
+[terminal2.wc_open(t="**IMG_DEF** Help:")]
+[IMG_DEF.?]
+[terminal2.wc_close]
+
+[terminal2.wc_open(t="**IMG_SIZE** Help:")]
+[IMG_SIZE.?]
+[terminal2.wc_close]
+
+[terminal2.wc_open(t="**IMG_STYLE** Help:")]
+[IMG_STYLE.?]
+[terminal2.wc_close]
+
+The builtins you normally use in your documents are **IMG_SIZE** and **IMG_STYLE**. **IMG_SIZE** is used to set the size of the image that will be displayed in the document. Before we get too far, though, we need to actually declare an **@image** variable that we can experiment with. Let's begin with the following declaration:
+
+[terminal2.wc_open(t="Declare an image variable")]
+    [smdcomment.il] Set image size to large, declare myshot var and render
+    [e_var(t="IMG_SIZE.large")]
+    [encode_smd(t="@image _id=\"myshot\" src=\"[E.lb]image_path[E.rb]/needshot.png\" style=\"[E.lb]IMG_STYLE.inline_border[E.rb]\"")]
+    [e_var(t="myshot")]
+[terminal2.wc_close]
+
+And when we do that, here's what we get:
+
+[IMG_SIZE.large]
+@image _id="myshot" src="[image_path]/needshot.png" style="[IMG_STYLE.inline_border]"
+[myshot]
+
+Okay, not too complicated thus far. The first thing to note is that the image size takes up almost the entire document window. This is because the width is currently set to **[IMG_DEF._i_width]**. So let's go ahead and set the size to [e_var.b(t="IMG_SIZE.small")], and then render the image again:
+
+[IMG_SIZE.small]
+[myshot]
+
+Wait, this looks the same! What's going on? Let's begin by taking a look at the declaration for **myshot**:
+
+[terminal.wc_open(t="Declaration of image.myshot")]
+    [dump(ns="image" name="myshot" format="False" whitespace="False")]
+[terminal.wc_close]
+
+Okay, looks like the issue is that **style** is hard-coded to the **inline_border** style. So, if we redeclare our @image variable, but this time use either "**[!IMG_STYLE.inline_border!]**" or "**{{IMG_STYLE.inline_border}}**", either of which will cause the parser to not evaluate the variable until it is used, that should allow us to override it. So basically, here's the markdown:
+
+[terminal2.wc_open(t="Declare an image variable")]
+    [smdcomment.il] Declare myshot, set image size to small, render
+    [encode_smd(t="@image _id=\"myshot\" src=\"[E.lb]image_path[E.rb]/needshot.png\" style=\"[E.lb]!IMG_STYLE.inline_border![E.rb]\"")]
+    [e_var(t="IMG_SIZE.small")]
+    [e_var(t="myshot")]
+[terminal2.wc_close]
+
+@image _id="myshot" src="[image_path]/needshot.png" style="[!IMG_STYLE.inline_border!]"
+// This next step isn't needed right now, because the prior call to it actually set the width, it's just that it was hardcoded in the attrribute of myshot...
+[IMG_SIZE.small]
+[myshot]
+
+And now if I write [e_var.b(t="IMG_SIZE.thumb")] followed by [e_var.b(t="myshot")] I will get:
+
+[IMG_SIZE.thumb]
+[myshot]
+
+Let's review the new definition of **myshot** to see how this change affected the variable definition:
+
+[terminal.wc_open(t="Declaration of image.myshot")]
+    [dump(ns="image" name="myshot" format="False" whitespace="False")]
+[terminal.wc_close]
+
+You can see that **style=** is now set to [e_var.b(t="IMG_STYLE.inline_border")] instead of being hardcoded. Using the ***!!*** around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. **{{}}**.
+
+//Let's have a look at the contents of **image.md**:
+
+//[terminal.wc_open(t="Contents of sys.imports/image.md")]
+//@embed "[sys.imports]/image.md" esc="y"
+//[terminal.wc_close]
+
+You can see more of these builtins and the [smdimage.b] support in action by reviewing the [link.examples._qlink(_qtext="samples")] that are included in the user guide.
 
 //[docthis.open(h="Add this to nsimage-doc.md")]
 //[docthis.close]
