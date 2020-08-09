@@ -174,11 +174,15 @@ They are just simplified versions you can use to quickly generate a shot only or
 [terminal2.wc_open(t="Simplified *avshot* methods")]
 
 **[encode_smd(t="<avshot.shot_only")](_s="shot info"[E.rp]]**
-**[encode_smd(t="<avshot.shot_only")](_s="shot info" _d="shot description"[E.rp]]**
+**[encode_smd(t="<avshot.shot_with_desc")](_s="shot info" _d="shot description"[E.rp]]**
 [terminal2.wc_close]
 
 [var.avshot.shot_only(_s="[cu] Hands holding phone")]
 
 [var.avshot.shot_with_desc(_s="[ecu] text message on phone" _d="help[bb]me")]
+
+[terminal2.wc_open(t="For reference, here is the help for **avshot**:")]
+[avshot.?]
+[terminal2.wc_close]
 
 Okay, that wraps up this chapter on creating A/V scripts with [smd.b].

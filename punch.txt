@@ -15,6 +15,8 @@ Refresh the samples so they are using current markdown...
 Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
 Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
+[dump(ns="namespace1 & namespace2")] - parse the namespaces strip(ns.split('&')) and dump each of them.
+
 
 Priority 1 | p1
 ---------------
@@ -29,7 +31,7 @@ You should get error/warning messages when you try to pop beyond the end of the 
 Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
 Split out the div sections specific to AV into the AVS.md file (from divs.md).
 Seems like I should track where _markdown is called, and only in the main output loop, should things be expanded/processed. I don't know if this is possible, but it seems like if it were, it would solve a lot of the issues I have with trying to do things like escape_var, encode_var, etc, when the underlying variable calls code.push* or code.repeat, etc, etc. Worth a glance in any case...
-@html should add _c(content) and _r(rawcontent) - grep make sure _c, _r not currently used anywhere. If so, fix that first, then implement this. What is this for? _c is the content? And it is returned how? What is meant by _r(rawcontent)? html.foo._c? html.foo(_c="content")
+@html should add _c_(_c) and _r_(_r) - grep make sure _c_, _r_ not currently used anywhere. If so, fix that first, then implement this. Might enable with _ea_="True" (if specified, then add the _c_, _c, _raw_, _r attributes). Then, you would be able to specify content by using ._c_(_c="content"), and it would emit .<._c.> in one step. html.foo._c_(_c="content").
 It would be awesome if I could figure out regex for [var("1 agument")], and that argument is always the first in the declaration, only when you need to specify a different argument do you have to resort to naming them.
 
 
@@ -46,13 +48,13 @@ Need to add negative tests to the unittests. that is, things that should fail. T
 Test this on Windows 10. If I can make this work there, that would be a huge win.
 How about the ability to delete a variable and also an attribute.
     [code.var_add] - why? @var, @ns
-    [code.var_delete]
-    [code.var_duplicate]
-    [code.var_rename]
-    [code.attr_delete]
-    [code.attr_duplicate]
-    [code.attr_update] - why?? @set
-    [code.attr_rename]
+    [code.var_delete] - useful
+    [code.var_duplicate] - why? _inherit= (does this work in all namespaces including @code?)
+    [code.var_rename] - maybe useful
+    [code.attr_delete] - useful
+    [code.attr_duplicate] - why? @set ... newattr="[self.existing_attr]"
+    [code.attr_update] - why?? @set ...
+    [code.attr_rename] - useful
 
 
 
@@ -178,6 +180,8 @@ Update nsbasic.md so we print the attributes escaped and raw, for easier compari
 Make sure all code macros have unit tests for them. e.g. pushvar does not...
 Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
 Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
+Document code.attr_replace_value
+Fix bug where ' inside a string [var.attr(a="this doesn’t work")] --workaround use &apos;
 
 
 
@@ -193,11 +197,7 @@ Use python -m profile debug.py (debug.py loads and runs avscript -f ...)
 Need ability to display error messages on ambiguous variable names.
 @debug on="ns.add". Might need to spruce it up a bit. If you specify
 a namespace, should this be okay? Because we rely on this for image.name
-and var.name, as a way to create linked shots... 
-
-Is the raw I have implemented any good? Or should I make it so it's done
-in the namespaces module with an optional parameter, and then use @code
-macros to access any element in raw form?
+and var.name, as a way to create linked shots... shots.md, shotinfo2...
 
 Remove unused code in .core module
 
@@ -212,11 +212,14 @@ Rainy Day Fixes/Changes:
 Parenthesis inside a variable string doesn't parse correctly
 For now, the solution is to use html entities (&lpar; and &rpar;)
 e.g. [var.section(t="Scene 15 - Location S3:42 L:~8s (Ending Instrumental)")]
-
-Fix bug where ' inside a string [var.attr(a="this doesn’t work")]
---workaround use &apos;
+Could we use \x## to embed them as well, and still have them be legit Parenthesis?
 
 Can I change the HTML formatting from before hand to on the backend, when I actually output?
 That would enable me to more readily detect unbalanced tags
 And I could format the output so it's nice and easy to read.
 
+It would really be cool if I could write actual Python code inline (v3). Basically, make it so you can put the code that's in utiity.py inline, and it generate the [code.xface] stuff on the fly. That would be awesome! Alternatively, if you could just write actual Python expressions inline like the following, that would also be cool.
+@code _id="test" type="exec"\
+    src="'print( 1 if \"x\" != \"_default_\" else 2)'"
+
+x=[code.test.run]

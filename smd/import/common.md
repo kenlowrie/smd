@@ -34,6 +34,15 @@
     equot="\&quot;" quot="&quot;" dquot="&#34;"\
     fs="&sol;" fs2="[self.fs][self.fs]"
 
+// Create a hex code namespace variable HEX with attrs for commonly used ASCII Character Codes
+@var HEX="Entity Constants: {{self._all_attrs_}}" \
+    lb="\x5b"\
+    rb="\x5d"\
+    lcb="\x7b"\
+    lcb2="[self.lcb][self.lcb]"\
+    rcb="\x7d"\
+    rcb2="[self.rcb][self.rcb]"
+
 // Create an emoji namespace variable EMOJI with attrs for commonly used emojis
 @var EMOJI="Emoji Constants: {{self._public_attrs_}}" \
     mask="&#x1F637;"\

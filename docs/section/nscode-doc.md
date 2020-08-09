@@ -266,6 +266,7 @@ In addition to the specific attributes covered above, [smdcode.b] variables supp
 [pushlist(name="append")]
 [pushlist(name="attr_replace")]
 [pushlist(name="attr_replace_str")]
+[pushlist(name="attr_replace_value")]
 [pushlist(name="get")]
 [pushlist(name="get_value")]
 [pushlist(name="get_default")]

@@ -360,6 +360,26 @@ class CodeHelpers():
             debug.print(f"{fn}: {attr} value is empty; nothing to replace.")
 
     @staticmethod
+    def attr_replace_value(attr=None, replace_str=None, replace_nl=True):        
+        debug = _get_debug()
+
+        fn="attr_replace_value"
+        for v in [replace_str, attr]:
+            if not v:
+                debug.print(f"{fn}: missing required parameter {str(v)}")
+                return
+
+        # Get the attribute whose value we're going to replace
+        v_ns, v_name, v_attr = _ns_xface.isAttribute(attr, True)
+        if v_attr is None:
+            debug.print(f"{fn}: no variable named {attr} was found.")
+            return
+
+        fq_name = f"{v_ns}.{v_name}"
+        debug.print(f"{fn}: attr={fq_name}.{v_attr} repstr={replace_str}<br />")
+        _ns_xface.setAttribute(fq_name, v_attr, replace_str.replace('\\n','\n') if replace_nl else replace_str)
+
+    @staticmethod
     def pushline(s=None):
         debug = _get_debug()
         if s is not None and type(s) is type(''):

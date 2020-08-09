@@ -229,6 +229,18 @@
 [sp.4]Replaces all occurrences of **s_str** with **r_var** in **attr** and updates **attr**.[b]\
 [sp.4]**NOTE:** Like **code.replace** except modifies **attr** directly and does NOT push anything onto the input stream."
 
+@code _id="attr_replace_value"\
+      type="exec"\
+      src="from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})"\
+      attr="ns.var.attr"\
+      value="new_value"\
+      repl_nl="True"\
+      _help="[sp.2]*{{self._}}(attr=\"ns.var.attr to operate on\" value=\"new value\" repl_nl=\"True | False\")*[bb]\
+[sp.4]**attr** - attribute whose value we are to replace[b]\
+[sp.4]**value** - replacement value[b]\
+[sp.4]**repl_nl** - replace escaped newline with newline (default:True)[bb]\
+[sp.4]Replaces **attr** with **value**."
+
 @code _id="attr_replace_str"\
       type="exec"\
       src="from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})"\

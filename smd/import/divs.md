@@ -193,7 +193,7 @@
 [code.attr_replace_str(s_str="$DIVNAME$" r_str="terminal2" attr="var.terminal2._help")]
 
 // specialized ordered and unordered lists
-
+//TODO: Finish writing the _help strings for all these builtins.
 
 @var _="_lists_"\
       _format="@@ {{self.inline}}"\

@@ -225,6 +225,6 @@ wc_open_inline_nd
 
 @import "[sys.root]/docs/samples/avscript/script1-doc.md"
 
-@set dump_ns_list="var=\"note|question|greyout|important|generic|vo\" html=\".*(note|question|vo|greyout|important|generic)\"" 
+@set dump_ns_list="var=\"note|question|greyout|important|generic|vo|avshot\" html=\".*(note|question|vo|greyout|important|generic)\"" 
 
 [var.testdoc_nw.end]

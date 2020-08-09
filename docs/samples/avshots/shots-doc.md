@@ -140,7 +140,8 @@ Shot
 [var.avshot.audio]
 Description
 
-{:.red}$$revision$$:1 This should not be a new div, class prefixes are not allowed here.
+This is the old syntax for revision, cover, contact, basic vars and links
+{:.red}$$revision$$:1 This should not be a new div.
 {:.blue}$$cover$$:.NOT:.HERE:.EITHER
 {:.green}$$contact$$:.NOT:.HERE:.EITHER:1:2:3
 {:.red}[variable]=NO NOT HERE EITHER
