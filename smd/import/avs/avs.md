@@ -12,12 +12,14 @@
           trans="@@ {{html.ul.>}}" \
           end_shot="@@ {{html.div.>}}" \
           shot_only="{{code.pushlines(t=\"{{self._start_shot_}}\n{{self.end_shot}}\")}}"\
-          shot_with_desc="{{code.pushlines(t=\"{{self._start_shot_}}\n@wrap p\n{{self._d}}\n@parw 1\n{{self.end_shot}}\")}}"\
-          _start_shot_="{{self.start}}\n@wrap li\n{{self._s}}\n@parw 1\n{{self.trans}}"\
-          visual="{{code.pushlines(t=\"{{self.start}}\n@wrap li\")}}"\
-          audio="{{code.pushlines(t=\"@parw\n{{self.trans}}\n@wrap p\")}}"\
+          shot_with_desc="{{code.pushlines(t=\"{{self._start_shot_}}\n[self.wrap_audio]\n{{self._d}}\n@parw 1\n{{self.end_shot}}\")}}"\
+          _start_shot_="{{self.start}}\n[self.wrap_visual]\n{{self._s}}\n@parw 1\n{{self.trans}}"\
+          visual="{{code.pushlines(t=\"{{self.start}}\n[self.wrap_visual]\")}}"\
+          audio="{{code.pushlines(t=\"@parw\n{{self.trans}}\n[self.wrap_audio]\")}}"\
           end="{{code.pushlines(t=\"@parw\n{{self.end_shot}}\")}}"\
-          noaudio="{{code.pushlines(t=\"@parw\n{{self.trans}}\n{{self.end_shot}}\")}}"\          
+          noaudio="{{code.pushlines(t=\"@parw\n{{self.trans}}\n{{self.end_shot}}\")}}"\
+          wrap_visual="@wrap li"\
+          wrap_audio="@wrap p"\      
           _s="Your Shot Here"\
           _d="Your Shot Description here"\
           _help="[sp.2]*{{self._}}*[bb]\

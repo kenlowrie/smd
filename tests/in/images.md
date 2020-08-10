@@ -166,7 +166,7 @@ Use it @raw, except it smashes against the sides...
 [image_factory(nm="shot0" ip="[image_path]/shot1.jpg" st="!ss!")]
 
 [var.avshot.visual]
-    [var.shotinfo2(shotid="shot0")]
+    [var.shotdetail(shotid="shot0")]
 [var.avshot.audio]
     And here is some info about shot0
 [var.avshot.end]
@@ -212,47 +212,47 @@ Four different image styles in Single Shot Sequence
 @raw [image.shot3a]
 @raw [image.shot3b]
 
-## avshot using shotinfo2 smart shots
+## avshot using shotdetail smart shots
 
 
 [IMG_SIZE.custom(w="100%")]
 [var.avshot.visual]
-    [var.shotinfo2(shotid="shot2a")]
+    [var.shotdetail(shotid="shot2a")]
 [var.avshot.noaudio]
 
 [IMG_SIZE.custom(w="92.3%")]
 [var.avshot.visual]
-    [var.shotinfo2(shotid="shot2b")]
+    [var.shotdetail(shotid="shot2b")]
 [var.avshot.noaudio]
 
 [IMG_SIZE.custom(w="100%")]
 [var.avshot.visual]
-    [var.shotinfo2(shotid="shot3a")]
+    [var.shotdetail(shotid="shot3a")]
 [var.avshot.noaudio]
 
 [IMG_SIZE.custom(w="92.3%")]
 [var.avshot.visual]
-    [var.shotinfo2(shotid="shot3b")]
+    [var.shotdetail(shotid="shot3b")]
 [var.avshot.noaudio]
 
 ## Testing namespaces
 
 [var.avshot.visual]
-    [shotinfo2]
+    [shotdetail]
 [var.avshot.audio]
-    shotinfo2._=[shotinfo2._]
-    shotinfo2._id=[shotinfo2._id]
-    shotinfo2.shotid=[shotinfo2.shotid]
+    shotdetail._=[shotdetail._]
+    shotdetail._id=[shotdetail._id]
+    shotdetail.shotid=[shotdetail.shotid]
 [var.avshot.end]
 
 ### Namespace with prefix
 
 [var.avshot.visual]
-    [var.shotinfo2]
+    [var.shotdetail]
 [var.avshot.audio]
-    var.shotinfo2._=[var.shotinfo2._]
-    var.shotinfo2._id=[var.shotinfo2._id]
-    var.shotinfo2.shotid=[var.shotinfo2.shotid]
+    var.shotdetail._=[var.shotdetail._]
+    var.shotdetail._id=[var.shotdetail._id]
+    var.shotdetail.shotid=[var.shotdetail.shotid]
 [var.avshot.end]
 
 [IMG_SIZE.small]
@@ -274,6 +274,42 @@ shot2a._format=[shot2a._format]
 [var.shot2a.lens]
 [var.shot2a._format]
 
+[var.plain(t="Help Strings for shot2a")]
+[shot2a.?]
+
+[var.plain(t="Help Strings for _shotdetail_")]
+[_shotdetail_.?]
+
+[var.plain(t="Help Strings for _shot_defs_")]
+[_shot_defs_.?]
+
+[var.plain(t="Help Strings for _shot_template_")]
+[_shot_template_.?]
+
+[var.plain(t="Help Strings for shot_factory")]
+[shot_factory.?]
+
+[var.plain(t="Help Strings for image_factory_config")]
+[image_factory_config.?]
+
+[var.plain(t="Help Strings for _img_template_")]
+[_img_template_.?]
+
+[var.plain(t="Help Strings for image_factory")]
+[image_factory.?]
+
+[var.plain(t="Help Strings for image_factory_abs_style")]
+[image_factory_abs_style.?]
+
+[var.plain(t="Help Strings for shotdetail")]
+[shotdetail.?]
+
+[var.plain(t="Help Strings for shot_format")]
+[shot_format.?]
+
+[var.plain(t="Help Strings for shot_emitter")]
+[shot_emitter.?]
+
 @parw
 
 @import "[sys.root]/docs/userdocs_macros.md"
@@ -291,6 +327,8 @@ shot2a._format=[shot2a._format]
 @dump link="^ug_samp_images"
 
 @import "[sys.root]/docs/samples/images/images-doc.md"
+
+//@stop
 
 @set dump_ns_list="image=\".\" var=\".\""
 

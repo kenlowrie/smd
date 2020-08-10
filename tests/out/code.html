@@ -2399,7 +2399,9 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>ip=</strong>img_path/filename<br />
 &nbsp;&nbsp;<strong>st=</strong>!IMG_STYLE.inline_border!<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="[$.st]"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;{{self._}}&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;{{image._img_template_._help}}"     ')<br />
+&nbsp;&nbsp;<strong>_last=</strong>@image _id="_needshot_" _inherit="_img_template_"                      src="/Users/ken/Dropbox/shared/src/script/smd/smd/import/avs/needshot.png"                      style="[!IMG_STYLE.inline_border!]"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;{{code.image_factory._}}&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;{{image._img_template_._help}}"<br />
+&nbsp;&nbsp;<strong>_params_=</strong>{'nm': '_needshot_', 'ip': '/Users/ken/Dropbox/shared/src/script/smd/smd/import/avs/needshot.png', 'st': '!IMG_STYLE.inline_border!'}<br />
+&nbsp;&nbsp;<strong>nm=</strong>_needshot_<br />
 <br />
 <strong>image_factory_abs_style=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
 &nbsp;&nbsp;<strong>src=</strong>print('@image _id="$.nm" _inherit="_img_template_"                      src="$.ip"                      style="$.st"                      _help="&amp;nbsp;&amp;nbsp;&lt;strong&gt;Created with:&lt;/strong&gt; &lt;em&gt;\x7b\x7bself._\x7d\x7d&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;\x7b\x7bimage._img_template_._help\x7d\x7d"     ')<br />
@@ -2483,7 +2485,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 <strong>shot_factory=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
-&nbsp;&nbsp;<strong>src=</strong>print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"     ')<br />
+&nbsp;&nbsp;<strong>src=</strong>print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"                      _help="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Variable created with &lt;strong&gt;{{self._}}&lt;/strong&gt;.&lt;br /&gt;&lt;br /&gt;\x7b\x7bvar.shot_help_strings._attributes\x7d\x7d&lt;br /&gt;&lt;br /&gt;\x7b\x7bvar.shot_help_strings._methods\x7d\x7d&lt;br /&gt;&lt;br /&gt;\x7b\x7bvar.shot_help_strings._template_methods\x7d\x7d"     ')<br />
 &nbsp;&nbsp;<strong>d=</strong>{{var._shot_defs_.desc}}<br />
 &nbsp;&nbsp;<strong>l=</strong>{{var._shot_defs_.lens}}<br />
 &nbsp;&nbsp;<strong>f=</strong>{{var._shot_defs_.fstop}}<br />
@@ -2493,7 +2495,7 @@ NAMESPACE: code<br />
 &nbsp;&nbsp;<strong>s=</strong>{{var._shot_defs_.scene}}<br />
 &nbsp;&nbsp;<strong>notes=</strong>{{var._shot_defs_.notes}}<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"     ')<br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('@var _id="$.nm" _inherit="_shot_template_"                      d="$.d"                      l="$.l"                      f="$.f"                      i="$.i"                      h="$.h"                      c="$.c"                      s="$.s"                      notes="$.notes"                      _help="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Variable created with &lt;strong&gt;{{self._}}&lt;/strong&gt;.&lt;br /&gt;&lt;br /&gt;{{var.shot_help_strings._attributes}}&lt;br /&gt;&lt;br /&gt;{{var.shot_help_strings._methods}}&lt;br /&gt;&lt;br /&gt;{{var.shot_help_strings._template_methods}}"     ')<br />
 <br />
 <strong>split_as=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
 &nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print(CodeHelpers.split_as('{{self.t}}'))<br />

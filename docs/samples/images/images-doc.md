@@ -132,6 +132,7 @@ This is what we will get:
 
 [image_factory(nm="myshot" ip="[image_path]/shot1.jpg" st="!IMG_STYLE.inline_border!")]
 [shot_factory(nm="myshot" d="WS: Crane down" notes="Opening crane shot" c="Yes")]
+
 [avshot.visual]
     [image.myshot]
 [avshot.audio]
@@ -198,7 +199,7 @@ One thing to notice if you didn't catch it is that you will always want to prefi
 
 Before moving on, let's see a few more combinations of using the factory-created image and shot variables in different contexts.
 
-[wrap_h.section(t="### More Examples of Using the **shot.md** macros")]
+[wrap_h.subsect(t="### More examples using the **avs/shot.md** builtins")]
 
 Begin by creating a few variables we can use in our examples.
 
@@ -221,7 +222,7 @@ Although it's convenient to declare as many of the attributes as possible when t
     [e_var(t="var.shot1")]
 
     *[smdcomment.il] Update attributes using the ._null_ method and render again*
-    [E.lb]var.shot1._null_(d="[E.ast]My Shot Description[E.ast]" c="yes" l="85mm")[E.rb]
+    [E.lb]var.shot1._null_(d="[E.ast]WS: Crane down to reveal MOM[E.ast]" c="yes" l="85mm")[E.rb]
     [e_var(t="var.shot1")]
 [terminal2.wc_close]
 
@@ -229,7 +230,7 @@ And here is what we get:
 
 [shot_factory(nm="shot1")]
 [var.shot1]
-[var.shot1._null_(d="*My Shot Description*" c="yes" l="85mm")]
+[var.shot1._null_(d="*WS: Crane down to reveal MOM*" c="yes" l="85mm")]
 [var.shot1]
 
 You can also add more attributes using the same technique. For example, say you want to add **title** and **class** attributes to your factory image variable. Here's how you could do that:
@@ -289,13 +290,13 @@ For now, let's focus in on **notes**, **addNote** and **addBB**. Let's print the
     *[smdcomment.il] Add a shot note to **shot1***[b]
     [E.lb]shot1.addNote(val="Mom reaches in and takes grocery bags from trunk")[E.rb][bb]
     *[smdcomment.il] Render the shot info table[b]*
-    [E.lb]shot1[E.rb]
+    [E.lb]shot1.with_notes[E.rb]
 [note.wc_close]
 
 Will render as follows:
 
 [shot1.addNote(val="Mom reaches in and takes grocery bags from trunk")]
-[shot1._notes2_]
+[shot1.with_notes]
 
 If we review the current value of the **notes** attribute, we see:
 
@@ -317,7 +318,7 @@ And now, it will render as follows:
 
 [shot1.addBB]
 [shot1.addNote(val="[trythis]")]
-[shot1._notes2_]
+[shot1.with_notes]
 
 If we review the current value of the **notes** attribute, we see:
 
@@ -349,50 +350,103 @@ This is what we will get:
     [var.shot1.notes]
 [avshot.end]
 
+Up to this point, we have seen how to use the builtins in **avs/shot.md** to create variables that allow us to manage all the details of a *shot*. Again, a *shot* in this context refers to an [smdimage.b] variable and a [smdvar.b] variable that collectively describe a shot for a film or video project.
 
-Okay, let's move on to something else...
+And the usage of these *shots* is simplified through the use of the attributes and methods associated with the two variables that together make up a shot, which greatly reduces the amount of markdown required to create rich documents to describe your project to others.
 
-grep all the usages of the shotinfo2 attributes and methods, and then rename them to something like:
+But as we've seen, many times we are still repeating a lot of markdown for each shot, so it seems that additional gains can be made through the addition of another level of builtins. As luck would have it, such a level is part **avs/shot.md**, so let's take a look at it now.
 
-_format={{self.visual}}
-visual="the current _format *default* value"
-visual_wn=the _notes2_ version (if that's correct for the context)
-audio=_notes_
-audio_wn=float right version like _notes_ now
-eliminate _notes_, _notes2_ and update any usages
-rename _basic_
+[wrap_h.subsect(t="### Wrappers for avs/shot.md builtins")]
 
-get ready to sync all my changes, and then consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r whatever they end up being...
+As we were discussing, although the builtins covered so far greatly reduce the markdown needed to manage shots in your documents, we are still repeating quite a bit of code each time we want to emit a shot and all of its accompanying information. The first step we need is a builtin that wraps a *shot*, and emits the more common cases via methods on that builtin. Enter **shotdetail**.
 
+That the following markdown:
 
-[mk]
+[terminal2.wc_open(t="Markdown to emit shot details")]
+    [e_var(t="var.shot1.desc")]
+    [e_var(t="image.shot1")]
+    [e_var(t="var.shot1.with_notes")]
+[terminal2.wc_close]
 
-Show an example with a shot, needshot, and maybe pull them from forgiveme.md, and show it all in context. Would make for a nice complete example, and also use the shotinfo2(), renamed of course...
+That markdown will render as follows:
 
+[IMG_SIZE.custom(w="88%")]
+[var.shot1.desc]
+[image.shot1]
+[var.shot1.with_notes]
 
-Okay, let's move on to the next set of builtins that combine what we've learned thus far, and further simplifies the markdown needed to generate the document.
+The first thing to notice is that all three builtins take the name of the shot, in this case *shot1*. Besides that, the markdown would be the same for any shots created with the factories. So what we need is a builtin that takes a parameter, say *shotid*, and substitutes it on each of the lines where *shot1* is written, and then it would only take a single line of markdown to generate the same thing. That builtin is called **shotdetail**, so let's try it now and see what happens. We will write ***[E.lb]shotdetail.with_notes(shotid="shot1")[E.rb]***, and this is what the parser will emit:
 
-Create **image.needshot** and **var.needshot** to be used in following examples
+[shotdetail.with_notes(shotid="shot1")]
 
-[image_factory(nm="needshot" ip="[image_path]/needshot.png" st="!IMG_STYLE.inline_border!")]
-[shot_factory(nm="needshot")]
-[var.needshot._null_(d="*Needshot Short Description*" c="No" l="50mm")]
+Okay, so that's much more abbreviated, and we get the same results. Let's take a quick look at the help for **shotdetail** to see what it supports:
 
-[e_var.b(t="var.needshot")] renders as:
+[terminal2.wc_open(t="**shotdetail** help:")]
+[shotdetail.?]
+[terminal2.wc_close]
 
-[var.needshot]
+You probably noticed the two special methods **needshot** and **needshot_wn** that are available in **shotdetail**. These methods come in handy when you don't have an image readily available to show the framing or storyboard for the shot you are documenting. In this case, you can use the **needshot** methods, as they will use a system-provided image as a placeholder when generating the markdown for your shot. Later, when you have an image, you can update your document to use either **basic** or **with_notes**.
 
-And now it's getting interesting. This should be moved to the user docs along with needshot and explained...
-And rename shotinfo2 to simply shotinfo or something. grep to see where it's used first...
+Let's see how you can use **needshot** in your document. Assume we are documenting **shot38**, which is a drone shot flying over a pasture somewhere. You've written the following markdown, but you know that the **image.shot38** variable will not resolve to a valid image at this point. So instead of using *[E.lb]shotdetail.basic(shotid="shot38")[E.rb]*, you will write *[E.lb]shotdetail.needshot(shotid="shot38")[E.rb]*.
+
+[terminal2.wc_open(t="Sample showing usage of .needshot method")]
+    *[smdcomment.il] Generate the shot38 variables*
+    [E.lb]image_factory(nm="shot38")[E.rb]
+    [E.lb]shot_factory(nm="shot38")[E.rb]
+    [E.lb]var.shot38._null_(d="[E.ast]WS: Drone flying over pasture[E.ast]" c="No" l="50mm")[E.rb]    
+    *[smdcomment.il] Use needshot image since we don't have our own image for shot38 at this time*
+    [E.lb]shotdetail.needshot(shotid="shot38")[E.rb]
+[terminal2.wc_close]
+
+That markdown will render as follows:
+
+[image_factory(nm="shot38")]
+[shot_factory(nm="shot38")]
+[var.shot38._null_(d="*WS: Drone flying over pasture*" c="No" l="50mm")]
+[shotdetail.needshot(shotid="shot38")]
+
+//TODO: Consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r support...
+
+Of course we can also use the **shotdetail** builtin inside **avshot** sequences as well. For example:
+
+[terminal2.wc_open(t="Using .needshot inside *avshot*")]
+    [E.lb]avshot.visual[E.rb]
+    [E.lb]shotdetail.needshot(shotid="shot38")[E.rb]
+    [E.lb]avshot.noaudio[E.rb]
+[terminal2.wc_close]
+
+That markdown will render as follows:
 
 [var.avshot.visual]
-    [var.shotinfo2(shotid="needshot")]
+    [var.shotdetail.needshot(shotid="shot38")]
 [var.avshot.noaudio]
 
-[var.needshot]
-[var.needshot._notes2_]
+So this seems to point out the next missing piece of the puzzle: builtins that wrap the **avshot** sequences. Let's take a look at those.
 
+[wrap_h.subsect(t="### Using the avs/shot.md builtins that wrap *avshot*")]
 
-[wrap_h.section(t="### More Examples of Using the **shot.md** macros")]
+The last two builtin we will cover is the **shot_emitter**. It provides a convenient way to emit shots in the most commonly used formats. Here's the help for **shot_emitter**:
+
+[terminal2.wc_open(t="**shot_emitter** help:")]
+[shot_emitter.?]
+[terminal2.wc_close]
+
+Let's take a closer look at each of them. First up is **shot_emitter.split**, which emits an **avshot** sequence, and splits the visual (image) and the audio (notes) between the two columns. This is a space saving way to emit a shot list with storyboards. Here's what it looks like when we use write **[E.lb]shot_emitter.split(shotid="shot1")[E.rb]**:
+
+[shot_emitter.split(shotid="shot1")]
+[bb]
+Next up is shot left, which also emits an **avshot** sequence, but in this variant, it places the image and details on the left, and then puts the shot notes on the right. This is more typical of how you would use it in an A/V script. The markdown is: **[E.lb]shot_emitter.left(shotid="shot1")[E.rb]**:
+
+[shot_emitter.left(shotid="shot1")]
+
+Next up is **shot_only**, which, as you probably guessed, simply emits the shot. The markdown: **[E.lb]shot_emitter.shot_only(shotid="shot1")[E.rb]**:
+
+[shot_emitter.shot_only(shotid="shot1")]
+
+And finally, there's **shot_with_notes**, which displays the shot and notes table inline and raw, so you can use this version in or outside of an **avshot** sequence. The markdown: **[E.lb]shot_emitter.shot_with_notes(shotid="shot1")[E.rb]**:
+
+[shot_emitter.shot_with_notes(shotid="shot1")]
+
+And we finally come to the end of this chapter. We've covered quite a bit, but hopefully you've got a good idea on how to use the builtins available for generating images and shot details for your documents. Be sure to review the actual markdown that was used to generate this documentation, as it will give more insight into how everything works.
 
 @parw

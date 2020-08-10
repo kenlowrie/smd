@@ -209,3 +209,22 @@ Changing default style to block border and declaring it0a
 [sp.2]**Examples**[b]\
 [sp.4]**[E.lb]img_factory[E.lp]nm=\"myshot\" s=\"path/image.png\" st=\"[E.lb]!IMG_STYLE.inline![E.rb]\"[E.rp][E.rb]**[b][sp.6]*Is the same as*[b][sp.4]@image _id=\"myshot\" src=\"path/image.png\" style=\"[E.lb]!IMG_STYLE.inline![E.rb]\""
 
+_________________________
+
+@var _id="display" \
+    print="0"\
+    test="1"\ 
+    _format="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true\", false=\"self.false\")}}"\
+    true="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push\")}}"\
+    push="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_left}}\")}}"\
+    layout2="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true2\", false=\"self.false\")}}"\
+    true2="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push2\")}}"\
+    push2="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_split}}\")}}"\
+    layout3="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true3\", false=\"self.false\")}}"\
+    true3="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push3\")}}"\
+    push3="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_only}}\")}}"\
+    layout4="{{code.equals(v1=\"self.print\", v2=\"self.test\", true=\"self.true4\", false=\"self.false\")}}"\
+    true4="{{code.replace(var=\"$.shotid\", val=\"var.display.shotid\", str=\"var.display.push4\")}}"\
+    push4="{{code.pushlines(shotid=\"$.shotid\" t=\"{{var.shot_emitter.shot_s2}}\")}}"\
+    false=""
+

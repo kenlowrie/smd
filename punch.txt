@@ -3,6 +3,8 @@ Punch List Items.
 
 SOC
 
+Have the .?? code call markdown first, and then do the translation. That will make it so it expands any variables first, then does the cleanup...
+Replace references to needshot.png in docs/samples/image to the [sys.imports]/avs/needshot.png...
 
 Priority 0 | p0
 ---------------
@@ -197,7 +199,7 @@ Use python -m profile debug.py (debug.py loads and runs avscript -f ...)
 Need ability to display error messages on ambiguous variable names.
 @debug on="ns.add". Might need to spruce it up a bit. If you specify
 a namespace, should this be okay? Because we rely on this for image.name
-and var.name, as a way to create linked shots... shots.md, shotinfo2...
+and var.name, as a way to create linked shots... shots.md, shotdetail...
 
 Remove unused code in .core module
 

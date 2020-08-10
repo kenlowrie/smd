@@ -347,12 +347,14 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>trans=</strong>@@ {{html.ul.&gt;}}<br />
 &nbsp;&nbsp;<strong>end_shot=</strong>@@ {{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>shot_only=</strong>{{code.pushlines(t="{{self._start_shot_}}\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{code.pushlines(t="{{self._start_shot_}}\n@wrap p\n{{self._d}}\n@parw 1\n{{self.end_shot}}")}}<br />
-&nbsp;&nbsp;<strong>_start_shot_=</strong>{{self.start}}\n@wrap li\n{{self._s}}\n@parw 1\n{{self.trans}}<br />
-&nbsp;&nbsp;<strong>visual=</strong>{{code.pushlines(t="{{self.start}}\n@wrap li")}}<br />
-&nbsp;&nbsp;<strong>audio=</strong>{{code.pushlines(t="@parw\n{{self.trans}}\n@wrap p")}}<br />
+&nbsp;&nbsp;<strong>shot_with_desc=</strong>{{code.pushlines(t="{{self._start_shot_}}\n[self.wrap_audio]\n{{self._d}}\n@parw 1\n{{self.end_shot}}")}}<br />
+&nbsp;&nbsp;<strong>_start_shot_=</strong>{{self.start}}\n[self.wrap_visual]\n{{self._s}}\n@parw 1\n{{self.trans}}<br />
+&nbsp;&nbsp;<strong>visual=</strong>{{code.pushlines(t="{{self.start}}\n[self.wrap_visual]")}}<br />
+&nbsp;&nbsp;<strong>audio=</strong>{{code.pushlines(t="@parw\n{{self.trans}}\n[self.wrap_audio]")}}<br />
 &nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n{{self.end_shot}}")}}<br />
 &nbsp;&nbsp;<strong>noaudio=</strong>{{code.pushlines(t="@parw\n{{self.trans}}\n{{self.end_shot}}")}}<br />
+&nbsp;&nbsp;<strong>wrap_visual=</strong>@wrap li<br />
+&nbsp;&nbsp;<strong>wrap_audio=</strong>@wrap p<br />
 &nbsp;&nbsp;<strong>_s=</strong>&lt;strong&gt;ECU:&amp;nbsp;&lt;/strong&gt; text message on phone<br />
 &nbsp;&nbsp;<strong>_d=</strong>help&lt;br /&gt;&lt;br /&gt;me<br />
 &nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Used to emit shots in A/V Script-style documents.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_s&lt;/strong&gt; - shot info. e.g. WS: Lake with people swimming near shore&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_d&lt;/strong&gt; - shot description/narrative for opening wide shot&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;visual&lt;/strong&gt; - Open a shot declaration, ready for shot(s)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;audio&lt;/strong&gt; - Close shot section and transition to audio; ready for shot description&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;end&lt;/strong&gt; - Close shot declaration&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;noaudio&lt;/strong&gt; - Close shot declaration when no shot description will be set&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;shot_only(_s)&lt;/strong&gt; - Create a complete shot declaration; shot(s) specified in &lt;strong&gt;_s&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;shot_with_desc(_s,_d)&lt;/strong&gt; - Create complete shot declaration; shot(s) &lt;strong&gt;_s&lt;/strong&gt;, description &lt;strong&gt;_d&lt;/strong&gt;.<br />

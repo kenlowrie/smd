@@ -72,7 +72,7 @@ Ethnicities aren't important, however, we will try to cast the [mom], [son] and 
 [var.shot0._null_(d="[ws]Crane high shooting over car" c="yes" l="24mm")]
 [image_factory(nm="shot0" ip="[image_path]/shot0.jpg" st="!ss!")]
 [var.avshot.visual]
-[var.shotinfo2(shotid="shot0")]
+[var.shotdetail(shotid="shot0")]
 [var.avshot.audio]
 [slate]
 Probably just use the [title] and [artist] titles on this shot.
@@ -83,7 +83,7 @@ Probably just use the [title] and [artist] titles on this shot.
 [var.shot1._null_(d="[ws]Crane Down to Mom removing groceries" c="yes" l="24mm")]
 [image_factory(nm="shot1" ip="[image_path]/shot1.jpg" st="!ss!")]
 [var.avshot.visual]
-[var.shotinfo2(shotid="shot1")]
+[var.shotdetail(shotid="shot1")]
 [var.avshot.audio]
 [note.nd(t="Make sure [mom] is already moving when she comes into frame.")]
 [var.avshot.end]
