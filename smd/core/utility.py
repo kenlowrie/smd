@@ -444,7 +444,9 @@ class CodeHelpers():
         for a in attrlist[::-1]:
             raw_value = _get_ns_value_raw(f"{fq_name}.{a}",3)
             #debug.toggle()
-            debug.print(f"{fn}: {fq_name}.{a} = {raw_value}")
+            if debug.enabled():
+                true_raw = _get_ns_value_raw(f"{fq_name}.{a}",0)
+                debug.print(f"{fn}: {fq_name}.{a} = {HtmlUtils.escape_html(true_raw)}")
             #debug.toggle()
             _line_cache.pushline(raw_value)
             #debug.print(f"{fn}: attr = {a}")
