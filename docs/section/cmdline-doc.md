@@ -5,6 +5,8 @@ Before diving into the command line parameters of [smd.b], [smdparse.b] and [ism
 
 In order to do that, we will start by providing an overview of the repository layout, followed by a discussion of the major components, and finally the startup & shutdown processes of the primary command line interfaces. This will establish enough background information about [smd.b] that the discussion on the command line parameters will make more sense.
 
+[TODO]In the structure below, pipenv has been renamed to samples
+
 [wrap_h.section(t="### Repository Layout")]
 
 @var _="DC" vb="&boxvr;" ra="&rtrif;" rd="&dashv;" bh="&boxh;" v="&boxv;" lc="&boxur;" return="&crarr;" cmd="&#8984;" option="&#8997;" alt="{{self.option}}" ctrl="&#8963;"\

@@ -13,6 +13,8 @@
 
 @html _="codeblk" _inherit="code" style="display:block;color:purple"
 
+@var TODO="{:.bigandbold.red}TODO:[sp]"
+
 @var docthis="usage: docthis.open(), then content, then docthis.close()"\
     open="{{code.pushlines(t=\"@wrap null\n{{self._start}}\n{{html.prewrap.<}}\n{{html.codeblk.<}}\n@parw 1\n@wrap divx\")}}"\
     close="{{code.pushlines(t=\"@parw 1\n@wrap null\n{{html.codeblk.>}}\n{{html.prewrap.>}}\n@parw 1\")}}"\

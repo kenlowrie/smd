@@ -1,6 +1,7 @@
 help track how to reorg the test scripts to make sure everything is covered.
 
 break/exit - Upon completion of all the test script conversion and a user manual sweep, see if these are still used/required.
+code - code.md DONE
 debug - dump.md DONE
 divs - divs.md DONE (This is all the special divs. e.g. section, plain, note, code, review, syntax ...)
 dump - dump.md DONE
@@ -24,16 +25,3 @@ transitions - transitions.md DONE (this was a dedicated way of testing @break be
 watch   - import.md DONE
 var - var.md DONE
 wrap - wrap.md DONE
-
-
-code - code.md
-
-
-Final reviews after completing the test script rewrites ...
------------------------------------------------------------
-
-image - review and see what can be cleaned up with the kludges and macro usage throughout.
-import - when the encode_smd macro is added to code.md, remove the redefine in here.
-script1 - cleanup with @wrap tag1, tag2 and avs.md cleanup...
-misc - this is essentially a "letter" type HTML document, but it is too complicated and inconsistent.
-variables.md - once everything in here is covered elsewhere, delete this one...

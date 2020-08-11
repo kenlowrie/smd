@@ -477,6 +477,18 @@ NAMESPACE: var<br />
 <br />
 <strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var=".*" link="c|d"<br />
 <br />
+<strong>dumpit=</strong><br />&nbsp;&nbsp;<strong>1=</strong>[bmgreybg._open]<br />
+&nbsp;&nbsp;<strong>2=</strong>[var.source.wc_open_inline(t="[code.pushlist.title]")]<br />
+&nbsp;&nbsp;<strong>2a=</strong>@wrap _source_content_<br />
+&nbsp;&nbsp;<strong>3=</strong>[divxp.open]<br />
+&nbsp;&nbsp;<strong>4=</strong>{{code.dump(ns="[code.pushlist.nsvar]" name="[code.pushlist.nsname]" whitespace="True" format="True")}}<br />
+&nbsp;&nbsp;<strong>5=</strong>[divxp.close]<br />
+&nbsp;&nbsp;<strong>5a=</strong>@parw1<br />
+&nbsp;&nbsp;<strong>6=</strong>[var.source.wc_close_inline]<br />
+&nbsp;&nbsp;<strong>7=</strong>[bmgreybg._close]<br />
+&nbsp;&nbsp;<strong>attrlist=</strong>1,2,2a,3,4,5,5a,6,7<br />
+&nbsp;&nbsp;<strong>_format=</strong>a macro to dump a variable string<br />
+<br />
 <strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 &nbsp;&nbsp;<strong>e=</strong>smile<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
@@ -485,15 +497,18 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}(t="html_tag_to_wrap")&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
 <br />
-<strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>text_to_underscore<br />
+<strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}(t="text_to_underscore")&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
 <br />
-<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>usage: tag(t="text_to_wrap")<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
 &nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}(t="smd_tag_to_wrap")&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
 <br />
 <strong>email=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>johnsmith@yourcompanydomain.com<br />

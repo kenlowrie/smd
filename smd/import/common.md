@@ -64,9 +64,7 @@
       e="smile"
 
 // [e_tag] will create an HTML tag (encoded) for printing. e.g. [e_tag(t="div")] outputs <div>
-@var e_tag="[E.lt]{{self.t}}[E.gt]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
+@var e_tag="[E.lt]{{self.t}}[E.gt]" t="{{self._help}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" _help="*{{self._}}(t=\"html_tag_to_wrap\")*"
 
 // [e_var] will put markdown brackets [] around the text. e.g. [e_var(t="e_var")] outputs [e_var]
-@var e_var="[E.lb]{{self.t}}[E.rb]" t="usage: tag(t=\"text_to_wrap\")" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***"
-
-@var e_us="{{html.us.<}}{{self.t}}{{html.us.>}}" t="text_to_underscore"
+@var e_var="[E.lb]{{self.t}}[E.rb]" t="{{self._help}}" b="**{{self._format}}**" em="*{{self._format}}*" emb="***{{self._format}}***" _help="*{{self._}}(t=\"smd_tag_to_wrap\")*"

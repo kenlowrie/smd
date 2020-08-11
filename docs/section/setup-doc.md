@@ -13,9 +13,7 @@ The easiest way to install [smd] on your system is to use the default package in
 
 [terminal(t="$ pip install .")]
 
-One drawback to this method is that the package and its dependencies will be installed globally, which could interfere with other packages installed on your system. In addition to that, you
-
-In order to minimize the number of dependencies that are installed using **pip**, two other packages that are needed by [ismd.b], namely **selenium** and **bottle**, are not automatically installed. If you will not be using [ismd.b], then there is nothing extra required. [smd.b] and [smdparse.b] will both run just fine without these additional packages. On the other hand, if you will be using [ismd.b], then you must either install these packages manually, or alternatively, you can use the **pipenv** method described next, which *will* install the extra packages. To install them manually, use these commands in your terminal window:
+One drawback to this method is that the package and its dependencies will be installed globally, which could interfere with other packages installed on your system. Also, in order to minimize the number of dependencies that are installed using **pip**, two other packages that are needed by [ismd.b], namely **selenium** and **bottle**, are not automatically installed. If you will not be using [ismd.b], then there is nothing extra required. [smd.b] and [smdparse.b] will both run just fine without these additional packages. On the other hand, if you will be using [ismd.b], then you must either install these packages manually, or alternatively, you can use the **pipenv** method described next, which *will* install the extra packages. To install them manually, use these commands in your terminal window:
 
 [terminal.wc_open(t="Install additional package dependencies")]
 [sp]
@@ -24,7 +22,7 @@ $ pip install bottle
 [terminal.wc_close]
 
 [question.wc_open]
-Need to document downloading a driver for selenium.[bb]
+[TODO] Need to document downloading a driver for selenium.[bb]
 *download from here: [escape(t="https://sites.google.com/a/chromium.org/chromedriver/downloads")]*
 [question.wc_close]
 
@@ -45,7 +43,7 @@ HINT: If you later decide you want to install [smd.b] in developer mode, you can
 @set _ns="link" _="pipenv" target="_blank"
 
 [question.wc_open]
-I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
+[TODO]I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
 [question.wc_close]
 
 **[pipenv]** is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way **pip** does, thus isolating [smd.b] to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the **[encode_smd(t="<sys.root>/pipenv")]** directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:
@@ -77,17 +75,18 @@ If you did not have these flags set when you did the install of Python using **[
 
 [terminal.wc_open(t="Running virtual environment for OBS Studio browser endpoints")]
 [sp]
-[E.num] TODO: need a better folder name
+[E.num] [TODO]need a better folder name. This seems like the Pipfile in pipenv is just for OBS. Why?
 $ cd pipenv
 pipenv install  - this will install what's referred to in Pipfile.lock
 pipenv shell
 ismd -nd -f clock.md -m endpoint hostgui
 [terminal.wc_close]
 
-If the code is not changing, you can also load it is a static local file in OBS. Describe that here...
+If the code is not changing, you can also load it is a static local file in OBS. [TODO]Describe that here...
 [terminal(t="$ smdparse -nd -f clock.md")]
 
 [wrap_h.section(t="## inside OBS")]
+[TODO]This needs some sprucing up...
 
 Add a Browser to a scene
 Use localhost:8080/smd/clock/html/clock.html
@@ -103,7 +102,7 @@ $ cd root_of_smd_cloned_repo
 $ pipenv install -e /path/2/smd
 [terminal.wc_close]
 
-
+[TODO]Should I have two sets of Pipfile/.lock? One for dev mode, and another for regular mode?
 
 
 [docthis.open(h="Add this to setup-doc.md")]

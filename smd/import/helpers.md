@@ -11,6 +11,7 @@
 @html _="divx3" _inherit="divx" style="border-bottom:2px solid black"
 @html _="li2" _tag="li" _inherit="li" style="font-size:1.3em;margin-left:2em"
 
+@var e_us="{{html.us.<}}{{self.t}}{{html.us.>}}" t="{{self._help}}" _help="*{{self._}}(t=\"text_to_underscore\")*"
 @var hash1="# [code.repeat.run(t=\"-\", c=\"42\")]"
 @var hash2="## [code.repeat.run(t=\"-\", c=\"42\")]"
 @var hash3="### [code.repeat.run(t=\"-\", c=\"42\")]"
@@ -21,7 +22,6 @@
     chapter="{{code.pushlines(t=\"@wrap html.divx1\n{{self.t}}\n@parw 1\")}}"\
     section="{{code.pushlines(t=\"@wrap html.divx2\n{{self.t}}\n@parw 1\")}}"\
     subsect="{{code.pushlines(t=\"@wrap html.divx3\n{{self.t}}\n@parw 1\")}}"
-
 
 // Make a couple of specialized Simple DIV **note** types where the font color is blue or red
 @html _="_bluenote_p_" _inherit="_note_p_" class="[html._note_p_.class] blue"

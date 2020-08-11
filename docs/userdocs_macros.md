@@ -58,3 +58,15 @@
 // If you do, it evaluates to the variable being used to emit the docs. DOH!
 @var _self_="&#x73;elf"
 @var _self="@@{{self.il}}" il="{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}"
+
+@var dumpit="a macro to dump a variable string"\
+    1="[!bmgreybg._open!]"\
+    2="[!var.source.wc_open_inline(t=\"[!code.pushlist.title!]\")!]"\
+    2a="@wrap [var.source.wrapID]"\
+    3="[!divxp.open!]"\
+    4="{{code.dump(ns=\"[!code.pushlist.nsvar!]\" name=\"[!code.pushlist.nsname!]\" whitespace=\"True\" format=\"True\")}}"\
+    5="[!divxp.close!]"\
+    5a="@parw1"\
+    6="[!var.source.wc_close_inline!]"\
+    7="[!bmgreybg._close!]"\
+    attrlist="1,2,2a,3,4,5,5a,6,7"

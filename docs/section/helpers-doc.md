@@ -1,7 +1,7 @@
 [link.ug_helpers]
 [wrap_h.chapter(t="## **helpers.md** built-ins")]
 
-**helpers.md** contains a set of built-ins probably best described as macros, that declares a set of commonly used tags, constants and other useful things to help with creating content. 
+**helpers.md** contains a set of built-ins that declare a set of commonly used tags, constants and other useful things to help with creating content. 
 
 [rednote(t="This chapter might get into some information that seems a bit complex because we haven't discussed the namespaces yet. You can either skip ahead and read up on namespaces first, then come back, or just follow along as best you can, and when you get to namespaces, it will probabnly seem like old hat by then.")]
 
@@ -14,12 +14,11 @@ Let's start by taking a look at what's contained in **helpers.md**:
 @embed "[sys.imports]/helpers.md" esc="y"
 [terminal.wc_close]
 
-It starts by importing the files that contain things that are being extended or are used to create the macros within. In most cases, these would already be imported, so they are ignored, but in the rare case where they haven't been, it will prevent a bunch of errors when it tries to parse the contents of this file.
+It starts by importing the files that contain things that are being extended or are used to create the macros it is declaring. In most cases, these would already be imported, so they are ignored, but in the rare case where they haven't been, it will prevent a bunch of errors when it tries to parse the contents of this file.
 
 A few useful [smdhtml.b] variables are created, including **tab** and **us**. **tab** just indents content by wrapping it with a [e_tag.b(t="span")] tag, and **us** can be used to [e_us(t="underline")] content inline. It would be a little clumbsy to write [e_var.b(t="html.us.<")][us.<]underline[us.>][e_var.b(t="html.us.>")], so a little later on the variable **e_us** is created, that makes it easier.
 
 The **wrap_h** variable contains several useful attributes to simply creating headings. They are:
-
 [ulistplain.wc_open]
     hash1 - create [e_tag(t="h1")] header of dashes
     hash2 - create [e_tag(t="h2")] header of dashes
@@ -41,7 +40,7 @@ If instead I write **[e_var(t="wrap_h.subsect[E.lp]t=\"###E and EMOJI\"[E.rp]")]
 
 The variables **e_tag** and **e_var** are used quite a bit in the documentation to encode the entities and markdown so that it can be shown inline instead of having either the parser or the browser process it.
 
-Finally, a commonly used trick of extending an underlying macro is used to create two custom versions of the **note** [e_tag.b(t="div")], **bluenote** and **rednote**. What is done is a new variable is creating using the *color*note name, inheriting from the underlying **note** variable, and then one of the attributes within that variable is modified to use the newly created color class in the [smdhtml.b] namespace. Let's use all three of them (note, bluenote and rednote) to see how they render:
+Finally, a commonly used trick of extending an underlying macro is used to create two custom versions of the **note** [e_tag.b(t="div")], **bluenote** and **rednote**. This is done by creating a new variable using the *color*note name, inheriting from the underlying **note** variable, and then one of the attributes within that variable is modified to use the newly created color class in the [smdhtml.b] namespace. Let's use all three of them (note, bluenote and rednote) to see how they render:
 
 [note(t="This is my inline note using the default **note** builtin.")]
 [bluenote(t="This is my inline note using the **bluenote** builtin created in helpers.md.")]
