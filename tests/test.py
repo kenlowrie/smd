@@ -63,8 +63,8 @@ class TestSMD(TestCase):
     def test_markdown(self):
         self.process('markdown')
 
-    def test_variables(self):
-        self.process('variables')
+    def test_help(self):
+        self.process('help')
 
     def test_var(self):
         self.process('var')
