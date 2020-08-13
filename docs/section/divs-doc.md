@@ -4,7 +4,7 @@
 In this chapter, we will discuss the predefined **DIV**'s that are declared inside the builtin file **divs.md**. 
 
 [rednote.wc_open]
-NOTE: If you have not read the chapters on [link.ns_var._qlink(_qtext="[smdvar.b]")], [link.ns_var._qlink(_qtext="[smdset.b]")] and [link.ns_html._qlink(_qtext="[smdhtml.b]")], stop right now and go read them. Otherwise, you might have trouble understanding the concepts that will be covered in this chapter...
+NOTE: If you have not read the chapters on [link.ug_ns_var._qlink(_qtext="[smdvar.b]")], [link.ug_set_keyword._qlink(_qtext="[smdset.b]")] and [link.ug_ns_html._qlink(_qtext="[smdhtml.b]")], stop right now and go read them. Otherwise, you might have trouble understanding the concepts that will be covered in this chapter...
 [rednote.wc_close]
 
 The predefined DIVs in the **divs.md** builtin are organized into four types to give several options for your content. Let's start by looking at a summary of the divs that are available:
@@ -35,35 +35,31 @@ The predefined DIVs in the **divs.md** builtin are organized into four types to 
 
 [ulistplain.wc_close]
 
-//TODO: Move these
 @var e_div_ll="{{self._public_attrs_}}" s="SECTION" e="*{{self.s}}*" b="**{{self.s}}**" emb="***{{self.s}}***" il="{{self.s}}"
 @var _="e_div" _inherit="e_div_ll" _format="{{self.il}}" s="section"
 
 [wrap_h.section(t="###Generic DIVs")]
-There four different styles of DIVs are predefined for you, and you can add more as well as customize these to your hearts content. Each of these has a similar interface, so let's see what that is, and how it is used. Only one of each different type will be covered, since the interface on the others is identical! We will start with the *[e_var.b(t="section")]-style* DIVs, of which you have **section, section_pbb, toc, syntax, review, review_pba and plain**.
+There four different styles of DIVs are predefined for you, and you can add more as well as customize these to your hearts content. Each of these has a similar interface, so let's see what that is, and how it is used. Only one of each different type will be covered, since the interface on the others is identical! We will start with the *[e_div.b]-style* DIVs, of which you have **section, section_pbb, toc, syntax, review, review_pba and plain**.
 
-Let's begin by taking a look at the actual definition of [e_div.b]:
-[bmgreybg._open] 
-[var.source.wc_open(t="[e_div.s] variable definition and associated [smdhtml.b] elements")]
-@dump html="^.*section_$|^_p_section_content" var="section$"
-[var.source.wc_close]
-[bmgreybg._close]
+First, let's take a look at the actual definition of [e_div.b] and it's associated [smdhtml.b] and [smdvar.b] variables:
 
-If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the complete syntax for these generic groups:
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="html" \
+               nsname="^_section_div_$|^_section_p" \
+               title="[smdhtml.il] Support for **section**")]
 
-[syntax.wc_open(t="[E.lb]section[E.rb] attributes/methods")]
-[e_us(t="[b]**[smdraw.b] Versions**")] - these emit the *[smdwrap_wp.il(parms="nop")]*[b]
-[e_var.b(t="section")] - Creates a section with a title [e_var.b(t="section.t")][b]
-[e_var.b(t="section.with_content")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")][b]
-[e_var.b(t="section.wc_open")] - Creates a section with a title [e_var.b(t="section.t")] and stays open for content[b]
-[e_var.b(t="section.wc_close")] - Closes a previous call to [e_var.b(t="section.wc_open")][bb]
-[e_us(t="**Inline Versions**")] - these do **not** emit the *[smdwrap_wp.il(parms="nop")]*[b]
-[e_var.b(t="section.inline")] - Creates a section with a title [e_var.b(t="section.t")][b]
-[e_var.b(t="section.wc_inline")] - Creates a section with a title [e_var.b(t="section.t")] and content [e_var.b(t="section.c")] [b]
-[e_var.b(t="section.wc_open_inline")] - Creates an inline section with a title [e_var.b(t="section.t")] and stays open for content[b]
-[e_var.b(t="section.wc_close_inline")] - Closes a previous call to [e_var.b(t="section.wc_open_inline")][bb]
+// Give t,c reasonable defaults instead of whatever the last [section] block was ...
+[section._null_(t="section default title string" c="section default content data")]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="var" \
+               nsname="section$" \
+               title="[smdvar.il] definition for *section**")]
 
-[section.wc_close]
+If you examine any of other styles in the [e_us(t="{:.blue}**Generic Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the help string for the [e_div.b] var, which applies to all of the generic groups:
+
+[syntax.wc_open(t="Built-in help string for section")]
+    [section.?]
+[syntax.wc_close]
 
 [wrap_h.subsect(t="###[smdraw.il] Versions")]
 Now let's try each of the methods using the default values, starting with [e_var.b(t="section")]:
@@ -72,14 +68,14 @@ Now let's try each of the methods using the default values, starting with [e_var
 
 If we look at the HTML for it, you will see:
 
-[syntax.wc_open(t="Raw HTML emitted by the [E.lb]section[E.rb]")]
+[syntax.wc_open(t="Raw HTML emitted by the [E.lb]section[E.rb] variable")]
 [b]
 [tab.<][escape_var(v="var.section")][tab.>]
 [syntax.wc_close]
 
 As mentioned, this is in the [smdraw.b] section, so the parser emits the double **@@** prefix, which prevents the output formatter from prefixing any [smdwrap.b] tags. Let's take a look at the remaining built-in attributes and how they render.
 
-[e_var.b(t="section.with_content")] like this:
+[e_var.b(t="section.with_content")] renders like this:
 [section.with_content]
 
 //TODO: We cannot escape_var these things that do {{pushlines}}. 
@@ -91,9 +87,10 @@ As mentioned, this is in the [smdraw.b] section, so the parser emits the double 
 and now we have to write [e_var.b(t="section.wc_close")] which will close the previous div.
 We can keep typing lines, though, and they are added to this section until you close it with [e_var.b(t="section.wc_close")].
 
+Okay, the next line in the user docs will contain: [e_var.b(t="section.wc_close")]
 [section.wc_close]
 
-You can also next them, let's look at an example of that. Here I will just write [e_var(t="section.wc_open")] three times in a row, followed by three [e_var.b(t="section.wc_close")] tags.
+You can also nest them, let's look at an example of that. Here I will just write [e_var.b(t="section.wc_open")] three times in a row, followed by three [e_var.b(t="section.wc_close")] tags.
 
 [section.wc_open]
 [section.wc_open]
@@ -102,18 +99,16 @@ You can also next them, let's look at an example of that. Here I will just write
 [section.wc_close]
 [section.wc_close]
 
-As we previously mentioned, all of the variables within a group contain the exact same attributes/methods. Given that, we can next them within each other too:
+As we previously mentioned, all of the variables within a group contain the exact same attributes/methods. Given that, we can nest them within each other:
 
-[section.wc_open]
-[syntax.wc_open]
-[toc.wc_open]
-[plain.wc_open]
+[section.wc_open(t="This is the section.wc_open markdown")]
+[syntax.wc_open(t="This is the syntax.wc_open markdown")]
+[toc.wc_open(t="This is the toc.wc_open markdown")]
+[plain.wc_open(t="This is the plain.wc_open markdown")]
 [plain.wc_close]
 [toc.wc_close]
 [syntax.wc_close]
 [section.wc_close]
-
-When you look at this last example, you'll notice that some of the interior divs have non-default headings. This goes back to the side effect discussed in the [link.ns_var.link] chapter that discussed when attribute values are updated they stay updated. So in this last example, the default values used were those from the previous update, in this user guide!
 
 That is a good segue into changing the default values for these examples.
 
@@ -138,9 +133,9 @@ See how it used the "last" values for **t** and **c**? That's an important conce
 
 [section.with_content]
 
-See how that works?
+See how that works? Remember, this goes back to the side effect discussed in the [link.ug_ns_var.link] chapter that discussed when attribute values are updated they stay updated. So in this last example, the default values used were those from the previous time we used [e_div.b] in this chapter (I was going to say *section*, but it seems like I've worn that out already).
 
-Good, now let's look at the **inline** versions of the [e_var.b(t="section")] variable.
+Okay, now let's look at the **inline** versions of the [e_var.b(t="section")] variable.
 
 [wrap_h.subsect(t="###Inline Versions")]
 
@@ -167,7 +162,7 @@ Now they are identical to using the **non-_inline** versions, since [smdwrap_wp.
 [wrap_h.subsect(t="###Final notes on nesting DIVS")]
 Before we leave Generic DIVs, let's look at a few more examples of nesting. You can get into some precarious formatting issues if you aren't careful, due to how most modern browsers treat block elements, as you'll see below.
 
-In the first example, we are using wc_open_inline followed by content, then another wc_open_inline, etc. We are using the [smdraw.b] tag on each of the wc* calls, to prevent the output formatter from wrapping the divs with the current wrap tags...
+In the first example, we are using **wc_open_inline** followed by content, then another **wc_open_inline**, etc. We are using the [smdraw.b] tag on each of the [big.110p(t="wc_[E.ast]" cls=".blue")] calls, to prevent the output formatter from wrapping the divs with the current wrap tags...
 
 @@[section.wc_open_inline]
 Here is some content.
@@ -209,17 +204,21 @@ In this final example on nesting, we are using the raw attributes again, just wr
 
 The remaining Generic DIVs have all the same behaviour and attributes as [e_div.b(s="section")]. The only difference in how they look goes back to how they are styled in the **smd.css** file. Try a few out, and/or take a look at the **tests/in/divs.md** unittest file to see them in action!
 
+[TODO] OR, maybe I should just inline all the built-in help for each div here. That way, it's all documented and reviewed, and I can do the same with the remaining sections. Document 1, then say all the rest are the same, but here's the help for them...
+
+[TODO] Make this isn't already done in the tests/in/divs.md ... It is actually, one of each type, so we just need to do all of them here, but in the right section...
+
 [wrap_h.section(t="###Code DIVs")]
 
-Code divs here
+[TODO] Code divs here
 
 [wrap_h.section(t="###Note DIVs")]
 
-Note divs here
+[TODO] Note divs here
 
 [wrap_h.section(t="###List DIVs")]
 
-List divs here
+[TODO] List divs here
 
 [wrap_h.section(t="###DIVs Summary")]
 

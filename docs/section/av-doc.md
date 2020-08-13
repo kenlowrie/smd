@@ -8,6 +8,7 @@ avshot ...
 
 [docthis.close]
 
+[TODO] This may no longer be needed, given all the samples. Perhaps some type of overview that talks about using smd as an AV Script generator, and pointing you to the examples, possibly talking about doing simple AV Scripts (using avshot) vs more complex docuemnts using the shot.md builtins...
 
 Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.
 

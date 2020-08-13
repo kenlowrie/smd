@@ -7,8 +7,8 @@
 
 @var div_help_methods="{{self._public_keys_}}"\
       main="[sp.2]**Methods**[b]\
-[sp.4]*If no method specified* uses **inline** raw i.e. prefixed with @@[b]\
-[sp.4]with_content(t,c) - **wc_inline** raw[b]\
+[sp.4]***NONE*** - If no method specified, uses **inline** (*raw* i.e. prefixed with @@)[b]\
+[sp.4]with_content(t,c) - **wc_inline** (*raw* i.e. @@ prefix)[b]\
 [sp.4]inline(t) - insert $DIVNAME$ div with text **t**[b]\
 [sp.4]wc_inline(t,c) - insert $DIVNAME$ div with title **t** and content **c**[b]\
 [sp.4]wc_open(t) - open a $DIVNAME$ div with title **t** and **@wrap {{var.$DIVNAME$.wrapID}}** ready for content[b]\
@@ -29,7 +29,7 @@
       var_p="[sp.2]*$DIVNAME$(t=[E.dquot]title[E.dquot] c=[E.dquot]content[E.dquot])*[bb]\
 [sp.2]**Common Parameters**[b]\
 [sp.4]**t** - The title to use for the $DIVNAME$ div[b]\
-[sp.4]**c** = content for $DIVNAME$ div"\
+[sp.4]**c** = The content to use for the $DIVNAME$ div"\
       var_code="common **$DIVNAME$** var code"\
       var_simple="common **$DIVNAME$** var simple"\
       var_term="common var **terminal**"\
