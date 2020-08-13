@@ -70,7 +70,7 @@ Now I'm going to pass an invalid parameter to @parw<br />
 WARNING: unknown option <em>-1</em> passed to @parw<br />
 Still nothing, after trying a negative number with @parw<br /><br />
 And now, let's pass 25 to @parw, but there's only 2 items on the stack...<br />
-WARNING: only 2 items found on the stack that can be cleared<br />
+WARNING: only 2 items found on the stack that were cleared<br />
 Back to empty @wrap q, passed count of 25<br /><br />
 Going to pop on empty stack, will issue warning<br /><br />
 WARNING: wrapper stack is empty<br />
@@ -101,7 +101,7 @@ Current wrap stack level is: 0
 <link>Current tag should be 'link': <link></link></link>
 <code>WRAP1.MD -- Current wrap stack level is: 5</code>
 <code>Current tag should be 'code': <code></code></code>
-WARNING: only 3 items found on the stack that can be cleared<br />
+WARNING: only 3 items found on the stack that were cleared<br />
 <link>Current tag should be 'link': <link></link></link>
 <link>WRAP1.MD -- Current wrap stack level is: 2</link>
 <link>-----------</link>
@@ -123,7 +123,7 @@ WARNING: only 3 items found on the stack that can be cleared<br />
 <ol>Current tag should be 'ol': <ol></ol></ol>
 <pre>WRAP2.MD -- Current wrap stack level is: 9</pre>
 <pre>Current tag should be 'pre': <pre></pre></pre>
-WARNING: only 6 items found on the stack that can be cleared<br />
+WARNING: only 6 items found on the stack that were cleared<br />
 <ol>Current tag should be 'ol': <ol></ol></ol>
 <ol>WRAP2.MD -- Current wrap stack level is: 3</ol>
 <ol>-----------</ol>
@@ -179,117 +179,111 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_wrap"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>@wrap and @parw</h2></div>
-<div class="extras"><p>[docthis.open(h="Add this to wrap-doc.md")]</p></div>
-<div class="extras"><p>Discuss <strong>&lsqb;code.wrap_stack&lpar;w=""&rpar;&rsqb;</strong> tag.&lt; and tag.&gt;</p></div>
-<div class="extras"><p>[docthis.close]</p></div>
 <div class="extras"><p>By default, <strong>smd</strong> does not place any type of wrapper around emitted contE. This is a good default, however, many times adding wrappers can greatly assist your formatting efforts. This is where @wrap comes in handy...</p></div>
 <div class="extras"><p>First, let's review the complete syntax for both <strong>&#64;wrap</strong> and <strong>&#64;parw</strong></p></div>
 <div class="syntax"><p class="divTitle">@wrap and @parw command syntax</p>
-<p><br /></p>
+<p>&nbsp;</p>
 <p><span class="indent"><strong>&#64;wrap</strong> <strong>&lt;html.tag &lsqb;, html.tag &lsqb;, ...]] | &lsqb;nop | null]&gt;</strong><br /><br /></span></p>
 <p><span class="indent"><strong>&#64;parw</strong> <strong>&lsqb;&ast; | all | &num; &rsqb;</strong></span></p>
 <p><br /><br /></p>
 <p><span class="indent"><span class="indent"><em>NOTE: tag variables passed to <strong>&#64;wrap</strong> <strong>must</strong> be in the <strong>@html</strong> namespace.</span></span></em></p>
 </div>
-<div class="extras"><p>The concept for <strong>&#64;wrap</strong> is straightforward: whenever anything is written to the output stream, it will be wrapped with the specified variable from the @html namespace. Let's look at an example, <strong>smd</strong> session:</p></div>
+<div class="extras"><p>The concept for <strong>&#64;wrap</strong> is straightforward: whenever anything is written to the output stream, it will be wrapped with the specified variable from the <strong>&#64;html</strong> namespace. Let's look at an example, <strong>smd</strong> session:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">@wrap demonstration</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
-Begin by showing that input is not wrapped by default
-Begin by showing that input is not wrapped by default
+<em>// By default, there are no wrap tags in effect</em>
+This line will not have any tags
+<em>Output --></em>This line will not have any tags
 &#64;wrap p
 This line will be wrapped with HTML p tags
-&lt;p&gt;This line will be wrapped with HTML p tags&lt;/p&gt;
+<em>Output --></em>&lt;p&gt;This line will be wrapped with HTML p tags&lt;/p&gt;
 This line also...
-&lt;p&gt;This line also...&lt;/p&gt;
+<em>Output --></em>&lt;p&gt;This line also...&lt;/p&gt;
 &#64;parw
 But not this line
-But not this line
+<em>Output --></em>But not this line
 </pre></div>
-<div class="extras"><p>See how that works? When we issue the <strong>@wrap p</strong> command, subsequent output is wrapped with &lt;p&gt;&lt;/p&gt; tags. It remains in effect until it is cleared with the <strong>@parw</strong> command, or if inside an <strong>@import</strong>'ed file, when EOF is reached.</p></div>
-<div class="extras"><p>It's important to note that any <strong>@wrap</strong> tags that are in effect during the processing of an imported file will be cleared when EOF is reached on that imported file, so that when you return to the parent file, the <strong>@wrap</strong> tag stack for it will be restored to what it was before any file is <strong>@import</strong>'ed.</p></div>
+<div class="extras"><p>See how that works? When we issue the <strong>@wrap p</strong> command, subsequent output is wrapped with &lt;p&gt;&lt;/p&gt; tags. It remains in effect until it is cleared with the <strong>@parw</strong> command, or if inside an <strong>@import</strong>'ed file, when EOF is reached on the current file.</p></div>
+<div class="extras"><p class="note">It's important to note that any <strong>@wrap</strong> tags that are in effect during the processing of an imported file will be cleared when EOF is reached on that imported file, so that when you return to the parent file, the <strong>@wrap</strong> tag stack for it will be restored to what it was before the file was <strong>@import</strong>'ed.</p></div>
 <div class="extras"><p><strong>&#64;wrap</strong> tags can be nested as well. Consider the following example:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">@wrap tag nesting</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;wrap div
 This line will be wrapped with HTML div tags
-&lt;div&gt;This line will be wrapped with HTML div tags&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;This line will be wrapped with HTML div tags&lt;/div&gt;
 &#64;wrap p
 This line, however, will be wrapped in HTML p tags
-&lt;p&gt;This line, however, will be wrapped in HTML p tags&lt;/p&gt;
+<em>Output --></em>&lt;p&gt;This line, however, will be wrapped in HTML p tags&lt;/p&gt;
 &#64;parw
 And now we are back to being wrapped in HTML div tags again
-&lt;div&gt;And now we are back to being wrapped in HTML div tags again&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;And now we are back to being wrapped in HTML div tags again&lt;/div&gt;
 </pre></div>
 <div class="extras"><p>You can nest as deeply as you wish.</p></div>
 <div class="extras"><p>In addition, you are not limited to a single HTML tag when wrapping. Take a look at this example:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">@wrap tag multiples</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;wrap div, p
 This line will be wrapped with HTML both a div and a p tag
-&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
 </pre></div>
 <div class="extras"><p>It is important to distinguish that if multiple tags are listed on a single <strong>@wrap</strong> tag, the parser considers this a single wrap tag with multiple elements. That is, when you use <strong>@parw</strong>, it will clear a single item from the stack, and in the case of a multiple <strong>@wrap</strong> tag, it clears all of the tags associated with that tag. Let's demonstrate it just to be sure:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Clearing @wrap tag multiples</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 Begin by showing that input is not wrapped by default
-Begin by showing that input is not wrapped by default
+<em>Output --></em>Begin by showing that input is not wrapped by default
 &#64;wrap div, p
 This line will be wrapped with HTML both a div and a p tag
-&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
 &#64;parw
 And now this line has no tags
-And now this line has no tags
+<em>Output --></em>And now this line has no tags
 </pre></div>
 <div class="extras"><p>If you issue <strong>&#64;parw</strong> when the wrap stack is empty, the parser issues a warning:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">@parw with empty wrap stack</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;parw
 WARNING: wrapper stack is empty&lt;br /&gt;
 </pre></div>
 <div class="extras" style="border-bottom:2px solid black"><h3>Additional options</h3></div>
 <div class="extras"><p>The <strong>&#64;wrap</strong> has two specialized parameters <strong>nop</strong> and <strong>null</strong> which do the same thing: they temporarily suspend wrapping of content with the previously specified <strong>&#64;wrap</strong> tag. Here's an example:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Temporarily suspend wrapping of content</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;wrap div, p
 This line will be wrapped with HTML both a div and a p tag
-&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
 &#64;wrap null
 And now this line has no tags
-And now this line has no tags
+<em>Output --></em>And now this line has no tags
 &#64;parw
 And now this line will have the previously specified wrap tags of div, p
-&lt;div&gt;&lt;p&gt;And now this line will have the previously specified wrap tags of div, p&lt;/p&gt;&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;&lt;p&gt;And now this line will have the previously specified wrap tags of div, p&lt;/p&gt;&lt;/div&gt;
 </pre></div>
-<div class="extras"><p>The <strong>&#64;parw</strong> also accepts parameters: (<strong>&ast; | all</strong>) or alternatively a <strong>&num;</strong> specified how many tags to clear from the stack. By default, <strong>&#64;parw</strong> will clear a single item from the wrap stack. If you pass an integer <em>n</em>, then it will attempt to clear <em>n</em> items from the wrap stack. If you pass either <strong>&ast;</strong> or <strong>all</strong>, then it will clear all items from the wrap stack, but only those that were added within the current scope. The current scope just means the current <strong>@import</strong> file, and it goes back to the note we made up front about remove items from the wrap stack. Here are a couple of examples of the parameters to <strong>&#64;parw</strong>:</p></div>
+<div class="extras"><p>The <strong>&#64;parw</strong> also accepts parameters: <span class="bold"><span style="font-size:120%">&ast; | all</span></span> or alternatively a <span class="bold"><span style="font-size:120%">&num;</span></span> specified how many tags to clear from the stack. By default, <strong>&#64;parw</strong> will clear a single item from the wrap stack. If you pass an integer <span class="bold"><span style="font-size:120%">n</span></span>, then it will attempt to clear <span class="bold"><span style="font-size:120%">n</span></span> items from the wrap stack. If you pass either <span class="bold"><span style="font-size:120%">&ast;</span></span> or <span class="bold"><span style="font-size:120%">all</span></span>, then it will clear all items from the wrap stack, but only those that were added within the current scope. The current scope just means the current <strong>&#64;import</strong> file, and it goes back to the note we made up front about remove items from the wrap stack. Here are a couple of examples of the parameters to <strong>&#64;parw</strong>:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Clearing the wrap stack</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;wrap div, p
 This line will be wrapped with HTML both a div and a p tag
-&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;&lt;p&gt;This line will be wrapped with HTML both a div and a p tag&lt;/p&gt;&lt;/div&gt;
 &#64;wrap li
 And now this line a list item tag
-&lt;li&gt;And now this line a list item tag&lt;/li&gt;
+<em>Output --></em>&lt;li&gt;And now this line a list item tag&lt;/li&gt;
 &#64;parw &#42;
 And now this line has no tags
-And now this line has no tags
+<em>Output --></em>And now this line has no tags
 &nbsp;
 &#64;wrap div
 This line will be wrapped with HTML div tags
-&lt;div&gt;This line will be wrapped with HTML div tags&lt;/div&gt;
+<em>Output --></em>&lt;div&gt;This line will be wrapped with HTML div tags&lt;/div&gt;
 &#64;wrap p
 This line, however, will be wrapped in HTML p tags
-&lt;p&gt;This line, however, will be wrapped in HTML p tags&lt;/p&gt;
+<em>Output --></em>&lt;p&gt;This line, however, will be wrapped in HTML p tags&lt;/p&gt;
 &#64;parw 25
-WARNING: only 2 items found on the stack that can be cleared&lt;br /&gt;
+WARNING: only 2 items found on the stack that were cleared&lt;br /&gt;
 </pre></div>
-<div class="extras"><p>The final thing we'll cover is a specialized @code macro called <strong>wrap_stack</strong>. This macro gives you some additional options to use with @wrap tags for a few specialized cases. Here are the details on this macro.</p></div>
-<div class="extras"><p>The first thing is the macro itself, here's the syntax for it:</p></div>
-<div class="syntax"><p class="divTitle">Syntax: &lsqb;code.wrap_stack(w="&lt; | &gt; | &num;")&rsqb;</p></div>
+<div class="extras"><p>The final thing we'll cover is a specialized <strong>&#64;code</strong> macro called <strong>wrap_stack</strong>. This macro gives you some additional options to use with <strong>&#64;wrap</strong> tags for a few specialized cases. Here are the details on this macro.</p></div>
+<div class="extras"><p>The first thing is the macro itself, here's the builtin help string for it:</p></div>
+<div class="syntax"><p class="divTitle">code.wrap_stack help string</p>
+<p>&nbsp;&nbsp;<em>wrap_stack(w="< | > | # | tag.< | or tag.>" [encode="True | False"])</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>w</strong> = what you want to get from the wrap stack.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt; - Will print the opening wrap tag<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; - Will print the closing wrap tag<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# - Will print the current wrap tag index<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag.&lt; - Will print the opening wrap tags in text form<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag.&gt; - Will print the closing wrap tags in text form<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>encode</strong> = True if you want the HTML escaped, False for raw (default)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;See the documentation on @wrap for details on how to use this macro</p>
+</div>
 <div class="extras"><p>If you invoke it with no parameters <em>&lsqb;code.wrap_stack&rsqb;</em>, it will return the complete starting and ending tags for the current wrap tag.</p></div>
-<div class="extras"><p>If you pass <em>&lt;</em>, it returns the opening tag(s) sequence, and conversely, <em>&gt;</em> returns the closing tag(s).</p></div>
-<div class="extras"><p>Finally, if you pass <em>&num;</em>, it returns the current stack size, which is really only useful for debugging purposes. Here's a some examples:</p></div>
+<div class="extras"><p>If you pass <span class="red"><span style="font-size:150%">&lt;</span></span>, it returns the opening tag(s) sequence, and conversely, <span class="red"><span style="font-size:150%">&gt;</span></span> returns the closing tag(s).</p></div>
+<div class="extras"><p>If you pass <span class="red"><span style="font-size:150%">&num;</span></span>, it returns the current stack size, which is really only useful for debugging purposes.</p></div>
+<div class="extras"><p>Finally, are the options <span class="red"><span style="font-size:120%">tag.<</span></span> and <span class="red"><span style="font-size:120%">tag.></span></span>. These are similar to the <span class="red"><span style="font-size:120%">&lt;&nbsp;&gt;</span></span> options, but they return the tags in text form instead of as the actual HTML markup. <span class="red"><span style="font-size:120%">tag.<</span></span> is the most useful, because you can use it to maintain the current <strong>&#64;wrap</strong> tags, while adding one or more additional tags.</p></div>
+<div class="extras"><p>Here are some examples:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Viewing the wrap stack</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;wrap div, p
 &lsqb;code.wrap_stack&rsqb;
 &lt;div&gt;&lt;p&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/p&gt;&lt;/div&gt;
@@ -306,8 +300,10 @@ WARNING: only 2 items found on the stack that can be cleared&lt;br /&gt;
 &#64;&#64;&lsqb;code.wrap_stack(w="&num;")]
 1
 &nbsp;
+&#64;&#64;&lsqb;code.wrap_stack(w="tag.<")]
+div,p
 </pre></div>
-<div class="extras"><p>At first glance, the initial call to <strong>&lsqb;code.wrap_stack&rsqb;</strong> might look like a bug, because the tag appears twice. However, this is behaving properly, since tecnically, a wrap tag of <strong>div,p</strong> is currently in effect, and thus the output from the call to <strong>code.wrap_stack</strong> is being wrapped in the tags! On the subsequent calls, you'll notice we prefix each line with <em><strong>&commat;&commat;</strong></em>, something we haven't discussed yet. This is the <strong>raw</strong> prefix, and when used at the start of any line, any wrap tags in effect are ignored.</p></div>
+<div class="extras"><p>At first glance, the initial call to <strong>&lsqb;code.wrap_stack&rsqb;</strong> might look like a bug, because the tag appears twice. However, this is behaving properly, since technically, a wrap tag of <strong>div,p</strong> is currently in effect, and thus the output from the call to <strong>code.wrap_stack</strong> is being wrapped in the tags! On the subsequent calls, you'll notice we prefix each line with <em><strong>&commat;&commat;</strong></em>, something we haven't discussed yet. This is the <strong>raw</strong> prefix, and when used at the start of any line, any wrap tags in effect are ignored.</p></div>
 <div class="extras"><p>This concludes the chapter on <strong>&#64;wrap</strong> and <strong>&#64;parw</strong>.</p></div>
 Going to get one more warning about the wrapper stack being empty, cause I flushed it at the end of the @wrap unittests above...<br />
 WARNING: wrapper stack is empty<br />

@@ -98,10 +98,15 @@
         multi="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\"{{self.cls}}\" _size=\"[html.bigtext._defsize_]\")}}"\
         ger="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\"{{self.cls}}\" _size=\"200%\")}}"\
         110="{{bigtext(_t=\"{{self.t}}\" _size=\"110%\")}}"\
+        110p="{{bigtext._prefix(_t=\"{{self.t}}\" _size=\"110%\" _cls=\"{{self.cls}}\")}}"\
         120="{{bigtext(_t=\"{{self.t}}\" _size=\"120%\")}}"\
+        120p="{{bigtext._prefix(_t=\"{{self.t}}\" _size=\"120%\" _cls=\"{{self.cls}}\")}}"\
         130="{{bigtext(_t=\"{{self.t}}\" _size=\"130%\")}}"\
+        130p="{{bigtext._prefix(_t=\"{{self.t}}\" _size=\"130%\" _cls=\"{{self.cls}}\")}}"\
         142="{{bigtext(_t=\"{{self.t}}\" _size=\"142%\")}}"\
+        142p="{{bigtext._prefix(_t=\"{{self.t}}\" _size=\"142%\" _cls=\"{{self.cls}}\")}}"\
         size="{{bigtext(_t=\"{{self.t}}\" _size=\"{{self.sz}}\")}}"\
+        sizep="{{bigtext._prefix(_t=\"{{self.t}}\" _size=\"{{self.sz}}\" _cls=\"{{self.cls}}\")}}"\
         sz="150%"
 
 //[big(t="text")] 

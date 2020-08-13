@@ -61,11 +61,15 @@ Also like [smdimport.b], [smdembed.b] supports the relative import prefix of '$'
 [olist.wc_close]
 
 [syntax.wc_open(t="[smdembed.il] Syntax")]
-[b]
-[smdembed.il] [E.lb] [E.lt]escape | esc[E.gt] = "True" | "Yes" [E.rb]
+    [b]
+    [smdembed.il] "/path/filename" [E.lb] [E.lt]escape | esc[E.gt] = "True" | "Yes" [E.rb]
 [syntax.wc_close]
 
-The [smdembed.il] keyword supports an option **escape** or **esc** that allows you to specify that the output should be encoded HTML: *[E.lt]* becomes *[E.amp]lt;*, *[E.gt]* becomes *[E.amp]gt;*, etc. This allows you to display HTML encoded files as text, otherwise the browser would interpret and render it as HTML. The default is **False**.
+The [smdembed.il] keyword supports an option **escape** or **esc** that allows you to specify that the output should be encoded HTML: 
+
+[tab.<][big.142p(t="[E.lt]" cls=".red")] becomes [big.120p(t="[E.amp]lt;")][sp.2][big.142p(t="[E.gt]")] becomes [big.110p(t="[E.amp]gt;")][sp.2]...[tab.>]
+
+This allows you to display HTML encoded files as text, otherwise the browser would interpret and render it as HTML. The default is **False**.
 
 [var.terminal(t="**Example [smdembed.il] statements**[bb][sp4][smdembed.il] \"myembedfile.html\"[b][sp4][smdembed.il] \"myembedfile.html\" escape=\"true\"")]
 
@@ -78,7 +82,7 @@ The [smdembed.il] keyword supports an option **escape** or **esc** that allows y
 
 The watch list is simply a list of all the files that the [smd.b] parser has encountered while performing markdown on your content. The higher level command line utilities such as [smdparse.b] and [ismd.b] also add files to the watch list, but for the most part, it's the underlying [smd.b] parser that is responsible for keeping track. 
 
-Interestingly enough, as far as [smd.b] is concerned, the watch list isn't very important. It doesn't act on it in any way, but it's useful for other programs and utilities, such as [ismd.b], as a way to detect changes occurring to files that are directly involved with the current document being processed, and act on it. In the case of [ismd.b], for example, when changes to the files that make up a document are detected, it will invoke the parser again to refresh the content, and then notify all the output monitors that they need to update their output windows. This is extremely useful while developing new content, because it gives you a sort of WYSIWYG always updating view of the changes as you make them!
+Interestingly enough, as far as [smd.b] is concerned, the watch list isn't very important. It doesn't act on it in any way, but it's useful for other programs and utilities, such as [ismd.b], as a way to detect changes occurring to files that are directly involved with the current document being processed, and act on it. In the case of [ismd.b], for example, when changes to the files that make up a document are detected, it will invoke the parser again to refresh the content, and then notify all the output monitors that they need to update their output windows. This is extremely useful while developing new content, because it gives you a sort of WYSIWYG experience, always updating the output view as you make changes!
 
 So why do we need [smdwatch.b] then? I mean, if [smd.b] and other command line utilities already track everything, why do I need it? Good question, grasshopper. The most common reason ties back to the [smdembed.b] command. Since the content of embedded files is not parsed or scanned in any way, there isn't a way for the parser to know if that content references something that needs to be monitored. Enter [smdwatch.b]. Using this keyword, you can add files to the watch list, and then if they are changed, and one of the underlying utilities that monitors the watch list detects it, it will reparse the content and update the output monitors. Pretty cool, huh?
 
@@ -89,30 +93,30 @@ The usage is simple, identical to [smdembed.b] as a matter of fact (except that 
 You can use the [smddump.b] keyword with option **tracked=** to review the files that are currently being watched. This is a good way to just make sure that your watch command is working as expected during the creation process. For example, let's say you [smdembed.b] the file "myscript.html" which includes a [e_tag.b(t="script")] tag that references **myjavascript.js**. We could make sure that our [smdwatch.b] markdown is correct by using the following markdown:
 
 [bmgreybg._open]
-[var.source.wc_open(t="Debug hack for making sure my [smdwatch.il] file is monitored")]
-[bb]
-[smdcomment.il] first let's dump the embed file inline escaped[b]
-**[smdembed.il] '$/../import/myscript.html' escape="true"[b]**
+    [var.source.wc_open(t="Debug hack for making sure my [smdwatch.il] file is monitored")]
+        [bb]
+        *[smdcomment.il] first let's dump the embed file inline escaped*[b]
+        **[smdembed.il] '$/../import/myscript.html' escape="true"[b]**
 @embed '$/../import/myscript.html' escape="true"
-[bb]
-[smdcomment.il] now embed it again, but this time don't escape it[b]
-**[smdembed.il] '$/../import/myscript.html'[b]**
+        [bb]
+        [*smdcomment.il] now embed it again, but this time don't escape it*[b]
+        **[smdembed.il] '$/../import/myscript.html'[b]**
 @embed '$/../import/myscript.html'
-[b]
-[smdcomment.il] now let's see which files are being watched[b]
-**[smddump.il] tracked=".*(myjavascript.js|myscript.html)"**
+        [b]
+        *[smdcomment.il] now let's see which files are being watched*[b]
+        **[smddump.il] tracked=".*(myjavascript.js|myscript.html)"**
 @dump tracked=".*(myjavascript.js|myscript.html)"
-[b]
-[smdcomment.il] okay, so only the *myscript.html* was picked up, as expected. Let's add a watch for the JS file...[b]
-**[smdwatch.il] '$/../import/myjavascipt.js'**
+        [b]
+        *[smdcomment.il] okay, so only the *myscript.html* was picked up, as expected. Let's add a watch for the JS file...*[b]
+        **[smdwatch.il] '$/../import/myjavascipt.js'**
 @watch "$/../import/myjavascript.js"
-[bb]
-[smdcomment.il] Let's check again to see what's being monitored...[b]
-**[smddump.il] tracked=".*(myjavascript.js|myscript.html)"**
+        [bb]
+        *[smdcomment.il] Let's check again to see what's being monitored...*[b]
+        **[smddump.il] tracked=".*(myjavascript.js|myscript.html)"**
 @dump tracked=".*(myjavascript.js|myscript.html)"
-[b]
-[smdcomment.il] Cool! Now both files are being watched ...[b]
-[var.source.wc_close]
+        [b]
+        *[smdcomment.il] Cool! Now both files are being watched ...*[b]
+    [var.source.wc_close]
 [bmgreybg._close]
 
 When you review the preceding section in the docs, you will notice a lot more than is actually needed in practice. This is because I wanted to show the steps and the actual content to help you understand all the steps. In reality, all you needed was:

@@ -191,7 +191,7 @@ Let's review the new definition of **myshot** to see how this change affected th
     [code.dump(ns="image" name="myshot" format="False" whitespace="False")]
 [terminal.wc_close]
 
-You can see that **style=** is now set to [e_var.b(t="IMG_STYLE.inline_border")] instead of being hardcoded. Using the [big.red(t="[E.lb]![sp]![E.rb]")] around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. [big.red(t="[E.lcb2][sp][E.rcb2]")].
+You can see that **style=** is now set to [e_var.b(t="IMG_STYLE.inline_border")] instead of being hardcoded. Using the [big.130p(t="[E.lb]![sp]![E.rb]" cls=".red")] around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. [big.120p(t="[E.lcb2][sp][E.rcb2]")].
 
 //Let's have a look at the contents of **image.md**:
 

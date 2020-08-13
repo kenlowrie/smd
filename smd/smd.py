@@ -587,7 +587,7 @@ class ScriptParser(StdioWrapper):
                                 self.wrapper.pop()
                                 count -= 1
                             if count != 0:
-                                self.oprint(f'WARNING: only {int(parameter)-count} items found on the stack that can be cleared<br />')
+                                self.oprint(f'WARNING: only {int(parameter)-count} items found on the stack that were cleared<br />')
                         else:
                             self.oprint(f'WARNING: unknown option <em>{parameter}</em> passed to @parw<br />')
 
