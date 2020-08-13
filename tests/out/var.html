@@ -823,22 +823,18 @@ NAMESPACE: link<br />
 </div>
 <div class="extras"><p><strong>&#64;var</strong> variables are the only ones that can use the shorthand <strong>name="value"</strong> notation when defining a variable. All the other namespaces require that the <strong>&lsqb;<em>_</em> or <em>_id</em>&rsqb;</strong> special attribute name be used to specify the variable name.  Note that when the shorthand notation is used, it is the first <strong>name="value"</strong> pair that will be used to name the variable. Each of the following examples does exactly the same thing:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaring a variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;var fu="bar"
 &#64;var _="fu" _format="bar"
 &#64;var _id="fu" _format="bar"
-&nbsp;
 </pre></div>
 <div class="extras"><p>Essentially, declaring a variable in <em>any</em> of the namespaces is done in exactly this fashion. <em><strong>@ns</strong></em> followed by a series of attribute="value" pairs. Remember, only <strong>&#64;var</strong> allows the shorthand <strong>fu="bar"</strong> format for naming the variable and setting the <strong>_format</strong> attribute value. All other namespaces require the alternate format. In addition, namespaces based on <strong>&#64;html</strong> and <strong>&#64;code</strong> normally do not specify <strong>_format</strong>, since that attribute is constructed on the fly during the declaration (<strong>&#64;html</strong>) or is not used (<strong>&#64;code</strong>). More on that later.</p></div>
 <div class="extras"><p class="note">
 NOTE: If you redeclare a variable, it will be overwritten with the new declaration. If you want to add attributes to an existing variable, use <strong>&#64;set</strong>
 </p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaring variables in other namespaces</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
 &#64;var _id="fu" _format="bar"
 &#64;html _id="fu"
 &#64;link _id="fu"
-&nbsp;
 </pre></div>
 <div class="extras"><p>Notice that in the <strong>&#64;html</strong> and <strong>&#64;link</strong> declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the &#64;var variable. That is, when you write <strong>&lsqb;var.fu&rsqb;</strong>, <strong>&lsqb;html.fu&rsqb;</strong>, <strong>&lsqb;link.fu&rsqb;</strong> in your markdown document, each would simply emit <strong>bar</strong>. Let's try that now.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using _format on &#64;html and &#64;link</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
@@ -867,7 +863,6 @@ NOTE: If you redeclare a variable, it will be overwritten with the new declarati
 &#64;var fu="bar" _format="123"
 &nbsp;
 Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
-&nbsp;
 </pre></div>
 <div class="extras"><p>If you fail to specify the <strong>_format</strong> attribute when you declare an <strong>&#64;var</strong> variable, and you do not use the short-hand notation to create it, then referencing the variable will result in all attributes being dumped. Let's see how that works. Take the following markdown:</p></div>
 <div class="extras"><p><span class="indent">&#64;var _="myvar" attr1="value1" attr2="value2"</span></p></div>
@@ -967,24 +962,22 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <strong>&lsqb;var.fu._private_keys_&rsqb;</strong> <em>=</em>_format,
 <strong>&lsqb;var.fu.?&rsqb;</strong> <em>=</em><em>No help available</em>
 &nbsp;
-<strong>&lsqb;html.divx._all_attrs_&rsqb;</strong> <em>=</em> _tag="div" _format="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;" class="extras"
-<strong>&lsqb;html.divx._private_attrs_&rsqb;</strong> <em>=</em> _tag="div" _format="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;"
+<strong>&lsqb;html.divx._all_attrs_&rsqb;</strong> <em>=</em> _format="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;" _tag="div" class="extras"
+<strong>&lsqb;html.divx._private_attrs_&rsqb;</strong> <em>=</em> _format="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;" _tag="div"
 <strong>&lsqb;html.divx._public_attrs_&rsqb;</strong> <em>=</em> class="extras"
 </pre></div>
 <a id="ug_var_misc"></a>
 <div class="extras" style="border-bottom:2px solid black"><h4>&#64;var Miscellaneous Examples</h4></div>
 <div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>&#64;var</strong> namespace.</p></div>
-<div class="extras"><p>Consider this declaration:</p></div>
-<div class="extras"><p><span class="indent"><strong>&#64;var _id="varname" attr1="value1" _format="format string"</strong></span></p></div>
-<div class="extras"><p>And now we write the following markdown:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-<strong>&lsqb;varname.attr1&rsqb;</strong> would emit <em><strong>value1</strong></em>.
-<strong>&lsqb;varname._id&rsqb;</strong> would emit <em><strong>varname</strong></em>.
-<strong>&lsqb;varname._format&rsqb;</strong> would emit <em><strong>format string</strong></em>.
+<div class="extras"><p>Consider the following markdown:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;var _id="varname" attr1="value1" _format="format string"</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>&lsqb;varname.attr1&rsqb;</strong> will emit <em><strong>value1</strong></em>.
+<strong>&lsqb;varname._id&rsqb;</strong> will emit <em><strong>varname</strong></em>.
+<strong>&lsqb;varname._format&rsqb;</strong> will emit <em><strong>format string</strong></em>.
 </pre></div>
 <div class="extras"><p>So that's pretty cool, but there's a bit more to the _format attribute. You can reference the attributes contained within the variable by using <strong>{{self}}.attrname</strong>. Given that, if we write the following:</p></div>
 <div class="extras"><p><span class="indent"><strong>&#64;var _id="fullname" first="ken" last="lowrie" _format="&lcub;&lcub;&#x73;elf.first&rcub;&rcub; &lcub;&lcub;&#x73;elf.last&rcub;&rcub;"</strong></span></p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;var _id="fullname" first="ken" last="lowrie" _format="&lcub;&lcub;&#x73;elf.first&rcub;&rcub; &lcub;&lcub;&#x73;elf.last&rcub;&rcub;"</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <strong>&lsqb;fullname&rsqb;</strong> would emit <em><strong>ken lowrie</strong></em>.
 </pre></div>
 <div class="extras"><p>Using that, you can build some pretty powerful tools for automating frequently used tasks in your documents. Take a look at the <strong>film.md</strong>, <strong>image.md</strong> and <strong>avs.md</strong> tests to get an idea of what you can do.</p></div>
@@ -1002,8 +995,8 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <div class="extras"><p>Did you notice that in the first example, we used <strong>&lcub;&lcub;</strong> and <strong>&rcub;&rcub;</strong> around the variable/attribute name, and in the second, we used square brackes i.e. <strong>&lsqb;</strong> and <strong>&rsqb;</strong>? What's the difference (if there is one), and why use one over the other? Good question. Now is a good time to talk about the concept of attribute markdown expansion, and how it works.</p></div>
 <a id="ug_attr_exp"></a>
 <div class="extras" style="border-bottom:2px solid black"><h4>Attribute Expansion</h4></div>
-<div class="extras"><p>You are going to see this over and over in the coming chapters, and even more once you start examining the built-ins and this user guide, however, we need to cover it now, so it won't seem overly complex later on. What I'm talking about is the concept of attribute expansion, in the context of <strong>smd</strong>'s markdown variables and attributes.</p></div>
-<div class="extras"><p>As you have seen, variables can have one or more attributes, and those attributes can be anything from plain text, to specialized markdown such as &ast;, &ast;&ast;, &plus;&plus; and &sim;&sim;, to the referencing of other attributes, both within the same definition, as well as in entirely other variables and yes, even other namespaces! Let's review a few examples to get started.</p></div>
+<div class="extras"><p>Next up is a topic you are going to see over and over in the coming chapters, and even more once you start examining the built-ins and this user guide. What I'm talking about is the concept of attribute expansion, in the context of <strong>smd</strong>'s markdown variables and attributes.</p></div>
+<div class="extras"><p>As you have seen, variables can have one or more attributes, and those attributes can be anything from plain text, to specialized markdown such as <em><strong>&ast;</strong></em>, <em><strong>&ast;&ast;</strong></em>, <em><strong>&plus;&plus;</strong></em> and <em><strong>&sim;&sim;</strong></em>, to the referencing of other attributes, both within the same definition, as well as in entirely other variables and yes, even other namespaces! Let's review a few examples to get started.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Attribute expansion - simple and inline markdown</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &#64;var var1="" attr1="plain text" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong>plain text
 &nbsp;
@@ -1012,26 +1005,27 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 &#64;var var1="" attr1="&lt;strong&gt;text with html markup&lt;/strong&gt;" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong><strong>text with html markup</strong>
 </pre></div>
 <div class="extras"><p>With simple markdown, you are providing the values directly, and possibly adding the inline markdown elements to it for decoration.</p></div>
-<div class="extras"><p>Next up, let's take a look at referencing values stored in attributes within the same variable. This can be done using either square brackets <strong>&lsqb;&nbsp;&rsqb;</strong> or curly brackets <strong>&lcub;&lcub;&nbsp;&rcub;&rcub;</strong>. Before looking at the examples, though, let's get aquainted with the semantic differences between the two variations.</p></div>
-<div class="extras"><p>Anytime you use square brackets during the declaration of new variables and/or attributes, they will be evaluated at the time the variable declaration is parsed. Curly braces, on the on the other hand, are not evaluated until the attribute value is referenced later in the document. This is a very important distinction, because sometimes, you want some parts of your declaration to evaluate during the parsing stage, and other times, you need them to evaluate later, when a given attibute is being referenced.</p></div>
+<div class="extras"><p>Attributes can also reference values stored in other attributes within the same variable. This can be done using either square brackets <strong>&lsqb;&nbsp;&rsqb;</strong> or curly brackets <strong>&lcub;&lcub;&nbsp;&rcub;&rcub;</strong>. Before looking at the examples, though, let's get acquainted with the semantic differences between the two variations.</p></div>
+<div class="extras"><p>Anytime you use square brackets during the declaration of new variables and/or attributes, they will be evaluated at the time the variable declaration is parsed. Curly braces, on the on the other hand, are not evaluated until the attribute value is referenced later in the document. This is a very important distinction, because sometimes, you want some parts of your declaration to evaluate during the parsing stage, and other times, you need them to evaluate later, when a given attribute is actually being referenced.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Attribute expansion - referencing attributes within the same variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &#64;var var1="" attr1="&lsqb;self.attr1&rsqb;" attr2="&ast;from var1.attr2&ast;" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from var1.attr2</em>
 &nbsp;
 &#64;var var1="" attr1="&lcub;&lcub;self.attr1&rcub;&rcub;" attr2="&ast;from var1.attr2&ast;" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from var1.attr2</em>
 </pre></div>
 <div class="extras"><p>Couple of notes on the prior example. First, notice the use of <strong>self.</strong> as a shorthand notation for <strong>var.var1</strong>. This is a frequently used notation, because if you change the variable name, you don't have to change any of the <strong>self.</strong> references. The parser will take care of that for you.</p></div>
-<div class="extras"><p>Second, notice that both the square brackets and the curly braces produced the same results. This happens due to a side effect of referencing attributes during the declaration of a new variable. Since at the time of parsing, <strong>var1</strong> does not exist, the lookup for <strong>var1.attr1</strong> fails, and thus the markdown fails to expand. However, later, when we access the attribute again, it will resolve, and thus both variations work the same way. Keep in mind that relying on this side effect isn't a great idea; it will often lead to pesky bugs in your markdown documents, so it is highly recommended that you use the appropriate syntax when it's called for to avoid it!</p></div>
-<div class="extras"><p>Okay, now let's add a new twist. Having the attributes in one declaration reference the attributes in another declaration. This will demonstrate the issue we were just talking about, the semantic differences between square brackets and curly braces in <strong>smd</strong> markdown.</p></div>
+<div class="extras"><p>Second, notice that both the square brackets and the curly braces produced the same results. This happens due to a side effect of referencing attributes during the declaration of a new variable. Since at the time of parsing, <strong>var1</strong> does not exist, the lookup for <strong>var1.attr1</strong> fails, and thus the markdown fails to expand. However, later, when we actually access the attribute, it will resolve, and thus both variations work the same way. Keep in mind that relying on this side effect isn't a great idea; it will often lead to pesky bugs in your markdown documents, so it is highly recommended that you use the appropriate syntax when it's called for, and avoid this side effect!</p></div>
+<div class="extras"><p>Okay, now let's add a new twist. Having the attributes in one declaration reference the attributes in another declaration. This will demonstrate the issue we were just talking about, that is, the semantic differences between square brackets and curly braces in <strong>smd</strong> markdown.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Attribute expansion - referencing attributes in a different variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <em>// Declare a second variable with an attribute we can reference from var1</em>
 &#64;var extvar="" attr2="&ast;from extvar.attr2&ast;"
 &nbsp;
-<em>// Declare var1 and var2</em>
-&#64;var var1="" attr1="&lsqb;extvar.attr2&rsqb;" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from extvar.attr2</em>
+<em>// Declare var1 and var2 then emit attr1 for each</em>
+&#64;var var1="" attr1="&lsqb;extvar.attr2&rsqb;"
+&#64;var var2="" attr1="&lcub;&lcub;extvar.attr2&rcub;&rcub;"
+<br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from extvar.attr2</em>
+<strong>&lsqb;var2.attr1&rsqb;=</strong><em>from extvar.attr2</em>
 &nbsp;
-&#64;var var2="" attr1="&lcub;&lcub;extvar.attr2&rcub;&rcub;" <br /><strong>&lsqb;var2.attr1&rsqb;=</strong><em>from extvar.attr2</em>
-&nbsp;
-<em>// Now, let's change the value of extvar.attr2 and then reference both variables <strong>attr1</strong> again</em>
+<em>// Change the value of extvar.attr2 and then reference <strong>attr1</strong> again</em>
 &#64;set _="extvar" attr2="&ast;&ast;&ast;A new value!&ast;&ast;&ast;"
 &nbsp;
 <em>// Review current values of <strong>var1.attr1</strong> and <strong>var2.attr1</strong></em>
@@ -1059,12 +1053,13 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <em>// Declare a second variable with an attribute we can reference from var1</em>
 &#64;var extvar="" attr2="&ast;from extvar.attr2&ast;"
 &nbsp;
-<em>// Declare var1 and var2</em>
-&#64;var var1="" attr1="&lsqb;!extvar.attr2!&rsqb;" <br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from extvar.attr2</em>
+<em>// Declare var1 and var2 then emit attr1 on each</em>
+&#64;var var1="" attr1="&lsqb;!extvar.attr2!&rsqb;"
+&#64;var var2="" attr1="&lcub;&lcub;extvar.attr2&rcub;&rcub;"
+<br /><strong>&lsqb;var1.attr1&rsqb;=</strong><em>from extvar.attr2</em>
+<strong>&lsqb;var2.attr1&rsqb;=</strong><em>from extvar.attr2</em>
 &nbsp;
-&#64;var var2="" attr1="&lcub;&lcub;extvar.attr2&rcub;&rcub;" <br /><strong>&lsqb;var2.attr1&rsqb;=</strong><em>from extvar.attr2</em>
-&nbsp;
-<em>// Now, let's change the value of extvar.attr2 and then reference both variables <strong>attr1</strong> again</em>
+<em>// Change the value of extvar.attr2 and then reference <strong>attr1</strong> again</em>
 &#64;set _="extvar" attr2="&ast;&ast;&ast;A new value!&ast;&ast;&ast;"
 &nbsp;
 <em>// Review current values of <strong>var1.attr1</strong> and <strong>var2.attr1</strong></em>
@@ -1087,10 +1082,10 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <div class="extras"><p></div></p></div>
 </div>
 <div class="extras"><p>Now, in <strong>var1.attr1</strong>, it's value is set to <strong>&lsqb;extvar.attr2&rsqb;</strong>, which makes it behave like <strong>var2.attr1</strong>. In this case, we have applied <em>deferred expansion</em> using <em><strong>[!!]</strong></em> instead of the usual curly brackets <strong>&lcub;&lcub;&nbsp;&rcub;&rcub;</strong>.</p></div>
-<div class="extras"><p>This can help you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter <strong>&#64;set</strong> and the <strong>_null_</strong> attribute. We've already been using it in our examples, so it may be old hat by now, but let's take a closer look at it just to be thorough.</p></div>
+<div class="extras"><p>This can help you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter <strong>&#64;set</strong> and the <strong>_null_</strong> attribute. We've already been using them in our examples, so it may be old hat by now, but let's take a closer look at it just to be thorough.</p></div>
 <a id="ug_set_keyword"></a>
 <div class="extras" style="border-bottom:2px solid black"><h3>The &#64;set Keyword</h3></div>
-<div class="extras"><p>Attributes in any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except <strong>&#64;code</strong>. In &#64;code, there is only one way to update an attribute value, and that is with <strong>&#64;set</strong>. Let's see how it's done.</p></div>
+<div class="extras"><p>Attributes in any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except <strong>&#64;code</strong>. In &#64;code, there is only one way to update an attribute value, and that is with <strong>&#64;set</strong>. Let's see how it's done, regardless of the namespace.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Updating attribute values with &#64;set</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <em>// First, let&apos;s declare a new variable called &apos;fu&apos;</em>
 <strong>&#64;var fu="bar" attr1="value1"</strong>
@@ -1104,8 +1099,8 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <strong>&lsqb;fu._null_&lpar;attr1="value3"&rpar;&rsqb;</strong>
 <strong>&lsqb;fu.attr1&rsqb;</strong> emits <strong>value3</strong>
 </pre></div>
-<div class="extras"><p class="note">The <strong>_null_</strong> attribute illustrates an important concept with the attributes of variables in <strong>smd</strong>. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except <strong>&#64;code</strong>; in the <strong>&#64;code</strong> namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.<br /><br />As previously mentioned, the only way to change the value of a variable in the <strong>&#64;code</strong> namespace is by using <strong>&#64;set</strong>. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.</p></div>
-<div class="extras"><p>You can also add new attributes to an existing variable with <strong>&#64;set</strong>. And, if you <strong>&#64;set</strong> a variable that does not exist, <strong>&#64;set</strong> will create it. Let&apos;s see both of these things in action now.</p></div>
+<div class="extras"><p class="note">The <strong>_null_</strong> attribute illustrates an important concept with the attributes of variables in <strong>smd</strong>. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except <strong>&#64;code</strong>; in the <strong>&#64;code</strong> namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.<br /><br />As previously mentioned, the only way to change the value of a variable in the <strong>&#64;code</strong> namespace is by using <strong>&#64;set</strong>. When this is done, the code behind the variable (Python source code) is recompiled, which updates the default value in the compiled code stored as part of the variable.</p></div>
+<div class="extras"><p>You can also add new attributes to an existing variable with <strong>&#64;set</strong>. And, if you <strong>&#64;set</strong> a variable that does not exist, <strong>&#64;set</strong> will create it. Let&apos;s see some examples of adding attributes.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding attributes with &#64;set</pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <em>// add a new attribute to &apos;fu&apos; using &#64;set</em>
@@ -1145,11 +1140,11 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 <div class="extras"><p>And finally, you can also specify the namespace two different ways with <strong>&#64;set</strong>. Witness:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Specifying the namespace</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <em>// Specify the namespace with &#64;set; don&apos;t leave it to chance!</em>
-<strong>&#64;set &lsqb;em&rsqb;_ns="var"&lsqb;/em&rsqb; _="fu" attr6="update attr6"</strong>
+<strong>&#64;set _ns="var" _="fu" attr6="update attr6"</strong>
 <strong>&lsqb;fu.attr6&rsqb;</strong> emits <strong>update attr6</strong>
 &nbsp;
-<em>// Alternate method to set namespace</em>
-<strong>&#64;set _="&lsqb;em&rsqb;var.&lsqb;/em&rsqb;fu" attr6="update attr6 again!"</strong>
+<em>// Alternate method to specify namespace</em>
+<strong>&#64;set _="var.fu" attr6="update attr6 again!"</strong>
 <strong>&lsqb;fu.attr6&rsqb;</strong> emits <strong>update attr6 again!</strong>
 </pre></div>
 <div class="extras"><p>One last time let's dump the variable 'fu' to see all the attributes and their values.</p></div>
@@ -1168,20 +1163,19 @@ Then &lsqb;fu&rsqb; will emit <strong>123</strong> instead of <em>bar</em>
 </div>
 <div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>&#64;var</strong> namespace.</p></div>
 <div class="extras"><p>Given the following markdown:</p></div>
-<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="source"><code style="font-size:1.4em;font-weight:bold">Create a new smd variable <em>c2</em></code>
-<code style="font-size:1.2em"><br /><br /></code>
-<code style="font-size:1.2em">&#64;var ns="var"<br /></code>
-<code style="font-size:1.2em">&#64;set _ns="&lsqb;ns&rsqb;" _="c2" attr1="&ast;value 1&ast;" attr2="&ast;&ast;value 2&ast;&ast;" attr3="{{self.attr1}}--{{self.attr2}}" attr4="&lsqb;self.attr2&rsqb;--&lsqb;self.attr1&rsqb;"</code>
-</div>
-</div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Create a new smd variable <em>c2</em></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&#64;var ns="var"<br />
+&#64;set _ns="&lsqb;ns&rsqb;" _="c2" \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr1="&ast;value 1&ast;" \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr2="&ast;&ast;value 2&ast;&ast;" \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr3="{{self.attr1}}--{{self.attr2}}" \<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attr4="&lsqb;self.attr2&rsqb;--&lsqb;self.attr1&rsqb;"
+</pre></div>
 <div class="extras"><p>Then the following markdown sometime later will produce:</p></div>
-<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="extras"><p>&lsqb;c2.attr1&rsqb; = <em>value 1</em></p></div>
-<div class="extras"><p>&lsqb;c2.attr2&rsqb; = <strong>value 2</strong></p></div>
-<div class="extras"><p>&lsqb;c2.attr3&rsqb; = <em>value 1</em>--<strong>value 2</strong></p></div>
-<div class="extras"><p>&lsqb;c2.attr4&rsqb; = <strong>value 2</strong>--<em>value 1</em></p></div>
-</div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Display the values for each of the attributes in c2</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;c2.attr1&rsqb; = <em>value 1</em>
+&lsqb;c2.attr2&rsqb; = <strong>value 2</strong>
+&lsqb;c2.attr3&rsqb; = <em>value 1</em>--<strong>value 2</strong>
+&lsqb;c2.attr4&rsqb; = <strong>value 2</strong>--<em>value 1</em>
+</pre></div>
+<div class="extras"><p>Did you notice that we snuck in a new concept here? Line continuation can be accomplished by ending any line with the backslash <em><strong>\</strong></em> character. When reading input lines, if the parser detects the backslash as the last character on the line, it will read the next line and append it to the current line, and then return the entire thing as though it were one long line. This helps you produce more readable markdown, especially when declaring variables or creating long textual content.</p></div>
+<div class="extras"><p>Well that wraps the section on <strong>&#64;var</strong>! Most of the concepts we covered here apply to all namespaces, unless they say otherwise when we cover them. Let's move on to the next namespace, <strong>&#64;html</strong>, arguably the reason we are all here, since HTML is the primary reason that <strong>smd</strong> exists!</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -1303,6 +1297,19 @@ NAMESPACE: var<br />
 <strong>b_unexpected=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>attribute ends up becoming the name of the variable...<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>blue=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".blue" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>green=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".green" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>multi=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>ger=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="200%")}}<br />
+&nbsp;&nbsp;<strong>110=</strong>{{bigtext(_t="{{self.t}}" _size="110%")}}<br />
+&nbsp;&nbsp;<strong>120=</strong>{{bigtext(_t="{{self.t}}" _size="120%")}}<br />
+&nbsp;&nbsp;<strong>130=</strong>{{bigtext(_t="{{self.t}}" _size="130%")}}<br />
+&nbsp;&nbsp;<strong>142=</strong>{{bigtext(_t="{{self.t}}" _size="142%")}}<br />
+&nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
+&nbsp;&nbsp;<strong>sz=</strong>150%<br />
 <br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
@@ -1667,7 +1674,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>The &lt;strong&gt;_null_&lt;/strong&gt; attribute illustrates an important concept with the attributes of variables in &lt;strong&gt;smd&lt;/strong&gt;. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except &lt;strong&gt;&amp;#64;code&lt;/strong&gt;; in the &lt;strong&gt;&amp;#64;code&lt;/strong&gt; namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.&lt;br /&gt;&lt;br /&gt;As previously mentioned, the only way to change the value of a variable in the &lt;strong&gt;&amp;#64;code&lt;/strong&gt; namespace is by using &lt;strong&gt;&amp;#64;set&lt;/strong&gt;. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.<br />
+&nbsp;&nbsp;<strong>t=</strong>The &lt;strong&gt;_null_&lt;/strong&gt; attribute illustrates an important concept with the attributes of variables in &lt;strong&gt;smd&lt;/strong&gt;. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except &lt;strong&gt;&amp;#64;code&lt;/strong&gt;; in the &lt;strong&gt;&amp;#64;code&lt;/strong&gt; namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.&lt;br /&gt;&lt;br /&gt;As previously mentioned, the only way to change the value of a variable in the &lt;strong&gt;&amp;#64;code&lt;/strong&gt; namespace is by using &lt;strong&gt;&amp;#64;set&lt;/strong&gt;. When this is done, the code behind the variable (Python source code) is recompiled, which updates the default value in the compiled code stored as part of the variable.<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var<br />
@@ -1907,7 +1914,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
-&nbsp;&nbsp;<strong>parms=</strong>Alternate method to set namespace<br />
+&nbsp;&nbsp;<strong>parms=</strong>Alternate method to specify namespace<br />
 <br />
 <strong>smddebug=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@debug<br />
 &nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
@@ -2092,7 +2099,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
-&nbsp;&nbsp;<strong>parms=</strong>_="&lt;em&gt;var.&lt;/em&gt;fu" attr6="update attr6 again!"<br />
+&nbsp;&nbsp;<strong>parms=</strong>_="var.fu" attr6="update attr6 again!"<br />
 <br />
 <strong>smdstop=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@stop<br />
 &nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
@@ -2174,7 +2181,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._source_content_.&lt;}}{{self.c}}{{html._source_content_.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>source<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>Create a new smd variable &lt;em&gt;c2&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>t=</strong>Current definition of &amp;apos;fu&amp;apos; variable<br />
 &nbsp;&nbsp;<strong>c=</strong>source default content<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>2=</strong>&amp;nbsp;&amp;nbsp;<br />
@@ -2235,7 +2242,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}{{html._terminal_prewrap_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>Specifying the namespace<br />
+&nbsp;&nbsp;<strong>t=</strong>Display the values for each of the attributes in c2<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
 <br />
 <strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />

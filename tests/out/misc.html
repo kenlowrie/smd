@@ -207,6 +207,19 @@ NAMESPACE: var<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
+<strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>blue=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".blue" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>green=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".green" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>multi=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>ger=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="200%")}}<br />
+&nbsp;&nbsp;<strong>110=</strong>{{bigtext(_t="{{self.t}}" _size="110%")}}<br />
+&nbsp;&nbsp;<strong>120=</strong>{{bigtext(_t="{{self.t}}" _size="120%")}}<br />
+&nbsp;&nbsp;<strong>130=</strong>{{bigtext(_t="{{self.t}}" _size="130%")}}<br />
+&nbsp;&nbsp;<strong>142=</strong>{{bigtext(_t="{{self.t}}" _size="142%")}}<br />
+&nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
+&nbsp;&nbsp;<strong>sz=</strong>150%<br />
+<br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1045,6 +1058,13 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>&lt;/span&gt;&lt;/span&gt;<br />
 &nbsp;&nbsp;<strong>o3=</strong>&lt;span class="indent"&gt;&lt;span class="indent"&gt;&lt;span class="indent"&gt;<br />
 &nbsp;&nbsp;<strong>c3=</strong>&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;<br />
+<br />
+<strong>table_2col=</strong><br />&nbsp;&nbsp;<strong>open=</strong>{{code.pushlines(t="@wrap null\n&lt;div class=\"extras\"&gt;&lt;table style=\"margin-left:auto;margin-right:auto\"&gt;")}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{code.pushlines(t="&lt;/table&gt;&lt;/div&gt;\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>row=</strong>&lt;tr&gt;{{td_item.&lt;}}{{self.item}}&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>row_alt=</strong>&lt;tr&gt;{{td_item.&lt;}}&lt;em&gt;{{self.item}}&lt;/em&gt;&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>header=</strong>&lt;tr&gt;{{th_item.&lt;}}{{self.item}}&lt;/td&gt;{{th_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Macro for emitting 2 column table<br />
 <br />
 <strong>terminal=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />

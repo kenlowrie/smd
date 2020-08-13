@@ -9,82 +9,6 @@ The [smdcode.b] keyword is used to construct a very specialized type of variable
 
 [bluenote(t="If you are not familiar with Python and Python programming, then you may want to skip this section; it isn't for you. You can still do quite a bit with [smd.b] without having to write extensions in Python.")]
 
-[docthis.open(h="Add this to ns_code-doc.md")]
-
-Should [encode_smd(t="<get>")] and [encode_smd(t="<get_value>")] be combined? Seems unnecessary to have both of them.
-
-// If the following isn't done/documented, I should move it to a future_list or something...
-Can't I also "store" an instance of a variable (like code), that has compiled something that I will use over and over?
-
-The following doesn't work because code doesn't support _inherit (weird). As-is, because you can't _inherit from a different namespace... Actually, mk is part of @var, but there isn't a _last, because that would be part of code.repeat, and it would change. Without a way to force [] to be evaluated at declaration time, this doesn't seem doable...
-
-[code.name.run(parms="")]
-@var _="saved_code" _inherit="code.name" _format="{{self.last}}"
-
-Document code.encode_smd
-
-@@[code.encode_smd(t="@dump sysdef=\".\"")][b]
-
-{:.bigandbold}If this is inline, *[code.encode_smd(t="@var name=\"value\" _format=\"# {{self.name}}\"")]*
-//@dump code="encode_smd"
-//@set _ns="code" _="encode_smd" b="**{{self.run}}(t={{self.t}})**"
-//[encode_smd.b(t="[var]")]
-
-document these
-//@@[code.escape_var(v="var.bb")]
-//@@[code.encode_smd_var(v="var.bb")]
-
-[mk]
-@code mk0="" _inherit="code.mk" _format="{{self._last}}"
-@var mk1="[code.repeat._last]"
-@var mk2="" _inherit="mk"
-
-@dump var="mk" code="mk"
-
-[mk0]
-[mk1]
-
-// be sure to test the @code thing where the only way to change attribute defaults is to use @set...
-
-// document that you cannot use () inside parameter strings, as it breaks the parser...
-**[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]** - Doesn't work
-**[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]** - Works just fine.
-// I really wish I could just fix this. What a PITA...
-
-
-@code _id="esc1"\
-      type="eval"\
-      src="print('$.url'.replace('<', '&lt;').replace('>','&gt;'))"\
-      url="{{self.help}}"\
-      help="Usage: {{self._}}.run(url=\"text to escape\")"
-@code _id="esc2"\
-      type="eval"\
-      src="print('{{self.url}}'.replace('<', '&lt;').replace('>','&gt;'))"\
-      url="{{self.help}}"\
-      help="Usage: {{self._}}.run(url=\"text to escape\")"
-
-[esc1]
-[tab.<]-->{{self.help}}
-[esc2]
-[tab.<]-->Usage: esc2.run(url="text to escape")
-@var fu="<cloudylogic.com>"
-[esc2(url="{{var.fu}}")]
-&lt;cloudylogic.com&gt;
-@set _="esc2" a1="<klowrie.net>" a2="{{self.a1}}"
-[esc2(url="{{self.a1}}")]
-[tab.<]-->&lt;klowrie.net&gt;
-[esc2(url="{{self.a2}}")]
-[tab.<]-->&lt;klowrie.net&gt;
-[esc2(url="$.a2")]
-[tab.<]-->{{self.a1}}
-
-
-
-
-
-
-[docthis.close]
-
 [link.ug_code_syntax]
 [wrap_h.section(t="### [smdcode.il] Syntax")]
 
@@ -94,7 +18,7 @@ document these
     {:.red}[tab.<][tab.<]NOTE: either underscore [E.apos]**_**[E.apos] or [E.apos]**_id**[E.apos] can be used to name the variable.[tab.>][tab.>]
 [syntax.wc_close]
 
-[smdcode.b] variables require that the **[E.lb]*_* or *_id*[E.rb]** special attribute name be used to specify the variable name. In addition to that requirement, [smdcode.b] variables also require two specific public attributes: **src** and **type**. As you might expect, **src** contains the Python source code that will be executed, and **type** specifies either *eval* or *exec*, which are underlying Python concepts. Refer to the Python documentation for the specifics on *eval* vs. *exec* when writing Python code. Let's take a look at an example declaration:
+[smdcode.b] variables require that the [big.multi(t="_" cls=".green.bold.italic")] or [big.multi(t="_id")] special attribute name be used to specify the variable name. In addition to that requirement, [smdcode.b] variables also require two specific public attributes: [big.multi(t="src")] and [big.multi(t="type")]. As you might expect, [big.multi(t="src")] contains the Python source code that will be executed, and [big.multi(t="type")] specifies either *eval* or *exec*, which are underlying Python concepts. Refer to the Python documentation for the specifics on *eval* vs. *exec* when writing Python code. Let's take a look at an example declaration:
 
 [terminal.wc_open(t="Declaring an [smdcode.il] variable")]
     [sp]
@@ -104,8 +28,6 @@ document these
 [terminal.wc_close]
 
 [note(t="[smdcode.b] declarations support the shorthand notation **$.attrname** which is identical to **[E.lcb2][_self_].attrname[E.rcb2]**. They can be used interchangably on [smdcode.il] declarations within the **src** attribute only.[bb]Keep in mind, however, that there is a subtle semantic difference between the two syntaxes. In addition to only being valid in the context of the **src** attribute value, if a **$.attrname** reference value contains delayed expansion markdown i.e. [E.lcb2]var.attr[E.rcb2], it will simply be substituted, it will not be marked down.")]
-
-[question(t="Looks like it's only attrs, and furthermore, it's a mesh between the static attrs and the jit_attrs on the markdown call. Starts with static attrs of variable, and then adds/updates those with the values from jit_attrs. Then, any references to $.attr is replaced with value from the temp dict, and then the original dict is restored, but with the side affect of any new attributes becoming sticky... Add unittests to cover all these cases. Does not markdown [E.lcb2]var.attr[E.rcb2]")]
 
 @code _id="echo" src="print('{{self.text}}')" type="eval" text="*text to print*"
 //@code _id="echo" src="print('$.text')" type="eval" text="*text to print*")*"
@@ -149,9 +71,10 @@ And that's how you change the default values for [smdcode.b] variable attributes
 
 Let's take a quick look at the definition for **code.echo**:
 
-[bmgreybg._open]
-@dump code="echo"
-[bmgreybg._close]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="code" \
+               nsname="echo$" \
+               title="Definition for **code.echo**")]
 
 Accessing these attributes is done the same way as any other namespace. For example:
 
@@ -177,18 +100,25 @@ Let's take a look at one more declaration:
 
 And now we write the following markdown:
 [terminal.wc_open(t="")]
-    [smdcomment.b] Because **url** has not been set yet, it will default to the built-in help string
+    *[smdcomment.b] Because **url** has not been set yet, it will default to the built-in help string*
+    [sp]
     [e_var.b(t="code.esc_angles")] emits *[code.esc_angles]*[b]
     **[E.lb]code.esc_angles(url="[E.lt]https://google.com[E.gt]")]** emits *[code.esc_angles(url="<https://google.com>")]*.
 [terminal.wc_close]
 
 As it turns out, **code.esc_angles** is actually one of the built-in [smdcode.b] macros provided by [smd.b]. 
 
-[bmgreybg._open]
-@dump code="esc_angles"
-[encode_smd(t="<esc_angles._help>")] emits [b][esc_angles._help]
-[encode_smd(t="<esc_angles.?>")] emits [b][esc_angles.?]
-[bmgreybg._close]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="code" \
+               nsname="esc_angles$" \
+               title="Definition for **code.esc_angles**")]
+
+[terminal.wc_open(t="Reviewing the builtin help for **esc_angles**")]
+    *[smdcomment.il] Value of **_help** has been suppressed from the dump above. It follows:*[b]
+    **_help=**[get_value(v="code.esc_angles._help" ret_type="0" escape="True" esc_smd="True")][b]
+    **[encode_smd(t="<esc_angles._help>")]** emits [b][esc_angles._help][b]
+    **[encode_smd(t="<esc_angles.?>")]** emits [b][esc_angles.?]
+[terminal.wc_close]
 
 We will see the rest of built-in macros later in the chapter.
 
@@ -207,7 +137,7 @@ Variable names in the [smdcode.b] namespace are restricted to the same requireme
 In addition to the specific attributes covered above, [smdcode.b] variables support the underlying built-in attributes of all namespaces. They can be useful to assist in debugging complex declarations. Refer to the [link.ug_var_attrs.link] section for all of the details of the built-in attributes.
 
 [link.ug_code_builtins]
-[wrap_h.section(t="### [smdcode.il] Built-in Macros")]
+[wrap_h.section(t="### [smdcode.il] Built-in Macros Help Section")]
 
 [smdcode.b] provides a number of useful builtins to assist with creating more complex markdown documents. In this section, we'll take a closer look at what's available, and see how they can be used in your own documents.
 
@@ -271,7 +201,7 @@ In addition to the specific attributes covered above, [smdcode.b] variables supp
 [pushlist(name="get_value")]
 [pushlist(name="get_default")]
 
-[wrap_h.subsect(t="### Specialized get variable / attribute values")]
+[wrap_h.subsect(t="### Contents of the code.md builtins file")]
 
 
 The import file **[encode_smd(t="<sys.imports>/code.md")]** is where the majority of the [smdcode.b] built-in macros are documented, so we will just embed the file here to review them.
@@ -280,133 +210,25 @@ The import file **[encode_smd(t="<sys.imports>/code.md")]** is where the majorit
     @embed "[sys.imports]/code.md" esc="y"
 [terminal.wc_close]
 
-
-
 [link.ug_code_misc]
-[wrap_h.subsect(t="### [smdcode.il] Miscellaneous Examples")]
+[wrap_h.subsect(t="### A few more things about [smdcode.il]")]
 
-Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdcode.b] namespace.
+[TODO] FINISH THIS SECTION
 
+Here are just a few more things about the [smdcode.b] namespace to help drive home your understanding of the declaration and usage of variables within it.
 
-This can let you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter [smdset.b] and the **_null_** attribute.
+[smdcode.b] attributes cannot be changed via _null_ or when markdown is applied. You must use [smdset.b] to do that
 
-[repeat(t="%" c="42")]
+Not specific to [smdcode.b], but you'll likely encounter it here: You cannot use () inside parameter strings, as it breaks the parser... Workaround using the **E.lp/E.rp** constants.
 
+Which leads to this issue: you cannot nest markdown variables that require parameters... they require that you use () inside parameter strings... no workaround for this right now.
 
+Here's an example:
 
-[terminal.wc_open(t="Using _format on [smdhtml.il] and [smdlink.il]")]
-    [sp]
-    [smdcomment] declare [E.apos]fu[E.apos] in [smdcode.il], [smdhtml.il] & [smdlink.il]
-    [smdcode_wp(parms="_id=\"fu\" _format=\"bar\"")]
-    [smdhtml_wp(parms="_id=\"fu\" _format=\"bar\"")]
-    [smdlink_wp(parms="_id=\"fu\" _format=\"bar\"")]
-    [sp]
-    @var _id="fu" _format="bar"
-    @html _id="fu" _format="bar"
-    @link _id="fu" _format="bar"
-    [smdcomment] now print each one
-    [e_var(t="var.fu")] emits *[var.fu]*
-    [e_var(t="html.fu")] emits *[html.fu]*
-    [e_var(t="link.fu")] emits *[link.fu]*
-    [smdcomment] Redefine html.fu and link.fu
-    @html _id="fu"
-    @link _id="fu"
-    [smdcomment] now print each one
-    [e_var(t="var.fu")] emits *[var.fu]*
-    [e_var(t="html.fu")] emits *[escape_var(v="html.fu")]*
-    [e_var(t="link.fu")] emits *[escape_var(v="link.fu")]*
+**[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]** - Doesn't work
+**[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]** - Works just fine.
 
-[terminal.wc_close]
+//[docthis.open(h="Add this to ns_code-doc.md")]
+//[docthis.close]
 
-
-[terminal.wc_open(t="Updating attribute values with [smdset.il]")]
-    [smdcomment_wp(parms="First, let[E.apos]s declare a new variable called [E.apos]fu[E.apos]")]
-    [smdcode_wp.b(parms="fu=\"bar\" attr1=\"value1\"")]
-    @var fu="bar" attr1="value1"
-    [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
-
-    [sp]
-    [smdcomment_wp(parms="using [smdset.il], change the value of attr1 to [E.apos]value2[E.apos]")]
-    [smdset_wp.b(parms="_=\"fu\" attr1=\"value2\"")]
-    @set _="fu" attr1="value2"
-    [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
-
-    [sp]
-    [smdcomment_wp(parms="using the _null_ attribute, change the value of attr1 to [E.apos]value3[E.apos]")]
-    [e_var.b(t="fu._null_[E.lp]attr1=\"value3\"[E.rp]")]
-    [fu._null_(attr1="value3")]
-    [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
-
-[terminal.wc_close]
-
-[note(t="The **_null_** attribute illustrates an important concept with the attributes of variables in [smd.b]. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except [smdcode.b]; in the [smdcode.b] namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.[bb]As previously mentioned, the only way to change the value of a variable in the [smdcode.b] namespace is by using [smdset.b]. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.")]
-
-You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let[E.apos]s see both of these things in action now.
-
-[terminal2.wc_open(t="Adding attributes with [smdset.il]")]
-    [terminal2.wc_open_content]
-        [smdcomment_wp.il(parms="add a new attribute to [E.apos]fu[E.apos] using [smdset.il]")]
-        [smdset_wp.b(parms="_=\"fu\" attr2=\"value42\"")]
-        @set _="fu" attr2="value42"
-        [e_var.b(t="fu.attr2")] emits **[fu.attr2]**
-        [sp]
-        [smdcomment_wp.il(parms="adding a new attribute doesn[E.apos]t affect existing attributes in [E.apos]fu[E.apos]")]
-        [e_var.b(t="fu.attr1")] still emits **[fu.attr1]**
-
-        [sp]
-        [smdcomment_wp.il(parms="using the _null_ attribute, add attr3 to [E.apos]fu[E.apos]")]
-        [e_var.b(t="fu._null_[E.lp]attr3=\"many ways to add attributes\"[E.rp]")]
-        [fu._null_(attr3="many ways to add attributes")]
-        [e_var.b(t="fu.attr3")] emits **[fu.attr3]**
-
-        [sp]
-        [smdcomment_wp.il(parms="We can also add and update variables at the same time")]
-        [e_var.b(t="fu._null_[E.lp]attr3=\"update 3rd attribute\" attr4=\"add 4th attribute\"[E.rp]")]
-        [fu._null_(attr3="update 3rd attribute" attr4="add 4th attribute")]
-        [e_var.b(t="fu.attr3")] emits **[fu.attr3]** and [e_var.b(t="fu.attr4")] emits **[fu.attr4]**
-
-        [sp]
-        [smdcomment_wp.il(parms="We can also add and update variables at the same time using [smdset.b]")]
-        [smdset_wp.b(parms="_=\"fu\" attr2=\"update attr2\" attr6=\"6th attribute\"")]
-        @set _="fu" attr2="update attr2" attr6="6th attribute"
-        [e_var.b(t="fu.attr2")] emits **[fu.attr2]** and [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
-    [terminal2.wc_close_content]
-[terminal2.wc_close]
-
-Let's dump the variable 'fu' to see all the attributes and their values.
-
-
-[bmgreybg._open] 
-[var.source.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
-@dump var="fu$"
-[var.source.wc_close]
-[bmgreybg._close]
-
-And finally, you can also specify the namespace two different ways with [smdset.b]. Witness:
-
-[terminal.wc_open(t="Specifying the namespace")]
-
-    [smdcomment_wp(parms="Specify the namespace with @set; don[E.apos]t leave it to chance!")]
-    [smdset_wp.b(parms="*_ns=\"var\"* _=\"fu\" attr6=\"update attr6\"")]
-    @set _ns="var" _="fu" attr6="update attr6"
-    [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
-    [sp]
-    [smdcomment_wp(parms="Alternate method to set namespace")]
-    [smdset_wp.b(parms="_=\"*var.*fu\" attr6=\"update attr6 again!\"")]
-    @set _="var.fu" attr6="update attr6 again!"
-    [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
-
-[terminal.wc_close]
-
-One last time let's dump the variable 'fu' to see all the attributes and their values.
-
-[bmgreybg._open] 
-[var.source.wc_open(t="Current definition of [E.apos]fu[E.apos] variable")]
-@dump var="fu$"
-[var.source.wc_close]
-[bmgreybg._close]
-
-Here are just a few examples to help drive home your understanding of the declaration and usage of variables in the [smdcode.b] namespace.
-
-[note(t="[smdcode.b] attributes cannot be changed via _null_ or when markdown is applied. You must use [smdset.b] to do that")]
 

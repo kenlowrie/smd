@@ -154,6 +154,19 @@ NAMESPACE: var<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
 <br />
+<strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>blue=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".blue" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>green=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".green" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>multi=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>ger=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="200%")}}<br />
+&nbsp;&nbsp;<strong>110=</strong>{{bigtext(_t="{{self.t}}" _size="110%")}}<br />
+&nbsp;&nbsp;<strong>120=</strong>{{bigtext(_t="{{self.t}}" _size="120%")}}<br />
+&nbsp;&nbsp;<strong>130=</strong>{{bigtext(_t="{{self.t}}" _size="130%")}}<br />
+&nbsp;&nbsp;<strong>142=</strong>{{bigtext(_t="{{self.t}}" _size="142%")}}<br />
+&nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
+&nbsp;&nbsp;<strong>sz=</strong>150%<br />
+<br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />

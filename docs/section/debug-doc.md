@@ -101,5 +101,14 @@ Dumping variables and links
 17. Document @debug, @debug tags="" on="", off="", toggle="", enabled=""
 18. Document @dump, @dump sysdef="." tracked="." [var|html|link|image|code]="." help="False"
 
+Document how to debug a markdown nesting error ...
+
+    I think this can happen anywhere, .attr1 includes .attr2 which includes .attr1, right?
+    [smdcomment] @var x="{{y}}"
+    [smdcomment] @var y="{{x}}"
+
+    Solution 1: _markdown tracks recursion strings, then if the NestingError exception is raised, it will dump to console.
+                requires that @debug on="markdown"
+
 
 [docthis.close]

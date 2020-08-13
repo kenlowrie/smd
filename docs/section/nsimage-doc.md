@@ -5,7 +5,7 @@
 
 The [smdimage.b] keyword is used to declare variables that are used to include images in your document. Basically, [smdimage.b] is a convenient way to abstract the [e_tag.b(t="img")] HTML tag. 
 
-Despite being an abstraction of the HTML element **img**, [smdimage.b] is not based on the [smdhtml.b] namespace. Given that, the underlying semantics do not support the [smdhtml.b] built-in attributes such as **.[E.lt], .[E.gt] and .[E.lt]+**. The full syntax is:
+Despite being an abstraction of the HTML element **img**, [smdimage.b] is not based on the [smdhtml.b] namespace. Given that, the underlying semantics do not support the [smdhtml.b] built-in attributes such as [big.multi(t=".[E.lt]" cls=".red.bold")], [big.multi(t=".[E.gt]")] and [big.multi(t=".[E.lt]+")]. The full syntax is:
 
 [syntax.wc_open(t="[smdimage.il] Syntax")]
     [generic.wc_open_inline]
@@ -13,16 +13,17 @@ Despite being an abstraction of the HTML element **img**, [smdimage.b] is not ba
     [generic.wc_close_inline]
 [syntax.wc_close]
 
-Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the [smdimage.b] namespace. You will use that name to cause the [e_tag.b(t="img")] tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated [smdimage.b] HTML code. So, if you were to write:
+Here's how it works. Like all namespaces, *_id="imagename"* is what names the variable in the [smdimage.b] namespace. You will use that name to cause the [e_tag.b(t="img")] tag to be emitted in your document. Also recall that attributes that start with an underscore [big.multi(t="_")] are considered private, and are not included in the generated [smdimage.b] HTML code. So, if you were to write:
 
-[source.wc_open(t="")]
-    {:.indent}#### @image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
-[source.wc_close]
+[terminal.wc_open(t="Creating variables in [smdimage.il] namespace")]
+    [E.at]image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
+[terminal.wc_close]
 
 @image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
 
 and then write:
-{:.indent}#### [e_var(t="img1")]
+
+{:.indent}[big.120(t="[E.lb]img1[E.rb]")]
 
 The code that would be inserted would be:
 
@@ -30,9 +31,9 @@ The code that would be inserted would be:
 
 Note that _id wasn't included, nor was _private. However, I can reference them both using the syntax:
 
-[tab.<][e_var.b(t="img1._id")] which emits *[img1._id]* and [e_var.b(t="img1._private")] which emits *[img1._private]*[tab.>]
+[tab.<][e_var.b(t="img1._id")] which emits *[img1._id]* and [e_var.b(t="img1._private")] which emits [big.120(t="[img1._private]")][tab.>]
 
-This also works to reference the normal attributes. e.g. [e_var.b(t="img1.class")] which emits *[img1.class]*.
+This also works to reference the normal attributes. e.g. [e_var.b(t="img1.class")] which emits [big.120(t="[img1.class]")].
 
 And as is the case for all namespaces, if there's ambiguity in the names used in different namespaces, you can add the namespace prefix to clarify. For example, ***image.*** in front of the name to force the correct namespace to resolve. For example, if I write the following two lines in my document:
 
@@ -58,7 +59,7 @@ When I write [e_var.b(t="shot1")], the parser emits *[escape_var(v="image.shot1"
 
 [shot1]
 
-Easy enough. Now let's take a look at the system provided builtins for [smdimage.b].
+Pretty straightforward, don't you think? Okay, now it's time to take a look at the system provided builtins for [smdimage.b], so we can tap into some additional flexibility when rendering images with [smd.b].
 
 
 [link.ug_image_builtins]
@@ -130,19 +131,25 @@ Let's take a closer look at the builtins declared in **image.md** to assist with
 The builtins you normally use in your documents are **IMG_SIZE** and **IMG_STYLE**. **IMG_SIZE** is used to set the size of the image that will be displayed in the document. Before we get too far, though, we need to actually declare an **@image** variable that we can experiment with. Let's begin with the following declaration:
 
 [terminal2.wc_open(t="Declare an image variable")]
-    [smdcomment.il] Set image size to large, declare myshot var and render
+    *[smdcomment.il] Set image size to large, declare myshot var and render*
     [e_var(t="IMG_SIZE.large")]
-    [encode_smd(t="@image _id=\"myshot\" src=\"[E.lb]image_path[E.rb]/needshot.png\" style=\"[E.lb]IMG_STYLE.inline_border[E.rb]\"")]
+    [encode_smd(t="@image _id=\"myshot\" src=\"[E.lb]sys.imports[E.rb]/avs/needshot.png\" style=\"[E.lb]IMG_STYLE.inline_border[E.rb]\"")]
     [e_var(t="myshot")]
 [terminal2.wc_close]
 
 And when we do that, here's what we get:
 
 [IMG_SIZE.large]
-@image _id="myshot" src="[image_path]/needshot.png" style="[IMG_STYLE.inline_border]"
+@image _id="myshot" src="[sys.imports]/avs/needshot.png" style="[IMG_STYLE.inline_border]"
 [myshot]
 
 Okay, not too complicated thus far. The first thing to note is that the image size takes up almost the entire document window. This is because the width is currently set to **[IMG_DEF._i_width]**. So let's go ahead and set the size to [e_var.b(t="IMG_SIZE.small")], and then render the image again:
+
+[terminal2.wc_open(t="Change image size to small and render again")]
+    *[smdcomment.il] Set image size to small again and just render*
+    [e_var(t="IMG_SIZE.small")]
+    [e_var(t="myshot")]
+[terminal2.wc_close]
 
 [IMG_SIZE.small]
 [myshot]
@@ -150,13 +157,13 @@ Okay, not too complicated thus far. The first thing to note is that the image si
 Wait, this looks the same! What's going on? Let's begin by taking a look at the declaration for **myshot**:
 
 [terminal.wc_open(t="Declaration of image.myshot")]
-    [dump(ns="image" name="myshot" format="False" whitespace="False")]
+    [code.dump(ns="image" name="myshot" format="False" whitespace="False")]
 [terminal.wc_close]
 
 Okay, looks like the issue is that **style** is hard-coded to the **inline_border** style. So, if we redeclare our @image variable, but this time use either "**[!IMG_STYLE.inline_border!]**" or "**{{IMG_STYLE.inline_border}}**", either of which will cause the parser to not evaluate the variable until it is used, that should allow us to override it. So basically, here's the markdown:
 
 [terminal2.wc_open(t="Declare an image variable")]
-    [smdcomment.il] Declare myshot, set image size to small, render
+    *[smdcomment.il] Declare myshot, set image size to small, render*
     [encode_smd(t="@image _id=\"myshot\" src=\"[E.lb]image_path[E.rb]/needshot.png\" style=\"[E.lb]!IMG_STYLE.inline_border![E.rb]\"")]
     [e_var(t="IMG_SIZE.small")]
     [e_var(t="myshot")]
@@ -169,16 +176,22 @@ Okay, looks like the issue is that **style** is hard-coded to the **inline_borde
 
 And now if I write [e_var.b(t="IMG_SIZE.thumb")] followed by [e_var.b(t="myshot")] I will get:
 
+[terminal2.wc_open(t="Change image size to thumb and render again")]
+    *[smdcomment.il] Set image size to thumb and just render*
+    [e_var(t="IMG_SIZE.thumb")]
+    [e_var(t="myshot")]
+[terminal2.wc_close]
+
 [IMG_SIZE.thumb]
 [myshot]
 
 Let's review the new definition of **myshot** to see how this change affected the variable definition:
 
 [terminal.wc_open(t="Declaration of image.myshot")]
-    [dump(ns="image" name="myshot" format="False" whitespace="False")]
+    [code.dump(ns="image" name="myshot" format="False" whitespace="False")]
 [terminal.wc_close]
 
-You can see that **style=** is now set to [e_var.b(t="IMG_STYLE.inline_border")] instead of being hardcoded. Using the ***!!*** around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. **{{}}**.
+You can see that **style=** is now set to [e_var.b(t="IMG_STYLE.inline_border")] instead of being hardcoded. Using the [big.red(t="[E.lb]![sp]![E.rb]")] around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. [big.red(t="[E.lcb2][sp][E.rcb2]")].
 
 //Let's have a look at the contents of **image.md**:
 

@@ -543,23 +543,23 @@ NAMESPACE: link<br />
 <a id="ug_ns_image"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>The @image Namespace</h2></div>
 <div class="extras"><p>The <strong>&#64;image</strong> keyword is used to declare variables that are used to include images in your document. Basically, <strong>&#64;image</strong> is a convenient way to abstract the <strong>&lt;img&gt;</strong> HTML tag.</p></div>
-<div class="extras"><p>Despite being an abstraction of the HTML element <strong>img</strong>, <strong>&#64;image</strong> is not based on the <strong>&#64;html</strong> namespace. Given that, the underlying semantics do not support the <strong>&#64;html</strong> built-in attributes such as <strong>.&lt;, .&gt; and .&lt;+</strong>. The full syntax is:</p></div>
+<div class="extras"><p>Despite being an abstraction of the HTML element <strong>img</strong>, <strong>&#64;image</strong> is not based on the <strong>&#64;html</strong> namespace. Given that, the underlying semantics do not support the <strong>&#64;html</strong> built-in attributes such as <span class="red bold"><span style="font-size:150%">.&lt;</span></span>, <span class="red bold"><span style="font-size:150%">.&gt;</span></span> and <span class="red bold"><span style="font-size:150%">.&lt;+</span></span>. The full syntax is:</p></div>
 <div class="syntax"><p class="divTitle">&#64;image Syntax</p>
 <p><div class="extras"><p class="generic"></p>
 <p>@image _id="imagename" src="pathtoimage" alt="" _private="val"</p>
 <p></p></div></p>
 </div>
-<div class="extras"><p>Here's how it works. Like all namespaces, _id="imagename" is what names the variable in the <strong>&#64;image</strong> namespace. You will use that name to cause the <strong>&lt;img&gt;</strong> tag to be emitted in your document. Also recall that attributes that start with an underscore (_) are considered private, and are not included in the generated <strong>&#64;image</strong> HTML code. So, if you were to write:</p></div>
-<div class="source"><code style="font-size:1.4em;font-weight:bold"></code>
-<code style="font-size:1.2em"><h4 class="indent">@image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"</h4></code>
-</div>
+<div class="extras"><p>Here's how it works. Like all namespaces, <em>_id="imagename"</em> is what names the variable in the <strong>&#64;image</strong> namespace. You will use that name to cause the <strong>&lt;img&gt;</strong> tag to be emitted in your document. Also recall that attributes that start with an underscore <span class="red bold"><span style="font-size:150%">_</span></span> are considered private, and are not included in the generated <strong>&#64;image</strong> HTML code. So, if you were to write:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating variables in &#64;image namespace</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&commat;image _id="img1" src="path/foo.jpg" alt="my text for alt" class="myclass" _private="My private note"
+</pre></div>
 <div class="extras"><p>and then write:</p></div>
-<div class="extras"><p><h4 class="indent">&lsqb;img1&rsqb;</h4></p></div>
+<div class="extras"><p><span class="indent"><span style="font-size:120%">&lsqb;img1&rsqb;</span></span></p></div>
 <div class="extras"><p>The code that would be inserted would be:</p></div>
 <div class="extras"><p><span class="indent"><strong>&lt;img src="path/foo.jpg" alt="my text for alt" class="myclass"/&gt;</strong></span></p></div>
 <div class="extras"><p>Note that _id wasn't included, nor was _private. However, I can reference them both using the syntax:</p></div>
-<div class="extras"><p><span class="indent"><strong>&lsqb;img1._id&rsqb;</strong> which emits <em>img1</em> and <strong>&lsqb;img1._private&rsqb;</strong> which emits <em>My private note</em></span></p></div>
-<div class="extras"><p>This also works to reference the normal attributes. e.g. <strong>&lsqb;img1.class&rsqb;</strong> which emits <em>myclass</em>.</p></div>
+<div class="extras"><p><span class="indent"><strong>&lsqb;img1._id&rsqb;</strong> which emits <em>img1</em> and <strong>&lsqb;img1._private&rsqb;</strong> which emits <span style="font-size:120%">My private note</span></span></p></div>
+<div class="extras"><p>This also works to reference the normal attributes. e.g. <strong>&lsqb;img1.class&rsqb;</strong> which emits <span style="font-size:120%">myclass</span>.</p></div>
 <div class="extras"><p>And as is the case for all namespaces, if there's ambiguity in the names used in different namespaces, you can add the namespace prefix to clarify. For example, <em><strong>image.</strong></em> in front of the name to force the correct namespace to resolve. For example, if I write the following two lines in my document:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle"></pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 <strong>&#64;var</strong> img1="my variable img1 in &#64;var namespace"
@@ -572,7 +572,7 @@ NAMESPACE: link<br />
 </pre></div>
 <div class="extras"><p>When I write <strong>&lsqb;shot1&rsqb;</strong>, the parser emits <em>&lt;img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/&gt;</em> and the browser renders:</p></div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/shot1.jpg" alt="shot 1" style="width:30%"/></p></div>
-<div class="extras"><p>Easy enough. Now let's take a look at the system provided builtins for <strong>&#64;image</strong>.</p></div>
+<div class="extras"><p>Pretty straightforward, don't you think? Okay, now it's time to take a look at the system provided builtins for <strong>&#64;image</strong>, so we can tap into some additional flexibility when rendering images with <strong>smd</strong>.</p></div>
 <a id="ug_image_builtins"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;image builtins</h3></div>
 <div class="extras"><p>The <strong>&#64;image</strong> namespace provides a limited set of builtins to get you started with using images in your markdown. These builtins are a good starting point for your own image styling, so let's begin with a quick overview of the builtins in <strong>sys.imports/image.md</strong>.</p></div>
@@ -611,34 +611,54 @@ NAMESPACE: link<br />
 </div>
 <div class="extras"><p>The builtins you normally use in your documents are <strong>IMG_SIZE</strong> and <strong>IMG_STYLE</strong>. <strong>IMG_SIZE</strong> is used to set the size of the image that will be displayed in the document. Before we get too far, though, we need to actually declare an <strong>@image</strong> variable that we can experiment with. Let's begin with the following declaration:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declare an image variable</pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">// Set image size to large, declare myshot var and render</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// Set image size to large, declare myshot var and render</em></pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.large&rsqb;</pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;image _id="myshot" src="&lsqb;image_path&rsqb;/needshot.png" style="&lsqb;IMG_STYLE.inline_border&rsqb;"</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;image _id="myshot" src="&lsqb;sys.imports&rsqb;/avs/needshot.png" style="&lsqb;IMG_STYLE.inline_border&rsqb;"</pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
 </div>
 <div class="extras"><p>And when we do that, here's what we get:</p></div>
-<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/smd/import/avs/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
 <div class="extras"><p>Okay, not too complicated thus far. The first thing to note is that the image size takes up almost the entire document window. This is because the width is currently set to <strong>90%</strong>. So let's go ahead and set the size to <strong>&lsqb;IMG_SIZE.small&rsqb;</strong>, and then render the image again:</p></div>
-<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Change image size to small and render again</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// Set image size to small again and just render</em></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.small&rsqb;</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
+</div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/smd/import/avs/needshot.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
 <div class="extras"><p>Wait, this looks the same! What's going on? Let's begin by taking a look at the declaration for <strong>myshot</strong>:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaration of image.myshot</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-dump image
+myshot=
+  src=/Users/ken/Dropbox/shared/src/script/smd/smd/import/avs/needshot.png
+  style=margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;
+  _format=&lt;{{self._tag}}{{self._public_attrs_}}/&gt;
+  _tag=img
+
 </pre></div>
 <div class="extras"><p>Okay, looks like the issue is that <strong>style</strong> is hard-coded to the <strong>inline_border</strong> style. So, if we redeclare our @image variable, but this time use either "<strong>[!IMG_STYLE.inline_border!]</strong>" or "<strong>{{IMG_STYLE.inline_border}}</strong>", either of which will cause the parser to not evaluate the variable until it is used, that should allow us to override it. So basically, here's the markdown:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declare an image variable</pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">// Declare myshot, set image size to small, render</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// Declare myshot, set image size to small, render</em></pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&#64;image _id="myshot" src="&lsqb;image_path&rsqb;/needshot.png" style="&lsqb;!IMG_STYLE.inline_border!&rsqb;"</pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.small&rsqb;</pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
 </div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:40%;border:1px solid;padding:1em;"/></p></div>
 <div class="extras"><p>And now if I write <strong>&lsqb;IMG_SIZE.thumb&rsqb;</strong> followed by <strong>&lsqb;myshot&rsqb;</strong> I will get:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Change image size to thumb and render again</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// Set image size to thumb and just render</em></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;IMG_SIZE.thumb&rsqb;</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;myshot&rsqb;</pre>
+</div>
 <div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png" style="margin-left:auto;margin-right:auto;width:20%;border:1px solid;padding:1em;"/></p></div>
 <div class="extras"><p>Let's review the new definition of <strong>myshot</strong> to see how this change affected the variable definition:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Declaration of image.myshot</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-dump image
+myshot=
+  src=/Users/ken/Dropbox/shared/src/script/smd/docs/samples/image/needshot.png
+  style=[IMG_STYLE.inline_border]
+  _format=&lt;{{self._tag}}{{self._public_attrs_}}/&gt;
+  _tag=img
+
 </pre></div>
-<div class="extras"><p>You can see that <strong>style=</strong> is now set to <strong>&lsqb;IMG_STYLE.inline_border&rsqb;</strong> instead of being hardcoded. Using the <em><strong>!!</strong></em> around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. <strong>{{}}</strong>.</p></div>
+<div class="extras"><p>You can see that <strong>style=</strong> is now set to <strong>&lsqb;IMG_STYLE.inline_border&rsqb;</strong> instead of being hardcoded. Using the <span class="red"><span style="font-size:150%">&lsqb;!&nbsp;!&rsqb;</span></span> around a variable name in an attribute declaration causes the parser to delay evaluation of the variable until it is actually used. Note that you would get the same effect by surrounding the variable/attribute name with curly braces, i.e. <span class="red"><span style="font-size:150%">&lcub;&lcub;&nbsp;&rcub;&rcub;</span></span>.</p></div>
 <div class="extras"><p>You can see more of these builtins and the <strong>&#64;image</strong> support in action by reviewing the [link.examples._qlink(_qtext="samples")] that are included in the user guide.</p></div>
 <div class="variables">
 <code>

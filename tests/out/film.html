@@ -401,6 +401,19 @@ NAMESPACE: var<br />
 <br />
 <strong>bg=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;strong&gt;BG:&amp;nbsp;&lt;/strong&gt;<br />
 <br />
+<strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>blue=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".blue" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>green=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".green" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>multi=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>ger=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="200%")}}<br />
+&nbsp;&nbsp;<strong>110=</strong>{{bigtext(_t="{{self.t}}" _size="110%")}}<br />
+&nbsp;&nbsp;<strong>120=</strong>{{bigtext(_t="{{self.t}}" _size="120%")}}<br />
+&nbsp;&nbsp;<strong>130=</strong>{{bigtext(_t="{{self.t}}" _size="130%")}}<br />
+&nbsp;&nbsp;<strong>142=</strong>{{bigtext(_t="{{self.t}}" _size="142%")}}<br />
+&nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
+&nbsp;&nbsp;<strong>sz=</strong>150%<br />
+<br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1491,6 +1504,13 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>o3=</strong>&lt;span class="indent"&gt;&lt;span class="indent"&gt;&lt;span class="indent"&gt;<br />
 &nbsp;&nbsp;<strong>c3=</strong>&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;<br />
 <br />
+<strong>table_2col=</strong><br />&nbsp;&nbsp;<strong>open=</strong>{{code.pushlines(t="@wrap null\n&lt;div class=\"extras\"&gt;&lt;table style=\"margin-left:auto;margin-right:auto\"&gt;")}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{code.pushlines(t="&lt;/table&gt;&lt;/div&gt;\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>row=</strong>&lt;tr&gt;{{td_item.&lt;}}{{self.item}}&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>row_alt=</strong>&lt;tr&gt;{{td_item.&lt;}}&lt;em&gt;{{self.item}}&lt;/em&gt;&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>header=</strong>&lt;tr&gt;{{th_item.&lt;}}{{self.item}}&lt;/td&gt;{{th_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Macro for emitting 2 column table<br />
+<br />
 <strong>terminal=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1691,281 +1711,281 @@ NAMESPACE: link<br />
 ----------------------------------------<br />
 NAMESPACE: html<br />
 ----------------------------------------<br />
-<strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>note blue<br />
 <br />
-<strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_box_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_box_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_box_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_box_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_box_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_box_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>box<br />
 <br />
-<strong>_cast_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+<strong>_cast_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_t=</strong>castmembername<br />
 &nbsp;&nbsp;<strong>class=</strong>cast<br />
 <br />
-<strong>_div_av_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_div_av_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>av<br />
 <br />
-<strong>_div_extras_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_div_extras_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_div_gen_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_div_gen_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>generic<br />
 <br />
-<strong>_generic_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_generic_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_generic_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_generic_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_generic_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_generic_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_generic_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_generic_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>generic<br />
 <br />
-<strong>_greyout_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_greyout_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_greyout_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_greyout_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_greyout_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_greyout_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_greyout_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_greyout_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>greyout<br />
 <br />
-<strong>_important_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_important_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_important_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_important_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_important_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_important_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_important_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_important_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>important<br />
 <br />
-<strong>_lyrics_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_lyrics_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>lyrics<br />
 <br />
-<strong>_lyrics_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_lyrics_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>lyrics pbb<br />
 <br />
-<strong>_lyrics_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_lyrics_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>lyrics italic<br />
 <br />
-<strong>_lyrics_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_lyrics_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_note_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_note_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_note_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_note_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_note_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_note_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_note_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_note_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>note<br />
 <br />
-<strong>_p_right_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_p_right_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>right<br />
 <br />
-<strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>plain<br />
 <br />
-<strong>_plain_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_plain_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>plain pbb<br />
 <br />
-<strong>_plain_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_plain_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>plainTitle<br />
 <br />
-<strong>_plain_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_plain_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_props_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+<strong>_props_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_t=</strong>prop<br />
 &nbsp;&nbsp;<strong>class=</strong>props<br />
 <br />
-<strong>_question_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_question_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_question_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_question_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_question_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_question_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>question<br />
 <br />
-<strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>note red<br />
 <br />
-<strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>review<br />
 <br />
-<strong>_review_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_review_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>review pbb<br />
 <br />
-<strong>_review_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_review_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_review_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_review_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_review_pba_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_review_pba_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>review pba<br />
 <br />
-<strong>_scene_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_scene_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>scene<br />
 <br />
-<strong>_scene_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_scene_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>scene pbb<br />
 <br />
-<strong>_scene_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_scene_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_scene_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_scene_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_section_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_section_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>section<br />
 <br />
-<strong>_section_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_section_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>section pbb<br />
 <br />
-<strong>_section_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_section_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_section_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_section_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
 <br />
-<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
 <br />
-<strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>source<br />
 <br />
-<strong>_span_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+<strong>_span_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_t=</strong>spantext<br />
 <br />
-<strong>_syntax_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_syntax_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>syntax<br />
 <br />
-<strong>_syntax_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_syntax_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>syntax pbb<br />
 <br />
-<strong>_syntax_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_syntax_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_syntax_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_syntax_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_table_si_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_table_si_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>class=</strong>shotinfo<br />
 <br />
-<strong>_table_si_alt_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_table_si_alt_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>class=</strong>shotinfo<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.1em;margin:10px 10px;width:90%<br />
 <br />
-<strong>_table_si_right_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_table_si_right_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>class=</strong>shotinfo<br />
 &nbsp;&nbsp;<strong>style=</strong>width:45%;float:right;margin-top:1em;margin-right:1em;padding:.7em 1em 1em;<br />
 <br />
-<strong>_td_2span_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_td_2span_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>colspan=</strong>2<br />
 <br />
-<strong>_td_2span_alt_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_td_2span_alt_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>colspan=</strong>2<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.3em<br />
 <br />
-<strong>_td_desc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_td_desc_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
 &nbsp;&nbsp;<strong>style=</strong>padding:5px;width:75%;font-size:1.3em<br />
 <br />
-<strong>_td_header_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_td_header_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>class=</strong>center<br />
 &nbsp;&nbsp;<strong>colspan=</strong>2<br />
 <br />
-<strong>_td_item_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_td_item_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
 &nbsp;&nbsp;<strong>style=</strong>padding:5px;width:20%;font-size:1.3em<br />
 <br />
@@ -1984,45 +2004,45 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_th_desc_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_th_desc_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
 &nbsp;&nbsp;<strong>style=</strong>padding:5px;width:75%;font-size:1.3em<br />
 <br />
-<strong>_th_item_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_th_item_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
 &nbsp;&nbsp;<strong>style=</strong>padding:5px;width:20%;font-size:1.3em<br />
 <br />
-<strong>_toc_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_toc_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>toc<br />
 <br />
-<strong>_toc_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_toc_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>toc pbb<br />
 <br />
-<strong>_toc_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_toc_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>divTitle<br />
 <br />
-<strong>_toc_p_content_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_toc_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
-<strong>_vo_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_vo_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>_vo_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_vo_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pba<br />
 <br />
-<strong>_vo_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_vo_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
 <br />
-<strong>_vo_p_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>_vo_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>vo<br />
 <br />
 <strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
@@ -2031,24 +2051,31 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
+<strong>bigtext=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[self.&lt;]{{self._t}}[self.&gt;]<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:{{self._size}}<br />
+&nbsp;&nbsp;<strong>_size=</strong>150%<br />
+&nbsp;&nbsp;<strong>_prefix=</strong>{:{{self._cls}}}{{self._format}}<br />
+&nbsp;&nbsp;<strong>_defsize_=</strong>150%<br />
+<br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
 &nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
 &nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>body=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>body<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>body<br />
 <br />
-<strong>code=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>code<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
 <br />
 <strong>contact-div=</strong><br />&nbsp;&nbsp;<strong>class=</strong>contact<br />
 &nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 &nbsp;&nbsp;<strong>style=</strong>border:none<br />
 <br />
 <strong>contact-td-left=</strong><br />&nbsp;&nbsp;<strong>class=</strong>left nowrap<br />
@@ -2061,48 +2088,49 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
 &nbsp;&nbsp;<strong>style=</strong>border:none<br />
 <br />
-<strong>css=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
 &nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
 &nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
 <br />
-<strong>div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>div=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 <br />
-<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 <br />
-<strong>divx1=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>divx1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 &nbsp;&nbsp;<strong>style=</strong>border-bottom:5px solid green;color:green<br />
 <br />
-<strong>divx2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>divx2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 &nbsp;&nbsp;<strong>style=</strong>border-bottom:3px solid black;color:green<br />
 <br />
-<strong>divx3=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>divx3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>extras<br />
 &nbsp;&nbsp;<strong>style=</strong>border-bottom:2px solid black<br />
 <br />
 <strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>em<br />
 <br />
-<strong>h=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h<br />
-&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
+<strong>h=</strong><br />&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
 &nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
 &nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
 &nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
 &nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
 &nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
-&nbsp;&nbsp;<strong>_format=</strong>usage: [{{self._}}.#(t="your header")]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}.#(t="your heading")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Emit an HTML Heading&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t - text for heading&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;# - integer between 1 and 6&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Examples&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;h.1(t="My &amp;ast;h1&amp;ast; heading")<br />
+&nbsp;&nbsp;<strong>_tag=</strong>h<br />
 <br />
 <strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
 &nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
@@ -2112,81 +2140,81 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>head=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>head<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>head=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>head<br />
 <br />
 <strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>js=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
 &nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
 <br />
-<strong>li=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>li=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>li<br />
 <br />
-<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>li<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>li<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;margin-left:2em<br />
 <br />
-<strong>link=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>link<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
 <br />
-<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
 <br />
-<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
 &nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
 <br />
-<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
 &nbsp;&nbsp;<strong>name=</strong>viewport<br />
 &nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
 <br />
-<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 <br />
-<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>class=</strong>olist<br />
 <br />
-<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-Alpha<br />
 <br />
-<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-Greek<br />
 <br />
-<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-Roman<br />
 <br />
-<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 <br />
-<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-alpha<br />
 <br />
-<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-greek<br />
 <br />
-<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
 &nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>class=</strong>olist-roman<br />
 <br />
-<strong>p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 <br />
 <strong>pre=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>pre<br />
@@ -2195,19 +2223,19 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_tag=</strong>pre<br />
 &nbsp;&nbsp;<strong>style=</strong>white-space:pre-wrap<br />
 <br />
-<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>revision<br />
 <br />
-<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>p<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
 &nbsp;&nbsp;<strong>class=</strong>revTitle<br />
 <br />
-<strong>script=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>script<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
 <br />
-<strong>span=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>span=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 <br />
 <strong>spanfs=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>_s1=</strong>font-size:1em<br />
@@ -2215,46 +2243,74 @@ NAMESPACE: html<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}} style="{{self._s1}}"&gt;<br />
 &nbsp;&nbsp;<strong>_big=</strong>&lt;{{self._tag}} style="{{self._s2}}"&gt;<br />
 <br />
-<strong>spanwc=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>spanwc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>blue<br />
 <br />
 <strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>strong<br />
 <br />
-<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>class=</strong>indent<br />
 <br />
-<strong>table=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>table<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>table=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
 <br />
-<strong>td=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>td<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>table_2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:auto;margin-right:auto<br />
 <br />
-<strong>th=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>th<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>td=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
 <br />
-<strong>title=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>title<br />
-&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+<strong>td_desc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>td_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>th=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+<br />
+<strong>th_desc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>th_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
 &nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
+&nbsp;&nbsp;<strong>_tag=</strong>title<br />
 <br />
-<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
 <br />
-<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 <br />
-<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 &nbsp;&nbsp;<strong>class=</strong>ulist<br />
 <br />
-<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
 &nbsp;&nbsp;<strong>class=</strong>ulist-plain<br />
 <br />
-<strong>us=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
-&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<strong>us=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>style=</strong>text-decoration:underline<br />
 <br />
 </code>

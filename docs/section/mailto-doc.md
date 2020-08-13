@@ -8,12 +8,12 @@ You can create mailto: links in your document too, which enables users to click 
 [syntax.wc_open(t="mailto Link Syntax")]
     [generic.wc_open_inline]
         [smdlink.b] _id="name" href="*mailto:*you@yourdomain.com"[bb]
-        [smdcomment.b] or use the link factory
+        *[smdcomment.il] or use the link factory*
         [encode_smd(t="<link.ln_factory[E.lp]nm=\"sample\" hr=\"mailto://example.com\" t=\"my default title\"[E.rp]>")]
     [generic.wc_close_inline]
 [syntax.wc_close]
 
-Let's create two sample links using each method and see how they are then used in your markdown:
+Let's create two sample links using each method and see how they can be used in your markdown:
 
 @link _="email_me" href="mailto:me@domain.com"
 [ln_factory(nm="feedback" hr="mailto:user@mydomain.com?subject=feature%20feedback" t="Send feedback")]

@@ -70,3 +70,44 @@
     6="[!var.source.wc_close_inline!]"\
     7="[!bmgreybg._close!]"\
     attrlist="1,2,2a,3,4,5,5a,6,7"
+
+@html _id="td_item" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
+@html _id="td_desc" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
+@html _id="th_item" _tag="th"     _inherit="td_item"
+@html _id="th_desc" _tag="th"     _inherit="td_desc" 
+@html _id="table_2" _inherit="table" style="margin-left:auto;margin-right:auto"
+
+@var table_2col="Macro for emitting 2 column table"\
+    open="{{code.pushlines(t=\"@wrap null\n[_div_extras_.<+][table_2.<+]\")}}"\
+    close="{{code.pushlines(t=\"[table.>][_div_extras_.>]\n@parw 1\")}}"\
+    row="[tr.<]{{td_item.<}}{{self.item}}[td.>]{{td_desc.<}}{{self.desc}}[td.>][tr.>]"\
+    row_alt="[tr.<]{{td_item.<}}*{{self.item}}*[td.>]{{td_desc.<}}{{self.desc}}[td.>][tr.>]"\
+    header="[tr.<]{{th_item.<}}{{self.item}}[td.>]{{th_desc.<}}{{self.desc}}[td.>][tr.>]"\
+
+@html _="bigtext" _inherit="span" \
+        style="font-size:{{self._size}}"\
+        _size="150%" \
+        _format="[self.<]{{self._t}}[self.>]" \
+        _prefix="{:{{self._cls}}}{{self._format}}"\
+        _defsize_="150%"
+
+@var _="big" _format="{{bigtext(_t=\"{{self.t}}\" _size=\"[html.bigtext._defsize_]\")}}"\
+        red="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\".red\" _size=\"[html.bigtext._defsize_]\")}}"\
+        blue="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\".blue\" _size=\"[html.bigtext._defsize_]\")}}"\
+        green="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\".green\" _size=\"[html.bigtext._defsize_]\")}}"\
+        multi="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\"{{self.cls}}\" _size=\"[html.bigtext._defsize_]\")}}"\
+        ger="{{bigtext._prefix(_t=\"{{self.t}}\" _cls=\"{{self.cls}}\" _size=\"200%\")}}"\
+        110="{{bigtext(_t=\"{{self.t}}\" _size=\"110%\")}}"\
+        120="{{bigtext(_t=\"{{self.t}}\" _size=\"120%\")}}"\
+        130="{{bigtext(_t=\"{{self.t}}\" _size=\"130%\")}}"\
+        142="{{bigtext(_t=\"{{self.t}}\" _size=\"142%\")}}"\
+        size="{{bigtext(_t=\"{{self.t}}\" _size=\"{{self.sz}}\")}}"\
+        sz="150%"
+
+//[big(t="text")] 
+//[big.red(t="really big text")]
+//[big.blue(t="really big text")]
+//[big.green(t="really big text")]
+//[big.multi(t="really big text" cls=".red.bigandbold")]
+//[big.ger(t="really big text" cls=".green")]
+//[big.green(t="really big text")]

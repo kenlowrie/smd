@@ -19,11 +19,9 @@ We will discuss this namespace first, because it is the basis for all namespaces
 [smdvar.b] variables are the only ones that can use the shorthand **name="value"** notation when defining a variable. All the other namespaces require that the **[E.lb]*_* or *_id*[E.rb]** special attribute name be used to specify the variable name.  Note that when the shorthand notation is used, it is the first **name="value"** pair that will be used to name the variable. Each of the following examples does exactly the same thing:
 
 [terminal.wc_open(t="Declaring a variable")]
-[sp]
 [smdvar_wp(parms="fu=\"bar\"")]
 [smdvar_wp(parms="_=\"fu\" _format=\"bar\"")]
 [smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
-[sp]
 [terminal.wc_close]
 
 Essentially, declaring a variable in *any* of the namespaces is done in exactly this fashion. ***@ns*** followed by a series of attribute="value" pairs. Remember, only [smdvar.b] allows the shorthand **fu="bar"** format for naming the variable and setting the **_format** attribute value. All other namespaces require the alternate format. In addition, namespaces based on [smdhtml.b] and [smdcode.b] normally do not specify **_format**, since that attribute is constructed on the fly during the declaration ([smdhtml.b]) or is not used ([smdcode.b]). More on that later.
@@ -33,11 +31,9 @@ NOTE: If you redeclare a variable, it will be overwritten with the new declarati
 [note.wc_close]
 
 [terminal.wc_open(t="Declaring variables in other namespaces")]
-[sp]
 [smdvar_wp(parms="_id=\"fu\" _format=\"bar\"")]
 [smdhtml_wp(parms="_id=\"fu\"")]
 [smdlink_wp(parms="_id=\"fu\"")]
-[sp]
 [terminal.wc_close]
 
 Notice that in the [smdhtml.b] and [smdlink.b] declarations we didn't specify the _format attribute. You'll see why when we get to the chapters on those namespaces, but for now, just realize that if you did specify the _format="bar" on those, then they would result in the exact same behavior as the [smdvar.il] variable. That is, when you write [e_var.b(t="var.fu")], [e_var.b(t="html.fu")], [e_var.b(t="link.fu")] in your markdown document, each would simply emit **bar**. Let's try that now.
@@ -78,7 +74,6 @@ One other caveat to the shorthand notation: if you specify also specify the **_f
 [smdvar_wp(parms="fu=\"bar\" _format=\"123\"")]
 [sp]
 Then [e_var(t="fu")] will emit **[fu]** instead of *bar*
-[sp]
 [terminal.wc_close]
 
 If you fail to specify the **_format** attribute when you declare an [smdvar.b] variable, and you do not use the short-hand notation to create it, then referencing the variable will result in all attributes being dumped. Let's see how that works. Take the following markdown:
@@ -127,19 +122,6 @@ Are case sensitive. That is, abc and ABC are different variable names
 [ulist.wc_close]
 
 Here are some examples of variable names:
-
-@html _id="td_item" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
-@html _id="td_desc" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
-@html _id="th_item" _tag="th"     _inherit="td_item"
-@html _id="th_desc" _tag="th"     _inherit="td_desc" 
-@html _id="table_2" _inherit="table" style="margin-left:auto;margin-right:auto"
-
-@var table_2col="Macro for emitting 2 column table"\
-    open="{{code.pushlines(t=\"@wrap null\n[_div_extras_.<+][table_2.<+]\")}}"\
-    close="{{code.pushlines(t=\"[table.>][_div_extras_.>]\n@parw 1\")}}"\
-    row="[tr.<]{{td_item.<}}{{self.item}}[td.>]{{td_desc.<}}{{self.desc}}[td.>][tr.>]"\
-    row_alt="[tr.<]{{td_item.<}}*{{self.item}}*[td.>]{{td_desc.<}}{{self.desc}}[td.>][tr.>]"\
-    header="[tr.<]{{th_item.<}}{{self.item}}[td.>]{{th_desc.<}}{{self.desc}}[td.>][tr.>]"\
 
 [bigmargin._open]
     [table_2col.open]
@@ -227,19 +209,15 @@ Here is the full list of built-in attributes supported across all namespaces:
 
 Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.
 
-Consider this declaration: 
-
-[tab.<][smdvar_wp.b(parms="_id=\"varname\" attr1=\"value1\" _format=\"format string\"")][tab.>]
+Consider the following markdown: 
 
 @var _id="varname" attr1="value1" _format="format string"
 
-And now we write the following markdown:
+[terminal.wc_open(t="[smdvar.il] _id=\"varname\" attr1=\"value1\" _format=\"format string\"")]
 
-[terminal.wc_open(t="")]
-
-[e_var.b(t="varname.attr1")] would emit ***[varname.attr1]***.
-[e_var.b(t="varname._id")] would emit ***[varname._id]***.
-[e_var.b(t="varname._format")] would emit ***[varname._format]***.
+[e_var.b(t="varname.attr1")] will emit ***[varname.attr1]***.
+[e_var.b(t="varname._id")] will emit ***[varname._id]***.
+[e_var.b(t="varname._format")] will emit ***[varname._format]***.
 
 [terminal.wc_close]
 
@@ -249,7 +227,7 @@ So that's pretty cool, but there's a bit more to the _format attribute. You can 
 
 @var _id="fullname" first="ken" last="lowrie" _format="{{self.first}} {{self.last}}"
 
-[terminal.wc_open(t="")]
+[terminal.wc_open(t="[smdvar.il] _id=\"fullname\" first=\"ken\" last=\"lowrie\" _format=\"[E.lcb2][_self_].first[E.rcb2] [E.lcb2][_self_].last[E.rcb2]\"")]
 [e_var.b(t="fullname")] would emit ***[fullname]***.
 [terminal.wc_close]
 
@@ -280,9 +258,9 @@ Did you notice that in the first example, we used **[E.lcb2]** and **[E.rcb2]** 
 [link.ug_attr_exp]
 [wrap_h.subsect(t="#### Attribute Expansion")]
 
-You are going to see this over and over in the coming chapters, and even more once you start examining the built-ins and this user guide, however, we need to cover it now, so it won't seem overly complex later on. What I'm talking about is the concept of attribute expansion, in the context of [smd.b]'s markdown variables and attributes. 
+Next up is a topic you are going to see over and over in the coming chapters, and even more once you start examining the built-ins and this user guide. What I'm talking about is the concept of attribute expansion, in the context of [smd.b]'s markdown variables and attributes. 
 
-As you have seen, variables can have one or more attributes, and those attributes can be anything from plain text, to specialized markdown such as [E.ast], [E.ast2], [E.ins] and [E.del], to the referencing of other attributes, both within the same definition, as well as in entirely other variables and yes, even other namespaces! Let's review a few examples to get started.
+As you have seen, variables can have one or more attributes, and those attributes can be anything from plain text, to specialized markdown such as ***[E.ast]***, ***[E.ast2]***, ***[E.ins]*** and ***[E.del]***, to the referencing of other attributes, both within the same definition, as well as in entirely other variables and yes, even other namespaces! Let's review a few examples to get started.
 
 @var prefix="[smdvar.il] var1=\"\"" encoded="[b]**[E.lb]var1.attr1[E.rb]=**" value="[var1.attr1]"
 
@@ -299,9 +277,9 @@ As you have seen, variables can have one or more attributes, and those attribute
 
 With simple markdown, you are providing the values directly, and possibly adding the inline markdown elements to it for decoration. 
 
-Next up, let's take a look at referencing values stored in attributes within the same variable. This can be done using either square brackets **[E.lb][sp][E.rb]** or curly brackets **[E.lcb2][sp][E.rcb2]**. Before looking at the examples, though, let's get aquainted with the semantic differences between the two variations.
+Attributes can also reference values stored in other attributes within the same variable. This can be done using either square brackets **[E.lb][sp][E.rb]** or curly brackets **[E.lcb2][sp][E.rcb2]**. Before looking at the examples, though, let's get acquainted with the semantic differences between the two variations.
 
-Anytime you use square brackets during the declaration of new variables and/or attributes, they will be evaluated at the time the variable declaration is parsed. Curly braces, on the on the other hand, are not evaluated until the attribute value is referenced later in the document. This is a very important distinction, because sometimes, you want some parts of your declaration to evaluate during the parsing stage, and other times, you need them to evaluate later, when a given attibute is being referenced.
+Anytime you use square brackets during the declaration of new variables and/or attributes, they will be evaluated at the time the variable declaration is parsed. Curly braces, on the on the other hand, are not evaluated until the attribute value is referenced later in the document. This is a very important distinction, because sometimes, you want some parts of your declaration to evaluate during the parsing stage, and other times, you need them to evaluate later, when a given attribute is actually being referenced.
 
 @var prefix="[smdvar.il] var1=\"\"" encoded="[b]**[E.lb]var1.attr1[E.rb]=**" value="[!var1.attr2!]"
 
@@ -315,23 +293,24 @@ Anytime you use square brackets during the declaration of new variables and/or a
 
 Couple of notes on the prior example. First, notice the use of **self.** as a shorthand notation for **var.var1**. This is a frequently used notation, because if you change the variable name, you don't have to change any of the **self.** references. The parser will take care of that for you. 
 
-Second, notice that both the square brackets and the curly braces produced the same results. This happens due to a side effect of referencing attributes during the declaration of a new variable. Since at the time of parsing, **var1** does not exist, the lookup for **var1.attr1** fails, and thus the markdown fails to expand. However, later, when we access the attribute again, it will resolve, and thus both variations work the same way. Keep in mind that relying on this side effect isn't a great idea; it will often lead to pesky bugs in your markdown documents, so it is highly recommended that you use the appropriate syntax when it's called for to avoid it!
+Second, notice that both the square brackets and the curly braces produced the same results. This happens due to a side effect of referencing attributes during the declaration of a new variable. Since at the time of parsing, **var1** does not exist, the lookup for **var1.attr1** fails, and thus the markdown fails to expand. However, later, when we actually access the attribute, it will resolve, and thus both variations work the same way. Keep in mind that relying on this side effect isn't a great idea; it will often lead to pesky bugs in your markdown documents, so it is highly recommended that you use the appropriate syntax when it's called for, and avoid this side effect!
 
-Okay, now let's add a new twist. Having the attributes in one declaration reference the attributes in another declaration. This will demonstrate the issue we were just talking about, the semantic differences between square brackets and curly braces in [smd.b] markdown.
+Okay, now let's add a new twist. Having the attributes in one declaration reference the attributes in another declaration. This will demonstrate the issue we were just talking about, that is, the semantic differences between square brackets and curly braces in [smd.b] markdown.
 
 [terminal.wc_open(t="Attribute expansion - referencing attributes in a different variable")]
     *[smdcomment.il] Declare a second variable with an attribute we can reference from var1*
 @var extvar="" attr2="*from {{self._}}.attr2*"
     [encode_smd(t="@var")] extvar="" attr2="[E.ast]from extvar.attr2[E.ast]"
     [sp]
-    *[smdcomment.il] Declare var1 and var2*
+    *[smdcomment.il] Declare var1 and var2 then emit attr1 for each*
 @var var1="" attr1="[extvar.attr2]"
-    [smdvar.il] var1="" attr1="[E.lb]extvar.attr2[E.rb]" [prefix.encoded][var1.attr1]
-    [sp]
+    [smdvar.il] var1="" attr1="[E.lb]extvar.attr2[E.rb]"
 @var var2="" attr1="{{extvar.attr2}}"
-    [smdvar.il] var2="" attr1="[E.lcb2]extvar.attr2[E.rcb2]" [b]**[E.lb]var2.attr1[E.rb]=**[var2.attr1]
+    [smdvar.il] var2="" attr1="[E.lcb2]extvar.attr2[E.rcb2]"
+    [prefix.encoded][var1.attr1]
+    **[E.lb]var2.attr1[E.rb]=**[var2.attr1]
     [sp]
-    *[smdcomment.il] Now, let's change the value of extvar.attr2 and then reference both variables **attr1** again*
+    *[smdcomment.il] Change the value of extvar.attr2 and then reference **attr1** again*
 @set _="extvar" attr2="***A new value!***"
     [encode_smd(t="@set")] _="extvar" attr2="[E.ast3]A new value![E.ast3]"
     [sp]
@@ -352,14 +331,15 @@ So that leaves us with one more variation of delayed expansion support, the ***[
 @var extvar="" attr2="*from {{self._}}.attr2*"
     [encode_smd(t="@var")] extvar="" attr2="[E.ast]from extvar.attr2[E.ast]"
     [sp]
-    *[smdcomment.il] Declare var1 and var2*
+    *[smdcomment.il] Declare var1 and var2 then emit attr1 on each*
 @var var1="" attr1="[!extvar.attr2!]"
-    [smdvar.il] var1="" attr1="[E.lb]!extvar.attr2![E.rb]" [prefix.encoded][var1.attr1]
-    [sp]
+    [smdvar.il] var1="" attr1="[E.lb]!extvar.attr2![E.rb]"
 @var var2="" attr1="{{extvar.attr2}}"
-    [smdvar.il] var2="" attr1="[E.lcb2]extvar.attr2[E.rcb2]" [b]**[E.lb]var2.attr1[E.rb]=**[var2.attr1]
+    [smdvar.il] var2="" attr1="[E.lcb2]extvar.attr2[E.rcb2]"
+    [prefix.encoded][var1.attr1]
+    **[E.lb]var2.attr1[E.rb]=**[var2.attr1]
     [sp]
-*[smdcomment.il] Now, let's change the value of extvar.attr2 and then reference both variables **attr1** again*
+*[smdcomment.il] Change the value of extvar.attr2 and then reference **attr1** again*
 @set _="extvar" attr2="***A new value!***"
     [encode_smd(t="@set")] _="extvar" attr2="[E.ast3]A new value![E.ast3]"
     [sp]
@@ -373,12 +353,12 @@ See how it worked this time? Let's look at the current declarations of the varia
 
  Now, in **var1.attr1**, it's value is set to **[E.lb]extvar.attr2[E.rb]**, which makes it behave like **var2.attr1**. In this case, we have applied *deferred expansion* using ***[!!]*** instead of the usual curly brackets **[E.lcb2][sp][E.rcb2]**.
 
-This can help you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter [smdset.b] and the **_null_** attribute. We've already been using it in our examples, so it may be old hat by now, but let's take a closer look at it just to be thorough.
+This can help you build some really cool automation in your documents. But you need one more thing before you get started. A way to change one or more attributes of an existing variable in any namespace. Enter [smdset.b] and the **_null_** attribute. We've already been using them in our examples, so it may be old hat by now, but let's take a closer look at it just to be thorough.
 
 [link.ug_set_keyword]
 [wrap_h.subsect(t="### The [smdset.il] Keyword")]
 
-Attributes in any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except [smdcode.b]. In [smdcode.il], there is only one way to update an attribute value, and that is with [smdset.b]. Let's see how it's done.
+Attributes in any variable in any namespace can be added or updated at any time. There are two (perhaps three depending on semantics) ways this can be done in all namespaces except [smdcode.b]. In [smdcode.il], there is only one way to update an attribute value, and that is with [smdset.b]. Let's see how it's done, regardless of the namespace.
 
 [terminal.wc_open(t="Updating attribute values with [smdset.il]")]
     *[smdcomment_wp.il(parms="First, let[E.apos]s declare a new variable called [E.apos]fu[E.apos]")]*
@@ -399,9 +379,9 @@ Attributes in any variable in any namespace can be added or updated at any time.
     [e_var.b(t="fu.attr1")] emits **[fu.attr1]**
 [terminal.wc_close]
 
-[note(t="The **_null_** attribute illustrates an important concept with the attributes of variables in [smd.b]. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except [smdcode.b]; in the [smdcode.b] namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.[bb]As previously mentioned, the only way to change the value of a variable in the [smdcode.b] namespace is by using [smdset.b]. When this is done, the code behind the variable (Python source code) is recompiled, which essentially updates their usage in the compiled code stored as part of the variable.")]
+[note(t="The **_null_** attribute illustrates an important concept with the attributes of variables in [smd.b]. That is, any time an attribute value is changed by specifying a new value when a method is invoked, that value becomes the new value for that attribute. This is true with all namespaces except [smdcode.b]; in the [smdcode.b] namespace, attribute values overridden via a method invocation are temporary. Once the method returns, the original attribute values are restored.[bb]As previously mentioned, the only way to change the value of a variable in the [smdcode.b] namespace is by using [smdset.b]. When this is done, the code behind the variable (Python source code) is recompiled, which updates the default value in the compiled code stored as part of the variable.")]
 
-You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let[E.apos]s see both of these things in action now.
+You can also add new attributes to an existing variable with [smdset.b]. And, if you [smdset.b] a variable that does not exist, [smdset.b] will create it. Let[E.apos]s see some examples of adding attributes.
 
 [terminal2.wc_open(t="Adding attributes with [smdset.il]")]
     [terminal2.wc_open_content]
@@ -440,12 +420,12 @@ And finally, you can also specify the namespace two different ways with [smdset.
 
 [terminal.wc_open(t="Specifying the namespace")]
     *[smdcomment_wp.il(parms="Specify the namespace with @set; don[E.apos]t leave it to chance!")]*
-    [smdset_wp.b(parms="*_ns=\"var\"* _=\"fu\" attr6=\"update attr6\"")]
+    [smdset_wp.b(parms="_ns=\"var\" _=\"fu\" attr6=\"update attr6\"")]
 @set _ns="var" _="fu" attr6="update attr6"
     [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
     [sp]
-    *[smdcomment_wp.il(parms="Alternate method to set namespace")]*
-    [smdset_wp.b(parms="_=\"*var.*fu\" attr6=\"update attr6 again!\"")]
+    *[smdcomment_wp.il(parms="Alternate method to specify namespace")]*
+    [smdset_wp.b(parms="_=\"var.fu\" attr6=\"update attr6 again!\"")]
 @set _="var.fu" attr6="update attr6 again!"
     [e_var.b(t="fu.attr6")] emits **[fu.attr6]**
 [terminal.wc_close]
@@ -457,24 +437,31 @@ One last time let's dump the variable 'fu' to see all the attributes and their v
 Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the [smdvar.b] namespace.
 
 Given the following markdown:
-[bmgreybg._open] 
-    [var.source.wc_open(t="Create a new [smd] variable *c2*")]
-        [bb]
-        [encode_smd(t="@var ns=\"var\"")][b]
-        [encode_smd(t="@set")] _ns="[E.lb]ns[E.rb]" _="c2" attr1="[E.ast]value 1[E.ast]" attr2="[E.ast2]value 2[E.ast2]" attr3="{{self.attr1}}--{{self.attr2}}" attr4="[E.lb]self.attr2[E.rb]--[E.lb]self.attr1[E.rb]"
-    [var.source.wc_close]
-[bmgreybg._close]
+
+[var.terminal.wc_open(t="Create a new [smd] variable *c2*")]
+    [encode_smd(t="@var ns=\"var\"")][b]
+    [encode_smd(t="@set")] _ns="[E.lb]ns[E.rb]" _="c2" \[b][sp.6]attr1="[E.ast]value 1[E.ast]" \[b][sp.6]attr2="[E.ast2]value 2[E.ast2]" \[b][sp.6]attr3="{{self.attr1}}--{{self.attr2}}" \[b][sp.6]attr4="[E.lb]self.attr2[E.rb]--[E.lb]self.attr1[E.rb]"
+[var.terminal.wc_close]
 
 Then the following markdown sometime later will produce:
 
 @var ns="var"
-@set _ns="[ns]" _="c2" attr1="*value 1*" attr2="**value 2**" attr3="{{self.attr1}}--{{self.attr2}}" attr4="[self.attr2]--[self.attr1]"
-[bmgreybg._open]
+@set _ns="[ns]" _="c2" \
+     attr1="*value 1*" \
+     attr2="**value 2**" \
+     attr3="{{self.attr1}}--{{self.attr2}}" \
+     attr4="[self.attr2]--[self.attr1]"
+
+[var.terminal.wc_open(t="Display the values for each of the attributes in c2")]
     [encode_smd(t="<c2.attr1>")] = [c2.attr1]
     [encode_smd(t="<c2.attr2>")] = [c2.attr2]
     [encode_smd(t="<c2.attr3>")] = [c2.attr3]
     [encode_smd(t="<c2.attr4>")] = [c2.attr4]
-[bmgreybg._close]
+[var.terminal.wc_close]
+
+Did you notice that we snuck in a new concept here? Line continuation can be accomplished by ending any line with the backslash ***\*** character. When reading input lines, if the parser detects the backslash as the last character on the line, it will read the next line and append it to the current line, and then return the entire thing as though it were one long line. This helps you produce more readable markdown, especially when declaring variables or creating long textual content.
+
+Well that wraps the section on [smdvar.b]! Most of the concepts we covered here apply to all namespaces, unless they say otherwise when we cover them. Let's move on to the next namespace, [smdhtml.b], arguably the reason we are all here, since HTML is the primary reason that [smd.b] exists!
 
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]
