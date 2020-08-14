@@ -44,6 +44,18 @@ This is what will be rendered by the browser:
     and here are some additional shot notes.\
 ")]
 
+And here is the actual HTML code that the parser emits:
+
+[terminal.wc_open(t="Raw HTML Output from prior *avshot.shot_with_desc* markdown")]
+
+    [escape(t="<div class=\"av\"><ul>")]
+    [escape(t="<li>WS:Sunrise</li>")]
+    [escape(t="</ul>")]
+    [escape(t="<p>There is just something about a sunrise that gets the blood flowing...    And here is some additional narration.<br><br>    and here are some additional shot notes.</p>")]
+    [escape(t="</div>")]
+
+[terminal.wc_close]
+
 While this is useful for simple A/V Shot generation, many times it might be easier and clearer to write things in a more free-from style. As it turns out, **avshot** has builtin methods for that as well. Take a look at this:
 
 [terminal.wc_open(t="Generate a simple AV shot using the section methods")]
