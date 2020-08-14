@@ -1,53 +1,75 @@
 [link.avs]
 
-[wrap_h.chapter(t="## AV Visual Script Formatter")]
+[wrap_h.chapter(t="##Audio/Visual [E.lp]AV[E.rp] Script Formatting")]
 
-[docthis.open(h="Add this to av-doc.md")]
+//[docthis.open(h="Add this to av-doc.md")]
+//[docthis.close]
 
-avshot ...
+In the prior incarnation of [smd.b], the primary purpose of the application was to create Audio/Visual (AV) style scripts from plain text markdown files. In fact, the name of the prior version was **AVScript**, and it consisted of two Python command line utilities: **avscript.py** and **mkavscript.py**. You may recall that this version relied on the **BBEdit** text editor in order to provide the WYSIWYG preview support while building your markdown documents.
 
-[docthis.close]
+As it morphed into the current version where no reliance on a specific text editor was required, it also shed some of the syntax and semantics of the prior version which limited it to being useful only for creating AV Script documents. This led the way to it being useful for creating many other types of content, from simple web pages to dynamic pages and new monitoring features including endpoints for direct HTTP service.
 
-[TODO] This may no longer be needed, given all the samples. Perhaps some type of overview that talks about using smd as an AV Script generator, and pointing you to the examples, possibly talking about doing simple AV Scripts (using avshot) vs more complex docuemnts using the shot.md builtins...
+But the roots of being useful for generating A/V Scripts remains through the use of specialized built-ins provided as part of the distribution package. This support is contained within the **[E.lb]sys.imports[E.rb]/avs** directory.
 
-Let's see a quick example now. The next line will begin with an ***&#42;*** and then contain the text that describes the visual, and the line after that will contain the narration that goes with it.
+[wrap_h.section(t="### The **AVS** builtin library")]
 
+The **AVS** builtins provide everything you need to create A/V-style scripts, from the simple, mostly text based scripts, to complex shot-breakdown documents that help you communicate your vision to everyone, be it your Executive Producers or the all important Crew Members!
 
+Although there are a number of markdown files in the **avs** directory, the two you will use primarily are:
 
-## This will have to be moved to a "shots" doc
+[ulistplain.wc_open]
+    **[E.lb]sys.imports[E.rb]/avs/avshot.md** - for simple A/V scripts
+    **[E.lb]sys.imports[E.rb]/avs/avs.md** - for access to the shot breakdown builtins.
+[ulistplain.wc_close]
 
-{:.bigandbold.green}Seems to me that an example that shows how you could use SMD to generate an A/V script would be useful, and would be a way for me to bring over all the film, shot, etc, markdown, put into a directory, such as import/avs or something.  Then, I could use isolate all of that into a shot-specific userguide, and leave this one for the main smd utility.[bb]Also, the formatting in the new doc looks different than the old version, need to run that down to make sure it was intentional.[bb]
+[TODO] Review where **avshot** used by including **avs.md** and change to **avshot.md** where it makes sense...
+
+Let's see a quick example now. Consider the following markdown:
+
+[terminal.wc_open(t="Generate a simple AV shot")]
+    [encode_smd(t="@import \"[E.lb]sys.imports[E.rb]/avs/avshot.md\"")]
+    [sp]
+    [E.lb]avshot.shot_with_desc(_s="WS:Sunrise", _d="\[sp]
+        [sp.4]There is just something about a sunrise that gets the blood flowing...\[sp]
+        [sp.4]And here is some additional narration.[E.lb]bb[E.rb]\[sp]
+        [sp.4]and here are some additional shot notes.\[sp]
+    ")] 
+[terminal.wc_close]
+
+This is what will be rendered by the browser:
 
 [avshot.shot_with_desc(_s="WS:Sunrise", _d="\
-    There&apos;s just something about a sunrise that gets the blood flowing...\
-    And here&apos;s some additional narration.[bb]\
-    and here is some additional shot notes.\
+    There is just something about a sunrise that gets the blood flowing...\
+    And here is some additional narration.[bb]\
+    and here are some additional shot notes.\
 ")]
 
-// Seems like @break is essentially a way of doing a "clear:both" thru the use of a display:block element such as headers...
-//@break Not really needed, because the avshot macro properly handles the closure...
-//{:.extras}# --- This also works...
+While this is useful for simple A/V Shot generation, many times it might be easier and clearer to write things in a more free-from style. As it turns out, **avshot** has builtin methods for that as well. Take a look at this:
 
-[var.note(t="When you want to force the document out of shot mode, use ***@break*** or ***@exit*** on an empty line. That will reset the floats which are controlling the AV formatting, and start a new section. See how the document leaves the narration mode of the prior shot, and starts this new block paragraph?")]
-@break
+[terminal.wc_open(t="Generate a simple AV shot using the section methods")]
+    [E.lb]avshot.visual[E.rb]
+        [sp.4]There is nothing like waking up to the smell of coffee percolating in the outdoors.
+    [E.lb]avshot.audio[E.rb]
+        [sp.4][E.ast]After we fade into the early morning wide-shot of the camp-site, we will cut to this close-up, making sure the client's product logo is visible in the shot.[E.ast]
+    [E.lb]avshot.end[E.rb]
+[terminal.wc_close]
 
-**[at]break** [lt]--Use @break or @exit to close a shot DIV."
+And here is how the browser will render this markdown:
 
-You can have as much narration as required, just keep writing, even starting new regular paragraphs. When you're done, start a new visual, or add any other block element, such as links, aliases, headers, divs, etc. To add another shot, just repeat the steps above, like this:
+[avshot.visual]
+    CU:Coffee pot heating on wire rack of fire pit
+[avshot.audio]
+    There is nothing like waking up to the smell of coffee percolating in the outdoors.
+    *After we fade into the early morning wide-shot of the camp-site, we will cut to this close-up, making sure the client's product logo is visible in the shot.*
+[avshot.end]
 
-//TODO: This requires that we rework aws.md and eliminate avwrapper and avwrapper2 in favor of avshot. But avshot is also
-// broken, in that it needs to rely on pushlines when using shot_only or shot_with_desc due to the @@ requirement...
+In both the **.visual** and **.audio** sections, you can have as much information as required, just keep writing, even starting new regular paragraphs. You can insert any markdown as well, to aid your reader in understanding what you want. When you're done, close out the one shot, and start another. You know, lather, rinse, repeat...
+
+In the upcoming [link.examples._qlink(_qtext="Samples")] chapters, we will cover **avshot** in much more detail as well as the entire set of **avs** builtins... For now, this hopefully provided a quick introduction to what's in store!
+
+[wrap_h.section(t="### Guide to the Sample Documents")]
+
+Before we leave this chapter, here's a guide to each of the examples provided in the upcoming chapters. This should point you to which specific sample(s) you may want to review to jump start your project.
 
 
-[avshot.shot_with_desc(_s="CU:Coffee pot heating on wire rack of fire pit", _d="\
-    There&apos;s nothing like waking up to the smell of coffee percolating in the outdoors.\
-    ")]
-
-If you have text you want included in the HTML document, but do not want it rendered by the browser, use the **{:.ignore}** class prefix. For example, on the next line, we'll write {:.ignore}You won't see this.[bb]
-{:.ignore}You won't see this.
-When you examine the HTML, you'll see the prior text wrapped in **[lt]p[gt]** tags, inside **[lt]div class="extras"[gt]** markup. However, it will not be rendered by the browser, unless you modify the CSS rule for the ignore class.
-Lines that begin with a double forward slash [***//***] are treated as comments, and are discarded by AVScript. They will not appear in the HTML at all. As another example, we'll write *//This will not appear in the HTML* on the next line.
-//This will not appear in the HTML
-If you examine the HTML output, you will not see the previous line in the output.
-
-//TODO: This needs to be defined in the builtins
+[TODO] Might be best to put links here with short summaries of the purpose of each example, so that we can direct the reader to specific sections for review...

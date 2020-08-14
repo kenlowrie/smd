@@ -52,3 +52,11 @@ Here are a few more of the predefined classes available, and remember, you can t
 You can stack multiple classes by simply stringing them together. For example, on the next line, I'll write **{:.greybg.bigandbold.blue}This is a big and bold blue note on a grey background.**
 
 {:.greybg.bigandbold.blue}This is a big and bold blue note on a grey background.
+
+If you have text you want included in the HTML document, but do not want it rendered by the browser, use the **{:.ignore}** class prefix. For example, on the next line, we'll write {:.ignore}You won't see this.[bb]
+{:.ignore}You won't see this.
+When you examine the HTML, you'll see the prior text wrapped in **[lt]p[gt]** tags, inside **[lt]div class="extras"[gt]** markup. However, it will not be rendered by the browser, unless you modify the CSS rule for the ignore class.
+Lines that begin with a double forward slash [***//***] are treated as comments, and are discarded by AVScript. They will not appear in the HTML at all. As another example, we'll write *//This will not appear in the HTML* on the next line.
+//This will not appear in the HTML
+If you examine the HTML output, you will not see the previous line in the output.
+

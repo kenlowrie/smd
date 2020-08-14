@@ -14,4 +14,15 @@ However, the parser will markdown the line, and it the contents change (i.e. mar
 
 @@ [big]
 
+Seems like @break is essentially a way of doing a "clear:both" thru the use of a display:block element such as headers...
+
+The @break/@exit are not really needed, because the avshot macro properly handles the closure... grep for this and then see if they are still used then decide it we need to document them...
+
+[var.note(t="When you want to force the document out of shot mode, use ***@break*** or ***@exit*** on an empty line. That will reset the floats which are controlling the AV formatting, and start a new section. See how the document leaves the narration mode of the prior shot, and starts this new block paragraph?")]
+@break
+
+**[at]break** [lt]--Use @break or @exit to close a shot DIV."
+
+
+
 So that pretty much sums up the advanced section. Hopefully it was helpful, if not, ask questions, and I'll clarify. Or better yet, improve the docs, and submit a pull request. :)
