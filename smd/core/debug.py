@@ -206,10 +206,14 @@ class DebugTracker(object):
     def enabled(self, tag):
         self.call(tag, 'enabled')
 
-    def dumpTags(self):
+    def dumpTags(self, tag):
+        from .regex import RegexSafe
+        reObj = RegexSafe(tag)
         self._out('<div><h3>Registered debug tags</h3>')
-        for tag in sorted(self.debug_tags):
-            self._out('<span class="debug green"><{1}>{0}</{1}></span><br />'.format(tag, 'strong' if self.debug_tags[tag].state else 'em'))
+        for var in sorted(self.debug_tags):
+            if reObj.is_match(var) is None:
+                continue
+            self._out('<span class="debug green"><{1}>{0}</{1}></span><br />'.format(var, 'strong' if self.debug_tags[var].state else 'em'))
         self._out('</div>')
 
 

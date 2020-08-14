@@ -617,7 +617,7 @@ class ScriptParser(StdioWrapper):
                         elif key == 'toggle':
                             self.tlsDebugTracker.toggle(d[key])
                         elif key == 'tags':
-                            self.tlsDebugTracker.dumpTags()
+                            self.tlsDebugTracker.dumpTags(d[key])
                         
             else:
                 self.oprint(lineObj.current_line)
