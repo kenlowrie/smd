@@ -1,20 +1,9 @@
 [link.ug_samp_proposal]
 [wrap_h.chapter(t="##Creating a Proposal using [smd]")]
 
+In this example, we will use [smd.b] to create a project proposal document. The objective here is simply to show that you can format content in all sorts of different ways using [smd.b], not that this example is necessarily the best way to create a project proposal. A regular old word processor would likely be a better option for this task...
+
 @wrap nop
-
-@var var="{:.red}This text will be RED"
-[var.divxp(c="Example: [var]")]
-
-[var.syntax.wc_open(t="Variable Decorators")]
-
-[b]
-{:.bigandbold.indent}&nbsp;@var variable="{:.class}value"
-[bb]
-So, if you declared this: **@var mynewvar="{:.bigandbold.red}My new big bold value"**, and then write &#91;mynewvar], you'd get this:[bb]
-@var mynewvar="{:.bigandbold.red}My new big bold value"
-[mynewvar]</p>
-[var.syntax.wc_close]
 
 @var title="Production Estimate"
 

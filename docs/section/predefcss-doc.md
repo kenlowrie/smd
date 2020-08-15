@@ -3,6 +3,19 @@
 
 [TODO] When we document the DIV versions of the these, we can decide to document their use inline like this or not... If not, then we can make that call here, or just delete all of this... The support for this type of thing is a bit odd, so we may not want to do it...
 
+@var var="{:.red}This text will be RED"
+[var.divxp(c="Example: [var]")]
+
+[var.syntax.wc_open(t="Variable Decorators")]
+
+[b]
+{:.bigandbold.indent}&nbsp;@var variable="{:.class}value"
+[bb]
+So, if you declared this: **@var mynewvar="{:.bigandbold.red}My new big bold value"**, and then write &#91;mynewvar], you'd get this:[bb]
+@var mynewvar="{:.bigandbold.red}My new big bold value"
+[mynewvar]</p>
+[var.syntax.wc_close]
+
 There are a number of predefined classes in the primary CSS file that can be used to quickly style your AV scripts. You can add others as required, and decorate your elements as needed. Here are a few of them, used outside the AV DIV, and then again inside an AV DIV.
 
 [syntax.wc_open(t="Predefined classes")]

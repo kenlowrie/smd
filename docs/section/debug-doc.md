@@ -309,4 +309,4 @@ If you skipped the chapter on [ismd.b], now might be a good time to review it.
 //[docthis.open(h="Add this to debug-doc.md")]
 //[docthis.close]
 
-Okay, so that wraps the chapter on debugging. And it also marks the end of the primary documentation for [smd.b]. In the chapters that follow, we will take a closer look at several examples that illustrate how to accomplish some real-world applications for [smd.b].
+Okay, so that wraps the chapter on debugging. And it also marks the end of the primary documentation for [smd.b]. In the remaining chapters, we will look at several examples that illustrate how to accomplish some real-world applications for [smd.b].

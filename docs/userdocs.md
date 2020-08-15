@@ -53,10 +53,10 @@
 @import "$/section/av-inc.md"
 @import "$/section/debug-inc.md"
 [link.examples.link] - **Specialized examples built with [smd]**[b]
-@import "$/samples/film/film-inc.md"
-@import "$/samples/avscript/script1-inc.md"
 @import "$/samples/proposal/misc-inc.md"
+@import "$/samples/avscript/script1-inc.md"
 @import "$/samples/avshots/shots-inc.md"
+@import "$/samples/film/film-inc.md"
 @import "$/samples/images/images-inc.md"
 [link.summary.link] - **So long, and thanks for all the fish**[b]
 [var.toc.wc_close]
@@ -140,19 +140,29 @@ Now that you've got the basics out of the way, it's time to dig in a little deep
 [link.toc.link]
 
 [link.examples]
-[wrap_h.chapter(t="## Specialized examples built with [smd]")]
+[wrap_h.chapter(t="## Sample Projects built with [smd]")]
 
-In these final chapters, we will look at several different layouts created with [smd.b] that show some of what you can do with this app. They were taken from actual projects I did, with just some minor cleanup to hopefully give you ideas and/or a starting point for creating your content.
+We will now look at several different examples created with [smd.b] that show some of what you can do with this app. Most of these samples were taken from actual projects I did, with just some minor cleanup to hopefully give you ideas and/or a starting point for creating your own content.
+
+[ulistplain.wc_open]
+     Sample 1 - [link.ug_samp_proposal._qlink(_qtext="Creating a Project Proposal")]
+     Sample 2 - [link.ug_samp_avscript._qlink(_qtext="Using the *avshot* builtin")]
+     Sample 3 - [link.ug_samp_shots._qlink(_qtext="Miscellaneous *avshot* transition tests")]
+     Sample 4 - [link.ug_samp_film._qlink(_qtext="A Music Video Treatment")]
+     Sample 5 - [link.ug_samp_images._qlink(_qtext="Using the Advanced Image and Shot Support")]
+[ulistplain.wc_close]
+
+I recommend reading them in order, since each builds upon concepts covered in one or more of the prior examples. 
 
 [link.toc.link]
 
-@import "$/samples/film/film-doc.md"
+@import "$/samples/proposal/misc-doc.md"
 [link.toc.link]
 @import "$/samples/avscript/script1-doc.md"
 [link.toc.link]
-@import "$/samples/proposal/misc-doc.md"
-[link.toc.link]
 @import "$/samples/avshots/shots-doc.md"
+[link.toc.link]
+@import "$/samples/film/film-doc.md"
 [link.toc.link]
 @import "$/samples/images/images-doc.md"
 [link.toc.link]

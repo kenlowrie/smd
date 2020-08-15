@@ -208,8 +208,8 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_samp_avscript"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Sample A/V Script Document</h2></div>
-<div class="extras"><p>In this example, we will use <strong>smd</strong> to create a simple Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that show the visuals i.e. shots on the left, and the audio i.e. narration or voiceover, on the right. <strong>smd</strong> has several builtins that assist with creating this type of script.</p></div>
-<div class="extras"><p>Start by including <strong>&#64;import &lsqb;sys.imports&rsqb;/avs/avs.md</strong>, and you will get everything you need to quickly create your script.</p></div>
+<div class="extras"><p>In this example, we will use <strong>smd</strong>'s <strong>avshot</strong> builtin to create an Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that describe the visuals (i.e. shots) on the left, and the audio (i.e. narration or voiceover), on the right. <strong>smd</strong> has several builtins that assist with creating this type of script, but in this example, we are going to focus on <strong>avshot</strong>.</p></div>
+<div class="extras"><p>Start by including <strong>&#64;import &lsqb;sys.imports&rsqb;/avs/avshot.md</strong>, and you will get everything you need to use <strong>avshot</strong>.</p></div>
 <div class="extras"><h2>A/V Script Series</h2></div>
 <div class="cover"><h3>Title of Script</h3><p>Script Author</p><p class="coverSummary">Script summary goes here and can be as long as needed. Let it wrap around if you have softwrap, or just go on forever.</p></div>
 <div class="revision"><p class="revTitle">Revision: <em><strong>1a</strong></em></p></div>
@@ -217,7 +217,7 @@ NAMESPACE: link<br />
 <div class="review"><p class="divTitle">Notes to Reviewers</p><p>    Please send <a href="email@yourdomain.com">me</a> any and all <a href="DELETE_ME_mailto:email@yourdomain.com?subject=Your%20Film%20Title%20Feedback">feedback</a>, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. <ins>additions are marked like this</ins> <del>deletions are marked like this</del></p></div>
 <div class="plain"><p class="plainTitle">Film Pitch for <strong>Client Name</strong></p><p>    <strong>Client Name</strong>:<br /><br />    Please review the proposed script for your upcoming project. We believe that it will show the type of production value that we will bring to your project, focusing primarily on ...</p></div>
 <div class="section"><p class="divTitle"></p>
-<p>A/V Script for <strong>Client Name</strong> project entitled "Bestest Social Media Campaign for Acme Widgets, LLC"</p>
+<p>A/V Script for <strong>Client Name</strong> project entitled "Best-est Social Media Campaign for Acme Widgets, LLC"</p>
 </div>
 <div class="extras"><p><strong>&lsqb;avshot.visual&rsqb;</strong> begins the definition of a shot. You can list one or more shots in this section, and include formatting and other markdown. When you are done listing the shots, you will use either <strong>&lsqb;avshot.audio&rsqb;</strong> or <strong>&lsqb;avshot.noaudio&rsqb;</strong> to either begin listing the narration or voiceover, or simply close out the shot.</p></div>
 <div class="extras"><p>In this example, we will open with <strong>avshot.visual</strong>, write out shot description, and the close with <strong>avshot.noaudio</strong>, so there won't be anything listed in the right column.</p></div>
@@ -281,14 +281,19 @@ NAMESPACE: link<br />
 </div>
 <div class="av"><ul>
 <li><span class="red">MS/CU:Clips of people angry</span></li>
-<li>You can add more information about a shot by indenting the line that follows the definition. New shots are not started if you indent, however, so don't do that. :)</li>
+<li>You can add more information about a shot by simply typing more info. Each line break in your text begins a new line in the section.</li>
+<li>This will be on a new line,</li>
+<li>And so will this.</li>
 </ul>
 <p>The narration for the Clips of people angry would be here...</p>
+<p>New lines over here do the same thing. Each time you insert a line in your markdown, it will start a new paragraph.</p>
+<p>Like this...</p>
+<p>And this!</p>
 </div>
 <div class="av"><ul>
 <li>WS:violence</li>
-<li>This begins a new shot, because we used the shot delimiter at the beginning of the line.</li>
-<li><span class="green">You can, however, prefix each new indented line with a different class for formatting...</span></li>
+<li>This adds additional visual info on your shot.</li>
+<li><span class="green">You can also prefix each new line with a different class for formatting...</span></li>
 </ul>
 <p>CGI Websites and blogs</p>
 <p><span class="blue">CGI Use PIP to fill the screen</span></p>
@@ -322,9 +327,15 @@ NAMESPACE: link<br />
 <div class="extras"><p><span class="indent"><strong>&lsqb;avshot.shot_only&rsqb;</strong> and <strong>&lsqb;avshot.shot_with_desc&rsqb;</strong></span></p></div>
 <div class="extras"><p>They are just simplified versions you can use to quickly generate a shot only or a shot with short description.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Simplified <em>avshot</em> methods</pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&lsqb;avshot.shot_only(_s="shot info"&rpar;]</strong></pre>
-<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><strong>&lsqb;avshot.shot_with_desc(_s="shot info" _d="shot description"&rpar;]</strong></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// If all you have is a shot (visual), use the shot_only method</em></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;avshot.shot_only(_s="shot info"&rpar;]</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// If you have a shot (visual) and audio (narration,...), use the shot_with_desc method</em></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;avshot.shot_with_desc(_s="shot info" _d="shot description"&rpar;]</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle"><em>// An example of each method</em></pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;var.avshot.shot_only(_s="&lsqb;cu&rsqb; Hands holding phone")&rsqb;</pre>
+<pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lsqb;var.avshot.shot_with_desc(_s="&lsqb;ecu&rsqb; text message on phone" _d="help&lsqb;bb&rsqb;me")&rsqb;</pre>
 </div>
+<div class="extras"><p>And here is how the two <strong>avshot</strong> methods above will render:</p></div>
 <div class="av"><ul>
 <li><strong>CU:&nbsp;</strong> Hands holding phone</li>
 </ul>
@@ -334,6 +345,7 @@ NAMESPACE: link<br />
 </ul>
 <p>help<br /><br />me</p>
 </div>
+<div class="extras"><p>Sometimes all you need are these shorthand methods to describe your shots, but in other cases the separate section-based methods (<strong>avshot.visual</strong>, <strong>avshot.audio</strong>, <strong>avshot.end</strong> are better. The good news, you can mix and match as you like. Before we leave this example, let's review the builtin hep string for <strong>avshot</strong>.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">For reference, here is the help for <strong>avshot</strong>:</pre>
 <pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&nbsp;&nbsp;<em>avshot</em><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Used to emit shots in A/V Script-style documents.<br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>_s</strong> - shot info. e.g. WS: Lake with people swimming near shore<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>_d</strong> - shot description/narrative for opening wide shot<br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>visual</strong> - Open a shot declaration, ready for shot(s)<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>audio</strong> - Close shot section and transition to audio; ready for shot description<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>end</strong> - Close shot declaration<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>noaudio</strong> - Close shot declaration when no shot description will be set<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>shot_only(_s)</strong> - Create a complete shot declaration; shot(s) specified in <strong>_s</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>shot_with_desc(_s,_d)</strong> - Create complete shot declaration; shot(s) <strong>_s</strong>, description <strong>_d</strong>.</pre>
 </div>
