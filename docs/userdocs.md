@@ -146,8 +146,8 @@ We will now look at several different examples created with [smd.b] that show so
 
 [ulistplain.wc_open]
      Sample 1 - [link.ug_samp_proposal._qlink(_qtext="Creating a Project Proposal")]
-     Sample 2 - [link.ug_samp_avscript._qlink(_qtext="Using the *avshot* builtin")]
-     Sample 3 - [link.ug_samp_shots._qlink(_qtext="Miscellaneous *avshot* transition tests")]
+     Sample 2 - [link.ug_samp_avscript._qlink(_qtext="How to use the *avshot* builtin")]
+     Sample 3 - [link.ug_samp_shots._qlink(_qtext="Real World Example - AAT A/V script using *avshot*")]
      Sample 4 - [link.ug_samp_film._qlink(_qtext="A Music Video Treatment")]
      Sample 5 - [link.ug_samp_images._qlink(_qtext="Using the Advanced Image and Shot Support")]
 [ulistplain.wc_close]

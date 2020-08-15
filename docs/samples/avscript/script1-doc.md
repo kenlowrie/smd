@@ -4,7 +4,7 @@
 
 @wrap divx,p
 
-In this example, we will use [smd.b]'s **avshot** builtin to create an Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that describe the visuals (i.e. shots) on the left, and the audio (i.e. narration or voiceover), on the right. [smd.b] has several builtins that assist with creating this type of script, but in this example, we are going to focus on **avshot**.
+In this example, I will show you how to use [smd.b]'s **avshot** builtin to create an Audio/Visual (A/V) Script. AV Scripts are simple two column scripts that describe the visuals (i.e. shots) on the left, and the audio (i.e. narration or voiceover), on the right. [smd.b] has several builtins that assist with creating this type of script, but in this example, we are going to focus on **avshot**.
 
 Start by including **[encode_smd(t="@import <sys.imports>")]/avs/avshot.md**, and you will get everything you need to use **avshot**.
 

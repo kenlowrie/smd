@@ -9,32 +9,6 @@
 <div class="wrapper">
 <h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: transitions.md</h2>
 <h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing transitions between shots in AV scripts</h3>
-<div class="plain"><p class="plainTitle">User manual sections for avshots.md</p></div>
-<div class="toc"><p class="divTitle">Table of Contents - Unittest transitions.md</p>
-<br />
-<span class="indent"><a href="#ug_samp_shots">A/V Shots</a> - <strong>Sample on creating A/V Shots</strong></span><br />
-</div>
-<div class="extras"><h3>Review link bookmarks from shots-inc.md</h3></div>
-<div class="variables">
-<code>
-----------------------------------------<br />
-NAMESPACE: link<br />
-----------------------------------------<br />
-<strong>ug_samp_shots=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
-&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
-&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
-&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>text=</strong>A/V Shots<br />
-&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
-&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
-&nbsp;&nbsp;<strong>_tag=</strong>a<br />
-<br />
-</code>
-</div>
-<a id="ug_samp_shots"></a>
-<div class="extras" style="border-bottom:5px solid green;color:green"><h2>Using A/V Shots in a document</h2></div>
-[TODO] I should move this content to whatever is including it in unittests (before the import), and then replace this with one of the sunsight scripts, modified to conform to the new format.
 <div class="plain"><p class="plainTitle"><span class="blue">Transitions</span></p><p><span class="blue">This test document tests the transitions from A/V sections</span></p></div>
 <div class="av"><ul>
 <li>Shot</li>
@@ -143,6 +117,203 @@ NAMESPACE: link<br />
 </div>
 <a id="myanchor"></a>
 <a href="#myanchor"><em>This is my text</em></a>
+<div class="plain"><p class="plainTitle">User manual sections for avshots.md</p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest transitions.md</p>
+<br />
+<span class="indent"><a href="#ug_samp_shots">Sample A/V Script</a> - <strong>Sample project that uses <em>avshot</em> to format a script</strong></span><br />
+</div>
+<div class="extras"><h3>Review link bookmarks from shots-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>ug_samp_shots=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Sample A/V Script<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ug_samp_shots"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>Sample A/V Script using <em>avshot</em> builtin</h2></div>
+In this example, we will review an actual AV script from a project I did a few years back. This version was originally written using the old <strong>avscript</strong> version of the software, before it supported embedding images, so it's entirely done using text to describe the visuals and narration. It was converted to conform to the new <strong>smd</strong> builtins for inclusion in the user guide.
+<h1 class="center blue">AAT 4th Gen Video Series</h1>
+<div class="cover"><h3>Using iOS Devices with the AAT</h3><p>Ken Lowrie</p><p class="coverSummary">This video shows how to use iOS devices to connect to the AAT's internal web server to control and manage the AAT. This video demonstration will use an iPhone and iOS 8.3.</p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>1a</strong></em></p></div>
+<div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2015 by Sunsight Instruments.<br />All Rights Reserved.<br />Antenna Alignment Tool<br /></td><td class="right nowrap" style="border:none">Ken Lowrie<br />407-555-1000<br /><a href="email@yourdomain.com">me</a><br /></td></tr></table></div>
+<div class="review"><p class="divTitle">Notes to Reviewers</p>
+<p>Please send feedback by marking up the PDF using embedded comments or notes. If you edit the PDF text directly, be sure to change your font color so that I can easily find the changes.</p>
+<p>Notes that begin with <span class="blue">"VOICEOVER NOTE"</span> or <div class="extras"><p class="vo">are inside a box like this</p></div></p>
+<p>can be ignored; they are for the voiceover guy.</p>
+<p>Additions <ins>are now marked like this</ins> and deletions <del>are now marked like this</del></p>
+<p>Thanks in advance for reviewing and commenting on the script!</p>
+</div>
+<div class="section"><p class="divTitle">Script begins here</p></div>
+<div class="av"><ul>
+<li><strong>CGI:</strong>Using iOS devices with the AAT</li>
+<li><em>RECAP</em>: Show clips from finished video timelines that recap</li>
+<li><strong>CGI:</strong>iPhone or iPad Devices can operate the AAT</li>
+<li><strong>CGI:</strong>iOS v7.1.2 or later required</li>
+</ul>
+<p>Welcome to <em>Using iOS devices with the AAT</em>.</p>
+<p>In this video, we will show you how to control your AAT using an iOS device. It's simple and efficient, using tools that you are already familiar with: Your iOS Device and a Web Browser! Here's a quick preview:</p>
+<p>First, power on the AAT and wait for AZM to begin flashing</p>
+<p>Then, connect to the AAT hotspot with your iOS device</p>
+<p>Finally, open aat.sunsight.com in your browser, or just touch the AAT home page icon</p>
+<p>And that's all there is to it!</p>
+<p>Once you've connected, you can do things like print site reports, email those reports to your customers, and more.</p>
+<p>Using iOS devices to connect to the AAT's internal web server allows you to access the User Interface or UI, which in turn, enables you to fully manage and/or control the AAT.</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Additional setup and shortcuts are covered</li>
+<li>Adobe Acrobat Reader for viewing PDF reports</li>
+<li>How to create a PDF Report</li>
+<li>Sending PDF reports to your customers</li>
+</ul>
+<p><ins>In the remainder of this video, we will cover a one-time setup for your iOS device that enables you to efficiently control your AAT.</ins></p>
+<p>We will cover how to set up a home screen shortcut, to make accessing the AAT quick and easy, and we'll discuss Adobe's Acrobat Reader application for viewing PDF reports on your device.</p>
+<p>After a quick introduction on generating PDF reports, we'll show you how to get the PDF reports to your customers.</p>
+</div>
+<div class="av"><ul>
+<li>Requirements and Limitations</li>
+<li>The AAT should be powered on and ready for clients to attach</li>
+<li>Refer to <em><strong>Connecting to the AAT with the Android Phone</strong></em> for details</li>
+<li>Only one (1) user can be connected at a time</li>
+</ul>
+<p>This video assumes the AAT is powered on and ready for clients to attach to its internal hotspot. View the video entitled <em><strong>Connecting to the AAT with the Android Phone</strong></em> to learn about the AAT startup process.</p>
+<p>Keep in mind that only one user can control the AAT through its onboard website at a time. Multiple users connected at the same time is not supported.</p>
+</div>
+<div class="av"><ul>
+<li>SIDEBAR: Connecting to the AAT's Wireless Network</li>
+<li>IMAGE: Picture of an iPhone or an iPad</li>
+<li>Connecting to the network will look different depending on your hardware and software</li>
+<li>Process is <em>identical</em> to connecting to <em>any</em> wireless hotspot</li>
+<li>Refer to your device documentation for additional help</li>
+</ul>
+<p><ins>You'll need an iOS device that is running version 7.1.2 or later in order to use it to control the AAT.</ins></p>
+<p>In the demonstration, we will be using an iPhone 6+ running iOS 8.3 with the native Safari browser. You can use other iOS browsers, such as Google Chrome, if you prefer.</p>
+<p>Depending on the hardware and software version of your iOS device, along with the browser you are using, this process may look slightly different than what is shown in the video.</p>
+<p>The good news is that connecting to the AAT's wireless network is <em><strong>identical</strong></em> to connecting to any wireless hotspot, so if you are having trouble figuring out how to do this, refer to the documentation that came with your iOS device for additional assistance.</p>
+<p>Let's go ahead and watch the demonstration of using an iOS device to control the AAT. The first step is to connect to the AAT's Wireless Network or hotspot.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show AAT WiFi Network Connect via iOS 8.3</li>
+</ul>
+<p>To do this, on your iOS device, choose SETTINGS, and then select Wi-Fi.</p>
+<p>Ensure Wi-Fi is on, and then look for the AAT Wireless hotspot.</p>
+<p>The AAT hotspot has a network name beginning with <em>AAT 90</em>, followed by a series of digits that represent the serial number of the unit. The serial number is on a printed decal affixed to the back of the tool.</p>
+<p>Touch the AAT hotspot in the list to initiate the connection.</p>
+<p>You can tell that you have successfully connected to the hotspot when the name appears with a checkmark next to it, <em>and</em> the WiFi icon is displayed in the top left status bar, as shown in the video.</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Connecting to the AAT</li>
+<li>SCAST: Show the iOS home screen display and dock, and touch the Safari icon</li>
+</ul>
+<p>Now that we are connected to the AAT hotspot, we are ready to access the AAT User Interface. To do that, you need to launch Safari, so go ahead and find the <em>Safari</em> icon on your iOS Device, normally located on the dock, and touch it to launch the browser.</p>
+</div>
+<div class="av"><ul>
+<li>Launch the AAT User Interface</li>
+<li>SCAST: Touch the new tab icon in Safari</li>
+<li>SCAST: Show aat.sunsight.com and then Home page</li>
+<li>SCAST: Show 192.168.0.50 and then Home page</li>
+</ul>
+<p class="vo">GREGG: BEWARE!!!<br /><br />Here is that AAT dot SUNSIGHT dot COM again... :)</p>
+<p>To start the User Interface, open an empty browser tab, and in the address field, enter the URL <em>aat.sunsight.com</em>, and then press <em>GO</em>. The AAT user interface home page will be displayed, and you're now ready to setup, manage profiles and print reports!</p>
+<p>Alternatively, you can enter the IP address of the AAT, which is usually, 192.168.0.50.  Enter it <em><strong>exactly</strong></em> as shown, with the periods separating the four groups of digits. Press the GO key and wait for the home page of the AAT user interface to display.</p>
+</div>
+<div class="av"><ul>
+<li>Optional Step - Saving a shortcut or bookmark</li>
+<li>Save a shortcut on the home screen to quickly return to the AAT home page</li>
+</ul>
+<p>To save time starting the AAT User Interface in the future, you can create a shortcut on your home screen, which you can then tap to go directly to the AAT home page.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show the sharing icon and save to home screen</li>
+<li>SCAST: Show launching AAT UI via home screen icon</li>
+</ul>
+<p>To add a shortcut to the home screen, start Safari and launch the AAT User Interface by typing <em>aat.sunsight.com</em> in the address bar, and then touch the sharing icon (located at the bottom of the page on an iPhone, or at the top next to the address bar on an iPad).</p>
+<p>Choose <em>Add to Home Screen</em>, and type in a name, such as <em>AAT</em>, press the <em>ADD button</em>, and the shortcut will be added to your homescreen.</p>
+<p>From now on, after connecting to the AAT's WiFi network, you can simply touch the shortcut icon on the home screen to start the AAT User Interface, instead of launching the browser and typing in the URL or IP Address!</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show the sharing icon and add bookmark icon</li>
+<li>SCAST: Show launching AAT UI via browser bookmark</li>
+</ul>
+<p>In addition to saving a shortcut on the home screen, you can create a bookmark by tapping the Bookmark icon, also available on the sharing submenu.</p>
+<p>Enter the name you'd like to use, then touch <em>Save</em>.</p>
+<p>To access the bookmark later, simply tap the bookmark icon from inside the browser, and then tap on the saved AAT Bookmark.</p>
+</div>
+<div class="av"><ul>
+<li>Adobe Acrobat</li>
+<li>Allows viewing and managing PDF reports</li>
+<li>Provides a means of saving PDF reports so they can be recalled later</li>
+<li>This app is optional; it is not needed to view or email PDFs on iOS</li>
+</ul>
+<p>You can install the free Adobe Acrobat application from the App store in order to view and manage AAT reports in PDF format on your iOS device.</p>
+<p>PDF format is a very convenient way to send reports generated by the AAT to your customers, usually via email. In addition, the Adobe Acrobat app provides a convenient way to save reports and email them later.</p>
+<p>Keep in mind that installing the Adobe Acrobat application is optional, and is not needed to view or email PDF reports on your iOS device.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show how to download/install Adobe Acrobat via the App store</li>
+</ul>
+<p>To install Adobe Acrobat, start the <em>App Store</em> by touching the <em>App Store icon</em> on the home screen.</p>
+<p>Press the <em>Search button</em> in the bottom bar, and then, in the search area, type <em>ADOBE ACROBAT</em> to locate the free download, and then install the application on your device.</p>
+<p class="note"><strong>NOTE</strong>: Your device must be configured with an account in order to access the App Store. Refer to the documentation that came with your device for further information.</p>
+</div>
+<div class="extras"><h1></h1></div>
+<div class="av"><ul>
+<li>Generating Reports</li>
+<li>Site Reports can be generated in Adobe PDF format</li>
+<li>View reports before sharing to verify data is complete and accurate</li>
+</ul>
+<p>Once you have completed your work using the AAT, you can generate site reports in Adobe PDF format to send to your customers.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show the site report being generated</li>
+</ul>
+<p>To generate the PDF site report, touch the "Profiles, Captures, Reports" tab on the AAT Website, and then touch the PDF button next to the site you want to report on, or select "All PDF" to report on all sites.</p>
+<p>The PDF report is generated and shown in the browser tab, at which point you can review the report, then when you're ready, press the SHARE icon, and choose your preferred method for sharing with your customer.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Show opening the PDF in Adobe Reader app</li>
+</ul>
+<p>If you have an optional PDF Viewer installed on your iOS device, such as the free Adobe Acrobat app, you can use the <em>Open in</em> feature of iOS to view your report and store it.</p>
+<p>Once you open a report in the Adobe Acrobat app, it is saved there, and can be reviewed and shared at a later time.</p>
+<p>This provides a convenient way to access your reports without needing to reconnect to the AAT, and regenerate them.</p>
+</div>
+<div class="av"><ul>
+<li>Sharing Reports</li>
+<li>To email reports, you must have an email account configured on your iOS device</li>
+<li>Refer to your iOS documentation or consult your IT department for assistance</li>
+</ul>
+<p>In most cases, you'll want to email the generated PDF reports to your customers.</p>
+<p>In order to do this, an email account must be configured on your iOS device, and you must be connected to the Internet, either via a mobile data connection, or via a wireless connection with Internet connectivity.</p>
+<p>Refer to the iOS documentation if you need assistance with configuring an email account on your device, or consult with your company's IT staff..</p>
+<p class="note"><strong>REMEMBER</strong>: The AAT's internal wireless hotspot does <em>not</em> have Internet connectivity. While attached to the AAT, however, you can generate and <em>share</em> the PDFs via email, they just won't be sent until the device is connected to the Internet.</p>
+</div>
+<div class="av"><ul>
+<li>SCAST: Email report to customer</li>
+</ul>
+<p>To email the report to a customer, touch the <em>Sharing</em> icon, and then touch the <em>mail</em> icon. Compose your email and press the <em>SEND</em> button to finish. You may wish to verify that the email with the report was sent successfully.</p>
+</div>
+<div class="av"><ul>
+<li>Summary</li>
+</ul>
+<p>This concludes the video on using iOS devices for operating and managing the AAT.</p>
+<p>We've seen how to connect to the AAT's built-in WiFi hotspot and launch the AAT User Interface, as well as how to create shortcuts for quickly navigating to the AAT's web site.</p>
+<p>We also discussed using the Adobe Acrobat application for viewing and managing PDFs.</p>
+<p>Finally, we learned how to generate a site report and email it to a customer.</p>
+<p>If you need information on connecting to the AAT using Windows or Android Devices, refer to the specific training videos available on the training page at sunsight.com. Thanks for watching!</p>
+</div>
+<div class="section"><p class="divTitle">Shotlist, Images and Screen Captures for Video</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -151,6 +322,8 @@ NAMESPACE: var<br />
 <strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
 <br />
 <strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>bg=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;strong&gt;BG:&amp;nbsp;&lt;/strong&gt;<br />
 <br />
 <strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
 &nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
@@ -218,9 +391,9 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>c=</strong>box default content<br />
 &nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;box(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the box div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the box div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;box&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.box.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert box div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert box div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a box div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.box.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close box div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close box div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert box with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open box without DIV wrapper using &lt;strong&gt;wrap [var.box.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
 <br />
-<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>A<br />
-&nbsp;&nbsp;<strong>author=</strong>B<br />
-&nbsp;&nbsp;<strong>logline=</strong>C<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>Using iOS Devices with the AAT<br />
+&nbsp;&nbsp;<strong>author=</strong>Ken Lowrie<br />
+&nbsp;&nbsp;<strong>logline=</strong>This video shows how to use iOS devices to connect to the AAT's internal web server to control and manage the AAT. This video demonstration will use an iPhone and iOS 8.3.<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
 &nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
@@ -259,7 +432,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>vo<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>vo default title<br />
+&nbsp;&nbsp;<strong>t=</strong>GREGG: BEWARE!!!&lt;br /&gt;&lt;br /&gt;Here is that AAT dot SUNSIGHT dot COM again... :)<br />
 &nbsp;&nbsp;<strong>c=</strong>vo default content<br />
 &nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;vo(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the vo div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the vo div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;vo&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.vo.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert vo div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert vo div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a vo div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.vo.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close vo div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close vo div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert vo with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open vo without DIV wrapper using &lt;strong&gt;wrap [var.vo.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
 <br />
