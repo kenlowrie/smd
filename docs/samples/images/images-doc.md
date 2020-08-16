@@ -405,7 +405,7 @@ That markdown will render as follows:
 [var.shot38._null_(d="*WS: Drone flying over pasture*" c="No" l="50mm")]
 [shotdetail.needshot(shotid="shot38")]
 
-//TODO: Consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r support...
+//TODO.py: Consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r support...
 
 Of course we can also use the **shotdetail** builtin inside **avshot** sequences as well. For example:
 

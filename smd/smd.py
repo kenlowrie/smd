@@ -22,7 +22,7 @@ limitations under the License.
 When invoked from the command line w/o any parameters, it reads from sys.stdin,
 formats it on the fly and outputs HTML.
 
-//TODO: UPDATE THIS ONCE I FINALIZE THE NEW INTERFACE
+//TODO.py: UPDATE THIS ONCE I FINALIZE THE NEW INTERFACE
 
 To quickly see how it works, pip install from the top level directory
 
@@ -41,7 +41,7 @@ To quickly see how it works, pip install from the top level directory
     cd smd/docs
     smdparse -f userdocs.md -c
 
-//TODO: Talk about ismd here, but must note requirements (pip install should install what is needed)
+//TODO.py: Talk about ismd here, but must note requirements (pip install should install what is needed)
 
 """
 
@@ -126,13 +126,13 @@ class ScriptParser(StdioWrapper):
         self.tls.addObjectToTLS('wrapstack', self._wrapper)
 
         self._ns = Namespaces(self._md.markdown, self._md.setNSxface, oprint=self.oprint)
-        #TODO: Clean this up. _stripClass needs to be handled better than this...
+        #TODO.py: Clean this up. _stripClass needs to be handled better than this...
         self._md.setStripClass(self._stripClass)
 
         # I think the reason I do the following has to do with the namespace used by exec & eval.
-        # I need to figure out the reason though. //TODO: Need to verify this.
+        # I need to figure out the reason though. //TODO.py: Need to verify this.
 
-        #//TODO: Need to store these in the TLS, right? eliminate this weirdnness
+        #//TODO.py: Need to store these in the TLS, right? eliminate this weirdnness
         # unless it's rquired to get the vars inside the .core.utility namespace for
         # the eval/exec/compile stuff that's part of the runtime to work...
 
@@ -453,7 +453,11 @@ class ScriptParser(StdioWrapper):
 
         def handle_break(m, lineObj):
             """Handle a break parse line"""
-            self.oprint('<div class="extras"><h1></h1></div>')  #//TODO: Is this needed? Still being used in scripts, but is it really needed, or can we workaround it?
+            # We need @break and @exit for when you are using avshot builtins, and you need to force the
+            # floats to clear. Otherwise, if you start writing content that should not follow in a block
+            # element, it will squeeze between the left and right columns.
+            #//TODO.py: Find way that doesn't affect HTML rendering. The margins/padding affect the layout.
+            self.oprint('<div class="extras"><h1></h1></div>')
             pass    # don't do anything with @break or @exit
 
         def handle_stop(m, lineObj):
@@ -684,7 +688,7 @@ class ScriptParser(StdioWrapper):
                     namespace = self._md.markdown(d[nskey])
                     del d[nskey]
                 if self._ns.isValidNamespace(namespace) or namespace == '?':
-                    #//TODO: catch the exception here to prevent parser crash...
+                    #//TODO.py: catch the exception here to prevent parser crash...
                     self._ns.updateVariable(d, ns=namespace)
                 else:
                     self.oprint(f"WARNING: namespace <em>{namespace}</em> is not a valid namespace.<br />")
@@ -773,7 +777,7 @@ class ScriptParser(StdioWrapper):
                             # This is because we detected a valid keyword tag, but there is some type of 
                             # syntax or parsing issue. Just break and let it be printed ...
                             break
-                        #TODO: Should we HTMLESC what we're printing here?
+                        #TODO.py: Should we HTMLESC what we're printing here?
                         self.debug_smd_line.print('Match <strong>{}=<em>{}</em></strong>'.format(m[0],self._line._oriLine))
                         parse_func(m, self._line)
                         matched = True

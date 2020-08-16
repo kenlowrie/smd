@@ -4,8 +4,6 @@
 
 @var ns="code"
 
-//TODO: What is _raw attribute for? Look at all the _element_partials. Need to make sure everything is covered in testing...
-
 @wrap divx,p
 @import "$/nsbasic.md"
 @parw

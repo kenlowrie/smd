@@ -180,7 +180,7 @@ class Markdown(object):
         self._inc_nesting_level(s)
         self.debug.print("{}: markdown({})".format(self._current_nesting_level, HtmlUtils.escape_html(s)))
         # For each type of markdown
-        #TODO: Maybe some day we parse the namespace markdown lexically to handle the nesting
+        #TODO.py: Maybe some day we parse the namespace markdown lexically to handle the nesting
         for key, md_func in markdownTypes:
             md_obj = self._regex_markdown[key]
             matches = findall(md_obj.regex, s)    # find all the matches

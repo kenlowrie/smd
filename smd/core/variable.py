@@ -143,13 +143,13 @@ class VariableStore(object):
     def dup(self, current, new):
         if self.exists(current):
             if self.exists(new):
-                # TODO: raise exception
+                # TODO.py: raise exception
                 self.oprint('{} already exists'.format(new))
                 return
 
             self.vars[new] = self.vars[current].dup(new)
         else:
-            # TODO: raise exception
+            # TODO.py: raise exception
             self.oprint('{} doesn\'t exist'.format(current))
 
     def addAttribute(self, name, attrName, attrValue):
@@ -163,7 +163,7 @@ class VariableStore(object):
 
     def setRVal(self, name, rval):
         if self.exists(name):
-            # TODO: This must account for type of incoming
+            # TODO.py: This must account for type of incoming
             # del existing, then call underlying method so
             # it handles _rval vs. dictionary...
             self.vars[name].rval['_rval'] = rval
@@ -187,7 +187,7 @@ class VariableStore(object):
     def getPublicAttrsDict(self, name):
         if self.exists(name):
             self.dbgPrint('Requesting <em>_public_attrs_</em> dict for <strong>{}</strong>'.format(name))
-            # TODO: Do we need to encode HREF? Is this API even used?
+            # TODO.py: Do we need to encode HREF? Is this API even used?
             return self.vars[name].getAttrsAsDict(Variable.public)
 
     def getPublicAttrs(self, name, escape=False):
@@ -356,7 +356,7 @@ class AdvancedNamespace(Namespace):
         self.oprint("{}: Dictionary is missing {}<br />{}<br />".format(which, AdvancedNamespace._variable_name_str, dict))
     
     def _validateName(self, varID, which="ADD"):
-        #//TODO: This is interesting. It works (limited testing), and enables you to do variable expansion on the variable name. Is this useful?
+        #//TODO.py: This is interesting. It works (limited testing), and enables you to do variable expansion on the variable name. Is this useful?
         #mdVarID = self._markdown(varID)
         #if mdVarID != varID:
         #    varID = mdVarID
@@ -372,7 +372,7 @@ class AdvancedNamespace(Namespace):
 
     def _validateAttrs(self, dict):
         for key in dict.keys():
-            #//TODO: Figure out why I have to add [Variable.rvalue] manually. If I add it to _special_attributes, then you will
+            #//TODO.py: Figure out why I have to add [Variable.rvalue] manually. If I add it to _special_attributes, then you will
             # get a logic exception thrown when you attempt to access it, e.g. [variable._rval]. Need to understand why that is,
             # and whether to add it to the case in getSpecial, or just what is going on with it...
             #if key in self._special_attributes + [Variable.rvalue]:
@@ -430,7 +430,7 @@ class AdvancedNamespace(Namespace):
         return varID
 
     def updateVariable(self, dict, name=None):
-        #//TODO: Should I add this as a private method so we only have one place to update?
+        #//TODO.py: Should I add this as a private method so we only have one place to update?
         if len(dict) == 0:
             self.oprint("ERROR: updateVariable called with empty dictionary.<br />")
             raise SyntaxError("updateVariable called with an empty dictionary.")
@@ -650,10 +650,10 @@ class HtmlNamespace(AdvancedNamespace):
 
     def getElementPartial(self, which):
         if which in [HtmlNamespace._start, HtmlNamespace._start_esc]:
-            # TODO: should do error checking here (make sure _tag is defined?)
+            # TODO.py: should do error checking here (make sure _tag is defined?)
             return '<{0}self._tag{1}{0}self.{2}{1}>'.format('{{', '}}', Variable.public if which == HtmlNamespace._start else Variable.public_esc)
         elif which == HtmlNamespace._end:
-            # TODO: should do error checking here (make sure _tag is defined?)
+            # TODO.py: should do error checking here (make sure _tag is defined?)
             return '</{{self._tag}}>'
 
         raise SyntaxError("Invalid element partial [{}]".format(which))
@@ -773,7 +773,7 @@ class CodeNamespace(AdvancedNamespace):
         [code.ref.eval] - returns eval(_code)
         """
         dict = super(CodeNamespace, self).getRVal(var_name)
-        # TODO: Fix this so it doesn't compile here or getvalue.
+        # TODO.py: Fix this so it doesn't compile here or getvalue.
         #       That should be done inside ExecutePython
         #       And that is only needed during execution, not during ADD
         
@@ -813,7 +813,7 @@ class CodeNamespace(AdvancedNamespace):
             # Get the dictionary (not a copy, the actual dictionary, so if you change it, your changing it. Got it? Good.)
             dict = super(CodeNamespace, self).getRVal(id0)
 
-            # TODO: Don't hard code what's be skipped over
+            # TODO.py: Don't hard code what's be skipped over
             # Build a dictionary of the attrs that need to be restored after we process this getValue()
             restoreValues = {key: value for (key, value) in dict.items() if key not in [CodeNamespace._code_, CodeNamespace._last_, CodeNamespace._params_]}
             self.dbgPrintDict("Saving these values:", restoreValues)
@@ -834,7 +834,7 @@ class CodeNamespace(AdvancedNamespace):
             self.dbgPrint("(src)=<em>{}</em>".format(src))
             self.dbgPrintDict("[dict]=", dict)
 
-            # TODO: Is this working right? If new attrs are added, they'll be sticky. Is that okay?
+            # TODO.py: Is this working right? If new attrs are added, they'll be sticky. Is that okay?
             # Now build a dictionary of the attrs that need substitution (if present) in the src code
             replaceValues = {key: value for (key, value) in dict.items() if key not in [CodeNamespace._code_, CodeNamespace._params_]}
 
@@ -847,7 +847,7 @@ class CodeNamespace(AdvancedNamespace):
             dict[CodeNamespace._last_] = self.executePython(dict)
 
             # And now, put back the attributes as they were on entrance. This is a requirement for @code vars.
-            # The only way to change an attribute is to use @set (TODO: test that theory)
+            # The only way to change an attribute is to use @set
             for key in restoreValues:
                 self.dbgPrint("Restore: <strong>{}</strong> with <em>{}</em>".format(key, HtmlUtils.escape_html(restoreValues[key])))
                 dict[key] = restoreValues[key]
@@ -909,7 +909,7 @@ class Namespaces(object):
         except SyntaxError:
             self.debugNSA.print(f'<strong>WARNING:</strong> Syntax error caught during {ns}.addVariable({value}, {name})')
 
-    # TODO: Clean this up...
+    # TODO.py: Clean this up...
     def findNamespace(self, value):
         id = self._namespaces['var'].getIDstring(value)
         if id is not None:
@@ -917,7 +917,7 @@ class Namespaces(object):
             if ns is not None:
                 if ns in Namespaces._search_order:
                     if self._namespaces[ns].exists(name):
-                        #TODO: Review for kludginess
+                        #TODO.py: Review for kludginess
                         value[id] = name    # remove the NS prefix from the dict. Is this a kludge?
                         return ns
 
@@ -927,7 +927,7 @@ class Namespaces(object):
 
         return None
 
-    # TODO: Clean this up...
+    # TODO.py: Clean this up...
     def updateVariable(self, value, name=None, ns=None):
         if ns == '?':
             ns = self.findNamespace(value)
@@ -954,18 +954,18 @@ class Namespaces(object):
         return (None, variable_name)
 
     def removeVariable(self, name):
-        # TODO: Add this
+        # TODO.py: Add this
         # name [[ns].name]
         pass
 
     def removeAttribute(self, name=None):
-        # TODO: Add this
+        # TODO.py: Add this
         # name [[ns].name.attr]
         self.oprint("inside removeAttribute")
         pass
 
     def dupVariable(self, curname, newname):
-        # TODO: Add this
+        # TODO.py: Add this
         # curname [[ns].name]
         # newname [[ns].name]
         pass
@@ -1042,18 +1042,18 @@ class Namespaces(object):
             if ns in Namespaces._search_order:
                 addJITattrs(jit_attrs, ns, name)
 
-                # TODO: Shouldn't we check to see that it's there?
+                # TODO.py: Shouldn't we check to see that it's there?
                 return self._namespaces[ns].getValue(name, ret_type)
 
         #if self.debug self.oprint("NO NAMESPACE OR UNKNOWN NAMESPACE")
         # Since the NS wasn't valid, we need to fall back to the full name again
         for ns in Namespaces._search_order:
             if self._namespaces[ns].exists(variable_name):
-                # TODO: this is confusing, and will lead to errors. REFACTOR.
+                # TODO.py: this is confusing, and will lead to errors. REFACTOR.
                 addJITattrs(jit_attrs, ns, variable_name)
                 return self._namespaces[ns].getValue(variable_name, ret_type)
 
-        # TODO: We may want to just return variable_name instead... like before...
+        # TODO.py: We may want to just return variable_name instead... like before...
         return "Variable {} is (undefined)".format(variable_name)    # I don't think this will ever happen
 
     def parseVariableName(self, variable_name):

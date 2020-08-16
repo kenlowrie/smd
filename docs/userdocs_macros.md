@@ -50,8 +50,8 @@
 @var _="ismd" _inherit="smd" ucase="iSMD" lcase="ismd" short="Interactive Script Markdown"
 @var _="smdparse" _inherit="smd" ucase="SMDParse" lcase="smdparse"  short="Script Markdown Parser"
 
-//TODO: When I add a developer switch (or mode), this should be one of the things that is added
-//      Very useful to create a marker in large output documents to find where you are when debugging. :)
+//TODO.md:  When I add a developer switch (or mode), this should be one of the things that is added
+//          Very useful to create a marker in large output documents to find where you are when debugging. :)
 @var mk="{{self.s}}" s="@@<br/>{{code.repeat(t=\"&\" c=\"100\")}}<br />" e="@@<br/>{{code.repeat(t=\"%\" c=\"100\")}}<br />"
 
 // This is used when we are documenting attribute creation, because you can't use {{self.}} directly

@@ -80,7 +80,7 @@ class Endpoint(OutputMonitor):
         from pathlib import Path
         self.filename = Path(filename).resolve()
         
-        #//TODO: Need some additional use cases to figure out the best way for these to work
+        #//TODO.py: Need some additional use cases to figure out the best way for these to work
         
         # Set the endpoint to /smd/filename.stem e.g. /smd/userdocs
         self.endpoint = f"/smd/{self.filename.stem}/<path:path>"
@@ -93,7 +93,7 @@ class Endpoint(OutputMonitor):
     def create(self):
         # Gotta run the bottle app on its own thread cause it sleeps until ctrl-c
         self.thread = Thread(target=self.bottle_thread, name=f"BottleThread({id(self)})")
-        #//TODO: Only way the Ctrl-C allows code to shutdown... Research further
+        #//TODO.py: Only way the Ctrl-C allows code to shutdown... Research further
         self.thread.daemon = True   
         self.thread.start()
 
@@ -207,7 +207,7 @@ def ismd(arguments=None):
     from argparse import ArgumentParser
     from pathlib import Path
 
-    #//TODO: Can any of these "common" args be moved to smdparse and shared?
+    #//TODO.py: Can any of these "common" args be moved to smdparse and shared?
     parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
                             epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
     parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
@@ -237,7 +237,7 @@ def ismd(arguments=None):
 
     if sp.lastParseOK == False:
         message("stopping because the initial parse failed...")
-        #//TODO: Need a command line switch to ignore this failure
+        #//TODO.py: Need a command line switch to ignore this failure
         return 1
 
 

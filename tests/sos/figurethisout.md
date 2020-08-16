@@ -1,8 +1,9 @@
+//TODO.md: These items need to be addressed/documented somewhere besides just here
 // Things that need to be figured out / fixed if needed should be placed in here. Choose an empty spot below...
 
 // ID: 0002-20
 //Here is a difference between {{ }} and [ ]
-//TODO: Study this, and understand why it happens, and when it's useful to rely on it when writing macros and expansions.
+//TODO.md: Study this, and understand why it happens, and when it's useful to rely on it when writing macros and expansions.
 // It's an order of precedence thing. When it doesn't work, it's because [] is evaluated during the markdown of the entire
 //      line, whereas the t="{{self.c}}" doesn't evaluate until the JIT attrs are marked down. Or so is my theory. Need to
 //      verify by running in debugger, and looking at the line while it is being processed.

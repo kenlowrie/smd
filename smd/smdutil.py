@@ -96,7 +96,7 @@ class watcher(FileSystemEventHandler):
 
     def _stop(self, watcher):
         if watcher in self.watchers:
-            #//TODO: This won't work as-is. If needed, should make a small class to hold the
+            #//TODO.py: This won't work as-is. If needed, should make a small class to hold the
             # watcher stuff: directory, the watcher instance, etc.
             self.msg(f"UnScheduling watcher for [{directory}]")
             self.observer.unschedule(watcher)

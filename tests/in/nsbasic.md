@@ -49,7 +49,6 @@ Setting default rvalue for a2 and a3
 @[dump] = "^a[0-9]{1,2}$"
 
 // attempt to add all the reserved attributes
-//TODO: should I account for _ns in the reserved list? It is now an option to @SET, but stripped out before creating the variable
 @[ns] _="invalid-attribute" _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="*{{self._}}this is line 1 help text*<br />**line2** help text." 
 @[dump] = "invalid"
 ***public*** = [invalid-attribute._public_attrs_]
@@ -144,8 +143,8 @@ because when [bb].code=*[var.expr.code]* or [b].[ns]=*[var.expr.line]*[bb]are ev
 [var.in_code_namespace(true="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c0\" _format=\"constants\" a=\"1\" b=\"2\" c=\"3\"")]
 [var.in_code_namespace(true="@[ns] _=\"c1\" _format=\"[c0.a]\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c1\" _format=\"[c0.a]\"")]
 [var.in_code_namespace(true="@[ns] _=\"c2\" _format=\"{{c0.a}}\" src=\"print()\" type=\"eval\"" false="@[ns] _=\"c2\" _format=\"{{c0.a}}\"")]
-[encode_smd(t="[<ns].c1]")] = [[ns].c1] or [[ns].c1._format]
-[encode_smd(t="[<ns].c2]")] = [[ns].c2] or [[ns].c2._format]
+[encode_smd(t="[<ns>.c1]")] = [[ns].c1] or [[ns].c1._format]
+[encode_smd(t="[<ns>.c2]")] = [[ns].c2] or [[ns].c2._format]
 
 @[dump] = "c[0-9]{1,2}"
 
@@ -155,9 +154,9 @@ because when [bb].code=*[var.expr.code]* or [b].[ns]=*[var.expr.line]*[bb]are ev
 
 @set _ns="[ns]" _="c0" a="8" _format="Constants"
 
-//TODO: still not the behaviour I expected. c1 is 1, but now c2 is also 1. Delayed expansion fixed, but now new problem takes its place
-[encode_smd(t="<c1]")] = [c1]
-[encode_smd(t="<c2]")] = [c2]
+//TODO.md: still not the behaviour I expected. c1 is 1, but now c2 is also 1. Delayed expansion fixed, but now new problem takes its place
+[encode_smd(t="<c1>")] = [c1]
+[encode_smd(t="<c2>")] = [c2]
 
 @[dump] = "c[0-9]{1,2}"
 
@@ -217,7 +216,7 @@ Changing d0.newattr="newval"
 @set _="d0" newattr="newval"
 Which now causes d0.extraattr to have a new value = **[d0.extraattr]**
 
-//TODO:
+//TODO.md:
 can we remove an attribute?
 
 [pushline(t="@set _ns=\"[ns]\" _id=\"id1\" attr1=\"New Value\" [var.code_helper]")]

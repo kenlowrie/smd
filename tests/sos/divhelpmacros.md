@@ -42,6 +42,5 @@ from html namespace
 
 
 
-                #//TODO: Was semantically different before. We translated {{}} and then marked down, and then did the self. replacement/markdown...
                 #fmt_str = self._markdown(self.getElementPartial(el0).replace('{{','[').replace('}}',']'))
                 # And now, markdown again, to expand the self. namespace variables

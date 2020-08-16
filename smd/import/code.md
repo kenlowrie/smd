@@ -1,4 +1,4 @@
-//TODO: Validate difference between $.attrname and self.attrname. 
+// @code namespace builtins
 
 @code _id="esc_angles"\
       type="eval"\

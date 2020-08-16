@@ -108,7 +108,7 @@ RE Matches Link definitions
 'markdown' section
         spec = C_regex_md(r'(\[([^\]]+)\]:[ ]*\([ ]*([^\s|\)]*)[ ]*(\"(.+)\")?\))', '','')
 
-TODO: Need to rebuild each of these test sections: 
+TODO.na: Need to rebuild each of these test sections: 
     Inline vs Reference
     Definitions vs substitutions
     Alias DEFs vs Alias Substitution

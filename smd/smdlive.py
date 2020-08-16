@@ -6,7 +6,7 @@ script markdown files that are processed by the smd package. This enables
 the automatic update/refresh of a webpage, as changes are made to the
 underlying markdown text files.
 
-//TODO: Finish the documentation for this script.
+//TODO.py: Finish the documentation for this script. What is the purpose of this script? It was before ismd -m endpoint, so no longer needed, right?
 
 creates an HTML document suitable for serving to local/network clients.
 

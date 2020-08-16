@@ -66,7 +66,7 @@ In order to do that, we will start by providing an overview of the repository la
 [DC.4a]code.md - @code namespace builtins
 [DC.4a]html.md - @html namespace builtins
 [DC.4z]link.md - @link namespace builtins[DC.eol]
-[DC.1]src - Miscellaneous Python Source files - TODO: move tests/sos scripts here?[DC.eol]
+[DC.1]src - Miscellaneous Python Source files[DC.eol]
 [DC.1z][e_us(t="tests")] - Unit tests for [smd.b]
 [DC.2b]cmdline - Command Line Parameter unit tests
 [DC.2b]in - individual unit test input files

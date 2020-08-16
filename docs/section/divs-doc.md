@@ -78,8 +78,8 @@ As mentioned, this is in the [smdraw.b] section, so the parser emits the double 
 [e_var.b(t="section.with_content")] renders like this:
 [section.with_content]
 
-//TODO: We cannot escape_var these things that do {{pushlines}}. 
-//TODO: Not easily fixable. getValue() does a markdown, which does the pushline,...
+//TODO.md: We cannot escape_var these things that do {{pushlines}}. 
+//TODO.md: Not easily fixable. getValue() does a markdown, which does the pushline,...
 
 [e_var(t="section.wc_open")] renders like this:
 [section.wc_open]
