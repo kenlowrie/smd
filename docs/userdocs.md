@@ -1,6 +1,6 @@
 {:.blue.center}#Script Markdown User Manual
 @var workingtitle="Script Markdown Utility"
-@var storysummary="This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. **Enjoy!**[bb]***NOTE:*** Additional samples that might be worth reviewing are those in the unit test code located here: ***(../tests/in/&ast;.md)***. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers."
+@var storysummary="This manual describes the *Script Markdown Utility*, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. **Enjoy!**[bb]***NOTE:*** Additional samples that might be worth reviewing are those in the unit test code located here: ***(../tests/in/&ast;.md)***. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers!"
 
 @import '[sys.imports]/divs.md'
 @import '[sys.imports]/report.md'

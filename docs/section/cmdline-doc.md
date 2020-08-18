@@ -5,8 +5,6 @@ Before diving into the command line parameters of [smd.b], [smdparse.b] and [ism
 
 In order to do that, we will start by providing an overview of the repository layout, followed by a discussion of the major components, and finally the startup & shutdown processes of the primary command line interfaces. This will establish enough background information about [smd.b] that the discussion on the command line parameters will make more sense.
 
-[TODO]In the structure below, pipenv has been renamed to samples
-
 [wrap_h.section(t="### Repository Layout")]
 
 @var _="DC" vb="&boxvr;" ra="&rtrif;" rd="&dashv;" bh="&boxh;" v="&boxv;" lc="&boxur;" return="&crarr;" cmd="&#8984;" option="&#8997;" alt="{{self.option}}" ctrl="&#8963;"\
@@ -73,7 +71,7 @@ In order to do that, we will start by providing an overview of the repository la
 [DC.2b]out - individual unit test master files (expected output)
 [DC.2b]test.py - [smd.b] unittest command line interface (i.e. unit test runner)
 [DC.2b]testdbg.sh - bash script that starts an interactive [smd.b] session on a unit test
-[DC.2bz]test2dbg.sh - starts an interactive [smd.b] session with both browser and hostgui windows
+[DC.2bz]test2dbg.sh - starts an interactive [smd.b] session with both chrome and hostgui windows
 [sp]
 [terminal.wc_close]
 
@@ -97,15 +95,20 @@ At this point, your terminal window is waiting for input. Type **Hello, world** 
 
 When you typed **Hello, world**, the parser simply echoed that input back to you. Congratulations, you have just created your first [smd.b] document! 
 
-To close [smd], type **CTRL-D ([DC.ctrl]D)** (yes, macOS users, that's **CTRL-D** and not **CMD-D ([DC.cmd]D)**). **CTRL-D** will send an EOF signal on the stdin input stream, which will cause [smd.b] to perform an orderly shutdown. 
+To close [smd.b], type **CTRL-D ([DC.ctrl]D)** (yes, macOS users, that's **CTRL-D** and not **CMD-D ([DC.cmd]D)**). **CTRL-D** will send an EOF signal on the stdin input stream, which will cause [smd.b] to perform an orderly shutdown. 
 
-You can also terminate [smd] by pressing **CTRL-C ([DC.ctrl]C)**, however that results in the **SIG-INT** signal being sent, which will cause an unorderly shutdown (i.e. none of the closing tags will be written, etc.)
+You can also terminate [smd.b] by pressing **CTRL-C ([DC.ctrl]C)**, however that results in the **SIG-INT** signal being sent, which will cause an unorderly shutdown (i.e. none of the closing tags will be written, etc.)
 
 [smdparse.b] is a higher level command line interface that sits atop [smd.b]. It imports the direct [smd] entry point, so it's using the exact same underlying code to parse your documents, however, it adds several useful options for automation. It also provides the foundation for the final major component, [ismd.b].
 
-[ismd.b] is an **interactive** version of [smd] that provides three different methods for viewing the output from [smd]. What's unique about it is that it monitors **all** of the underlying files that are processed by [smd] for changes, and when it detects a change, it automatically parses the document again, and updates the output monitors. There are three different monitors currently supported by [ismd.b]: **browser** (the default), which displays the output in a browser window; **hostgui**, which displays the raw HTML output in a host window and finally **endpoint**, which creates an HTTP endpoint on the localhost that can be opened by any web browser. 
+[ismd.b] is an **interactive** version of [smd.b] that provides several different methods for viewing the output from [smd.b]. What's unique about it is that it monitors **all** of the underlying files that are processed by [smd.b] for changes, and when it detects a change, it automatically parses the document again, and updates the output monitors. 
 
-Both [smdparse.b] and [ismd.b] will be covered in detail in their respective chapters.
+There are several different monitors currently supported by [ismd.b]: **chrome** (the default), which displays the output in a Chrome browser window; **firefox** and **safari**, which display the output in Firefox and Safari, respectively; **hostgui**, which displays the raw HTML output in a host window and finally **endpoint**, which creates an HTTP endpoint on the localhost that can be opened by any web browser.
+
+[link.ug_setup._null_(_qtext="Setup Chapter")]
+[note(t="NOTE: The browser monitors all require additional setup before they will work. Be sure to review the [link.ug_setup._qlink] for the information on installing **selenium** and the **web drivers** before trying to use them with [ismd.b]")]
+
+Both [smdparse.b] and [ismd.b] will be covered later in this chapter when we review the specific command line parameters.
 
 The following provides a high-level overview of the startup of [smd.b]. This is the basic flow when no command line parameters are passed to [smd.b].
 
@@ -149,7 +152,7 @@ import def_close.md
 
 [wrap_h.section(t="## smd command line parameters")]
 
-The command line parameters for smd are:
+The command line parameters for [smd.b] are:
 
 [terminal.wc_open(t="smd command line parameters")]
 [sp]
