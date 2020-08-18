@@ -6,32 +6,25 @@ SOC
 Have the .?? code call markdown first, and then do the translation. That will make it so it expands any variables first, then does the cleanup...
 Replace references to needshot.png in docs/samples/image to the [sys.imports]/avs/needshot.png...
 Make a pass thru the builtins and add _help strings for anything important...
+I wonder if making the entire debug subsystem write to stderr instead of stdout would be useful. That would make it so the debug messages are not interspersed amongst the content, but isn't that useful? Food for thought.
+tests/sos/figurethisout.md - need to make sure these are documented since I don't look at this file often...
+Move tests/sos scripts to the /src directory?
+Consider if we need to test the command line options to ismd (like the monitors...)
 
 Priority 0 | p0
 ---------------
-finish writing tests for @image.
-Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clear.
 Decide if $.attr substitutions should be marked down. Currently, they are not...
 Terminal and terminal2 built-in help needs updating.
-document the key elements (@image) -- use the "tests/in" files to make it "current".
-Refresh the samples so they are using current markdown...
 Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
-Document using smd with pipenv and an OBS page. 
 Finish clock and border as 2 POCs that are part of the source tree.
 [dump(ns="namespace1 & namespace2")] - parse the namespaces strip(ns.split('&')) and dump each of them.
+release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 
 
 Priority 1 | p1
 ---------------
-@if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
-@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... 
-    I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", 
-    and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
 Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
-Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
 smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
-You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
-Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
 Split out the div sections specific to AV into the AVS.md file (from divs.md).
 Seems like I should track where _markdown is called, and only in the main output loop, should things be expanded/processed. I don't know if this is possible, but it seems like if it were, it would solve a lot of the issues I have with trying to do things like escape_var, encode_var, etc, when the underlying variable calls code.push* or code.repeat, etc, etc. Worth a glance in any case...
 @html should add _c_(_c) and _r_(_r) - grep make sure _c_, _r_ not currently used anywhere. If so, fix that first, then implement this. Might enable with _ea_="True" (if specified, then add the _c_, _c, _raw_, _r attributes). Then, you would be able to specify content by using ._c_(_c="content"), and it would emit .<._c.> in one step. html.foo._c_(_c="content").
@@ -63,15 +56,13 @@ How about the ability to delete a variable and also an attribute.
 
 Priority 3 | p3
 ---------------
-SystemDefaults() needs some TLC. Think about dumping and where it's overidden. 
+SystemDefaults() needs some TLC. Think about dumping and where it's overridden. 
 add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
     --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
     --developer mode switch (@debug developer="yes" -- so you can enable inside the interpreter) should define things like [mk] and other helpers.
-release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
 Code review Cache, ImportCache & SystemDefaults.
 maybe add a pause/resume method on the watcher class i could engage while parsing...
 Make a pass at cleaning up //TODO, or at least listing them here or in docs
-Is @break/@exit useful? Yes, I still use it sometimes. Unless I figure out another slick way to "clear:both", it is still useful to reset the CSS layout.
 See how close I can get to a clean render of Buddy's music video script markdown file...
 Save input lines in smd and implement arrow keys for input
 Should Python or SRC be aliases for @code variables?
@@ -185,6 +176,15 @@ Add options to escape_html() to output of some of the code macros so we can use 
 Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
 Document code.attr_replace_value
 Fix bug where ' inside a string [var.attr(a="this doesn’t work")] --workaround use &apos;
+document the key elements (@image) -- use the "tests/in" files to make it "current".
+Refresh the samples so they are using current markdown...
+finish writing tests for @image.
+Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
+Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
+Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clear.
+Document using smd with pipenv and an OBS page. 
+You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
+Is @break/@exit useful? Yes == When you are doing avshot.*, and then you want to have an inline paragraph, you need it.
 
 
 
@@ -226,3 +226,11 @@ It would really be cool if I could write actual Python code inline (v3). Basical
     src="'print( 1 if \"x\" != \"_default_\" else 2)'"
 
 x=[code.test.run]
+
+   
+   TODO: Might want to look at Mark Boszko's latest version of the original CSS file. He's added a TON of stuff that looks very interesting...
+
+@if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
+@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... 
+    I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", 
+    and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
