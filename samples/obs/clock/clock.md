@@ -19,5 +19,5 @@
 @import "[sys.imports]/def_bodyclose.md"
 @import "[sys.imports]/def_close.md"
 
-@watch "[sys.basepath]/../pipenv/obs/clock/css/style.css"
+@watch "[sys.basepath]/../samples/obs/clock/css/style.css"
 
