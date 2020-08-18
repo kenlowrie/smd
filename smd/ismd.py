@@ -22,7 +22,11 @@ class OutputMonitor():
     def close(self):
         pass
 
-import tkinter as tk
+try:
+    import tkinter as tk
+except ModuleNotFoundError:
+    print(f"{__file__}: Your Python doesn't seem to be configured for Tk")
+    exit(1)
 
 class Window(OutputMonitor):
     def __init__(self, filepath=None):
@@ -61,8 +65,11 @@ class Browser(OutputMonitor):
         super(Browser, self).__init__()
         self.url = url
 
+    def _start(self):
+        self.driver = self._webdriver()
+
     def create(self):
-        self.driver = webdriver.Chrome()
+        self._start()
         self.driver.get(self.url)
 
     def refresh(self):
@@ -70,6 +77,22 @@ class Browser(OutputMonitor):
 
     def close(self):
         self.driver.close()
+
+class Chrome(Browser):
+    def __init__(self, url=None):
+        super(Chrome, self).__init__(url)
+        self._webdriver = webdriver.Chrome
+
+class Firefox(Browser):
+    def __init__(self, url=None):
+        super(Firefox, self).__init__(url)
+        self._webdriver = webdriver.Firefox
+
+class Safari(Browser):
+    def __init__(self, url=None):
+        super(Safari, self).__init__(url)
+        self._webdriver = webdriver.Safari
+
 
 from bottle import Bottle, static_file
 from threading import Thread, Lock, current_thread
@@ -119,15 +142,21 @@ class Endpoint(OutputMonitor):
         return static_file(str(path), root=str(self.root))
 
 class Monitor():
-    Browser = 'browser'
+    Chrome = "chrome"
+    Safari = "safari"
+    Firefox = "firefox"
     HostGUI = 'hostgui'
     Endpoint = 'endpoint'
 
     def __init__(self, monitor, filepath):
         self.monitor = None
         self.type = monitor
-        if self.type == Monitor.Browser:
-            self.monitor = Browser(f"file://{filepath}")
+        if self.type == Monitor.Chrome:
+            self.monitor = Chrome(f"file://{filepath}")
+        elif self.type == Monitor.Safari:
+            self.monitor = Safari(f"file://{filepath}")
+        elif self.type == Monitor.Firefox:
+            self.monitor = Firefox(f"file://{filepath}")
         elif self.type == Monitor.HostGUI:
             self.monitor = Window(filepath)
         elif self.type == Monitor.Endpoint:
@@ -207,24 +236,23 @@ def ismd(arguments=None):
     from argparse import ArgumentParser
     from pathlib import Path
 
-    #//TODO.py: Can any of these "common" args be moved to smdparse and shared?
+    from smd.smdparse import ScriptParser, handle_cssfilelist_parameter, get_importfilelist, add_common_options
+
     parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
-                            epilog='The program monitors changes and keeps window updated until CTRL-C is pressed.')
-    parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
-    parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
-    parser.add_argument('-sph', '--smdparse-head-name', dest="head_file_name", default="smdparse_head.md", help='the filename to use for the head HTML markdown. Default is smdparse_head.md')
-    parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
-    parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
-    parser.add_argument('-m', '--monitor', nargs='+', default=[Monitor.Browser], help=f'the monitor [{Monitor.Browser}, {Monitor.HostGUI}, {Monitor.Endpoint}] you want used to display changes. Default is {Monitor.Browser}')
+                            epilog='The program monitors changes and keeps window(s) updated until CTRL-C is pressed.')
+
+    parser = add_common_options(parser)
+
+    parser.add_argument('-m', '--monitor', nargs='+', default=[Monitor.Chrome], help=f'the monitor [{Monitor.Chrome}, {Monitor.Safari}, {Monitor.Firefox}, {Monitor.HostGUI}, {Monitor.Endpoint}] you want used to display changes. Default is {Monitor.Chrome}')
     
+    parser.add_argument('-ipf', '--ignore-parse-fail', action='store_true', dest="ignore_parse_fail", help=f'ignore failure of initial parse. Default is: {False}')
+
     from smd.smd import smd_add_std_cmd_line_parms
     from smd.core.sysdef import SystemDefaults
 
     sysDefaults = SystemDefaults()
 
     args = smd_add_std_cmd_line_parms(parser, sysDefaults, arguments)
-
-    from smd.smdparse import ScriptParser, handle_cssfilelist_parameter, get_importfilelist
 
     sysDefaults.head_name = Path().joinpath(args.path, args.head_file_name).resolve()
 
@@ -235,9 +263,8 @@ def ismd(arguments=None):
         message(f"FileError exception: {fe.errno} - {fe.errmsg}", False)
         return 1
 
-    if sp.lastParseOK == False:
+    if sp.lastParseOK == False and not args.ignore_parse_fail:
         message("stopping because the initial parse failed...")
-        #//TODO.py: Need a command line switch to ignore this failure
         return 1
 
 

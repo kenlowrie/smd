@@ -1,3 +1,3 @@
 #~/bin/zsh
- ismd -f $1 -c -m browser -ndb -nd -nu
+ ismd -f $1 -c -m chrome -ndb -nd -nu
  

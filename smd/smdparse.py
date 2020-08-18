@@ -147,6 +147,20 @@ def get_importfilelist(args):
     
     return args.importfilelist
 
+def add_common_options(parser):
+    """These command line options are used by both smdparse.py and ismd.py.
+    """
+    parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
+
+    parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
+
+    parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
+
+    parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
+
+    parser.add_argument('-sph', '--smdparse-head-name', dest="head_file_name", default="smdparse_head.md", help='the filename to use for the head HTML markdown. Default is smdparse_head.md')
+
+    return parser
 
 def parse(arguments=None):
     """Create an HTML file from a text file written in Script Markdown.
@@ -161,14 +175,12 @@ def parse(arguments=None):
 
     parser = ArgumentParser(description='Generate HTML file from a text file in Script Markdown format.',
                             epilog='This utility exits after parsing the input file.')
-    parser.add_argument('-f', '--filename', required=True, help='the file that you want to parse')
-    parser.add_argument('-c', '--cssfile', nargs='*', dest="cssfilelist", help='the CSS file you want used for the styling. Default is smd.css')
-    parser.add_argument('-sph', '--smdparse-head-name', dest="head_file_name", default="smdparse_head.md", help='the filename to use for the head HTML markdown. Default is smdparse_head.md')
-    parser.add_argument('-i', '--import', nargs='*', dest="importfilelist", help='list of file(s) to import after builtins.md loaded. Default is None')
-    parser.add_argument('-d', '--path', nargs='?', const='./html', default='./html', help='the directory that you want the HTML file written to. Default is ./html')
+
+    parser = add_common_options(parser)
+
     parser.add_argument('-dbg', '--debug', action='store_true', help=f'display additional debug information. Default is: {False}')
+
     parser.add_argument('-notid', '--no-tid-in-output', dest="notid", action='store_true', help=f'do not display the thread id in the output messages. Default is: {False}')
-    #parser.add_argument('-o', '--open', nargs='?', const=True, default=False, help='whether or not to open the resulting HTML output file with the default system app')
 
     from smd.smd import smd_add_std_cmd_line_parms
     from smd.core.sysdef import SystemDefaults

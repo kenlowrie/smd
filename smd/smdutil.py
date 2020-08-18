@@ -11,6 +11,11 @@ class ConsoleMessage(object):
         self.me = pylib.context(whoami)
         self._usetid = True
 
+    def _get_native_id(self):
+        from sys import version_info
+        from threading import current_thread
+        return current_thread().native_id if version_info >= (3,8) else current_thread().ident
+
     @property
     def usetid(self):
         return self._usetid
@@ -20,8 +25,8 @@ class ConsoleMessage(object):
         self._usetid = value
 
     def o(self,msg,usetid=True):
-        from threading import current_thread
-        threadid = current_thread().native_id if usetid and self.usetid else ""
+
+        threadid = self._get_native_id() if usetid and self.usetid else ""
         print(f"{self.me.alias()}({threadid}): {msg}")
 
 consoleMessage = ConsoleMessage(__file__).o

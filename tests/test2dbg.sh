@@ -1,3 +1,3 @@
 #~/bin/zsh
- ismd -f $1 -c -m browser hostgui -ndb -nd -nu
+ ismd -f $1 -c -m chrome hostgui -ndb -nd -nu
  
