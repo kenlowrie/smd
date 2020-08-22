@@ -6,17 +6,28 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="smd.css" />
 </head>
-<body>
+<body class="myclass">
 <div class="wrapper">
 <h1 class="blue center">Script Markdown User Manual</h1>
-<div class="cover"><h3>Script Markdown Utility</h3><p><strong>This guide is NOT Confidential</strong></p><p class="coverSummary">This manual describes the <em>Script Markdown Utility</em>, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. <strong>Enjoy!</strong><br /><br /><em><strong>NOTE:</strong></em> Additional samples that might be worth reviewing are those in the unit test code located here: <em><strong>(../tests/in/&ast;.md)</strong></em>. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers.</p></div>
-<div class="revision"><p class="revTitle">Revision: <em><strong>0.4.2</strong></em> (20200816 @ 06:43:57) </p></div>
-<div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2018-2020 by <a href="https://cloudylogic.com">Cloudy Logic Studios</a>, LLC.<br />All Rights Reserved.<br />www.cloudylogic.com<br /></td><td class="right nowrap" style="border:none">Ken Lowrie<br /><em>512-867-5309</em><br /><a href="&#x6d;a&#x69;&#108;t&#x6f;&#58;&#x79;&#111;u&#x40;&#121;o&#x75;&#114;&#x64;&#111;m&#x61;&#105;n&#x2e;&#99;&#x6f;&#109;">me@mydomain.com</a><br /></td></tr></table></div>
-<div class="review"><p class="divTitle">Notes to Reviewer</p><p>    Please send <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x6d;&#x65;&#64;&#x6d;&#x79;&#100;&#x6f;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#x6f;&#109;&#x3f;&#x73;&#117;&#98;&#x6a;e&#99;&#x74;=&#83;&#x63;r&#105;&#x70;t&#37;&#x32;0&#77;&#x61;r&#107;&#x64;o&#119;&#x6e;%&#50;&#x30;U&#116;&#x69;l&#105;&#x74;y&#37;&#x32;0&#70;&#x65;e&#100;&#x62;a&#99;&#x6b;">Ken Lowrie</a> any and all feedback, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. Within different versions of this proposal, <ins>additions are marked like this</ins> and <del>deletions are marked like this</del></p></div>
+<div class="cover"><h3>Script Markdown Utility</h3><p><strong>This guide is NOT Confidential</strong></p><p class="coverSummary">This manual describes the <em>Script Markdown Utility</em>, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. <strong>Enjoy!</strong><br /><br /><em><strong>NOTE:</strong></em> Additional samples that might be worth reviewing are those in the unit test code located here: <em><strong>(../tests/in/&ast;.md)</strong></em>. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers!</p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>0.4.2</strong></em> (20200819 @ 12:13:28) </p></div>
+<div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2018-2020 by <a href="https://cloudylogic.com">Cloudy Logic Studios</a>, LLC.<br />All Rights Reserved.<br />www.cloudylogic.com<br /></td><td class="right nowrap" style="border:none">Ken Lowrie<br /><em>512-867-5309</em><br /><a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#121;ou&#64;&#x79;&#x6f;&#x75;&#x72;&#100;&#111;&#109;&#97;in&#46;&#x63;&#x6f;&#x6d;">me@mydomain.com</a><br /></td></tr></table></div>
+<div class="review"><p class="divTitle">Notes to Reviewer</p><p>    Please send <a href="&#109;&#x61;&#105;&#x6c;t&#111;&#58;&#109;&#x65;&#64;&#x6d;y&#x64;o&#109;&#x61;&#105;&#x6e;&#46;&#x63;o&#109;&#x3f;&#115;&#x75;b&#x6a;e&#99;&#x74;&#61;&#x53;c&#x72;i&#112;&#x74;&#37;&#x32;0&#x4d;a&#114;&#x6b;&#100;&#x6f;w&#x6e;%&#50;&#x30;&#85;&#x74;i&#x6c;i&#116;&#x79;&#37;&#x32;0&#x46;e&#101;&#x64;&#98;&#x61;c&#x6b;">Ken Lowrie</a> any and all feedback, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. Within different versions of this proposal, <ins>additions are marked like this</ins> and <del>deletions are marked like this</del></p></div>
 <a id="toc"></a>
 <div class="toc"><p class="divTitle">Table of Contents - SMD User Guide<br /><br /></p>
-<p><a href="#setup">Setup SMD</a> - <strong>How to setup SMD in your environment</strong><br /></p>
-<p><a href="#ug_cmdline">Command Line</a> - <strong>The SMD Command Line Parameters</strong><br /></p>
+<p><a href="#ug_setup">Setup SMD</a> - <strong>How to setup SMD in your environment</strong><br /></p>
+<p><span class="indent"><a href="#ug_setup_pip">Install with pip</a> - <strong>Using <em>pip</em> to install smd</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_setup_pipenv">Install with pipenv</a> - <strong>Using <em>pipenv</em> to install smd</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_setup_webdriver">Install webdriver</a> - <strong>Installing a webdriver for <em>selenium</strong></em></span><br /></p>
+<p><span class="indent"><a href="#ug_setup_use_obs">Using smd with OBS</a> - <strong>Using smd with OBS</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_smd_vs_markdown">smd vs markdown</a> - <strong>A simple comparison</strong></span><br /></p>
+<p><a href="#ug_cmdline">Command Line</a> - <strong>The SMD Command Line Parameters</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_repo_layout">Repository Layout</a> - <strong>Directory structure of smd repository</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_components">Major Components</a> - <strong>The major components</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_startup">Startup & Shutdown</a> - <strong>Detailed startup and shutdown process</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_smd">smd CL</a> - <strong>Command Line Parameters</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_smdparse">smdparse CL</a> - <strong>Command Line Parameters</strong></span><br /></p>
+<p><span class="indent"><a href="#ug_cl_ismd">ismd CL</a> - <strong>Command Line Parameters</strong></span><br /></p>
 <p><a href="#intro">Getting Started</a> - <strong>Getting Started with SMD</strong><br /></p>
 <p><span class="indent"><a href="#inlinemd">Inline Markdown</a> - <strong>Formatting content inline</strong></span><br /></p>
 <p><span class="indent"><a href="#headings">Headings</a> - <strong>Adding Headings</strong></span><br /></p>
@@ -78,78 +89,137 @@
 </div>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h1>smd - The Script Markdown Processor</h1></div>
 <div class="extras"><p>Welcome to the user manual for <strong>smd</strong>, the <strong>Script Markdown</strong> Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of <strong>smd</strong>, and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!</p></div>
-<a id="setup"></a>
+<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span> The release process should smdparse -f userdocs.md -c -d export so the rendered version of the documentation is part of the repository. This is required because the instructions in the README.md say "open this file with your browser" to read the docs current with the release you are looking at...</p></div>
+<a id="ug_setup"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Setting up smd</h2></div>
 <div class="extras"><p>There are two approaches to installing <strong>SMD</strong> on your system; either using <strong>pip</strong> or <strong>pipenv</strong>. This chapter will cover both methods, and you can choose which is better for you.</p></div>
+<div class="extras"><p><em>Please take note of the following caveats before continuing with the setup process.</em></p></div>
+<div class="extras"><p><h5>Minimum Required Python Version</h5></p></div>
 <div class="extras"><p class="box">
-NOTE: <strong>smd</strong> requires Python 3.7.3 or later! If you are running an older version, you either have to upgrade or install a virtual environment with something newer in order to run <strong>smd</strong>.
+<strong>smd</strong> requires Python 3.7.3 or later! If you are running an older version, you either have to upgrade or install a virtual environment with something newer in order to run <strong>smd</strong>.
 </p></div>
+<div class="extras"><p><h5>Tk (tkinter) requirement for ismd</h5></p></div>
+<div class="extras"><p class="box">If you will be using <strong>ismd</strong> &lpar;<strong>Interactive Script Markdown</strong>&rpar;, the version of Python you will be using must have been built with <strong><a href="https://tkdocs.com/tutorial/install.html" target="_blank">tkinter</a></strong> &lpar;<strong><a href="https://tkdocs.com/tutorial/install.html" target="_blank">Tk</a></strong>&rpar;. Versions from <a href="https://www.activestate.com/products/python/" target="_blank">ActiveState</a> will have this, but if you use some other version, for example, if you use <strong><a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a></strong> to manage the version of Python on your system, you must set the compiler flags <em>prior</em> to doing the <a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a> install.</p></div>
+<div class="extras"><p>If you did not have these flags set when you installed Python using <strong><a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a></strong>, and you want to use <strong>ismd</strong>, you will have to <em>uninstall</em> the current version, and reinstall it (with the environment variables set). Here is a link <a href="https://tkdocs.com/tutorial/install.html" target="_blank">https://tkdocs.com/tutorial/install.html</a> that will provide the information you need to get this done, although take a look at this <a href="https://stackoverflow.com/questions/60469202/unable-to-install-tkinter-with-pyenv-pythons-on-macos" target="_blank">Stackoverflow Question and Answer</a> for the steps needed to solve this issue.</p></div>
+<div class="extras"><p>Okay, let's get started.</p></div>
+<a id="ug_setup_pip"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Installing with pip</h3></div>
-<div class="extras"><p>The easiest way to install smd on your system is to use the default package installer for Python or <strong>pip</strong>. From a terminal window on your machine, change to the root directory of your cloned repository and type:</p></div>
+<div class="extras"><p>The easiest way to install <strong>smd</strong> on your system is to use the default package installer for Python or <strong>pip</strong>. From a terminal window on your machine, change to the root directory of your cloned repository and type:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ pip install .</pre></div>
-<div class="extras"><p>One drawback to this method is that the package and its dependencies will be installed globally, which could interfere with other packages installed on your system. Also, in order to minimize the number of dependencies that are installed using <strong>pip</strong>, two other packages that are needed by <strong>ismd</strong>, namely <strong>selenium</strong> and <strong>bottle</strong>, are not automatically installed. If you will not be using <strong>ismd</strong>, then there is nothing extra required. <strong>smd</strong> and <strong>smdparse</strong> will both run just fine without these additional packages. On the other hand, if you will be using <strong>ismd</strong>, then you must either install these packages manually, or alternatively, you can use the <strong>pipenv</strong> method described next, which <em>will</em> install the extra packages. To install them manually, use these commands in your terminal window:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Install additional package dependencies</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
-$ pip install selenium
-$ pip install bottle
-</pre></div>
-<div class="extras"><p class="question">
-<span class="bigandbold red">TODO:&nbsp;</span> Need to document downloading a driver for selenium.<br /><br />
-<em>download from here: https://sites.google.com/a/chromium.org/chromedriver/downloads</em>
-</p></div>
-<div class="extras"><p>You can also install the package in developer mode with the -e flag. This will point the installation of the package to the current cloned repository directory instead of copying it over to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change. Use the following command in your terminal window to install <strong>smd</strong> in developer mode:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Install in developer mode with pip</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-&nbsp;
+<div class="extras"><p class="note">You can also install <strong>smd</strong> in <em>edit</em> mode (<strong>pip install -e .</strong>). This will point the installation of the <strong>smd</strong> package to the current cloned repository directory instead of copying it to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">To install in edit mode with pip</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 $ pip install -e .
 </pre></div>
 <div class="extras"><p class="note blue">
-HINT: If you later decide you want to install <strong>smd</strong> in developer mode, you can issue the above command to accomplish that. If it detects that <strong>smd</strong> is already installed on your system, it will uninstall it first, and then install it in developer mode.
+HINT: If you change your mind about how <strong>smd</strong> is installed, simply run <span class="bold black italic"><span style="font-size:120%">pip install .</span></span>  or <span class="bold black italic"><span style="font-size:120%">pip install -e .</span></span> to change it. When pip detects that <strong>smd</strong> is already installed on your system, it will uninstall it first, and then install it in whatever mode you specify.
 </p></div>
+<div class="extras"><p>One drawback to installing <strong>smd</strong> using the <strong>pip install</strong> method is that the package and its dependencies will be installed globally, which could interfere with other packages installed on your system. Also, in order to minimize the number of dependencies that are installed using <strong>pip</strong>, three other packages that are needed by <strong>ismd</strong>, namely <strong>watchdog</strong>, <strong>selenium</strong> and <strong>bottle</strong>, are not automatically installed.</p></div>
+<div class="extras"><p>If you will not be using <strong>ismd</strong>, then there is nothing extra required. <strong>smd</strong> and <strong>smdparse</strong> both run without these additional packages. Go ahead and skip down to the <a href="#ug_smd_vs_markdown">smd vs markdown</a> section to continue.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h4>Additional pip install steps if using ismd</h4></div>
+<div class="extras"><p>If you will be using <strong>ismd</strong>, then you must either install these packages manually, or alternatively, you can use the <strong>pipenv</strong> method described in the <a href="#ug_setup_pipenv">next section</a>, which <em>will</em> install the extra packages automatically. To install them manually using <strong>pip</strong>, use these commands in your terminal window:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Install additional package dependencies using pip</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+$ pip install selenium
+$ pip install bottle
+$ pip install watchdog
+</pre></div>
+<div class="extras"><p>After completing the pip installs for <strong>selenium</strong>, <strong>bottle</strong> and <strong>watchdog</strong>, the last thing you need to configure is a web driver for <strong>selenium</strong> for the browser you will be using. Skip down to <a href="#ug_setup_webdriver">Installing a webdriver for selenium</a> for the details.</p></div>
+<a id="ug_setup_pipenv"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Installing with pipenv</h3></div>
-<div class="extras"><p class="question">
-<span class="bigandbold red">TODO:&nbsp;</span>I think the Pipfile/Pipfile.lock belong in the root directory, like where they were before. And then pipenv gets renamed to samples...
-</p></div>
-<div class="extras"><p><strong><a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a></strong> is a much better way to setup a virtual environment for running SMD on a local machine. Doing so prevents installing site-packages in a global manner, the way <strong>pip</strong> does, thus isolating <strong>smd</strong> to a private environment for use, testing and/or evaluation. The Pipfile and Pipfile.lock files are provided in the <strong>&lsqb;sys.root&rsqb;/pipenv</strong> directory, which is located at the root of your cloned repository. Simply navigate to that directory on your local machine and type:</p></div>
+<div class="extras"><p><strong><a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a></strong> is a much better way to install <strong>smd</strong>. It will create a virtual environment for running <strong>smd</strong> on your machine, preventing installation of the various site-packages in a global manner, the way <strong>pip</strong> does. This, in turn, isolates <strong>smd</strong> to a private environment for use, testing and/or evaluation.</p></div>
+<div class="extras"><p class="note">NOTE: If you do not have <a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a> installed, navigate to <a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">https://docs.python-guide.org/dev/virtualenvs/</a> for information on how to do that.</p></div>
+<div class="extras"><p>The <strong>Pipfile</strong> and <strong>Pipfile.lock</strong> files are provided in the root directory of your cloned repository. Simply navigate to that directory on your local machine and type:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ pipenv install</pre></div>
 <div class="extras"><p>to create the runtime environment for launching smd on your machine. Once it finishes, type:</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ pipenv shell</pre></div>
-<div class="extras"><p>And then invoke <strong>smd</strong>, <strong>smdparse</strong> and/or <strong>ismd</strong> within the virtual environment that was created.</p></div>
-<div class="extras"><p class="note">NOTE: If you do not have <a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a> installed on your machine, you can navigate to <a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">https://docs.python-guide.org/dev/virtualenvs/</a> to get information on it.</p></div>
-<div class="extras"><p class="note">NOTE2: If you will be using <strong>ismd</strong> &lpar;<strong>Interactive Script Markdown</strong>&rpar;, the version of Python you will be using must have been built with <strong><a href="https://tkdocs.com/tutorial/install.html" target="_blank">tkinter</a></strong> &lpar;<strong><a href="https://tkdocs.com/tutorial/install.html" target="_blank">Tk</a></strong>&rpar;. Versions from <a href="https://www.activestate.com/products/python/" target="_blank">ActiveState</a> will have this, but if you use some other version, for example, if you use <strong><a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a></strong> to manage the version of Python on your system, you must set the compiler flags <em>prior</em> to doing the <a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a> install.</p></div>
-<div class="extras"><p>If you did not have these flags set when you did the install of Python using <strong><a href="https://github.com/pyenv/pyenv#installation" target="_blank">pyenv</a></strong>, and you want to use ismd, you will have to <em>uninstall</em> the current version, and reinstall it (with the environment variables set). Here is a link <a href="https://tkdocs.com/tutorial/install.html" target="_blank">https://tkdocs.com/tutorial/install.html</a> that will provide the information you need to get this done, although take a look at this <a href="https://stackoverflow.com/questions/60469202/unable-to-install-tkinter-with-pyenv-pythons-on-macos" target="_blank">Stackoverflow Question and Answer</a> for the steps needed to solve this issue.</p></div>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating a virtual environment for running <strong>OBS Studio</strong> browser endpoints</h3></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Running virtual environment for OBS Studio browser endpoints</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Starting ismd after pipenv install</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+$ pipenv shell
 &nbsp;
-&num; <span class="bigandbold red">TODO:&nbsp;</span>need a better folder name. This seems like the Pipfile in pipenv is just for OBS. Why?
-$ cd pipenv
-pipenv install  - this will install what's referred to in Pipfile.lock
-pipenv shell
-ismd -nd -f clock.md -m endpoint hostgui
+<em># To Launch <strong>ismd</strong> and display help</em>
+$ smd -h
+&nbsp;
+<em># or Launch <strong>smdparse</strong> and display help</em>
+$ smdparse - h
+&nbsp;
+<em># or Launch <strong>ismd</strong> and display help</em>
+$ ismd - h
 </pre></div>
-<div class="extras"><p>If the code is not changing, you can also load it is a static local file in OBS. <span class="bigandbold red">TODO:&nbsp;</span>Describe that here...</p></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ smdparse -nd -f clock.md</pre></div>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h2>inside OBS</h2></div>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span>This needs some sprucing up...</p></div>
-<div class="extras"><p>Add a Browser to a scene</p></div>
-<div class="extras"><p>Use localhost:8080/smd/clock/html/clock.html</p></div>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h2>Create the pipenv/*.lock files first time</h2></div>
-<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating the Pipfile and Pipfile.lock</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<div class="extras"><p>This will launch <strong>smd</strong>, <strong>smdparse</strong> and/or <strong>ismd</strong> within the virtual environment that was created. Alternatively, you can use <strong>pipenv run ...</strong> to execute the code inside the virtual environment without starting the <strong>pipenv shell</strong>:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using <em>pipenv run</em> to execute Python code in virtual environment</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<em># Launch <strong>ismd</strong></em>
+$ pipenv run smd -h
 &nbsp;
+<em># or Launch <strong>smdparse</strong></em>
+$ pipenv run smdparse - h
+&nbsp;
+<em># or Launch <strong>ismd</strong></em>
+$ pipenv run ismd - h
+</pre></div>
+<div class="extras"><p>By default, <strong>smd</strong> is installed <em>edit</em> mode (<strong>pipenv install -e .</strong>). This points the installation of the <strong>smd</strong> package to the current cloned repository directory instead of copying it to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change.</p></div>
+<div class="extras"><p>If you don't want <strong>smd</strong> installed in <em>edit</em> mode, you can ...</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ pipenv uninstall smd</pre></div>
+<div class="extras"><p>... followed by ...</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ pipenv install .</pre></div>
+<div class="extras"><p>... from the <span style="text-decoration:underline"><strong>root directory of your cloned repository</strong></span> to change how it is installed.</p></div>
+<a id="ug_setup_webdriver"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Installing a webdriver for <em>selenium</em></h3></div>
+<div class="extras"><p>In order for <strong>selenium</strong> to be able to control your browser, it requires a special driver called a <strong>webdriver</strong>. You can read more about <a href="https://selenium-python.readthedocs.io/" target="_blank">Selenium with Python</a> here, and specifically about <a href="https://selenium-python.readthedocs.io/installation.html#drivers" target="_blank">Selenium drivers</a> here.</p></div>
+<div class="extras"><p>Each browser driver should provide any required setup steps on their site. For the most part, however, it's just a matter of copying the driver into the PATH, so that <strong>selenium</strong> can find it. So, navigate to one of the following links and get the driver for your browser.</p></div>
+<div class="extras"><p>If you are using Google Chrome, you will need to get the <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank">Chrome Webdriver</a> version.</p></div>
+<div class="extras"><p>If you are using Mozilla Firefox, you need to get the <a href="https://github.com/mozilla/geckodriver/releases" target="_blank">Firefox Webdriver</a> version.</p></div>
+<div class="extras"><p>If you are using Apple Safari, the driver ships with <strong>macOS</strong>. Navigate to <a href="https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari" target="_blank">enabling the Safari Webdriver</a> where you can read about setting up and configuring the Safari driver.</p></div>
+<div class="extras"><p class="note">At the time of writing this documentation, the <strong>Safari</strong> webdriver has a feature called the <strong>glass pane</strong> which makes it not very useful for being an <strong>ismd</strong> monitor. I've been unable to figure out a way to disable the glass pane without stopping the automation, which prevents you from interacting with the browser window to do simple things such as scrolling down... DOH! Gee, thanks Apple. Good news though, both Chrome and Firefox work GREAT! So you might want to use one of them instead, at least when using the monitor feature of <strong>ismd</strong>. If and when I find a solution, I will fix the code and update the documentation.</p></div>
+<div class="extras"><p>Here are a few notes that might help you get things working if you have never used <strong>selenium</strong> before.</p></div>
+<div class="extras"><p>First, on newer versions of <strong>macOS</strong>, the driver may require that you grant it the appropriate rights to run the driver on the platform, depending on whether or not the driver has been notarized. Usually, this can be accomplished by simply running the driver once. For both the <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank">Chrome Webdriver</a> and the <a href="https://github.com/mozilla/geckodriver/releases" target="_blank">Firefox Webdriver</a> versions, I simply ran the executable in a terminal window, and when I got the prompt from <strong>macOS</strong>, I allowed it to run. Fortunately, this is only required one time.</p></div>
+<div class="extras"><p>On Safari, you need to:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ safaridriver --enable</pre></div>
+<div class="extras"><p>You may also need to <strong>Show Develop Menu</strong>:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/ss_safari_show_develop.png" style="margin-left:auto;margin-right:auto;width:70%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>As well as <strong>Develop | Allow Remote Automation</strong>:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/ss_safari_allow_remote_automation.png" style="margin-left:auto;margin-right:auto;width:70%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>In order to get the <a href="https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari" target="_blank">Safari Webdriver</a> to work. And by "<em>to work</em>", I mean "<em>show the first part of your markdown document only</em>". <span style="font-size:2em">&#x1F61C;</span>.</p></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Using smd with OBS Studio</h3></div>
+<div class="extras"><p><strong>smd</strong> can be used to create content (both static and dynamic) for use in <strong>OBS Studio</strong>. You will likely use either <strong>smdparse</strong> to generate a static file, or <strong>ismd</strong> to create an endpoint on the <strong>localhost</strong> that you can use with <strong>OBS Studio</strong>. Let's see how this can be done.</p></div>
+<div class="extras"><p class="box"><strong>NOTE:</strong> This section is jumping ahead just a bit, so if it seems confusing, don't worry. It does assume you are familiar with <strong>OBS</strong>, so if that isn't the case, then you may want to skip it for now.<br /><br />In addition, it assumes you have successfully installed and configured <strong>smd</strong> with either <strong>pip</strong> or <strong>pipenv</strong>, as described in the previous sections.</p></div>
+<div class="extras"><p>Here is how you can create a dynamic clock overlay for OBS Studio:</p></div>
+<a id="ug_setup_use_obs"></a>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating content for OBS Studio</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<em># If you installed <strong>smd</strong> with <strong>pipenv</strong>, start with:</em>
+$ cd &lt;root_of_your_smd_repo&gt;
+$ pipenv shell
+&nbsp;
+<em># Now move to the samples/obs/clock directory</em>
+(smd) $ cd samples/obs/clock
+&nbsp;
+<em># this next command will create the virtual env and run ismd</em>
+(smd) $ ismd -nd -f clock.md -m endpoint hostgui
+&nbsp;
+<em># <strong>ismd</strong> will parse clock.md, create an endpoint, and keep it live until you press <strong>CTRL-C (&#8963;C)</strong></em>
+</pre></div>
+<div class="extras"><p>Alternatively, if the code is not changing (i.e. you've completed development/debugging), you can simply generate a static local file using <strong>smdparse</strong> and load that inside OBS. Assuming you are in the <strong>samples/obs/clock</strong> directory <strong>AND</strong> you are in a <strong>pipenv</strong> shell if you installed with <strong>pipenv</strong>:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">&lpar;smd&rpar; $ smdparse -nd -f clock.md</pre></div>
+<div class="extras" style="border-bottom:2px solid black"><h4>Loading the <em>clock</em> HTML inside OBS</h4></div>
+<div class="extras"><p>To access the <strong>clock</strong> sample inside OBS, add a <strong>browser</strong> to a <strong>scene</strong>, and use one of the following URLs (depending on whether you used <strong>ismd</strong> or <strong>smdparse</strong> to create the content):</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">URL syntax for accessing the clock sample</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<em>If you are running using the <strong>ismd</strong> endpoint then use:</em>
+localhost:8080/smd/clock/html/clock.html
+&nbsp;
+<em>If you used <strong>smdparse</strong> to generate the raw HTML then use:</em>
+file://<path_to_your_cloned_smd_repo>/samples/obs/clock/html/clock.html
+</pre></div>
+<div class="extras"><p>Once again, I realize we jumped ahead a bit with this sample on using <strong>ismd</strong> and <strong>smdparse</strong> since we have yet to cover them, but I figured showing a somewhat more real-world example would help illustrate the kind of things you can do with <strong>smd</strong>! One last thing to cover before we move on is how you can customize the <strong><a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a></strong> <strong>Pipfile</strong> to add additional packages you want to use inside your <strong>smd</strong> virtual environment.</p></div>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating the Pipenv/Pipenv.lock files the first time</h3></div>
+<div class="extras"><p>If you want to create your own custom configuration for <strong>pipenv</strong>, you can do that with the following commands:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating the Pipfile and Pipfile.lock</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 $ pipenv install selenium
 $ pipenv install watchdog
 $ pipenv install bottle
-$ cd root_of_smd_cloned_repo
-$ pipenv install -e /path/2/smd
+$ cd &lt;root_of_smd_cloned_repo&gt;
+$ pipenv install -e .
+&nbsp;
+<em># Now add more <strong>pipenv install</strong> commands for your other packages</em>
 </pre></div>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span>Should I have two sets of Pipfile/.lock? One for dev mode, and another for regular mode?</p></div>
-<pre style="white-space:pre-wrap">
-<code style="display:block;color:purple">
-<div class="extras"><h2>Add this to setup-doc.md</h2></div>
-<div class="extras">The release process should smdparse -f userdocs.md -c -d export so the rendered version of the documentation is part of the repository. This is required because the instructions in the README.md say "open this file with your browser" to read the docs current with the release you are looking at...</div>
-<div class="extras">Need to move the additional useful variable definitions from this chapter to the builtins...</div>
-</code>
-</pre>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>README.md from repository root</h3></div>
+<div class="extras"><p>Technically, you don't need the first four steps above, since the <strong>Pipenv</strong> file already has everything you need for <strong>smd</strong>. You could just <strong>pipenv install</strong> your own packages while sitting in the root directory of your cloned repository, and they will be added to the existing configuration file. Subsequently, whenever you create a new virtual environment using <strong>pipenv install</strong> or <strong>pipenv run</strong>, it will add any additional packages automatically.</p></div>
+<a id="ug_smd_vs_markdown"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>smd vs markdown - Repository README.md</h3></div>
 <div class="extras"><p>Just below, I will import the README.md from the root directory of this repository. That file uses a more standard markdown syntax, and if you review the rendered output, you will see where certain things do not expand as the syntax is not supported by <strong>smd</strong>. The most obvious are the inline and reference links, although this is a rather simple example, not intended to show all differences between <strong>markdown</strong> and <strong>smd</strong>.</p></div>
 <div class="extras" style="margin-left:7em;margin-right:7em;background-color:lightgray;padding:0 1em .5em;font-size:1.3em">
 <div class="extras"><h1>smd</h1></div>
@@ -172,9 +242,10 @@ $ pipenv install -e /path/2/smd
 <div class="extras"><p><a href="#toc">Table of Contents</a></p></div>
 <a id="ug_cmdline"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>smd command line parameters</h2></div>
-<div class="extras"><p>Before diving into the command line parameters of <strong>smd</strong>, <strong>smdparse</strong> and <strong>ismd</strong>, we need to establish some context.</p></div>
-<div class="extras"><p>In order to do that, we will start by providing an overview of the repository layout, followed by a discussion of the major components, and finally the startup & shutdown processes of the primary command line interfaces. This will establish enough background information about <strong>smd</strong> that the discussion on the command line parameters will make more sense.</p></div>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span>In the structure below, pipenv has been renamed to samples</p></div>
+<div class="extras"><p>Before diving into the command line parameters of <strong>smd</strong>, <strong>smdparse</strong> and <strong>ismd</strong>, let's establish some context first.</p></div>
+<div class="extras"><p class="box">This chapter assumes you have successfully installed <strong>smd</strong> using one of the methods documented in the previous chapter.</p></div>
+<div class="extras"><p>We will start by providing an overview of the repository layout, followed by a discussion of the major components, and finally the startup & shutdown processes of the primary command line interfaces. This will establish enough background information about <strong>smd</strong> that the discussion on the command line parameters will make more sense.</p></div>
+<a id="ug_cl_repo_layout"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Repository Layout</h3></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">smd repository structure</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
@@ -219,26 +290,46 @@ $ pipenv install -e /path/2/smd
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&boxvr;&rtrif;&nbsp;out - individual unit test master files (expected output)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&boxvr;&rtrif;&nbsp;test.py - <strong>smd</strong> unittest command line interface (i.e. unit test runner)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&boxvr;&rtrif;&nbsp;testdbg.sh - bash script that starts an interactive <strong>smd</strong> session on a unit test
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&boxur;&rtrif;&nbsp;test2dbg.sh - starts an interactive <strong>smd</strong> session with both browser and hostgui windows
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&boxur;&rtrif;&nbsp;test2dbg.sh - starts an interactive <strong>smd</strong> session with both chrome and hostgui windows
 &nbsp;
 </pre></div>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>major components of smd</h3></div>
-<div class="extras"><p>The major components consist of three (3) command line interfaces.</p></div>
+<a id="ug_cl_components"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Major components of smd</h3></div>
+<div class="extras"><p>The major components of <strong>smd</strong> consist of three (3) command line interfaces.</p></div>
 <div class="extras"><ol class="olist">
 <li><strong>smd</strong> - The Script Markdown command line interface</li>
 <li><strong>smdparse</strong> - The Script Markdown Parser command line interface</li>
 <li><strong>ismd</strong> - The Interactive Script Markdown command line interface</ol></li>
 </ol></div>
-<div class="extras"><p><strong>smd</strong> is the main command line interface, and the one that you can use to experiment with this language. If you have installed smd, go ahead and try it by entering the following command in a terminal window:</p></div>
+<div class="extras"><p class="box">NOTE: If you used <a href="https://docs.python-guide.org/dev/virtualenvs/" target="_blank">pipenv</a> to install <strong>smd</strong>, be sure to either activate the virtual environment by typing <strong>pipenv shell</strong> or alternatively, type <strong>pipenv run</strong> in front of each <strong>smd</strong> command in the following examples.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h4>smd command line interface</h4></div>
+<div class="extras"><p><strong>smd</strong> is the main command line interface, and the one that you can use to experiment with this language. Since you have successfully installed smd, go ahead and try it by entering the following command in a terminal window:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ smd -nd</pre></div>
 <div class="extras"><p>At this point, your terminal window is waiting for input. Type <strong>Hello, world</strong> and press the <strong>Return &crarr;</strong> key on your keyboard.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ smd -nd<br />Hello, world&crarr;<br />Hello, world<br />&#8963;D</pre></div>
 <div class="extras"><p>When you typed <strong>Hello, world</strong>, the parser simply echoed that input back to you. Congratulations, you have just created your first <strong>smd</strong> document!</p></div>
-<div class="extras"><p>To close smd, type <strong>CTRL-D (&#8963;D)</strong> (yes, macOS users, that's <strong>CTRL-D</strong> and not <strong>CMD-D (&#8984;D)</strong>). <strong>CTRL-D</strong> will send an EOF signal on the stdin input stream, which will cause <strong>smd</strong> to perform an orderly shutdown.</p></div>
-<div class="extras"><p>You can also terminate smd by pressing <strong>CTRL-C (&#8963;C)</strong>, however that results in the <strong>SIG-INT</strong> signal being sent, which will cause an unorderly shutdown (i.e. none of the closing tags will be written, etc.)</p></div>
+<div class="extras"><p>To close <strong>smd</strong>, type <strong>CTRL-D (&#8963;D)</strong> (yes, macOS users, that's <strong>CTRL-D</strong> and not <strong>CMD-D (&#8984;D)</strong>). <strong>CTRL-D</strong> will send an EOF signal on the stdin input stream, which will cause <strong>smd</strong> to perform an orderly shutdown.</p></div>
+<div class="extras"><p>You can also terminate <strong>smd</strong> by pressing <strong>CTRL-C (&#8963;C)</strong>, however that results in the <strong>SIG-INT</strong> signal being sent, which will cause an unorderly shutdown (i.e. none of the closing tags will be written, etc.)</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h4>smdparse command line interface</h4></div>
 <div class="extras"><p><strong>smdparse</strong> is a higher level command line interface that sits atop <strong>smd</strong>. It imports the direct smd entry point, so it's using the exact same underlying code to parse your documents, however, it adds several useful options for automation. It also provides the foundation for the final major component, <strong>ismd</strong>.</p></div>
-<div class="extras"><p><strong>ismd</strong> is an <strong>interactive</strong> version of smd that provides three different methods for viewing the output from smd. What's unique about it is that it monitors <strong>all</strong> of the underlying files that are processed by smd for changes, and when it detects a change, it automatically parses the document again, and updates the output monitors. There are three different monitors currently supported by <strong>ismd</strong>: <strong>browser</strong> (the default), which displays the output in a browser window; <strong>hostgui</strong>, which displays the raw HTML output in a host window and finally <strong>endpoint</strong>, which creates an HTTP endpoint on the localhost that can be opened by any web browser.</p></div>
-<div class="extras"><p>Both <strong>smdparse</strong> and <strong>ismd</strong> will be covered in detail in their respective chapters.</p></div>
+<div class="extras"><p>Let's parse the <strong>samples/hello/hello.md</strong> sample file next using <strong>smdparse</strong>:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ cd samples/hello<br />$ smdparse -f hello.md -c<br />$ open html/hello.html</pre></div>
+<div class="extras"><p>The <strong>open html/hello.html</strong> command opened the generated <strong>hello.html</strong> file in your default browser so you can review it. Close the browser window when you are done.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h4>ismd command line interface</h4></div>
+<div class="extras"><p><strong>ismd</strong> is an <strong>interactive</strong> version of <strong>smd</strong> that provides several different methods for viewing the output from <strong>smd</strong>. What's unique about it is that it monitors <strong>all</strong> of the underlying files that are processed by <strong>smd</strong> for changes, and when it detects a change, it automatically parses the document again, and updates the output monitors.</p></div>
+<div class="extras"><p>There are several different monitors currently supported by <strong>ismd</strong>: <strong>chrome</strong> (the default), which displays the output in a Chrome browser window; <strong>firefox</strong> and <strong>safari</strong>, which display the output in Firefox and Safari, respectively; <strong>hostgui</strong>, which displays the raw HTML output in a host window and finally <strong>endpoint</strong>, which creates an HTTP endpoint on the localhost that can be opened by any web browser.</p></div>
+<div class="extras"><p class="note">NOTE: The <strong>hostgui</strong> monitor requires that your version of Python was compiled with the <strong>Tk &lpar;tkinter&rpar;</strong> support, and the browser monitors all require an additional webdriver before they will work. Be sure to review the <a href="#ug_setup">Setup Chapter</a> for the required information for using any of the <strong>ismd</strong> monitors.</p></div>
+<div class="extras"><p>Let's go ahead and parse the <strong>samples/hello/hello.md</strong> sample file next using <strong>ismd</strong> with the <strong>hostgui</strong> monitor:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">$ cd samples/hello<br />$ ismd -f hello.md -c -m hostgui</pre></div>
+<div class="extras"><p>When you execute the <strong>ismd</strong> command, it will parse <strong>hello.md</strong>, then create a <strong>Tk</strong> window where it will display the contents of the parsed file. It will continue to monitor all files that are parsed to generate <strong>hello.md</strong>, and if any of them change, it will parse again and update the <strong>hostgui</strong> window. Experiment with that now, by changing the contents of <strong>hello.md</strong>, and saving it. You should see the window update with the new content each time you make a change and save the document. Here is what it looks like when you first run it:</p></div>
+<div class="extras"><p>The terminal window:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/ss_ismd_terminal.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>The <strong>hostgui</strong> window:</p></div>
+<div class="extras"><p><img src="/Users/ken/Dropbox/shared/src/script/smd/docs/import/ss_ismd_hostgui.png" style="margin-left:auto;margin-right:auto;width:90%;border:1px solid;padding:1em;"/></p></div>
+<div class="extras"><p>When you are done, be sure to type <strong>CTRL-C</strong> in the terminal window to terminate <strong>ismd</strong>.</p></div>
+<div class="extras"><p>Both <strong>smdparse</strong> and <strong>ismd</strong> and their command line options will be covered in more detail later in this chapter.</p></div>
+<a id="ug_cl_startup"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>smd startup & shutdown overview</h3></div>
 <div class="extras"><p>The following provides a high-level overview of the startup of <strong>smd</strong>. This is the basic flow when no command line parameters are passed to <strong>smd</strong>.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
 <div class="source"><code style="font-size:1.4em;font-weight:bold">High level overview of startup</code>
@@ -268,8 +359,11 @@ $ pipenv install -e /path/2/smd
 </ol></div>
 </div>
 </div>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h2>smd command line parameters</h2></div>
-<div class="extras"><p>The command line parameters for smd are:</p></div>
+<div class="extras"><p>By reviewing the startup process, you can see that a number of the built in markdown files are preloaded when <strong>smd</strong> is started (assuming you did not pass any command line switches preventing that behavior). In addition, the default HTML markup files are loaded and dumped to the output stream, before it begins processing your input (either from the keyboard i.e. <strong>stdin</strong>, or from a file if <strong>-f</strong> or shell redirection is used). Once EOF is reached on the input stream, the remaining HTML markup files are read and dumped to the output stream, before it cleans up and performs an orderly shutdown.</p></div>
+<div class="extras"><p>Okay, now that we've provided enough context, let's take a look at the command line parameters for each of the major <strong>smd</strong> components.</p></div>
+<a id="ug_cl_smd"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>smd command line parameters</h3></div>
+<div class="extras"><p>The command line parameters for <strong>smd</strong> are:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">smd command line parameters</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 usage: smd [-h] [-f FILENAME] [-ldb | -ndb] [-lub | -nub] [-nd] [-nohtml] [-nohead] [-nobody]
@@ -298,6 +392,9 @@ optional arguments:
 -o [RAW_OUTPUT_FILE], --output-raw-data [RAW_OUTPUT_FILE] - write the raw data to output file. Default is: None
 &nbsp;
 </pre></div>
+<a id="ug_cl_smdparse"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>smdparse command line parameters</h3></div>
+<div class="extras"><p>The command line parameters for <strong>smdparse</strong> are:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">smdparse command line parameters</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
 <strong>smdparse</strong> accepts the same parameters as <strong>smd</strong>, plus these additional parameters:
@@ -323,6 +420,8 @@ optional arguments:
 This utility exits after parsing the input file.
 &nbsp;
 </pre></div>
+<a id="ug_cl_ismd"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>ismd command line parameters</h3></div>
 <div class="extras"><p><strong>ismd</strong> accepts the same parameters as <strong>smd</strong>, plus these additional parameters:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">ismd command line parameters</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &nbsp;
@@ -1273,18 +1372,18 @@ Now &lsqb;link.sample&rsqb; emits: <a href="http://example.com" title="my link t
 </pre></div>
 <div class="extras"><p>I've defined the previous examples inline in the user docs, so now we can use them by using either of these methods:</p></div>
 <div class="extras"><p><strong>&lsqb;link.email_me.&lt;&rsqb;email_me&lsqb;link.email_me.&gt;&rsqb;</strong> emits this:<br /></p></div>
-<div class="extras"><p><span class="indent"><em>&lt;a href="&amp;#x6d;a&amp;#x69;&amp;#108;t&amp;#x6f;&amp;#58;&amp;#x6d;&amp;#101;&amp;#64;&amp;#x64;&amp;#111;&amp;#x6d;&amp;#97;i&amp;#x6e;&amp;#46;&amp;#x63;&amp;#x6f;m"&gt;</em>email_me<em>&lt;/a&gt;</em></span></p></div>
-<div class="extras"><p>which the browser renders like this: <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x6d;&#x65;&#64;&#100;&#x6f;&#x6d;&#97;&#105;&#x6e;&#x2e;&#99;&#111;&#x6d;">email me</a>.</p></div>
+<div class="extras"><p><span class="indent"><em>&lt;a href="&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#x6d;&amp;#x65;&amp;#x40;&amp;#x64;&amp;#x6f;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6e;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;"&gt;</em>email_me<em>&lt;/a&gt;</em></span></p></div>
+<div class="extras"><p>which the browser renders like this: <a href="&#109;&#97;&#x69;l&#116;&#x6f;&#x3a;m&#101;&#x40;d&#111;&#x6d;&#x61;i&#110;&#x2e;c&#111;&#x6d;">email me</a>.</p></div>
 <div class="extras"><p class="note blue">
 <strong>Wait, what the ... happened to the href?</strong>
 <br /><br />
-<span class="indent"><em>&lt;a href="&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x6d;&amp;#101;&amp;#64;&amp;#x64;&amp;#x6f;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6e;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;"&gt;</em></span>
+<span class="indent"><em>&lt;a href="&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#58;me&amp;#x40;&amp;#x64;&amp;#x6f;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#110;&amp;#46;co&amp;#x6d;"&gt;</em></span>
 <br /><br />
 How come the <strong>href</strong> on the link is all jacked up? Actually, this is intentional! It encodes the email address in a way that makes it a bit more challenging for <strong>spambots</strong> and other web scraper tools to detect an email address. Not impossible, but definitely more challenging! In addition, every time the parser runs the output will be slightly different, yet the link and the behavior remain consistent and correct! Just a cool side benefit to how <strong>smd</strong> parses and encodes links that use a <strong>mailto</strong> prefix on the <strong>href</strong>.
 </p></div>
 <div class="extras"><p>Getting back to <strong>mailto</strong> links, let's take a look at the other example, the one created with the link factory. The variable name for it is <strong>feedback</strong>, and to use the link, all we need to write is <strong>&lsqb;feedback&rsqb;</strong>, which is much easier and cleaner than having to use the link open and close tags as before.</p></div>
-<div class="extras"><p>When we do that, the browser will display <a href="&#109;a&#105;l&#116;o&#58;u&#x73;e&#x72;&#64;&#x6d;y&#x64;o&#x6d;a&#x69;n&#x2e;c&#x6f;m&#x3f;&#115;&#x75;&#98;&#x6a;&#101;&#x63;&#116;&#x3d;&#102;&#x65;&#97;&#x74;&#117;&#x72;&#101;&#x25;&#50;&#x30;&#102;&#x65;&#101;&#x64;&#98;&#x61;&#99;k">Send feedback</a>, which is exactly what we need. If you'll recall from the discussion on the link factory before, you also have access to the <strong>_qlink</strong> attribute, so we can create custom alternate text on the fly.</p></div>
-<div class="extras"><p>For example, if we write <strong>&lsqb;feedback._qlink(_qtext="I would love to get your feedback!")]</strong>, then this is what the browser would display: <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;us&#x65;&#x72;&#x40;&#109;&#121;&#100;oma&#x69;&#x6e;&#x2e;&#99;&#111;&#109;&#63;su&#x62;&#x6a;&#x65;&#x63;&#116;&#61;&#102;ea&#x74;&#x75;&#x72;&#x65;&#37;&#50;&#48;fe&#x65;&#x64;&#x62;&#x61;&#99;&#107;">I would love to get your feedback!</a></p></div>
+<div class="extras"><p>When we do that, the browser will display <a href="&#x6d;&#97;i&#x6c;&#x74;&#111;&#58;&#x75;&#115;e&#x72;&#x40;&#109;y&#x64;&#111;m&#x61;&#x69;&#110;&#46;&#x63;&#111;&#109;&#x3f;&#x73;&#117;b&#x6a;&#x65;&#99;t&#x3d;&#102;e&#x61;&#x74;&#117;r&#x65;&#37;2&#x30;&#x66;&#101;e&#x64;&#98;&#97;&#x63;&#x6b;">Send feedback</a>, which is exactly what we need. If you'll recall from the discussion on the link factory before, you also have access to the <strong>_qlink</strong> attribute, so we can create custom alternate text on the fly.</p></div>
+<div class="extras"><p>For example, if we write <strong>&lsqb;feedback._qlink(_qtext="I would love to get your feedback!")]</strong>, then this is what the browser would display: <a href="&#x6d;&#x61;&#105;l&#x74;&#x6f;&#x3a;&#117;s&#x65;&#x72;&#x40;&#109;y&#x64;&#x6f;&#x6d;&#97;i&#x6e;&#x2e;&#x63;&#111;m&#x3f;&#x73;&#x75;&#98;j&#x65;&#x63;&#x74;&#61;f&#x65;&#x61;&#x74;&#117;r&#x65;&#x25;&#x32;&#48;f&#x65;&#x65;&#x64;&#98;a&#x63;&#x6b;">I would love to get your feedback!</a></p></div>
 <div class="extras"><p>And so we come to the end of the <strong>&#64;link</strong> chapter. Built upon the <strong>&#64;html</strong> namespace, <strong>&#64;link</strong> offers some cool features for creating and using hyperlinks if your markdown documents. Next up, is the <strong>&#64;image</strong> namespace.</p></div>
 <div class="extras"><p><a href="#toc">Table of Contents</a></p></div>
 <a id="ug_ns_image"></a>
@@ -1618,7 +1717,7 @@ myshot=
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 &nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>20200816 @ 06:43:57<br />
+&nbsp;&nbsp;<strong>_last=</strong>20200819 @ 12:13:28<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -1915,7 +2014,7 @@ myshot=
 <div class="extras" style="border-bottom:2px solid black"><h3>Contents of the code.md builtins file</h3></div>
 <div class="extras"><p>The import file <strong>&lsqb;sys.imports&rsqb;/code.md</strong> is where the majority of the <strong>&#64;code</strong> built-in macros are documented, so we will just embed the file here to review them.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of code.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
-//TODO: Validate difference between $.attrname and self.attrname. 
+// @code namespace builtins
 
 @code _id="esc_angles"\
       type="eval"\
@@ -3172,7 +3271,7 @@ Finally, keep in mind that final media will not be released until all invoices a
 <li>Acceptance of Terms - return signed contract</li>
 </ol></div>
 <div class="extras"><p>Thanks again for choosing [Cloudy Logic Studios] for your production needs. We look forward to working with you on this project.</p></div>
-<div class="extras"><p>Please let <a href="&#109;a&#105;l&#116;o&#58;y&#x6f;u&#x40;y&#x6f;u&#x72;d&#x6f;m&#x61;i&#x6e;&#46;&#x63;o&#x6d;">me@mydomain.com</a> know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.</p></div>
+<div class="extras"><p>Please let <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x79;&#111;&#117;&#x40;&#x79;&#111;&#117;&#x72;&#x64;&#111;&#109;&#x61;&#x69;&#110;&#46;&#x63;&#x6f;&#109;">me@mydomain.com</a> know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.</p></div>
 <div class="extras"><p>Warmest regards,</p></div>
 <div class="extras"><p><span class="bigandbold">Firstname LastName</span><br />Producer<br />Production Company<br />512.867.5309<br />__DELETEME__mailto:you@youremailaddress.com</p></div>
 <div class="extras"><p><h2 class="pbb"><span style="text-decoration:underline">Terms and Signatures</span></h2></p></div>
