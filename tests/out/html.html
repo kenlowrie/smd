@@ -657,11 +657,11 @@ Google has always had the "I'm Feeling Lucky" button just below it's search inpu
 <div class="extras"><p>In addition to all of the built-in attributes supported by <strong>&#64;var</strong>, <strong>&#64;html</strong> variables have several built-ins that are unique to it:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="extras"><table style="margin-left:auto;margin-right:auto">
-<tr><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center">Attribute Name</td><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center">Description</td></tr>
-<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center"><em>_tag</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The HTML element name of the variable</td></tr>
-<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center"><em>&lt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag for this variable</td></tr>
-<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center"><em>&gt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The closing tag for this variable</td></tr>
-<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center"><em>&lt;+</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag with embedded quotes escaped.</td></tr>
+<tr><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap">Attribute Name</td><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center">Description</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>_tag</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The HTML element name of the variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&lt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag for this variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&gt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The closing tag for this variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&lt;+</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag with embedded quotes escaped.</td></tr>
 </table></div>
 </div>
 <div class="extras"><p>We've already seen these in action above, so no need to discuss further with the exception of the <strong>&lt;+</strong>, which will output the opening tag with escaped quotes in the public variable definitions.</p></div>
@@ -1309,7 +1309,7 @@ NAMESPACE: html<br />
 <strong>td_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>td<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
-&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}};white-space:nowrap<br />
 &nbsp;&nbsp;<strong>_align=</strong>center<br />
 <br />
 <strong>th=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
@@ -1324,7 +1324,7 @@ NAMESPACE: html<br />
 <strong>th_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>th<br />
 &nbsp;&nbsp;<strong>class=</strong>item<br />
-&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}};white-space:nowrap<br />
 &nbsp;&nbsp;<strong>_align=</strong>center<br />
 <br />
 <strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />

@@ -71,7 +71,7 @@
     7="[!bmgreybg._close!]"\
     attrlist="1,2,2a,3,4,5,5a,6,7"
 
-@html _id="td_item" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
+@html _id="td_item" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}};white-space:nowrap" _align="center"
 @html _id="td_desc" _inherit="td" class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}" _align="center"
 @html _id="th_item" _tag="th"     _inherit="td_item"
 @html _id="th_desc" _tag="th"     _inherit="td_desc" 

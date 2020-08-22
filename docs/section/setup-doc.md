@@ -68,7 +68,7 @@ After completing the pip installs for **selenium**, **bottle** and **watchdog**,
 
 **[pipenv]** is a much better way to install [smd.b]. It will create a virtual environment for running [smd.b] on your machine, preventing installation of the various site-packages in a global manner, the way **pip** does. This, in turn, isolates [smd.b] to a private environment for use, testing and/or evaluation. 
 
-[note(t="NOTE: If you do not have [pipenv] installed on your machine, navigate to [pipenv._asurl] to get information on it.")]
+[note(t="NOTE: If you do not have [pipenv] installed, navigate to [pipenv._asurl] for information on how to do that.")]
 
 The **Pipfile** and **Pipfile.lock** files are provided in the root directory of your cloned repository. Simply navigate to that directory on your local machine and type:
 
@@ -79,19 +79,19 @@ to create the runtime environment for launching smd on your machine. Once it fin
 [terminal.wc_open(t="Starting [ismd] after pipenv install")]
 $ pipenv shell
 [sp]
-*# Launch [ismd.b]*
+*# To Launch [ismd.b] and display help*
 $ smd -h
 [sp]
-*# or Launch [smdparse.b]*
+*# or Launch [smdparse.b] and display help*
 $ smdparse - h
 [sp]
-*# or Launch [ismd.b]*
+*# or Launch [ismd.b] and display help*
 $ ismd - h
 [terminal.wc_close]
 
-And then invoke [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environment that was created. Alternatively, you can use **pipenv run ...** to execute the code inside the virtual environment created by **pipenv install**:
+This will launch [smd.b], [smdparse.b] and/or [ismd.b] within the virtual environment that was created. Alternatively, you can use **pipenv run ...** to execute the code inside the virtual environment without starting the **pipenv shell**:
 
-[terminal.wc_open(t="Using pipenv run to execute Python code in virtual environment")]
+[terminal.wc_open(t="Using *pipenv run* to execute Python code in virtual environment")]
 *# Launch [ismd.b]*
 $ pipenv run smd -h
 [sp]
@@ -104,15 +104,15 @@ $ pipenv run ismd - h
 
 By default, [smd.b] is installed *edit* mode (**pipenv install -e .**). This points the installation of the [smd.b] package to the current cloned repository directory instead of copying it to your site-packages installation directory; useful if you plan on making changes and don't want to reinstall each time you make a change. 
 
-If you don't want [smd.b] installed in *edit* mode, you can:
+If you don't want [smd.b] installed in *edit* mode, you can ...
 
 [terminal(t="$ pipenv uninstall smd")]
 
-Followed by:
+... followed by ...
 
 [terminal(t="$ pipenv install .")]
 
-From the root directory of your cloned repository to change how it is installed.
+... from the [e_us(t="**root directory of your cloned repository**")] to change how it is installed.
 
 [link.ug_setup_webdriver]
 [wrap_h.section(t="###Installing a webdriver for *selenium*")]
@@ -152,25 +152,25 @@ On Safari, you need to:
 You may also need to **Show Develop Menu**:
 
 [IMG_SIZE.medium]
-@image _="ss_safari_show_develop" src="[sys.root]/docs/import/ss_safari_show_develop.png" style="[IMG_STYLE.inline_border}]"
+@image _="ss_safari_show_develop" src="[sys.root]/docs/import/ss_safari_show_develop.png" style="[IMG_STYLE.inline_border]"
 [ss_safari_show_develop]
 
 
 As well as **Develop | Allow Remote Automation**:
 
 [IMG_SIZE.medium]
-@image _="ss_safari_allow_remote_automation" src="[sys.root]/docs/import/ss_safari_allow_remote_automation.png" style="[IMG_STYLE.inline_border}]"
+@image _="ss_safari_allow_remote_automation" src="[sys.root]/docs/import/ss_safari_allow_remote_automation.png" style="[IMG_STYLE.inline_border]"
 [ss_safari_allow_remote_automation]
 
-In order to get the [link.wd_safari] to work. And by "*to work*", I mean "show the first part of your markdown document only". [e_moji.big(e="tonguewink")].
+In order to get the [link.wd_safari] to work. And by "*to work*", I mean "*show the first part of your markdown document only*". [e_moji.big(e="tonguewink")].
 
 [wrap_h.section(t="### Using [smd] with OBS Studio")]
 
-[smd.b] can be used to create dynamic content for use in **OBS Studio**. You will likely use either [smdparse.b] to generate a static file, or [ismd.b] to create an endpoint on the **localhost** that you can use with **OBS Studio**. Let's see how this can be done.
+[smd.b] can be used to create content (both static and dynamic) for use in **OBS Studio**. You will likely use either [smdparse.b] to generate a static file, or [ismd.b] to create an endpoint on the **localhost** that you can use with **OBS Studio**. Let's see how this can be done.
 
-[box(t="**NOTE:** This section is jumping ahead just a bit, so if it seems confusing, don't worry. It does assume you are familiar with **OBS**, so if that isn't the case, then you may want to skip it for now.[bb]In addition, it assumes you have successfully installed and configured [smd.b] with either **pip** or **pipenv**.")]
+[box(t="**NOTE:** This section is jumping ahead just a bit, so if it seems confusing, don't worry. It does assume you are familiar with **OBS**, so if that isn't the case, then you may want to skip it for now.[bb]In addition, it assumes you have successfully installed and configured [smd.b] with either **pip** or **pipenv**, as described in the previous sections.")]
 
-Consider the following:
+Here is how you can create a dynamic clock overlay for OBS Studio:
 
 [link.ug_setup_use_obs]
 [terminal.wc_open(t="Creating content for OBS Studio")]
@@ -179,21 +179,21 @@ $ cd [E.lt]root_of_your_smd_repo[E.gt]
 $ pipenv shell
 [sp]
 *# Now move to the samples/obs/clock directory*
-$ cd samples/obs/clock
+(smd) $ cd samples/obs/clock
 [sp]
 *# this next command will create the virtual env and run ismd*
-$ ismd -nd -f clock.md -m endpoint hostgui 
+(smd) $ ismd -nd -f clock.md -m endpoint hostgui 
 [sp]
 *# [ismd.b] will parse clock.md, create an endpoint, and keep it live until you press **CTRL-C (&#8963;C)***
 [terminal.wc_close]
 
 Alternatively, if the code is not changing (i.e. you've completed development/debugging), you can simply generate a static local file using [smdparse.b] and load that inside OBS. Assuming you are in the **samples/obs/clock** directory **AND** you are in a **pipenv** shell if you installed with **pipenv**:
 
-[terminal(t="$ smdparse -nd -f clock.md")]
+[terminal(t="[E.lp]smd[E.rp] $ smdparse -nd -f clock.md")]
 
 [wrap_h.subsect(t="#### Loading the *clock* HTML inside OBS")]
 
-To access the **clock** sample inside OBS, you can add a **browser** to a **scene**, and use one of the following URLs:
+To access the **clock** sample inside OBS, add a **browser** to a **scene**, and use one of the following URLs (depending on whether you used [ismd.b] or [smdparse.b] to create the content):
 
 [terminal.wc_open(t="URL syntax for accessing the clock sample")]
 *If you are running using the [ismd.b] endpoint then use:*
