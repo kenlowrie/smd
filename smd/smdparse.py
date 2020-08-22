@@ -91,7 +91,7 @@ class ScriptParser():
         message(f"outputDir={self.outDir}")
         message(f"htmlFile={self.outFile}")
         message(f"sysDefs (SystemDefaults Instance):")
-        self.sysDefs.dump(message)
+        self.sysDefs.dump(oprint=message)
 
     def parse(self,firstTime=False, copyCSSfiles=False):
         message("Instantiating file tracker...")
