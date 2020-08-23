@@ -1987,14 +1987,14 @@ NAMESPACE: link<br />
 </pre></div>
 <a id="ug_code_misc"></a>
 <div class="extras" style="border-bottom:2px solid black"><h3>A few more things about &#64;code</h3></div>
-<div class="extras"><p>[TODO] FINISH THIS SECTION</p></div>
 <div class="extras"><p>Here are just a few more things about the <strong>&#64;code</strong> namespace to help drive home your understanding of the declaration and usage of variables within it.</p></div>
-<div class="extras"><p><strong>&#64;code</strong> attributes cannot be changed via _null_ or when markdown is applied. You must use <strong>&#64;set</strong> to do that</p></div>
-<div class="extras"><p>Not specific to <strong>&#64;code</strong>, but you'll likely encounter it here: You cannot use () inside parameter strings, as it breaks the parser... Workaround using the <strong>E.lp/E.rp</strong> constants.</p></div>
-<div class="extras"><p>Which leads to this issue: you cannot nest markdown variables that require parameters... they require that you use () inside parameter strings... no workaround for this right now.</p></div>
+<div class="extras"><p><strong>&#64;code</strong> attributes cannot be permanently changed via _null_ or when markdown is applied. You must use <strong>&#64;set</strong> to change a <strong>&#64;code</strong> attribute value.</p></div>
+<div class="extras"><p>Not specific to <strong>&#64;code</strong>, but you'll likely encounter it here: You cannot use parenthesis <span class="bold red"><span style="font-size:120%">&lpar;&nbsp;&rpar;</span></span> inside parameter strings, as it breaks the parser... You can workaround this by using the <strong>&lsqb;E.lp&rsqb;/&lsqb;E.rp&rsqb;</strong> constants.</p></div>
+<div class="extras"><p>The restriction of using parenthesis inside parameter strings leads to this issue/shortcoming: you cannot nest markdown variables that require parameters, since that would require that you use () inside parameter strings. Unfortunately, there is no direct workaround for this right now.</p></div>
 <div class="extras"><p>Here's an example:</p></div>
-<div class="extras"><p><strong>[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]</strong> - Doesn't work</p></div>
-<div class="extras"><p><strong>&lsqb;var.revision.plain&lpar;v="1.4.2"&rpar;&rsqb;</strong> - Works just fine.</p></div>
+<div class="extras"><p><strong>&lsqb;encode_smd(t="&lt;var.revision.plain<em>&lpar;</em>v=\"1.4.2\"<em>&rpar;</em>&gt;")&rsqb;</strong> - emits <strong>[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]</strong></p></div>
+<div class="extras"><p><strong>&lsqb;encode_smd(t="&lt;var.revision.plain<em>&lsqb;E.lp&rsqb;</em>v=\"1.4.2\"<em>&lsqb;E.rp&rsqb;</em>&gt;")&rsqb;</strong> - emits <strong>&lsqb;var.revision.plain&lpar;v="1.4.2"&rpar;&rsqb;</strong></p></div>
+<div class="extras"><p>Providing a solution to this shortcoming is on the wishlist for a future version of the parser, but there is no ETA at this time.</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />

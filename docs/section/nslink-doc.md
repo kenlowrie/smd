@@ -1,9 +1,8 @@
 [link.ug_ns_link]
-[wrap_h.chapter(t="##@link Namespace")]
+[wrap_h.chapter(t="##[smdlink.il] Namespace")]
 
-[docthis.open(h="Add this to ns_code-doc.md")]
-    [TODO] Public attributes cannot refer to self.< or ns._.< because it will loop forever...                
-[docthis.close]
+//[docthis.open(h="Add this to ns_code-doc.md")]
+//[docthis.close]
 
 @wrap divx, p
 
@@ -26,7 +25,7 @@ As you can see, these links are both based on the HTML **a** attribute, and the 
 
 Hyperlinks are created using the [smdlink.b] namespace in [smd.b], while specifying the attributes desired to describe the link. The [smdlink.b] namespace is a subclass of [smdhtml.b], and therefore it shares all the same characteristics, such as the [big.red(t="&lt;")] attribute to emit the open tag HTML and [big.red(t="&gt;")] to emit the close tag HTML. For more information on the [smdhtml.b] namespace, refer to the [link.ug_ns_html._qlink(_qtext="[smdhtml.il] chapter")] in the user manual.
 
-You can create a variable in the @link namespace using the following syntax:
+You can create a variable in the [smdlink.b] namespace using the following syntax:
 
 [terminal.wc_open(t="Creating variables in [smdlink.il] namespace")]
     [encode_smd(t="@link _=\"name\" href=\"http://example.com\"")]
@@ -92,7 +91,7 @@ As you might expect, **ln_factory** inherits from **link._template_**, and as su
 One other feature of the **link._template_** are the **_qlink** and **_qtext** attributes. These allow you to specify alternative link text to the same **href**. For example, if I add **_qtext="alternative link text"** when the variable is declared, and then write **[encode_smd(t="<link.sample._qlink>")]**, I will get: [link.sample._qlink].
 
 [link.sample._null_(_qtext="alt2 link text")]
-You can also specify the **_qtext** using the special **_null_** syntax:  **[encode_smd(t="<link.sample._null_&lpar;_qtext=\"alt2 link text\"&rpar;>")]**. Doing so then cause **_qlink** to emit: [link.sample._qlink].
+You can also specify the **_qtext** using the special **_null_** syntax:  **[encode_smd(t="<link.sample._null_&lpar;_qtext=\"alt2 link text\"&rpar;>")]**. Doing so then causes **_qlink** to emit: [link.sample._qlink].
 
 And of course, you can create them on the fly by simply specifying the **_qtext** parameter when requesting the **_qlink** attribute value.
 

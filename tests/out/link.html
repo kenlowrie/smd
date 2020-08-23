@@ -538,10 +538,7 @@ NAMESPACE: link<br />
 </code>
 </div>
 <a id="ug_ns_link"></a>
-<div class="extras" style="border-bottom:5px solid green;color:green"><h2>@link Namespace</h2></div>
-<div class="extras"><p>[docthis.open(h="Add this to ns_code-doc.md")]</p></div>
-<div class="extras"><p>[TODO] Public attributes cannot refer to self.< or ns._.< because it will loop forever...</p></div>
-<div class="extras"><p>[docthis.close]</p></div>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>&#64;link Namespace</h2></div>
 <div class="extras"><p>The <strong>&#64;link</strong> namespace is built atop the <strong>&#64;html</strong> namespace, and as such, it inherits all the same characteristics of things defined in the <strong>&#64;html</strong> namespace. In this chapter, we will take a closer look at the <strong>&#64;link</strong> namespace and what it has to offer.</p></div>
 <a id="ug_links"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>
@@ -554,7 +551,7 @@ NAMESPACE: link<br />
 <a id="ug_hyperlinks"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Hyperlinks</h3></div>
 <div class="extras"><p>Hyperlinks are created using the <strong>&#64;link</strong> namespace in <strong>smd</strong>, while specifying the attributes desired to describe the link. The <strong>&#64;link</strong> namespace is a subclass of <strong>&#64;html</strong>, and therefore it shares all the same characteristics, such as the <span class="red"><span style="font-size:150%">&lt;</span></span> attribute to emit the open tag HTML and <span class="red"><span style="font-size:150%">&gt;</span></span> to emit the close tag HTML. For more information on the <strong>&#64;html</strong> namespace, refer to the [link.ug_ns_html._qlink(_qtext="[smdhtml.il] chapter")] in the user manual.</p></div>
-<div class="extras"><p>You can create a variable in the @link namespace using the following syntax:</p></div>
+<div class="extras"><p>You can create a variable in the <strong>&#64;link</strong> namespace using the following syntax:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating variables in &#64;link namespace</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &#64;link _="name" href="http://example.com"
 </pre></div>
@@ -587,7 +584,7 @@ NAMESPACE: link<br />
 <div class="extras"><p>Given that, it's always a good idea to specify the namespace except in the most simple of documents, to avoid incorrect expansion down the road. Thus, if I write <strong>&lsqb;link.sample&rsqb;</strong>, I will get the value as before: <a href="http://example.com">my default title</a>.</p></div>
 <div class="extras"><p>As you might expect, <strong>ln_factory</strong> inherits from <strong>link._template_</strong>, and as such, it inherits attributes including <strong>_asurl</strong>. For example, <em><strong>&lsqb;link.sample._asurl&rsqb;</strong></em> which expands to <strong>&lt;a href="http://example.com"&gt;http://example.com&lt;/a&gt;</strong> and renders as: <a href="http://example.com">http://example.com</a>.</p></div>
 <div class="extras"><p>One other feature of the <strong>link._template_</strong> are the <strong>_qlink</strong> and <strong>_qtext</strong> attributes. These allow you to specify alternative link text to the same <strong>href</strong>. For example, if I add <strong>_qtext="alternative link text"</strong> when the variable is declared, and then write <strong>&lsqb;link.sample._qlink&rsqb;</strong>, I will get: <a href="http://example.com">alternative link text</a>.</p></div>
-<div class="extras"><p>You can also specify the <strong>_qtext</strong> using the special <strong>_null_</strong> syntax:  <strong>&lsqb;link.sample._null_&lpar;_qtext="alt2 link text"&rpar;&rsqb;</strong>. Doing so then cause <strong>_qlink</strong> to emit: <a href="http://example.com">alt2 link text</a>.</p></div>
+<div class="extras"><p>You can also specify the <strong>_qtext</strong> using the special <strong>_null_</strong> syntax:  <strong>&lsqb;link.sample._null_&lpar;_qtext="alt2 link text"&rpar;&rsqb;</strong>. Doing so then causes <strong>_qlink</strong> to emit: <a href="http://example.com">alt2 link text</a>.</p></div>
 <div class="extras"><p>And of course, you can create them on the fly by simply specifying the <strong>_qtext</strong> parameter when requesting the <strong>_qlink</strong> attribute value.</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Specifying _qtext as parameter to _qlink</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &lsqb;link.sample._qlink&lpar;_qtext="yet another descriptive link text"&rpar;&rsqb;<br />

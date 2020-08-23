@@ -1,14 +1,14 @@
 [link.ug_ns_html]
 [wrap_h.chapter(t="## [smdhtml.il] Namespace")]
 
-The [smdhtml.b] keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the [smdhtml.il] namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
+The [smdhtml.b] keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the [smdhtml.b] namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that. 
 
 Most of the features and concepts just discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to [smdhtml.b] variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts, and will build upon them.
 
 [link.ug_html_syntax]
-[wrap_h.section(t="### @html Syntax")]
+[wrap_h.section(t="### [smdhtml.il] Syntax")]
 
-[syntax.wc_open(t="@html command syntax")]
+[syntax.wc_open(t="[smdhtml.il] command syntax")]
     [b]
     [tab.<][smdhtml.b] **_id="name" [E.lb]_tag="tagname" [E.lb]...[E.rb][E.sp][E.sp][E.rb]**[bb][tab.>]
 [syntax.wc_close]
@@ -53,7 +53,7 @@ This is what will be rendered by the browser:
 
 [note.with_content(c="Keep in mind that the formatting of the **blockquote** tag is defined by your Browser, or the CSS specified for you document.")]
 
-Let's return to looking at the **bquote** and **bq** variables. With **bquote**, notice it doesn't have the **cite** attribute, because it wasn't specified. Attributes can always be added to an [smdhtml.il] variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an [smdhtml.b] variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.
+Let's return to looking at the **bquote** and **bq** variables. With **bquote**, notice it doesn't have the **cite** attribute, because it wasn't specified. Attributes can always be added to an [smdhtml.b] variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an [smdhtml.b] variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.
 
 **bq** is identical to **blockquote**, because the **_inherit** attribute was specified at declaration time. Recall from the [smdvar.b] section, **_inherit** is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:
 
@@ -115,5 +115,14 @@ You can see a combination of syntaxes used in declaring the builtins for [smdhtm
 
 Many times, you may find that taking a system provided builtin as a starting point, using **_inherit** to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of [smdhtml.b]. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.
 
+One last thing before we take a look at the [smdlink.b] namespace. Do not use [big.120p(t="[_self_].&lt;" cls=".bold.black")] or [big.120p(t="[_self_].&lt;+")] in any public attributes that are declared on [smdhtml.b] variables. Doing so will cause an infinite loop in the **Markdown** class, because when it attempts to markdown [big.120p(t="&lt;")] or [big.120p(t="&lt;+")], it will enumerate the public attributes, expanding any markdown in those attributes before rendering the content. However, in this case, the public attribute contains the [big.120p(t="[_self_].&lt;")] builtin, and it recurses to process that, only to find itself repeating the same thing. Long story short, it will throw an exception after twenty-five recursive calls to attempt to evaluate the expression. Here's a really short example that you can run in the interactive shell:
+
+[terminal.wc_open(t="Sample infinite recursion using *[_self_].&lt;* in public attribute")]
+    $ [smd] -nd
+    [smdlink.il] _="fu" boom="{{[_self_].<}}"
+    [E.lb]fu.boom[E.rb]
+[terminal.wc_close]
+
+If you try the two statements above in an interactive [smd.b] session, you will quickly see the issue. You may want to add **[smddebug.il] toggle="markdown"** just before the **[E.lb]fu.boom[E.rb]** so you scroll up to get a dump of markdown recursion loop (a trick discussed in the [link.ug_debug._qlink(_qtext="chapter on debugging")].)
 //[docthis.open(h="Add this to nsvar-doc.md")]
 //[docthis.close]

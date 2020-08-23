@@ -590,11 +590,11 @@ NAMESPACE: link<br />
 </div>
 <a id="ug_ns_html"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>&#64;html Namespace</h2></div>
-<div class="extras"><p>The <strong>&#64;html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the &#64;html namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
+<div class="extras"><p>The <strong>&#64;html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the <strong>&#64;html</strong> namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
 <div class="extras"><p>Most of the features and concepts just discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>&#64;html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts, and will build upon them.</p></div>
 <a id="ug_html_syntax"></a>
-<div class="extras" style="border-bottom:3px solid black;color:green"><h3>@html Syntax</h3></div>
-<div class="syntax"><p class="divTitle">@html command syntax</p>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Syntax</h3></div>
+<div class="syntax"><p class="divTitle">&#64;html command syntax</p>
 <p><br /></p>
 <p><span class="indent"><strong>&#64;html</strong> <strong>_id="name" &lsqb;_tag="tagname" &lsqb;...&rsqb;&nbsp;&nbsp;&rsqb;</strong><br /><br /></span></p>
 </div>
@@ -635,7 +635,7 @@ Google has always had the "I'm Feeling Lucky" button just below it's search inpu
 <div class="extras"><p>This is what will be rendered by the browser:</p></div>
 <div class="extras"><p><blockquote cite="https://google.com">Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.</blockquote></p></div>
 <div class="extras"><p class="note">Keep in mind that the formatting of the <strong>blockquote</strong> tag is defined by your Browser, or the CSS specified for you document.</p></div>
-<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an &#64;html variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>&#64;html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
+<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an <strong>&#64;html</strong> variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>&#64;html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
 <div class="extras"><p><strong>bq</strong> is identical to <strong>blockquote</strong>, because the <strong>_inherit</strong> attribute was specified at declaration time. Recall from the <strong>&#64;var</strong> section, <strong>_inherit</strong> is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:</p></div>
 <div class="extras"><p><span class="indent"><strong>&#64;html _id="bq" _inherit="blockquote" cite="different-default-citation"</strong></span></p></div>
 <div class="extras"><p>Then this is what the definition of <strong>bq</strong> looks like in memory:</p></div>
@@ -744,6 +744,13 @@ Google has always had the "I'm Feeling Lucky" button just below it's search inpu
 </pre></div>
 <div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>&#64;html</strong>. Most are very simple, just the name and tag (when necessary), others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember <strong>helpers.md</strong> from the earlier chapter [link.ug_helpers.link]?</p></div>
 <div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>&#64;html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
+<div class="extras"><p>One last thing before we take a look at the <strong>&#64;link</strong> namespace. Do not use <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;</span></span> or <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;+</span></span> in any public attributes that are declared on <strong>&#64;html</strong> variables. Doing so will cause an infinite loop in the <strong>Markdown</strong> class, because when it attempts to markdown <span class="bold black"><span style="font-size:120%">&lt;</span></span> or <span class="bold black"><span style="font-size:120%">&lt;+</span></span>, it will enumerate the public attributes, expanding any markdown in those attributes before rendering the content. However, in this case, the public attribute contains the <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;</span></span> builtin, and it recurses to process that, only to find itself repeating the same thing. Long story short, it will throw an exception after twenty-five recursive calls to attempt to evaluate the expression. Here's a really short example that you can run in the interactive shell:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Sample infinite recursion using <em>&#x73;elf.&lt;</em> in public attribute</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+$ smd -nd
+&#64;link _="fu" boom="{{&#x73;elf.<}}"
+&lsqb;fu.boom&rsqb;
+</pre></div>
+<div class="extras"><p>If you try the two statements above in an interactive <strong>smd</strong> session, you will quickly see the issue. You may want to add <strong>&#64;debug toggle="markdown"</strong> just before the <strong>&lsqb;fu.boom&rsqb;</strong> so you scroll up to get a dump of markdown recursion loop (a trick discussed in the [link.ug_debug._qlink(_qtext="chapter on debugging")].)</p></div>
 <div class="variables">
 <code>
 ----------------------------------------<br />
@@ -1004,9 +1011,11 @@ NAMESPACE: html<br />
 <strong>bigtext=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[self.&lt;]{{self._t}}[self.&gt;]<br />
 &nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:{{self._size}}<br />
-&nbsp;&nbsp;<strong>_size=</strong>150%<br />
+&nbsp;&nbsp;<strong>_size=</strong>120%<br />
 &nbsp;&nbsp;<strong>_prefix=</strong>{:{{self._cls}}}{{self._format}}<br />
 &nbsp;&nbsp;<strong>_defsize_=</strong>150%<br />
+&nbsp;&nbsp;<strong>_t=</strong>&amp;#x73;elf.&amp;lt;<br />
+&nbsp;&nbsp;<strong>_cls=</strong>.bold.black<br />
 <br />
 <strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>https://google.com<br />
 &nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />

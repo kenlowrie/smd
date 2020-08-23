@@ -213,20 +213,20 @@ The import file **[encode_smd(t="<sys.imports>/code.md")]** is where the majorit
 [link.ug_code_misc]
 [wrap_h.subsect(t="### A few more things about [smdcode.il]")]
 
-[TODO] FINISH THIS SECTION
-
 Here are just a few more things about the [smdcode.b] namespace to help drive home your understanding of the declaration and usage of variables within it.
 
-[smdcode.b] attributes cannot be changed via _null_ or when markdown is applied. You must use [smdset.b] to do that
+[smdcode.b] attributes cannot be permanently changed via _null_ or when markdown is applied. You must use [smdset.b] to change a [smdcode.b] attribute value.
 
-Not specific to [smdcode.b], but you'll likely encounter it here: You cannot use () inside parameter strings, as it breaks the parser... Workaround using the **E.lp/E.rp** constants.
+Not specific to [smdcode.b], but you'll likely encounter it here: You cannot use parenthesis [big.120p(t="[E.lp][sp][E.rp]" cls=".bold.red")] inside parameter strings, as it breaks the parser... You can workaround this by using the **[E.lb]E.lp[E.rb]/[E.lb]E.rp[E.rb]** constants.
 
-Which leads to this issue: you cannot nest markdown variables that require parameters... they require that you use () inside parameter strings... no workaround for this right now.
+The restriction of using parenthesis inside parameter strings leads to this issue/shortcoming: you cannot nest markdown variables that require parameters, since that would require that you use () inside parameter strings. Unfortunately, there is no direct workaround for this right now.
 
 Here's an example:
 
-**[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]** - Doesn't work
-**[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]** - Works just fine.
+**[E.lb]encode_smd(t="[E.lt]var.revision.plain*[E.lp]*v=\"1.4.2\"*[E.rp]*[E.gt]")[E.rb]** - emits **[encode_smd(t="<var.revision.plain(v=\"1.4.2\")>")]**
+**[E.lb]encode_smd(t="[E.lt]var.revision.plain*[E.lb]E.lp[E.rb]*v=\"1.4.2\"*[E.lb]E.rp[E.rb]*[E.gt]")[E.rb]** - emits **[encode_smd(t="<var.revision.plain[E.lp]v=\"1.4.2\"[E.rp]>")]**
+
+Providing a solution to this shortcoming is on the wishlist for a future version of the parser, but there is no ETA at this time.
 
 //[docthis.open(h="Add this to ns_code-doc.md")]
 //[docthis.close]

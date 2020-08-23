@@ -413,7 +413,7 @@ You can also add new attributes to an existing variable with [smdset.b]. And, if
     [terminal2.wc_close_content]
 [terminal2.wc_close]
 
-Let's dump the variable 'fu' to see all the attributes and their values. xxx
+Let's dump the variable 'fu' to see all the attributes and their values.
 [code.pushlist(attrlist="var.dumpit" nsvar="var" nsname="fu$" title="Current definition of [E.apos]fu[E.apos] variable")]
 
 And finally, you can also specify the namespace two different ways with [smdset.b]. Witness:
