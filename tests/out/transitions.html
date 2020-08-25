@@ -344,13 +344,13 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>sz=</strong>150%<br />
 <br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
@@ -369,13 +369,13 @@ NAMESPACE: var<br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
 <br />
 <strong>box=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._box_div_.&lt;}}{{self.inline_nd}}{{html._box_div_.&gt;}}<br />
@@ -414,13 +414,13 @@ NAMESPACE: var<br />
 <strong>variable=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>VALUE<br />
 <br />
 <strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
+&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
 &nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._vo_div_.&lt;}}{{self.inline_nd}}{{html._vo_div_.&gt;}}<br />
