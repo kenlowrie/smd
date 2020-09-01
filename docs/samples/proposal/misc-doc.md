@@ -121,7 +121,7 @@ If you agree to the terms and conditions outlined in this proposal, select a bil
 
 Upon final acceptance of video, an invoice will be generated outlining the final amount due. Payment is due within 30 days of final acceptance.
 
-[note(t="{:.bigandbold}**NOTE**: Final media is *not delivered* until all outstanding invoices have been paid in full.")]
+[note(c="{:.bigandbold}**NOTE**: Final media is *not delivered* until all outstanding invoices have been paid in full.")]
 
 #### [e_us(t="Signatures")]
 

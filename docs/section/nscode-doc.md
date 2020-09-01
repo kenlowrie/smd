@@ -7,7 +7,7 @@ The [smdcode.b] keyword is used to construct a very specialized type of variable
 
 [smdcode.b] variables are probably best described as macros, and although the other namespace variables could also be viewed this way, [smdcode.b] variables are much more powerful because they provide a way to construct emitters written in Python! [smdcode.b] macros are used heavily throughout the system builtins to achieve some of the more powerful features of [smd.b].
 
-[bluenote(t="If you are not familiar with Python and Python programming, then you may want to skip this section; it isn't for you. You can still do quite a bit with [smd.b] without having to write extensions in Python.")]
+[bluenote(c="If you are not familiar with Python and Python programming, then you may want to skip this section; it isn't for you. You can still do quite a bit with [smd.b] without having to write extensions in Python.")]
 
 [link.ug_code_syntax]
 [wrap_h.section(t="### [smdcode.il] Syntax")]
@@ -27,7 +27,7 @@ The [smdcode.b] keyword is used to construct a very specialized type of variable
     [smdcode.il] _id="echo" src="print('$.text')" type="eval" text="[E.ast]text to print[E.ast]"
 [terminal.wc_close]
 
-[note(t="[smdcode.b] declarations support the shorthand notation **$.attrname** which is identical to **[E.lcb2][_self_].attrname[E.rcb2]**. They can be used interchangably on [smdcode.il] declarations within the **src** attribute only.[bb]Keep in mind, however, that there is a subtle semantic difference between the two syntaxes. In addition to only being valid in the context of the **src** attribute value, if a **$.attrname** reference value contains delayed expansion markdown i.e. [E.lcb2]var.attr[E.rcb2], it will simply be substituted, it will not be marked down.")]
+[note(c="[smdcode.b] declarations support the shorthand notation **$.attrname** which is identical to **[E.lcb2][_self_].attrname[E.rcb2]**. They can be used interchangably on [smdcode.il] declarations within the **src** attribute only.[bb]Keep in mind, however, that there is a subtle semantic difference between the two syntaxes. In addition to only being valid in the context of the **src** attribute value, if a **$.attrname** reference value contains delayed expansion markdown i.e. [E.lcb2]var.attr[E.rcb2], it will simply be substituted, it will not be marked down.")]
 
 @code _id="echo" src="print('{{self.text}}')" type="eval" text="*text to print*"
 //@code _id="echo" src="print('$.text')" type="eval" text="*text to print*")*"
@@ -148,7 +148,7 @@ In addition to the specific attributes covered above, [smdcode.b] variables supp
     1="{{bigmargin._open}}"\
     2="{{section.wc_open(t=\"Macro: code.[!code.pushlist.name!]\")}}"\
     3="{{code.[!code.pushlist.name!].?}}"\
-    4="{{generic(t=\"**Dump of code.[!code.pushlist.name!]**:\")}}"\
+    4="{{generic(c=\"**Dump of code.[!code.pushlist.name!]**:\")}}"\
     5="{{box.wc_open}}"\
     6="{{code.dump(name=\"[!code.pushlist.name!]$\")}}"\
     7="{{box.wc_close}}"\

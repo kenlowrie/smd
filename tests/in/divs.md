@@ -128,14 +128,17 @@ toc content using .wc_open and .wc_close
 [review.with_content]
 [review.with_content(c="review non default comment")]
 
+
+
+
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.note")]
 [var.note]
 [var.note.with_content]
-[var.note(t="note non default title")]
+[var.note(c="note non default content")]
 [var.note.with_content]
 [var.note.with_content(c="note non default comment")]
-[var.note.wc_open(t="non-default-title-wc_open")]
+[var.note.wc_open(c="non-default-content-ignored-on-wc_open-but-used-next-time")]
 some additional note content.[b]
 and some more[b]
 and still more
@@ -145,10 +148,10 @@ and still more
 [wrap_h(t="### Testing without the namespace prefix var.")]
 [note]
 [note.with_content]
-[note(t="note non default title")]
+[note(c="note non default content")]
 [note.with_content]
 [note.with_content(c="note non default comment")]
-[note.wc_open(t="non-default-title-wc_open")]
+[note.wc_open(c="non-default-title-wc_open--this will be ignored here but used next time a **note** is used w/o a parameter override")]
 some additional note content.[b]
 and some more[b]
 and still more
@@ -159,7 +162,7 @@ and still more
 [wrap_h(t="### Testing var.vo")]
 [var.vo]
 [var.vo.with_content]
-[var.vo(t="some default text")]
+[var.vo(c="some default text")]
 [var.vo.with_content(c="some default content text")]
 [var.vo.wc_open]
 my content[b]
@@ -172,7 +175,7 @@ last line
 [wrap_h(t="### Testing vo without prefix var.")]
 [vo]
 [vo.with_content]
-[vo(t="some default text")]
+[vo(c="some default text")]
 [vo.with_content(c="some default content text")]
 [vo.wc_open]
 my content[b]
@@ -185,7 +188,7 @@ last line
 [wrap_h(t="### Testing var.box")]
 [var.box]
 [var.box.with_content]
-[var.box(t="some default text")]
+[var.box(c="some default text")]
 [var.box.with_content(c="some default content text")]
 [var.box.wc_open]
 my content[b]
@@ -198,7 +201,7 @@ last line
 [wrap_h(t="### Testing box without prefix var.")]
 [box]
 [box.with_content]
-[box(t="some default text")]
+[box(c="some default text")]
 [box.with_content(c="some default content text")]
 [box.wc_open]
 my content[b]
@@ -206,6 +209,119 @@ more content[b]
 and a little more[b]
 last line
 [box.wc_close]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.generic")]
+[var.generic]
+[var.generic.with_content]
+[var.generic(c="some default text")]
+[var.generic.with_content(c="some default content text")]
+[var.generic.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.generic.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing generic without prefix var.")]
+[generic]
+[generic.with_content]
+[generic(c="some default text")]
+[generic.with_content(c="some default content text")]
+[generic.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[generic.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.greyout")]
+[var.greyout]
+[var.greyout.with_content]
+[var.greyout(c="some default text")]
+[var.greyout.with_content(c="some default content text")]
+[var.greyout.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.greyout.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing greyout without prefix var.")]
+[greyout]
+[greyout.with_content]
+[greyout(c="some default text")]
+[greyout.with_content(c="some default content text")]
+[greyout.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[greyout.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.important")]
+[var.important]
+[var.important.with_content]
+[var.important(c="some default text")]
+[var.important.with_content(c="some default content text")]
+[var.important.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.important.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing important without prefix var.")]
+[important]
+[important.with_content]
+[important(c="some default text")]
+[important.with_content(c="some default content text")]
+[important.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[important.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.question")]
+[var.question]
+[var.question.with_content]
+[var.question(c="some default text")]
+[var.question.with_content(c="some default content text")]
+[var.question.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.question.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing question without prefix var.")]
+[question]
+[question.with_content]
+[question(c="some default text")]
+[question.with_content(c="some default content text")]
+[question.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[question.wc_close]
+
+
+
+
+
+
 
 [wrap_h.hash1]
 [wrap_h(t="### Testing var.extras and var.divxp")]
@@ -295,4 +411,22 @@ And one last thing
 [bigmargin._close] 
 
 
-[testdoc.end]
+[var.plain(t="User manual sections for DIVs")]
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.toc.wc_open(t="Table of Contents - Unittest DIVs Builtins")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/divs-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from divs-inc.md")]
+@dump link="^ug_div|ug_div_"
+
+@import "[sys.root]/docs/section/divs-doc.md"
+
+@set dump_ns_list="var=\".\" html=\".\" help=\"f\""
+
+[var.testdoc.end]

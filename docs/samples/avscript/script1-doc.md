@@ -95,7 +95,7 @@ At any time in your AV Script, you can switch back and forth between shots and n
     If you indent a line following a shot, then that text becomes part of the prior shot, allowing you to put a little more description if you need it.
 [var.avshot.audio]
     If you want to put inline notes, questions or use any of the Simple Divs (*note, question, vo, important, greyout*), you need to use the ***no-div** version. The **no-div** version uses the suffix **_nd** on the key attribute names. For example, if I use the default and write:[bb] **[encode_smd(t="<note")][E.lp]t="this is my note")]**, this is what I will see:
-    [var.note(t="this is my note")]
+    [var.note(c="this is my note")]
     See how the box jams up against the left margin of the right column? It also clears the floats, which will mess up the formatting for the next element in the audio section... ugh! 
 
     This time, i'll write **note.nd**, to use the no-div variant, and let's see how that looks:

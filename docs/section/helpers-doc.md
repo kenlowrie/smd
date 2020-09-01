@@ -42,7 +42,7 @@ The variables **e_tag** and **e_var** are used quite a bit in the documentation 
 
 Finally, a commonly used trick of extending an underlying macro is used to create two custom versions of the **note** [e_tag.b(t="div")], **bluenote** and **rednote**. This is done by creating a new variable using the *color*note name, inheriting from the underlying **note** variable, and then one of the attributes within that variable is modified to use the newly created color class in the [smdhtml.b] namespace. Let's use all three of them (note, bluenote and rednote) to see how they render:
 
-[note(t="This is my inline note using the default **note** builtin.")]
+[note(c="This is my inline note using the default **note** builtin.")]
 [bluenote(t="This is my inline note using the **bluenote** builtin created in helpers.md.")]
 [rednote(t="This is my inline note using the **rednote** builtin created in helpers.md.")]
 
@@ -86,7 +86,7 @@ That's kind of interesting with the double boxes. Let's use the **bigmargin** fi
 Now let's use the **bluenote** to render the middle text and **bigmargin** for the two nests:
 [bigmargin._open]
     [bigmargin._open]
-        [bluenote(t="Here is some **blue** content with 3.3em right and left margins. Now it's got double margins or 6.6em.")]
+        [bluenote(c="Here is some **blue** content with 3.3em right and left margins. Now it's got double margins or 6.6em.")]
     [bigmargin._close]
 [bigmargin._close]
 

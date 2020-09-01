@@ -114,10 +114,10 @@
 <div class="review"><p class="divTitle">review non default title</p><p>review non default comment</p></div>
 <div class="extras"><h1>------------------------------------------</h1></div>
 <div class="extras"><h3>Testing var.note</h3></div>
-<div class="extras"><p class="note">note default title</p></div>
 <div class="extras"><p class="note">note default content</p></div>
-<div class="extras"><p class="note">note non default title</p></div>
 <div class="extras"><p class="note">note default content</p></div>
+<div class="extras"><p class="note">note non default content</p></div>
+<div class="extras"><p class="note">note non default content</p></div>
 <div class="extras"><p class="note">note non default comment</p></div>
 <div class="extras"><p class="note">
 some additional note content.<br />
@@ -126,10 +126,10 @@ and still more
 </p></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><h3>Testing without the namespace prefix var.</h3></div>
-<div class="extras"><p class="note">non-default-title-wc_open</p></div>
-<div class="extras"><p class="note">note non default comment</p></div>
-<div class="extras"><p class="note">note non default title</p></div>
-<div class="extras"><p class="note">note non default comment</p></div>
+<div class="extras"><p class="note">non-default-content-ignored-on-wc_open-but-used-next-time</p></div>
+<div class="extras"><p class="note">non-default-content-ignored-on-wc_open-but-used-next-time</p></div>
+<div class="extras"><p class="note">note non default content</p></div>
+<div class="extras"><p class="note">note non default content</p></div>
 <div class="extras"><p class="note">note non default comment</p></div>
 <div class="extras"><p class="note">
 some additional note content.<br />
@@ -138,7 +138,7 @@ and still more
 </p></div>
 <div class="extras"><h1>------------------------------------------</h1></div>
 <div class="extras"><h3>Testing var.vo</h3></div>
-<div class="extras"><p class="vo">vo default title</p></div>
+<div class="extras"><p class="vo">vo default content</p></div>
 <div class="extras"><p class="vo">vo default content</p></div>
 <div class="extras"><p class="vo">some default text</p></div>
 <div class="extras"><p class="vo">some default content text</p></div>
@@ -150,7 +150,7 @@ last line
 </p></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><h3>Testing vo without prefix var.</h3></div>
-<div class="extras"><p class="vo">some default text</p></div>
+<div class="extras"><p class="vo">some default content text</p></div>
 <div class="extras"><p class="vo">some default content text</p></div>
 <div class="extras"><p class="vo">some default text</p></div>
 <div class="extras"><p class="vo">some default content text</p></div>
@@ -162,7 +162,7 @@ last line
 </p></div>
 <div class="extras"><h1>------------------------------------------</h1></div>
 <div class="extras"><h3>Testing var.box</h3></div>
-<div class="extras"><p class="box">box default title</p></div>
+<div class="extras"><p class="box">box default content</p></div>
 <div class="extras"><p class="box">box default content</p></div>
 <div class="extras"><p class="box">some default text</p></div>
 <div class="extras"><p class="box">some default content text</p></div>
@@ -174,11 +174,107 @@ last line
 </p></div>
 <div class="extras"><h2>------------------------------------------</h2></div>
 <div class="extras"><h3>Testing box without prefix var.</h3></div>
-<div class="extras"><p class="box">some default text</p></div>
+<div class="extras"><p class="box">some default content text</p></div>
 <div class="extras"><p class="box">some default content text</p></div>
 <div class="extras"><p class="box">some default text</p></div>
 <div class="extras"><p class="box">some default content text</p></div>
 <div class="extras"><p class="box">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.generic</h3></div>
+<div class="extras"><p class="generic">generic default content</p></div>
+<div class="extras"><p class="generic">generic default content</p></div>
+<div class="extras"><p class="generic">some default text</p></div>
+<div class="extras"><p class="generic">some default content text</p></div>
+<div class="extras"><p class="generic">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing generic without prefix var.</h3></div>
+<div class="extras"><p class="generic">some default content text</p></div>
+<div class="extras"><p class="generic">some default content text</p></div>
+<div class="extras"><p class="generic">some default text</p></div>
+<div class="extras"><p class="generic">some default content text</p></div>
+<div class="extras"><p class="generic">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.greyout</h3></div>
+<div class="extras"><p class="greyout">greyout default content</p></div>
+<div class="extras"><p class="greyout">greyout default content</p></div>
+<div class="extras"><p class="greyout">some default text</p></div>
+<div class="extras"><p class="greyout">some default content text</p></div>
+<div class="extras"><p class="greyout">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing greyout without prefix var.</h3></div>
+<div class="extras"><p class="greyout">some default content text</p></div>
+<div class="extras"><p class="greyout">some default content text</p></div>
+<div class="extras"><p class="greyout">some default text</p></div>
+<div class="extras"><p class="greyout">some default content text</p></div>
+<div class="extras"><p class="greyout">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.important</h3></div>
+<div class="extras"><p class="important">important default content</p></div>
+<div class="extras"><p class="important">important default content</p></div>
+<div class="extras"><p class="important">some default text</p></div>
+<div class="extras"><p class="important">some default content text</p></div>
+<div class="extras"><p class="important">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing important without prefix var.</h3></div>
+<div class="extras"><p class="important">some default content text</p></div>
+<div class="extras"><p class="important">some default content text</p></div>
+<div class="extras"><p class="important">some default text</p></div>
+<div class="extras"><p class="important">some default content text</p></div>
+<div class="extras"><p class="important">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="extras"><h3>Testing var.question</h3></div>
+<div class="extras"><p class="question">question default content</p></div>
+<div class="extras"><p class="question">question default content</p></div>
+<div class="extras"><p class="question">some default text</p></div>
+<div class="extras"><p class="question">some default content text</p></div>
+<div class="extras"><p class="question">
+my content<br />
+more content<br />
+and a little more<br />
+last line
+</p></div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><h3>Testing question without prefix var.</h3></div>
+<div class="extras"><p class="question">some default content text</p></div>
+<div class="extras"><p class="question">some default content text</p></div>
+<div class="extras"><p class="question">some default text</p></div>
+<div class="extras"><p class="question">some default content text</p></div>
+<div class="extras"><p class="question">
 my content<br />
 more content<br />
 and a little more<br />
@@ -221,27 +317,27 @@ last line
 <div class="extras"><h3>Testing help</h3></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">DIV: var.section</p>
-<p>&nbsp;&nbsp;<em>section(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the section div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the section div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>section</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_section_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert section div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert section div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a section div with title <strong>t</strong> and <strong>@wrap _section_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close section div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close section div opened with <strong>wc_open_inline</strong></p>
+<p>&nbsp;&nbsp;<em>section(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the section div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the section div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>section</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_section_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert section div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert section div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a section div with title <strong>t</strong> and <strong>@wrap _section_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close section div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close section div opened with <strong>wc_open_inline</strong></p>
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">DIV: var.source</p>
-<p>&nbsp;&nbsp;<em>source(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the source div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the source div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>source</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_source_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert source div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert source div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a source div with title <strong>t</strong> and <strong>@wrap _source_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close source div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close source div opened with <strong>wc_open_inline</strong></p>
+<p>&nbsp;&nbsp;<em>source(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the source div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the source div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>source</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_source_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert source div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert source div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a source div with title <strong>t</strong> and <strong>@wrap _source_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close source div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close source div opened with <strong>wc_open_inline</strong></p>
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">DIV: var.note</p>
-<p>&nbsp;&nbsp;<em>note(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the note div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the note div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>note</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert note div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert note div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a note div with title <strong>t</strong> and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close note div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close note div opened with <strong>wc_open_inline</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(t) - same as <strong>inline_nd</strong> but with raw prefix<br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(t) - insert note with text <strong>t</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_nd - open note without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline_nd(t) - like <strong>wc_open_nd</strong> but does not use <strong>@wrap</strong><br /></p>
+<p>&nbsp;&nbsp;<em>note(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the note div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>note</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert note DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert note with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert note DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a note DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close note DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close note DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open note without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close note opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close note opened with <strong>nd_open_inline</strong><br /></p>
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">DIV: var.terminal</p>
-<p>&nbsp;&nbsp;<em>terminal(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the terminal div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the terminal div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>terminal</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>[var.terminal.wrapID]</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert terminal div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert terminal div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a terminal div with title <strong>t</strong> and <strong>@wrap [var.terminal.wrapID]</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close terminal div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close terminal div opened with <strong>wc_open_inline</strong></p>
+<p>&nbsp;&nbsp;<em>terminal(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the terminal div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the terminal div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>terminal</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>[var.terminal.wrapID]</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert terminal div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert terminal div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a terminal div with title <strong>t</strong> and <strong>@wrap [var.terminal.wrapID]</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close terminal div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close terminal div opened with <strong>wc_open_inline</strong></p>
 </div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="section"><p class="divTitle">DIV: var.terminal2</p>
-<p>&nbsp;&nbsp;<em>terminal2(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the terminal2 div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the terminal2 div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>terminal2</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>[var.terminal2.wrapID]</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert terminal2 div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert terminal2 div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a terminal2 div with title <strong>t</strong> and <strong>@wrap [var.terminal2.wrapID]</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close terminal2 div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close terminal2 div opened with <strong>wc_open_inline</strong></p>
+<p>&nbsp;&nbsp;<em>terminal2(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the terminal2 div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the terminal2 div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>terminal2</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>[var.terminal2.wrapID]</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert terminal2 div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert terminal2 div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a terminal2 div with title <strong>t</strong> and <strong>@wrap [var.terminal2.wrapID]</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close terminal2 div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close terminal2 div opened with <strong>wc_open_inline</strong></p>
 </div>
 </div>
 <div class="plain"><p class="plainTitle">User manual sections for DIVs</p></div>
@@ -287,12 +383,12 @@ NOTE: If you have not read the chapters on [link.ug_ns_var._qlink(_qtext="[smdva
 <li><strong>&lsqb;code&rsqb;</strong> - Source content - See notes for rendering details<br /><br /></li>
 <li><span style="text-decoration:underline"><span class="green"><strong>Note DIVs</strong></span></span></li>
 <li><strong>&lsqb;note&rsqb;</strong> - Note content - See notes for rendering details on this and remaining DIVs</li>
-<li><strong>&lsqb;vo&rsqb;</strong> - Voiceover content</li>
 <li><strong>&lsqb;box&rsqb;</strong> - Box content</li>
-<li><strong>&lsqb;question&rsqb;</strong> - Question content</li>
-<li><strong>&lsqb;greyout&rsqb;</strong> - Greyout content</li>
 <li><strong>&lsqb;generic&rsqb;</strong> - Generic content</li>
-<li><strong>&lsqb;important&rsqb;</strong> - Important content<br /><br /></li>
+<li><strong>&lsqb;greyout&rsqb;</strong> - Greyout content</li>
+<li><strong>&lsqb;important&rsqb;</strong> - Important content</li>
+<li><strong>&lsqb;question&rsqb;</strong> - Question content</li>
+<li><strong>&lsqb;vo&rsqb;</strong> - Voiceover content<br /><br /></li>
 <li><span style="text-decoration:underline"><span class="green"><strong>List DIVs</strong></span></span></li>
 <li><strong>&lsqb;ulist&rsqb;</strong> - Unordered bulleted list content</li>
 <li><strong>&lsqb;ulistplain&rsqb;</strong> - Unordered list no bullets content</li>
@@ -339,8 +435,8 @@ NOTE: If you have not read the chapters on [link.ug_ns_var._qlink(_qtext="[smdva
 <div class="extras"><p></div></p></div>
 </div>
 <div class="extras"><p>If you examine any of other styles in the <span style="text-decoration:underline"><span class="blue"><strong>Generic Groups</strong></span></span>, you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the help string for the <strong>section</strong> var, which applies to all of the generic groups:</p></div>
-<div class="syntax"><p class="divTitle">Built-in help string for section</p>
-<p>&nbsp;&nbsp;<em>section(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the section div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the section div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>section</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_section_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert section div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert section div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a section div with title <strong>t</strong> and <strong>@wrap _section_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close section div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close section div opened with <strong>wc_open_inline</strong></p>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>section</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>section(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the section div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the section div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>section</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_section_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert section div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert section div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a section div with title <strong>t</strong> and <strong>@wrap _section_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close section div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close section div opened with <strong>wc_open_inline</strong></p>
 </div>
 <div class="extras" style="border-bottom:2px solid black"><h3>&#64;raw Versions</h3></div>
 <div class="extras"><p>The <strong>&#64;raw</strong> versions will emit using <strong>@@</strong>, which signals the output formatter to suppress any <strong>&#64;wrap</strong> tags in effect. This is done to prevent any unintentional formatting from changing how the browser will render the markup. Let's try each of the methods using the default values, starting with <strong>&lsqb;section&rsqb;</strong>:</p></div>
@@ -501,25 +597,48 @@ Okay, the next line in the user docs will contain: <strong>&lsqb;section.wc_clos
 </div>
 <div class="extras" style="border-bottom:2px solid black"><h3>Other Generic DIVs</h3></div>
 <div class="extras"><p>The remaining Generic DIVs have all the same behaviour and attributes as <strong>section</strong>. The only difference in how they look goes back to how they are styled in the <strong>smd.css</strong> file. Try a few out, and/or take a look at the <strong>tests/in/divs.md</strong> unittest file to see them in action! Here is the online help for each of the remaining divs, <strong>toc</strong>, <strong>syntax</strong>, <strong>review</strong> and <strong>plain</strong>.</p></div>
-<div class="syntax"><p class="divTitle">Built-in help string for toc</p>
-<p>&nbsp;&nbsp;<em>toc(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the toc div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the toc div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>toc</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_toc_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert toc div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert toc div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a toc div with title <strong>t</strong> and <strong>@wrap _toc_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close toc div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close toc div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p><h4><em>toc</em> Generic DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>toc</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>toc(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the toc div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the toc div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>toc</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_toc_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert toc div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert toc div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a toc div with title <strong>t</strong> and <strong>@wrap _toc_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close toc div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close toc div opened with <strong>wc_open_inline</strong></p>
 </div>
-<div class="syntax"><p class="divTitle">Built-in help string for syntax</p>
-<p>&nbsp;&nbsp;<em>syntax(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the syntax div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the syntax div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>syntax</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_syntax_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert syntax div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert syntax div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a syntax div with title <strong>t</strong> and <strong>@wrap _syntax_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close syntax div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close syntax div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p><h4>toc.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;toc.with_content(t="My TOC heading" c="My TOC content")&rsqb;</strong> renders like this:</p></div>
+<div class="toc"><p class="divTitle">My TOC Heading</p><p>My TOC content</p></div>
+<div class="extras"><p><h4><em>syntax</em> Generic DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>syntax</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>syntax(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the syntax div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the syntax div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>syntax</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_syntax_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert syntax div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert syntax div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a syntax div with title <strong>t</strong> and <strong>@wrap _syntax_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close syntax div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close syntax div opened with <strong>wc_open_inline</strong></p>
 </div>
-<div class="syntax"><p class="divTitle">Built-in help string for review</p>
-<p>&nbsp;&nbsp;<em>review(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the review div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the review div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>review</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_review_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert review div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert review div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a review div with title <strong>t</strong> and <strong>@wrap _review_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close review div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close review div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p><h4>syntax.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;syntax.with_content(t="My SYNTAX heading" c="My SYNTAX content")&rsqb;</strong> renders like this:</p></div>
+<div class="syntax"><p class="divTitle">My SYNTAX Heading</p><p>My SYNTAX content</p></div>
+<div class="extras"><p><h4><em>review</em> Generic DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>review</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>review(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the review div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the review div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>review</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_review_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert review div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert review div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a review div with title <strong>t</strong> and <strong>@wrap _review_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close review div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close review div opened with <strong>wc_open_inline</strong></p>
 </div>
-<div class="syntax"><p class="divTitle">Built-in help string for plain</p>
-<p>&nbsp;&nbsp;<em>plain(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the plain div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the plain div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>plain</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_plain_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert plain div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert plain div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a plain div with title <strong>t</strong> and <strong>@wrap _plain_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close plain div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close plain div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p><h4>review.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;review.with_content(t="My REVIEW heading" c="My REVIEW content")&rsqb;</strong> renders like this:</p></div>
+<div class="review"><p class="divTitle">My REVIEW Heading</p><p>My REVIEW content</p></div>
+<div class="extras"><p><h4><em>plain</em> Generic DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>plain</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>plain(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the plain div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the plain div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>plain</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_plain_p_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert plain div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert plain div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a plain div with title <strong>t</strong> and <strong>@wrap _plain_p_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close plain div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close plain div opened with <strong>wc_open_inline</strong></p>
 </div>
+<div class="extras"><p><h4>plain.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;plain.with_content(t="My PLAIN heading" c="My PLAIN content")&rsqb;</strong> renders like this:</p></div>
+<div class="plain"><p class="plainTitle">My PLAIN Heading</p><p>My PLAIN content</p></div>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Source DIVs</h3></div>
-<div class="extras"><p>The <strong>source</strong> DIV provides formatting for inline source code, use the <strong>&lt;code&gt;</strong> and <strong>&lt;pre&gt;</strong> HTML tags. It is used in the user manual</p></div>
-<div class="extras"><p>[TODO] Source divs here</p></div>
-<div class="extras"><p>First, let's take a look at the actual definition of <strong>source</strong> and it's associated <strong>&#64;html</strong> and <strong>&#64;var</strong> variables:</p></div>
+<div class="extras"><p>The <strong>source</strong> DIV provides formatting for inline source code, using the <strong>&lt;code&gt;</strong> HTML tag. It is used throughout the user manual displaying sample <strong>smd</strong> markdown as well as variable definitions.</p></div>
+<div class="extras"><p>Here is the definition of <strong>source</strong> (displayed with <strong>source</strong>, of course) and it's associated <strong>&#64;html</strong> and <strong>&#64;var</strong> variables:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;html Support for <strong>source</strong></code></p></div>
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;html Support for <em><strong>source</strong></em></code></p></div>
 <code style="font-size:1.2em"><div class="extras"><p></code>
+<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
+<br />
+<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
 <strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>class=</strong>source<br />
@@ -528,7 +647,7 @@ Okay, the next line in the user docs will contain: <strong>&lsqb;section.wc_clos
 <div class="extras"><p></div></p></div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;var definition for <strong>source</strong></code></p></div>
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;var definition for <em><strong>source</strong></em></code></p></div>
 <code style="font-size:1.2em"><div class="extras"><p></code>
 <strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -541,23 +660,39 @@ Okay, the next line in the user docs will contain: <strong>&lsqb;section.wc_clos
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._source_content_.&lt;}}{{self.c}}{{html._source_content_.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>source<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>&amp;#64;var definition for &lt;strong&gt;source&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>t=</strong>&amp;#64;var definition for &lt;em&gt;&lt;strong&gt;source&lt;/strong&gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>c=</strong>source default content data<br />
 <br />
 <code style="font-size:1.2em"></p></div></code>
 <div class="extras"><p></div></p></div>
 </div>
-<div class="extras"><p>As you can see there are ...</p></div>
-<div class="extras"><p>If you examine any of other styles in the <span style="text-decoration:underline"><span class="blue"><strong>Generic Groups</strong></span></span>, you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the help string for the <strong>source</strong> var, which applies to all of the generic groups:</p></div>
-<div class="syntax"><p class="divTitle">Built-in help string for source</p>
-<p>&nbsp;&nbsp;<em>source(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the source div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the source div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>source</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_source_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert source div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert source div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a source div with title <strong>t</strong> and <strong>@wrap _source_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close source div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close source div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p>If you compare the declaration of <strong>source</strong> to any of the <strong>generic</strong> DIVs, the first thing you'll notice is that both the <em>_source_p_</em> and <em>_source_p_content_</em> <strong>&#64;html</strong> variables have been replaced with <em>_source_</em> and <em>_source_content_</em>. This minor difference essentially causes content to be wrapped with the <strong>&lt;code&gt;</strong> <strong>&#64;html</strong> tag instead of the <strong>&lt;p&gt;</strong> tag, like all of the <strong>generic</strong> DIVs.</p></div>
+<div class="extras"><p>Besides that, it's pretty much identical to the <strong>generic</strong> DIVs we discussed in the previous section.</p></div>
+<div class="extras"><p><h4><em>source</em> DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>source</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>source(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the source div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the source div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>source</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_source_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert source div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert source div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a source div with title <strong>t</strong> and <strong>@wrap _source_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close source div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close source div opened with <strong>wc_open_inline</strong></p>
+</div>
+<div class="extras"><p><h4>source.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;source.with_content(t="My SOURCE heading" c="My SOURCE content")&rsqb;</strong> renders like this:</p></div>
+<div class="source"><code style="font-size:1.4em;font-weight:bold">My SOURCE Heading</code><code style="font-size:1.2em">My SOURCE content</code></div>
+<div class="extras"><p>As you can see by reviewing the output, the <strong>&lt;code&gt;</strong> <strong>&#64;html</strong> tag does not apply any formatting to the provided content, so when you use it, adding the appropriate formatting and line breaks is quite important. Let's try that again:</p></div>
+<div class="extras"><p><h4>source.with_content example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;source.with_content(t="My SOURCE heading" c="&lsqb;bb&rsqb;My SOURCE content")&rsqb;</strong> renders like this:</p></div>
+<div class="source"><code style="font-size:1.4em;font-weight:bold">My SOURCE Heading</code><code style="font-size:1.2em"><br /><br />My SOURCE content</code></div>
+<div class="extras"><p>When using <strong>source</strong>, you will likely want nest the output inside another DIV in order to prevent it from smashing into the left margin of the browser window. There are many different ways to accomplish this; in the user manual, this is normally done by wrapping the <strong>source</strong> DIV with either the <strong>bmgreybg</strong> or <strong>bigmargin</strong> <strong>&#64;html</strong> tag like this:</p></div>
+<div class="extras"><p><h4><em>source.with_content</em> example wrapped with <em>bigmargin</em> tag</h4></p></div>
+<div class="extras"><p><strong>&lsqb;<em>bigmargin</em>._open&rsqb;</strong></p></div>
+<div class="extras"><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lsqb;<em>source.with_content</em>(t="My SOURCE heading" c="&lsqb;bb&rsqb;My SOURCE content")&rsqb;</strong></p></div>
+<div class="extras"><p><strong>&lsqb;<em>bigmargin</em>._close&rsqb;</strong></p></div>
+<div class="extras"><p><h4>renders like this:</h4></p></div>
+<div style="margin-left:3.3em;margin-right:3.3em">
+<div class="source"><code style="font-size:1.4em;font-weight:bold">My SOURCE Heading</code><code style="font-size:1.2em"><br /><br />My SOURCE content</code></div>
 </div>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Note DIVs</h3></div>
-<div class="extras"><p>The <strong>note</strong> DIV provides formatting for inline notes. It is used in the user manual ...</p></div>
-<div class="extras"><p>[TODO] Note divs here</p></div>
-<div class="extras"><p>First, let's take a look at the actual definition of <strong>note</strong> and it's associated <strong>&#64;html</strong> and <strong>&#64;var</strong> variables:</p></div>
+<div class="extras"><p><strong>Note</strong> DIVs provide formatting for inline notes. They are similar to the <strong>generic</strong> DIVs, but instead of having a dedicated class for their containing DIV, they all use the <strong>extras</strong> class for their DIV container, and then have styling specific to the content contained within. In addition, they do not support the concept of <strong>title/content</strong>, i.e. the variables <span class="bold blue"><span style="font-size:120%">t,c</span></span>. Instead, only <span class="bold blue"><span style="font-size:120%">c</span></span> is used to specify the content.</p></div>
+<div class="extras"><p>Not surprisingly, one of the builtins for the <strong>Note</strong> DIVs is called simply <strong>note</strong>. We will start our examination of this class of DIVs by taking a look at the actual definition of <strong>note</strong> and it's associated <strong>&#64;html</strong> and <strong>&#64;var</strong> variables:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;html Support for <strong>note</strong></code></p></div>
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;html Support for <em><strong>note</strong></em></code></p></div>
 <code style="font-size:1.2em"><div class="extras"><p></code>
 <strong>_note_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
 &nbsp;&nbsp;<strong>_tag=</strong>div<br />
@@ -571,7 +706,7 @@ Okay, the next line in the user docs will contain: <strong>&lsqb;section.wc_clos
 <div class="extras"><p></div></p></div>
 </div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
-<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;var definition for <strong>note</strong></code></p></div>
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">&#64;var definition for <em><strong>note</strong></em></code></p></div>
 <code style="font-size:1.2em"><div class="extras"><p></code>
 <strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -579,30 +714,154 @@ Okay, the next line in the user docs will contain: <strong>&lsqb;section.wc_clos
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._note_p_.&lt;}}{{self.t}}{{html._note_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._note_p_.&lt;}}{{self.c}}{{html._note_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._note_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>note default title string<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content data<br />
 <br />
 <code style="font-size:1.2em"></p></div></code>
 <div class="extras"><p></div></p></div>
 </div>
-<div class="extras"><p>As you can see there are ...</p></div>
-<div class="extras"><p>If you examine any of other styles in the <span style="text-decoration:underline"><span class="blue"><strong>Note Groups</strong></span></span>, you will find they have an identical set of attributes/methods. So once you are familiar with one of them, you know how to use all of them! Here is the help string for the <strong>note</strong> var, which applies to all of the generic groups:</p></div>
-<div class="syntax"><p class="divTitle">Built-in help string for source</p>
-<p>&nbsp;&nbsp;<em>source(t=&#34;title&#34; c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>t</strong> - The title to use for the source div<br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the source div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>source</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>_source_content_</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> (<em>raw</em> i.e. prefixed with @@)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(t,c) - <strong>wc_inline</strong> (<em>raw</em> i.e. @@ prefix)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(t) - insert source div with text <strong>t</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(t,c) - insert source div with title <strong>t</strong> and content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open(t) - open a source div with title <strong>t</strong> and <strong>@wrap _source_content_</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close source div opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline(t) - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close source div opened with <strong>wc_open_inline</strong></p>
+<div class="extras"><p>Just like how all the attributes/methods of the <span style="text-decoration:underline"><span class="blue"><strong>Generic Groups</strong></span></span> are similar to the those in <strong>section</strong> DIV, if you examine any of other styles in the <span style="text-decoration:underline"><span class="blue"><strong>Note Groups</strong></span></span>, you will find they have an identical set of attributes/methods. So once you are familiar with those in the <strong>note</strong> DIV, you know how to use all of them! Here is the help string for the <strong>note</strong> var, which applies to all of the note groups:</p></div>
+<div class="extras"><p><h4><em>note</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>note</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>note(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the note div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>note</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert note DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert note with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert note DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a note DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close note DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close note DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open note without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close note opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close note opened with <strong>nd_open_inline</strong><br /></p>
 </div>
+<div class="extras"><p>Like we mentioned above, the <strong>Note</strong> DIVs have a similar set of attribute and methods, just like the other DIVs we've covered so far. The real difference is the addition of the <em><strong>nd, _nd</strong></em> variants to the methods. <strong>ND</strong>, in this context, stands for <strong>no div</strong>, which, as you might guess, are variants that do not emit <strong>DIV</strong> wrappers around the content. These are most useful when combined with the <strong>AV Shot</strong> support, as you will see later in the chapters that cover the examples. Here are a few examples to illustrate how these look.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>&#64;raw Versions</h3></div>
+<div class="extras"><p>The <strong>&#64;raw</strong> versions will emit using <strong>@@</strong>, which signals the output formatter to suppress any <strong>&#64;wrap</strong> tags in effect. This is done to prevent any unintentional formatting from changing how the browser will render the markup. Let's try each of the methods using the default values, starting with <strong>&lsqb;note&rsqb;</strong>:</p></div>
+<div class="extras"><p class="note">note default content data</p></div>
+<div class="extras"><p>If we look at the HTML for it, you will see:</p></div>
+<div class="syntax"><p class="divTitle">Raw HTML emitted by the &lsqb;note&rsqb; variable</p>
+<p><br /></p>
+<p><span class="indent">@@ &lt;div class="extras"&gt;&lt;p class="note"&gt;note default content data&lt;/p&gt;&lt;/div&gt;</span></p>
+</div>
+<div class="extras"><p>As mentioned, this is in the <strong>&#64;raw</strong> section, so the parser emits the double <strong>@@</strong> prefix, which prevents the output formatter from prefixing any <strong>&#64;wrap</strong> tags. Let's take a look at the remaining built-in attributes and how they render.</p></div>
+<div class="extras"><p><strong>&lsqb;note.with_content&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="note">note default content data</p></div>
+<div class="extras"><p>If you examine the built-in help, you will see that these two versions rely on the parameter <strong>c</strong> to override default values. Thus, if we were to write the following:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Passing a parameter to <em>note</em> methods</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;note(c="My content with no method specified")&rsqb;
+&lsqb;note.with_content(c="My content using the &ast;with_content&ast;")&rsqb;
+</pre></div>
+<div class="extras"><p>The parser emits the following:</p></div>
+<div class="extras"><p class="note">My content with no method specified</p></div>
+<div class="extras"><p class="note">My content using the <em>with_content</em></p></div>
+<div class="extras"><p>So in any of the methods that take either <span class="bold black"><span style="font-size:120%">t</span></span> and/or <span class="bold black"><span style="font-size:120%">c</span></span>, you can easily specify your own values when you invoke the method in your markdown. Moving on, let's take a look at the <strong>wc_open</strong> method, which allows you to create a section but leave the <strong>DIV</strong> open to accept the content up until it encounters the <strong>wc_close</strong> method.</p></div>
+<div class="extras"><p>Consider the following markdown:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using note.wc_open</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;note.wc_open&rsqb;
+and now we have to write <strong>&lsqb;note.wc_close&rsqb;</strong> which will close the previous div.
+We can keep typing lines, though, and they are added to this note until you close it with <strong>&lsqb;note.wc_close&rsqb;</strong>.
+Okay, the next line in the user docs will contain: <strong>&lsqb;note.wc_close&rsqb;</strong>
+&lsqb;note.wc_close&rsqb;
+</pre></div>
+<div class="extras"><p>The parser emits the following:</p></div>
+<div class="extras"><p class="note">
+and now we have to write <strong>&lsqb;note.wc_close&rsqb;</strong> which will close the previous div.
+We can keep typing lines, though, and they are added to this section until you close it with <strong>&lsqb;note.wc_close&rsqb;</strong>.
+Okay, the next line in the user docs will contain: <strong>&lsqb;note.wc_close&rsqb;</strong>
+</p></div>
+<div class="extras"><p>Unlike the <strong>Generic Group</strong>, the <strong>Note Group</strong> doesn't support nesting.</p></div>
+<div class="extras"><p>Okay, now let's look at the <strong>inline</strong> versions of the <strong>&lsqb;note&rsqb;</strong> variable.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>Inline Versions</h3></div>
+<div class="extras"><p>The <strong>_inline</strong> versions of the attribute methods match up to their <strong>&#64;raw</strong> cousins just about identically. The only difference between these versions and their <em>non-_inline</em> counterparts is that they do not prefix the output with the <strong>&#64;raw</strong> tag. Here are some examples of how the output looks when using them:</p></div>
+<div class="extras"><p>First, here's <strong>&lsqb;note.inline&rsqb;</strong>:</p></div>
+<div class="extras"><p><div class="extras"><p class="note">note default content data</p></div></p></div>
+<div class="extras"><p>And now, <strong>&lsqb;note.wc_inline&rsqb;</strong>:</p></div>
+<div class="extras"><p><div class="extras"><p class="note">note default content data</p></div></p></div>
+<div class="extras"><p>As is readily evident, the <em>wc_&ast;</em> variants of the <strong>Note DIVs</strong> are somewhat redundant, given the output is identical as just shown. However, they have been maintained in order to keep consistency between the <strong>Generic</strong> and <strong>Source</strong> DIVs.</p></div>
+<div class="extras"><p>Just like the <strong>Generic DIVs</strong>, what you get when using them is output wrapped with whatever the current <strong>&#64;wrap</strong> tag happens to be. This gives you plenty of flexibility to style the output by only controlling the block elements that contain the <strong>_inline</strong> versions of each.</p></div>
+<div class="extras"><p>As we eluded to earlier, the <strong>Note DIVs</strong> do have an additional set of methods referred to as the <em>No-DIV</em> or <em>nd</em> variants, which emit the content without using a DIV tag. This can be useful in many different situations, including when using in combination with the <strong>A/V and avshot</strong> builtins. This allows notes to be inserted in either the left or right hand columns inline without affecting the floats in effect to format the AV script.</p></div>
+<div class="extras"><p>For example, <strong>&lsqb;note.nd_inline&rsqb;</strong> emits &lt;p class="note"&gt;note default content data&lt;/p&gt; which renders as:</p></div>
+<div class="extras"><p><p class="note">note default content data</p></p></div>
+<div class="extras"><p>Currently, the <strong>&#64;wrap</strong> tag is set to: <em><strong>&lt;div class="extras"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</strong></em>. Let's set it to <strong>&#64;wrap nop</strong>, and then write all three inline markdown methods (<strong>note.inline</strong>, <strong>note.wc_inline</strong> and <strong>note.nd_inline</strong>):</p></div>
+<div class="extras"><p class="note">note default content data</p></div>
+<div class="extras"><p class="note">note default content data</p></div>
+<p class="note">note default content data</p>
+<div class="extras"><p>Here you can see that the <em>nd_</em> version will be styled according to it's context within the HTML document (in addition to the styling defined as part of the <strong>note</strong> CSS class in <strong>smd.css</strong>.)</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>Other Note DIVs</h3></div>
+<div class="extras"><p>The remaining <strong>Note DIVs</strong> have all the same behavior and attributes as <strong>note</strong>. The only difference in how they look goes back to how they are styled in the <strong>smd.css</strong> file. Try a few out, and/or take a look at the <strong>tests/in/divs.md</strong> unittest file to see them in action! Here is the online help for each of the remaining <strong>Note DIVs</strong>: <strong>box</strong>, <strong>generic</strong>, <strong>greyout</strong>, <strong>important</strong>, <strong>question</strong> and <strong>vo</strong>.</p></div>
+<div class="extras"><p><h4><em>box</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>box</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>box(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the box div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>box</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert box DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert box with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert box DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a box DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close box DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close box DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open box without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close box opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close box opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>box example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;box(c="My BOX content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="box">My BOX content</p></div>
+<div class="extras"><p><h4><em>generic</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>generic</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>generic(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the generic div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>generic</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert generic DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert generic with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert generic DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a generic DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close generic DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close generic DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open generic without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close generic opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close generic opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>generic example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;generic(c="My GENERIC content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="generic">My GENERIC content</p></div>
+<div class="extras"><p><h4><em>greyout</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>greyout</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>greyout(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the greyout div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>greyout</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert greyout DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert greyout with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert greyout DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a greyout DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close greyout DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close greyout DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open greyout without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close greyout opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close greyout opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>greyout example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;greyout(c="My GREYOUT content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="greyout">My GREYOUT content</p></div>
+<div class="extras"><p><h4><em>important</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>important</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>important(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the important div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>important</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert important DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert important with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert important DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a important DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close important DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close important DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open important without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close important opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close important opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>important example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;important(c="My IMPORTANT content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="important">My IMPORTANT content</p></div>
+<div class="extras"><p><h4><em>question</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>question</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>question(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the question div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>question</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert question DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert question with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert question DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a question DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close question DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close question DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open question without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close question opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close question opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>question example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;question(c="My QUESTION content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="question">My QUESTION content</p></div>
+<div class="extras"><p><h4><em>vo</em> Note DIV</h4></p></div>
+<div class="syntax"><p class="divTitle">Built-in help string for <em><strong>vo</strong></em> DIV</p>
+<p>&nbsp;&nbsp;<em>vo(c=&#34;content&#34;)</em><br /><br />&nbsp;&nbsp;<strong>Common Parameters</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>c</strong> = The content to use for the vo div<br /><br />&nbsp;&nbsp;<strong>Attributes</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>sID</strong> - the div identifier <strong>vo</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<strong>wrapID</strong> - the <strong>@wrap</strong> tag(s) <em>nop</em><br /><br />&nbsp;&nbsp;<strong>Methods</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>NONE</strong></em> - If no method specified, uses <strong>inline</strong> with raw prefix (i.e. <em>@@ inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;with_content(c) - <strong>wc_inline</strong> raw (i.e. <em>@@ wc_inline</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;inline(c) - insert vo DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;inline_nd(c) - insert vo with content <strong>c</strong> without DIV wrapper<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_inline(c) - insert vo DIV with content <strong>c</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open - open a vo DIV and <strong>@wrap nop</strong> ready for content<br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close - close vo DIV opened with <strong>wc_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_open_inline - like <strong>wc_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;wc_close_inline - close vo DIV opened with <strong>wc_open_inline</strong><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<em><strong>No DIV</em> variants</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd(c) - <strong>inline_nd</strong> with raw prefix (i.e. <em>@@ inline_nd</em>)<br />&nbsp;&nbsp;&nbsp;&nbsp;nd_inline(c) - same as <strong>inline_nd</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open - open vo without DIV wrapper using <strong>wrap nop</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close - close vo opened with <strong>nd_open</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_open_inline - like <strong>nd_open</strong> but does not use <strong>@wrap</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;nd_close_inline - close vo opened with <strong>nd_open_inline</strong><br /></p>
+</div>
+<div class="extras"><p><h4>vo example</h4></p></div>
+<div class="extras"><p><strong>&lsqb;vo(c="My VO content")&rsqb;</strong> renders like this:</p></div>
+<div class="extras"><p class="vo">My VO content</p></div>
+<div class="extras"><p>Other misc examples...</p></div>
+<div class="extras"><p><hr /></p></div>
+<div class="extras"><p class="note">note default content data</p></div>
+<div class="extras"><p class="note">1c</p></div>
+<div class="extras"><p class="note">1ac</p></div>
+<div class="extras"><p class="note">1ac</p></div>
+<div class="extras"><p><div class="extras"><p class="note">1ac</p></div></p></div>
+<div class="extras"><p>nd variants</p></div>
+<p class="note">1ac</p>
+<div class="extras"><p><p class="note">1ac</p></p></div>
+<div class="extras"><p><p class="note">1ac</p></p></div>
+<div class="extras"><p>here comes wc_open</p></div>
+<div class="extras"><p class="note">
+2ac-inline
+</p></div>
+<div class="extras"><p class="note">2ac</p></div>
+<div class="extras"><p class="note">2ac</p></div>
+<p class="note">
+2ac-inline variant
+</p>
+<div class="extras"><p><hr /></p></div>
+<div class="extras"><p class="note">
+2ac-inline with null wrap
+</p></div>
+<br/>&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&<br />
+<p class="note">
+2ac-inline_nd with null wrap
+</p>
+<div class="extras"><p><hr /></p></div>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>List DIVs</h3></div>
 <div class="extras"><p>[TODO] List divs here</p></div>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Terminal DIVs</h3></div>
@@ -661,17 +920,27 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
 &nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
 <br />
+<strong>WHICH=</strong><br />&nbsp;&nbsp;<strong>l=</strong>vo<br />
+&nbsp;&nbsp;<strong>u=</strong>VO<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.l}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.u}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.l}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.u}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.l}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.u}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.l}}<br />
+<br />
 <strong>_df_html_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_" _inherit="code" style="font-size:1.4em;font-weight:bold"      \n@html _="_$DIVNAME$_content_" _inherit="code" style="font-size:1.2em"<br />
 <br />
 <strong>_df_html_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="$DIVNAME$ pbb"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="divTitle"      \n@html _="_$DIVNAME$_p_content_" _inherit="p"<br />
 <br />
 <strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
 <br />
-<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_content_.&lt;}}{{self.c}}{{html._$DIVNAME$_content_.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
+<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_content_.&lt;}}{{self.c}}{{html._$DIVNAME$_content_.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
 <br />
-<strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
+<strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
 <br />
-<strong>_df_var_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_simple_nd_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{self.inline_nd}}{{html._$DIVNAME$_div_.&gt;}}"      inline_nd="{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{self.wc_open_inline_nd}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      wc_open_inline_nd="{{html._$DIVNAME$_p_.&lt;}}"      wc_close_inline_nd="{{html.p.&gt;}}"      wc_content="{{self.c}}"      sID="$DIVNAME$"      wrapID="nop"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert $DIVNAME$ with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;"<br />
+<strong>_df_var_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_simple_nd_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{self.inline_nd}}{{html._$DIVNAME$_div_.&gt;}}"      inline_nd="{{html._$DIVNAME$_p_.&lt;}}{{self.c}}{{html._$DIVNAME$_p_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{self.nd_open_inline}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      wc_content="{{self.c}}"      nd_open_inline="{{html._$DIVNAME$_p_.&lt;}}"      nd_close_inline="{{html.p.&gt;}}"      sID="$DIVNAME$"      wrapID="nop"      c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;"<br />
 <br />
 <strong>_df_var_simple_nd_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -679,10 +948,9 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 <br />
 <strong>_df_var_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -735,8 +1003,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
 &nbsp;&nbsp;<strong>sizep=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="{{self.sz}}" _cls="{{self.cls}}")}}<br />
 &nbsp;&nbsp;<strong>sz=</strong>150%<br />
-&nbsp;&nbsp;<strong>t=</strong>wc_&amp;ast;<br />
-&nbsp;&nbsp;<strong>cls=</strong>.blue<br />
+&nbsp;&nbsp;<strong>t=</strong>c<br />
+&nbsp;&nbsp;<strong>cls=</strong>.bold.black<br />
 <br />
 <strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -744,20 +1012,18 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._bluenote_p_.&lt;}}{{self.t}}{{html._bluenote_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._bluenote_p_.&lt;}}{{self.c}}{{html._bluenote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._bluenote_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._bluenote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>note default title<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
@@ -768,21 +1034,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._box_div_.&lt;}}{{self.inline_nd}}{{html._box_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._box_p_.&lt;}}{{self.t}}{{html._box_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._box_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._box_p_.&lt;}}{{self.c}}{{html._box_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._box_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._box_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._box_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>box<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>some default text<br />
-&nbsp;&nbsp;<strong>c=</strong>some default content text<br />
+&nbsp;&nbsp;<strong>c=</strong>My BOX content<br />
 <br />
 <strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
@@ -824,24 +1088,25 @@ NAMESPACE: var<br />
 <br />
 <strong>div_help_common=</strong><br />&nbsp;&nbsp;<strong>var_p=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div<br />
 &nbsp;&nbsp;<strong>var_code=</strong>common &lt;strong&gt;$DIVNAME$&lt;/strong&gt; var code<br />
-&nbsp;&nbsp;<strong>var_simple=</strong>common &lt;strong&gt;$DIVNAME$&lt;/strong&gt; var simple<br />
+&nbsp;&nbsp;<strong>var_simple=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div<br />
 &nbsp;&nbsp;<strong>var_term=</strong>common var &lt;strong&gt;terminal&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>var_term2=</strong>common var &lt;strong&gt;terminal2&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
-<strong>div_help_methods=</strong><br />&nbsp;&nbsp;<strong>main=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
-&nbsp;&nbsp;<strong>nd=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert $DIVNAME$ with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
+<strong>div_help_methods=</strong><br />&nbsp;&nbsp;<strong>tc_variants=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>justc_variants=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>nd=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
-<strong>div_help_var_code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<strong>div_help_var_code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
 <br />
-<strong>div_help_var_p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<strong>div_help_var_p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
 <br />
-<strong>div_help_var_simple=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(t) - same as &lt;strong&gt;inline_nd&lt;/strong&gt; but with raw prefix&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(t) - insert $DIVNAME$ with text &lt;strong&gt;t&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_nd - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline_nd(t) - like &lt;strong&gt;wc_open_nd&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;<br />
+<strong>div_help_var_simple=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
 <br />
-<strong>div_help_var_term=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<strong>div_help_var_term=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
 <br />
-<strong>div_help_var_term2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. prefixed with @@)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; (&lt;em&gt;raw&lt;/em&gt; i.e. @@ prefix)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<strong>div_help_var_term2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
 <br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
 &nbsp;&nbsp;<strong>c=</strong>your content inside a p tag inside a div<br />
@@ -883,7 +1148,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>e=</strong>smile<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
 <br />
-<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>pre<br />
+<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>code<br />
 &nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
@@ -892,7 +1157,7 @@ NAMESPACE: var<br />
 <strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{:.blue}&lt;strong&gt;Note Groups&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
 <br />
-<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>section.wc_inline<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>note.nd_inline<br />
 &nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
@@ -907,21 +1172,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._generic_div_.&lt;}}{{self.inline_nd}}{{html._generic_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._generic_p_.&lt;}}{{self.t}}{{html._generic_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._generic_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._generic_p_.&lt;}}{{self.c}}{{html._generic_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._generic_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._generic_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._generic_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>generic<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>generic default title<br />
-&nbsp;&nbsp;<strong>c=</strong>generic default content<br />
+&nbsp;&nbsp;<strong>c=</strong>My GENERIC content<br />
 <br />
 <strong>greyout=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -929,21 +1192,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._greyout_div_.&lt;}}{{self.inline_nd}}{{html._greyout_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._greyout_p_.&lt;}}{{self.t}}{{html._greyout_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._greyout_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._greyout_p_.&lt;}}{{self.c}}{{html._greyout_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._greyout_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._greyout_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._greyout_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>greyout<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>greyout default title<br />
-&nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
+&nbsp;&nbsp;<strong>c=</strong>My GREYOUT content<br />
 <br />
 <strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># ------------------------------------------<br />
 <br />
@@ -957,21 +1218,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._important_div_.&lt;}}{{self.inline_nd}}{{html._important_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._important_p_.&lt;}}{{self.t}}{{html._important_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._important_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._important_p_.&lt;}}{{self.c}}{{html._important_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._important_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._important_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._important_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>important<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>important default title<br />
-&nbsp;&nbsp;<strong>c=</strong>important default content<br />
+&nbsp;&nbsp;<strong>c=</strong>My IMPORTANT content<br />
 <br />
 <strong>ismd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>iSMD<br />
 &nbsp;&nbsp;<strong>lcase=</strong>ismd<br />
@@ -997,21 +1256,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._note_p_.&lt;}}{{self.t}}{{html._note_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._note_p_.&lt;}}{{self.c}}{{html._note_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._note_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>note default title string<br />
-&nbsp;&nbsp;<strong>c=</strong>note default content data<br />
+&nbsp;&nbsp;<strong>c=</strong>2ac<br />
 <br />
 <strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1072,8 +1329,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._plain_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>plain<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_plain_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>This is the plain.wc_open markdown<br />
-&nbsp;&nbsp;<strong>c=</strong>plain non default comment<br />
+&nbsp;&nbsp;<strong>t=</strong>My PLAIN Heading<br />
+&nbsp;&nbsp;<strong>c=</strong>My PLAIN content<br />
 <br />
 <strong>question=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1081,21 +1338,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._question_div_.&lt;}}{{self.inline_nd}}{{html._question_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._question_p_.&lt;}}{{self.t}}{{html._question_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._question_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._question_p_.&lt;}}{{self.c}}{{html._question_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._question_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._question_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._question_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>question<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>question default title<br />
-&nbsp;&nbsp;<strong>c=</strong>question default content<br />
+&nbsp;&nbsp;<strong>c=</strong>My QUESTION content<br />
 <br />
 <strong>rednote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1103,20 +1358,18 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._rednote_p_.&lt;}}{{self.t}}{{html._rednote_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._rednote_p_.&lt;}}{{self.c}}{{html._rednote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._rednote_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._rednote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>note<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>note default title<br />
 &nbsp;&nbsp;<strong>c=</strong>note default content<br />
 <br />
 <strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -1130,8 +1383,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._review_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>review<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_review_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>review non default title<br />
-&nbsp;&nbsp;<strong>c=</strong>review non default comment<br />
+&nbsp;&nbsp;<strong>t=</strong>My REVIEW Heading<br />
+&nbsp;&nbsp;<strong>c=</strong>My REVIEW content<br />
 <br />
 <strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
@@ -1482,8 +1735,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._source_content_.&lt;}}{{self.c}}{{html._source_content_.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>source<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>&amp;#64;var definition for &lt;strong&gt;note&lt;/strong&gt;<br />
-&nbsp;&nbsp;<strong>c=</strong>source default content data<br />
+&nbsp;&nbsp;<strong>t=</strong>&amp;#64;var definition for &lt;em&gt;&lt;strong&gt;note&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>c=</strong>&lt;br /&gt;&lt;br /&gt;My SOURCE content<br />
 <br />
 <strong>sp=</strong><br />&nbsp;&nbsp;<strong>2=</strong>&amp;nbsp;&amp;nbsp;<br />
 &nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
@@ -1506,8 +1759,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._syntax_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>syntax<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_syntax_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>Built-in help string for source<br />
-&nbsp;&nbsp;<strong>c=</strong>RESET CONTENT<br />
+&nbsp;&nbsp;<strong>t=</strong>Built-in help string for &lt;em&gt;&lt;strong&gt;vo&lt;/strong&gt;&lt;/em&gt; DIV<br />
+&nbsp;&nbsp;<strong>c=</strong>My SYNTAX content<br />
 <br />
 <strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
 &nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
@@ -1536,7 +1789,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
 &nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}{{html._terminal_prewrap_content_.&lt;}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>t=</strong>Nesting &amp;#64;raw wc_open with content<br />
+&nbsp;&nbsp;<strong>t=</strong>Using note.wc_open<br />
 &nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
 <br />
 <strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -1573,8 +1826,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{html._toc_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>toc<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>_toc_p_content_<br />
-&nbsp;&nbsp;<strong>t=</strong>This is the toc.wc_open markdown<br />
-&nbsp;&nbsp;<strong>c=</strong>toc non default comment<br />
+&nbsp;&nbsp;<strong>t=</strong>My TOC Heading<br />
+&nbsp;&nbsp;<strong>c=</strong>My TOC content<br />
 <br />
 <strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 &nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
@@ -1606,21 +1859,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
 &nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_inline_nd=</strong>{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}<br />
-&nbsp;&nbsp;<strong>with_content_nd=</strong>@@ {{self.wc_inline_nd}}<br />
-&nbsp;&nbsp;<strong>wc_open_nd=</strong>{{code.pushlines(t="@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close_nd=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline_nd}}")}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
 &nbsp;&nbsp;<strong>inline=</strong>{{html._vo_div_.&lt;}}{{self.inline_nd}}{{html._vo_div_.&gt;}}<br />
-&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._vo_p_.&lt;}}{{self.t}}{{html._vo_p_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._vo_div_.&lt;}}{{self.wc_open_inline_nd}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._vo_p_.&lt;}}{{self.c}}{{html._vo_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._vo_div_.&lt;}}{{self.nd_open_inline}}<br />
 &nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline_nd=</strong>{{html._vo_p_.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline_nd=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._vo_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>vo<br />
 &nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
-&nbsp;&nbsp;<strong>t=</strong>some default text<br />
-&nbsp;&nbsp;<strong>c=</strong>some default content text<br />
+&nbsp;&nbsp;<strong>c=</strong>My VO content<br />
 <br />
 <strong>vpl=</strong><br />&nbsp;&nbsp;<strong>attrlist=</strong>1,2,3,4,5<br />
 &nbsp;&nbsp;<strong>1=</strong>Line 1<br />
@@ -1880,11 +2131,11 @@ NAMESPACE: html<br />
 <strong>bigtext=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[self.&lt;]{{self._t}}[self.&gt;]<br />
 &nbsp;&nbsp;<strong>_tag=</strong>span<br />
 &nbsp;&nbsp;<strong>style=</strong>font-size:{{self._size}}<br />
-&nbsp;&nbsp;<strong>_size=</strong>110%<br />
+&nbsp;&nbsp;<strong>_size=</strong>120%<br />
 &nbsp;&nbsp;<strong>_prefix=</strong>{:{{self._cls}}}{{self._format}}<br />
 &nbsp;&nbsp;<strong>_defsize_=</strong>150%<br />
-&nbsp;&nbsp;<strong>_t=</strong>wc_&amp;ast;<br />
-&nbsp;&nbsp;<strong>_cls=</strong>.blue<br />
+&nbsp;&nbsp;<strong>_t=</strong>c<br />
+&nbsp;&nbsp;<strong>_cls=</strong>.bold.black<br />
 <br />
 <strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
 &nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />

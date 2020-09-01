@@ -6,19 +6,32 @@
       class="extras"
 
 @var div_help_methods="{{self._public_keys_}}"\
-      main="[sp.2]**Methods**[b]\
-[sp.4]***NONE*** - If no method specified, uses **inline** (*raw* i.e. prefixed with @@)[b]\
-[sp.4]with_content(t,c) - **wc_inline** (*raw* i.e. @@ prefix)[b]\
+      tc_variants="[sp.2]**Methods**[b]\
+[sp.4]***NONE*** - If no method specified, uses **inline** with raw (i.e. *@@ inline*)[b]\
+[sp.4]with_content(t,c) - **wc_inline** raw (i.e. *@@ wc_inline*)[b]\
 [sp.4]inline(t) - insert $DIVNAME$ div with text **t**[b]\
 [sp.4]wc_inline(t,c) - insert $DIVNAME$ div with title **t** and content **c**[b]\
 [sp.4]wc_open(t) - open a $DIVNAME$ div with title **t** and **@wrap {{var.$DIVNAME$.wrapID}}** ready for content[b]\
 [sp.4]wc_close - close $DIVNAME$ div opened with **wc_open**[b]\
 [sp.4]wc_open_inline(t) - like **wc_open** but does not use **@wrap**[b]\
 [sp.4]wc_close_inline - close $DIVNAME$ div opened with **wc_open_inline**"\
-      nd="[sp.4]nd(t) - same as **inline_nd** but with raw prefix[b]\
-[sp.4]inline_nd(t) - insert $DIVNAME$ with text **t** without DIV wrapper[b]\
-[sp.4]wc_open_nd - open $DIVNAME$ without DIV wrapper using **wrap {{var.$DIVNAME$.wrapID}}**[b]\
-[sp.4]wc_open_inline_nd(t) - like **wc_open_nd** but does not use **@wrap**[b]"
+      justc_variants="[sp.2]**Methods**[b]\
+[sp.4]***NONE*** - If no method specified, uses **inline** with raw prefix (i.e. *@@ inline*)[b]\
+[sp.4]with_content(c) - **wc_inline** raw (i.e. *@@ wc_inline*)[b]\
+[sp.4]inline(c) - insert $DIVNAME$ DIV with content **c**[b]\
+[sp.4]inline_nd(c) - insert $DIVNAME$ with content **c** without DIV wrapper[b]\
+[sp.4]wc_inline(c) - insert $DIVNAME$ DIV with content **c**[b]\
+[sp.4]wc_open - open a $DIVNAME$ DIV and **@wrap {{var.$DIVNAME$.wrapID}}** ready for content[b]\
+[sp.4]wc_close - close $DIVNAME$ DIV opened with **wc_open**[b]\
+[sp.4]wc_open_inline - like **wc_open** but does not use **@wrap**[b]\
+[sp.4]wc_close_inline - close $DIVNAME$ DIV opened with **wc_open_inline**[b]"\
+      nd="[sp.4]***No DIV* variants**[b]\
+[sp.4]nd(c) - **inline_nd** with raw prefix (i.e. *@@ inline_nd*)[b]\
+[sp.4]nd_inline(c) - same as **inline_nd**[b]\
+[sp.4]nd_open - open $DIVNAME$ without DIV wrapper using **wrap {{var.$DIVNAME$.wrapID}}**[b]\
+[sp.4]nd_close - close $DIVNAME$ opened with **nd_open**[b]\
+[sp.4]nd_open_inline - like **nd_open** but does not use **@wrap**[b]\
+[sp.4]nd_close_inline - close $DIVNAME$ opened with **nd_open_inline**[b]"
 
 @var div_help_attrs="{{self._public_keys_}}"\
       main="[sp.2]**Attributes**[b]\
@@ -31,13 +44,15 @@
 [sp.4]**t** - The title to use for the $DIVNAME$ div[b]\
 [sp.4]**c** = The content to use for the $DIVNAME$ div"\
       var_code="common **$DIVNAME$** var code"\
-      var_simple="common **$DIVNAME$** var simple"\
+      var_simple="[sp.2]*$DIVNAME$(c=[E.dquot]content[E.dquot])*[bb]\
+[sp.2]**Common Parameters**[b]\
+[sp.4]**c** = The content to use for the $DIVNAME$ div"\
       var_term="common var **terminal**"\
       var_term2="common var **terminal2**"
 
-@var div_help_var_p="[var.div_help_common.var_p][bb][var.div_help_attrs.main][bb][var.div_help_methods.main]"
+@var div_help_var_p="[var.div_help_common.var_p][bb][var.div_help_attrs.main][bb][var.div_help_methods.tc_variants]"
 @var div_help_var_code="[var.div_help_var_p]"
-@var div_help_var_simple="[var.div_help_var_p][b][var.div_help_methods.nd]"
+@var div_help_var_simple="[var.div_help_common.var_simple][bb][var.div_help_attrs.main][bb][var.div_help_methods.justc_variants][b][var.div_help_methods.nd]"
 @var div_help_var_term="[var.div_help_var_p]"
 @var div_help_var_term2="[var.div_help_var_p]"
 
@@ -87,22 +102,20 @@
 @var _="_df_var_simple_nd_template"\
       _inherit="_df_var_template"\
       nd="@@{{self.inline_nd}}"\
-      wc_inline_nd="{{self.wc_open_inline_nd}}{{self.wc_content}}{{self.wc_close_inline_nd}}"\
-      with_content_nd="@@ {{self.wc_inline_nd}}"\
-      wc_open_nd="{{code.pushlines(t=\"@@{{self.wc_open_inline_nd}}\n@wrap {{self.wrapID}}\")}}"\
-      wc_close_nd="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline_nd}}\")}}"
+      nd_inline="{{self.inline_nd}}"\
+      nd_open="{{code.pushlines(t=\"@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}\")}}"\
+      nd_close="{{code.pushlines(t=\"@parw 1\n@@{{self.nd_close_inline}}\")}}"
 
 @var _="_df_var_simple_" _str="@var _=\"$DIVNAME$\" _inherit=\"_df_var_simple_nd_template\" \
       inline=\"{{html._$DIVNAME$_div_.<}}{{self.inline_nd}}{{html._$DIVNAME$_div_.>}}\"\
-      inline_nd=\"{{html._$DIVNAME$_p_.<}}{{self.t}}{{html._$DIVNAME$_p_.>}}\"\
-      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{self.wc_open_inline_nd}}\"\
+      inline_nd=\"{{html._$DIVNAME$_p_.<}}{{self.c}}{{html._$DIVNAME$_p_.>}}\"\
+      wc_open_inline=\"{{html._$DIVNAME$_div_.<}}{{self.nd_open_inline}}\"\
       wc_close_inline=\"{{html.p.>}}{{html.div.>}}\"\
-      wc_open_inline_nd=\"{{html._$DIVNAME$_p_.<}}\"\
-      wc_close_inline_nd=\"{{html.p.>}}\"\
       wc_content=\"{{self.c}}\"\
+      nd_open_inline=\"{{html._$DIVNAME$_p_.<}}\"\
+      nd_close_inline=\"{{html.p.>}}\"\
       sID=\"$DIVNAME$\"\
       wrapID=\"nop\"\
-      t=\"$DIVNAME$ default title\" \
       c=\"$DIVNAME$ default content\"\
       _help=\"[var.div_help_var_simple]\""
       

@@ -58,7 +58,7 @@ There is one side effect to overriding the default values for attributes on vari
 
 For example, if I write **[encode_smd(t="<link.name>")]** again, then I will get the last value specified for _text, e.g. [link.name].
 
-[note(t="Keep that in mind as it affects parameter passing in all of the namespaces except [smdcode.b].[bb]In **@code**, default values for parameters can only be overridden when the variable is defined with **@code** or updated with **@set**. Anything passed via a call will be persisted for that call, and then revert to the original value.")]
+[note(c="Keep that in mind as it affects parameter passing in all of the namespaces except [smdcode.b].[bb]In **@code**, default values for parameters can only be overridden when the variable is defined with **@code** or updated with **@set**. Anything passed via a call will be persisted for that call, and then revert to the original value.")]
 
 You can also set the initial value for **_text** when the link variable is initially defined. For example, if we write:
 
@@ -144,7 +144,7 @@ This should give you a pretty good idea of how you can use hyperlinks in your sm
 
 Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the ***ID*** and the actual reference to the ID, which is done by writing ***#ID***. Within smd, bookmarks are implemented with the [smdlink.b] namespace, and are usually created using the Bookmark factory, **bm_factory**, which is a built-in link variable. **bm_factory** uses the **bm_template** variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.
 
-[note(t="***NOTE***: Because the **bm_template** isn't useful outside the context of the **bm_factory**, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.")]
+[note(c="***NOTE***: Because the **bm_template** isn't useful outside the context of the **bm_factory**, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.")]
 
 Similar to it's counterpart **ln_factory**, has the following syntax:
 

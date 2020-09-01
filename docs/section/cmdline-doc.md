@@ -3,7 +3,7 @@
 
 Before diving into the primary interfaces of the [smd.b] package, let's establish a little context first. 
 
-[box(t="This chapter assumes you have successfully installed [smd.b] using one of the methods documented in the previous chapter.")]
+[box(c="This chapter assumes you have successfully installed [smd.b] using one of the methods documented in the previous chapter.")]
 
 We will start by providing an overview of the repository layout, followed by a discussion of the primary command line utilities, and finally the startup & shutdown processes of the primary command line interfaces. This will establish enough background information about [smd.b] that the discussion on the command line parameters will make more sense.
 
@@ -89,7 +89,7 @@ The primary components of [smd.b] consist of three (3) command line interfaces.
     [ismd.b] - The [ismd.short] command line interface[html.ol.>]
 [olist.wc_close]
 
-[box(t="NOTE: If you used [pipenv] to install [smd.b], be sure to either activate the virtual environment by typing **pipenv shell** or alternatively, type **pipenv run** in front of each [smd.b] command in the following examples.")]
+[box(c="NOTE: If you used [pipenv] to install [smd.b], be sure to either activate the virtual environment by typing **pipenv shell** or alternatively, type **pipenv run** in front of each [smd.b] command in the following examples.")]
 
 [wrap_h.subsect(t="#### [smd] command line interface")]
 
@@ -124,7 +124,7 @@ The **open html/hello.html** command opened the generated **hello.html** file in
 There are several different monitors currently supported by [ismd.b]: **chrome** (the default), which displays the output in a Chrome browser window; **firefox** and **safari**, which display the output in Firefox and Safari, respectively; **hostgui**, which displays the raw HTML output in a host window and finally **endpoint**, which creates an HTTP endpoint on the localhost that can be opened by any web browser.
 
 [link.ug_setup._null_(_qtext="Setup Chapter")]
-[note(t="NOTE: The **hostgui** monitor requires that your version of Python was compiled with the **Tk [E.lp]tkinter[E.rp]** support, and the browser monitors all require an additional webdriver before they will work. Be sure to review the [link.ug_setup._qlink] for the required information for using any of the [ismd.b] monitors.")]
+[note(c="NOTE: The **hostgui** monitor requires that your version of Python was compiled with the **Tk [E.lp]tkinter[E.rp]** support, and the browser monitors all require an additional webdriver before they will work. Be sure to review the [link.ug_setup._qlink] for the required information for using any of the [ismd.b] monitors.")]
 
 Let's go ahead and parse the **samples/hello/hello.md** sample file next using [ismd.b] with the **hostgui** monitor:
 

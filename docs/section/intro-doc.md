@@ -9,7 +9,7 @@ SMD is a Python command line utility that takes plain text files loosely, *oh, s
 
 In the beginning, it started as a utility for generating AV (Audio/Video) style scripts for filmmakers. Essentially:
 
-[note(t="**Markdown** list item tags ***[E.lp][E.ast], -, +[E.rp]*** were used to identify ***visuals*** [E.lp]shots[E.rp], and regular paragraphs were the ***audio/narration*** that go along with the visuals.")]
+[note(c="**Markdown** list item tags ***[E.lp][E.ast], -, +[E.rp]*** were used to identify ***visuals*** [E.lp]shots[E.rp], and regular paragraphs were the ***audio/narration*** that go along with the visuals.")]
 
 At least that's how it started out. In order to use it effectively, however, you needed to be using BBEDIT, which has built-in support for previewing markdown files, or really anything that uses Python to generate the [e_tag.b(t="body")] contents of an HTML document. It was also difficult to use because BBEDIT would only refresh the preview window when the primary document was updated, and as the scripts became more complex and modular, making a change in an imported script meant you had to change the primary document in order to see the changes.
 

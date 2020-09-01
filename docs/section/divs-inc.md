@@ -1,3 +1,3 @@
-[link.bm_factory(nm="div" t="DIV")]
+[link.bm_factory(nm="ug_div" t="DIV")]
 
-[tab.<][link.div.link] - **Creating new DIV sections**[tab.>][b]
+[tab.<][link.ug_div.link] - **Creating new DIV sections**[tab.>][b]

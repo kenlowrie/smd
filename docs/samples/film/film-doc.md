@@ -76,7 +76,7 @@ Ethnicities aren't important, however, we will try to cast the [mom], [son] and 
 [var.avshot.audio]
 [slate]
 Probably just use the [title] and [artist] titles on this shot.
-[note.nd(t="This needs to start high enough up that you can't see the trunk, and make sure the sky is NOT blown out! It comes down to reveal [mom] opening trunk and reaching in to grab groceries.")]
+[note.nd(c="This needs to start high enough up that you can't see the trunk, and make sure the sky is NOT blown out! It comes down to reveal [mom] opening trunk and reaching in to grab groceries.")]
 [var.avshot.end]
 
 [shot_factory(nm="shot1")]
@@ -85,7 +85,7 @@ Probably just use the [title] and [artist] titles on this shot.
 [var.avshot.visual]
 [var.shotdetail(shotid="shot1")]
 [var.avshot.audio]
-[note.nd(t="Make sure [mom] is already moving when she comes into frame.")]
+[note.nd(c="Make sure [mom] is already moving when she comes into frame.")]
 [var.avshot.end]
 
 // -------------------------------------------------------------------

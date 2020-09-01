@@ -29,10 +29,10 @@
 // create var.bluenote, inherit note attributes, and then just change the p class in the _inline attrs
 @var _="bluenote" _inherit="note"
 [code.attr_replace_str(s_str="_note_p_" r_str="_bluenote_p_" attr="var.bluenote.inline_nd")]
-[code.attr_replace_str(s_str="_note_p_" r_str="_bluenote_p_" attr="var.bluenote.wc_open_inline_nd")]
+[code.attr_replace_str(s_str="_note_p_" r_str="_bluenote_p_" attr="var.bluenote.nd_open_inline")]
 @var _="rednote" _inherit="note"
 [code.attr_replace_str(s_str="_note_p_" r_str="_rednote_p_" attr="var.rednote.inline_nd")]
-[code.attr_replace_str(s_str="_note_p_" r_str="_rednote_p_" attr="var.rednote.wc_open_inline_nd")]
+[code.attr_replace_str(s_str="_note_p_" r_str="_rednote_p_" attr="var.rednote.nd_open_inline")]
 
 @html _="bigmargin" _tag="div" style="margin-left:3.3em;margin-right:3.3em" _open="@@{{self.<}}" _close="@@{{self.>}}"
 

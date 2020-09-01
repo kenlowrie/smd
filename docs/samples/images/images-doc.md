@@ -98,7 +98,7 @@ Let's look at the help strings for all of these, including the **shot_factory**.
 
 [terminal2.wc_open(t="**_img_template_ - template for @image variables** help:")]
 [_img_template_.?]
-[box.inline(t="*_img_template_* is inherited by variables created with one of the image factories, so each of the above attributes will exist in any [smdimage.b] variables created. They provide a means for easily changing the CSS styling used by an image after it has been created.")]
+[box.inline(c="*_img_template_* is inherited by variables created with one of the image factories, so each of the above attributes will exist in any [smdimage.b] variables created. They provide a means for easily changing the CSS styling used by an image after it has been created.")]
 [terminal2.wc_close]
 
 [terminal2.wc_open(t="**image_factory_config** help:")]
@@ -250,7 +250,7 @@ You can also add more attributes using the same technique. For example, say you 
 [image_factory(nm="shot1" ip="[image_path]/shot1.jpg" st="!IMG_STYLE.inline_border!")]
 
 After the declaration of **image.shot**, the public attributes are:
-[box.wc_open(t="box")]
+[box.wc_open]
     [code.split_as(t="{{image.shot1._public_attrs_}}")]
 [box.wc_close]
 
@@ -261,7 +261,7 @@ And it renders like this:
 [image.shot1._null_(title="title text for image" class="myimageclass")]
 
 After the addition of the **title** and **class** attributes, the public attributes are:
-[box.wc_open(t="box")]
+[box.wc_open]
     [code.split_as(t="{{image.shot1._public_attrs_}}")]
 [box.wc_close]
 
@@ -272,7 +272,7 @@ Variables created with the **shot_factory** contain another attribute and method
 
 Recall that we previously created a shot variable called **shot1** using the **shot_factory** macro. Let's dump the shot now to see what it contains:
 
-[box.wc_open(t="box")]
+[box.wc_open]
     [code.dump(ns="var" name="shot1")]
 [box.wc_close]
 

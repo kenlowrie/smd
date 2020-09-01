@@ -21,7 +21,7 @@ There are two approaches to installing [smd.B] on your system; either using **pi
 @set _ns="link" _="tcl-tk" target="_blank"
 
 ##### Tk (tkinter) requirement for [ismd]
-[box(t="If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk._tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
+[box(c="If you will be using [ismd.b] [E.lp][ismd.short_b][E.rp], the version of Python you will be using must have been built with **[tk._tkinter]** [E.lp]**[tk]**[E.rp]. Versions from [activestate] will have this, but if you use some other version, for example, if you use **[pyenv]** to manage the version of Python on your system, you must set the compiler flags *prior* to doing the [pyenv] install.")]
 
 If you did not have these flags set when you installed Python using **[pyenv]**, and you want to use [ismd.b], you will have to *uninstall* the current version, and reinstall it (with the environment variables set). Here is a link [tk._asurl] that will provide the information you need to get this done, although take a look at this [tcl-tk.<]Stackoverflow Question and Answer[tcl-tk.>] for the steps needed to solve this issue.
 
@@ -68,7 +68,7 @@ After completing the pip installs for **selenium**, **bottle** and **watchdog**,
 
 **[pipenv]** is a much better way to install [smd.b]. It will create a virtual environment for running [smd.b] on your machine, preventing installation of the various site-packages in a global manner, the way **pip** does. This, in turn, isolates [smd.b] to a private environment for use, testing and/or evaluation. 
 
-[note(t="NOTE: If you do not have [pipenv] installed, navigate to [pipenv._asurl] for information on how to do that.")]
+[note(c="NOTE: If you do not have [pipenv] installed, navigate to [pipenv._asurl] for information on how to do that.")]
 
 The **Pipfile** and **Pipfile.lock** files are provided in the root directory of your cloned repository. Simply navigate to that directory on your local machine and type:
 
@@ -139,7 +139,7 @@ If you are using Mozilla Firefox, you need to get the [link.wd_firefox._thelink]
 
 If you are using Apple Safari, the driver ships with **macOS**. Navigate to [link.wd_safari._thelink] where you can read about setting up and configuring the Safari driver.
 
-[note(t="At the time of writing this documentation, the **Safari** webdriver has a feature called the **glass pane** which makes it not very useful for being an [ismd.b] monitor. I've been unable to figure out a way to disable the glass pane without stopping the automation, which prevents you from interacting with the browser window to do simple things such as scrolling down... DOH! Gee, thanks Apple. Good news though, both Chrome and Firefox work GREAT! So you might want to use one of them instead, at least when using the monitor feature of [ismd.b]. If and when I find a solution, I will fix the code and update the documentation.")]
+[note(c="At the time of writing this documentation, the **Safari** webdriver has a feature called the **glass pane** which makes it not very useful for being an [ismd.b] monitor. I've been unable to figure out a way to disable the glass pane without stopping the automation, which prevents you from interacting with the browser window to do simple things such as scrolling down... DOH! Gee, thanks Apple. Good news though, both Chrome and Firefox work GREAT! So you might want to use one of them instead, at least when using the monitor feature of [ismd.b]. If and when I find a solution, I will fix the code and update the documentation.")]
 
 Here are a few notes that might help you get things working if you have never used **selenium** before.
 
@@ -168,7 +168,7 @@ In order to get the [link.wd_safari] to work. And by "*to work*", I mean "*show 
 
 [smd.b] can be used to create content (both static and dynamic) for use in **OBS Studio**. You will likely use either [smdparse.b] to generate a static file, or [ismd.b] to create an endpoint on the **localhost** that you can use with **OBS Studio**. Let's see how this can be done.
 
-[box(t="**NOTE:** This section is jumping ahead just a bit, so if it seems confusing, don't worry. It does assume you are familiar with **OBS**, so if that isn't the case, then you may want to skip it for now.[bb]In addition, it assumes you have successfully installed and configured [smd.b] with either **pip** or **pipenv**, as described in the previous sections.")]
+[box(c="**NOTE:** This section is jumping ahead just a bit, so if it seems confusing, don't worry. It does assume you are familiar with **OBS**, so if that isn't the case, then you may want to skip it for now.[bb]In addition, it assumes you have successfully installed and configured [smd.b] with either **pip** or **pipenv**, as described in the previous sections.")]
 
 Here is how you can create a dynamic clock overlay for OBS Studio:
 

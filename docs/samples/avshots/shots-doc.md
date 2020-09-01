@@ -22,7 +22,7 @@ In this example, we will review an actual AV script from a project I did a few y
 [var.review.wc_open(t="Notes to Reviewers")]
     Please send feedback by marking up the PDF using embedded comments or notes. If you edit the PDF text directly, be sure to change your font color so that I can easily find the changes.
 
-    Notes that begin with [spanwc.<(class="blue")]"VOICEOVER NOTE"[spanwc.>] or [vo.inline(t="are inside a box like this")]
+    Notes that begin with [spanwc.<(class="blue")]"VOICEOVER NOTE"[spanwc.>] or [vo.inline(c="are inside a box like this")]
     can be ignored; they are for the voiceover guy.
 
     Additions ++are now marked like this++ and deletions ~~are now marked like this~~
@@ -126,7 +126,7 @@ SCAST: Show the iOS home screen display and dock, and touch the Safari icon
     SCAST: Show aat.sunsight.com and then Home page
     SCAST: Show 192.168.0.50 and then Home page
 [avshot.audio]
-    [vo.nd(t="GREGG: BEWARE!!![bb]Here is that AAT dot SUNSIGHT dot COM again... :)")]
+    [vo.nd(c="GREGG: BEWARE!!![bb]Here is that AAT dot SUNSIGHT dot COM again... :)")]
 
     To start the User Interface, open an empty browser tab, and in the address field, enter the URL *aat.sunsight.com*, and then press *GO*. The AAT user interface home page will be displayed, and you're now ready to setup, manage profiles and print reports!
 
@@ -182,7 +182,7 @@ SCAST: Show launching AAT UI via browser bookmark
 
     Press the *Search button* in the bottom bar, and then, in the search area, type *ADOBE ACROBAT* to locate the free download, and then install the application on your device.
 
-    [note.nd(t="**NOTE**: Your device must be configured with an account in order to access the App Store. Refer to the documentation that came with your device for further information.")]
+    [note.nd(c="**NOTE**: Your device must be configured with an account in order to access the App Store. Refer to the documentation that came with your device for further information.")]
 [avshot.end]
 @break
 
@@ -223,7 +223,7 @@ View reports before sharing to verify data is complete and accurate
 
     Refer to the iOS documentation if you need assistance with configuring an email account on your device, or consult with your company's IT staff..
 
-    [note.nd(t="**REMEMBER**: The AAT's internal wireless hotspot does *not* have Internet connectivity. While attached to the AAT, however, you can generate and *share* the PDFs via email, they just won't be sent until the device is connected to the Internet.")]
+    [note.nd(c="**REMEMBER**: The AAT's internal wireless hotspot does *not* have Internet connectivity. While attached to the AAT, however, you can generate and *share* the PDFs via email, they just won't be sent until the device is connected to the Internet.")]
 
 [avshot.end]
 
