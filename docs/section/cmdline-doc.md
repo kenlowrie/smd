@@ -158,21 +158,21 @@ The following provides a high-level overview of the startup of [smd.b]. This is 
 [bmgreybg._open]
 [var.source.wc_open(t="High level overview of startup")]
 
-[olist.wc_open]
+[olist.wc_tag_open]
     import builtins.md - which imports several other modules
-    @@[olistAlpha.<]
+    [olistAlpha.wc_open]
         import defaults.md
         import common.md
         import code.md
         import link.md
         import html.md
-    @@[olistAlpha.>]
+    [olistAlpha.wc_close]
     import opening body markup
-    @@[olistAlpha.<]
+    [olistAlpha.wc_open]
         import def_html.md
         import def_head.md
         import def_body.md
-    @@[olistAlpha.>]
+    [olistAlpha.wc_close]
 
     @@[divx.<]
     @wrap smallprint
@@ -181,12 +181,12 @@ The following provides a high-level overview of the startup of [smd.b]. This is 
     @@[divx.>]
 
     import closing body markup
-    @@[olistAlpha.<]
+    [olistAlpha.wc_open]
         import def_bodyclose.md
         import def_close.md
-    @@[olistAlpha.>]
+    [olistAlpha.wc_close]
 
-[olist.wc_close]
+[olist.wc_tag_close]
 
 [var.source.wc_close]
 [bmgreybg._close]

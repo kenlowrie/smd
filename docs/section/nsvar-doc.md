@@ -115,11 +115,11 @@ If you specify an attribute that is defined in the underlying inherited variable
 [wrap_h.section(t="### [smdvar.il] Variable names")]
 Variable names in the [smdvar.b] namespace, well actually, in **any** namespace are restricted to these requirements:
 
-[ulist.wc_open]
-Must begin with a letter or the underscore character
-Must contain only letters, numbers or underscores
-Are case sensitive. That is, abc and ABC are different variable names
-[ulist.wc_close]
+[ulist.wc_tag_open]
+    Must begin with a letter or the underscore character
+    Must contain only letters, numbers or underscores
+    Are case sensitive. That is, abc and ABC are different variable names
+[ulist.wc_tag_close]
 
 Here are some examples of variable names:
 
@@ -141,10 +141,10 @@ Here are some examples of variable names:
 
 Attribute names, on the other hand, are restricted to these requirements:
 
-[ulist.wc_open]
-Must contain only letters, numbers, underscores or dashes
-Are case sensitive. That is, abc and ABC are different variable names
-[ulist.wc_close]
+[ulist.wc_tag_open]
+    Must contain only letters, numbers, underscores or dashes
+    Are case sensitive. That is, abc and ABC are different variable names
+[ulist.wc_tag_close]
 
 Here are some examples of attribute names:
 

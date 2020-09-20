@@ -48,13 +48,36 @@
 [sp.2]**Common Parameters**[b]\
 [sp.4]**c** = The content to use for the $DIVNAME$ div"\
       var_term="common var **terminal**"\
-      var_term2="common var **terminal2**"
+      var_term2="common var **terminal2**"\
+      var_lists="[sp.2]*$DIVNAME$(c=[E.dquot]content[E.dquot])*[bb]\
+[sp.2]**Common Parameters**[b]\
+[sp.4]**c** = The content to use for the $DIVNAME$[bb]\
+[sp.2]**Attributes**[b]\
+[sp.4]**tag** = An [smdhtml.b] variable used to wrap content when **_tag** methods are used[b]\
+[sp.4]**wrap** = An [smdhtml.b] or [smdvar.b] variable used to wrap content when **_wrap** methods are used[bb]\
+[sp.2]**Public Methods**[b]\
+[sp.4]***NONE*** - If no method specified, uses **_inline** with raw prefix (i.e. *@@ _inline*)[b]\
+[sp.4]**with_content**(c) - emit content **c** wrapped with *_open_inline* / *_close_inline*[b]\
+[sp.4]**wc_open(c)** - emit *_open*[b]\
+[sp.4]**wc_close** - emit *_close*[b]\
+[sp.4]**wc_tag_open(c)** - emit *_open* prefixed with *tag.[E.lt]*[b]\
+[sp.4]**wc_tag_close** - emit *_close* with *tag.[E.gt]* appended[b]\
+[sp.4]**wc_wrap_open(c)** - emit *_open* prefixed with *wrap._open*[b]\
+[sp.4]**wc_wrap_close** - emit *_close* with *wrap._close* appended[bb]\
+[sp.2]**Private Methods**[b]\
+[sp.4]**_content** - emit *html.li.[E.lt]* **c** *html.li.[E.gt]*[b]\
+[sp.4]**_inline** - emit *$DIVNAME$.[E.lt]* **_content** *$DIVNAME$.[E.gt]*[b]\
+[sp.4]**_open** - set [smdwrap.b] li then emit *_open_inline*[b]\
+[sp.4]**_close** - emit *_close_inline* then [smdparw.b] 1[b]\
+[sp.4]**_open_inline** - emit *html.$DIVNAME$.[E.lt]*[b]\
+[sp.4]**_close_inline** - emit *html.$DIVNAME$.[E.gt]*"
 
 @var div_help_var_p="[var.div_help_common.var_p][bb][var.div_help_attrs.main][bb][var.div_help_methods.tc_variants]"
 @var div_help_var_code="[var.div_help_var_p]"
 @var div_help_var_simple="[var.div_help_common.var_simple][bb][var.div_help_attrs.main][bb][var.div_help_methods.justc_variants][b][var.div_help_methods.nd]"
 @var div_help_var_term="[var.div_help_var_p]"
 @var div_help_var_term2="[var.div_help_var_p]"
+@var div_help_var_lists="[var.div_help_common.var_lists]"
 
 @var _="_df_html_p_" _str="@html _=\"_$DIVNAME$_div_\" _inherit=\"div\" class=\"$DIVNAME$\"\
       \n@html _=\"_$DIVNAME$_div_pbb_\" _inherit=\"_$DIVNAME$_div_\" class=\"$DIVNAME$ pbb\"\
@@ -159,13 +182,30 @@
 [_dfactory.as_simple(dn="important")]
 [_dfactory.as_simple(dn="generic")]
 
-@var extras="@@{{html._div_extras_.<}}{{self.c}}{{html.div.>}}" c="default content"
+@var extras="@@{{html._div_extras_.<}}{{self.c}}{{html.div.>}}" c="default content" _help="[sp.2]*{{self._}}(c=[E.dquot]content[E.dquot])*[bb]\
+[sp.2]**Parameters**[b]\
+[sp.4]**c** = The content to use for the {{self._}}[bb]\
+[sp.2]**Methods**[b]\
+[sp.4]***NONE*** - emit content **c** wrapped with div class=\"extras\""
 
 @var divxp="@@ {{self.inline}}"\
       inline="{{self.open}}{{self.c}}{{self.close}}"\
       c="default content"\
-      open="{{html._div_extras_.<}}{{html.p.<}}"\
-      close="{{html.p.>}}{{html.div.>}}"
+      open="{{self._open}}"\
+      close="{{self._close}}"\
+      _open="{{html._div_extras_.<}}{{html.p.<}}"\
+      _close="{{html.p.>}}{{html.div.>}}"\
+      _help="[sp.2]*{{self._}}(c=[E.dquot]content[E.dquot])*[bb]\
+[sp.2]**Common Parameters**[b]\
+[sp.4]**c** = The content to use for the {{self._}}[bb]\
+[sp.2]**Public Methods**[b]\
+[sp.4]***NONE*** - If no method specified, uses **inline** with raw prefix (i.e. *@@ inline*)[b]\
+[sp.4]**inline(c)** - emit content **c** wrapped with div class=\"extras\" p[b]\
+[sp.4]**open** - invokes *_open*[b]\
+[sp.4]**close** - invokes *_close*[bb]\
+[sp.2]**Private Methods**[b]\
+[sp.4]**_open** - emit open tags *div class=\"extras\" p*[b]\
+[sp.4]**_close** - emit close tags */p /div*"
 
 // Terminal doesn't really fit the factory, and it seems unnecessary to 1 off like I did with code...
 
@@ -209,49 +249,84 @@
 [code.attr_replace_str(s_str="$DIVNAME$" r_str="terminal2" attr="var.terminal2._help")]
 
 // specialized ordered and unordered lists
+//TODO.md: Might want to consider adapting the Note DIVs to follow this model, or vice-versa
 //TODO.md: Finish writing the _help strings for all these builtins.
 
 @var _="_lists_"\
-      _format="@@ {{self.inline}}"\
-      with_content="@@ {{self.wc_inline}}"\
-      wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-      wc_open="{{code.pushlines(t=\"@wrap li\n@@{{self.wc_open_inline}}\")}}"\
-      wc_close="{{code.pushlines(t=\"@@{{self.wc_close_inline}}\n@parw 1\")}}"
+      _format="@@ {{self._inline}}"\
+      with_content="@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}"\
+      wc_open="{{code.pushlines(t=\"{{self._open}}\")}}"\
+      wc_close="{{code.pushlines(t=\"{{self._close}}\")}}"\
+      wc_tag_open="{{code.pushlines(t=\"@@{{[!self.tag!].<}}\n{{self._open}}\")}}"\
+      wc_tag_close="{{code.pushlines(t=\"{{self._close}}\n@@{{[!self.tag!].>}}\")}}"\
+      wc_wrap_open="{{code.pushlines(t=\"@@{{[!self.wrap!]._open}}\n{{self._open}}\")}}"\
+      wc_wrap_close="{{code.pushlines(t=\"{{self._close}}\n@@{{[!self.wrap!]._close}}\")}}"\
+      tag="html.divx"\
+      wrap="var.divxp"\
+      _open="@wrap li\n@@{{self._open_inline}}"\
+      _close="@@{{self._close_inline}}\n@parw 1"\
+      _content="{{html.li.<}}{{self.c}}{{html.li.>}}"\
+      _help="[var.div_help_var_lists]"
+
+//    {{var._lists_.get_wrap}}
+//    get_wrap="@wrap [!code.wrap_stack(w=\"tag.<\")!],html.li"
+//    wc_open_inline="{{code.pushlines(t=\"@wrap li\n@@{{self._open_inline}}\")}}"
+//    wc_close_inline="{{code.pushlines(t=\"@@{{self._close_inline}}\n@parw 1\")}}"
 
 @var _="ulist"\
       _inherit="_lists_"\
-      inline="{{html._div_extras_.<}}{{html.ulist.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.ulist.<}}"\
-      wc_close_inline="{{html.ul.>}}{{html.div.>}}"\
+      _inline="{{html.ulist.<}}{{self._content}}{{html.ulist.>}}"\
+      _open_inline="{{html.ulist.<}}"\
+      _close_inline="{{html.ulist.>}}"\
       sID="ulist"\
-      t="var.{{self.sID}} default title" \
       c="var.{{self.sID}} default content"
 
 @var _="ulistplain" _inherit="ulist"\
-      inline="{{html._div_extras_.<}}{{html.ulistplain.<}}{{self.t}}{{html.ulist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.ulistplain.<}}"
+      _inline="{{html.ulistplain.<}}{{self._content}}{{html.ulist.>}}"\
+      _open_inline="{{html.ulistplain.<}}"
+
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="ulist" attr="var.ulist._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="ulistplain" attr="var.ulistplain._help")]
 
 @var _="olist"\
       _inherit="_lists_"\
-      inline="{{html._div_extras_.<}}{{html.olist.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olist.<}}"\
-      wc_close_inline="{{html.ol.>}}{{html.div.>}}"\
+      _inline="{{html.olist.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olist.<}}"\
+      _close_inline="{{html.olist.>}}"\
       sID="olist"\
-      t="var.{{self.sID}} default title" \
       c="var.{{self.sID}} default content"
 
 @var _="olistAlpha" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistAlpha.<}}"
+      _inline="{{html.olistAlpha.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistAlpha.<}}"
+
+@var _="olistalpha" _inherit="olist"\
+      _inline="{{html.olistalpha.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistalpha.<}}"
 
 @var _="olistRoman" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistRoman.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistRoman.<}}"
+      _inline="{{html.olistRoman.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistRoman.<}}"
+
+@var _="olistroman" _inherit="olist"\
+      _inline="{{html.olistroman.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistroman.<}}"
 
 @var _="olistGreek" _inherit="olist"\
-      inline="{{html._div_extras_.<}}{{html.olistGreek.<}}{{self.t}}{{html.olist.>}}{{html._div_extras_.>}}"\
-      wc_open_inline="{{html._div_extras_.<}}{{html.olistGreek.<}}"
+      _inline="{{html.olistGreek.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistGreek.<}}"
 
+@var _="olistgreek" _inherit="olist"\
+      _inline="{{html.olistgreek.<}}{{self._content}}{{html.olist.>}}"\
+      _open_inline="{{html.olistgreek.<}}"
+
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olist" attr="var.olist._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistAlpha" attr="var.olistAlpha._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistGreek" attr="var.olistGreek._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistRoman" attr="var.olistRoman._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistalpha" attr="var.olistalpha._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistgreek" attr="var.olistgreek._help")]
+[code.attr_replace_str(s_str="$DIVNAME$" r_str="olistroman" attr="var.olistroman._help")]
 
 //@dump var="[_dfactory.dn]|review" html=".*[_dfactory.dn]|^_div_rev|^_p_rev"
 //@dump var="[_dfactory.dn]|code" html=".*[_dfactory.dn]|^_div_cod|^_code"

@@ -20,15 +20,13 @@ It's grown quite a bit since those early days, and while some markdown span elem
 
 A few of the standard markdown span elements are supported, as are a couple of specialized span elements. These include (in order of precedence, i.e. the order they are parsed when scanning input lines):
 
-@@[html.ol.<]
-@wrap li2
-Variables - These are smd namespace variables accessed with this type of markdown: **[encode_smd(t="<variable>")]**
-Strong - Double [E.ast2] placed around content will apply the [e_tag.b(t="strong")] tag: **[encode_smd(t="[E.ast2]wrap text in double asterisk for bold[E.ast2]")]**
-Emphasis - Single &ast; placed around content will apply the [e_tag.b(t="em")] tag: *[encode_smd(t="[E.ast]wrap text in single asterisk for emphasis[E.ast]")]*
-Insertion - Double &plus; placed around content will apply the [e_tag.b(t="ins")] tag: ++[encode_smd(t="2+wrap text in double plus signs for &lt;ins&gt; tag2+")]++
-Deletion - Double &sim; placed around content will apply the [e_tag.b(t="del")] tag: ~~[encode_smd(t="2~wrap text in double tilde for &lt;del&gt; tag2~")]~~
-@parw
-@@[html.ol.>]
+[olist.wc_tag_open]
+    Variables - These are smd namespace variables accessed with this type of markdown: **[encode_smd(t="<variable>")]**
+    Strong - Double [E.ast2] placed around content will apply the [e_tag.b(t="strong")] tag: **[encode_smd(t="[E.ast2]wrap text in double asterisk for bold[E.ast2]")]**
+    Emphasis - Single &ast; placed around content will apply the [e_tag.b(t="em")] tag: *[encode_smd(t="[E.ast]wrap text in single asterisk for emphasis[E.ast]")]*
+    Insertion - Double &plus; placed around content will apply the [e_tag.b(t="ins")] tag: ++[encode_smd(t="2+wrap text in double plus signs for &lt;ins&gt; tag2+")]++
+    Deletion - Double &sim; placed around content will apply the [e_tag.b(t="del")] tag: ~~[encode_smd(t="2~wrap text in double tilde for &lt;del&gt; tag2~")]~~
+[olist.wc_tag_close]
 
 [wrap_h(t="###Here are a few examples:")]
 

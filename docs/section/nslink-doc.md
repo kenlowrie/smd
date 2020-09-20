@@ -13,10 +13,10 @@ The [smdlink.b] namespace is built atop the [smdhtml.b] namespace, and as such, 
 [wrap_h.section(t="##Link Styles")]
 There are two different styles of links built-in to [smd.b] which map to standard HTML links:
 
-[olist.wc_open]
+[olist.wc_tag_open]
     Hyperlinks - Links created using the HTML **a** tag with the **href** attribute. e.g. *[escape(t="<a href=\"url\">content</a>")]*
     Bookmarks - Links created using the HTML **a** tag with the **id** attribute. *[escape(t="<a id=\"bookmark_name\"></a>")]*
-[olist.wc_close]
+[olist.wc_tag_close]
 
 As you can see, these links are both based on the HTML **a** attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the ***sys.imports/link.md*** file.
 

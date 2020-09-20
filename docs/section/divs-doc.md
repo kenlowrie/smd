@@ -6,34 +6,32 @@ In this chapter, we will discuss the predefined **DIV**'s that are declared insi
 [rednote.wc_open]
 NOTE: If you have not read the chapters on [link.ug_ns_var._qlink(_qtext="[smdvar.b]")], [link.ug_set_keyword._qlink(_qtext="[smdset.b]")] and [link.ug_ns_html._qlink(_qtext="[smdhtml.b]")], stop right now and go read them. Otherwise, you might have trouble understanding the concepts that will be covered in this chapter...
 [rednote.wc_close]
-
 The predefined DIVs in the **divs.md** builtin are organized into four types to provide several options for your content. Let's start with a summary of the divs that are available:
 
-[ulistplain.wc_open]
-[e_us(t="{:.green}**Generic DIVs**")]
-[e_var.b(t="section")] - Generic content
-[e_var.b(t="section_pbb")] - Generic content but with the class **pbb** (i.e. page break before -- when printing)
-[e_var.b(t="toc")] - Table of Contents
-[e_var.b(t="syntax")] - Syntax content
-[e_var.b(t="review")] - Review content
-[e_var.b(t="review_pba")] - Review content with **pba** class (i.e. page break after -- when printing)
-[e_var.b(t="plain")] - Plain content with class plainTitle (draws a bottom-border) after the title[bb]
-[e_us(t="{:.green}**Source DIVs**")]
-[e_var.b(t="code")] - Source content - See notes for rendering details[bb]
-[e_us(t="{:.green}**Note DIVs**")]
-[e_var.b(t="note")] - Note content - See notes for rendering details on this and remaining DIVs
-[e_var.b(t="box")] - Box content
-[e_var.b(t="generic")] - Generic content
-[e_var.b(t="greyout")] - Greyout content
-[e_var.b(t="important")] - Important content
-[e_var.b(t="question")] - Question content
-[e_var.b(t="vo")] - Voiceover content[bb]
-[e_us(t="{:.green}**List DIVs**")]
-[e_var.b(t="ulist")] - Unordered bulleted list content
-[e_var.b(t="ulistplain")] - Unordered list no bullets content
-[e_var.b(t="olist")] - Ordered list with decimal numbers content
-
-[ulistplain.wc_close]
+[ulistplain.wc_tag_open]
+    [e_us(t="{:.green}**Generic DIVs**")]
+    [e_var.b(t="section")] - Generic content
+    [e_var.b(t="section_pbb")] - Generic content but with the class **pbb** (i.e. page break before -- when printing)
+    [e_var.b(t="toc")] - Table of Contents
+    [e_var.b(t="syntax")] - Syntax content
+    [e_var.b(t="review")] - Review content
+    [e_var.b(t="review_pba")] - Review content with **pba** class (i.e. page break after -- when printing)
+    [e_var.b(t="plain")] - Plain content with class plainTitle (draws a bottom-border) after the title[bb]
+    [e_us(t="{:.green}**Source DIVs**")]
+    [e_var.b(t="code")] - Source content - See notes for rendering details[bb]
+    [e_us(t="{:.green}**Note DIVs**")]
+    [e_var.b(t="note")] - Note content - See notes for rendering details on this and remaining DIVs
+    [e_var.b(t="box")] - Box content
+    [e_var.b(t="generic")] - Generic content
+    [e_var.b(t="greyout")] - Greyout content
+    [e_var.b(t="important")] - Important content
+    [e_var.b(t="question")] - Question content
+    [e_var.b(t="vo")] - Voiceover content[bb]
+    [e_us(t="{:.green}**Lists**")]
+    [e_var.b(t="ulist")] - Unordered bulleted list content
+    [e_var.b(t="ulistplain")] - Unordered list no bullets content
+    [e_var.b(t="olist")] - Ordered list with decimal numbers content
+[ulistplain.wc_tag_close]
 
 @var e_div_ll="{{self._public_attrs_}}" s="SECTION" e="*{{self.s}}*" b="**{{self.s}}**" emb="***{{self.s}}***" il="{{self.s}}"
 @var _="e_div" _inherit="e_div_ll" _format="{{self.il}}" s="section"
@@ -183,7 +181,7 @@ Okay, now let's look at the **inline** versions of the [e_var.b(t="section")] va
 
 [wrap_h.subsect(t="###Inline Versions")]
 
-The **_inline** versions of the attribute methods match up to their [smdraw.b] cousins just about identically. The only difference between these versions and their *non-_inline* counterparts is that they do not prefix the output with the [smdraw.b] tag. Here are some examples of how the output looks when using them:
+The **_inline** versions of the attribute methods match up to their [smdraw.b] cousins. The only difference between these versions and their *non-_inline* counterparts is that they do not prefix the output with the [smdraw.b] tag. Here are some examples of how the output looks when using them:
 
 First, here's [e_var.b(t="section.inline")]:
 
@@ -333,7 +331,7 @@ The remaining Generic DIVs have all the same behaviour and attributes as [e_div.
 [[WHICH.l].with_content(t="My [WHICH.u] Heading" c="My [WHICH.u] content")]
 
 
-[wrap_h.section(t="###Source DIVs")]
+[wrap_h.section(t="###Source DIV")]
 
 [e_div._null_(s="source")]
 The **source** DIV provides formatting for inline source code, using the [e_tag.b(t="code")] HTML tag. It is used throughout the user manual displaying sample [smd.b] markdown as well as variable definitions. 
@@ -407,7 +405,7 @@ Not surprisingly, one of the builtins for the **Note** DIVs is called simply **n
 
 Just like how all the attributes/methods of the [e_us(t="{:.blue}**Generic Groups**")] are similar to the those in **section** DIV, if you examine any of other styles in the [e_us(t="{:.blue}**Note Groups**")], you will find they have an identical set of attributes/methods. So once you are familiar with those in the **note** DIV, you know how to use all of them! Here is the help string for the [e_div.b] var, which applies to all of the note groups:
 
-[WHICH._null_(l="note" u="note")]
+[WHICH._null_(l="note" u="NOTE")]
 #### [WHICH.em] Note DIV
 [syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
     [[WHICH.l].?]
@@ -428,7 +426,7 @@ If we look at the HTML for it, you will see:
 [tab.<][escape_var(v="var.note")][tab.>]
 [syntax.wc_close]
 
-As mentioned, this is in the [smdraw.b] section, so the parser emits the double **@@** prefix, which prevents the output formatter from prefixing any [smdwrap.b] tags. Let's take a look at the remaining built-in attributes and how they render.
+Given these are in the [smdraw.b] section, the parser emits the double **@@** prefix, preventing the output formatter from prefixing any [smdwrap.b] tags. Let's take a look at the remaining built-in attributes and how they render.
 
 [e_var.b(t="note.with_content")] renders like this:
 [note.with_content]
@@ -448,17 +446,16 @@ The parser emits the following:
 // Reset c to a reasonable default instead of whatever the last [note] block was ...
 [note._null_(c="note default content data")]
 
-So in any of the methods that take either [big.120p(t="t" cls=".bold.black")] and/or [big.120p(t="c")], you can easily specify your own values when you invoke the method in your markdown. Moving on, let's take a look at the **wc_open** method, which allows you to create a section but leave the **DIV** open to accept the content up until it encounters the **wc_close** method.
+So, in the methods that take [big.120p(t="c" cls=".bold.black")], you can specify your own value when you invoke the method in your markdown. Moving on, let's take a look at the **wc_open** method, which allows you to create a section but leave the **DIV** open to accept the content up until it encounters the **wc_close** method.
 
 Consider the following markdown:
 
 [terminal.wc_open(t="Using note.wc_open")]
     [E.lb]note.wc_open[E.rb]
 
-    and now we have to write [e_var.b(t="note.wc_close")] which will close the previous div.
-    We can keep typing lines, though, and they are added to this note until you close it with [e_var.b(t="note.wc_close")].
-
-    Okay, the next line in the user docs will contain: [e_var.b(t="note.wc_close")]
+    Now we need to write [E.lb]e_var.em[E.lp]t="note.wc_close"[E.rp][E.rb] to close the previous div.
+    As we keep typing lines, they are added to this note until you close it with [E.lb]e_var.em[E.lp]t="note.wc_close"[E.rp][E.rb].[b]
+    The next line will contain: [E.lb]e_var.em[E.lp]t="note.wc_close"[E.rp][E.rb]
     [E.lb]note.wc_close[E.rb]
 [terminal.wc_close]
 
@@ -469,19 +466,19 @@ The parser emits the following:
 
 [note.wc_open]
 
-and now we have to write [e_var.b(t="note.wc_close")] which will close the previous div.
-We can keep typing lines, though, and they are added to this section until you close it with [e_var.b(t="note.wc_close")].
+Now we need to write [e_var.em(t="note.wc_close")] to close the previous div.
+As we keep typing lines, they are added to this note until you close it with [e_var.em(t="note.wc_close")].
 
-Okay, the next line in the user docs will contain: [e_var.b(t="note.wc_close")]
+The next line will contain: [e_var.em(t="note.wc_close")]
 [note.wc_close]
 
-Unlike the **Generic Group**, the **Note Group** doesn't support nesting.
+Take note that breaking the lines and/or inserting blank lines do not affect the formatting; whitespace is ignored. Also, unlike the **Generic Group**, the **Note Group** doesn't support nesting.
 
 Okay, now let's look at the **inline** versions of the [e_var.b(t="note")] variable.
 
 [wrap_h.subsect(t="###Inline Versions")]
 
-The **_inline** versions of the attribute methods match up to their [smdraw.b] cousins just about identically. The only difference between these versions and their *non-_inline* counterparts is that they do not prefix the output with the [smdraw.b] tag. Here are some examples of how the output looks when using them:
+Like the with the **Generics**, the **_inline** versions of the attribute methods match up to their [smdraw.b] cousins. The only difference between these versions and their *non-_inline* counterparts is that they do not prefix the output with the [smdraw.b] tag. Here are some examples of how the output looks when using them:
 
 First, here's [e_var.b(t="note.inline")]:
 
@@ -582,63 +579,207 @@ The remaining **Note DIVs** have all the same behavior and attributes as [e_div.
 [[WHICH.l](c="My [WHICH.u] content")]
 
 
-
-Other misc examples...
-
-
-
-
-
-
-
-
-
-
-
-<hr />
-
-[note]
-[note(c="1c")]
-[note(c="1ac")]
-[note.with_content]
-[note.wc_inline]
-nd variants
-[note.nd]
-[note.inline_nd]
-[note.nd_inline]
-[note._null_(c="2ac")]
-here comes wc_open
-[note.wc_open]
-2ac-inline
-[note.wc_close]
-[note]
-[note.with_content]
-[note.nd_open]
-2ac-inline variant
-[note.nd_close]
-<hr />
-@wrap null
-[note.wc_open_inline]
-2ac-inline with null wrap
-[note.wc_close_inline]
-[mk]
-[note.nd_open_inline]
-2ac-inline_nd with null wrap
-[note.nd_close_inline]
-@parw
-<hr />
-
-
-[wrap_h.section(t="###List DIVs")]
-
-[TODO] List divs here
-
+Okay, onward to the **Terminal DIVs**.
 
 [wrap_h.section(t="###Terminal DIVs")]
 
 [TODO] Terminal divs here
 
+[TODO] Should this be folded into the generics
+
+Let's wrap the **DIVs** section with a review of the **List DIVs**.
+
+[TODO] 
+*Go back through and remove all the [E.lb]divx.<]/[E.lb]divx.>] wrappers and use the new **wc_tag_open** or **wc_wrap_open**...*
+
+[wrap_h.section(t="###Lists")]
+[e_div._null_(s="ulist")]
+
+**Lists** provide formatting for both ordered and unordered lists, covering the **HTML** tags [e_tag.b(t="ol")] and [e_tag.b(t="ul")]. Their attributes and methods are similar to **Note** DIVs; they support the concept of **content**, that is, the variable [big.120p(t="c" cls=".bold.blue")], although in most all cases the **wc_open** and **wc_close** wrappers are used to create & manage lists. They also support nesting, and can be intermixed so long as the closing methods are called in proper order.
+
+One key difference with how the **Lists** operate is that by default, they do **not** wrap content with an HTML [e_tag.b(t="div")] tag. When you use any of the common methods such as **with_content** or **wc_open**/**wc_close**, any [smdwrap.b] tags in effect are ignored, and the methods emit in raw mode. In fact, they operate similar to the *no div* i.e. **nd** methods available with all the **Note** DIVs. Because of this, they provide two special wrapper mechanisms **_tag** and **_wrap** which can be used to wrap lists with a specific content. 
+
+The **_tag** support is implemented with the methods **wc_tag_open** and **wc_tag_close**, both of which rely on an [smdhtml.b] variable specified in the **tag** attribute, which by default is **html.divx**. This will wrap the specified list with *[escape_var(v="html.divx.<")]* ... *[escape_var(v="html.divx.>")]*. You can change the value of **tag** to any valid [smdhtml.b] variable to override the default.
+
+The **_wrap** support is implemented with the methods **wc_wrap_open** and **wc_wrap_close**, both of which rely on either an [smdhtml.b] or [smdvar.b] variable specified in the **wrap** attribute, which by default is **var.divxp**. Whichever variable type is used for **wrap**, it must contain one method named **_open** and another named **_close**, and those methods then emit the open and close tags respectively. This will wrap the specified list with *[escape_var(v="var.divxp._open")]* ... *[escape_var(v="var.divxp._close")]*. You can change the value of **wrap** to any valid [smdhtml.b] or j[smdvar.b] variable to override the default, just make sure they have both an **_open** and **_close** method.
+
+Okay, let's start with the unordered list **ulist**, and begin our examination of this class by taking a look at the actual definition of [e_div.b] and it's associated [smdhtml.b] and [smdvar.b] variables:
+
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="html" \
+               nsname="^ulist$" \
+               title="[smdhtml.il] Support for ***ulist***")]
+
+// Give c reasonable default instead of whatever the last [ulist] block was ...
+[ulist._null_(c="var.[!self.sID!] default content data")]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="var" \
+               nsname="ulist$" \
+               title="[smdvar.il] definition for ***ulist***")]
+
+Just like how all the attributes/methods of the [e_us(t="{:.blue}**Generic Groups**")] are similar to the those in **section** DIV, if you examine any of other styles in the [e_us(t="{:.blue}**Lists**")], you will find they have an identical set of attributes/methods. So once you are familiar with those in **ulist**, you know how to use all of them! Here is the help string for the [e_div.b] var, which applies to all of the lists:
+
+[WHICH._null_(l="ulist" u="ULIST")]
+#### [WHICH.em] List DIV
+[syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+[wrap_h.subsect(t="###Using the List Groups")]
+
+Like we mentioned above, the **List** groups have a similar set of attribute and methods to the **Generic** DIVs. Here are a few examples to illustrate how these look.
+
+[terminal.wc_open(t="Using the **ulist** Group")]
+    [E.lb]ulist.wc_tag_open[E.rb]
+    [sp.2]unordered list item 1
+    [sp.2]unordered list item 2
+    [sp.2]unordered list item 3
+    [E.lb]ulist.wc_tag_close[E.rb]
+[terminal.wc_close]
+
+which renders as:
+
+[ulist.wc_tag_open]
+    unordered list item 1
+    unordered list item 2
+    unordered list item 3
+[ulist.wc_tag_close]
+
+In this next example, we'll see how to nest list groups. Take the following markdown:
+
+[terminal.wc_open(t="Nesting the **List** Groups")]
+    [E.lb]olistRoman.wc_wrap_open[E.rb]
+    [sp.2]This is item 1
+    [sp.2]This is item 2
+    [sp.2][E.lb]olistAlpha.wc_open[E.rb]
+    [sp.4]Subitem 1
+    [sp.4]Subitem 2
+    [sp.4]Subitem 3
+    [sp.2][E.lb]olistAlpha.wc_close[E.rb]
+    [sp.2]This is item 3
+    [E.lb]olistRoman.wc_wrap_close[E.rb]
+[terminal.wc_close]
+
+Which will render as:
+
+[olistRoman.wc_wrap_open]
+    This is item 1
+    This is item 2
+    [olistAlpha.wc_open]
+        Subitem 1
+        Subitem 2
+        Subitem 3
+    [olistAlpha.wc_close]
+    This is item 3
+[olistRoman.wc_wrap_close]
+
+That's really about all there is to using the **List Groups**.  Essentially, you'll use either the **wc_tag_open** or **wc_wrap_open** variants on the initial or outer list group (if you are nesting them), and then just the **wc_open** / **wc_close** variants on any of the inner lists.
+
+
+[wrap_h.subsect(t="###More on _tag and _wrap Methods")]
+
+Recall that the **List Groups** introduce the specialized **tag** and **wrap** variations of the **wc_open** / **wc_close** methods. Because none of the list group macros by default will wrap content using HTML [e_tag.b(t="div")] sections, these two variations provide the extensions to accomplish that.
+
+If you need the ability to wrap list output with a single HTML tag, then the **wc_tag_open**/**wc_tag_close** methods along with the **tag** attribute are exactly what you need. Simply set **tag** equal to any HTML variable, and the output will be wrapped using the open/close tag builtins. For example, if you set **tag** = **divx**, then your output is written as [big.120p(t="[E.lb]divx.[E.lt][E.rb]")] *your content* [big.120p(t="[E.lb]divx.[E.gt][E.rb]")].
+
+Similarly, if you need the ability to wrap list output with something more complex that a single HTML tag, then the **wc_wrap_open**/**wc_wrap_close** methods along with the **wrap** attribute will be what you need. You can use either an [smdhtml.b] or [smdvar.b] variable for the value of **wrap**, the only requirement being that they contain the methods **_open** and **_close**. In this case, you set **wrap** = **var.divxp**, then your output will be written as [big.120p(t="[E.lb]divxp._open[E.rb]")] *your content* [big.120p(t="[E.lb]divxp._close[E.rb]")]. Let's go ahead and expand the **_open**/**_close** methods on **divxp** to see what would actually be emitted:
+
+[tab.<][escape_var(v="var.divxp._open")] *your content* [escape_var(v="var.divxp._close")][tab.>]
+
+These are fairly simple examples, but you should be able to see how they can easily be extended to a much more complex sequence of content.
+
+[wrap_h.subsect(t="###Other List Groups")]
+
+The remaining **List Groups** all have the same behavior and attributes as [e_div.b(s="ulist")]. The only difference in how they look goes back to how they are styled in the **smd.css** file. Try a few out, and/or take a look at the **tests/in/divs.md** unittest file to see them in action! Here is the online help for each of the remaining **List Groupss**: **ulistplain**, **olist**, **olistAlpha**, **olistGreek**, **olistRoman**, **olistalpha**, **olistgreek**,  and **olistroman**.
+
+[WHICH._null_(l="ulistplain" u="ULISTPLAIN")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.u] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.u] content")]
+
+[WHICH._null_(l="olist" u="OLIST")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.u] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.u] content")]
+
+
+[WHICH._null_(l="olistAlpha" u="OLISTALPHA")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+
+[WHICH._null_(l="olistGreek" u="OLISTGREEK")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+[WHICH._null_(l="olistRoman" u="OLISTROMAN")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+
+[WHICH._null_(l="olistalpha" u="OLISTALPHA")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+
+[WHICH._null_(l="olistgreek" u="OLISTGREEK")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+[WHICH._null_(l="olistroman" u="OLISTROMAN")]
+#### [WHICH.em] Group
+[syntax.wc_open(t="Built-in help string for [WHICH.emb]")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.l] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.l] content")]
+
+And that wraps up the discussion on the **List Groups** available in the builtin **divs.md**.
+
 [wrap_h.section(t="###DIVs Summary")]
 
 DIVs are one of the fundemental building blocks for styling HTML pages. Play around with the builtins, and create your own. Remember, you can add your own classes in the **smd.css** CSS file, and then reference them by building your own custom divs using the div factory **_dfactory**.
 
+@stop

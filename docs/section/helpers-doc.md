@@ -19,14 +19,14 @@ It starts by importing the files that contain things that are being extended or 
 A few useful [smdhtml.b] variables are created, including **tab** and **us**. **tab** just indents content by wrapping it with a [e_tag.b(t="span")] tag, and **us** can be used to [e_us(t="underline")] content inline. It would be a little clumbsy to write [e_var.b(t="html.us.<")][us.<]underline[us.>][e_var.b(t="html.us.>")], so a little later on the variable **e_us** is created, that makes it easier.
 
 The **wrap_h** variable contains several useful attributes to simply creating headings. They are:
-[ulistplain.wc_open]
+[ulistplain.wc_tag_open]
     hash1 - create [e_tag(t="h1")] header of dashes
     hash2 - create [e_tag(t="h2")] header of dashes
     hash3 - create [e_tag(t="h3")] header of dashes
     chapter - create a chapter heading with a thick green bottom border
     section - create a section heading with a smaller green bottom border
     subsect - create a sub-section heading with a thin black bottom border
-[ulistplain.wc_close]
+[ulistplain.wc_tag_close]
 
 These are used throughout the user manual to create the headings you see in the documentation. For example, if I write **[e_var(t="wrap_h.hash3")]**, the parser will emit (and your browser will render):
 

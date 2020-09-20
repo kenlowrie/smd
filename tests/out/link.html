@@ -543,10 +543,12 @@ NAMESPACE: link<br />
 <a id="ug_links"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>
 <div class="extras"><p>There are two different styles of links built-in to <strong>smd</strong> which map to standard HTML links:</p></div>
-<div class="extras"><ol class="olist">
+<div class="extras">
+<ol class="olist">
 <li>Hyperlinks - Links created using the HTML <strong>a</strong> tag with the <strong>href</strong> attribute. e.g. <em>&lt;a href="url"&gt;content&lt;/a&gt;</em></li>
 <li>Bookmarks - Links created using the HTML <strong>a</strong> tag with the <strong>id</strong> attribute. <em>&lt;a id="bookmark_name"&gt;&lt;/a&gt;</em></li>
-</ol></div>
+</ol>
+</div>
 <div class="extras"><p>As you can see, these links are both based on the HTML <strong>a</strong> attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the <em><strong>sys.imports/link.md</strong></em> file.</p></div>
 <a id="ug_hyperlinks"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Hyperlinks</h3></div>
@@ -767,11 +769,19 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>usage=</strong>&lt;strong&gt;usage: &amp;lsqb;_dfactory(dn="divName")&amp;rsqb;&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
 <br />
-<strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
+<strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
 <br />
 <strong>_self=</strong><br />&nbsp;&nbsp;<strong>il=</strong>{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
@@ -890,6 +900,7 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>var_simple=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div<br />
 &nbsp;&nbsp;<strong>var_term=</strong>common var &lt;strong&gt;terminal&lt;/strong&gt;<br />
 &nbsp;&nbsp;<strong>var_term2=</strong>common var &lt;strong&gt;terminal2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>var_lists=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;tag&lt;/strong&gt; = An [smdhtml.b] variable used to wrap content when &lt;strong&gt;_tag&lt;/strong&gt; methods are used&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrap&lt;/strong&gt; = An [smdhtml.b] or [smdvar.b] variable used to wrap content when &lt;strong&gt;_wrap&lt;/strong&gt; methods are used&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Public Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;_inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ _inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;with_content&lt;/strong&gt;(c) - emit content &lt;strong&gt;c&lt;/strong&gt; wrapped with &lt;em&gt;_open_inline&lt;/em&gt; / &lt;em&gt;_close_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;tag.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;tag.&amp;gt;&lt;/em&gt; appended&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;wrap._open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;wrap._close&lt;/em&gt; appended&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Private Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_content&lt;/strong&gt; - emit &lt;em&gt;html.li.&amp;lt;&lt;/em&gt; &lt;strong&gt;c&lt;/strong&gt; &lt;em&gt;html.li.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_inline&lt;/strong&gt; - emit &lt;em&gt;$DIVNAME$.&amp;lt;&lt;/em&gt; &lt;strong&gt;_content&lt;/strong&gt; &lt;em&gt;$DIVNAME$.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open&lt;/strong&gt; - set [smdwrap.b] li then emit &lt;em&gt;_open_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close&lt;/strong&gt; - emit &lt;em&gt;_close_inline&lt;/em&gt; then [smdparw.b] 1&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;gt;&lt;/em&gt;<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
 <strong>div_help_methods=</strong><br />&nbsp;&nbsp;<strong>tc_variants=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
@@ -898,6 +909,8 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
 <br />
 <strong>div_help_var_code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<br />
+<strong>div_help_var_lists=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;tag&lt;/strong&gt; = An [smdhtml.b] variable used to wrap content when &lt;strong&gt;_tag&lt;/strong&gt; methods are used&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrap&lt;/strong&gt; = An [smdhtml.b] or [smdvar.b] variable used to wrap content when &lt;strong&gt;_wrap&lt;/strong&gt; methods are used&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Public Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;_inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ _inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;with_content&lt;/strong&gt;(c) - emit content &lt;strong&gt;c&lt;/strong&gt; wrapped with &lt;em&gt;_open_inline&lt;/em&gt; / &lt;em&gt;_close_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;tag.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;tag.&amp;gt;&lt;/em&gt; appended&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;wrap._open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;wrap._close&lt;/em&gt; appended&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Private Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_content&lt;/strong&gt; - emit &lt;em&gt;html.li.&amp;lt;&lt;/em&gt; &lt;strong&gt;c&lt;/strong&gt; &lt;em&gt;html.li.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_inline&lt;/strong&gt; - emit &lt;em&gt;$DIVNAME$.&amp;lt;&lt;/em&gt; &lt;strong&gt;_content&lt;/strong&gt; &lt;em&gt;$DIVNAME$.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open&lt;/strong&gt; - set [smdwrap.b] li then emit &lt;em&gt;_open_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close&lt;/strong&gt; - emit &lt;em&gt;_close_inline&lt;/em&gt; then [smdparw.b] 1&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;gt;&lt;/em&gt;<br />
 <br />
 <strong>div_help_var_p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
 <br />
@@ -909,8 +922,10 @@ NAMESPACE: var<br />
 <br />
 <strong>divxp=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
 &nbsp;&nbsp;<strong>c=</strong>default content<br />
-&nbsp;&nbsp;<strong>open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
-&nbsp;&nbsp;<strong>close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>open=</strong>{{self._open}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{self._close}}<br />
+&nbsp;&nbsp;<strong>_open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
 &nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
 <br />
 <strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
@@ -1069,52 +1084,137 @@ NAMESPACE: var<br />
 <br />
 <strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>link<br />
 <br />
-<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olist.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olist.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olist.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>olist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
-<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistAlpha.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistAlpha.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistAlpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>olist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
-<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistGreek.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistGreek.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistGreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>olist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
-<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}{{self.t}}{{html.olist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.olistRoman.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ol.&gt;}}{{html.div.&gt;}}<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistRoman.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistRoman.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>olist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistalpha.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistalpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistgreek.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistgreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistroman.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistroman.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
 <strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
@@ -1627,28 +1727,42 @@ NAMESPACE: var<br />
 &nbsp;&nbsp;<strong>t=</strong>Table of Contents - Unittest link<br />
 &nbsp;&nbsp;<strong>c=</strong>toc default content<br />
 <br />
-<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.ulist.&lt;}}{{self.t}}{{html.ulist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.ulist.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ul.&gt;}}{{html.div.&gt;}}<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.ulist.&lt;}}{{self._content}}{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.ulist.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.ulist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>ulist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
-<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
-&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
-&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
-&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap li\n@@{{self.wc_open_inline}}")}}<br />
-&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@@{{self.wc_close_inline}}\n@parw 1")}}<br />
-&nbsp;&nbsp;<strong>inline=</strong>{{html._div_extras_.&lt;}}{{html.ulistplain.&lt;}}{{self.t}}{{html.ulist.&gt;}}{{html._div_extras_.&gt;}}<br />
-&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._div_extras_.&lt;}}{{html.ulistplain.&lt;}}<br />
-&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.ul.&gt;}}{{html.div.&gt;}}<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.ulistplain.&lt;}}{{self._content}}{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.ulistplain.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.ulist.&gt;}}<br />
 &nbsp;&nbsp;<strong>sID=</strong>ulist<br />
-&nbsp;&nbsp;<strong>t=</strong>var.{{self.sID}} default title<br />
 &nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
 <br />
 <strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />

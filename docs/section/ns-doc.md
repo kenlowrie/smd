@@ -3,13 +3,13 @@
 
 In [smd.b], one of the primary types of markdown (specially formatted text) that you can use is the **variable**. There are several types of variables that are supported, and they are referred to as namespaces within [smd.b]. They are:
 
-[ulist.wc_open]
-[smdvar.b] - The primary namespace for creating variables
-[smdhtml.b] - A namespace for creating HTML tags
-[smdlink.b] - A namespace built on @html, used for creating hyperlinks and anchors (bookmarks)
-[smdimage.b] - A specialized namespace specifically for creating HTML Image [e_tag.b(t="img")] elements
-[smdcode.b] - A specialized namespace for creating complex macros (written in Python)
-[ulist.wc_close]
+[ulistplain.wc_tag_open]
+    [smdvar.b] - The primary namespace for creating variables
+    [smdhtml.b] - A namespace for creating HTML tags
+    [smdlink.b] - A namespace built on @html, used for creating hyperlinks and anchors (bookmarks)
+    [smdimage.b] - A specialized namespace specifically for creating HTML Image [e_tag.b(t="img")] elements
+    [smdcode.b] - A specialized namespace for creating complex macros (written in Python)
+[ulistplain.wc_tag_close]
 
 [link.ug_ns_builtin_help]
 [wrap_h.section(t="### Built in Help")]

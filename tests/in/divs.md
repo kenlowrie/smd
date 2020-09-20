@@ -410,6 +410,104 @@ And one last thing
     [section.wc_close]
 [bigmargin._close] 
 
+<hr />
+
+[note]
+[note(c="1c")]
+[note(c="1ac")]
+[note.with_content]
+[note.wc_inline]
+nd variants
+[note.nd]
+[note.inline_nd]
+[note.nd_inline]
+[note._null_(c="2ac")]
+here comes wc_open
+[note.wc_open]
+2ac-inline
+[note.wc_close]
+[note]
+[note.with_content]
+[note.nd_open]
+2ac-inline variant
+[note.nd_close]
+<hr />
+@wrap null
+[note.wc_open_inline]
+2ac-inline with null wrap
+[note.wc_close_inline]
+
+[note.nd_open_inline]
+2ac-inline_nd with null wrap
+[note.nd_close_inline]
+@parw
+<hr />
+
+[wrap_h(t="### ulist")]
+[mk]
+@wrap divx,p
+default and .with_content
+[ulist(c="fubar")]
+[ulist.with_content(c="fubar2")]
+wc_open
+[ulist.wc_open]
+fu
+bar
+[ulist.wc_close]
+wc_wrap_open
+[ulist.wc_wrap_open]
+fu
+bar
+[ulist.wc_wrap_close]
+@parw
+[mk]
+
+[wrap_h(t="### ulistplain")]
+
+[ulistplain(t="my list" c="fubar")]
+[ulistplain.with_content(t="my list" c="fubar")]
+[ulistplain.wc_open]
+fu
+bar
+[ulistplain.wc_close]
+
+[wrap_h(t="### olist")]
+
+[olist(t="my list" c="fubar")]
+[olist.with_content(t="my list" c="fubar")]
+[olist.wc_open]
+fu
+bar
+[olist.wc_close]
+
+[olistAlpha.wc_open]
+Alpha 1
+[olistGreek.wc_open]
+Greek 1
+[olistRoman.wc_open]
+Roman 1
+[olistalpha.wc_open]
+alpha 1
+alpha 2
+[olistgreek.wc_open]
+greek 1
+greek 2
+[olistroman.wc_open]
+roman 1
+roman 2
+[olistroman.wc_close]
+greek 3
+greek 4
+[olistgreek.wc_close]
+alpha 3
+alpha 4
+[olistalpha.wc_close]
+Roman 2
+[olistRoman.wc_close]
+Greek 2
+[olistGreek.wc_close]
+Alpha 2
+[olistAlpha.wc_close]
 
 [var.plain(t="User manual sections for DIVs")]
 

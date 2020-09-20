@@ -73,26 +73,26 @@ The [smdimage.b] namespace provides a limited set of builtins to get you started
 
  **IMG_DEF** contains four different default styles, each of which can be selected using the **IMG_STYLE** attribute shortcuts:
 
-[ulistplain.wc_open]
-@wrap [code.wrap_stack(w="tag.<")],strong
-[e_var(t="IMG_STYLE.inline")]
-[e_var(t="IMG_STYLE.inline_border")]
-[e_var(t="IMG_STYLE.block")]
-[e_var(t="IMG_STYLE.block_border")]
-@parw
-[ulistplain.wc_close]
+[ulistplain.wc_tag_open]
+    @wrap [code.wrap_stack(w="tag.<")],strong
+    [e_var(t="IMG_STYLE.inline")]
+    [e_var(t="IMG_STYLE.inline_border")]
+    [e_var(t="IMG_STYLE.block")]
+    [e_var(t="IMG_STYLE.block_border")]
+    @parw
+[ulistplain.wc_tag_close]
 
 In addition, four fixed size attributes and one custom size attribute is provided via the **IMG_SIZE** declaration:
 
-[ulistplain.wc_open]
-@wrap [code.wrap_stack(w="tag.<")],strong
-[e_var(t="IMG_SIZE.thumb")]
-[e_var(t="IMG_SIZE.small")]
-[e_var(t="IMG_SIZE.medium")]
-[e_var(t="IMG_SIZE.large")]
-[e_var(t="IMG_SIZE.custom[E.lp]w=\"##%\"[E.rp])")]
-@parw
-[ulistplain.wc_close]
+[ulistplain.wc_tag_open]
+    @wrap [code.wrap_stack(w="tag.<")],strong
+    [e_var(t="IMG_SIZE.thumb")]
+    [e_var(t="IMG_SIZE.small")]
+    [e_var(t="IMG_SIZE.medium")]
+    [e_var(t="IMG_SIZE.large")]
+    [e_var(t="IMG_SIZE.custom[E.lp]w=\"##%\"[E.rp])")]
+    @parw
+[ulistplain.wc_tag_close]
 
 For a quick example of the size and styling shortcuts, let's write the following markdown in this document and see what we get:
 

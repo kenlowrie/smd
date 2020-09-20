@@ -73,7 +73,7 @@ Moving on, let's now spend some time looking at the more powerful builtins that 
 
 Note that we won't look at all the building blocks in **shot.md**, just the more common things that you will use when writing A/V style markdown documents with shots and images. We will start with the factories: **image_factory**, **image_factory_abs_style** and **shot_factory**, which are used to create images and shots respectively, on the fly. The two image factories have additional macros to assist you, **image_factory_config** and **_img_template_**.
 
-[olist.wc_open(t="Image Factory Support")]
+[olist.wc_open]
 **image_factory** - The most commonly used macro
 **image_factory_abs_style** - A variant that allows CSS styles to be specified directly
 **image_factory_config** - A macro used to change the default styles used by the two previous macros

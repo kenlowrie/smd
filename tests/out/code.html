@@ -1197,14 +1197,16 @@ NAMESPACE: link<br />
 <div class="extras"><p>And that's how you change the default values for <strong>&#64;code</strong> variable attributes.</p></div>
 <div class="extras" style="border-bottom:2px solid black"><h3>Additional attributes on &#64;code variables</h3></div>
 <div class="extras"><p><strong>&#64;code</strong> variables have several unique attributes:</p></div>
-<div class="extras"><ul class="ulist-plain">
+<div class="extras">
+<ul class="ulist-plain">
 <li><strong>_code</strong> - used by <strong>&#64;code</strong> to store the compiled Python code.</li>
 <li><strong>_params_</strong> - used by store the parameters to the current markdown instance</li>
 <li><strong>_last</strong> - stores the result of the last time the macro was run</li>
 <li><strong>run</strong> - used to invoke the macro. <strong>&lsqb;code.echo.run&rsqb;</strong> is the same as <strong>&lsqb;code.echo&rsqb;</strong></li>
 <li><strong>src</strong> - holds the source code in string form.</li>
 <li><strong>type</strong> - stores the Python type used for evaluating/compiling the code.</li>
-</ul></div>
+</ul>
+</div>
 <div class="extras"><p>Let's take a quick look at the definition for <strong>code.echo</strong>:</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
 <div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">Definition for <strong>code.echo</strong></code></p></div>

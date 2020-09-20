@@ -19,7 +19,7 @@ The purpose of this document is to provide an estimate for the production and po
 
 {:.green}## Production Estimate
 [plain(t="This estimate *does NOT* include costs for:")]
-[olist.wc_open]
+[olist.wc_tag_open]
     Stock footage (photos, video, audio, graphix, score, etc.) Producer will be responsible for purchasing clips to be used in the film. In the most common case, we will locate clips and provide purchasing details (costs, source, licensing info). The Producer will either purchase them directly and provide the footage to the editor, or we will send an invoice, and once it's paid in full, we will purchase the clips. Keep in mind that most sites have a **no refunds, no returns policy**. So once they are purchased, you own them.
 
     Shooting new footage. Any footage that we need to shoot will be invoiced separately. As is the case with stock footage, an invoice will be issued for footage we are to shoot, and it must be paid in advance before we will shoot it.
@@ -31,10 +31,10 @@ The purpose of this document is to provide an estimate for the production and po
     Voiceover
 
     DVD and/or Blu-ray Mastering
-[olist.wc_close]
+[olist.wc_tag_close]
 
 [plain(t="This estimate **does** include costs for:")]
-[olist.wc_open]
+[olist.wc_tag_open]
     Color correction
 
     Color grading
@@ -46,7 +46,7 @@ The purpose of this document is to provide an estimate for the production and po
     Music score (provided you choose a title from our existing royalty free library)[dblbrk]
 
     Mastering to high resolution H.264 digital media. Most festivals accept submissions in this format nowadays; also, this format can be remastered to either DVD or Blu-ray.
-[olist.wc_close]
+[olist.wc_tag_close]
 
 [plain(t="Cost options")]
 
@@ -57,7 +57,7 @@ Normally, there are three (3) billing options to choose from when hiring [Cloudy
 [note.wc_open]
     Example: If the **TRT** (total run time) of the finished film is eight (8) minutes, the total cost would be $4,200. Partial minutes will be billed in fifteen (15) second increments, i.e. ~$131 per one quarter (1/4) minute.[bb]
     {:.indent2}**Considerations when choosing TRT option**[bb]
-    {:.indent}This rate applies to editing normal footage (video, photos, audio). As an example, the demo film that we produced would have all fit under this rate, with one exception (green screen footage that was keyed for ending). However, if we are given footage that requires *specialized attention*, a different rate will apply on a per clip basis.[bb]
+    {:.indent2}This rate applies to editing normal footage (video, photos, audio). As an example, the demo film that we produced would have all fit under this rate, with one exception (green screen footage that was keyed for ending). However, if we are given footage that requires *specialized attention*, a different rate will apply on a per clip basis.[bb]
     {:.indent2}Some examples that require specialized attention are: Footage that is shot on green screen and must be keyed. Footage that is shaky and must be stabilized. Footage shot with incorrect color temperature. Any media (video/photos) that requires rotoscoping. Audio that must be cleaned up.
 [note.wc_close]
 
@@ -73,13 +73,13 @@ Normally, there are three (3) billing options to choose from when hiring [Cloudy
 
 Once the project is underway, we will invoice periodically as various milestones are met. These milestones will be set and agreed upon by both parties prior to commencement. They will be something like this:
 
-[olist.wc_open]
+[olist.wc_tag_open]
     Rough cut *- might be in stages*
     Picture lock *- no changes to timeline after this*
     Color grade complete *- possible after audio mixing*
     Audio mixing complete *- possible before color grade*
     Film completion
-[olist.wc_close]
+[olist.wc_tag_close]
 
 [note.wc_open]
     If the project is being billed per runtime minute, the milestone invoices will be billed in fractional estimates of the minimum runtime up until picture lock, at which time remaining invoices will be billed based on the actual total runtime.[bb]
@@ -95,11 +95,11 @@ Once the project is underway, we will invoice periodically as various milestones
 
 If you would like to move forward with the project, here are the [e_us(t="**next steps**")]:
 
-[olist.wc_open]
-Choose a billing option
-Iron out milestones
-Acceptance of Terms - return signed contract
-[olist.wc_close]
+[olist.wc_tag_open]
+    Choose a billing option
+    Iron out milestones
+    Acceptance of Terms - return signed contract
+[olist.wc_tag_close]
 
 Thanks again for choosing [Cloudy Logic Studios] for your production needs. We look forward to working with you on this project. 
 

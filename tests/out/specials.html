@@ -164,11 +164,11 @@ NAMESPACE: link<br />
 <a id="ug_title_pages"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Cover, Revision & Contact Sections</h2></div>
 <div class="extras"><p>There are three (3) builtins that can be used in your document to add commonly used sections in script files. They are defined in <em>sys.imports/report.md</em>:</p></div>
-<div class="extras"><ul class="ulist-plain">
+<ul class="ulist-plain">
 <li><strong>var.cover</strong> - To add a cover section</li>
 <li><strong>var.revision</strong> - To add a revision section</li>
 <li><strong>var.contact</strong> - To add a contact section</li>
-</ul></div>
+</ul>
 <div class="extras"><p>The details for each type of section are discussed below.</p></div>
 <a id="ug_tp_cover"></a>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>@var.cover</h3></div>
@@ -215,7 +215,7 @@ NAMESPACE: link<br />
 <p>Each element is optional, and the elements can appear in any order. By default, the system looks in the <em>var.defaults</em> variable for the definitions of <em>cn, ph, em, c1, c2 & c3</em>.</p>
 </div>
 <div class="extras"><p>For this example, let's look at an alternative of editing defaults.md to specify the defaults for a markdown document, since it's likely you would vary these on a per-project basis. As it turns out, you can conveniently set them using a single call:</p></div>
-<div class="extras"><ul class="ulist-plain">
+<ul class="ulist-plain">
 <li>&nbsp;@set _id="defaults" &bsol;</li>
 <li><span class="indent">cn="Ken Lowrie" &bsol;</span></li>
 <li><span class="indent">ph="<em>512-555-1234</em>" &bsol;</span></li>
@@ -224,7 +224,7 @@ NAMESPACE: link<br />
 <li><span class="indent">c2="All Rights Reserved." &bsol;</span></li>
 <li><span class="indent">c3="www.mydomain.com"</span></li>
 <li></ul></li>
-</ul></div>
+</ul>
 <div class="extras"><p>So, I'm going to do that now, and then we'll write the <strong>&lsqb;var.contact&rsqb;</strong> markdown and see what we get.</p></div>
 <div style="margin-left:3.3em;margin-right:3.3em">
 <div class="extras"><p><div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright  Line 1<br />Copyright Line 2<br />Copyright Line 3<br /></td><td class="right nowrap" style="border:none">Contact Name<br />210-555-1212<br />email@mydomain.com<br /></td></tr></table></div></p></div>

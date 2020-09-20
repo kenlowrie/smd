@@ -60,14 +60,14 @@ And that's how you change the default values for [smdcode.b] variable attributes
 
 [smdcode.b] variables have several unique attributes:
 
-[ulistplain.wc_open]
+[ulistplain.wc_tag_open]
     **_code** - used by [smdcode.b] to store the compiled Python code.
     **_params_** - used by store the parameters to the current markdown instance
     **_last** - stores the result of the last time the macro was run
     **run** - used to invoke the macro. **[encode_smd(t="<code.echo.run>")]** is the same as **[encode_smd(t="<code.echo>")]**
     **src** - holds the source code in string form.
     **type** - stores the Python type used for evaluating/compiling the code.
-[ulistplain.wc_close]
+[ulistplain.wc_tag_close]
 
 Let's take a quick look at the definition for **code.echo**:
 
