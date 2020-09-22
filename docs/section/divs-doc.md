@@ -27,6 +27,11 @@ The predefined DIVs in the **divs.md** builtin are organized into four types to 
     [e_var.b(t="important")] - Important content
     [e_var.b(t="question")] - Question content
     [e_var.b(t="vo")] - Voiceover content[bb]
+    [e_us(t="{:.green}**Miscellaneous DIVs**")]
+    [e_var.b(t="extras")] - Wrap content in class="extras" DIV
+    [e_var.b(t="divxp")] - Like **extras**, but also wraps content inside [e_tag.b(t="p")] tag
+    [e_var.b(t="terminal")] - Terminal content
+    [e_var.b(t="terminal2")] - Variation of **terminal** content[bb]
     [e_us(t="{:.green}**Lists**")]
     [e_var.b(t="ulist")] - Unordered bulleted list content
     [e_var.b(t="ulistplain")] - Unordered list no bullets content
@@ -36,6 +41,7 @@ The predefined DIVs in the **divs.md** builtin are organized into four types to 
 @var e_div_ll="{{self._public_attrs_}}" s="SECTION" e="*{{self.s}}*" b="**{{self.s}}**" emb="***{{self.s}}***" il="{{self.s}}"
 @var _="e_div" _inherit="e_div_ll" _format="{{self.il}}" s="section"
 
+[link.ug_div_gen]
 [wrap_h.section(t="###Generic DIVs")]
 There are four different styles of DIVs that are predefined for you, and you can add more as well as customize these to your hearts content. Each of these has a similar interface, so let's see what that is, and how it is used. Only one of each different type will be covered, since the interface on the others is identical! We will start with the *[e_div.b]-style* DIVs, of which you have **section, section_pbb, toc, syntax, review, review_pba and plain**.
 
@@ -331,6 +337,7 @@ The remaining Generic DIVs have all the same behaviour and attributes as [e_div.
 [[WHICH.l].with_content(t="My [WHICH.u] Heading" c="My [WHICH.u] content")]
 
 
+[link.ug_div_src]
 [wrap_h.section(t="###Source DIV")]
 
 [e_div._null_(s="source")]
@@ -382,7 +389,7 @@ When using **source**, you will likely want nest the output inside another DIV i
 [bigmargin._close]
 
 
-
+[link.ug_div_note]
 [wrap_h.section(t="###Note DIVs")]
 
 [e_div._null_(s="note")]
@@ -579,19 +586,95 @@ The remaining **Note DIVs** have all the same behavior and attributes as [e_div.
 [[WHICH.l](c="My [WHICH.u] content")]
 
 
-Okay, onward to the **Terminal DIVs**.
+Okay, onward to the **Miscellaneous DIVs**.
 
-[wrap_h.section(t="###Terminal DIVs")]
+[link.ug_div_misc]
+[wrap_h.section(t="###Miscellaneous DIVs")]
 
-[TODO] Terminal divs here
+The following DIVs don't fit into any of the other categories, although they share much of the same syntax and semantics. **extras** and **divxp** are very simple DIVs, and **terminal** and **terminal2** are closest to the **section** DIVs, and used primarily in the user documentation for wrapping content that covers command line and built-in help.
 
-[TODO] Should this be folded into the generics
+**extras** is very basic, allowing you to wrap content **c** inside a *class="extras"* [e_tag.b(t="div")].
 
-Let's wrap the **DIVs** section with a review of the **List DIVs**.
+[WHICH._null_(l="extras" u="EXTRAS")]
+#### [WHICH.em] Miscellaneous DIV
+[syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
+    [[WHICH.l].?]
+[syntax.wc_close]
 
-[TODO] 
-*Go back through and remove all the [E.lb]divx.<]/[E.lb]divx.>] wrappers and use the new **wc_tag_open** or **wc_wrap_open**...*
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.u] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.u] content")]
 
+Like **extras**, **divxp** is also very basic, allowing you to wrap content **c** inside a *class="extras"* [e_tag.b(t="div")], but also wrapping inside an HTML paragraph tag [e_tag.b(t="p")].
+
+[WHICH._null_(l="divxp" u="DIVXP")]
+#### [WHICH.em] Miscellaneous DIV
+[syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](c="My [WHICH.u] content")[E.rb]** renders like this:
+[[WHICH.l](c="My [WHICH.u] content")]
+
+Moving on to the **terminal** DIVs, they are closely related to the **section** divs, so if you're familiar with those, then the **terminal** counterparts will be easy to use. Let's start by examining the definition of the variables that make up **terminal**:
+
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="html" \
+               nsname="^_terminal_" \
+               title="[smdhtml.il] Support for ***terminal***")]
+
+// Give t,c reasonable defaults instead of whatever the last [terminal] block was ...
+[terminal._null_(t="var.[!self.sID!] default title" c="var.[!self.sID!] default content data")]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="var" \
+               nsname="terminal$" \
+               title="[smdvar.il] definition for ***terminal***")]
+
+Just like with **section** DIVs, **terminal** DIVs have [smdraw.b] methods which include the default *[encode_smd(t="<terminal>")]* and *[encode_smd(t="<terminal.with_content>")]*, as well as the inline variants: *inline*, *wc_inline*, *wc_open*, *wc_close*, *wc_open_inline*, *wc_close_inline*. For a more indepth look at these methods, refer to the documentation on **section** DIVs, as we are not going to repeat it here. With that, let's have a look at the builtin help and an example use of **terminal**.
+
+[WHICH._null_(l="terminal" u="TERMINAL")]
+#### [WHICH.em] Miscellaneous DIV
+[syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](t="My [WHICH.u] title")[E.rb]** renders like this:
+[[WHICH.l](t="My [WHICH.u] title" c="My [WHICH.u] content")]
+
+**terminal2** is very similar to **terminal**, in fact it uses the same [smdhtml.b] variables, but overrides *wc_open*, *wc_close*, *wc_open_inline* and *wc_close_inline*, and also provides some additional methods. Let's have a look at the definition of **terminal2**:
+
+// Give t,c reasonable defaults instead of whatever the last [terminal] block was ...
+[terminal2._null_(t="var.[!self.sID!] default title" c="var.[!self.sID!] default content data")]
+[code.pushlist(attrlist="var.dumpit" \
+               nsvar="var" \
+               nsname="terminal2$" \
+               title="[smdvar.il] definition for ***terminal2***")]
+
+If you compare the definitions of **terminal** and **terminal2**, you'll notice several differences. Let's have a look at those now:
+
+First, the *wc_open* method reverses the order of emitting the opening HTML tags and setting up the [smdwrap.b] tag, which is also different. Before, the [smdwrap.b] tag was **[terminal.wrapID]**, and now it is set to *[terminal2.wrapID]*. And this order change also requires that *wc_close* be updated to also reverse the cleanup and closing tag emittal.
+
+Second, *wc_open_inline* does not emit the open tag for *[terminal2.wrapID]* like it does in **terminal**, because the **wrapID** has been changed to automatically emit the wrapper tag around any content.
+
+Finally, two new methods have been added, *wc_open_content* and *wc_close_content*, which provide the ability to change the default behavior for accepting content back to how **terminal** works. That is, when *wc_open_content* is invoked, the [smdwrap.b] tag is set to **nop**, and the *[terminal2.wrapID]* is opened until *wc_close_content* is called. This minor change in the semantics of **terminal2** was done to provide more control over how the formatting of content is done.
+
+Here's a look at the builtin help for **terminal2** along with an example usage:
+
+[WHICH._null_(l="terminal2" u="TERMINAL2")]
+#### [WHICH.em] Miscellaneous DIV
+[syntax.wc_open(t="Built-in help string for [WHICH.emb] DIV")]
+    [[WHICH.l].?]
+[syntax.wc_close]
+
+#### [WHICH.l] example
+**[E.lb][WHICH.l](t="My [WHICH.u] title")[E.rb]** renders like this:
+[[WHICH.l](t="My [WHICH.u] title" c="My [WHICH.u] content")]
+
+To see many more examples of the **terminal** and **terminal2** DIVs, review the user manual content; they are used quite heavily throughout the docs. Let's move on to the **List Group** builtins. 
+
+[link.ug_div_list]
 [wrap_h.section(t="###Lists")]
 [e_div._null_(s="ulist")]
 
@@ -781,5 +864,3 @@ And that wraps up the discussion on the **List Groups** available in the builtin
 [wrap_h.section(t="###DIVs Summary")]
 
 DIVs are one of the fundemental building blocks for styling HTML pages. Play around with the builtins, and create your own. Remember, you can add your own classes in the **smd.css** CSS file, and then reference them by building your own custom divs using the div factory **_dfactory**.
-
-@stop

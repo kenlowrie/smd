@@ -303,10 +303,4 @@ Another useful thing to know is how to debug the raw HTML instead of looking at 
 
 If you skipped the chapter on [ismd.b], now might be a good time to review it.
 
-[TODO] Finish this when the command line docs for [ismd.b] are done, so I don't repeat a bunch of it...
-
-
-//[docthis.open(h="Add this to debug-doc.md")]
-//[docthis.close]
-
 Okay, so that wraps the chapter on debugging. And it also marks the end of the primary documentation for [smd.b]. In the remaining chapters, we will look at several examples that illustrate how to accomplish some real-world applications for [smd.b].

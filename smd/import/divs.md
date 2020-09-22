@@ -15,6 +15,8 @@
 [sp.4]wc_close - close $DIVNAME$ div opened with **wc_open**[b]\
 [sp.4]wc_open_inline(t) - like **wc_open** but does not use **@wrap**[b]\
 [sp.4]wc_close_inline - close $DIVNAME$ div opened with **wc_open_inline**"\
+      t2_variants="[b][sp.4]wc_open_content - changes **wrapID** to **nop** and opens the content tag *{{var.terminal2.wrapID}}*[b]\
+[sp.4]wc_close_content - close the *{{var.terminal2.wrapID}}* and restore previous **wrapID**"\
       justc_variants="[sp.2]**Methods**[b]\
 [sp.4]***NONE*** - If no method specified, uses **inline** with raw prefix (i.e. *@@ inline*)[b]\
 [sp.4]with_content(c) - **wc_inline** raw (i.e. *@@ wc_inline*)[b]\
@@ -76,7 +78,7 @@
 @var div_help_var_code="[var.div_help_var_p]"
 @var div_help_var_simple="[var.div_help_common.var_simple][bb][var.div_help_attrs.main][bb][var.div_help_methods.justc_variants][b][var.div_help_methods.nd]"
 @var div_help_var_term="[var.div_help_var_p]"
-@var div_help_var_term2="[var.div_help_var_p]"
+@var div_help_var_term2="[var.div_help_var_p][var.div_help_methods.t2_variants]"
 @var div_help_var_lists="[var.div_help_common.var_lists]"
 
 @var _="_df_html_p_" _str="@html _=\"_$DIVNAME$_div_\" _inherit=\"div\" class=\"$DIVNAME$\"\
@@ -219,6 +221,7 @@
       _inherit="prewrap" \
       class="divTitle"\
       style="background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}"
+
 @html _id="_terminal_prewrap_content_" \
       _inherit="prewrap" \
       class="divTitle"\
@@ -229,22 +232,26 @@
           inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_content_.<}}{{self.t}}{{html._terminal_prewrap_content_.>}}{{html._terminal_div_.>}}"\
           with_content="@@ {{self.wc_inline}}" \
           wc_inline="{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}"\
-          wc_open="{{code.pushlines(t=\"@wrap nop\n{{self.wc_open_inline}}\")}}"\
+          wc_open="{{code.pushlines(t=\"@wrap {{self.wrapID}}\n{{self.wc_open_inline}}\")}}"\
           wc_close="{{code.pushlines(t=\"{{self.wc_close_inline}}\n@parw 1\")}}"\
           wc_open_inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_.<}}{{self.t}}{{html._terminal_prewrap_.>}}{{html._terminal_prewrap_content_.<}}"\
           wc_close_inline="{{html.prewrap.>}}{{html.div.>}}"\
           t="This is your terminal title" \
           c="This is your terminal content" \
+          wrapID="nop"\
+          sID="terminal"\
           _help="[var.div_help_var_term]"
 [code.attr_replace_str(s_str="$DIVNAME$" r_str="terminal" attr="var.terminal._help")]
 
 @var _id="terminal2" _inherit="terminal"\
-          wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap html._terminal_prewrap_content_\")}}"\
+          wc_open="{{code.pushlines(t=\"@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}\")}}"\
           wc_close="{{code.pushlines(t=\"@parw 1\n@@{{self.wc_close_inline}}\")}}"\
           wc_open_inline="{{html._terminal_div_.<}}{{html._terminal_prewrap_.<}}{{self.t}}{{html._terminal_prewrap_.>}}"\
           wc_close_inline="{{html.div.>}}"\
           wc_open_content="{{code.pushlines(t=\"@wrap nop\n{{html._terminal_prewrap_content_.<}}\")}}"\
           wc_close_content="{{code.pushlines(t=\"{{html._terminal_prewrap_content_.>}}\n@parw 1\")}}"\
+          wrapID="html._terminal_prewrap_content_"\
+          sID="terminal2"\
           _help="[var.div_help_var_term2]"
 [code.attr_replace_str(s_str="$DIVNAME$" r_str="terminal2" attr="var.terminal2._help")]
 
