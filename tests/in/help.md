@@ -2,8 +2,6 @@
 
 [var.testdoc.begin(title="help.md" desc="Testing the built in help")]
 
-//TODO.md: Create a macro that wraps the .?, ._help, and .??
-
 [code.esc_angles.?]
 [code.esc_angles.??]
 

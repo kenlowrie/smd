@@ -257,7 +257,6 @@
 
 // specialized ordered and unordered lists
 //TODO.md: Might want to consider adapting the Note DIVs to follow this model, or vice-versa
-//TODO.md: Finish writing the _help strings for all these builtins.
 
 @var _="_lists_"\
       _format="@@ {{self._inline}}"\
@@ -274,11 +273,6 @@
       _close="@@{{self._close_inline}}\n@parw 1"\
       _content="{{html.li.<}}{{self.c}}{{html.li.>}}"\
       _help="[var.div_help_var_lists]"
-
-//    {{var._lists_.get_wrap}}
-//    get_wrap="@wrap [!code.wrap_stack(w=\"tag.<\")!],html.li"
-//    wc_open_inline="{{code.pushlines(t=\"@wrap li\n@@{{self._open_inline}}\")}}"
-//    wc_close_inline="{{code.pushlines(t=\"@@{{self._close_inline}}\n@parw 1\")}}"
 
 @var _="ulist"\
       _inherit="_lists_"\

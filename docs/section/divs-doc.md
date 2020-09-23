@@ -113,9 +113,6 @@ Consider the following markdown:
 
 The parser emits the following:
 
-//TODO.md: We cannot escape_var these things that do {{pushlines}}. 
-//TODO.md: Not easily fixable. getValue() does a markdown, which does the pushline,...
-
 [section.wc_open]
 
 and now we have to write [e_var.b(t="section.wc_close")] which will close the previous div.
@@ -467,9 +464,6 @@ Consider the following markdown:
 [terminal.wc_close]
 
 The parser emits the following:
-
-//TODO.md: We cannot escape_var these things that do {{pushlines}}. 
-//TODO.md: Not easily fixable. getValue() does a markdown, which does the pushline,...
 
 [note.wc_open]
 

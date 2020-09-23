@@ -216,7 +216,7 @@ Changing d0.newattr="newval"
 @set _="d0" newattr="newval"
 Which now causes d0.extraattr to have a new value = **[d0.extraattr]**
 
-//TODO.md:
+//TODO.md: someday maybe expose ability to remove an attribute?
 can we remove an attribute?
 
 [pushline(t="@set _ns=\"[ns]\" _id=\"id1\" attr1=\"New Value\" [var.code_helper]")]

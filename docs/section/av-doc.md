@@ -17,12 +17,10 @@ The **AVS** builtins provide everything you need to create A/V-style scripts, fr
 
 Although there are a number of markdown files in the **avs** directory, the two you will use primarily are:
 
-[ulistplain.wc_open]
+[ulistplain.wc_tag_open]
     **[E.lb]sys.imports[E.rb]/avs/avshot.md** - for simple A/V scripts
     **[E.lb]sys.imports[E.rb]/avs/avs.md** - for access to the shot breakdown builtins.
-[ulistplain.wc_close]
-
-[TODO] Review where **avshot** used by including **avs.md** and change to **avshot.md** where it makes sense...
+[ulistplain.wc_tag_close]
 
 Let's see a quick example now. Consider the following markdown:
 
@@ -81,7 +79,12 @@ In the upcoming [link.examples._qlink(_qtext="Samples")] chapters, we will cover
 
 [wrap_h.section(t="### Guide to the Sample Documents")]
 
-Before we leave this chapter, here's a guide to each of the examples provided in the upcoming chapters. This should point you to which specific sample(s) you may want to review to jump start your project.
+Before we leave this chapter, here's a summary of the examples provided in the upcoming chapters. This should point you to which specific sample(s) you may want to review to jump start your project, although it's probably best that you read them in the order listed, since each one builds upon concepts covered in a predecessor.
 
-
-[TODO] Might be best to put links here with short summaries of the purpose of each example, so that we can direct the reader to specific sections for review...
+[ulistplain.wc_tag_open]
+     Sample 1 - [link.ug_samp_proposal._qlink(_qtext="Creating a Project Proposal")]
+     Sample 2 - [link.ug_samp_avscript._qlink(_qtext="How to use the *avshot* builtin")]
+     Sample 3 - [link.ug_samp_shots._qlink(_qtext="Real World Example - AAT A/V script using *avshot*")]
+     Sample 4 - [link.ug_samp_film._qlink(_qtext="A Music Video Treatment")]
+     Sample 5 - [link.ug_samp_images._qlink(_qtext="Using the Advanced Image and Shot Support")]
+[ulistplain.wc_tag_close]

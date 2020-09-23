@@ -451,6 +451,7 @@ NAMESPACE: link<br />
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>avs/shot.md builtins</h3></div>
 <div class="extras"><p>Moving on, let's now spend some time looking at the more powerful builtins that are included in the <strong>sys.imports/avs/shot.md</strong> file that are part of <strong>smd</strong>. As we did previously, let's start by having a look at the help strings for the macros we will be using.</p></div>
 <div class="extras"><p>Note that we won't look at all the building blocks in <strong>shot.md</strong>, just the more common things that you will use when writing A/V style markdown documents with shots and images. We will start with the factories: <strong>image_factory</strong>, <strong>image_factory_abs_style</strong> and <strong>shot_factory</strong>, which are used to create images and shots respectively, on the fly. The two image factories have additional macros to assist you, <strong>image_factory_config</strong> and <strong>_img_template_</strong>.</p></div>
+<div class="extras">
 <ol class="olist">
 <li><strong>image_factory</strong> - The most commonly used macro</li>
 <li><strong>image_factory_abs_style</strong> - A variant that allows CSS styles to be specified directly</li>
@@ -458,6 +459,7 @@ NAMESPACE: link<br />
 <li><strong>_img_template_</strong> - The template that is used when either factory creates a new @image variable.</li>
 <li><strong>shot_factory</strong> - A macro used to create a variable to store the technical aspects of an image.</li>
 </ol>
+</div>
 <div class="extras"><p class="note blue">
 <span class="bigandbold">What is a shot?<br /><br /></span>
 In this context, think of a <em>shot</em> as a way to describe the image in a technical fashion. Things like the camera information (lens, aperture, ISO, etc.) and even textual information. Because the two are <em>related</em>, this is one exception to the rule of avoiding using identical names across variables in namespaces. For this case, it makes sense to create both an <strong>&#64;image</strong> <em>shot1</em> and an <strong>&#64;var</strong> <em>shot1</em>. Later on, we will see how this is used to create even more flexible macros.

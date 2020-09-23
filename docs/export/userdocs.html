@@ -10,9 +10,9 @@
 <div class="wrapper">
 <h1 class="blue center">Script Markdown User Manual</h1>
 <div class="cover"><h3>Script Markdown Utility</h3><p><strong>This guide is NOT Confidential</strong></p><p class="coverSummary">This manual describes the <em>Script Markdown Utility</em>, its features, purpose and more. I've packed it with examples too, so hopefully after you read it, you'll know all you need to know about how to use it to create script markdown documents quickly, easily and most important, efficiently. <strong>Enjoy!</strong><br /><br /><em><strong>NOTE:</strong></em> Additional samples that might be worth reviewing are those in the unit test code located here: <em><strong>(../tests/in/&ast;.md)</strong></em>. Keep in mind that the unit test code is meant to stress test the parser as well as the limits and edges of the syntax of smd, so in some cases it might be confusing or even contradictory to what the user guide covers!</p></div>
-<div class="revision"><p class="revTitle">Revision: <em><strong>0.4.2</strong></em> (20200922 @ 07:22:10) </p></div>
-<div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2018-2020 by <a href="https://cloudylogic.com">Cloudy Logic Studios</a>, LLC.<br />All Rights Reserved.<br />www.cloudylogic.com<br /></td><td class="right nowrap" style="border:none">Ken Lowrie<br /><em>512-867-5309</em><br /><a href="m&#97;&#105;&#x6c;&#x74;o&#58;&#121;&#x6f;&#x75;&#64;&#121;&#111;&#x75;&#x72;do&#109;&#x61;&#x69;&#x6e;&#46;&#99;&#111;&#x6d;">me@mydomain.com</a><br /></td></tr></table></div>
-<div class="review"><p class="divTitle">Notes to Reviewer</p><p>    Please send <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x6d;&#101;&#x40;&#109;&#x79;&#100;&#x6f;&#109;&#x61;&#105;&#x6e;&#46;&#x63;&#111;&#x6d;&#63;&#x73;&#117;&#x62;j&#x65;c&#x74;=&#x53;c&#x72;i&#x70;t&#x25;2&#x30;M&#97;r&#107;d&#111;w&#110;%&#50;&#x30;&#85;&#x74;&#105;&#x6c;&#105;&#x74;&#121;&#x25;&#50;&#x30;&#70;&#x65;&#101;&#x64;&#98;&#x61;&#99;&#x6b;">Ken Lowrie</a> any and all feedback, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. Within different versions of this proposal, <ins>additions are marked like this</ins> and <del>deletions are marked like this</del></p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>0.4.2</strong></em> (20200923 @ 07:18:09) </p></div>
+<div class="contact"><table style="border:none"><tr style="border:none"><td class="left nowrap" style="border:none">Copyright (c) 2018-2020 by <a href="https://cloudylogic.com">Cloudy Logic Studios</a>, LLC.<br />All Rights Reserved.<br />www.cloudylogic.com<br /></td><td class="right nowrap" style="border:none">Ken Lowrie<br /><em>512-867-5309</em><br /><a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x79;&#x6f;&#x75;&#x40;&#x79;&#x6f;&#x75;&#x72;&#x64;&#x6f;&#x6d;&#x61;&#x69;&#110;&#46;&#99;&#111;&#109;">me@mydomain.com</a><br /></td></tr></table></div>
+<div class="review"><p class="divTitle">Notes to Reviewer</p><p>    Please send <a href="&#x6d;&#97;&#105;l&#x74;&#x6f;&#58;&#109;e&#x40;&#x6d;&#121;&#100;o&#x6d;&#x61;&#105;n&#46;&#x63;&#x6f;&#109;?&#x73;&#x75;&#98;&#106;e&#x63;&#x74;&#61;&#83;c&#x72;&#x69;&#112;t%&#x32;&#x30;&#77;a&#x72;&#x6b;&#100;&#111;w&#x6e;&#x25;&#50;&#48;U&#x74;&#x69;&#108;it&#x79;&#x25;&#50;0&#x46;&#x65;&#101;&#100;b&#x61;&#x63;&#107;">Ken Lowrie</a> any and all feedback, preferably by marking up the PDF using embedded comments. If you edit the PDF text, do so inline using comment boxes, or if you edit the text directly, change the color and/or font size so I can easily find it. Within different versions of this proposal, <ins>additions are marked like this</ins> and <del>deletions are marked like this</del></p></div>
 <a id="toc"></a>
 <div class="toc"><p class="divTitle">Table of Contents - SMD User Guide<br /><br /></p>
 <p><a href="#ug_setup">Setup SMD</a> - <strong>How to setup SMD in your environment</strong><br /></p>
@@ -94,7 +94,6 @@
 </div>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h1>smd - The Script Markdown Processor</h1></div>
 <div class="extras"><p>Welcome to the user manual for <strong>smd</strong>, the <strong>Script Markdown</strong> Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of <strong>smd</strong>, and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!</p></div>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span> The release process should smdparse -f userdocs.md -c -d export so the rendered version of the documentation is part of the repository. This is required because the instructions in the README.md say "open this file with your browser" to read the docs current with the release you are looking at...</p></div>
 <a id="ug_setup"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Setting up smd</h2></div>
 <div class="extras"><p>There are two approaches to installing <strong>SMD</strong> on your system; either using <strong>pip</strong> or <strong>pipenv</strong>. This chapter will cover both methods, and you can choose which is better for you.</p></div>
@@ -1459,18 +1458,18 @@ Now &lsqb;link.sample&rsqb; emits: <a href="http://example.com" title="my link t
 </pre></div>
 <div class="extras"><p>I've defined the previous examples inline in the user docs, so now we can use them by using either of these methods:</p></div>
 <div class="extras"><p><strong>&lsqb;link.email_me.&lt;&rsqb;email_me&lsqb;link.email_me.&gt;&rsqb;</strong> emits this:<br /></p></div>
-<div class="extras"><p><span class="indent"><em>&lt;a href="&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#58;&amp;#109;e&amp;#64;d&amp;#x6f;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#110;&amp;#46;&amp;#99;&amp;#111;m"&gt;</em>email_me<em>&lt;/a&gt;</em></span></p></div>
-<div class="extras"><p>which the browser renders like this: <a href="&#109;a&#x69;l&#x74;&#111;&#x3a;&#109;e&#x40;d&#x6f;&#109;&#x61;&#105;&#x6e;&#46;c&#x6f;m">email me</a>.</p></div>
+<div class="extras"><p><span class="indent"><em>&lt;a href="mailto&amp;#58;me&amp;#64;do&amp;#109;&amp;#97;&amp;#105;&amp;#110;&amp;#46;&amp;#99;&amp;#111;&amp;#109;"&gt;</em>email_me<em>&lt;/a&gt;</em></span></p></div>
+<div class="extras"><p>which the browser renders like this: <a href="m&#97;&#105;&#x6c;&#x74;o&#58;&#109;&#x65;&#x40;d&#111;&#109;&#x61;&#x69;n&#46;&#99;&#x6f;&#x6d;">email me</a>.</p></div>
 <div class="extras"><p class="note blue">
 <strong>Wait, what the ... happened to the href?</strong>
 <br /><br />
-<span class="indent"><em>&lt;a href="m&amp;#97;&amp;#x69;&amp;#x6c;t&amp;#111;&amp;#x3a;&amp;#x6d;e&amp;#64;&amp;#x64;&amp;#x6f;m&amp;#97;&amp;#x69;&amp;#x6e;&amp;#46;&amp;#99;&amp;#111;&amp;#x6d;"&gt;</em></span>
+<span class="indent"><em>&lt;a href="&amp;#x6d;&amp;#x61;&amp;#105;&amp;#108;t&amp;#x6f;&amp;#x3a;&amp;#x6d;&amp;#101;&amp;#64;d&amp;#x6f;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#110;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d;"&gt;</em></span>
 <br /><br />
 How come the <strong>href</strong> on the link is all jacked up? Actually, this is intentional! It encodes the email address in a way that makes it a bit more challenging for <strong>spambots</strong> and other web scraper tools to detect an email address. Not impossible, but definitely more challenging! In addition, every time the parser runs the output will be slightly different, yet the link and the behavior remain consistent and correct! Just a cool side benefit to how <strong>smd</strong> parses and encodes links that use a <strong>mailto</strong> prefix on the <strong>href</strong>.
 </p></div>
 <div class="extras"><p>Getting back to <strong>mailto</strong> links, let's take a look at the other example, the one created with the link factory. The variable name for it is <strong>feedback</strong>, and to use the link, all we need to write is <strong>&lsqb;feedback&rsqb;</strong>, which is much easier and cleaner than having to use the link open and close tags as before.</p></div>
-<div class="extras"><p>When we do that, the browser will display <a href="m&#97;&#105;&#108;&#x74;&#x6f;&#x3a;us&#101;&#114;&#64;&#x6d;&#x79;&#x64;om&#97;&#105;&#x6e;&#x2e;&#x63;&#x6f;m&#63;&#115;&#117;&#x62;&#x6a;&#x65;ct&#61;&#102;&#101;&#x61;&#x74;&#x75;re&#37;&#50;&#x30;&#x66;&#x65;&#x65;db&#97;&#99;&#x6b;">Send feedback</a>, which is exactly what we need. If you'll recall from the discussion on the link factory before, you also have access to the <strong>_qlink</strong> attribute, so we can create custom alternate text on the fly.</p></div>
-<div class="extras"><p>For example, if we write <strong>&lsqb;feedback._qlink(_qtext="I would love to get your feedback!")]</strong>, then this is what the browser would display: <a href="&#x6d;&#97;i&#x6c;&#116;o&#x3a;&#117;s&#x65;&#x72;&#64;&#x6d;&#x79;&#100;o&#x6d;&#97;i&#x6e;&#46;c&#x6f;&#109;&#63;&#x73;&#x75;&#98;j&#x65;&#99;t&#x3d;&#102;e&#x61;&#116;u&#x72;&#x65;&#37;&#x32;&#x30;&#102;e&#x65;&#100;b&#x61;&#99;k">I would love to get your feedback!</a></p></div>
+<div class="extras"><p>When we do that, the browser will display <a href="&#x6d;&#97;&#105;l&#x74;&#x6f;&#58;&#117;s&#x65;&#x72;&#64;&#109;y&#x64;&#x6f;&#109;ai&#x6e;&#x2e;&#99;o&#x6d;&#x3f;&#115;&#117;b&#x6a;&#x65;&#99;&#116;=&#x66;&#x65;&#97;tu&#x72;&#x65;&#37;2&#x30;&#x66;&#101;&#101;d&#x62;&#x61;&#99;&#107;">Send feedback</a>, which is exactly what we need. If you'll recall from the discussion on the link factory before, you also have access to the <strong>_qlink</strong> attribute, so we can create custom alternate text on the fly.</p></div>
+<div class="extras"><p>For example, if we write <strong>&lsqb;feedback._qlink(_qtext="I would love to get your feedback!")]</strong>, then this is what the browser would display: <a href="&#109;&#x61;i&#108;&#x74;o&#58;&#x75;s&#x65;&#x72;&#64;&#x6d;y&#100;&#x6f;m&#97;&#x69;n&#46;&#x63;&#111;&#x6d;&#x3f;&#115;&#x75;b&#106;&#x65;c&#116;&#x3d;f&#x65;&#x61;&#116;&#x75;r&#101;&#x25;2&#48;&#x66;e&#101;&#x64;&#98;&#x61;&#x63;&#107;">I would love to get your feedback!</a></p></div>
 <div class="extras"><p>And so we come to the end of the <strong>&#64;link</strong> chapter. Built upon the <strong>&#64;html</strong> namespace, <strong>&#64;link</strong> offers some cool features for creating and using hyperlinks if your markdown documents. Next up, is the <strong>&#64;image</strong> namespace.</p></div>
 <div class="extras"><p><a href="#toc">Table of Contents</a></p></div>
 <a id="ug_ns_image"></a>
@@ -1810,7 +1809,7 @@ myshot=
 &nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
 &nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
 &nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
-&nbsp;&nbsp;<strong>_last=</strong>20200922 @ 07:22:10<br />
+&nbsp;&nbsp;<strong>_last=</strong>20200923 @ 07:18:09<br />
 &nbsp;&nbsp;<strong>_params_=</strong>{}<br />
 <br />
 </p></div>
@@ -3554,11 +3553,12 @@ The next line will contain: <em>&lsqb;note.wc_close&rsqb;</em>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>The <strong>AVS</strong> builtin library</h3></div>
 <div class="extras"><p>The <strong>AVS</strong> builtins provide everything you need to create A/V-style scripts, from the simple, mostly text based scripts, to complex shot-breakdown documents that help you communicate your vision to everyone, be it your Executive Producers or the all important Crew Members!</p></div>
 <div class="extras"><p>Although there are a number of markdown files in the <strong>avs</strong> directory, the two you will use primarily are:</p></div>
+<div class="extras">
 <ul class="ulist-plain">
 <li><strong>&lsqb;sys.imports&rsqb;/avs/avshot.md</strong> - for simple A/V scripts</li>
 <li><strong>&lsqb;sys.imports&rsqb;/avs/avs.md</strong> - for access to the shot breakdown builtins.</li>
 </ul>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span> Review where <strong>avshot</strong> used by including <strong>avs.md</strong> and change to <strong>avshot.md</strong> where it makes sense...</p></div>
+</div>
 <div class="extras"><p>Let's see a quick example now. Consider the following markdown:</p></div>
 <div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Generate a simple AV shot</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
 &#64;import "&lsqb;sys.imports&rsqb;/avs/avshot.md"
@@ -3601,8 +3601,16 @@ The next line will contain: <em>&lsqb;note.wc_close&rsqb;</em>
 <div class="extras"><p>In both the <strong>.visual</strong> and <strong>.audio</strong> sections, you can have as much information as required, just keep writing, even starting new regular paragraphs. You can insert any markdown as well, to aid your reader in understanding what you want. When you're done, close out the one shot, and start another. You know, lather, rinse, repeat...</p></div>
 <div class="extras"><p>In the upcoming <a href="#examples">Samples</a> chapters, we will cover <strong>avshot</strong> in much more detail as well as the entire set of <strong>avs</strong> builtins... For now, this hopefully provided a quick introduction to what's in store!</p></div>
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>Guide to the Sample Documents</h3></div>
-<div class="extras"><p>Before we leave this chapter, here's a guide to each of the examples provided in the upcoming chapters. This should point you to which specific sample(s) you may want to review to jump start your project.</p></div>
-<div class="extras"><p><span class="bigandbold red">TODO:&nbsp;</span> Might be best to put links here with short summaries of the purpose of each example, so that we can direct the reader to specific sections for review...</p></div>
+<div class="extras"><p>Before we leave this chapter, here's a summary of the examples provided in the upcoming chapters. This should point you to which specific sample(s) you may want to review to jump start your project, although it's probably best that you read them in the order listed, since each one builds upon concepts covered in a predecessor.</p></div>
+<div class="extras">
+<ul class="ulist-plain">
+<li>Sample 1 - <a href="#ug_samp_proposal">Creating a Project Proposal</a></li>
+<li>Sample 2 - <a href="#ug_samp_avscript">How to use the <em>avshot</em> builtin</a></li>
+<li>Sample 3 - <a href="#ug_samp_shots">Real World Example - AAT A/V script using <em>avshot</em></a></li>
+<li>Sample 4 - <a href="#ug_samp_film">A Music Video Treatment</a></li>
+<li>Sample 5 - <a href="#ug_samp_images">Using the Advanced Image and Shot Support</a></li>
+</ul>
+</div>
 <div class="extras"><p><a href="#toc">Table of Contents</a></p></div>
 <a id="ug_debug"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Debugging your markdown files</h2></div>
@@ -3862,6 +3870,7 @@ Traceback (most recent call last):
 <a id="examples"></a>
 <div class="extras" style="border-bottom:5px solid green;color:green"><h2>Sample Projects built with smd</h2></div>
 <div class="extras"><p>We will now look at several different examples created with <strong>smd</strong> that show some of what you can do with this app. Most of these samples were taken from actual projects I did, with just some minor cleanup to hopefully give you ideas and/or a starting point for creating your own content.</p></div>
+<div class="extras">
 <ul class="ulist-plain">
 <li>Sample 1 - <a href="#ug_samp_proposal">Creating a Project Proposal</a></li>
 <li>Sample 2 - <a href="#ug_samp_avscript">How to use the <em>avshot</em> builtin</a></li>
@@ -3869,6 +3878,7 @@ Traceback (most recent call last):
 <li>Sample 4 - <a href="#ug_samp_film">A Music Video Treatment</a></li>
 <li>Sample 5 - <a href="#ug_samp_images">Using the Advanced Image and Shot Support</a></li>
 </ul>
+</div>
 <div class="extras"><p>I recommend reading them in order, since each builds upon concepts covered in one or more of the prior examples.</p></div>
 <div class="extras"><p><a href="#toc">Table of Contents</a></p></div>
 <a id="ug_samp_proposal"></a>
@@ -3940,7 +3950,7 @@ Finally, keep in mind that final media will not be released until all invoices a
 </ol>
 </div>
 <div class="extras"><p>Thanks again for choosing [Cloudy Logic Studios] for your production needs. We look forward to working with you on this project.</p></div>
-<div class="extras"><p>Please let <a href="&#x6d;&#97;i&#x6c;&#116;o&#x3a;&#x79;&#111;&#x75;&#x40;&#121;o&#x75;&#114;d&#x6f;&#x6d;&#97;&#x69;&#x6e;&#46;c&#x6f;&#109;">me@mydomain.com</a> know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.</p></div>
+<div class="extras"><p>Please let <a href="ma&#105;&#108;&#x74;&#x6f;&#x3a;&#x79;ou&#64;&#121;&#111;&#x75;&#x72;&#x64;om&#97;&#105;&#110;&#x2e;&#x63;&#x6f;&#x6d;">me@mydomain.com</a> know if you have any questions regarding this estimate, or if you need any clarifications and/or changes.</p></div>
 <div class="extras"><p>Warmest regards,</p></div>
 <div class="extras"><p><span class="bigandbold">Firstname LastName</span><br />Producer<br />Production Company<br />512.867.5309<br />__DELETEME__mailto:you@youremailaddress.com</p></div>
 <div class="extras"><p><h2 class="pbb"><span style="text-decoration:underline">Terms and Signatures</span></h2></p></div>
@@ -4390,6 +4400,7 @@ Finally, keep in mind that final media will not be released until all invoices a
 <div class="extras" style="border-bottom:3px solid black;color:green"><h3>avs/shot.md builtins</h3></div>
 <div class="extras"><p>Moving on, let's now spend some time looking at the more powerful builtins that are included in the <strong>sys.imports/avs/shot.md</strong> file that are part of <strong>smd</strong>. As we did previously, let's start by having a look at the help strings for the macros we will be using.</p></div>
 <div class="extras"><p>Note that we won't look at all the building blocks in <strong>shot.md</strong>, just the more common things that you will use when writing A/V style markdown documents with shots and images. We will start with the factories: <strong>image_factory</strong>, <strong>image_factory_abs_style</strong> and <strong>shot_factory</strong>, which are used to create images and shots respectively, on the fly. The two image factories have additional macros to assist you, <strong>image_factory_config</strong> and <strong>_img_template_</strong>.</p></div>
+<div class="extras">
 <ol class="olist">
 <li><strong>image_factory</strong> - The most commonly used macro</li>
 <li><strong>image_factory_abs_style</strong> - A variant that allows CSS styles to be specified directly</li>
@@ -4397,6 +4408,7 @@ Finally, keep in mind that final media will not be released until all invoices a
 <li><strong>_img_template_</strong> - The template that is used when either factory creates a new @image variable.</li>
 <li><strong>shot_factory</strong> - A macro used to create a variable to store the technical aspects of an image.</li>
 </ol>
+</div>
 <div class="extras"><p class="note blue">
 <span class="bigandbold">What is a shot?<br /><br /></span>
 In this context, think of a <em>shot</em> as a way to describe the image in a technical fashion. Things like the camera information (lens, aperture, ISO, etc.) and even textual information. Because the two are <em>related</em>, this is one exception to the rule of avoiding using identical names across variables in namespaces. For this case, it makes sense to create both an <strong>&#64;image</strong> <em>shot1</em> and an <strong>&#64;var</strong> <em>shot1</em>. Later on, we will see how this is used to create even more flexible macros.

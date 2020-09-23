@@ -71,9 +71,6 @@
 
 Welcome to the user manual for [smd.b], the [smd.short_b] Processor that can take plain text files written in a specialized markdown syntax and turn them into rich HTML documents. This guide will take you through installation and setup of [smd.b], and then show you how you can use it to create all sorts of interesting and cool HTML projects. So let's get going!
 
-[TODO] The release process should smdparse -f userdocs.md -c -d export so the rendered version of the documentation is part of the repository. This is required because the instructions in the README.md say "open this file with your browser" to read the docs current with the release you are looking at...
-
-
 @import "$/section/setup-doc.md"
 [link.toc.link]
 @import "$/section/cmdline-doc.md"
@@ -147,13 +144,13 @@ Now that you've got the basics out of the way, it's time to dig in a little deep
 
 We will now look at several different examples created with [smd.b] that show some of what you can do with this app. Most of these samples were taken from actual projects I did, with just some minor cleanup to hopefully give you ideas and/or a starting point for creating your own content.
 
-[ulistplain.wc_open]
+[ulistplain.wc_tag_open]
      Sample 1 - [link.ug_samp_proposal._qlink(_qtext="Creating a Project Proposal")]
      Sample 2 - [link.ug_samp_avscript._qlink(_qtext="How to use the *avshot* builtin")]
      Sample 3 - [link.ug_samp_shots._qlink(_qtext="Real World Example - AAT A/V script using *avshot*")]
      Sample 4 - [link.ug_samp_film._qlink(_qtext="A Music Video Treatment")]
      Sample 5 - [link.ug_samp_images._qlink(_qtext="Using the Advanced Image and Shot Support")]
-[ulistplain.wc_close]
+[ulistplain.wc_tag_close]
 
 I recommend reading them in order, since each builds upon concepts covered in one or more of the prior examples. 
 

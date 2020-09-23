@@ -73,13 +73,13 @@ Moving on, let's now spend some time looking at the more powerful builtins that 
 
 Note that we won't look at all the building blocks in **shot.md**, just the more common things that you will use when writing A/V style markdown documents with shots and images. We will start with the factories: **image_factory**, **image_factory_abs_style** and **shot_factory**, which are used to create images and shots respectively, on the fly. The two image factories have additional macros to assist you, **image_factory_config** and **_img_template_**.
 
-[olist.wc_open]
+[olist.wc_tag_open]
 **image_factory** - The most commonly used macro
 **image_factory_abs_style** - A variant that allows CSS styles to be specified directly
 **image_factory_config** - A macro used to change the default styles used by the two previous macros
 **_img_template_** - The template that is used when either factory creates a new @image variable.
 **shot_factory** - A macro used to create a variable to store the technical aspects of an image.
-[olist.wc_close]
+[olist.wc_tag_close]
 
 [bluenote.wc_open]
 {:.bigandbold}What is a shot?[bb]
@@ -404,8 +404,6 @@ That markdown will render as follows:
 [shot_factory(nm="shot38")]
 [var.shot38._null_(d="*WS: Drone flying over pasture*" c="No" l="50mm")]
 [shotdetail.needshot(shotid="shot38")]
-
-//TODO.py: Consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r support...
 
 Of course we can also use the **shotdetail** builtin inside **avshot** sequences as well. For example:
 
