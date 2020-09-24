@@ -1,92 +1,57 @@
-###Table of Contents
-[link.bm_factory(nm="inlinemd", t="Inline Markdown")]
-[link.bm_factory(nm="links", t="Links")]
-[link.bm_factory(nm="inline_links", t="Inline Links")]
-[link.bm_factory(nm="ref_links", t="Reference Links")]
-[link.bm_factory(nm="auto_links", t="Automatic Links")]
+@import "$/testsetup.md"
 
-[link.inlinemd.link] - **Formatting content inline**
-[link.links.link] - **Inline and Reference Link Styles**
-[link.inline_links.link] - **Creating links inline**
-[link.ref_links.link] - **Creating reference links**
-[link.auto_links.link] - **Creating automatic links**
+[var.testdoc.begin(title="markdown.md" desc="Testing markdown")]
 
 // markdown tests
-[link.inlinemd]
-*emphasis*
-**strong**
-***emphasis and strong***
-++this is added++
-~~this is deleted~~
+*emphasis*[b]
+**strong**[b]
+***emphasis and strong***[b]
+++this is added++[b]
+~~this is deleted~~[b]
 // blank lines
 
     
-    
+
 // multiple markdowns
-*emphasis* and regular and **strong** and regular and ***both***
-not at start *emphasis* and regular and **strong** and regular and ***both***
-not or start *emphasis* and regular and **strong** and regular and ***both*** or end
-++this is added++ and ~~this is deleted~~
-n o s ++this is added++ and ~~this is deleted~~
-nos ++this is added++ and ~~this is deleted~~ or end
+*emphasis* and regular and **strong** and regular and ***both***[b]
+not at start *emphasis* and regular and **strong** and regular and ***both***[b]
+not or start *emphasis* and regular and **strong** and regular and ***both*** or end[b]
+++this is added++ and ~~this is deleted~~[b]
+n o s ++this is added++ and ~~this is deleted~~[b]
+nos ++this is added++ and ~~this is deleted~~ or end[b]
 
 // nested
-*emphasis and **strong** and ++new stuff++ and ~~old stuff~~*
-*emphasis and **strong** and ~~old ++new stuff inside++ stuff~~ and ~~old stuff~~*
+*emphasis and **strong** and ++new stuff++ and ~~old stuff~~*[b]
+*emphasis and **strong** and ~~old ++new stuff inside++ stuff~~ and ~~old stuff~~*[b]
 
 // headers
+@wrap html.divx
 # h1
 ## h2
 ### h3
 #### h4
 ##### h5
 ###### h6
+@parw
 
-#h1
+[wrap_h(t="#h1")]
 words
-##h2
+[wrap_h(t="##h2")]
 words
-###h3
+[wrap_h(t="###h3")]
 words
-####h4
+[wrap_h(t="####h4")]
 words
-#####h5
+[wrap_h(t="#####h5")]
 words
-######h6
+[wrap_h(t="######h6")]
 words
 
-// links
-[link.links]
-##Links
-This is a section about links
-[link.inline_links]
-###Inline Style:
+[wrap_h(t="# header with leading space")]
+[wrap_h(t="## header with leading tab &lpar;which my editor converts to spaces&rpar;")]
 
-The next paragraph has inline links defined: This is **&#91;an example]:(http://example.com/ "Inline Link Sample")** of an inline link. **&#91;This inline link]:(http://example.net/)** has no title attribute.
+header markdown must be first thing on the line. # This will not be a header.
+@@header markdown must be first thing on the line. # This will not be a header, even if you use @raw...
 
-@link _="sample1" _inherit="_template_" title="Inline Link Sample" href="http://example.com"
-@link _="sample2" _inherit="_template_" href="http://example.net"
-
-This is [link.sample1(_text="an example")] of an inline link. [link.sample2(_text="This inline link")] has no title attribute.
-
-Inline links can occur anywhere in the text. Once an inline link has been processed the first time, the link ID, i.e. the part between the [ ], can be used over and over. e.g.: [link.sample1].
-
-[link.ref_links]
-###Reference Style:
-Reference links use the format [linkID]:url "optional title". Essentially, just like inline links, but without the ( ) surrounding the URL and optional title.
-
-The reference link style **must** be placed at the beginning of a line. Unlike true Markdown, reference links *must* be defined before they are referenced in the document. Let's create a reference link for the Google Home Page.
-
-{:.indent}####@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com"
-@link _="Google" _inherit="_template_" title="Google Search Page" href="https://google.com" _text="{{self._}}"
-
-If I write &#91;Google], it is wrapped like so: [Google].
-
-Now, I can go ahead and write **&#91;inline 2]**, like this: [inline 2], and it's a valid link!
-[link.auto_links]
-###Automatic links
-The final type of link format is automatic links. Automatic links are created by simply wrapping a URL with ***&lt; &gt;*** like this: <http://www.cloudylogic.com>. When you do that, the URL (everything between the angle brackets) is wrapped with an **A** tag whose **HREF** attribute is the URL. Unfortunately, this is no longer supported. However, the default template for links includes an attribute *_asurl*, which returns the href styled appropriately. For example: [link.Google._asurl]
-
-&nbsp;
-
-@dump var="." link="."
+@set dump_ns_list="var=\".\""
+[var.testdoc.end]

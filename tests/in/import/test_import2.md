@@ -1,3 +1,2 @@
 @import '$echo.md'
-@import '$/echo.md'
-And that's it.
+@import '$/echo2.md'

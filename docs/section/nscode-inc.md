@@ -1,0 +1,13 @@
+[link.bm_factory(nm="ug_ns_code" t="@code Namespace")]
+[link.bm_factory(nm="ug_code_syntax", t="Syntax")]
+[link.bm_factory(nm="ug_code_names", t="Names")]
+[link.bm_factory(nm="ug_code_attrs", t="Attributes")]
+[link.bm_factory(nm="ug_code_builtins", t="Builtins")]
+[link.bm_factory(nm="ug_code_misc", t="Miscellaneous")]
+
+[tab.<][link.ug_ns_code.link] - **[smdcode.il] Namespace**[tab.>][b]
+[tab.<][tab.<][link.ug_code_syntax.link] - **Syntax for [smdcode.il] Variables**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_code_names.link] - **Variable Names**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_code_attrs.link] - **Built-in Attributes**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_code_builtins.link] - **Built-in Macros**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_code_misc.link] - **More examples using [smdcode.il]**[tab.>][tab.>][b]

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: html.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing @html namespace</h3>
+<div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
+<div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@html</strong></em> namespace</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a2&rsqb; --> <a2></a2></p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> <a3></a3></p></div>
+<div class="extras"><p>&lsqb;html.a4&rsqb; --> a4_rval</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD</h3></p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;html.a2] --> <a2></a2></p></div>
+<div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{html.a1}}  -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+<div class="extras"><p>[&lsqb;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a3] --> a3_rval</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a1<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a2<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a3<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a4<br />
+<br />
+</code>
+</div>
+WARNING: Use of reserved attribute name <em>_private_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}this is line 1 help text&lt;/em&gt;&lt;br /&gt;&lt;strong&gt;line2&lt;/strong&gt; help text.<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>invalid-attribute<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _help=\"<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.\" _format=\"<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>\" _tag=\"invalid-attribute\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>" _tag="invalid-attribute"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _help=\"<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.\" _format=\"<invalid-attribute run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></invalid-attribute>\" _tag=\"invalid-attribute\"</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _help, _format, _tag,</p></div>
+<div class="extras"><p><em><strong>null</strong></em> =</p></div>
+<div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>run</strong></em> = code.var.run</p></div>
+<div class="extras"><p><em><strong>_code</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_params_</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_help</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>?</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>??</strong></em> = invalid-attributethis is line 1 help text
+line2 help text.</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legitimate variable = [a4._rval]</p></div>
+<div class="extras"><p><em><strong>No help available</strong></em> on legitimate variable = <em>No help available</em></p></div>
+<div class="extras"><p><em><strong>[a4._help]</strong></em> on legitimate variable = [a4._help]</p></div>
+<div class="extras"><p>invalid-attribute.not_private = YES</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
+<div class="extras"><p>Test @html with no parameters</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@html _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<div class="extras"><p>--> @html _="b1" _format="mix of attrs" 123attr="nope"</p></div>
+<div class="extras"><p>--> {{self.line}} src="print()" type="eval"</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>b1<br />
+<br />
+<strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+<div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
+<div class="extras"><p>because when <br /><br />.code=<em>@html _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.html=<em>@html _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+<br />
+<div class="extras"><p></p></div></p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns&rsqb;.c1] = 1 or 1</p></div>
+<div class="extras"><p>[&lsqb;ns&rsqb;.c2] = 1 or 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>9<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>&lsqb;c1&rsqb; = 1</p></div>
+<div class="extras"><p>&lsqb;c2&rsqb; = 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
+<div class="extras"><p>&lsqb;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+</code>
+</div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
+<div class="extras"><p>Current value for &lsqb;ENC&rsqb;=<em>&nbsp;[smd_markdown_here]</em></p></div>
+<div class="extras"><p><h3>Create new variable using @set</h3></p></div>
+<div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.encode_smd(t="&amp;nbsp;{{self.c}}")}}<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="html" _="d0" _format="d0_rval" </strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>d0<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="html" _="d0" _format="d0_rval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="html" _="d0" _format="d0_rval" </em></p></div>
+<div class="extras"><p><strong>And change its default value</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>d0<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @html d0</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>d0<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newly added attribute<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now add the attribute extraattr to @html d0, and change newattr = fubar</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>d0<br />
+&nbsp;&nbsp;<strong>newattr=</strong>fubar<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
+<div class="extras"><p>Changing d0.newattr="newval"</p></div>
+<div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
+<div class="extras"><p>can we remove an attribute?</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id1<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>ATTR1 should be "New Value":</p></div>
+<div class="extras"><p><id1 attr1="New Value"></id1></p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
+<div class="extras"><p><id1 attr1="New Value" foo="bar"></id1></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id1<br />
+&nbsp;&nbsp;<strong>foo=</strong>bar<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
+<div class="extras"><p><id1 attr1="New Value" foo="nubar" bar="oldfu"></id1></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id1<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
+<div class="extras"><p><id2 foo="nubar" bar="oldfu"></id2></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id2<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
+<div class="extras"><p><id2 01="1" 02="2" 03="3" 04="4" 05="5" 06="6" 07="7" 08="8" 09="9" 10="10" 11="11" 12="12" 13="13" 14="14" 15="15" 16="16" 17="17" 18="18" 19="19" 20="20" 21="21" 22="22" 23="23" 24="24" 25="25"></id2></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id2<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
+<div class="extras"><p><id2 01="x1" 02="x2" 03="x3" 04="x4" 05="x5" 06="x6" 07="x7" 08="x8" 09="x9" 10="x10" 11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20" 21="21" 22="22" 23="23" 24="24" 25="25"></id2></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id2<br />
+<br />
+</code>
+</div>
+<div class="extras"><h1>------------------------------------------</h1></div>
+<div class="plain"><p class="plainTitle">Specific Namespace testing for <em><strong>@html</strong></em> namespace</p></div>
+<div class="plain"><p class="plainTitle">Testing @html builtin functions</p></div>
+<div class="extras"><p>0=@@ {{self.inline}}</p></div>
+<div class="extras"><p>1=@@ {{self.inline}}</p></div>
+<div class="extras"><p>2=@@ [self.inline]</p></div>
+<div class="extras"><p>3=@@ <div class="section"><p class="divTitle">section default title</p></div></p></div>
+<div class="extras"><p>3=&#64;&#64; &lsqb;var.section.inline&rsqb;</p></div>
+<div class="extras"><p>9=@@ &lt;div class="section"&gt;&lt;p class="divTitle"&gt;section default title&lt;/p&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p><br /><strong>v="_section_div"</strong><br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_}}></{{self._tag}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_]></[self._tag]></p></div>
+<div class="extras"><p>3=&lt;div class="section"&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p>9=&lt;div class="section"&gt;&lt;/div&gt;</p></div>
+<div class="extras"><p><br /><strong>v="_section_div.&lt;"</strong><br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_]></p></div>
+<div class="extras"><p>3=&lt;div class="section"&gt;</p></div>
+<div class="extras"><p>9=&lt;div class="section"&gt;</p></div>
+<div class="extras"><p><br /><strong>v="_section_div.&lt;+"</strong><br /></p></div>
+<div class="extras"><p>0=<{{self._tag}}{{self._public_attrs_esc_}}></p></div>
+<div class="extras"><p>1=<{{self._tag}}{{self._public_attrs_esc_}}></p></div>
+<div class="extras"><p>2=<[self._tag][self._public_attrs_esc_]></p></div>
+<div class="extras"><p>3=&lt;div class=\"section\"&gt;</p></div>
+<div class="extras"><p>9=&lt;div class=\"section\"&gt;</p></div>
+<div class="plain"><p class="plainTitle">Testing adding new @html builtins</p></div>
+<div class="plain"><p class="plainTitle">User manual sections for <strong>&#64;html</strong></p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest <strong>&#64;html</strong></p>
+<br />
+<span class="indent"><a href="#ug_ns_html">@html Namespace</a> - <strong>@html Namespace</strong></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_syntax">Syntax</a> - <strong>Syntax for &#64;html Variables</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_names">Names</a> - <strong>Variable Names</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_attrs">Attributes</a> - <strong>Built-in Attributes</strong></span></span><br />
+<span class="indent"><span class="indent"><a href="#ug_html_misc">Miscellaneous</a> - <strong>More examples using &#64;html</strong></span></span><br />
+</div>
+<div class="extras"><h3>Review link bookmarks from nshtml-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>ug_html_attrs=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Attributes<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_html_misc=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Miscellaneous<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_html_names=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Names<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_html_syntax=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Syntax<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_ns_html=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@html Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ug_ns_html"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>&#64;html Namespace</h2></div>
+<div class="extras"><p>The <strong>&#64;html</strong> keyword is used to construct variables that represent HTML elements for your documents. These variables are stored in the <strong>&#64;html</strong> namespace, and can have names that are identical to variables in other namespaces, although it is normally recommended that you avoid doing that.</p></div>
+<div class="extras"><p>Most of the features and concepts just discussed for [link.ug_ns_var._qlink(_qtext="[smdvar.b]")] variables also applies to <strong>&#64;html</strong> variables. If you haven't read that chapter yet, you should, as this one assumes that you have read and understand those concepts, and will build upon them.</p></div>
+<a id="ug_html_syntax"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Syntax</h3></div>
+<div class="syntax"><p class="divTitle">&#64;html command syntax</p>
+<p><br /></p>
+<p><span class="indent"><strong>&#64;html</strong> <strong>_id="name" &lsqb;_tag="tagname" &lsqb;...&rsqb;&nbsp;&nbsp;&rsqb;</strong><br /><br /></span></p>
+</div>
+<div class="extras"><p>All of the built-in attributes previously documented for <strong>&#64;var</strong> are supported for <strong>&#64;html</strong> variables, and a new one <strong>_tag</strong> has been introduced. _tag is used to set the HTML element name for the variable. If _tag is not specified, it will be set to the same value as _id. Let's define a few variables, and then examine them.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Defining an &#64;html variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&nbsp;
+&#64;html _="blockquote" cite="url-goes-here"
+&#64;html _id="bquote" _tag="blockquote"
+&#64;html _id="bq" _inherit="blockquote"
+</pre></div>
+<div class="extras"><p>In the preceding example, we've defined  three <strong>&#64;html</strong> variables: <strong>blockquote</strong>, <strong>bquote</strong> and <strong>bq</strong>. Let's use <strong>&lsqb;code.dump&rsqb;</strong> to take a look at their declarations.</p></div>
+<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">Definition of <em>blockquote</em>, <em>bquote</em> & <em>bq</em> variables</code></p></div>
+<code style="font-size:1.2em"><div class="extras"><p></code>
+<strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>url-goes-here<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>url-goes-here<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bquote=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<code style="font-size:1.2em"></p></div></code>
+<div class="extras"><p></div></p></div>
+</div>
+<div class="extras"><p>First, take a look at <strong>blockquote</strong>. <strong>_tag</strong>, although we didn't specify it, has been set to <strong>blockquote</strong>. In many cases, this is what you want, so not having to specify it is a nice shortcut when declaring variables. Also, notice how <strong>_format</strong> has been set to <em>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;{{self._tag}}&gt;</em>.</p></div>
+<div class="extras"><p>Given that, if we write <em>&lsqb;blockquote&rsqb;</em> it will emit <em><strong>&lt;blockquote cite="url-goes-here"&gt;&lt;/blockquote&gt;</strong></em>.</p></div>
+<div class="extras"><p>The first thing you'll notice is that there isn't a way to get content between the opening and closing tags, so on the surface, this doesn't look very useful. Enter the special attributes <strong>&lt;</strong> and <strong>&gt;</strong>, supported by all <strong>&#64;html</strong>-based namespaces.</p></div>
+<div class="extras"><p>Now, if we write <strong>&lsqb;blockquote<em>.&lt;</em>&rsqb;</strong> it will emit &lt;blockquote cite="url-goes-here"&gt;. Conversely, if we write <strong>&lsqb;blockquote<em>.&gt;</em>&rsqb;</strong>, it will emit &lt;/blockquote&gt;. So now all we need is to specify a value for the <strong>cite</strong> attribute when we declare the open tag, add some content, and specify the closing tag. Let's see how it all comes together.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding content to the blockquote HTML variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>&lsqb;blockquote.&lt;&lpar;cite="https://google.com"&rpar;&rsqb;</strong>
+Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.
+<strong>&lsqb;blockquote.&gt;&rsqb;</strong>
+</pre></div>
+<div class="extras"><p>This is what will be rendered by the browser:</p></div>
+<div class="extras"><p><blockquote cite="https://google.com">Google has always had the "I'm Feeling Lucky" button just below it's search input box, which can be used to automatically follow the first returned link in your search.</blockquote></p></div>
+<div class="extras"><p class="note">Keep in mind that the formatting of the <strong>blockquote</strong> tag is defined by your Browser, or the CSS specified for you document.</p></div>
+<div class="extras"><p>Let's return to looking at the <strong>bquote</strong> and <strong>bq</strong> variables. With <strong>bquote</strong>, notice it doesn't have the <strong>cite</strong> attribute, because it wasn't specified. Attributes can always be added to an <strong>&#64;html</strong> variable on the fly, it isn't required that they be added when the variables are defined. And remember, most HTML elements support the global attributes (e.g. class, style, id, etc.), and if any of these are declared as public attributes on an <strong>&#64;html</strong> variable, they will automatically be output whenever the opening tag of an element is emitted by the parser.</p></div>
+<div class="extras"><p><strong>bq</strong> is identical to <strong>blockquote</strong>, because the <strong>_inherit</strong> attribute was specified at declaration time. Recall from the <strong>&#64;var</strong> section, <strong>_inherit</strong> is used to add all attributes of the named variable to this new declaration. And, any of the underlying attributes can be overridden in the new declaration by simply specifying them again.  For example, if we wrote:</p></div>
+<div class="extras"><p><span class="indent"><strong>&#64;html _id="bq" _inherit="blockquote" cite="different-default-citation"</strong></span></p></div>
+<div class="extras"><p>Then this is what the definition of <strong>bq</strong> looks like in memory:</p></div>
+<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold">New definition of <em>bq</em> variable</code></p></div>
+<code style="font-size:1.2em"><div class="extras"><p></code>
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>different-default-citation<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<code style="font-size:1.2em"></p></div></code>
+<div class="extras"><p></div></p></div>
+</div>
+<a id="ug_html_names"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Variable names</h3></div>
+<div class="extras"><p>Variable names in the <strong>&#64;html</strong> namespace are restricted to the same requires as the <strong>&#64;var</strong> namespace.</p></div>
+<a id="ug_html_attrs"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>&#64;html Built-in Attributes</h3></div>
+<div class="extras"><p>In addition to all of the built-in attributes supported by <strong>&#64;var</strong>, <strong>&#64;html</strong> variables have several built-ins that are unique to it:</p></div>
+<div style="margin-left:3.3em;margin-right:3.3em">
+<div class="extras"><table style="margin-left:auto;margin-right:auto">
+<tr><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap">Attribute Name</td><th class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center">Description</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>_tag</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The HTML element name of the variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&lt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag for this variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&gt;</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The closing tag for this variable</td></tr>
+<tr><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:center;white-space:nowrap"><em>&lt;+</em></td><td class="item" style="padding:5px;width:auto;font-size:1.3em;text-align:left">The opening tag with embedded quotes escaped.</td></tr>
+</table></div>
+</div>
+<div class="extras"><p>We've already seen these in action above, so no need to discuss further with the exception of the <strong>&lt;+</strong>, which will output the opening tag with escaped quotes in the public variable definitions.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Examples</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<strong>&lsqb;html.blockquote&rsqb;</strong> <em>=</em> &lt;blockquote cite="https://google.com"&gt;&lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<&rsqb;</strong> <em>=</em> &lt;blockquote cite="https://google.com"&gt;
+<strong>&lsqb;html.blockquote.>&rsqb;</strong> <em>=</em> &lt;/blockquote&gt;
+<strong>&lsqb;html.blockquote.<+&rsqb;</strong> <em>=</em> &lt;blockquote cite=\"https://google.com\"&gt;
+<strong>&lsqb;html.blockquote._id&rsqb;</strong> <em>=</em> blockquote
+<strong>&lsqb;html.blockquote._tag&rsqb;</strong> <em>=</em> blockquote
+<strong>&lsqb;html.blockquote._public_keys_&rsqb;</strong> <em>=</em> cite,
+<strong>&lsqb;html.blockquote._private_keys_&rsqb;</strong> <em>=</em> _format, _tag,
+</pre></div>
+<a id="ug_html_misc"></a>
+<div class="extras" style="border-bottom:2px solid black"><h3>&#64;html Miscellaneous Examples</h3></div>
+<div class="extras"><p>Here are just a few more examples to help drive home your understanding of the declaration and usage of variables in the <strong>&#64;html</strong> namespace. Let's start by examining the contents of the <strong>&lsqb;sys.imports&rsqb;/html.md</strong> file:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Contents of html.md builtins</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+@html _id="html" _tag="html"
+
+// &lt;head&gt; related tags
+@html _id="head"
+@html _="title" _format="{{self.&lt;}}{{self._t}}{{self.&gt;}}" _t="Default Title"
+@html _="meta" _format="{{self.&lt;}}"
+@html _="meta-charset" _inherit="meta" charset="UTF-8"
+@html _="meta-viewport" _inherit="meta" \
+        name="viewport"\
+        content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+@html _="link" _format="{{self.&lt;}}"
+@html _="script"
+@html _="css" _inherit="link" rel="stylesheet" href="your-stylesheet.css"
+@html _="js" _inherit="script" src="your-javascript.js"
+
+// &lt;body&gt; related tags
+@html _="body"
+@html _="code"
+@html _="div"
+@html _="em"
+@html _="h" 1="&lt;h1&gt;{{self.t}}&lt;/h1&gt;"\
+            2="&lt;h2&gt;{{self.t}}&lt;/h2&gt;"\
+            3="&lt;h3&gt;{{self.t}}&lt;/h3&gt;"\
+            4="&lt;h4&gt;{{self.t}}&lt;/h4&gt;"\
+            5="&lt;h5&gt;{{self.t}}&lt;/h5&gt;"\
+            6="&lt;h6&gt;{{self.t}}&lt;/h6&gt;"\
+            _format="{{self._help}}"\
+            _help="*{{self._}}.#(t=\"your heading\")*[bb]\
+[sp.4]Emit an HTML Heading[bb]\
+[sp.2]**Parameters**[b]\
+[sp.4]t - text for heading[bb]\
+[sp.2]**Methods**[b]\
+[sp.4]# - integer between 1 and 6[bb]\
+[sp.2]**Examples**[b]\
+[sp.4]h.1(t=\"My [E.ast]h1[E.ast] heading\")"
+
+@html _="li"
+@html _="ol"
+@html _="p"
+@html _="pre"
+@html _="span"
+@html _="strong"
+@html _="table"
+@html _="td"
+@html _="th"
+@html _="tr"
+@html _="ul"
+
+// useful list styles
+@html _="ulist" _inherit="ul" class="ulist"
+@html _="ulistplain" _inherit="ul" class="ulist-plain"
+@html _="olist" _inherit="ol" class="olist"
+@html _="olist_template" _inherit="ol"\
+        _format="@@{{self._inline}}"\
+        _inline="&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;"
+@html _="olistAlpha" _inherit="olist_template" class="olist-Alpha"
+@html _="olistalpha" _inherit="olist_template" class="olist-alpha"
+@html _="olistRoman" _inherit="olist_template" class="olist-Roman"
+@html _="olistroman" _inherit="olist_template" class="olist-roman"
+@html _="olistGreek" _inherit="olist_template" class="olist-Greek"
+@html _="olistgreek" _inherit="olist_template" class="olist-greek"
+
+</pre></div>
+<div class="extras"><p>You can see a combination of syntaxes used in declaring the builtins for <strong>&#64;html</strong>. Most are very simple, just the name and tag (when necessary), others have a few have additional options. If you begin to examine other system builtin files, you will see more complex declarations. Remember <strong>helpers.md</strong> from the earlier chapter [link.ug_helpers.link]?</p></div>
+<div class="extras"><p>Many times, you may find that taking a system provided builtin as a starting point, using <strong>_inherit</strong> to pick up all of its attributes, and then extending it by adding additional attributes or even changing the behavior by modifying an existing attribute is a great way to get exactly what you need. And this brings us to the end of <strong>&#64;html</strong>. From here, spend some time experimenting with this namespace, and maybe try modifying existing or extending something to get a better feel for how they work.</p></div>
+<div class="extras"><p>One last thing before we take a look at the <strong>&#64;link</strong> namespace. Do not use <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;</span></span> or <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;+</span></span> in any public attributes that are declared on <strong>&#64;html</strong> variables. Doing so will cause an infinite loop in the <strong>Markdown</strong> class, because when it attempts to markdown <span class="bold black"><span style="font-size:120%">&lt;</span></span> or <span class="bold black"><span style="font-size:120%">&lt;+</span></span>, it will enumerate the public attributes, expanding any markdown in those attributes before rendering the content. However, in this case, the public attribute contains the <span class="bold black"><span style="font-size:120%">&#x73;elf.&lt;</span></span> builtin, and it recurses to process that, only to find itself repeating the same thing. Long story short, it will throw an exception after twenty-five recursive calls to attempt to evaluate the expression. Here's a really short example that you can run in the interactive shell:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Sample infinite recursion using <em>&#x73;elf.&lt;</em> in public attribute</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+$ smd -nd
+&#64;link _="fu" boom="{{&#x73;elf.<}}"
+&lsqb;fu.boom&rsqb;
+</pre></div>
+<div class="extras"><p>If you try the two statements above in an interactive <strong>smd</strong> session, you will quickly see the issue. You may want to add <strong>&#64;debug toggle="markdown"</strong> just before the <strong>&lsqb;fu.boom&rsqb;</strong> so you scroll up to get a dump of markdown recursion loop (a trick discussed in the [link.ug_debug._qlink(_qtext="chapter on debugging")].)</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>_bluenote_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>note blue<br />
+<br />
+<strong>_box_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_box_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_box_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_box_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>box<br />
+<br />
+<strong>_div_extras_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_generic_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_generic_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_generic_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_generic_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>generic<br />
+<br />
+<strong>_greyout_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_greyout_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_greyout_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_greyout_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>greyout<br />
+<br />
+<strong>_important_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_important_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_important_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_important_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>important<br />
+<br />
+<strong>_note_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_note_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_note_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_note_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>note<br />
+<br />
+<strong>_plain_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>plain<br />
+<br />
+<strong>_plain_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>plain pbb<br />
+<br />
+<strong>_plain_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>plainTitle<br />
+<br />
+<strong>_plain_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>_question_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_question_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_question_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_question_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>question<br />
+<br />
+<strong>_rednote_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>note red<br />
+<br />
+<strong>_review_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>review<br />
+<br />
+<strong>_review_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>review pbb<br />
+<br />
+<strong>_review_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_review_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>_review_pba_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>review pba<br />
+<br />
+<strong>_section_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>section<br />
+<br />
+<strong>_section_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>section pbb<br />
+<br />
+<strong>_section_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_section_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>_source_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.4em;font-weight:bold<br />
+<br />
+<strong>_source_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.2em<br />
+<br />
+<strong>_source_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>source<br />
+<br />
+<strong>_syntax_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>syntax<br />
+<br />
+<strong>_syntax_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>syntax pbb<br />
+<br />
+<strong>_syntax_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_syntax_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>_terminal_div_=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>plain<br />
+&nbsp;&nbsp;<strong>style=</strong>padding-left:3em;padding-right:3em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>_terminal_prewrap_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-style:italic;padding:5px 10px;{{html.prewrap.style}}<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_terminal_prewrap_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>style=</strong>background-color:lightgray;font-weight:100;padding:5px 10px;{{html.prewrap.style}}<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_toc_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>toc<br />
+<br />
+<strong>_toc_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>toc pbb<br />
+<br />
+<strong>_toc_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>divTitle<br />
+<br />
+<strong>_toc_p_content_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>_vo_div_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>_vo_div_pba_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pba<br />
+<br />
+<strong>_vo_div_pbb_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras pbb<br />
+<br />
+<strong>_vo_p_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>vo<br />
+<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a1<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a2<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a3<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a4<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>b1<br />
+<br />
+<strong>bigmargin=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>bigtext=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>[self.&lt;]{{self._t}}[self.&gt;]<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:{{self._size}}<br />
+&nbsp;&nbsp;<strong>_size=</strong>120%<br />
+&nbsp;&nbsp;<strong>_prefix=</strong>{:{{self._cls}}}{{self._format}}<br />
+&nbsp;&nbsp;<strong>_defsize_=</strong>150%<br />
+&nbsp;&nbsp;<strong>_t=</strong>&amp;#x73;elf.&amp;lt;<br />
+&nbsp;&nbsp;<strong>_cls=</strong>.bold.black<br />
+<br />
+<strong>blockquote=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bmgreybg=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray<br />
+&nbsp;&nbsp;<strong>_open=</strong>@@{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+<br />
+<strong>bq=</strong><br />&nbsp;&nbsp;<strong>cite=</strong>different-default-citation<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+<br />
+<strong>bquote=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>blockquote<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c0<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c1<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>c2<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+<br />
+<strong>contact-div=</strong><br />&nbsp;&nbsp;<strong>class=</strong>contact<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-table=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
+<strong>contact-td-left=</strong><br />&nbsp;&nbsp;<strong>class=</strong>left nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-td-right=</strong><br />&nbsp;&nbsp;<strong>class=</strong>right nowrap<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>contact-tr=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+&nbsp;&nbsp;<strong>style=</strong>border:none<br />
+<br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
+&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
+<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>d0<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newval<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+<strong>div=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+<br />
+<strong>divx=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+<br />
+<strong>divx1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+&nbsp;&nbsp;<strong>style=</strong>border-bottom:5px solid green;color:green<br />
+<br />
+<strong>divx2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+&nbsp;&nbsp;<strong>style=</strong>border-bottom:3px solid black;color:green<br />
+<br />
+<strong>divx3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>extras<br />
+&nbsp;&nbsp;<strong>style=</strong>border-bottom:2px solid black<br />
+<br />
+<strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>em<br />
+<br />
+<strong>h=</strong><br />&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
+&nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
+&nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
+&nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
+&nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
+&nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>h<br />
+<br />
+<strong>h2sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h2<br />
+&nbsp;&nbsp;<strong>style=</strong>border-top: 3px solid black;border-bottom: 2px dashed black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>h3sh=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>h3<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;border-bottom: 3px solid black<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>head=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>head<br />
+<br />
+<strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id1<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>id2<br />
+<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>YES<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>invalid-attribute<br />
+<br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
+<br />
+<strong>li=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+<br />
+<strong>li2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:1.3em;margin-left:2em<br />
+<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
+<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>name=</strong>viewport<br />
+&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
+<br />
+<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+<br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>class=</strong>olist<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Alpha<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Greek<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Roman<br />
+<br />
+<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-alpha<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-greek<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-roman<br />
+<br />
+<strong>p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>pre=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+<br />
+<strong>prewrap=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+&nbsp;&nbsp;<strong>style=</strong>white-space:pre-wrap<br />
+<br />
+<strong>revision-div=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+&nbsp;&nbsp;<strong>class=</strong>revision<br />
+<br />
+<strong>revision-p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+&nbsp;&nbsp;<strong>class=</strong>revTitle<br />
+<br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+<br />
+<strong>span=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+<br />
+<strong>spanfs=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_s1=</strong>font-size:1em<br />
+&nbsp;&nbsp;<strong>_s2=</strong>font-size:2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}} style="{{self._s1}}"&gt;<br />
+&nbsp;&nbsp;<strong>_big=</strong>&lt;{{self._tag}} style="{{self._s2}}"&gt;<br />
+<br />
+<strong>spanwc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>class=</strong>blue<br />
+<br />
+<strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>strong<br />
+<br />
+<strong>tab=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>class=</strong>indent<br />
+<br />
+<strong>table=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+<br />
+<strong>table_2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+&nbsp;&nbsp;<strong>style=</strong>margin-left:auto;margin-right:auto<br />
+<br />
+<strong>td=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+<br />
+<strong>td_desc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>left<br />
+<br />
+<strong>td_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}};white-space:nowrap<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>th=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+<br />
+<strong>th_desc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}}<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>th_item=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+&nbsp;&nbsp;<strong>class=</strong>item<br />
+&nbsp;&nbsp;<strong>style=</strong>padding:5px;width:auto;font-size:1.3em;text-align:{{self._align}};white-space:nowrap<br />
+&nbsp;&nbsp;<strong>_align=</strong>center<br />
+<br />
+<strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
+&nbsp;&nbsp;<strong>_tag=</strong>title<br />
+<br />
+<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+<br />
+<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist-plain<br />
+<br />
+<strong>us=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>style=</strong>text-decoration:underline<br />
+<br />
+</code>
+</div>
+</div>
+</body>
+</html>

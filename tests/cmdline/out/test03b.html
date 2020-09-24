@@ -1,0 +1,506 @@
+<div class="variables">
+<code>
+----------------------------------------<br />
+System Defaults: .<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<strong>_load_default_builtins=</strong>True<br />
+&nbsp;&nbsp;<strong>_load_user_builtins=</strong>True<br />
+&nbsp;&nbsp;<strong>_load_default_html=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_head=</strong>False<br />
+&nbsp;&nbsp;<strong>_load_default_body=</strong>False<br />
+&nbsp;&nbsp;<strong>_html_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_head_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_body_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_bodyclose_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_close_name=</strong>None<br />
+&nbsp;&nbsp;<strong>_load_user_files=</strong>True<br />
+&nbsp;&nbsp;<strong>_raw_output_file=</strong>None<br />
+&nbsp;&nbsp;<strong>_configData=</strong>{}<br />
+&nbsp;&nbsp;<strong>_importFiles=</strong>[]<br />
+----------------------------------------<br />
+Files seen during parsing: .<br />
+----------------------------------------<br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/tests/cmdline/in/defdump.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/builtins.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/defaults.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/common.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/code.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/link.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/Dropbox/shared/src/script/smd/smd/import/html.md</em><br />
+&nbsp;&nbsp;<em>/Users/ken/.smd/import/builtins.md</em><br />
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>E=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
+&nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
+&nbsp;&nbsp;<strong>rb=</strong>&amp;rsqb;<br />
+&nbsp;&nbsp;<strong>lcb=</strong>&amp;lcub;<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>&amp;rcub;<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>lt=</strong>&amp;lt;<br />
+&nbsp;&nbsp;<strong>gt=</strong>&amp;gt;<br />
+&nbsp;&nbsp;<strong>at=</strong>&amp;commat;<br />
+&nbsp;&nbsp;<strong>lp=</strong>&amp;lpar;<br />
+&nbsp;&nbsp;<strong>rp=</strong>&amp;rpar;<br />
+&nbsp;&nbsp;<strong>plus=</strong>&amp;plus;<br />
+&nbsp;&nbsp;<strong>ins=</strong>[self.plus][self.plus]<br />
+&nbsp;&nbsp;<strong>minus=</strong>&amp;minus;<br />
+&nbsp;&nbsp;<strong>tilde=</strong>&amp;sim;<br />
+&nbsp;&nbsp;<strong>del=</strong>[self.tilde][self.tilde]<br />
+&nbsp;&nbsp;<strong>sp=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>sp2=</strong>[self.sp][self.sp]<br />
+&nbsp;&nbsp;<strong>apos=</strong>&amp;apos;<br />
+&nbsp;&nbsp;<strong>num=</strong>&amp;num;<br />
+&nbsp;&nbsp;<strong>hashtag=</strong>&amp;num;<br />
+&nbsp;&nbsp;<strong>amp=</strong>&amp;amp;<br />
+&nbsp;&nbsp;<strong>bs=</strong>&amp;bsol;<br />
+&nbsp;&nbsp;<strong>equot=</strong>\&amp;quot;<br />
+&nbsp;&nbsp;<strong>quot=</strong>&amp;quot;<br />
+&nbsp;&nbsp;<strong>dquot=</strong>&amp;#34;<br />
+&nbsp;&nbsp;<strong>fs=</strong>&amp;sol;<br />
+&nbsp;&nbsp;<strong>fs2=</strong>[self.fs][self.fs]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
+<strong>EMOJI=</strong><br />&nbsp;&nbsp;<strong>mask=</strong>&amp;#x1F637;<br />
+&nbsp;&nbsp;<strong>shades=</strong>&amp;#x1F60E;<br />
+&nbsp;&nbsp;<strong>smile=</strong>&amp;#x1F642;<br />
+&nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
+<br />
+<strong>HEX=</strong><br />&nbsp;&nbsp;<strong>lb=</strong>\x5b<br />
+&nbsp;&nbsp;<strong>rb=</strong>\x5d<br />
+&nbsp;&nbsp;<strong>lcb=</strong>\x7b<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>\x7d<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>cmdline_testing=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>from the cmdline testing builtins.md<br />
+<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
+&nbsp;&nbsp;<strong>_nop=</strong><br />
+<br />
+<strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+&nbsp;&nbsp;<strong>e=</strong>smile<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+<br />
+<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}(t="html_tag_to_wrap")&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
+<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}(t="smd_tag_to_wrap")&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>2=</strong>&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>4=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>6=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>8=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>10=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>12=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+<br />
+<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
+&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+&nbsp;&nbsp;<strong>root=</strong>/Users/ken/Dropbox/shared/src/script/smd<br />
+&nbsp;&nbsp;<strong>user_basepath=</strong>/Users/ken/.smd<br />
+&nbsp;&nbsp;<strong>user_imports=</strong>/Users/ken/.smd/import<br />
+&nbsp;&nbsp;<strong>user_root=</strong>/Users/ken<br />
+<br />
+<strong>vpl=</strong><br />&nbsp;&nbsp;<strong>attrlist=</strong>1,2,3,4,5<br />
+&nbsp;&nbsp;<strong>1=</strong>Line 1<br />
+&nbsp;&nbsp;<strong>2=</strong>Line 2<br />
+&nbsp;&nbsp;<strong>3=</strong>Line 3<br />
+&nbsp;&nbsp;<strong>4=</strong>Line 4<br />
+&nbsp;&nbsp;<strong>5=</strong>Line 5<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
+&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: html<br />
+----------------------------------------<br />
+<strong>body=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>body<br />
+<br />
+<strong>code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>code<br />
+<br />
+<strong>css=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+&nbsp;&nbsp;<strong>rel=</strong>stylesheet<br />
+&nbsp;&nbsp;<strong>href=</strong>your-stylesheet.css<br />
+<br />
+<strong>div=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>div<br />
+<br />
+<strong>em=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>em<br />
+<br />
+<strong>h=</strong><br />&nbsp;&nbsp;<strong>1=</strong>&lt;h1&gt;{{self.t}}&lt;/h1&gt;<br />
+&nbsp;&nbsp;<strong>2=</strong>&lt;h2&gt;{{self.t}}&lt;/h2&gt;<br />
+&nbsp;&nbsp;<strong>3=</strong>&lt;h3&gt;{{self.t}}&lt;/h3&gt;<br />
+&nbsp;&nbsp;<strong>4=</strong>&lt;h4&gt;{{self.t}}&lt;/h4&gt;<br />
+&nbsp;&nbsp;<strong>5=</strong>&lt;h5&gt;{{self.t}}&lt;/h5&gt;<br />
+&nbsp;&nbsp;<strong>6=</strong>&lt;h6&gt;{{self.t}}&lt;/h6&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}.#(t="your heading")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Emit an HTML Heading&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t - text for heading&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;# - integer between 1 and 6&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Examples&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;h.1(t="My &amp;ast;h1&amp;ast; heading")<br />
+&nbsp;&nbsp;<strong>_tag=</strong>h<br />
+<br />
+<strong>head=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>head<br />
+<br />
+<strong>html=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>html<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>js=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+&nbsp;&nbsp;<strong>src=</strong>your-javascript.js<br />
+<br />
+<strong>li=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>li<br />
+<br />
+<strong>link=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>link<br />
+<br />
+<strong>meta=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+<br />
+<strong>meta-charset=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>charset=</strong>UTF-8<br />
+<br />
+<strong>meta-viewport=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>meta<br />
+&nbsp;&nbsp;<strong>name=</strong>viewport<br />
+&nbsp;&nbsp;<strong>content=</strong>width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0<br />
+<br />
+<strong>ol=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+<br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>class=</strong>olist<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Alpha<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Greek<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-Roman<br />
+<br />
+<strong>olist_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-alpha<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-greek<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@{{self._inline}}<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ol<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>class=</strong>olist-roman<br />
+<br />
+<strong>p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>p<br />
+<br />
+<strong>pre=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>pre<br />
+<br />
+<strong>script=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>script<br />
+<br />
+<strong>span=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+<br />
+<strong>spanfs=</strong><br />&nbsp;&nbsp;<strong>_tag=</strong>span<br />
+&nbsp;&nbsp;<strong>_s1=</strong>font-size:1em<br />
+&nbsp;&nbsp;<strong>_s2=</strong>font-size:2em<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}} style="{{self._s1}}"&gt;<br />
+&nbsp;&nbsp;<strong>_big=</strong>&lt;{{self._tag}} style="{{self._s2}}"&gt;<br />
+<br />
+<strong>strong=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>strong<br />
+<br />
+<strong>table=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>table<br />
+<br />
+<strong>td=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>td<br />
+<br />
+<strong>th=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>th<br />
+<br />
+<strong>title=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._t}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_t=</strong>Default Title<br />
+&nbsp;&nbsp;<strong>_tag=</strong>title<br />
+<br />
+<strong>tr=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>tr<br />
+<br />
+<strong>ul=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>ul<br />
+&nbsp;&nbsp;<strong>class=</strong>ulist-plain<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: image<br />
+----------------------------------------<br />
+----------------------------------------<br />
+NAMESPACE: code<br />
+----------------------------------------<br />
+<strong>append=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.append('{{self.attr1}}', '{{self.attr2}}')<br />
+&nbsp;&nbsp;<strong>attr1=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>attr2=</strong>ns.txtvar.attr<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(attr1="ns.var.attr", attr2="ns.var.attr with text to append")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr1&lt;/strong&gt; - attribute to append text string to&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr2&lt;/strong&gt; - attribute containing the text to append to &lt;strong&gt;attr1&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Appends text from &lt;strong&gt;attr2&lt;/strong&gt; to existing attribute &lt;strong&gt;attr1&lt;/strong&gt;.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.append('{{self.attr1}}', '{{self.attr2}}')<br />
+<br />
+<strong>attr_replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_var=</strong>variable with new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(s_str="search_str", r_var="attr_with_rep_val" attr="ns.var.attr to operate on" repl_nl="True | False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;s_str&lt;/strong&gt; - the string we are searching for&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;r_var&lt;/strong&gt; - attribute containing replacement string&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - attribute containing string to operate on&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;repl_nl&lt;/strong&gt; - replace escaped newline with newline (default:True)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces all occurrences of &lt;strong&gt;s_str&lt;/strong&gt; with &lt;strong&gt;r_var&lt;/strong&gt; in &lt;strong&gt;attr&lt;/strong&gt; and updates &lt;strong&gt;attr&lt;/strong&gt;.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Like &lt;strong&gt;code.replace&lt;/strong&gt; except modifies &lt;strong&gt;attr&lt;/strong&gt; directly and does NOT push anything onto the input stream.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace('{{self.s_str}}', '{{self.r_var}}', '{{self.attr}}', {{self.repl_nl}})<br />
+<br />
+<strong>attr_replace_str=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>s_str=</strong>string_to_replace<br />
+&nbsp;&nbsp;<strong>r_str=</strong>new_value<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(s_str="search_str", r_str="repl_str" attr="ns.var.attr to operate on" repl_nl="True | False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;s_str&lt;/strong&gt; - the string we are searching for&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;r_str&lt;/strong&gt; - the replacement string&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - attribute containing string to operate on&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;repl_nl&lt;/strong&gt; - replace escaped newline with newline (default:True)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces all occurrences of &lt;strong&gt;s_str&lt;/strong&gt; with &lt;strong&gt;r_str&lt;/strong&gt; in &lt;strong&gt;attr&lt;/strong&gt; and updates &lt;strong&gt;attr&lt;/strong&gt;.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Like &lt;strong&gt;code.attr_replace&lt;/strong&gt;, but accepts replacement string directly instead of indirectly via attribute.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_str('{{self.s_str}}', '{{self.r_str}}', '{{self.attr}}', {{self.repl_nl}})<br />
+<br />
+<strong>attr_replace_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+&nbsp;&nbsp;<strong>attr=</strong>ns.var.attr<br />
+&nbsp;&nbsp;<strong>value=</strong>new_value<br />
+&nbsp;&nbsp;<strong>repl_nl=</strong>True<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(attr="ns.var.attr to operate on" value="new value" repl_nl="True | False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - attribute whose value we are to replace&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;value&lt;/strong&gt; - replacement value&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;repl_nl&lt;/strong&gt; - replace escaped newline with newline (default:True)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces &lt;strong&gt;attr&lt;/strong&gt; with &lt;strong&gt;value&lt;/strong&gt;.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.attr_replace_value('{{self.attr}}', '{{self.value}}', {{self.repl_nl}})<br />
+<br />
+<strong>datetime_stamp=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+&nbsp;&nbsp;<strong>fmtstr=</strong>%Y%m%d @ %H:%M:%S<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(fmtstr="%Y%m%d @ %H:%M:%S")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;fmtstr&lt;/strong&gt; is a Python strftime format string. The default format is: %Y%m%d @ %H:%M:%S&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Unless you don't like the default format, you normally don't specify &lt;strong&gt;fmtstr&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from time import strftime;print(strftime("{{self.fmtstr}}"))<br />
+<br />
+<strong>dump=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.dump('{{self.ns}}', '{{self.name}}', {{self.format}}, {{self.whitespace}}, {{self.help}})<br />
+&nbsp;&nbsp;<strong>ns=</strong>var<br />
+&nbsp;&nbsp;<strong>name=</strong>.*<br />
+&nbsp;&nbsp;<strong>format=</strong>False<br />
+&nbsp;&nbsp;<strong>whitespace=</strong>False<br />
+&nbsp;&nbsp;<strong>help=</strong>False<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(ns="namespace", name="var name regex" format="False" whitespace="False" help="False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;ns&lt;/strong&gt; - the namespace that &lt;strong&gt;name&lt;/strong&gt; is in&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;name&lt;/strong&gt; - the variable/attribute name regex to dump&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;format&lt;/strong&gt; - use formatting to aid readability&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;whitespace&lt;/strong&gt; - include prefix whitespace (HTML entities) and breaks &amp;lt;br /&amp;gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;help&lt;/strong&gt; - dump the help attribute value (if present)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Dumps one or more variables that match &lt;strong&gt;name&lt;/strong&gt;, formatting according to &lt;strong&gt;format&lt;/strong&gt; and &lt;strong&gt;whitespace&lt;/strong&gt;.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; The default values work best when running &lt;strong&gt;smd&lt;/strong&gt; interactively.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.dump('{{self.ns}}', '{{self.name}}', {{self.format}}, {{self.whitespace}}, {{self.help}})<br />
+<br />
+<strong>encodeURL=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encodeURL('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="https://www.url.com?x=encode me")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; = a URL string to be encoded&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces all blanks in URL string e.g. " " with "&lt;em&gt;%20&lt;/em&gt;"&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; If &lt;strong&gt;t&lt;/strong&gt; begins with &lt;strong&gt;mailto:&lt;/strong&gt; the entire string is encoded using a mix of dec/hex HTML character entities<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encodeURL('{{self.t}}'))<br />
+<br />
+<strong>encode_smd=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="smd markdown to encode")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; = an smd string that will be encoded for display&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Use &lt;em&gt;&amp;lt;&amp;nbsp;&amp;gt;&lt;/em&gt; for &lt;em&gt;&amp;lsqb;&amp;nbsp;&amp;rsqb;&lt;/em&gt;, &lt;em&gt;2{&lt;/em&gt; for &lt;em&gt;&amp;lcub;&amp;lcub;&lt;/em&gt;, &lt;em&gt;2}&lt;/em&gt; for &lt;em&gt;&amp;rcub;&amp;rcub;&lt;/em&gt;, &lt;em&gt;2&amp;plus;&lt;/em&gt; for &lt;em&gt;&amp;plus;&amp;plus;&lt;/em&gt; and &lt;em&gt;2&amp;sim;&lt;/em&gt; for &lt;em&gt;&amp;sim;&amp;sim;&lt;/em&gt;.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The entire list of replacements is:&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&amp;lt;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;lsqb;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&amp;gt;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;rsqb;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;2&amp;lcub;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;lcub;&amp;amp;lcub;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;2&amp;rcub;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;rcub;&amp;amp;rcub;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&amp;ast;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;#42;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&amp;commat;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;#64;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;2&amp;plus;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;plus;&amp;amp;plus;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;2&amp;sim;&lt;/em&gt; becomes &lt;em&gt;&amp;amp;tilde;&amp;amp;tilde;&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE1:&lt;/strong&gt; Do not use square brackets, curly braces, double plus or double tilde directly, because the parser will replace them with markdown.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE2:&lt;/strong&gt; You need to use &lt;em&gt;&amp;lsqb;E.lp&amp;rsqb;&lt;/em&gt; for &lt;em&gt;(&lt;/em&gt; and &lt;em&gt;&amp;lsqb;E.rp&amp;rsqb;&lt;/em&gt; for &lt;em&gt;)&lt;/em&gt;, because parenthesis are used by the markdown to identify parameters to the macros.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd('{{self.t}}'))<br />
+<br />
+<strong>encode_smd_var=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
+&nbsp;&nbsp;<strong>v=</strong>self._help<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v="var_to_encode")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v&lt;/strong&gt; = existing variable / attribute to markdown as smd&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Same as code.encode_smd, but takes an existing variable or attribute name to operate on<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.encode_smd_var('{{self.v}}'))<br />
+<br />
+<strong>equals=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.equals('{{self.v1}}', '{{self.v2}}', '{{self.true}}', '{{self.false}}')<br />
+&nbsp;&nbsp;<strong>v1=</strong>_ns.var.attr_<br />
+&nbsp;&nbsp;<strong>v2=</strong>_ns.txtvar.attr_<br />
+&nbsp;&nbsp;<strong>true=</strong>_ns.var.true_<br />
+&nbsp;&nbsp;<strong>false=</strong>_ns.var.false_<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v1="ns.var.attr1", v2="ns.var.attr2" true="ns.var.attr3" false="ns.var.attr4")&lt;br /&gt;&lt;br /&gt;&lt;/em&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v1&lt;/strong&gt; - attribute 1 for comparison&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v2&lt;/strong&gt; - attribute 2 for comparison&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;true&lt;/strong&gt; - attribute to push if &lt;strong&gt;v1&lt;/strong&gt; == &lt;strong&gt;v2&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;false&lt;/strong&gt; - attribute to push if &lt;strong&gt;v1&lt;/strong&gt; != &lt;strong&gt;v2&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Compare attribute &lt;strong&gt;v1&lt;/strong&gt; to attribute &lt;strong&gt;v2&lt;/strong&gt; and push line onto input stream based on results.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This macro does a case-sensitive string comparison of &lt;strong&gt;v1&lt;/strong&gt; and &lt;strong&gt;v2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.equals('{{self.v1}}', '{{self.v2}}', '{{self.true}}', '{{self.false}}')<br />
+<br />
+<strong>esc_angles=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('{{self.url}}'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+&nbsp;&nbsp;<strong>url=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(url="&amp;lt;text to escape&amp;gt;")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;url&lt;/strong&gt; = string to operate on&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replace all occurrences of &lt;em&gt;&amp;lt;&lt;/em&gt; with &lt;em&gt;&amp;amp;lt;&lt;/em&gt; and &lt;em&gt;&amp;gt;&lt;/em&gt; with &lt;em&gt;&amp;amp;gt;&lt;/em&gt; in string &lt;strong&gt;url&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{{self.url}}'.replace('&lt;', '&amp;lt;').replace('&gt;','&amp;gt;'))<br />
+<br />
+<strong>escape=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="text to escape")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; = string to operate on&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Same as code.esc_angles, but also replaces &lt;em&gt;&amp;amp;&lt;/em&gt; with &lt;em&gt;&amp;amp;amp;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html('{{self.t}}'))<br />
+<br />
+<strong>escape_var=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('{{self.v}}'))<br />
+&nbsp;&nbsp;<strong>v=</strong>self._help<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v="var_to_esc")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v&lt;/strong&gt; = existing variable / attribute to escape&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Same as code.escape, but takes an existing variable or attribute name to operate on.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import HtmlUtils;print(HtmlUtils.escape_html_var('{{self.v}}'))<br />
+<br />
+<strong>get=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>v=</strong>variable_name<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v="variable_name")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v&lt;/strong&gt; - variable / attribute name to get&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Emits the value of the variable / attribute &lt;strong&gt;v&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('{{self.v}}')<br />
+<br />
+<strong>get_default=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+&nbsp;&nbsp;<strong>v=</strong>var or attr name<br />
+&nbsp;&nbsp;<strong>default=</strong>default value<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v="variable_name", default="default value")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v&lt;/strong&gt; - The variable / attribute name to get&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;default&lt;/strong&gt; - value to return if &lt;strong&gt;v&lt;/strong&gt; is not defined&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Returns the value of &lt;strong&gt;v&lt;/strong&gt; unless undefined, in which case it returns &lt;strong&gt;default&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.default('$.v', '$.default')<br />
+<br />
+<strong>get_value=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)<br />
+&nbsp;&nbsp;<strong>v=</strong>variable_name<br />
+&nbsp;&nbsp;<strong>ret_type=</strong>9<br />
+&nbsp;&nbsp;<strong>escape=</strong>False<br />
+&nbsp;&nbsp;<strong>esc_smd=</strong>False<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(v="variable_name" ret_type="0|1|2|3|9" escape="True|False" esc_smd="True|False")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;v&lt;/strong&gt; - variable / attribute name to get&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;ret_type&lt;/strong&gt; - how to emit the value (0, 1, 2, 3 or 9)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;0&lt;/strong&gt; - will return the value raw i.e. not marked down&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;1&lt;/strong&gt; - will return the value with the initial markdown pass, but without handling delayed expansion&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;2&lt;/strong&gt; - will return the after replacing {{ with [ and }} with ]&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;3&lt;/strong&gt; - will return the after replacing &lt;strong&gt;self.&lt;/strong&gt; with &lt;strong&gt;ns.varname.&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;9&lt;/strong&gt; - will return the marked down value (default)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;escape&lt;/strong&gt; - True to escape the HTML, False otherwise (default)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;esc_smd&lt;/strong&gt; - True to escape the SMD, False otherwise (default)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Emits the value of the variable / attribute &lt;strong&gt;v&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.get_ns_var('$.v', $.ret_type, $.escape, $.esc_smd)<br />
+<br />
+<strong>ln_alias=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;print('@set _ns="link" _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('{{self.nm}}',       '{{self.attr}}', '{{self.lt}}', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+&nbsp;&nbsp;<strong>nm=</strong>linkname<br />
+&nbsp;&nbsp;<strong>attr=</strong>_attr_name<br />
+&nbsp;&nbsp;<strong>lt=</strong>NEW_LINK_TEXT_HERE<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(&lt;strong&gt;nm=&lt;/strong&gt;"existing_link_name", &lt;strong&gt;attr=&lt;/strong&gt;"_new_PRIVATE_attr_name", &lt;strong&gt;lt=&lt;/strong&gt;"new link text")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;nm&lt;/strong&gt; - The name of the existing @link variable you are adding an alias to&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attr&lt;/strong&gt; - The name of a new PRIVATE attribute that will be added&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;lt&lt;/strong&gt; - The new link text you want to use for the hyperlink&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This macro adds a new alias for an existing link. That is, alternate text for the same underlying anchor.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Be sure you specify a PRIVATE attribute i.e. begins with &lt;em&gt;&lt;strong&gt;_&lt;/strong&gt;&lt;/em&gt; (underscore). If you do not, you&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;will create an infinite recursion during markdown because the open tag will reference the new attribute!<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;print('@set _ns="link" _id="{0}"       {1}="{3}{0}.&lt;{4}{2}{3}{0}.&gt;{4}"'.format('{{self.nm}}',       '{{self.attr}}', '{{self.lt}}', CodeHelpers.b(0), CodeHelpers.b(1)))<br />
+<br />
+<strong>pushline=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="line to push onto input stream")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t = string to push onto input stream&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; This macro does NOT split the string on the newline \n character. It will give&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;the illusion of doing so, but the newline will be treated as white space by a&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;browser. To push multiple lines, use either code.pushlines or code.pushvar.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;See also: code.pushlines, code.pushvar<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushline('{{self.t}}')<br />
+<br />
+<strong>pushlines=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="lines to push onto input stream. separate lines with \n")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;t = string to push onto input stream&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; You can push multiple lines by inserting \n characters into the var/attr&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;See also: code.pushline, code.pushvar<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushlines('{{self.t}}')<br />
+<br />
+<strong>pushlist=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushlist('{{self.attrlist}}')<br />
+&nbsp;&nbsp;<strong>attrlist=</strong>var.vpl.attrlist<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(attrlist="var.attr.list")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;attrlist&lt;/strong&gt; - an existing variable or attribute&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;If &lt;strong&gt;attrlist&lt;/strong&gt; is a variable, then that variable &lt;em&gt;must&lt;/em&gt; contain an attribute named &lt;strong&gt;attrlist&lt;/strong&gt;.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;If &lt;strong&gt;attrlist&lt;/strong&gt; is an attribute, then that attribute &lt;em&gt;must&lt;/em&gt; contain a list of other attributes in the same variable.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This macro pushes one or more lines specified by &lt;strong&gt;attrlist&lt;/strong&gt; onto the input stream. The attributes must be in the same variable.&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; See &lt;strong&gt;var.vpl&lt;/strong&gt; for a template of what the &lt;strong&gt;attrlist&lt;/strong&gt; variable should look like.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushlist('{{self.attrlist}}')<br />
+<br />
+<strong>pushvar=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
+&nbsp;&nbsp;<strong>v=</strong>self._help<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="variable whose value will be pushed onto input stream. separate lines with \n")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;v = existing variable / attribute to push onto input stream&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; You can push multiple lines by inserting \n characters into the var/attr&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;e.g. if var.x="line1\nline2" then pushvar(v="var.x") inserts two lines:&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;line1&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;line2&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;See also: code.pushline, code.pushlines<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.pushvar('{{self.v}}')<br />
+<br />
+<strong>repeat=</strong><br />&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>src=</strong>print('{}'.format('{{self.t}}'*{{self.c}}))<br />
+&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>c=</strong>1<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(t="chars to repeat" c="# to repeat")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; = character or string to repeat&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = number of times to repeat&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Example: code.repeat(t="%" c="42") will print 42 "%" percent characters<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;print('{}'.format('{{self.t}}'*{{self.c}}))<br />
+<br />
+<strong>replace=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.replace('{{self.var}}', '{{self.val}}', '{{self.str}}')<br />
+&nbsp;&nbsp;<strong>var=</strong>varname_to_replace<br />
+&nbsp;&nbsp;<strong>val=</strong>value_to_insert<br />
+&nbsp;&nbsp;<strong>str=</strong>string to operate on<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(var="search_str", val="attr_with_rep_val" str="ns.var.attr to operate on")&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;var&lt;/strong&gt; - the string we are searching for&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;val&lt;/strong&gt; - attribute containing replacement string&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;str&lt;/strong&gt; - attribute containing string to operate on&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Replaces all occurrences of &lt;strong&gt;var&lt;/strong&gt; with &lt;strong&gt;val&lt;/strong&gt; in &lt;strong&gt;str&lt;/strong&gt; and then push &lt;strong&gt;str&lt;/strong&gt; onto input stream.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;NOTE:&lt;/strong&gt; Does NOT modify the attribute &lt;strong&gt;str&lt;/strong&gt; in memory; simply pushes modified string onto input stream.<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.replace('{{self.var}}', '{{self.val}}', '{{self.str}}')<br />
+<br />
+<strong>wrap_stack=</strong><br />&nbsp;&nbsp;<strong>type=</strong>exec<br />
+&nbsp;&nbsp;<strong>src=</strong>from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+&nbsp;&nbsp;<strong>w=</strong>*<br />
+&nbsp;&nbsp;<strong>encode=</strong>False<br />
+&nbsp;&nbsp;<strong>_help=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;{{self._}}(w="&lt; | &gt; | # | tag.&lt; | or tag.&gt;" [encode="True | False"])&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;w&lt;/strong&gt; = what you want to get from the wrap stack.&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;lt; - Will print the opening wrap tag&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;gt; - Will print the closing wrap tag&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;# - Will print the current wrap tag index&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tag.&amp;lt; - Will print the opening wrap tags in text form&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tag.&amp;gt; - Will print the closing wrap tags in text form&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;encode&lt;/strong&gt; = True if you want the HTML escaped, False for raw (default)&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;See the documentation on @wrap for details on how to use this macro<br />
+&nbsp;&nbsp;<strong>_code=</strong><em>&lt;code object&gt;</em><br />
+&nbsp;&nbsp;<strong>_last=</strong>&lt;strong&gt;raw src=&lt;/strong&gt;from .utility import CodeHelpers;CodeHelpers.wrap_stack('{{self.w}}', {{self.encode}})<br />
+<br />
+</code>
+</div>

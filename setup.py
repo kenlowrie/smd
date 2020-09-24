@@ -1,20 +1,20 @@
 from setuptools import setup
 from sys import version_info
 
-setup(name='avscript',
-      version='0.3.8',
-      description='Audio/Visual Script Parser',
-      url='https://github.com/kenlowrie/avscript',
+setup(name='smd',
+      version='0.4.2',
+      description='Script Markdown',
+      url='https://github.com/kenlowrie/smd',
       author='Ken Lowrie',
       author_email='ken@kenlowrie.com',
       license='Apache',
-      packages=['avscript', 'avscript.avs'],
+      packages=['smd', 'smd.core'],
       install_requires=['kenl380.pylib'],
       entry_points = {
-        'console_scripts': ['avscript=avscript.avscript_md:av_parse_file',
-                            'avscript{}=avscript.avscript_md:av_parse_file'.format(version_info.major),
-                            'mkavscript=avscript.mkavscript_md:mkavscript_md',
-                            'mkavscript{}=avscript.mkavscript_md:mkavscript_md'.format(version_info.major),
+        'console_scripts': ['smd=smd.smd:smd_parse_file',
+                            'smdlive=smd.smdlive:smdlive',
+                            'ismd=smd.ismd:ismd',
+                            'smdparse=smd.smdparse:parse'
         ],
       },
       include_package_data=True,

@@ -1,0 +1,27 @@
+help track how to reorg the test scripts to make sure everything is covered.
+
+break/exit - Upon completion of all the test script conversion and a user manual sweep, see if these are still used/required.
+code - code.md DONE
+debug - dump.md DONE
+divs - divs.md DONE (This is all the special divs. e.g. section, plain, note, code, review, syntax ...)
+dump - dump.md DONE
+embed   - import.md DONE
+film - film.md DONE
+header  - markdown.md DONE (and it's used in pretty much every script)
+html - html.md DONE
+image - image.md DONE
+import  - import.md DONE
+link - link.md DONE
+mailto - mailto.md DONE (tests the encoded email addresses when a mailto: address is used.)
+markdown - markdown.md DONE
+misc - misc.md DONE (this needs to be reworked once I have final macros in place)
+raw - wrap.md DONE (used in lots of things)
+revision - revision.md DONE (this specifically handles the revision with embedded date/time)
+script1 - script.md DONE (will need some additional cleanup once the avs macros are finalized, and @wrap tag1, tag2 is in place)
+set - var.md DONE
+specials - specials.md DONE (essentially the test for revision(), cover() and contact())
+stop/quit - stop.md/quit.md DONE
+transitions - transitions.md DONE (this was a dedicated way of testing @break before, but no longer applicable. now it's just another avshot tester.)
+watch   - import.md DONE
+var - var.md DONE
+wrap - wrap.md DONE

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<div class="plain">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: revision.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing var.revision ... again</h3>
+<div class="revision"><p class="revTitle">Revision: <em><strong>1a</strong></em> (20200614 @ 09:51:33) </p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>1.0</strong></em> (20200614 @ 09:51:33) </p></div>
+<div class="revision"><p class="revTitle">Revision: <em><strong>28f</strong></em> (20200614 @ 09:51:33) </p></div>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: ***{{self.v}}***<br />
+&nbsp;&nbsp;<strong>v=</strong>28f<br />
+<br />
+</code>
+</div>
+</div>
+</body>
+</html>

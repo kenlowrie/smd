@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>default page title</title>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='smd.css' />
+</head>
+<body>
+<div class="wrapper">
+<h2 style="border-top: 3px solid black;border-bottom: 2px dashed black">Script: links.md</h2>
+<h3 style="font-size:1.3em;border-bottom: 3px solid black">Purpose: Testing the @link namespace</h3>
+<div class="extras"><p>We are not testing the <em><strong>@code</strong></em> namespace</p></div>
+<div class="plain"><p class="plainTitle">Generic Namespace testing for <em><strong>@link</strong></em> namespace</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a2&rsqb; --> <a></a></p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a3] --> <a></a></p></div>
+<div class="extras"><p>&lsqb;link.a4&rsqb; --> a4_rval</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p><h3>Old school way of encoding SMD</h3></p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns].a1] --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;link.a2] --> <a></a></p></div>
+<div class="extras"><p><h3>And now just trying all the combinations...</h3></p></div>
+<div class="extras"><p>&lcub;&lcub;&lsqb;ns&rsqb;.a1&rcub;&rcub; --> {{link.a1}}  -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
+<div class="extras"><p>&lsqb;&lsqb;ns&rsqb;.a1&rsqb; --> a1_rval</p></div>
+<div class="extras"><p>&lsqb;&lcub;&lcub;ns&rcub;&rcub;.a1&rsqb; --> [{{ns}}.a1] -- Delayed expansion <em><strong>{{}}</strong></em> does not work inline</p></div>
+<div class="extras"><p><h3>------------------------------------------</h3></p></div>
+<div class="extras"><p>Setting default rvalue for a2 and a3</p></div>
+<div class="extras"><p>[&lsqb;ns].a2] --> a2_rval</p></div>
+<div class="extras"><p>[&lsqb;ns].a3] --> a3_rval</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+WARNING: Use of reserved attribute name <em>_private_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_public_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_private_keys_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_all_attrs_esc_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_null_</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+WARNING: Use of reserved attribute name <em>_rval</em> is ambiguous within a variable declaration and will likely lead to unexpected results.<br />
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>yes<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_help=</strong>&lt;em&gt;{{self._}}this is line 1 help text&lt;/em&gt;&lt;br /&gt;&lt;strong&gt;line2&lt;/strong&gt; help text.<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><em><strong>public</strong></em> =  run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"</p></div>
+<div class="extras"><p><em><strong>public_esc</strong></em> =  run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\"</p></div>
+<div class="extras"><p><em><strong>private</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<a run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></a>" _tag="a"</p></div>
+<div class="extras"><p><em><strong>private_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" _help=\"<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.\" _format=\"<a run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></a>\" _tag=\"a\"</p></div>
+<div class="extras"><p><em><strong>all_attrs</strong></em> =  _private_attrs_="no" _public_attrs_="no" _private_attrs_esc_="no" _public_attrs_esc_="no" _public_keys_="no" _private_keys_="no" _all_attrs_="no" _all_attrs_esc_="no" _null_="no" _rval="no" _code="used by code ns" _params_="used by code ns" _last="used by code ns" run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval" _help="<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text." _format="<a run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></a>" _tag="a"</p></div>
+<div class="extras"><p><em><strong>all_attrs_esc</strong></em> =  _private_attrs_=\"no\" _public_attrs_=\"no\" _private_attrs_esc_=\"no\" _public_attrs_esc_=\"no\" _public_keys_=\"no\" _private_keys_=\"no\" _all_attrs_=\"no\" _all_attrs_esc_=\"no\" _null_=\"no\" _rval=\"no\" _code=\"used by code ns\" _params_=\"used by code ns\" _last=\"used by code ns\" run=\"code.var.run\" public=\"yes\" not_private=\"yes\" src=\"print('required for code')\" type=\"eval\" _help=\"<em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.\" _format=\"<a run="code.var.run" public="yes" not_private="yes" src="print('required for code')" type="eval"></a>\" _tag=\"a\"</p></div>
+<div class="extras"><p><em><strong>public_keys</strong></em> = run, public, not_private, src, type,</p></div>
+<div class="extras"><p><em><strong>private_keys</strong></em> = _private_attrs_, _public_attrs_, _private_attrs_esc_, _public_attrs_esc_, _public_keys_, _private_keys_, _all_attrs_, _all_attrs_esc_, _null_, _rval, _code, _params_, _last, _help, _format, _tag,</p></div>
+<div class="extras"><p><em><strong>null</strong></em> =</p></div>
+<div class="extras"><p><em><strong>rvalue</strong></em> = no</p></div>
+<div class="extras"><p><em><strong>run</strong></em> = code.var.run</p></div>
+<div class="extras"><p><em><strong>_code</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_params_</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_help</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>?</strong></em> = <em>invalid-attributethis is line 1 help text</em><br /><strong>line2</strong> help text.</p></div>
+<div class="extras"><p><em><strong>??</strong></em> = invalid-attributethis is line 1 help text
+line2 help text.</p></div>
+<div class="extras"><p><em><strong>_last</strong></em> = used by code ns</p></div>
+<div class="extras"><p><em><strong>_rval</strong></em> on legitimate variable = [a4._rval]</p></div>
+<div class="extras"><p><em><strong>No help available</strong></em> on legitimate variable = <em>No help available</em></p></div>
+<div class="extras"><p><em><strong>[a4._help]</strong></em> on legitimate variable = [a4._help]</p></div>
+<div class="extras"><p>invalid-attribute.not_private = YES</p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating names with invalid characters</h4></span></div>
+<div class="extras"><p>Test @link with no parameters</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These first ones will fail in AdvancedNamespace().addVariable() because the dictionary will be empty</p></div>
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+ERROR: addVariable called with empty dictionary.<br />
+<div class="extras"><p>These next ones will have the namespace parser  catch the errors and fail the variable creation.</p></div>
+ADD: Invalid character used in variable name "1". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "@". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+ADD: Invalid character used in variable name "a b". Must conform to regular expression "^[a-zA-Z_][-\w]*$"<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@link _="b1" _format="mix of attrs" 123attr="nope"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<div class="extras"><p>--> @link _="b1" _format="mix of attrs" 123attr="nope"</p></div>
+<div class="extras"><p>--> {{self.line}} src="print()" type="eval"</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with delayed expansion of other variables</h4></span></div>
+<div class="extras"><p>These next 3 illustrate the issue described above. There is no way to get c0.a to evaluate when the test is run,</p></div>
+<div class="extras"><p>because when <br /><br />.code=<em>@link _="b1" _format="mix of attrs" 123attr="nope" src="print()" type="eval"</em> or <br />.link=<em>@link _="b1" _format="mix of attrs" 123attr="nope"</em><br /><br />are evaluated, they are expanded at the time, and that changes behavior</p></div>
+<div class="extras"><p><div class="extras"><p></p></div>
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<div class="extras"><p></p></div></p></div>
+<div class="extras"><p>[&lsqb;ns].c1] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns].c2] =</p></div>
+<div class="extras"><p>1</p></div>
+<div class="extras"><p>[&lsqb;ns&rsqb;.c1] = 1 or 1</p></div>
+<div class="extras"><p>[&lsqb;ns&rsqb;.c2] = 1 or 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>1<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>constants<br />
+&nbsp;&nbsp;<strong>a=</strong>9<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>&lsqb;c1&rsqb; = 1</p></div>
+<div class="extras"><p>&lsqb;c2&rsqb; = 1</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><span class="blue"><h4>Testing creating variables with references to instance variables</h4></span></div>
+<div class="extras"><p>&lsqb;c2.attr1] = <em>attribute 1</em></p></div>
+<div class="extras"><p>&lsqb;c2.attr2] = <strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr3] = <em>attribute 1</em>--<strong>attribute 2</strong></p></div>
+<div class="extras"><p>&lsqb;c2.attr4] = <strong>attribute 2</strong>--<em>attribute 1</em></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+</code>
+</div>
+<div class="extras"><h2>------------------------------------------</h2></div>
+<div class="extras"><p>This will test changing a variable's attributes using @set</p></div>
+<div class="extras"><p>Current value for &lsqb;ENC&rsqb;=<em>&nbsp;[smd_markdown_here]</em></p></div>
+<div class="extras"><p><h3>Create new variable using @set</h3></p></div>
+<div class="extras"><p>Make sure variable d0 doesn't exist...</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>[smd_markdown_here]<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.encode_smd(t="&amp;nbsp;{{self.c}}")}}<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now create the variable using @set _ns="link" _="d0" _format="d0_rval" </strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="link" _="d0" _format="d0_rval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>New value for &lsqb;ENC&rsqb;=<em>@set _ns="link" _="d0" _format="d0_rval" </em></p></div>
+<div class="extras"><p><strong>And change its default value</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now update d0 by adding the attribute newattr to @link d0</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newly added attribute<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Now add the attribute extraattr to @link d0, and change newattr = fubar</strong></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>newattr=</strong>fubar<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>d0.extraattr = <strong>fubar</strong></p></div>
+<div class="extras"><p>Changing d0.newattr="newval"</p></div>
+<div class="extras"><p>Which now causes d0.extraattr to have a new value = <strong>newval</strong></p></div>
+<div class="extras"><p>can we remove an attribute?</p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p>ATTR1 should be "New Value":</p></div>
+<div class="extras"><p><a attr1="New Value"></a></p></div>
+<div class="extras"><h3>------------------------------------------</h3></div>
+<div class="extras"><p><strong>Added foo attribute to id1. Now id1 has values</strong></p></div>
+<div class="extras"><p><a attr1="New Value" foo="bar"></a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>foo=</strong>bar<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added bar attribute to id1. Now id1 is</strong></p></div>
+<div class="extras"><p><a attr1="New Value" foo="nubar" bar="oldfu"></a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Created id2 with same attributes as id1 except ATTR1. <em>id2</em> =</strong></p></div>
+<div class="extras"><p><a foo="nubar" bar="oldfu"></a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Added 25 new attributes to id2. It now equals</strong></p></div>
+<div class="extras"><p><a 01="1" 02="2" 03="3" 04="4" 05="5" 06="6" 07="7" 08="8" 09="9" 10="10" 11="11" 12="12" 13="13" 14="14" 15="15" 16="16" 17="17" 18="18" 19="19" 20="20" 21="21" 22="22" 23="23" 24="24" 25="25"></a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>1<br />
+&nbsp;&nbsp;<strong>02=</strong>2<br />
+&nbsp;&nbsp;<strong>03=</strong>3<br />
+&nbsp;&nbsp;<strong>04=</strong>4<br />
+&nbsp;&nbsp;<strong>05=</strong>5<br />
+&nbsp;&nbsp;<strong>06=</strong>6<br />
+&nbsp;&nbsp;<strong>07=</strong>7<br />
+&nbsp;&nbsp;<strong>08=</strong>8<br />
+&nbsp;&nbsp;<strong>09=</strong>9<br />
+&nbsp;&nbsp;<strong>10=</strong>10<br />
+&nbsp;&nbsp;<strong>11=</strong>11<br />
+&nbsp;&nbsp;<strong>12=</strong>12<br />
+&nbsp;&nbsp;<strong>13=</strong>13<br />
+&nbsp;&nbsp;<strong>14=</strong>14<br />
+&nbsp;&nbsp;<strong>15=</strong>15<br />
+&nbsp;&nbsp;<strong>16=</strong>16<br />
+&nbsp;&nbsp;<strong>17=</strong>17<br />
+&nbsp;&nbsp;<strong>18=</strong>18<br />
+&nbsp;&nbsp;<strong>19=</strong>19<br />
+&nbsp;&nbsp;<strong>20=</strong>20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="extras"><p><strong>Changed some of the new attributes so their value has an <em>x</em> in front. It now equals</strong></p></div>
+<div class="extras"><p><a 01="x1" 02="x2" 03="x3" 04="x4" 05="x5" 06="x6" 07="x7" 08="x8" 09="x9" 10="x10" 11="x11" 12="x12" 13="x13" 14="x14" 15="x15" 16="x16" 17="x17" 18="x18" 19="x19" 20="x20" 21="21" 22="22" 23="23" 24="24" 25="25"></a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<div class="plain"><p class="plainTitle">Testing @link builtin functions</p></div>
+<div class="toc"><p class="divTitle">Table of Contents - Unittest link</p>
+<p><br /></p>
+<p><span class="indent"><a href="#ug_ns_link">@link Namespace</a> - <strong>@link Namespace</strong>"</span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_links">Links</a> - <strong>Link Styles</strong></span></span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_hyperlinks">Hyper Links</a> - <strong>Creating hyperlinks</strong></span></span><br /></p>
+<p><span class="indent"><span class="indent"><a href="#ug_bookmarks">Bookmark Links</a> - <strong>Creating bookmarks</strong></span></span><br /></p>
+</div>
+<div class="extras"><h3>Review link bookmarks from link-inc.md</h3></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>ug_bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_ns_link=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@link Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+<a id="ug_ns_link"></a>
+<div class="extras" style="border-bottom:5px solid green;color:green"><h2>&#64;link Namespace</h2></div>
+<div class="extras"><p>The <strong>&#64;link</strong> namespace is built atop the <strong>&#64;html</strong> namespace, and as such, it inherits all the same characteristics of things defined in the <strong>&#64;html</strong> namespace. In this chapter, we will take a closer look at the <strong>&#64;link</strong> namespace and what it has to offer.</p></div>
+<a id="ug_links"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h2>Link Styles</h2></div>
+<div class="extras"><p>There are two different styles of links built-in to <strong>smd</strong> which map to standard HTML links:</p></div>
+<div class="extras">
+<ol class="olist">
+<li>Hyperlinks - Links created using the HTML <strong>a</strong> tag with the <strong>href</strong> attribute. e.g. <em>&lt;a href="url"&gt;content&lt;/a&gt;</em></li>
+<li>Bookmarks - Links created using the HTML <strong>a</strong> tag with the <strong>id</strong> attribute. <em>&lt;a id="bookmark_name"&gt;&lt;/a&gt;</em></li>
+</ol>
+</div>
+<div class="extras"><p>As you can see, these links are both based on the HTML <strong>a</strong> attribute, and the distinction lies in how they are rendered within a document. The sections that follow describe how each link type is creating using the built-in factories specified in the <em><strong>sys.imports/link.md</strong></em> file.</p></div>
+<a id="ug_hyperlinks"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Hyperlinks</h3></div>
+<div class="extras"><p>Hyperlinks are created using the <strong>&#64;link</strong> namespace in <strong>smd</strong>, while specifying the attributes desired to describe the link. The <strong>&#64;link</strong> namespace is a subclass of <strong>&#64;html</strong>, and therefore it shares all the same characteristics, such as the <span class="red"><span style="font-size:150%">&lt;</span></span> attribute to emit the open tag HTML and <span class="red"><span style="font-size:150%">&gt;</span></span> to emit the close tag HTML. For more information on the <strong>&#64;html</strong> namespace, refer to the [link.ug_ns_html._qlink(_qtext="[smdhtml.il] chapter")] in the user manual.</p></div>
+<div class="extras"><p>You can create a variable in the <strong>&#64;link</strong> namespace using the following syntax:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Creating variables in &#64;link namespace</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&#64;link _="name" href="http://example.com"
+</pre></div>
+<div class="extras"><p>If you then write <strong>&lsqb;link.name&rsqb;</strong>, the parser will emit <strong>&lt;a href="http://example.com"&gt;&lt;/a&gt;</strong>. Such a simple example isn't very useful, however, since we need the ability to insert content between the anchor tag. This can be accomplished by using the special attributes <span class="red"><span style="font-size:150%">&lt;</span></span> and <span class="red"><span style="font-size:150%">&gt;</span></span>, as follows:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Emitting HTML links using special attributes</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;link.name.&lt;&rsqb;content here&lsqb;link.name.&gt;&rsqb;
+</pre></div>
+<div class="extras"><p>Now, the parser emits: <strong>&lt;a href="http://example.com"&gt;content here&lt;/a&gt;</strong>, which is a bit more useful, but seemingly rather complex to to use in practice. In light of this, two special built-ins are provided in order to ease the creation and usage of hyperlinks. The first is a link template, <strong>&lsqb;link._template_&rsqb;</strong>, which can be inherited during creation of new links, and the second is a factory, <strong>&lsqb;link.ln_factory&rsqb;</strong>, which can be used to easily create a hyperlink with minimal input, and which has several useful attributes that can be used during rendering. Let's take a look at each of these now.</p></div>
+<div class="extras"><p>Going back to our original example, if we add <strong>_inherit="_template_"</strong> to the definition e.g.:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Inheriting attributes from a template</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&#64;link _="name" href="http://example.com" _inherit="_template_"
+</pre></div>
+<div class="extras"><p>We now have several new attributes available to use. For example, if we write <strong>&lsqb;link.name._asurl&rsqb;</strong>, the parser emits <strong>&lt;a href="http://example.com"&gt;http://example.com&lt;/a&gt;</strong> which renders as <a href="http://example.com">http://example.com</a>.</p></div>
+<div class="extras"><p>If we use just the variable name like we did before e.g. <strong>&lsqb;link.name&rsqb;</strong>, we get this: <a href="http://example.com">Usage: link.name(_text="Text to Link")</a>. As you can see, the default text for the link is actually a usage statement, requesting that we add the <strong>_text=</strong> parameter like so: <strong>&lsqb;link.name&lpar;_text="my web site"&rpar;&rsqb;</strong>, which then yields: <a href="http://example.com">my web site</a>.</p></div>
+<div class="extras"><p>If you want to use different content with the same link, then specifying the <strong>_text=</strong> parameter provides a convenient way to do that. For example, if I change the parameter to <strong>_text="My Really Cool Website"</strong>, I will get: <a href="http://example.com">My Really Cool Website</a>.</p></div>
+<div class="extras"><p>There is one side effect to overriding the default values for attributes on variables in all namespaces except the <strong>&#64;code</strong> namespace. When a default attribute is overridden in a call, it changes the default value of that attribute for subsequent calls!</p></div>
+<div class="extras"><p>For example, if I write <strong>&lsqb;link.name&rsqb;</strong> again, then I will get the last value specified for _text, e.g. <a href="http://example.com">My Really Cool Website</a>.</p></div>
+<div class="extras"><p class="note">Keep that in mind as it affects parameter passing in all of the namespaces except <strong>&#64;code</strong>.<br /><br />In <strong>@code</strong>, default values for parameters can only be overridden when the variable is defined with <strong>@code</strong> or updated with <strong>@set</strong>. Anything passed via a call will be persisted for that call, and then revert to the original value.</p></div>
+<div class="extras"><p>You can also set the initial value for <strong>_text</strong> when the link variable is initially defined. For example, if we write:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Specify initial value for _text during declaration</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&#64;link _="name" href="http://example.com" _inherit="_template_" _text="my default title"
+</pre></div>
+<div class="extras"><p>And now if I write <strong>&lsqb;link.name&rsqb;</strong>, I will get the new default value for _text, i.e.: <a href="http://example.com">my default title</a>, without having to specify <strong>_text</strong> on the initial usage of the link.</p></div>
+<div class="extras" style="border-bottom:2px solid black"><h3>Using the link factory to create hyperlinks</h3></div>
+<div class="extras"><p>Before we leave the section on hyperlinks, let's a have a look at a better shorthand for creating links, the built-in link factory <strong>ln_factory</strong>. This built-in allows you to easily create a new link with minimal parameters:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using the link factory to easily create hyperlinks</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;ln_factory(nm="sample" hr="http://example.com" t="my default title")&rsqb;
+</pre></div>
+<div class="extras"><p>And now, if I write <strong>&lsqb;sample&rsqb;</strong>, I will get: <a href="http://example.com">my default title</a>. Notice how in this example, we left off the namespace <strong>link.</strong>. Recall that namespaces allow identifiers to be reused, and the value of a duplicated identifier in different namespaces is unique within each namespace. This ambiguity can lead to unexpected expansion since the if no namespace is supplied, the different namespaces are searched attempting to resolve the identifier. If the parser finds a match before it searches the intended namespace, then that is what it will use.</p></div>
+<div class="extras"><p>Given that, it's always a good idea to specify the namespace except in the most simple of documents, to avoid incorrect expansion down the road. Thus, if I write <strong>&lsqb;link.sample&rsqb;</strong>, I will get the value as before: <a href="http://example.com">my default title</a>.</p></div>
+<div class="extras"><p>As you might expect, <strong>ln_factory</strong> inherits from <strong>link._template_</strong>, and as such, it inherits attributes including <strong>_asurl</strong>. For example, <em><strong>&lsqb;link.sample._asurl&rsqb;</strong></em> which expands to <strong>&lt;a href="http://example.com"&gt;http://example.com&lt;/a&gt;</strong> and renders as: <a href="http://example.com">http://example.com</a>.</p></div>
+<div class="extras"><p>One other feature of the <strong>link._template_</strong> are the <strong>_qlink</strong> and <strong>_qtext</strong> attributes. These allow you to specify alternative link text to the same <strong>href</strong>. For example, if I add <strong>_qtext="alternative link text"</strong> when the variable is declared, and then write <strong>&lsqb;link.sample._qlink&rsqb;</strong>, I will get: <a href="http://example.com">alternative link text</a>.</p></div>
+<div class="extras"><p>You can also specify the <strong>_qtext</strong> using the special <strong>_null_</strong> syntax:  <strong>&lsqb;link.sample._null_&lpar;_qtext="alt2 link text"&rpar;&rsqb;</strong>. Doing so then causes <strong>_qlink</strong> to emit: <a href="http://example.com">alt2 link text</a>.</p></div>
+<div class="extras"><p>And of course, you can create them on the fly by simply specifying the <strong>_qtext</strong> parameter when requesting the <strong>_qlink</strong> attribute value.</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Specifying _qtext as parameter to _qlink</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;link.sample._qlink&lpar;_qtext="yet another descriptive link text"&rpar;&rsqb;<br />
+<em>// Emits the following on-the-fly</em>
+<a href="http://example.com">yet another descriptive link text</a>
+</pre></div>
+<div class="extras"><p>As in the <strong>&#64;html</strong> namespace, any valid HTML attribute can be specified when creating link variables. Like <strong>&#64;html</strong>, attributes that begin with an underscore <em><strong>_</strong></em> are considered <em>private</em> and attributes that begin with a letter are considered <em>public</em>. When HTML tags are emitted as part of variable expansion, all public attributes are written as part of the opening tag. Let's see how this works.</p></div>
+<div class="extras"><p>If we add <strong>title="my link title here"</strong> when we define the link variable <strong>link.sample</strong> we were just using, and then emit the code using any of the emitters <strong>(link.sample, link.sample._asurl, link.sample._qlink)</strong>, the HTML code includes a <strong>title=</strong> attribute every time the anchor opening tag is written. Let's see how that looks, first, we'll declare it:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Adding public attributes to an &#64;link variable</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+<em>// You can add attributes with either <strong>&#64;set</strong> or using the <strong>_null_</strong> method</em><br />
+&commat;set _="link.sample" title="link title is now set"
+Now &lsqb;link.sample&rsqb; emits: <a href="http://example.com" title="link title is now set">my default title</a> (hover to see the title)<br />
+&lsqb;link.sample._null_(title="my link title here")&rsqb;
+Now &lsqb;link.sample&rsqb; emits: <a href="http://example.com" title="my link title here">my default title</a> (hover to see the title)<br />
+</pre></div>
+<div class="extras"><p>Let's take a closer look at what the parser emits and what the browser renders for each link method:</p></div>
+<div class="extras"><p><strong>&lsqb;link.sample&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;my default title&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">my default title</a></p></div>
+<div class="extras"><p><strong>&lsqb;link.sample._asurl&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;http://example.com&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">http://example.com</a></p></div>
+<div class="extras"><p><strong>&lsqb;link.sample._qlink&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here"&gt;yet another descriptive link text&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here">yet another descriptive link text</a></p></div>
+<div class="extras"><p>If you hover over any of the preceding links, the browser will show "<strong>my link title here</strong>" after a couple of seconds.</p></div>
+<div class="extras"><p>By using this same feature, you can add custom CSS styling via <strong>style=</strong> along with other valid HTML attributes to any <em>&#64;link</em>, <em>&#64;image</em> or <em>&#64;html</em> namespace tag.</p></div>
+<div class="extras"><p>As one last example, we will add <strong>style="font-size:2em"</strong> to the link.sample variable, and then emit the same 3 links as before:</p></div>
+<div class="extras"><p>Let's write the following markdown: <strong>&lsqb;link.sample._null_(style="font-size:2em")&rsqb;</strong> first.</p></div>
+<div class="extras"><p>And now, <strong>&lsqb;link.sample&rsqb;</strong> emits <em>&lt;a href="http://example.com" title="my link title here" style="font-size:2em"&gt;my default title&lt;/a&gt;</em> which renders as: <a href="http://example.com" title="my link title here" style="font-size:2em">my default title</a></p></div>
+<div class="extras"><p>Similarly, <strong>&lsqb;link.sample._asurl&rsqb;</strong>  and <strong>&lsqb;link.sample._qlink&rsqb;</strong> render as:</p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:2em">http://example.com</a></p></div>
+<div class="extras"><p><a href="http://example.com" title="my link title here" style="font-size:2em">yet another descriptive link text</a></p></div>
+<div class="extras"><p>This should give you a pretty good idea of how you can use hyperlinks in your smd documents, and so this wraps up the section on creating them using the built-ins provided in <em><strong>sys.imports/link.md</strong></em>.</p></div>
+<a id="ug_bookmarks"></a>
+<div class="extras" style="border-bottom:3px solid black;color:green"><h3>Creating Bookmarks</h3></div>
+<div class="extras"><p>Bookmarks are a special type of link used within an HTML document. There are two logical parts to a bookmark, the <em><strong>ID</strong></em> and the actual reference to the ID, which is done by writing <em><strong>#ID</strong></em>. Within smd, bookmarks are implemented with the <strong>&#64;link</strong> namespace, and are usually created using the Bookmark factory, <strong>bm_factory</strong>, which is a built-in link variable. <strong>bm_factory</strong> uses the <strong>bm_template</strong> variable in order to provide a simple abstraction for creating and using bookmarks within an HTML document.</p></div>
+<div class="extras"><p class="note"><em><strong>NOTE</strong></em>: Because the <strong>bm_template</strong> isn't useful outside the context of the <strong>bm_factory</strong>, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.</p></div>
+<div class="extras"><p>Similar to it's counterpart <strong>ln_factory</strong>, has the following syntax:</p></div>
+<div class="plain" style="padding-left:3em;padding-right:3em"><pre style="background-color:lightgray;font-style:italic;padding:5px 10px;white-space:pre-wrap" class="divTitle">Using the bookmark factory to create in-document links</pre><pre style="background-color:lightgray;font-weight:100;padding:5px 10px;white-space:pre-wrap" class="divTitle">
+&lsqb;bm_factory(nm="bookmark1" t="my bookmark text")&rsqb;
+</pre></div>
+<div class="extras"><p>The <strong>bm_factory</strong> does not need the <strong>hr=</strong> parameter, however, because the href is constructed using only the bookmark name, since it refers to a location within the current document.</p></div>
+<div class="extras"><p>Once the bookmark is created using the syntax above, hyperlinks within the current document are created by using the <strong>.link</strong> attribute, and the anchor location is emitted using simply the variable name. Let's look at an example.</p></div>
+<div class="extras"><p>Within your document, use the <strong>&lsqb;link.bookmark1&rsqb;</strong> to place the anchor at the appropriate location. In our case, I've placed the anchor just below the variable dump below, so that it's easy to test.  To create a hyperlink to that location, use the syntax: <strong>&lsqb;link.bookmark1.link&rsqb;</strong>, as I have done right here: <a href="#bookmark1">my bookmark text</a>. &lt;-- Click on that link and see that it takes you to the location below.</p></div>
+<div class="extras"><p>I'm going to dump the various <strong>&#64;link</strong> variables we've been creating to create some space between the bookmark link I just emitted above and the location where the heading is that I dropped the anchor.</p></div>
+<div style="margin-left:3.3em;margin-right:3.3em;border:2px solid black;background:lightgray">
+<div class="extras"><p><div class="source"><code style="font-size:1.4em;font-weight:bold"><strong>&#64;link</strong> variable definitions and associated <strong>&#64;html</strong> elements</code></p></div>
+<code style="font-size:1.2em"><div class="extras"><p></code>
+<strong>bookmark1=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>my bookmark text<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>name=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>_inherit=</strong>_template_<br />
+<br />
+<strong>sample=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>yet another descriptive link text<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>title=</strong>my link title here<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:2em<br />
+<br />
+<code style="font-size:1.2em"></p></div></code>
+<div class="extras"><p></div></p></div>
+</div>
+<a id="bookmark1"></a>
+<div class="extras"><h4>This is where I dropped the anchor for <strong>bookmark1</strong></h4></div>
+<div class="extras"><p>Before we leave bookmarks, it is worth mentioning that this factory also supports the <strong>_qlink</strong> and <strong>_qtext</strong> attributes, just like standard links do. So, using our prior bookmark, here is the output when using them:</p></div>
+<div class="extras"><p><strong>&lsqb;link.bookmark1._qlink&lpar;"my alternate bookmark name"&rpar;&rsqb;</strong> --&gt; <a href="#bookmark1">my alternate bookmark name</a></p></div>
+<div class="extras"><p>That's about all there is to using the smd built-ins for creating HTML bookmarks within a document.</p></div>
+<div class="plain"><p class="plainTitle">Testing adding new @link builtins</p></div>
+<div class="extras"><p>This seems unnecessary at this time.</p></div>
+<div class="plain"><p class="plainTitle">Testing generic @link support</p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">Google home page</a></p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">https://google.com</a></p></div>
+<div class="extras"><p><a href="https://google.com" target="_blank" title="click on me to search on google.com">SETMETOLINKTEXT</a></p></div>
+<div class="variables">
+<code>
+----------------------------------------<br />
+NAMESPACE: var<br />
+----------------------------------------<br />
+<strong>E=</strong><br />&nbsp;&nbsp;<strong>ast=</strong>&amp;ast;<br />
+&nbsp;&nbsp;<strong>ast2=</strong>[self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>ast3=</strong>[self.ast][self.ast][self.ast]<br />
+&nbsp;&nbsp;<strong>lb=</strong>&amp;lsqb;<br />
+&nbsp;&nbsp;<strong>rb=</strong>&amp;rsqb;<br />
+&nbsp;&nbsp;<strong>lcb=</strong>&amp;lcub;<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>&amp;rcub;<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>lt=</strong>&amp;lt;<br />
+&nbsp;&nbsp;<strong>gt=</strong>&amp;gt;<br />
+&nbsp;&nbsp;<strong>at=</strong>&amp;commat;<br />
+&nbsp;&nbsp;<strong>lp=</strong>&amp;lpar;<br />
+&nbsp;&nbsp;<strong>rp=</strong>&amp;rpar;<br />
+&nbsp;&nbsp;<strong>plus=</strong>&amp;plus;<br />
+&nbsp;&nbsp;<strong>ins=</strong>[self.plus][self.plus]<br />
+&nbsp;&nbsp;<strong>minus=</strong>&amp;minus;<br />
+&nbsp;&nbsp;<strong>tilde=</strong>&amp;sim;<br />
+&nbsp;&nbsp;<strong>del=</strong>[self.tilde][self.tilde]<br />
+&nbsp;&nbsp;<strong>sp=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>sp2=</strong>[self.sp][self.sp]<br />
+&nbsp;&nbsp;<strong>apos=</strong>&amp;apos;<br />
+&nbsp;&nbsp;<strong>num=</strong>&amp;num;<br />
+&nbsp;&nbsp;<strong>hashtag=</strong>&amp;num;<br />
+&nbsp;&nbsp;<strong>amp=</strong>&amp;amp;<br />
+&nbsp;&nbsp;<strong>bs=</strong>&amp;bsol;<br />
+&nbsp;&nbsp;<strong>equot=</strong>\&amp;quot;<br />
+&nbsp;&nbsp;<strong>quot=</strong>&amp;quot;<br />
+&nbsp;&nbsp;<strong>dquot=</strong>&amp;#34;<br />
+&nbsp;&nbsp;<strong>fs=</strong>&amp;sol;<br />
+&nbsp;&nbsp;<strong>fs2=</strong>[self.fs][self.fs]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
+<strong>EMOJI=</strong><br />&nbsp;&nbsp;<strong>mask=</strong>&amp;#x1F637;<br />
+&nbsp;&nbsp;<strong>shades=</strong>&amp;#x1F60E;<br />
+&nbsp;&nbsp;<strong>smile=</strong>&amp;#x1F642;<br />
+&nbsp;&nbsp;<strong>tonguewink=</strong>&amp;#x1F61C;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Emoji Constants: {{self._public_attrs_}}<br />
+<br />
+<strong>ENC=</strong><br />&nbsp;&nbsp;<strong>c=</strong>@set _ns="link" _="d0" _format="d0_rval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.c}} {{var.code_helper}}<br />
+<br />
+<strong>HEX=</strong><br />&nbsp;&nbsp;<strong>lb=</strong>\x5b<br />
+&nbsp;&nbsp;<strong>rb=</strong>\x5d<br />
+&nbsp;&nbsp;<strong>lcb=</strong>\x7b<br />
+&nbsp;&nbsp;<strong>lcb2=</strong>[self.lcb][self.lcb]<br />
+&nbsp;&nbsp;<strong>rcb=</strong>\x7d<br />
+&nbsp;&nbsp;<strong>rcb2=</strong>[self.rcb][self.rcb]<br />
+&nbsp;&nbsp;<strong>_format=</strong>Entity Constants: {{self._all_attrs_}}<br />
+<br />
+<strong>_df_html_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_" _inherit="code" style="font-size:1.4em;font-weight:bold"      \n@html _="_$DIVNAME$_content_" _inherit="code" style="font-size:1.2em"<br />
+<br />
+<strong>_df_html_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="$DIVNAME$"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="$DIVNAME$ pbb"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="divTitle"      \n@html _="_$DIVNAME$_p_content_" _inherit="p"<br />
+<br />
+<strong>_df_html_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@html _="_$DIVNAME$_div_" _inherit="div" class="extras"      \n@html _="_$DIVNAME$_div_pbb_" _inherit="_$DIVNAME$_div_" class="extras pbb"      \n@html _="_$DIVNAME$_div_pba_" _inherit="_$DIVNAME$_div_" class="extras pba"      \n@html _="_$DIVNAME$_p_" _inherit="p" class="$DIVNAME$"<br />
+<br />
+<strong>_df_var_code_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_.&lt;}}{{self.t}}{{html._$DIVNAME$_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_content_.&lt;}}{{self.c}}{{html._$DIVNAME$_content_.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
+<br />
+<strong>_df_var_p_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}{{html._$DIVNAME$_div_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{html._$DIVNAME$_p_.&lt;}}{{self.t}}{{html._$DIVNAME$_p_.&gt;}}"      wc_close_inline="{{html.div.&gt;}}"      wc_content="{{html._$DIVNAME$_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}"      sID="$DIVNAME$"      wrapID="_$DIVNAME$_p_content_"      t="$DIVNAME$ default title"       c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;"<br />
+<br />
+<strong>_df_var_simple_=</strong><br />&nbsp;&nbsp;<strong>_str=</strong>@var _="$DIVNAME$" _inherit="_df_var_simple_nd_template"       inline="{{html._$DIVNAME$_div_.&lt;}}{{self.inline_nd}}{{html._$DIVNAME$_div_.&gt;}}"      inline_nd="{{html._$DIVNAME$_p_.&lt;}}{{self.c}}{{html._$DIVNAME$_p_.&gt;}}"      wc_open_inline="{{html._$DIVNAME$_div_.&lt;}}{{self.nd_open_inline}}"      wc_close_inline="{{html.p.&gt;}}{{html.div.&gt;}}"      wc_content="{{self.c}}"      nd_open_inline="{{html._$DIVNAME$_p_.&lt;}}"      nd_close_inline="{{html.p.&gt;}}"      sID="$DIVNAME$"      wrapID="nop"      c="$DIVNAME$ default content"      _help="&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;"<br />
+<br />
+<strong>_df_var_simple_nd_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+<br />
+<strong>_df_var_template=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+<br />
+<strong>_dfactory=</strong><br />&nbsp;&nbsp;<strong>as_p=</strong>{{self.p}}{{self.var_p}}<br />
+&nbsp;&nbsp;<strong>as_code=</strong>{{self.code}}{{self.var_code}}<br />
+&nbsp;&nbsp;<strong>as_simple=</strong>{{self.simple}}{{self.var_simple}}<br />
+&nbsp;&nbsp;<strong>var_p=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_p_._str")}}<br />
+&nbsp;&nbsp;<strong>var_code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_code_._str")}}<br />
+&nbsp;&nbsp;<strong>var_simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_var_simple_._str")}}<br />
+&nbsp;&nbsp;<strong>p=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_p_._str")}}<br />
+&nbsp;&nbsp;<strong>code=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_code_._str")}}<br />
+&nbsp;&nbsp;<strong>simple=</strong>{{code.replace(var="$DIVNAME$", val="_dfactory.dn", str="var._df_html_simple_._str")}}<br />
+&nbsp;&nbsp;<strong>dn=</strong>generic<br />
+&nbsp;&nbsp;<strong>usage=</strong>&lt;strong&gt;usage: &amp;lsqb;_dfactory(dn="divName")&amp;rsqb;&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.as_p}}<br />
+<br />
+<strong>_lists_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+<br />
+<strong>_self=</strong><br />&nbsp;&nbsp;<strong>il=</strong>{{E.lcb2}}{{_self_}}.{{self.p}}{{E.rcb2}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>_self_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;#x73;elf<br />
+<br />
+<strong>b=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&lt;br /&gt;<br />
+<br />
+<strong>bb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{b}}{{b}}<br />
+<br />
+<strong>big=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{bigtext(_t="{{self.t}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>red=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".red" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>blue=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".blue" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>green=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls=".green" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>multi=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="150%")}}<br />
+&nbsp;&nbsp;<strong>ger=</strong>{{bigtext._prefix(_t="{{self.t}}" _cls="{{self.cls}}" _size="200%")}}<br />
+&nbsp;&nbsp;<strong>110=</strong>{{bigtext(_t="{{self.t}}" _size="110%")}}<br />
+&nbsp;&nbsp;<strong>110p=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="110%" _cls="{{self.cls}}")}}<br />
+&nbsp;&nbsp;<strong>120=</strong>{{bigtext(_t="{{self.t}}" _size="120%")}}<br />
+&nbsp;&nbsp;<strong>120p=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="120%" _cls="{{self.cls}}")}}<br />
+&nbsp;&nbsp;<strong>130=</strong>{{bigtext(_t="{{self.t}}" _size="130%")}}<br />
+&nbsp;&nbsp;<strong>130p=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="130%" _cls="{{self.cls}}")}}<br />
+&nbsp;&nbsp;<strong>142=</strong>{{bigtext(_t="{{self.t}}" _size="142%")}}<br />
+&nbsp;&nbsp;<strong>142p=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="142%" _cls="{{self.cls}}")}}<br />
+&nbsp;&nbsp;<strong>size=</strong>{{bigtext(_t="{{self.t}}" _size="{{self.sz}}")}}<br />
+&nbsp;&nbsp;<strong>sizep=</strong>{{bigtext._prefix(_t="{{self.t}}" _size="{{self.sz}}" _cls="{{self.cls}}")}}<br />
+&nbsp;&nbsp;<strong>sz=</strong>150%<br />
+&nbsp;&nbsp;<strong>t=</strong>&amp;gt;<br />
+<br />
+<strong>bluenote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._bluenote_p_.&lt;}}{{self.c}}{{html._bluenote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._bluenote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>note default content<br />
+<br />
+<strong>body_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_bodyclose.md"<br />
+<br />
+<strong>box=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._box_div_.&lt;}}{{self.inline_nd}}{{html._box_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._box_p_.&lt;}}{{self.c}}{{html._box_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._box_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._box_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>box<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>box default content<br />
+<br />
+<strong>code_helper=</strong><br />&nbsp;&nbsp;<strong>attrs_code=</strong>src="print(12345)" type="eval"<br />
+&nbsp;&nbsp;<strong>attrs_other=</strong><br />
+&nbsp;&nbsp;<strong>_format=</strong><br />
+<br />
+<strong>contact=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.contact-div.&lt;}}{{html.contact-table.&lt;}}{{html.contact-tr.&lt;}}{{html.contact-td-left.&lt;}}{{self.leftside}}{{html.contact-td-left.&gt;}}{{html.contact-td-right.&lt;}}{{self.rightside}}{{html.contact-td-right.&gt;}}{{html.contact-tr.&gt;}}{{html.contact-table.&gt;}}{{html.contact-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>rightside=</strong>{{self.cn}}&lt;br /&gt;{{self.ph}}&lt;br /&gt;{{self.em}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>leftside=</strong>{{self.c1}}&lt;br /&gt;{{self.c2}}&lt;br /&gt;{{self.c3}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>cn=</strong>{{defaults.cn}}<br />
+&nbsp;&nbsp;<strong>ph=</strong>{{defaults.ph}}<br />
+&nbsp;&nbsp;<strong>em=</strong>{{defaults.em}}<br />
+&nbsp;&nbsp;<strong>c1=</strong>{{defaults.c1}}<br />
+&nbsp;&nbsp;<strong>c2=</strong>{{defaults.c2}}<br />
+&nbsp;&nbsp;<strong>c3=</strong>{{defaults.c3}}<br />
+<br />
+<strong>cover=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{defaults.title}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{defaults.author}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{defaults.logline}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+<br />
+<strong>cover_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@var _id="{{self.nm}}"       _inherit="cover_template"       t1=""       t2="{{self.usage}}"       t3=""<br />
+&nbsp;&nbsp;<strong>usage=</strong>Usage:&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{self.nm}}(t1=&amp;quot;&amp;quot; t2=&amp;quot;text&amp;quot; t3=&amp;quot;&amp;quot;)&lt;br /&gt;{{self.nm}}.inline(same)&lt;/strong&gt;<br />
+<br />
+<strong>cover_template=</strong><br />&nbsp;&nbsp;<strong>title=</strong>{{self.t1}}<br />
+&nbsp;&nbsp;<strong>author=</strong>{{self.t2}}<br />
+&nbsp;&nbsp;<strong>logline=</strong>{{self.t3}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline_}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{self._inline_}}<br />
+&nbsp;&nbsp;<strong>_inline_=</strong>&lt;div class="cover"&gt;&lt;h3&gt;{{self.title}}&lt;/h3&gt;&lt;p&gt;{{self.author}}&lt;/p&gt;&lt;p class="coverSummary"&gt;{{self.logline}}&lt;/p&gt;&lt;/div&gt;<br />
+&nbsp;&nbsp;<strong>t1=</strong>Title<br />
+&nbsp;&nbsp;<strong>t2=</strong>author<br />
+&nbsp;&nbsp;<strong>t3=</strong>logline<br />
+<br />
+<strong>defaults=</strong><br />&nbsp;&nbsp;<strong>doctitle=</strong>default page title<br />
+&nbsp;&nbsp;<strong>cssfile=</strong>smd.css<br />
+&nbsp;&nbsp;<strong>_nop=</strong><br />
+<br />
+<strong>div_help_attrs=</strong><br />&nbsp;&nbsp;<strong>main=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;{{var.$DIVNAME$.wrapID}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
+<br />
+<strong>div_help_common=</strong><br />&nbsp;&nbsp;<strong>var_p=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div<br />
+&nbsp;&nbsp;<strong>var_code=</strong>common &lt;strong&gt;$DIVNAME$&lt;/strong&gt; var code<br />
+&nbsp;&nbsp;<strong>var_simple=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div<br />
+&nbsp;&nbsp;<strong>var_term=</strong>common var &lt;strong&gt;terminal&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>var_term2=</strong>common var &lt;strong&gt;terminal2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>var_lists=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;tag&lt;/strong&gt; = An [smdhtml.b] variable used to wrap content when &lt;strong&gt;_tag&lt;/strong&gt; methods are used&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrap&lt;/strong&gt; = An [smdhtml.b] or [smdvar.b] variable used to wrap content when &lt;strong&gt;_wrap&lt;/strong&gt; methods are used&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Public Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;_inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ _inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;with_content&lt;/strong&gt;(c) - emit content &lt;strong&gt;c&lt;/strong&gt; wrapped with &lt;em&gt;_open_inline&lt;/em&gt; / &lt;em&gt;_close_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;tag.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;tag.&amp;gt;&lt;/em&gt; appended&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;wrap._open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;wrap._close&lt;/em&gt; appended&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Private Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_content&lt;/strong&gt; - emit &lt;em&gt;html.li.&amp;lt;&lt;/em&gt; &lt;strong&gt;c&lt;/strong&gt; &lt;em&gt;html.li.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_inline&lt;/strong&gt; - emit &lt;em&gt;$DIVNAME$.&amp;lt;&lt;/em&gt; &lt;strong&gt;_content&lt;/strong&gt; &lt;em&gt;$DIVNAME$.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open&lt;/strong&gt; - set [smdwrap.b] li then emit &lt;em&gt;_open_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close&lt;/strong&gt; - emit &lt;em&gt;_close_inline&lt;/em&gt; then [smdparw.b] 1&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
+<br />
+<strong>div_help_methods=</strong><br />&nbsp;&nbsp;<strong>tc_variants=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>t2_variants=</strong>&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_content - changes &lt;strong&gt;wrapID&lt;/strong&gt; to &lt;strong&gt;nop&lt;/strong&gt; and opens the content tag &lt;em&gt;{{var.terminal2.wrapID}}&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_content - close the &lt;em&gt;{{var.terminal2.wrapID}}&lt;/em&gt; and restore previous &lt;strong&gt;wrapID&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>justc_variants=</strong>&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>nd=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap {{var.$DIVNAME$.wrapID}}&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self._public_keys_}}<br />
+<br />
+<strong>div_help_var_code=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<br />
+<strong>div_help_var_lists=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;tag&lt;/strong&gt; = An [smdhtml.b] variable used to wrap content when &lt;strong&gt;_tag&lt;/strong&gt; methods are used&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrap&lt;/strong&gt; = An [smdhtml.b] or [smdvar.b] variable used to wrap content when &lt;strong&gt;_wrap&lt;/strong&gt; methods are used&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Public Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;_inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ _inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;with_content&lt;/strong&gt;(c) - emit content &lt;strong&gt;c&lt;/strong&gt; wrapped with &lt;em&gt;_open_inline&lt;/em&gt; / &lt;em&gt;_close_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;tag.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_tag_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;tag.&amp;gt;&lt;/em&gt; appended&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_open(c)&lt;/strong&gt; - emit &lt;em&gt;_open&lt;/em&gt; prefixed with &lt;em&gt;wrap._open&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wc_wrap_close&lt;/strong&gt; - emit &lt;em&gt;_close&lt;/em&gt; with &lt;em&gt;wrap._close&lt;/em&gt; appended&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Private Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_content&lt;/strong&gt; - emit &lt;em&gt;html.li.&amp;lt;&lt;/em&gt; &lt;strong&gt;c&lt;/strong&gt; &lt;em&gt;html.li.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_inline&lt;/strong&gt; - emit &lt;em&gt;$DIVNAME$.&amp;lt;&lt;/em&gt; &lt;strong&gt;_content&lt;/strong&gt; &lt;em&gt;$DIVNAME$.&amp;gt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open&lt;/strong&gt; - set [smdwrap.b] li then emit &lt;em&gt;_open_inline&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close&lt;/strong&gt; - emit &lt;em&gt;_close_inline&lt;/em&gt; then [smdparw.b] 1&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_open_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;lt;&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;_close_inline&lt;/strong&gt; - emit &lt;em&gt;html.$DIVNAME$.&amp;gt;&lt;/em&gt;<br />
+<br />
+<strong>div_help_var_p=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<br />
+<strong>div_help_var_simple=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline_nd(c) - insert $DIVNAME$ with content &lt;strong&gt;c&lt;/strong&gt; without DIV wrapper&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(c) - insert $DIVNAME$ DIV with content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open - open a $DIVNAME$ DIV and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ DIV opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;No DIV&lt;/em&gt; variants&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd(c) - &lt;strong&gt;inline_nd&lt;/strong&gt; with raw prefix (i.e. &lt;em&gt;@@ inline_nd&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_inline(c) - same as &lt;strong&gt;inline_nd&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open - open $DIVNAME$ without DIV wrapper using &lt;strong&gt;wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close - close $DIVNAME$ opened with &lt;strong&gt;nd_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_open_inline - like &lt;strong&gt;nd_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nd_close_inline - close $DIVNAME$ opened with &lt;strong&gt;nd_open_inline&lt;/strong&gt;&lt;br /&gt;<br />
+<br />
+<strong>div_help_var_term=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;<br />
+<br />
+<strong>div_help_var_term2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&lt;em&gt;$DIVNAME$(t=&amp;#34;title&amp;#34; c=&amp;#34;content&amp;#34;)&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Common Parameters&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;t&lt;/strong&gt; - The title to use for the $DIVNAME$ div&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;c&lt;/strong&gt; = The content to use for the $DIVNAME$ div&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Attributes&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;sID&lt;/strong&gt; - the div identifier &lt;strong&gt;$DIVNAME$&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;wrapID&lt;/strong&gt; - the &lt;strong&gt;@wrap&lt;/strong&gt; tag(s) &lt;em&gt;[var.$DIVNAME$.wrapID]&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Methods&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;em&gt;&lt;strong&gt;NONE&lt;/strong&gt;&lt;/em&gt; - If no method specified, uses &lt;strong&gt;inline&lt;/strong&gt; with raw (i.e. &lt;em&gt;@@ inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;with_content(t,c) - &lt;strong&gt;wc_inline&lt;/strong&gt; raw (i.e. &lt;em&gt;@@ wc_inline&lt;/em&gt;)&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inline(t) - insert $DIVNAME$ div with text &lt;strong&gt;t&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_inline(t,c) - insert $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and content &lt;strong&gt;c&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open(t) - open a $DIVNAME$ div with title &lt;strong&gt;t&lt;/strong&gt; and &lt;strong&gt;@wrap [var.$DIVNAME$.wrapID]&lt;/strong&gt; ready for content&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close - close $DIVNAME$ div opened with &lt;strong&gt;wc_open&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_inline(t) - like &lt;strong&gt;wc_open&lt;/strong&gt; but does not use &lt;strong&gt;@wrap&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_inline - close $DIVNAME$ div opened with &lt;strong&gt;wc_open_inline&lt;/strong&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_open_content - changes &lt;strong&gt;wrapID&lt;/strong&gt; to &lt;strong&gt;nop&lt;/strong&gt; and opens the content tag &lt;em&gt;[var.terminal2.wrapID]&lt;/em&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;wc_close_content - close the &lt;em&gt;[var.terminal2.wrapID]&lt;/em&gt; and restore previous &lt;strong&gt;wrapID&lt;/strong&gt;<br />
+<br />
+<strong>divxp=</strong><br />&nbsp;&nbsp;<strong>inline=</strong>{{self.open}}{{self.c}}{{self.close}}<br />
+&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>open=</strong>{{self._open}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{self._close}}<br />
+&nbsp;&nbsp;<strong>_open=</strong>{{html._div_extras_.&lt;}}{{html.p.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+<br />
+<strong>doc_closure=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@import "{{sys.imports}}/def_close.md"<br />
+<br />
+<strong>dump=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>dump link<br />
+<br />
+<strong>dump_ns_list=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>var="." link="." help="f"<br />
+<br />
+<strong>dumpit=</strong><br />&nbsp;&nbsp;<strong>1=</strong>[bmgreybg._open]<br />
+&nbsp;&nbsp;<strong>2=</strong>[var.source.wc_open_inline(t="[code.pushlist.title]")]<br />
+&nbsp;&nbsp;<strong>2a=</strong>@wrap _source_content_<br />
+&nbsp;&nbsp;<strong>3=</strong>[divxp.open]<br />
+&nbsp;&nbsp;<strong>4=</strong>{{code.dump(ns="[code.pushlist.nsvar]" name="[code.pushlist.nsname]" whitespace="True" format="True")}}<br />
+&nbsp;&nbsp;<strong>5=</strong>[divxp.close]<br />
+&nbsp;&nbsp;<strong>5a=</strong>@parw1<br />
+&nbsp;&nbsp;<strong>6=</strong>[var.source.wc_close_inline]<br />
+&nbsp;&nbsp;<strong>7=</strong>[bmgreybg._close]<br />
+&nbsp;&nbsp;<strong>attrlist=</strong>1,2,2a,3,4,5,5a,6,7<br />
+&nbsp;&nbsp;<strong>_format=</strong>a macro to dump a variable string<br />
+<br />
+<strong>e_moji=</strong><br />&nbsp;&nbsp;<strong>big=</strong>{{html.spanfs._big}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+&nbsp;&nbsp;<strong>e=</strong>smile<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.spanfs}}{{EMOJI.{{self.e}}}}{{html.spanfs.&gt;}}<br />
+<br />
+<strong>e_tag=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lt;{{self.t}}&amp;gt;<br />
+<br />
+<strong>e_us=</strong><br />&nbsp;&nbsp;<strong>t=</strong>{{self._help}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{html.us.&lt;}}{{self.t}}{{html.us.&gt;}}<br />
+<br />
+<strong>e_var=</strong><br />&nbsp;&nbsp;<strong>t=</strong>link.bookmark1._qlink&amp;lpar;"my alternate bookmark name"&amp;rpar;<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;lsqb;{{self.t}}&amp;rsqb;<br />
+<br />
+<strong>expr=</strong><br />&nbsp;&nbsp;<strong>line=</strong>@link _="c2" _format="1"<br />
+&nbsp;&nbsp;<strong>code=</strong>{{self.line}} src="print()" type="eval"<br />
+&nbsp;&nbsp;<strong>_format=</strong>usage: var.testline(line="line to evaluate")<br />
+<br />
+<strong>extras=</strong><br />&nbsp;&nbsp;<strong>c=</strong>default content<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{html._div_extras_.&lt;}}{{self.c}}{{html.div.&gt;}}<br />
+<br />
+<strong>generic=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._generic_div_.&lt;}}{{self.inline_nd}}{{html._generic_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._generic_p_.&lt;}}{{self.c}}{{html._generic_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._generic_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._generic_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>generic<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>generic default content<br />
+<br />
+<strong>greyout=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._greyout_div_.&lt;}}{{self.inline_nd}}{{html._greyout_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._greyout_p_.&lt;}}{{self.c}}{{html._greyout_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._greyout_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._greyout_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>greyout<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>greyout default content<br />
+<br />
+<strong>hash1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong># ------------------------------------------<br />
+<br />
+<strong>hash2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>## ------------------------------------------<br />
+<br />
+<strong>hash3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>### ------------------------------------------<br />
+<br />
+<strong>important=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._important_div_.&lt;}}{{self.inline_nd}}{{html._important_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._important_p_.&lt;}}{{self.c}}{{html._important_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._important_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._important_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>important<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>important default content<br />
+<br />
+<strong>in_code_namespace=</strong><br />&nbsp;&nbsp;<strong>code=</strong>code<br />
+&nbsp;&nbsp;<strong>namespace=</strong>link<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.equals(v1="self.code", v2="self.namespace", true="self.true", false="self.false")}}<br />
+&nbsp;&nbsp;<strong>true=</strong><br />
+&nbsp;&nbsp;<strong>false=</strong>@set _="code_helper" _format=""<br />
+<br />
+<strong>ismd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>iSMD<br />
+&nbsp;&nbsp;<strong>lcase=</strong>ismd<br />
+&nbsp;&nbsp;<strong>short=</strong>Interactive Script Markdown<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
+<br />
+<strong>mk=</strong><br />&nbsp;&nbsp;<strong>s=</strong>@@&lt;br/&gt;{{code.repeat(t="&amp;" c="100")}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>e=</strong>@@&lt;br/&gt;{{code.repeat(t="%" c="100")}}&lt;br /&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.s}}<br />
+<br />
+<strong>note=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._note_p_.&lt;}}{{self.c}}{{html._note_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._note_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>&lt;em&gt;&lt;strong&gt;NOTE&lt;/strong&gt;&lt;/em&gt;: Because the &lt;strong&gt;bm_template&lt;/strong&gt; isn't useful outside the context of the &lt;strong&gt;bm_factory&lt;/strong&gt;, we are going to focus on the latter only, since it is what you will use to create and use bookmarks.<br />
+<br />
+<strong>ns=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>link<br />
+<br />
+<strong>olist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olist.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olist.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistAlpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistAlpha.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistAlpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistGreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistGreek.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistGreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistRoman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistRoman.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistRoman.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistalpha=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistalpha.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistalpha.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistgreek=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistgreek.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistgreek.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>olistroman=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.olistroman.&lt;}}{{self._content}}{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.olistroman.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.olist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>olist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>plain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._plain_div_.&lt;}}{{html._plain_p_.&lt;}}{{self.t}}{{html._plain_p_.&gt;}}{{html._plain_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._plain_div_.&lt;}}{{html._plain_p_.&lt;}}{{self.t}}{{html._plain_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._plain_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>plain<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_plain_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>Testing generic @link support<br />
+&nbsp;&nbsp;<strong>c=</strong>plain default content<br />
+<br />
+<strong>question=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._question_div_.&lt;}}{{self.inline_nd}}{{html._question_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._question_p_.&lt;}}{{self.c}}{{html._question_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._question_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._question_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>question<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>question default content<br />
+<br />
+<strong>rednote=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._note_div_.&lt;}}{{self.inline_nd}}{{html._note_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._rednote_p_.&lt;}}{{self.c}}{{html._rednote_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._note_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._rednote_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>note<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>note default content<br />
+<br />
+<strong>review=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._review_div_.&lt;}}{{html._review_p_.&lt;}}{{self.t}}{{html._review_p_.&gt;}}{{html._review_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._review_div_.&lt;}}{{html._review_p_.&lt;}}{{self.t}}{{html._review_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._review_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>review<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_review_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>review default title<br />
+&nbsp;&nbsp;<strong>c=</strong>review default content<br />
+<br />
+<strong>revision=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._v}} {{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>plain=</strong>@@ {{self.inline_plain}}<br />
+&nbsp;&nbsp;<strong>inline_plain=</strong>{{html.revision-div.&lt;}}{{html.revision-p.&lt;}}{{self._vp}}{{html.revision-p.&gt;}}{{html.revision-div.&gt;}}<br />
+&nbsp;&nbsp;<strong>_v=</strong>{{self._vp}} ({{code.datetime_stamp.run}})<br />
+&nbsp;&nbsp;<strong>_vp=</strong>Revision: &lt;em&gt;&lt;strong&gt;{{self.v}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>v=</strong>{{defaults.revision}}<br />
+<br />
+<strong>section=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>section<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>section default title<br />
+&nbsp;&nbsp;<strong>c=</strong>section default content<br />
+<br />
+<strong>section_pbb=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._section_div_pbb_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}{{html._section_div_pbb_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._section_div_pbb_.&lt;}}{{html._section_p_.&lt;}}{{self.t}}{{html._section_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._section_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>section<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_section_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>section default title<br />
+&nbsp;&nbsp;<strong>c=</strong>section default content<br />
+<br />
+<strong>smd=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMD<br />
+&nbsp;&nbsp;<strong>lcase=</strong>smd<br />
+&nbsp;&nbsp;<strong>short=</strong>Script Markdown<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
+<br />
+<strong>smdbreak=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@break<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdbreak_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@break {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdcode=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@code<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdcode_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@code {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdcomment=</strong><br />&nbsp;&nbsp;<strong>p=</strong>//<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdcomment_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>// {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smddebug=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@debug<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smddebug_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@debug {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smddump=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@dump<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smddump_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@dump {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdembed=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@embed<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdembed_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@embed {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdexit=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@exit<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdexit_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@exit {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdhtml=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@html<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdhtml_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@html {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdimage=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@image<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdimage_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@image {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdimport=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@import<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdimport_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@import {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdlink=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@link<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdlink_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@link {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdparse=</strong><br />&nbsp;&nbsp;<strong>ucase=</strong>SMDParse<br />
+&nbsp;&nbsp;<strong>lcase=</strong>smdparse<br />
+&nbsp;&nbsp;<strong>short=</strong>Script Markdown Parser<br />
+&nbsp;&nbsp;<strong>desc=</strong>{{self.ucase}} - {{self.short}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self._format}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self._format}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self._format}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>B=</strong>&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>EM=</strong>&lt;em&gt;{{self.ucase}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>EMB=</strong>&lt;em&gt;&lt;strong&gt;{{self.ucase}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>short_b=</strong>&lt;strong&gt;{{self.short}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>desc_b=</strong>&lt;strong&gt;{{self.desc}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{self.lcase}}<br />
+<br />
+<strong>smdparw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdparw_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@parw {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdquit=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@quit<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdquit_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@quit {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdraw=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@raw<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdraw_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@raw {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdset=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@set<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdset_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@set {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdstop=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@stop<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdstop_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@stop {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdtag=</strong><br />&nbsp;&nbsp;<strong>p=</strong><br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdvar=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@var<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdvar_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@var {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdwatch=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@watch<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdwatch_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@watch {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdwrap=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@wrap<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>smdwrap_wp=</strong><br />&nbsp;&nbsp;<strong>p=</strong>@wrap {{self.parms}}<br />
+&nbsp;&nbsp;<strong>il=</strong>{{encode_smd(t="{{self.p}}")}}<br />
+&nbsp;&nbsp;<strong>b=</strong>&lt;strong&gt;{{self.il}}&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>em=</strong>&lt;em&gt;{{self.il}}&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>emb=</strong>&lt;em&gt;&lt;strong&gt;{{self.il}}&lt;/strong&gt;&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@{{self.il}}<br />
+<br />
+<strong>source=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}{{html._source_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._source_div_.&lt;}}{{html._source_.&lt;}}{{self.t}}{{html._source_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._source_content_.&lt;}}{{self.c}}{{html._source_content_.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>source<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_source_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>&lt;strong&gt;&amp;#64;link&lt;/strong&gt; variable definitions and associated &lt;strong&gt;&amp;#64;html&lt;/strong&gt; elements<br />
+&nbsp;&nbsp;<strong>c=</strong>source default content<br />
+<br />
+<strong>sp=</strong><br />&nbsp;&nbsp;<strong>2=</strong>&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>4=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>6=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>8=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>10=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+&nbsp;&nbsp;<strong>12=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+<br />
+<strong>sp4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<br />
+<br />
+<strong>syntax=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._syntax_div_.&lt;}}{{html._syntax_p_.&lt;}}{{self.t}}{{html._syntax_p_.&gt;}}{{html._syntax_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._syntax_div_.&lt;}}{{html._syntax_p_.&lt;}}{{self.t}}{{html._syntax_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._syntax_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>syntax<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_syntax_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>syntax default title<br />
+&nbsp;&nbsp;<strong>c=</strong>syntax default content<br />
+<br />
+<strong>sys=</strong><br />&nbsp;&nbsp;<strong>basepath=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd<br />
+&nbsp;&nbsp;<strong>imports=</strong>/Users/ken/Dropbox/shared/src/script/smd/smd/import<br />
+&nbsp;&nbsp;<strong>root=</strong>/Users/ken/Dropbox/shared/src/script/smd<br />
+&nbsp;&nbsp;<strong>user_basepath=</strong>/Users/ken/.smd<br />
+&nbsp;&nbsp;<strong>user_imports=</strong>/Users/ken/.smd/import<br />
+&nbsp;&nbsp;<strong>user_root=</strong>/Users/ken<br />
+<br />
+<strong>tab2=</strong><br />&nbsp;&nbsp;<strong>o=</strong>&lt;span class="indent"&gt;&lt;span class="indent"&gt;<br />
+&nbsp;&nbsp;<strong>c=</strong>&lt;/span&gt;&lt;/span&gt;<br />
+&nbsp;&nbsp;<strong>o3=</strong>&lt;span class="indent"&gt;&lt;span class="indent"&gt;&lt;span class="indent"&gt;<br />
+&nbsp;&nbsp;<strong>c3=</strong>&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;<br />
+<br />
+<strong>table_2col=</strong><br />&nbsp;&nbsp;<strong>open=</strong>{{code.pushlines(t="@wrap null\n&lt;div class=\"extras\"&gt;&lt;table style=\"margin-left:auto;margin-right:auto\"&gt;")}}<br />
+&nbsp;&nbsp;<strong>close=</strong>{{code.pushlines(t="&lt;/table&gt;&lt;/div&gt;\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>row=</strong>&lt;tr&gt;{{td_item.&lt;}}{{self.item}}&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>row_alt=</strong>&lt;tr&gt;{{td_item.&lt;}}&lt;em&gt;{{self.item}}&lt;/em&gt;&lt;/td&gt;{{td_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>header=</strong>&lt;tr&gt;{{th_item.&lt;}}{{self.item}}&lt;/td&gt;{{th_desc.&lt;}}{{self.desc}}&lt;/td&gt;&lt;/tr&gt;<br />
+&nbsp;&nbsp;<strong>_format=</strong>Macro for emitting 2 column table<br />
+<br />
+<strong>terminal=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@wrap {{self.wrapID}}\n{{self.wc_open_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self.wc_close_inline}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}{{html._terminal_prewrap_content_.&lt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.prewrap.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>Using the bookmark factory to create in-document links<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>sID=</strong>terminal<br />
+<br />
+<strong>terminal2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_content_.&lt;}}{{self.t}}{{html._terminal_prewrap_content_.&gt;}}{{html._terminal_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.c}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._terminal_div_.&lt;}}{{html._terminal_prewrap_.&lt;}}{{self.t}}{{html._terminal_prewrap_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>t=</strong>This is your terminal title<br />
+&nbsp;&nbsp;<strong>c=</strong>This is your terminal content<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>html._terminal_prewrap_content_<br />
+&nbsp;&nbsp;<strong>sID=</strong>terminal2<br />
+&nbsp;&nbsp;<strong>wc_open_content=</strong>{{code.pushlines(t="@wrap nop\n{{html._terminal_prewrap_content_.&lt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close_content=</strong>{{code.pushlines(t="{{html._terminal_prewrap_content_.&gt;}}\n@parw 1")}}<br />
+<br />
+<strong>testdoc=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc.desc}}{{html.h3sh.&gt;}}\n@wrap html.divx, p")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@parw\n@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>title=</strong>links.md<br />
+&nbsp;&nbsp;<strong>desc=</strong>Testing the @link namespace<br />
+<br />
+<strong>testdoc_nw=</strong><br />&nbsp;&nbsp;<strong>begin=</strong>{{code.pushlines(t="{{html.h2sh.&lt;}}Script: {{var.testdoc_nw.title}}{{html.h2sh.&gt;}}\n{{html.h3sh.&lt;}}Purpose: {{var.testdoc_nw.desc}}{{html.h3sh.&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>end=</strong>{{code.pushlines(t="@dump {{dump_ns_list}}\n{{doc_closure}}\n{{body_closure}}")}}<br />
+&nbsp;&nbsp;<strong>title=</strong>name of script<br />
+&nbsp;&nbsp;<strong>desc=</strong>purpose of script<br />
+<br />
+<strong>toc=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._toc_div_.&lt;}}{{html._toc_p_.&lt;}}{{self.t}}{{html._toc_p_.&gt;}}{{html._toc_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._toc_div_.&lt;}}{{html._toc_p_.&lt;}}{{self.t}}{{html._toc_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{html._toc_p_content_.&lt;}}{{self.c}}{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>toc<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>_toc_p_content_<br />
+&nbsp;&nbsp;<strong>t=</strong>Table of Contents - Unittest link<br />
+&nbsp;&nbsp;<strong>c=</strong>toc default content<br />
+<br />
+<strong>ulist=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.ulist.&lt;}}{{self._content}}{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.ulist.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>ulist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>ulistplain=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self._open_inline}}{{self._content}}{{self._close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="{{self._close}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_open=</strong>{{code.pushlines(t="@@{{[self.tag].&lt;}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_tag_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.tag].&gt;}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_open=</strong>{{code.pushlines(t="@@{{[self.wrap]._open}}\n{{self._open}}")}}<br />
+&nbsp;&nbsp;<strong>wc_wrap_close=</strong>{{code.pushlines(t="{{self._close}}\n@@{{[self.wrap]._close}}")}}<br />
+&nbsp;&nbsp;<strong>tag=</strong>html.divx<br />
+&nbsp;&nbsp;<strong>wrap=</strong>var.divxp<br />
+&nbsp;&nbsp;<strong>_open=</strong>@wrap li\n@@{{self._open_inline}}<br />
+&nbsp;&nbsp;<strong>_close=</strong>@@{{self._close_inline}}\n@parw 1<br />
+&nbsp;&nbsp;<strong>_content=</strong>{{html.li.&lt;}}{{self.c}}{{html.li.&gt;}}<br />
+&nbsp;&nbsp;<strong>_inline=</strong>{{html.ulistplain.&lt;}}{{self._content}}{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>_open_inline=</strong>{{html.ulistplain.&lt;}}<br />
+&nbsp;&nbsp;<strong>_close_inline=</strong>{{html.ulist.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>ulist<br />
+&nbsp;&nbsp;<strong>c=</strong>var.{{self.sID}} default content<br />
+<br />
+<strong>vo=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@@ {{self.inline}}<br />
+&nbsp;&nbsp;<strong>with_content=</strong>@@ {{self.wc_inline}}<br />
+&nbsp;&nbsp;<strong>wc_inline=</strong>{{self.wc_open_inline}}{{self.wc_content}}{{self.wc_close_inline}}<br />
+&nbsp;&nbsp;<strong>wc_open=</strong>{{code.pushlines(t="@@{{self.wc_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>wc_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.wc_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>nd=</strong>@@{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_inline=</strong>{{self.inline_nd}}<br />
+&nbsp;&nbsp;<strong>nd_open=</strong>{{code.pushlines(t="@@{{self.nd_open_inline}}\n@wrap {{self.wrapID}}")}}<br />
+&nbsp;&nbsp;<strong>nd_close=</strong>{{code.pushlines(t="@parw 1\n@@{{self.nd_close_inline}}")}}<br />
+&nbsp;&nbsp;<strong>inline=</strong>{{html._vo_div_.&lt;}}{{self.inline_nd}}{{html._vo_div_.&gt;}}<br />
+&nbsp;&nbsp;<strong>inline_nd=</strong>{{html._vo_p_.&lt;}}{{self.c}}{{html._vo_p_.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_open_inline=</strong>{{html._vo_div_.&lt;}}{{self.nd_open_inline}}<br />
+&nbsp;&nbsp;<strong>wc_close_inline=</strong>{{html.p.&gt;}}{{html.div.&gt;}}<br />
+&nbsp;&nbsp;<strong>wc_content=</strong>{{self.c}}<br />
+&nbsp;&nbsp;<strong>nd_open_inline=</strong>{{html._vo_p_.&lt;}}<br />
+&nbsp;&nbsp;<strong>nd_close_inline=</strong>{{html.p.&gt;}}<br />
+&nbsp;&nbsp;<strong>sID=</strong>vo<br />
+&nbsp;&nbsp;<strong>wrapID=</strong>nop<br />
+&nbsp;&nbsp;<strong>c=</strong>vo default content<br />
+<br />
+<strong>vpl=</strong><br />&nbsp;&nbsp;<strong>attrlist=</strong>1,2,3,4,5<br />
+&nbsp;&nbsp;<strong>1=</strong>Line 1<br />
+&nbsp;&nbsp;<strong>2=</strong>Line 2<br />
+&nbsp;&nbsp;<strong>3=</strong>Line 3<br />
+&nbsp;&nbsp;<strong>4=</strong>Line 4<br />
+&nbsp;&nbsp;<strong>5=</strong>Line 5<br />
+<br />
+<strong>wrap_h=</strong><br />&nbsp;&nbsp;<strong>hash1=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash1}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash2=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash2}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>hash3=</strong>{{code.pushlines(t="@wrap html.divx\n{{var.hash3}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>chapter=</strong>{{code.pushlines(t="@wrap html.divx1\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>section=</strong>{{code.pushlines(t="@wrap html.divx2\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>subsect=</strong>{{code.pushlines(t="@wrap html.divx3\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>{{code.pushlines(t="@wrap html.divx\n{{self.t}}\n@parw 1")}}<br />
+&nbsp;&nbsp;<strong>t=</strong>#### This is where I dropped the anchor for &lt;strong&gt;bookmark1&lt;/strong&gt;<br />
+<br />
+----------------------------------------<br />
+NAMESPACE: link<br />
+----------------------------------------<br />
+<strong>_template_=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Usage: link.{{self._}}(_text="Text to Link")<br />
+&nbsp;&nbsp;<strong>href=</strong>www.YOUR-URL-GOES-HERE.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a1_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a2_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a3=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a3_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>a4=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>a4_rval<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>b1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>mix of attrs<br />
+&nbsp;&nbsp;<strong>123attr=</strong>nope<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bm_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="bm_template" text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>nm=</strong>bookmark1<br />
+&nbsp;&nbsp;<strong>t=</strong>my bookmark text<br />
+<br />
+<strong>bm_template=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>TEXT-TO-DISPLAY-FOR-LINK<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>bookmark1=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>my bookmark text<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>my alternate bookmark name<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>Constants<br />
+&nbsp;&nbsp;<strong>a=</strong>8<br />
+&nbsp;&nbsp;<strong>b=</strong>2<br />
+&nbsp;&nbsp;<strong>c=</strong>3<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c1=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>c2=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>1<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>attr1=</strong>&lt;em&gt;attribute 1&lt;/em&gt;<br />
+&nbsp;&nbsp;<strong>attr2=</strong>&lt;strong&gt;attribute 2&lt;/strong&gt;<br />
+&nbsp;&nbsp;<strong>attr3=</strong>{{self.attr1}}--{{self.attr2}}<br />
+&nbsp;&nbsp;<strong>attr4=</strong>[self.attr2]--[self.attr1]<br />
+<br />
+<strong>d0=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>d0_rval+<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>newattr=</strong>newval<br />
+&nbsp;&nbsp;<strong>extraattr=</strong>{{self.newattr}}<br />
+<br />
+<strong>google=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>Google home page<br />
+&nbsp;&nbsp;<strong>href=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>target=</strong>_blank<br />
+&nbsp;&nbsp;<strong>title=</strong>click on me to search on google.com<br />
+<br />
+<strong>id1=</strong><br />&nbsp;&nbsp;<strong>attr1=</strong>New Value<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>foo=</strong>nubar<br />
+&nbsp;&nbsp;<strong>bar=</strong>oldfu<br />
+<br />
+<strong>id2=</strong><br />&nbsp;&nbsp;<strong>01=</strong>x1<br />
+&nbsp;&nbsp;<strong>02=</strong>x2<br />
+&nbsp;&nbsp;<strong>03=</strong>x3<br />
+&nbsp;&nbsp;<strong>04=</strong>x4<br />
+&nbsp;&nbsp;<strong>05=</strong>x5<br />
+&nbsp;&nbsp;<strong>06=</strong>x6<br />
+&nbsp;&nbsp;<strong>07=</strong>x7<br />
+&nbsp;&nbsp;<strong>08=</strong>x8<br />
+&nbsp;&nbsp;<strong>09=</strong>x9<br />
+&nbsp;&nbsp;<strong>10=</strong>x10<br />
+&nbsp;&nbsp;<strong>11=</strong>x11<br />
+&nbsp;&nbsp;<strong>12=</strong>x12<br />
+&nbsp;&nbsp;<strong>13=</strong>x13<br />
+&nbsp;&nbsp;<strong>14=</strong>x14<br />
+&nbsp;&nbsp;<strong>15=</strong>x15<br />
+&nbsp;&nbsp;<strong>16=</strong>x16<br />
+&nbsp;&nbsp;<strong>17=</strong>x17<br />
+&nbsp;&nbsp;<strong>18=</strong>x18<br />
+&nbsp;&nbsp;<strong>19=</strong>x19<br />
+&nbsp;&nbsp;<strong>20=</strong>x20<br />
+&nbsp;&nbsp;<strong>21=</strong>21<br />
+&nbsp;&nbsp;<strong>22=</strong>22<br />
+&nbsp;&nbsp;<strong>23=</strong>23<br />
+&nbsp;&nbsp;<strong>24=</strong>24<br />
+&nbsp;&nbsp;<strong>25=</strong>25<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>invalid-attribute=</strong><br />&nbsp;&nbsp;<strong>_private_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_public_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_private_keys_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_=</strong>no<br />
+&nbsp;&nbsp;<strong>_all_attrs_esc_=</strong>no<br />
+&nbsp;&nbsp;<strong>_null_=</strong>no<br />
+&nbsp;&nbsp;<strong>_rval=</strong>no<br />
+&nbsp;&nbsp;<strong>_code=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_params_=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>_last=</strong>used by code ns<br />
+&nbsp;&nbsp;<strong>run=</strong>code.var.run<br />
+&nbsp;&nbsp;<strong>public=</strong>yes<br />
+&nbsp;&nbsp;<strong>not_private=</strong>YES<br />
+&nbsp;&nbsp;<strong>src=</strong>print('required for code')<br />
+&nbsp;&nbsp;<strong>type=</strong>eval<br />
+&nbsp;&nbsp;<strong>_format=</strong>&lt;{{self._tag}}{{self._public_attrs_}}&gt;&lt;/{{self._tag}}&gt;<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ln_factory=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>@link _id="{{self.nm}}" _inherit="_template_" href="{{self.hr}}"       _text="{{self.t}}"<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>nm=</strong>google<br />
+&nbsp;&nbsp;<strong>hr=</strong>https://google.com<br />
+&nbsp;&nbsp;<strong>t=</strong>Google home page<br />
+<br />
+<strong>name=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>_inherit=</strong>_template_<br />
+<br />
+<strong>sample=</strong><br />&nbsp;&nbsp;<strong>_format=</strong>{{self.&lt;}}{{self._text}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_text=</strong>my default title<br />
+&nbsp;&nbsp;<strong>href=</strong>http://example.com<br />
+&nbsp;&nbsp;<strong>_asurl=</strong>{{self.&lt;}}{{code.esc_angles.run(url="{{self.href}}")}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self.&lt;}}{{self._qtext}}{{self.&gt;}}<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>yet another descriptive link text<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+&nbsp;&nbsp;<strong>title=</strong>my link title here<br />
+&nbsp;&nbsp;<strong>style=</strong>font-size:2em<br />
+<br />
+<strong>ug_bookmarks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Bookmark Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_hyperlinks=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Hyper Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_links=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>Links<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+<strong>ug_ns_link=</strong><br />&nbsp;&nbsp;<strong>id=</strong>{{self._}}<br />
+&nbsp;&nbsp;<strong>_format=</strong>@@ {{self._inline}}<br />
+&nbsp;&nbsp;<strong>_link_o=</strong>&lt;a href="#{{self.id}}"&gt;<br />
+&nbsp;&nbsp;<strong>link=</strong>{{self._link_o}}{{self.text}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>text=</strong>@link Namespace<br />
+&nbsp;&nbsp;<strong>_inline=</strong>&lt;a id="{{self.id}}"&gt;&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qlink=</strong>{{self._link_o}}{{self._qtext}}&lt;/a&gt;<br />
+&nbsp;&nbsp;<strong>_qtext=</strong>SETMETOLINKTEXT<br />
+&nbsp;&nbsp;<strong>_tag=</strong>a<br />
+<br />
+</code>
+</div>
+</div>
+</body>
+</html>

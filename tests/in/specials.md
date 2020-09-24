@@ -1,51 +1,10 @@
-[link.bm_factory(nm="special_sections" t="Cover, Revision &amp; Contract Sections")]
-[link.special_sections]
-##Cover, Revision & Contact Sections
+@import "$/testsetup.md"
 
-There are three (3) specialized sections that can be defined within your document to add commonly used information in script files. They are:
+[var.testdoc_nw.begin(title="specials.md" desc="Testing Cover, Revision and Contact section types")]
 
-{:.indent}###var.cover - To add a cover section
-{:.indent}###@var.revision - To add a revision section
-{:.indent}###@var.contact - To add a contact section
-
-The details for each type of section are as follows:
-
-### Cover Title
-
-{:.syntax}@@@ divTitle Cover Title Syntax
-    &nbsp;
-    {:.indent}var.cover title="title of script" author="written by" logline="logline or short description"
-
-Each element is optional, and they can appear in any order. Also note that the value of any parameter can be whatever you want. Just because it says "author", doesn't mean you have to put the author name there. You could instead write "Roses are Red", and that would be just fine...
-
-###var.revision v="revision"
-Specify the revision number of your document within quotes. The default rendering of the var.revision variable is to include a timestamp at the end of the string. You can request a plain revision string using the plain attribute e.g. &#91;var.revision.plain]
-
-###var.contact cn="name" ph="phone" em="email" c1="copyright line 1" c2="copyright line 2" c3="copyright line 3"
-
-Each element is optional, and the elements can appear in any order. By default, the system looks in the var.defaults variable for the definitions of cn, ph, em, c1, c2 & c3. As such, you can conveniently set them using a single call:
-
-.**@set _id="defaults"\
-     cn="Ken Lowrie"\
-     ph="*512-710-7257*"\
-     em="[ken@cloudylogic.com]"\
-     c1="Copyright © 2018 Cloudy Logic Studios, LLC."\
-     c2="All Rights Reserved."\
-     c3="[www.cloudylogic.com]"**
-
-@set _id="defaults"\
-     cn="Ken Lowrie"\
-     ph="*512-710-7257*"\
-     em="[ken@cloudylogic.com]"\
-     c1="Copyright © 2018 Cloudy Logic Studios, LLC."\
-     c2="All Rights Reserved."\
-     c3="[www.cloudylogic.com]"
-
-To see these tags in action, take a look at the userguideheading.md document in the import folder of this user guide.
-
-[link.special_sections.link]
 // And now let's try various versions
-
+[hash1]
+### var.cover.inline versions
 [var.cover.inline(title="Title of Script" author="Script Author")]
 [var.cover.inline(title="Title of Script" author="Script Author" logline="Logline")]
 [var.cover.inline(author="Script Author")]
@@ -54,6 +13,7 @@ To see these tags in action, take a look at the userguideheading.md document in 
 [var.cover.inline(title="Title of Script" logline="Logline")]
 [var.cover.inline(title="Title of Script")]
 [var.cover.inline(title="" author="Script Author" logline="")]
+### var.cover (@@) versions
 [var.cover(title =     "Title of Script" author   =   "Script Author")]
 [var.cover(title="Title of Script" author  ="Script Author" logline=  "Logline")]
 [var.cover(     author    =    "Script Author"    )]
@@ -61,12 +21,15 @@ To see these tags in action, take a look at the userguideheading.md document in 
 [var.cover( author="author")]
 [var.cover(author="author" title="title" logline="logline")]
 
-Note that we'll always use timestamp off in the unittest scripts, because otherwise the comparison will fail... The code is unit tested separately...
+[hash1]
+[var.divxp(c="Note that we'll always use timestamp off in the unittest scripts, because otherwise the comparison will fail... The code is unit tested separately...")]
 
 [var.revision.inline_plain(v="1.0")]
 [var.revision.inline_plain(v="1.1")]
 [var.revision.plain]
- 
+//[var.revision]
+
+[hash1] 
 [var.contact]  
 [var.contact(cn="")]
 [var.contact(ph="")]
@@ -76,7 +39,7 @@ Note that we'll always use timestamp off in the unittest scripts, because otherw
 [var.contact(c3="" )]
 [var.contact(cn="cn"  c2="c2")]
 [var.contact(c2=""  cn="")]
-
+[hash2]
 [var.contact.inline(cn ="Contact Name"   )]   
 [var.contact.inline(ph="210-555-1212"   )]  
 [var.contact.inline(cn="Contact Name2" ph="210-555-1212"   )]  
@@ -157,4 +120,23 @@ Note that we'll always use timestamp off in the unittest scripts, because otherw
 [var.contact.inline(cn="Contact Name" ph="210-555-1212"   c2="Copyright Line 2c" c3="Copyright Line 3" )]
 [var.contact.inline(cn="Contact Name"  em="email@mydomain.com"  c2="Copyright Line 2" c3="Copyright Line 3" )]
 
-@dump var=".*" link="b"
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.plain(t="User manual sections for titlepage-doc.md")]
+
+[var.toc.wc_open(t="Table of Contents - Unittest titlepage-doc.md")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/titlepage-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from titlepage-inc.md")]
+@dump link="^ug_title_page|ug_tp"
+
+@import "[sys.root]/docs/section/titlepage-doc.md"
+
+@set dump_ns_list="var=\"cover|revision|contact|defaults\" html=\"revision|contact\""
+
+
+[var.testdoc_nw.end]

@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 
+from pathlib import Path
+from os import chdir
+
+print("FILE={}".format(__file__))
+parent = Path(__file__).parent
+chdir(parent)
 
 from sys import path
 from os.path import dirname, abspath, realpath, split, join
 bin_path, whocares = split(dirname(realpath('__file__')))
 lib_path = abspath(bin_path)
 path.insert(0, lib_path)
-print("AVScript Package unittest")
+print("smd Package unittest")
 print("PYTHONPATH=")
 for item in path:
     print('  {}'.format(item))
@@ -15,35 +21,37 @@ import io
 import sys
 from unittest import TestCase, TestLoader, TextTestRunner
 
-import avscript.avscript_md
+import smd.smd
 
 
 def decode(html_string):
     from sys import version_info
-    if version_info.major < 3:
-        from HTMLParser import HTMLParser
-        unescape = HTMLParser().unescape
-    else:
-        from html import unescape
+    from html import unescape
 
-    #h = HTMLParser()
     return unescape(html_string)
 
 
-class TestAVScriptClass(TestCase):
+class TestSMD(TestCase):
     def setUp(self):
-        self.avscript_md = avscript.avscript_md.AVScriptParser()
+        from smd.core.sysdef import SystemDefaults
+        sysDefaults = SystemDefaults()
+        sysDefaults.load_default_html = False
+        sysDefaults.load_default_head = False
+        sysDefaults.load_default_body = False
+        sysDefaults.load_user_files = False
+        sysDefaults.load_default_builtins = False
+        self.smd = smd.smd.ScriptParser(sysDefaults)
         self.capturedOutput = io.StringIO()     # Create StringIO object
-        self.avscript_md.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
+        self.smd.stdoutput = (self.capturedOutput, False)   # and redirect stdout.
 
     def tearDown(self):
-        self.avscript_md.stdoutput = sys.__stdout__     # Reset redirect.
-        del self.avscript_md
-        self.avscript_md = None
+        self.smd.stdoutput = sys.__stdout__     # Reset redirect.
+        del self.smd
+        self.smd = None
         del self.capturedOutput
 
     def process(self, which, checkEqual=True):
-        self.avscript_md.open_and_parse("in/{}.md".format(which))
+        self.smd.open_and_parse("in/{}.md".format(which))
         with open('run/{}.out'.format(which), 'w') as mf2:
             mf2.write(self.capturedOutput.getvalue())
 
@@ -55,20 +63,44 @@ class TestAVScriptClass(TestCase):
     def test_markdown(self):
         self.process('markdown')
 
-    def test_variables(self):
-        self.process('variables')
+    def test_help(self):
+        self.process('help')
+
+    def test_var(self):
+        self.process('var')
 
     def test_film(self):
         self.process('film')
 
-    def test_varv2(self):
-        self.process('varv2')
+    def test_quit(self):
+        self.process('quit')
+
+    def test_stop(self):
+        self.process('stop')
+
+    def test_link(self):
+        self.process('link')
+
+    def test_dump(self):
+        self.process('dump')
+
+    def test_html(self):
+        self.process('html')
+
+    def test_code(self):
+        self.process('code')
+
+    def test_wrap(self):
+        self.process('wrap')
 
     def test_misc(self):
         self.process('misc')
 
     def test_image(self):
         self.process('image')
+
+    def test_images(self):
+        self.process('images')
 
     def test_divs(self):
         self.process('divs')
@@ -139,15 +171,26 @@ class TestAVScriptClass(TestCase):
         }
 
         # Find all the <a href="encoded_mailto_link">varname</a> lines
-        m = findall(g1, self.capturedOutput.getvalue())
+        output = self.capturedOutput.getvalue()
+        m = findall(g1, output)
         self.assertEqual(len(m), 3)
         for mailto_set in m:
             # extract the mailto link and the variable name from a match
             mailto, var_name = mailto_set
 
             self.assertEqual(decode(mailto), d.get(var_name))
+        
+        google="https://www.google.com?s=\"testing%20stuff\""
+        self.assertTrue(output.find(google) != -1)
+
+        decoded = decode(output)
+        encode1 = "mailto:info@domain.com"
+        self.assertTrue(decoded.find(encode1) != -1)
+
+        encode2 = "mailto:info@www.testdomain.net?a=\"this%20is%20a%20test\""
+        self.assertTrue(decoded.find(encode2) != -1)
 
 
 if __name__ == '__main__':
-    suite3 = TestLoader().loadTestsFromTestCase(TestAVScriptClass)
+    suite3 = TestLoader().loadTestsFromTestCase(TestSMD)
     TextTestRunner(verbosity=2).run(suite3)

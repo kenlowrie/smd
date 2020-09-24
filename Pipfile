@@ -1,17 +1,12 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
-
-[packages]
-"kenl380.pylib" = "*"
-avscript = {editable = true, path = "."}
 
 [dev-packages]
-pylint = "*"
 
-[requires]
-python_version = "3.7"
-
-[pipenv]
-allow_prereleases = true
+[packages]
+selenium = "*"
+bottle = "*"
+watchdog = "*"
+smd = {editable = true, path = "."}

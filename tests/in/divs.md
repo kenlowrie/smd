@@ -1,57 +1,530 @@
-[link.bm_factory(nm="divs" t="Divs")]
-[link.divs]
-{:.plain}@@@ plainTitle
-##Divs
-You can create a new DIV using ***---*** or ***@@@*** at the start of a new line. The complete syntax is: 
+@import "$/testsetup.md"
 
-###&#91;{:.class}&lt;***---*** | ***@@@***&gt; &lt;***title_className | .***&gt; &#91;optional title&#93;
+[var.testdoc.begin(title="divs.md" desc="builtin DIVs from sys.imports/divs.md")]
 
-The class prefix is optional, but handy if you want your DIV to be styled in a unique way. You can list one or more classes in dotted notation. E.g.: **{:.myclass}** or **{:.myclass1.myclass2}**. Then an optional class for the title, or '.' to indicate no title class, and finally, the optional title. Let's take a look at an example:
+[wrap_h(t="### Testing var.section")]
+[var.section]
+[var.section()] <-- Intentional error, calling section with empty paramter list
+[var.section(t="default format section header")]
+[var.section.with_content]
+[var.section.with_content()]
+[var.section.with_content(t=".with_content title")]
+[var.section.with_content(t="")]
+[var.section.with_content(c="with content, empty title")]
+[var.section.with_content(t=".with_content title" c="and content too")]
 
-When I write ***{:.section}@@@ divTitle This is my new DIV section*** at the start of a new line, I get this:
-{:.section}--- divTitle This is my new DIV section
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[section]
+[section()] <-- Intentional error, calling section with empty paramter list
+[section(t="default format section header")]
+[section.with_content]
+[section.with_content()] <-- Intentional error, calling section with empty paramter list
+[section.with_content(t=".with_content title")]
+[section.with_content(t="")]
+[section.with_content(c="with content, empty title")]
+[section.with_content(t=".with_content title" c="and content too")]
 
-If I indent subsequent lines immediately following the DIV declaration, they become part of the DIV as a regular paragraph. For example, I'll add four (4) indented lines immediately after the previous DIV declaration and I get this:
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.section_pbb")]
+[var.section_pbb]
+[var.section_pbb.with_content]
+[var.section_pbb(t="section_pbb title")]
+[var.section_pbb.with_content(c="section_pbb content", t="section_pbb title2")]
 
-{:.section}--- divTitle This is my new DIV section
-    This is line 1
-    This is line 2
-    This is line 3
-    This is line 4
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[section_pbb]
+[section_pbb.with_content]
+[section_pbb(t="section_pbb title")]
+[section_pbb.with_content(c="section_pbb content", t="section_pbb title2")]
 
-There are a several built-in CSS classes that are defined in the accompanying **avscript_md.css** file, and you can add your own to get new DIVs formatted to your liking.
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.plain")]
 
-[link.bm_factory(nm="headers" t="Headers")]
-[link.headers]
-{:.plain}@@@ plainTitle
-##Headers
+[var.plain]
+[var.plain.with_content]
+[var.plain(t="plain non default title")]
+[var.plain.with_content]
+[var.plain.with_content(c="plain non default comment")]
 
-Just like in standard Markdown, you can use the # symbol at the beginning of a line to designate an HTML &lt;H1&gt; element. ## symbols designate an &lt;H2&gt; element, and so on, up to ###### for &lt;H6&gt;. Here are examples of each.
-{:.indent}### # H1
-{:.indent}### ## H2
-{:.indent}### ### H3
-{:.indent}### #### H4
-{:.indent}### ##### H5
-{:.indent}### ###### H6
-And this is how they will look in the document when it's formatted:
-# H1
-## H2
-### H3
-#### H4
-##### H5
-######H6
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[plain]
+[plain.with_content]
+[plain(t="plain non default title")]
+[plain.with_content]
+[plain.with_content(c="plain non default comment")]
 
-You may want to style the headers to your liking in the avscript_md.css file.
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.source")]
 
-[link.bm_factory(nm="anchors" t="Bookmarks")]
-[link.anchors]
-##Bookmarks
-You can also define bookmarks in your document, and then reference them with links using the following syntax:
+[var.source]
+[var.source.with_content]
+[var.source(t="source non default title")]
+[var.source.with_content]
+[var.source.with_content(c="source non default comment")]
 
-{:.indent}###@&#43;&#91;bookmark name&#93; - Define local bookmark
-{:.indent}###@&#58;&#91;bookmark name&#93; - Create hyperlink to bookmark
+[var.source.wc_open]
+[b]we are open
+[var.source.wc_close]
 
-This is useful for creating things like a table of contents (TOC) for your document, or anywhere that you want to provide a hyperlink to a different part of your doc. These do not have to be defined in any particular order. That is, you can create the hyperlink before the bookmark has been defined.
+//NOTE: The inline versions of source and probably note, etc., are not really useful, because
+//      block elements as wrappers (which is likely in effect), are going to confuse the browser
+//      because they will wrap other open block tags. 
+//      Below is one workaround, another is how terminal2 is implemented by adding wc_open/close_content
+@wrap nop
+[html.divx.<]
+[var.source.wc_open_inline]
+[b]we are open inline
+[var.source.wc_close_inline]
+[html.divx.>]
+@parw
 
-For an example of bookmarks, just take a look at how this user guide defined and uses its own TOC.
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
 
+[source]
+[source.with_content]
+[source(t="source non default title")]
+[source.with_content]
+[source.with_content(c="source non default comment")]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.toc")]
+[var.toc]
+[var.toc.with_content]
+[var.toc(t="toc non default title")]
+[var.toc.with_content]
+[var.toc.with_content(c="toc non default comment")]
+[var.toc.wc_open]
+toc content using .wc_open and .wc_close
+[var.toc.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[toc]
+[toc.with_content]
+[toc(t="toc non default title")]
+[toc.with_content]
+[toc.with_content(c="toc non default comment")]
+[toc.wc_open]
+toc content using .wc_open and .wc_close
+[toc.wc_close]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.review")]
+[var.review]
+[var.review.with_content]
+[var.review(t="review non default title")]
+[var.review.with_content]
+[var.review.with_content(c="review non default comment")]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[review]
+[review.with_content]
+[review(t="review non default title")]
+[review.with_content]
+[review.with_content(c="review non default comment")]
+
+
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.note")]
+[var.note]
+[var.note.with_content]
+[var.note(c="note non default content")]
+[var.note.with_content]
+[var.note.with_content(c="note non default comment")]
+[var.note.wc_open(c="non-default-content-ignored-on-wc_open-but-used-next-time")]
+some additional note content.[b]
+and some more[b]
+and still more
+[var.note.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing without the namespace prefix var.")]
+[note]
+[note.with_content]
+[note(c="note non default content")]
+[note.with_content]
+[note.with_content(c="note non default comment")]
+[note.wc_open(c="non-default-title-wc_open--this will be ignored here but used next time a **note** is used w/o a parameter override")]
+some additional note content.[b]
+and some more[b]
+and still more
+[note.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.vo")]
+[var.vo]
+[var.vo.with_content]
+[var.vo(c="some default text")]
+[var.vo.with_content(c="some default content text")]
+[var.vo.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.vo.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing vo without prefix var.")]
+[vo]
+[vo.with_content]
+[vo(c="some default text")]
+[vo.with_content(c="some default content text")]
+[vo.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[vo.wc_close]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.box")]
+[var.box]
+[var.box.with_content]
+[var.box(c="some default text")]
+[var.box.with_content(c="some default content text")]
+[var.box.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.box.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing box without prefix var.")]
+[box]
+[box.with_content]
+[box(c="some default text")]
+[box.with_content(c="some default content text")]
+[box.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[box.wc_close]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.generic")]
+[var.generic]
+[var.generic.with_content]
+[var.generic(c="some default text")]
+[var.generic.with_content(c="some default content text")]
+[var.generic.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.generic.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing generic without prefix var.")]
+[generic]
+[generic.with_content]
+[generic(c="some default text")]
+[generic.with_content(c="some default content text")]
+[generic.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[generic.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.greyout")]
+[var.greyout]
+[var.greyout.with_content]
+[var.greyout(c="some default text")]
+[var.greyout.with_content(c="some default content text")]
+[var.greyout.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.greyout.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing greyout without prefix var.")]
+[greyout]
+[greyout.with_content]
+[greyout(c="some default text")]
+[greyout.with_content(c="some default content text")]
+[greyout.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[greyout.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.important")]
+[var.important]
+[var.important.with_content]
+[var.important(c="some default text")]
+[var.important.with_content(c="some default content text")]
+[var.important.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.important.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing important without prefix var.")]
+[important]
+[important.with_content]
+[important(c="some default text")]
+[important.with_content(c="some default content text")]
+[important.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[important.wc_close]
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.question")]
+[var.question]
+[var.question.with_content]
+[var.question(c="some default text")]
+[var.question.with_content(c="some default content text")]
+[var.question.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[var.question.wc_close]
+
+[wrap_h.hash2]
+[wrap_h(t="### Testing question without prefix var.")]
+[question]
+[question.with_content]
+[question(c="some default text")]
+[question.with_content(c="some default content text")]
+[question.wc_open]
+my content[b]
+more content[b]
+and a little more[b]
+last line
+[question.wc_close]
+
+
+
+
+
+
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.extras and var.divxp")]
+[var.extras]
+[var.extras(c="your comment inside an extras div")]
+
+[var.divxp]
+[var.divxp(c="your content inside a p tag inside a div")]
+
+[wrap_h.hash1]
+[wrap_h(t="### Testing var.specials")]
+
+[var.syntax]
+[syntax]
+[syntax.inline]
+
+[var.syntax()] <-- Intentional error, calling section with empty paramter list
+[syntax()] <-- Intentional error, calling section with empty paramter list
+
+[var.syntax(t="My new title")]
+[syntax]
+
+[var.syntax.with_content]
+[syntax.with_content]
+[syntax.wc_inline(t="syntax.wc_inline")]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[syntax.with_content]
+
+[var.syntax.with_content(c="Just some new content")]
+[var.syntax.with_content(t="And now the title too")]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open]
+[var.syntax.wc_close]
+
+[var.syntax.wc_open(t="syntax.wc_open")]
+Some content here
+And some additional
+And one last thing
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+[var.syntax.wc_open(t="syntax.wc_open")]
+    Some content here[b]\
+    And some additional[b]\
+    And one last thing[b]\
+[var.syntax.wc_close]
+
+[var.syntax._null_(t="RESET TITLE" c="RESET CONTENT")]
+@@[var.syntax.wc_open_inline(t="syntax.wc_open")]
+    Some content here[b]\
+    And some additional[b]\
+    And one last thing[b]
+[var.syntax.wc_close_inline]
+
+[wrap_h(t="### Testing help")]
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.section")]
+        [section.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.source")]
+        [source.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.note")]
+        [note.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.terminal")]
+        [terminal.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+[bigmargin._open] 
+    [section.wc_open(t="DIV: var.terminal2")]
+        [terminal2.?]
+    [section.wc_close]
+[bigmargin._close] 
+
+<hr />
+
+[note]
+[note(c="1c")]
+[note(c="1ac")]
+[note.with_content]
+[note.wc_inline]
+nd variants
+[note.nd]
+[note.inline_nd]
+[note.nd_inline]
+[note._null_(c="2ac")]
+here comes wc_open
+[note.wc_open]
+2ac-inline
+[note.wc_close]
+[note]
+[note.with_content]
+[note.nd_open]
+2ac-inline variant
+[note.nd_close]
+<hr />
+@wrap null
+[note.wc_open_inline]
+2ac-inline with null wrap
+[note.wc_close_inline]
+
+[note.nd_open_inline]
+2ac-inline_nd with null wrap
+[note.nd_close_inline]
+@parw
+<hr />
+
+[wrap_h(t="### ulist")]
+[mk]
+@wrap divx,p
+default and .with_content
+[ulist(c="fubar")]
+[ulist.with_content(c="fubar2")]
+wc_open
+[ulist.wc_open]
+fu
+bar
+[ulist.wc_close]
+wc_wrap_open
+[ulist.wc_wrap_open]
+fu
+bar
+[ulist.wc_wrap_close]
+@parw
+[mk]
+
+[wrap_h(t="### ulistplain")]
+
+[ulistplain(t="my list" c="fubar")]
+[ulistplain.with_content(t="my list" c="fubar")]
+[ulistplain.wc_open]
+fu
+bar
+[ulistplain.wc_close]
+
+[wrap_h(t="### olist")]
+
+[olist(t="my list" c="fubar")]
+[olist.with_content(t="my list" c="fubar")]
+[olist.wc_open]
+fu
+bar
+[olist.wc_close]
+
+[olistAlpha.wc_open]
+Alpha 1
+[olistGreek.wc_open]
+Greek 1
+[olistRoman.wc_open]
+Roman 1
+[olistalpha.wc_open]
+alpha 1
+alpha 2
+[olistgreek.wc_open]
+greek 1
+greek 2
+[olistroman.wc_open]
+roman 1
+roman 2
+[olistroman.wc_close]
+greek 3
+greek 4
+[olistgreek.wc_close]
+alpha 3
+alpha 4
+[olistalpha.wc_close]
+Roman 2
+[olistRoman.wc_close]
+Greek 2
+[olistGreek.wc_close]
+Alpha 2
+[olistAlpha.wc_close]
+
+[var.plain(t="User manual sections for DIVs")]
+
+@import "[sys.root]/docs/userdocs_macros.md"
+
+[var.toc.wc_open(t="Table of Contents - Unittest DIVs Builtins")]
+@wrap nop
+[b]
+@import "[sys.root]/docs/section/divs-inc.md"
+@parw
+[var.toc.wc_close]
+
+[wrap_h(t="###Review link bookmarks from divs-inc.md")]
+@dump link="^ug_div|ug_div_"
+
+@import "[sys.root]/docs/section/divs-doc.md"
+
+@set dump_ns_list="var=\".\" html=\".\" help=\"f\""
+
+[var.testdoc.end]

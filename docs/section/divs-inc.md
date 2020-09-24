@@ -1,0 +1,13 @@
+[link.bm_factory(nm="ug_div" t="DIV")]
+[link.bm_factory(nm="ug_div_gen" t="Generic DIVs")]
+[link.bm_factory(nm="ug_div_src" t="Source DIVs")]
+[link.bm_factory(nm="ug_div_note" t="Note DIVs")]
+[link.bm_factory(nm="ug_div_misc" t="Miscellaneous DIVs")]
+[link.bm_factory(nm="ug_div_list" t="Lists")]
+
+[tab.<][link.ug_div.link] - **Creating new DIV sections**[tab.>][b]
+[tab.<][tab.<][link.ug_div_gen.link] - **Content Structure**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_div_src.link] - **Display Source**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_div_note.link] - **Inline Notes**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_div_misc.link] - **Generics and Terminal**[tab.>][tab.>][b]
+[tab.<][tab.<][link.ug_div_list.link] - **Ordered and Unordered**[tab.>][tab.>][b]

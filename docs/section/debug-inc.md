@@ -1,0 +1,13 @@
+[link.bm_factory(nm="ug_debug" t="Debugging")]
+[link.bm_factory(nm="ug_debug_cmd" t="[smddebug.il] syntax")]
+[link.bm_factory(nm="ug_debug_parms" t="[smddebug.il] parameters")]
+[link.bm_factory(nm="ug_dump_cmd" t="[smddump.il] syntax")]
+[link.bm_factory(nm="ug_dump_parms" t="[smddump.il] parameters")]
+[link.bm_factory(nm="ug_common_issues" t="Common troubleshooting issues")]
+
+[tab.<][tab.<][link.ug_debug.link] - **How to debug your markdown**[tab.>][tab.>][b]
+[tab.<][tab.<][tab.<][link.ug_debug_cmd.link] - **Debug command syntax**[tab.>][tab.>][tab.>][b]
+[tab.<][tab.<][tab.<][link.ug_debug_parms.link] - **Debug command parameters**[tab.>][tab.>][tab.>][b]
+[tab.<][tab.<][tab.<][link.ug_dump_cmd.link] - **Dump command syntax**[tab.>][tab.>][tab.>][b]
+[tab.<][tab.<][tab.<][link.ug_dump_parms.link] - **Dump command parameters**[tab.>][tab.>][tab.>][b]
+[tab.<][tab.<][tab.<][link.ug_common_issues.link] - **How to debug your markdown**[tab.>][tab.>][tab.>][b]

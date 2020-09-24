@@ -1,0 +1,242 @@
+Punch List Items.
+-----------------
+
+SOC
+
+//TODO.py: Consider the _c(c="content") addition to @html namespace. _ea="True" could enable the _c/_r support...
+
+
+Have the .?? code call markdown first, and then do the translation. That will make it so it expands any variables first, then does the cleanup...
+Replace references to needshot.png in docs/samples/image to the [sys.imports]/avs/needshot.png...
+Make a pass thru the builtins and add _help strings for anything important...
+I wonder if making the entire debug subsystem write to stderr instead of stdout would be useful. That would make it so the debug messages are not interspersed amongst the content, but isn't that useful? Food for thought.
+tests/sos/figurethisout.md - need to make sure these are documented since I don't look at this file often...
+Move tests/sos scripts to the /src directory?
+Consider if we need to test the command line options to ismd (like the monitors...)
+Don't require Tk unless -m hostgui is being used. -- update docs...
+When image is added, (used/referenced?), I could add to watch list, and if modified, refresh, and at the end, I could pull them into the distribution/package area. Maybe a "package" command, that would do that, along with a way to tell the system you need to use a different path when writing the html to package it. _pkg_path attr could contain the relative path to be used for copying and for referencing. This would solve the issue with distribution...
+Add a unittest case to testcl.py to cover the -dbg option, since there was a crash that went undetected...
+
+Priority 0 | p0
+---------------
+Decide if $.attr substitutions should be marked down. Currently, they are not...
+Terminal and terminal2 built-in help needs updating.
+Document using a sample "empty" project to create an environment where you can design a web page from scratch. ismd -monitor chrome safari firefox hostgui
+Finish clock and border as 2 POCs that are part of the source tree.
+[dump(ns="namespace1 & namespace2")] - parse the namespaces strip(ns.split('&')) and dump each of them.
+release version 0.4.2 of the master repo (i.e. do a pull request from the specific branch.)
+
+
+Priority 1 | p1
+---------------
+Maybe if I had a mode where I could "emit" the pushlines as text (escaped) so you can see what would be executed...
+smd.py should use the WrapperClass() methods for manipulating the wrapper stack. Maybe convert it to a true class, add it's own debug, etc.
+Split out the div sections specific to AV into the AVS.md file (from divs.md).
+Seems like I should track where _markdown is called, and only in the main output loop, should things be expanded/processed. I don't know if this is possible, but it seems like if it were, it would solve a lot of the issues I have with trying to do things like escape_var, encode_var, etc, when the underlying variable calls code.push* or code.repeat, etc, etc. Worth a glance in any case...
+@html should add _c_(_c) and _r_(_r) - grep make sure _c_, _r_ not currently used anywhere. If so, fix that first, then implement this. Might enable with _ea_="True" (if specified, then add the _c_, _c, _raw_, _r attributes). Then, you would be able to specify content by using ._c_(_c="content"), and it would emit .<._c.> in one step. html.foo._c_(_c="content").
+It would be awesome if I could figure out regex for [var("1 agument")], and that argument is always the first in the declaration, only when you need to specify a different argument do you have to resort to naming them.
+
+
+
+Priority 2 | p2
+---------------
+consider whether adding a "test()" function to the .core modules makes sense as one more way to shake down the code
+Split A/V specific CSS to separate file. Realize this will complicate using smd since it requires a different cssfile(s)...
+figure out which things need to be tested using stand alone python scripts and start building/adding them.
+Make a single shell script that runs both/all of the command line tests ...
+Make all global variables go away. Should be able to do this using addObjectToTLS, like I did with tls['wrapstack']
+Should I add a wrapstack to @dump? So I can see what is queued up? Would be helpful for debugging.
+Need to add negative tests to the unittests. that is, things that should fail. This is done for some things, but not all. Need to expand it...
+Test this on Windows 10. If I can make this work there, that would be a huge win.
+How about the ability to delete a variable and also an attribute.
+    [code.var_add] - why? @var, @ns
+    [code.var_delete] - useful
+    [code.var_duplicate] - why? _inherit= (does this work in all namespaces including @code?)
+    [code.var_rename] - maybe useful
+    [code.attr_delete] - useful
+    [code.attr_duplicate] - why? @set ... newattr="[self.existing_attr]"
+    [code.attr_update] - why?? @set ...
+    [code.attr_rename] - useful
+
+
+
+Priority 3 | p3
+---------------
+SystemDefaults() needs some TLC. Think about dumping and where it's overridden. 
+add --developer mode that enables certain flags (like debug=on), and some other builtins that are useful for debugging. --debug ns.code ns.var
+    --developer mode should automatically run a script that does some useful stuff, so you can see what you have. --developer [def=developer.md] --> override by [script1.md [script2.md]]
+    --developer mode switch (@debug developer="yes" -- so you can enable inside the interpreter) should define things like [mk] and other helpers.
+Code review Cache, ImportCache & SystemDefaults.
+maybe add a pause/resume method on the watcher class i could engage while parsing...
+Make a pass at cleaning up //TODO, or at least listing them here or in docs
+See how close I can get to a clean render of Buddy's music video script markdown file...
+Save input lines in smd and implement arrow keys for input
+Should Python or SRC be aliases for @code variables?
+    [Python.variable.run]
+    [SRC.variable.run]
+Test it on Linux (Ubuntu maybe? -- Ask Stephen for recommendation on OS and Desktop/if that matters)
+
+
+
+Priority 5 | p5
+---------------
+Should I use the python logging system for better control of debug messages and console output?
+Maybe consider option to pass in a file handle for the raw_output from smdparse, b/c then if smd crashes, I would still have a log to look at, and see what line it got to...
+Move all of these things to the issues tracker in github, and get rid of this file.
+How come @debug on='debug' doesn't work? i.e. single quotes vs double quotes? tried: \s([\w]+)\s*=\s*[\"\'](.*?)(?<!\\)[\"\'] on special_ and the match regex. fails miserably.
+Might be cool if there was an html python pretty printer on pypi I could build into hostgui. pip install beautifulsoup4. https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+
+Completed
+---------
+Figure out how to implement the outer HTML Tag support
+Figure out how to implement the <head></head> support
+Implement the @embed support for inlining HTML, script, content, etc, without processing.
+Update the modified event to only track changes to the specific files being updated, instead of entire directory.
+Use a thread to run the window mainloop, so Tk refreshes more often, like when you are dragging the scroll bar, etc. couldn't make this work, gave up for now.
+Review all the mindmaps, evernotes, etc., and make 1 consolidated list (here) of the things I need to be focused on.
+Implement the builtins.md and *-html.md loading in smd.py, then switch ismd to use smdparse instead of livesmd.
+Decide if the --load-default-builtins=Y|N, --load-user_bulitins=Y|N, etc., belong with smd.py, or an outer (livesmd, smdparse, ismd) script...
+add something to pull in "user-builtins.md", maybe in the ~ folder, as .smd-builtins
+cmdline switch to tell it to NOT load them, useful for testing, so we dont' introduce ambiguous variables.
+move doc.md testing code to other file. common.md and report.md
+Python 3.6 or later because we use f-strings
+Python 3.7 or later because it guarantees keys dictionary stays in insertion order
+builtins.md collection of @imports instead of one file, so you can easily get what you want. I/P
+make the "defaults" make sense. i.e. cssfile, page title, etc.
+do I need to implement a scheme to handle "-f filename.md" config_default_file that gets loaded just before the html document processing? -i/--import
+The line caching logic is flawed. it returns all the lines one by one, then proceses the imports. wtf?
+rename livesmd.py -> smdlive. This is the one that should operate an endpoint
+figure out how to do a source level debug of the code. just load debug.py into vscode, set a breakpoint, and debug it.
+Need to be able to launch dual monitors (-m hostgui and -m browser)
+remove the var="value" support from namespaces where it doesn't make sense. 
+Should the ConfigFileObject... classes be part of the cache module?
+remove all the old peekline, ... bs from the mainloop. we need to kiss.
+Remove alias support. ability to [var]=value. You must use @var id="_" attr="x"
+@dump defaults="." is kind of dumb. Rethink it, make it nicer and prettier to output.
+if multiple cssfiles on command line xface of ismd and smdparse, need to add them to the "watch" list.
+Can i put debugtracker in the TLS? Clean up init, and when classes can register, etc.
+Need to implement the code for detecting/monitoring multiple files. would make it easier to debug...
+-nu with ~/.smb/builtins.md still loads the user builtin. fix this.
+I should do a quick test in the watcher.refresh(). if no changes, don't stop/restart, just maybe "flush" pending changes... 
+Probably need @watch "filename" that adds something to the seen list for monitoring. for javascript.js, additional files.css, etc.
+build out initial version of smdlive
+ismd -f non-existant-file -c -ndb ... doesn't fail when file doesn't exist...
+figure out which things need to be tested via bash/zsh script, and start building them out
+Need to use -f filename with the cmdline.py testing utility, not all via redirection...
+ConfigFileData - Need a way to override any of the "builtin" document markdown files with something specific.
+Do a pass to remove all the alias definitions from the various markdown files, since that is deprecated. F=^\[([a-zA-Z0-9_]*)\]=(.*)  R=@var $1="$2"
+if you ismd -f foo.md -c -ndb ... then the head is always wrong when it loads, because it loads before you can set [defaults.cssfile]. Is this a bug? I'm not sure... NAB
+Add tests to validate the user builtins and docs of the smd utility. xfer .smd-cmdline-files to user area.
+Fix current cmdline tests so they behave consistently if user has local ~/.smd files (rename to .smd-cmdline-test and then back at test conclusion.)
+Will have to think about whether or not it's important to track changes to the code.md section, because the variables change each time you run...I think as long as I test each variable and its output, I should be fine.
+in smdparse(), I should return an object with relevant info in it: list of files read, string representation of output?, other useful stuff.
+Clean up how ismd does the multiple monitors
+Shore up the @wrap support so it is smarter about what it accepts as a parameter.
+Do I need a way to force all lines into a divExtras like before? maybe a @default wrap="html.key" and so html.div would wrap using that variables .< and .> so classes, etc., would just work. might need to be special keywork, like @wrap html.key so it's easy to use inline. such as: @wrap html.p.
+Fix smdparse() with a command line switch to specify the name of the "new head markdown file", create it, then pass it along when smd is run. Test with the endpoint, make sure it doesn't break.
+Right now, the data in the bodyclose.md and close.md files is not marked down. Shouldn't it be, for consistency?
+Replace special code relating to A/V scripts with namespace variables (where possible).
+Is raw still needed? Yes. It is needed to circumvent @wrap tags from mucking up formatting of specialized macros
+might be nice if you could pass a flag to tell it not to lstrip() blanks when loading the .html files
+Import: can I address the $ side effect? Perhaps with -d|--tld <top_level_path> for when stdin is used as top level? --cwd? or just make cwd be where we look...
+Sprinkle some additional useful debug messages in the new stuff (like filetrack...)
+Need a way to dump the filetracker.seen files. Where does it belong? @dump filetracker="pattern"
+Shouldn't @dump sysdefaults="pattern" also be there? And get rid of @defaults?
+Need a [code.encodesmd] that encodes things that get interpreted by the parser; useful for writing docs.
+What is the file smd.code.__builtins.md for? get rid of it if it isn't used anywhere.
+continue improving the automated tests and get coverage for all new functionality.
+@wrap nop and null - add tests to wrap.md
+@parw *|all @parw -3 | 0 | 1 | 25 - add tests.
+Add @wrap nop | null | tag1 [, tag2 [...]] support
+Should handle_header() handle @wrap lines? Code added, need to review closely.
+set background and foreground colors for the hostgui window.
+Implement @parw [* | all | #]
+make @wrap search html namespace first, instead of var (or others)
+Added [code.wrap_stack] to get access to the current wrap tag open and close strings for more flexible formatting options.
+Should I print a warning if things are left pushed onto the wrapper queue at the end? Probably not, but think about it. Thought about it, answer is no.
+create an "early" sample that exposes an endpoint and/or localfile for use by OBS as POC.
+Finish creating template for an OBS page layout - abstract def_docs.md, etc., create default start script within the pipenv folder.
+Seems like @html _="id" with no _tag="", then _tag should be set to _id...
+Add code.escape_var("variablename") and code.encode_smd_var("variablename"). That would make it much easier to write documentation...
+move the @link "doc" portion of the unittest over to the /docs folder and then just pull it in dynamically for testing. Two birds, one stone.
+Start rewriting userdoc.md so it conforms to smd. Have it @import sections for each namespace, so the markdown can be used for both the usermanual and unittests.
+@wrap and @parw need to be aware of imported files. automatically pop stack when eof of current file is hit, and stop "@parw all|*" at the boundary of the imported file.
+Rework divs.md relying on _inherit to make all of the macros consistent with less duplicate code...
+Should I encode the &squot; entity in src= lines before compiling them? Would this solve the issue where the compiler errors out because I use &squot; to surround the src=? Not needed. Fixed bug in compile() ...
+Add user_import, user_base and user_root to the @sys variable.
+Add a code macro to remove variables and then cleanup some of the factory crap from the divs2.md and other???
+var.code needs to be renamed because when you write [code.wc_open] it's always wrong. now called var.source
+Create an Examples section to the user docs, and move the "script", "specials", "images", etc. as documentation, and then in the unittest, just import that part of the user guide. 2 birds, one stone.
+Figure out how mailto: gets encoded on link. line 555 in variable.py. also, is core/link.py even used any more?
+[code.dump(ns="ns", var="var_name", escape="True | False")]
+Write help for div built-ins, and put in common variable, then reference it (if this works). 
+There are cases where {{foo}} is expanding only to [foo]. Sometimes, this is because foo hasn't been declared. I think there might be other times, where you might have attr="self.foo" and since the current variable isn't declared, it will simply end up as [foo].
+The issue where you can't prevent expansion is annoying. Sometimes, like in the nsbasic.md file where I am using the code.expr, I don't want things to markdown until later. Something as simple as attr="{{c0.a}}" will not work, because it is part of a larger expression and is being marked down. Ugh. Need to fix this!
+Maybe adding a ! to beginning and ending of string would work? x="!{{self.something}}!" means leave it alone (other than strip the !..! from it before storing it...)
+Change @declarations in all namespaces (and @set) to markdown attributes at declaration time (done -- in test mode -- big change) -- Implementation: Only simple markdown and [] would be done this way. Things with {{}} would still occur at runtime
+Move .?/._help to nsvar-doc.md from nscode-doc.md since this applies globally now.
+Update nsbasic.md so we print the attributes escaped and raw, for easier comparison. (during the part where we try to add reserved attributes).
+Make sure all code macros have unit tests for them. e.g. pushvar does not...
+Add options to escape_html() to output of some of the code macros so we can use them to write docs... see [code.wrap_stack]
+Is it possible to add -f stdin so that smdparse and ismd could be run interactively? Not sure if it makes sense, because it's only one line at a time...
+Document code.attr_replace_value
+Fix bug where ' inside a string [var.attr(a="this doesn’t work")] --workaround use &apos;
+document the key elements (@image) -- use the "tests/in" files to make it "current".
+Refresh the samples so they are using current markdown...
+finish writing tests for @image.
+Add command line option to select browser (default Chrome, add Firefox & Safari) -wd --web-driver <Chrome | Firefox | Safari> ... - monitor should just add chrome firefox safari (why not all at once?)
+Maybe also add code.encode_escape_var("variable") which encodes the variable then escapes it? Do we also need code.escape_encode_var()?
+Search for encode_smd. Replace all [] with <> and {{}} with 2{2} just to be consistent and clear.
+Document using smd with pipenv and an OBS page. 
+You should get error/warning messages when you try to pop beyond the end of the stack (but not on eof). At the very least, a debug message...
+Is @break/@exit useful? Yes == When you are doing avshot.*, and then you want to have an inline paragraph, you need it.
+
+
+
+
+
+
+Bugs/Fixes Needed
+-----------------
+Look to see if I can make further improvements with speed. Cut down 40% of the calls
+to markdown by only calling _md with lines that request the "marked_down" line...
+Use python -m profile debug.py (debug.py loads and runs avscript -f ...)
+
+Need ability to display error messages on ambiguous variable names.
+@debug on="ns.add". Might need to spruce it up a bit. If you specify
+a namespace, should this be okay? Because we rely on this for image.name
+and var.name, as a way to create linked shots... shots.md, shotdetail...
+
+Remove unused code in .core module
+
+Minor annoyance when dumping debug messages, during shots, the formatting
+is getting messed up. Most likely due to somewhere we are not escaping HTML
+output (maybe markdown, but that gets sketchy, so maybe not fixable)...
+
+--------------------
+Things to test:
+Rainy Day Fixes/Changes:
+
+Parenthesis inside a variable string doesn't parse correctly
+For now, the solution is to use html entities (&lpar; and &rpar;)
+e.g. [var.section(t="Scene 15 - Location S3:42 L:~8s (Ending Instrumental)")]
+Could we use \x## to embed them as well, and still have them be legit Parenthesis?
+
+Can I change the HTML formatting from before hand to on the backend, when I actually output?
+That would enable me to more readily detect unbalanced tags
+And I could format the output so it's nice and easy to read.
+
+It would really be cool if I could write actual Python code inline (v3). Basically, make it so you can put the code that's in utiity.py inline, and it generate the [code.xface] stuff on the fly. That would be awesome! Alternatively, if you could just write actual Python expressions inline like the following, that would also be cool.
+@code _id="test" type="exec"\
+    src="'print( 1 if \"x\" != \"_default_\" else 2)'"
+
+x=[code.test.run]
+
+   
+   TODO: Might want to look at Mark Boszko's latest version of the original CSS file. He's added a TON of stuff that looks very interesting...
+
+@if expr, @elif, @else, @endif? Only allow namespace @var to be used in expressions to avoid over complicating the implementation. markdown, then regex "(\w)\s*([gt]|[lt][eq][ne])\s*(\w)"
+@func namespace? You can do this already with pushlines, but maybe if you could write the functions with the steps on different lines it would be easier to write/debug them... 
+    I could do this manually by using @var myfunc="@function" 1="" 2="" 3="" and then creating a [code.func] that loads up the attributes and then does a "markdown on each", 
+    and then a pushlines (in case the markdown returns a string with \n embedded.) Then, if it this proves useful, I could make it an actual namespace, and make it so it knows to call the code function all on it's own...
